@@ -1,0 +1,92 @@
+
+#canvas {
+    border: 1px solid rgb(227, 147, 147);
+    text-align: center;
+    background-image: url(/assets/images/fondos/fondo\ canvas\ .png);
+    background-size: 100%;
+
+  }
+body{
+  background-color: #8d9682;
+}
+.moves{
+  background-image: url(/assets/images/fondos/fondo-textura-madera-marron-claro_53876-75016.jpeg);
+  font-family:'Gill Sans';
+  font-size: 14px;
+  font-style:oblique;
+  padding-top: 8px;
+  padding-left: 2px;
+  border: 5px solid #8d9682;
+  width: 180px;
+  height: 30px;
+  display: inline-flex;
+}
+
+
+/* instrucciones de movimiento start*/
+.arrow1{
+  height: 100%;
+  width: 35%;
+  padding-left: px;
+}.arrow2{
+  transform: rotate(180deg);
+  height: 100%;
+  width: 35%;
+  padding-right: 10px;
+}.arrow3{
+  transform: rotate(270deg);
+  height: 150%;
+  width: 20%;
+  padding-right: 15px;
+  padding-left: 30px;
+}.arrow4{
+  transform: rotate(90deg);
+  height: 180%;
+  width: 20%;
+  padding-right: 30px
+}
+.dice{
+  height: 120%;
+  width: 30%;
+}
+u{
+  font-size:20px;
+}
+/* Instrucciones de movimiento End */
+
+
+.btn-container {
+  text-align: center;
+}
+
+#btn {
+  background: lightblue;
+  color: blue;
+  padding: 3px;
+}
+#status{
+  background-color:aqua;
+  display: inline-flex;
+  align-items: flex-start;
+  border: 3px solid blue;
+}
+#rat-alert{
+  background-color: red;
+  display: none;
+  border: 3px solid black;
+}
+#fat-alert{
+	background-color: red;
+	display: none;
+	border: 3px solid black;
+  }
+#ok{
+  background-color: green;
+  color: white;
+  display: inline-flex;
+  border: 3px solid blue;
+}
+
+
+
+

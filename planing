@@ -1,0 +1,75 @@
+
+<!--  Necesario general:  
+    1 JS timers que creen eventos en un intervalo
+    2 Crear 4 personajes. copiar y pegar y extender y esas cosas
+    4 Lanzar dos dados y segun el sesultado, algo diferente
+    5 Generador aleatorio de Karens y quejas
+    6 Lista de quejas de karen
+    7 Lista de ofertas y/o descuentos especiales
+
+
+    9 Una lista de habilidades que se pueden usar sólo 3 veces por partida
+    10 crear hasta 6 salas cuadradas diferentes con entrada y número
+    11 una tirada aleatoria de D6 para indicar en qué punto aparece Karen en el eje X Y
+    12 enfrentamiento de dado si el personaje está cerca de la ubicación de karen
+
+---- -> Tiendas :  supermercado, bar, restaurante, tienda de ropa, oficina del manager, cine
+---- -> descuentos : 20% D6 + 2,  55% D6 + 4
+
+><><><><>lo mínimo que debe tener y hacer el juego:
+            1) 1 personaje
+            2) 6 cuartos
+            2.1) 3 Hojas de reclamaciones
+            3) setInterval para que aparezcan Karens
+            4) si el manager y karen están cerca, puedan lanzarse los dados
+            5) si el jugador gana, desaparece karen. si pierde, pierde una hoja de reclamaciones
+
+Complaints de Karen
+<div>  </div>
+<div>  </div>
+<div>  </div>
+<div>  </div>
+<div>  </div>
+<div>  </div>
+
+Tipos de descuentos
+<div>  </div>
+<div>  </div>
+<div>  </div>
+<div>  </div>
+<div>  </div>
+
+
+jugabilidad:
+     karen :  cuando aparece en una tienda, marca número 4 que un trabajador
+     tiene que superar para que desaparezca. Si sale el mismo número otra vez y
+     ya hay karen en esa tienda, se suma otro 2. Si sale por tercera vez, otros 2.
+     si ese número es superior a 8, el jugador pierde 1 hoja de reclamaciones.
+-->
+
+
+Lo que creo que sé hacer o no sería difícil averiguar: 
+->  Crear clase personaje que se mueve y choca contra cosas   
+->  Extender la clase a otros 4 personajes con características particulares cada una
+->  Darle puntos de vida y que se complique el juego si mueren 
+->  Crear un setInterval que cuando comience el juego, cada X segundos lanza un dado
+y según el resultado, pone karen en una casilla
+-> Cuando uno de los personajes esté cerca de Karen, lanzar un dado y comprobar
+si supera el número 
+-> si supera el número, que desaparezca karen
+
+Lo que no se hacer:
+-> Como cambiar el control entre distintos personajes del juego
+-> Crear una primera pantalla con controles e instrucciones
+-> Crear una minipantalla de juego con otros eventos y que el juego inicial se pause
+hasta que se resuelvan esos eventos
+-> en definitiva, crear otros canvas o pantallas con sus propios minijuegos.
+
+
+Dudas de si se puede:
+-> Poner niveles: aumenta el setInterval para aparición de karens, disminuye la vida
+de los personajes y añade más ratas recorriendo el centro comercial
+-> Que aparezca una nueva pantalla con minijuego, cargando otro script
+->
+->
+->
