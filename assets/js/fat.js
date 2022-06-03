@@ -1,14 +1,15 @@
 class Fat {
   constructor(ctx) {
     this.ctx = ctx;
-    this.x = 310;
+    this.salidas = [311,630]
+    this.x = this.salidas[Math.floor(Math.random()*this.salidas.length)]
     this.y = this.ctx.canvas.height;
     this.w = 0.07 * this.ctx.canvas.width;
     this.h = 0.15 * this.ctx.canvas.height;
     this.vy = -1;
 
     this.fat = new Image();
-    this.fat.src = "/assets/images/elements/gordo caminando.png";
+    this.fat.src = "/assets/images/elements/fat.png";
     this.fat.frame = 0;
 
     this.tick = 0;
@@ -30,7 +31,6 @@ class Fat {
 
   move() {
     this.y += this.vy;
-    console.log("moves");
 
     this.tick++;
 

@@ -8,12 +8,24 @@
     <link rel="stylesheet" href="/assets/style/style.css" />
   </head>
   <body>
-    <div style="text-align: left">
-      <h2 id="status">Mall status=></h2>
-      <h2 id="rat-alert" class="event-alert">¡LOOKOUT FOR THE RATS!</h2>
-      <h2 id="ok">Nothing to worrie about</h2>
-      <h2 id="fat-alert" class="event-alert">¡Supersized customer walking!</h2>
+    <div id="intro-canvas">
+      <h1>GAME IN 4K UlTRA HD</h1>
+      <div id="hover1" text-align="center"> </div>
+      <div id="hover" text-align="center"> </div>
+      <div id="hover" text-align="center"> </div>
+      <div id="hover" text-align="center"> </div>
+
+
     </div>
+    <div id="main-canvas">
+      <div style="text-align: left">
+       <h2 id="status">Mall status=></h2>
+        <h2 id="karens-alert" class="event-alert">Wild Karen Appears!!</h2>
+        <h2 id="rat-alert" class="event-alert">¡LOOKOUT FOR THE RATS!</h2>
+        <h2 id="ok">Easy morning. Not a single problem, yet...</h2>
+        <h2 id="fat-alert" class="event-alert">¡Supersized customer walking!</h2>
+       <span id="demo"></span>
+     </div>
     <canvas id="canvas" width="1100" height="550"> </canvas>
     <div>
       <div class="btn-container">
@@ -60,10 +72,11 @@
             alt="Something is missing"
           />
         </div>
+      </div>
     </div>
     <script src="/assets/js/constants.js"></script>
+    <script src="/assets/js/time.js"></script>
     <script src="/assets/js/muros.js"></script>
-    <script src="/assets/js/walls.js"></script>
     <script src="/assets/js/gatgets.js"></script>
     <script src="/assets/js/rats.js"></script>
     <script src="/assets/js/fat.js"></script>
@@ -71,7 +84,7 @@
     <script src="/assets/js/player.js"></script>
     <script src="/assets/js/game.js"></script>
     <script src="/assets/js/index.js"></script>
-    <script src="/assets/js/karen.js"></script>
+    <script src="/assets/js/karens.js"></script>
     <script src="/assets/js/script.js"></script>
   </body>
 </html>

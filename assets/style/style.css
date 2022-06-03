@@ -1,3 +1,47 @@
+body{
+  background-image: url(/assets/images/dado/Dados\ rojo.png);
+  background-size: 10%;
+}
+#intro-canvas{
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: 1100px; 
+  height: 550px;
+  border: 2px solid blue;
+  background-image: url(/assets/images/fondos/centro-comercial-canvas-intro-0.jpeg);
+  background-size: 100%;
+  transition: 1s;
+}
+
+#intro-canvas:hover {
+  padding-top: 10%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  background-image: url(/assets/images/fondos/centro\ comercial\ canvas\ intro\ 1.jpeg);
+  background-size: 100%;
+  transition: 1s;
+}
+
+h1 {
+  position:fixed;
+  text-align:left;
+  font-size: 30px;
+  border-radius: 20px;
+  display: inline-block;
+  font-family: Verdana;
+  font-style:oblique;
+  background-color: rgb(196, 162, 162, 0.3);
+  text-decoration-color: rgb(29, 142, 213)
+}
+
+
+#main-canvas{
+  display:none;
+}
 
 #canvas {
     border: 1px solid rgb(227, 147, 147);
@@ -80,13 +124,62 @@ u{
 	display: none;
 	border: 3px solid black;
   }
+#karens-alert{
+	background-color: red;
+	display: none;
+	border: 3px solid black;
+  }
 #ok{
   background-color: green;
   color: white;
   display: inline-flex;
   border: 3px solid blue;
 }
+span{
+  background-color:yellowgreen;
+}
 
 
 
+/* hower */
+
+#hover1 {
+  justify-content: center;
+  align-items: center;
+  color: rgb(251, 251, 251);
+	width: 100px; height: 100px;
+	margin: 1px 0 0 800px;
+	background: rgb(89, 84, 84, 0.3);
+	border: 5px solid #aaa;
+	border-radius: 30px;
+	transition: border-radius 9s, border-color 3s;
+}
+#hover1:hover {
+  background-image: url(/assets/images/fondos/arbusto1.png);
+  content: "mufasa";
+  left: -1320px; 
+	font-size: 1.85em; 
+  background-size: 100%;
+  background-repeat: no-repeat;
+	border-color: #333;
+	transform: rotate(360deg);
+	border-radius: 50%;
+	transition: all 2s;
+}
+#hover1:after { 
+	content: "Cr";
+	position:relative; 
+  background-color: #aaa;
+	left: -120px; 
+	font-size: 1.85em; 
+	font-family: helvetica, arial, sans-serif; 
+	font-variant: small-caps; 
+	color:rgb(0, 0, 0);
+	opacity:0; 
+	transition: opacity 2s;
+}
+#hover1:hover:after {
+	opacity: 1;
+	transition: opacity 1s 1s;
+}
 

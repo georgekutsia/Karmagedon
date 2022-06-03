@@ -1,8 +1,8 @@
 class Player {
   constructor(ctx) {
     this.ctx = ctx;
-    this.x = 1025;
-    this.y = 230;
+    this.x = 485;
+    this.y = 420;
 
     this.w = 40;
     this.h = 40;
@@ -13,7 +13,7 @@ class Player {
 
     this.life = 10;
     this.img = new Image();
-    this.img.src = "/assets/images/PJ/personaje 1:a.png";
+    this.img.src = "/assets/images/PJ/MANAGER 1.png";
     this.img.frame = 0;
 
     this.tick = 0;
@@ -85,19 +85,19 @@ class Player {
   keyDown(key) {
     if (key === UP) {
       this.vy = -2;
-      this.img.src = "/assets/images/PJ/personaje 1:a.png";
+      this.img.src = "/assets/images/PJ/MANAGER 1.png";
     }
     if (key === DOWN) {
       this.vy = 2;
-      this.img.src = "/assets/images/PJ/personaje 1:c.png";
+      this.img.src = "/assets/images/PJ/MANAGER 3.png";
     }
     if (key === RIGHT) {
       this.vx = 2;
-      this.img.src = "/assets/images/PJ/personaje 1:b.png";
+      this.img.src = "/assets/images/PJ/MANAGER 2.png";
     }
     if (key === LEFT) {
       this.vx = -2;
-      this.img.src = "/assets/images/PJ/personaje 1:d.png";
+      this.img.src = "/assets/images/PJ/MANAGER 4.png";
     }
   }
   keyUp(key) {

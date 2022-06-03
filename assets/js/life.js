@@ -3,10 +3,12 @@ class Life {
     this.ctx = ctx;
 
     this.x = 1018;
-    this.y = this.ctx.canvas.height * 0.9;
+    this.y = this.ctx.canvas.height * 0.85;
     this.w = 80;
-    this.h = 40;
+    this.h = 80;
     this.total = 1;
+
+    this.v = 0.3;
     ctx.font = "40px Verdana";
   }
 
@@ -20,10 +22,16 @@ class Life {
     this.ctx.fillRect(this.x, this.y, this.w * this.total, this.h);
     this.ctx.fillStyle = prevStyle;
     this.ctx.strokeRect(this.x, this.y, this.w, this.h);
-    ctx.fillText("Life", 1018, 530);
+    ctx.fillText("Life", 1018, 505);
   }
 
-  move() {}
+  move() {
+    this.y -= this.v
+    if(this.y < 433){
+      this.v = -0.3
+    } else if(this.y > 470)
+    this.v = 0.3
+  }
 
   loseLife() {
     this.total -= 0.2;
