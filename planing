@@ -69,7 +69,11 @@ hasta que se resuelvan esos eventos
 Dudas de si se puede:
 -> Poner niveles: aumenta el setInterval para aparición de karens, disminuye la vida
 de los personajes y añade más ratas recorriendo el centro comercial
--> Que aparezca una nueva pantalla con minijuego, cargando otro script
 ->
-->
-->
+
+
+
+
+DUDAS:
+añadir elementos tipo botones y texto hover sobre el canvas
+charcos debajo del personaje

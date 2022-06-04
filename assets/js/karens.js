@@ -5,7 +5,6 @@ class Karens {
         {x:155, y:100}, {x:485, y:100}, {x:805, y:100}, {x:155, y:420}, {x:485, y:420}, {x:805, y:420}
       ]
       this.xy = this.salidas[Math.floor(Math.random()*this.salidas.length)]
-      console.log(this.xy)
       this.x = this.xy.x;
       this.y = this.xy.y;
       this.w = 0.07 * this.ctx.canvas.width;

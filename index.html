@@ -7,13 +7,14 @@
     <title>Document</title>
     <link rel="stylesheet" href="/assets/style/style.css" />
   </head>
-  <body>
+  <body id="cursor">
     <div id="intro-canvas">
       <h1>GAME IN 4K UlTRA HD</h1>
-      <div id="hover1" text-align="center"> </div>
-      <div id="hover" text-align="center"> </div>
-      <div id="hover" text-align="center"> </div>
-      <div id="hover" text-align="center"> </div>
+      <button id="info-button">How to survive</button>
+      <button id="hover1" text-align="center"></button>
+      <button id="hover2" text-align="center"> </button>
+      <button id="hover3" text-align="center"> </button>
+      <button id="hover4" text-align="center"> </button>
 
 
     </div>
@@ -24,13 +25,36 @@
         <h2 id="rat-alert" class="event-alert">¡LOOKOUT FOR THE RATS!</h2>
         <h2 id="ok">Easy morning. Not a single problem, yet...</h2>
         <h2 id="fat-alert" class="event-alert">¡Supersized customer walking!</h2>
-       <span id="demo"></span>
+       <span id="time"></span>
      </div>
-    <canvas id="canvas" width="1100" height="550"> </canvas>
+    <canvas id="canvas" width="1190" height="550"> </canvas>
+
+    
+    <div class="btn-container">
+      <span id="btn">START</span>
+    </div>
+
+
+    <script>
+      function myFunction() { 
+        let q = 0;
+        setInterval(function () {
+          q++;
+          var days = Math.floor(q / (60 * 60 * 24));
+          var hours = Math.floor((q % (60 * 60 * 24)) / (60 * 60));
+          var minutes = Math.floor((q % (60 * 60)) / 60);
+          var seconds = Math.floor(q % 60);
+
+          document.getElementById("time").innerText =
+            hours + "h:" + minutes + "m:" + seconds + " s ";
+        }, 10);
+      }
+      myFunction();
+    </script>
+
+
+
     <div>
-      <div class="btn-container">
-        <span id="btn">START</span>
-      </div>
       <texrarea>
         <div class="moves">
           Move Right Click
@@ -75,13 +99,15 @@
       </div>
     </div>
     <script src="/assets/js/constants.js"></script>
+    <script src="/assets/js/token.js"></script>
     <script src="/assets/js/time.js"></script>
-    <script src="/assets/js/muros.js"></script>
+
     <script src="/assets/js/gatgets.js"></script>
     <script src="/assets/js/rats.js"></script>
     <script src="/assets/js/fat.js"></script>
     <script src="/assets/js/life.js"></script>
     <script src="/assets/js/player.js"></script>
+    <script src="/assets/js/muros.js"></script>    
     <script src="/assets/js/game.js"></script>
     <script src="/assets/js/index.js"></script>
     <script src="/assets/js/karens.js"></script>

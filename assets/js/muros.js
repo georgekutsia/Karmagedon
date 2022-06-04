@@ -1,4 +1,4 @@
-class Muros0 {
+class Wall0 {
     constructor(ctx) {
       this.ctx = ctx;
       this.x = 60;
@@ -22,7 +22,7 @@ class Muros0 {
     }
   }
 
-class Muros1{
+class Wall1{
   constructor(ctx) {
     this.ctx = ctx;
     this.x = 60;
@@ -43,7 +43,7 @@ class Muros1{
     return colX && colY;
   }
 }
-class Muros2{
+class Wall2{
   constructor(ctx) {
     this.ctx = ctx;
     this.x = 285;
@@ -64,7 +64,7 @@ class Muros2{
     return colX && colY;
   }
 }
-class Muros3{
+class Wall3{
   constructor(ctx) {
     this.ctx = ctx;
     this.x = 285;
@@ -85,7 +85,7 @@ class Muros3{
     return colX && colY;
   }
 }
-class Muros4{
+class Wall4{
   constructor(ctx) {
     this.ctx = ctx;
     this.x = 380;
@@ -106,7 +106,7 @@ class Muros4{
     return colX && colY;
   }
 }
-class Muros5{
+class Wall5{
   constructor(ctx) {
     this.ctx = ctx;
     this.x = 380;
@@ -127,7 +127,7 @@ class Muros5{
     return colX && colY;
   }
 }
-class Muros6{
+class Wall6{
   constructor(ctx) {
     this.ctx = ctx;
     this.x = 610;
@@ -148,7 +148,7 @@ class Muros6{
     return colX && colY;
   }
 }
-class Muros7{
+class Wall7{
   constructor(ctx) {
     this.ctx = ctx;
     this.x = 610;
@@ -169,7 +169,7 @@ class Muros7{
     return colX && colY;
   }
 }
-class Muros8{
+class Wall8{
   constructor(ctx) {
     this.ctx = ctx;
     this.x = 700;
@@ -178,6 +178,48 @@ class Muros8{
     this.h = 70;
     this.img = new Image();
     this.img.src = "/assets/images/fondos/arbusto2.png";
+  }
+  draw() {
+    this.ctx.drawImage(
+      this.img,this.x, this.y, this.w, this.h
+    )
+  } 
+  collides(player) {
+    const colX = this.x <= player.x + player.w && this.x + this.w > player.x;
+    const colY = this.y + this.h > player.y && this.y < player.y + player.h;
+    return colX && colY;
+  }
+}
+class Wall9{
+  constructor(ctx) {
+    this.ctx = ctx;
+    this.x = 700;
+    this.y = 200;
+    this.w = 30;
+    this.h = 70;
+    this.img = new Image();
+    this.img.src = "/assets/images/fondos/arbusto2.png";
+  }
+  draw() {
+    this.ctx.drawImage(
+      this.img,this.x, this.y, this.w, this.h
+    )
+  } 
+  collides(player) {
+    const colX = this.x <= player.x + player.w && this.x + this.w > player.x;
+    const colY = this.y + this.h > player.y && this.y < player.y + player.h;
+    return colX && colY;
+  }
+}
+class Puddle{
+  constructor(ctx) {
+    this.ctx = ctx;
+    this.x = 500;
+    this.y = 300;
+    this.w = 50;
+    this.h = 120;
+    this.img = new Image();
+    this.img.src = "/assets/images/elements/puddle.png";
   }
   draw() {
     this.ctx.drawImage(

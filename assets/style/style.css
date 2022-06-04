@@ -1,52 +1,99 @@
 body{
-  background-image: url(/assets/images/dado/Dados\ rojo.png);
-  background-size: 10%;
+  background-image: url(/assets/images/fondos/dados\ fondo\ 2.jpeg);
+  background-size: 100%;
+}
+#time{
+  display: flex;
+  position: absolute;
+  margin: 3px 0 0 1010px;
+  font-size: 30px;
+  background-color: rgb(185, 155, 90);
+  color: rgb(0, 0, 0);
+  border: 4px solid rgb(0, 0, 0);
+  border-radius: 30px;
+
 }
 #intro-canvas{
   padding-left: 0;
   padding-right: 0;
   margin-left: auto;
   margin-right: auto;
-  display: block;
+  display: none;
   width: 1100px; 
-  height: 550px;
+  height: 600px;
   border: 2px solid blue;
   background-image: url(/assets/images/fondos/centro-comercial-canvas-intro-0.jpeg);
   background-size: 100%;
-  transition: 1s;
+  transition: 4s;
 }
 
 #intro-canvas:hover {
-  padding-top: 10%;
+  padding: 2%;
   margin-left: auto;
   margin-right: auto;
   display: block;
   background-image: url(/assets/images/fondos/centro\ comercial\ canvas\ intro\ 1.jpeg);
   background-size: 100%;
-  transition: 1s;
+  transition: 5s;
 }
 
 h1 {
-  position:fixed;
-  text-align:left;
   font-size: 30px;
   border-radius: 20px;
+  border:rgb(227, 147, 147);
   display: inline-block;
+  position: absolute;
+  top:0;
+  left:80;
   font-family: Verdana;
   font-style:oblique;
   background-color: rgb(196, 162, 162, 0.3);
   text-decoration-color: rgb(29, 142, 213)
 }
+#info-button {
+  position: absolute;
+  top: 2%;
+  left: 40%;
+  font-size: 30px;
+  border-radius: 30px ;
+  padding: 0.5em 1.5em;
+  border: none;
+  background: rgba(255,255,255,0.8);
+}
+#info-button:hover{
+  background-color: #8d9682;
+	font-size: 1.85em; 
+	font-family: helvetica, arial, sans-serif; 
+	font-variant: small-caps; 
+	opacity:0; 
+	transition: opacity 40s;
+
+}
+#info-button:hover:after{
+  content: url(/assets/images/infos/Karen\ info.png);
+  position: absolute;
+  font-size: 20px;
+  top: 220px;
+  left:-300px;
+}
+
+
+
+
+
+
+
+
 
 
 #main-canvas{
-  display:none;
+  display: block;
 }
 
 #canvas {
     border: 1px solid rgb(227, 147, 147);
     text-align: center;
-    background-image: url(/assets/images/fondos/fondo\ canvas\ .png);
+    background-image: url(/assets/images/fondos/canvas\ karmagedon.png);
     background-size: 100%;
 
   }
@@ -98,9 +145,16 @@ u{
 }
 /* Instrucciones de movimiento End */
 
+#cursor{
+  cursor:url("/assets/images/elements/cursor.cur"), pointer;
+}
 
 .btn-container {
-  text-align: center;
+  display: flex;
+  position: absolute;
+  top:340px;
+  right: 440px;
+  font-size: 20px;
 }
 
 #btn {
@@ -142,44 +196,126 @@ span{
 
 
 /* hower */
-
+/* info 1 */
 #hover1 {
+  
   justify-content: center;
   align-items: center;
   color: rgb(251, 251, 251);
 	width: 100px; height: 100px;
-	margin: 1px 0 0 800px;
+	margin: 20px 0 0 950px;
 	background: rgb(89, 84, 84, 0.3);
-	border: 5px solid #aaa;
+	border: 8px solid rgb(221, 10, 10);
 	border-radius: 30px;
 	transition: border-radius 9s, border-color 3s;
 }
 #hover1:hover {
-  background-image: url(/assets/images/fondos/arbusto1.png);
-  content: "mufasa";
-  left: -1320px; 
+  background-image: url(/assets/images/karens/karen1.png);
+  left: -120px; 
 	font-size: 1.85em; 
   background-size: 100%;
   background-repeat: no-repeat;
 	border-color: #333;
-	transform: rotate(360deg);
+	transform: rotate(720deg);
 	border-radius: 50%;
-	transition: all 2s;
+	transition: all 1s;
 }
 #hover1:after { 
-	content: "Cr";
+	/* content: url(/assets/images/infos/Karen\ info.png); */
 	position:relative; 
-  background-color: #aaa;
-	left: -120px; 
+	left: 110px; 
+  top:-400px;
 	font-size: 1.85em; 
 	font-family: helvetica, arial, sans-serif; 
 	font-variant: small-caps; 
 	color:rgb(0, 0, 0);
 	opacity:0; 
-	transition: opacity 2s;
+	transition: opacity 1s ;
 }
 #hover1:hover:after {
 	opacity: 1;
-	transition: opacity 1s 1s;
+	transition: opacity 1s 0.4s;
 }
 
+/* info 2 */
+
+#hover2 {
+  
+  justify-content: center;
+  align-items: center;
+  color: rgb(251, 251, 251);
+	width: 100px; height: 100px;
+	margin: 40px 0 0 950px;
+	background: #5954544d;
+	border: 8px solid rgb(15, 236, 45);
+	border-radius: 30px;
+	transition: border-radius 9s, border-color 3s;
+}
+#hover2:hover {
+  background-image: url(/assets/images/fondos/arbusto1.png);
+  /* content: "mufasa"; */
+  left: -120px; 
+	font-size: 1.85em; 
+  background-size: 100%;
+  background-repeat: no-repeat;
+	border-color: #333;
+	transform: rotate(540deg);
+	border-radius: 50%;
+	transition: all 0.4s;
+}
+#hover2:after { 
+	/* content: url(/assets/images/infos/Karen\ info.png); */
+	position:relative; 
+	left: 110px; 
+  top:-240px;
+	font-size: 1.85em; 
+	font-family: helvetica, arial, sans-serif; 
+	font-variant: small-caps; 
+	color:rgb(0, 0, 0);
+	opacity:0; 
+	transition: opacity 1s;
+}
+#hover2:hover:after {
+	opacity: 1;
+	transition: opacity 1s 0.4s;
+}
+/* info 3 */
+#hover3 {
+  
+  justify-content: center;
+  align-items: center;
+  color: rgb(251, 251, 251);
+	width: 100px; height: 100px;
+	margin: 40px 0 0 950px;
+	background: #5954544d;
+	border: 8px solid rgb(9, 228, 217);
+	border-radius: 30px;
+	transition: border-radius 9s, border-color 3s;
+}
+#hover3:hover {
+  background-image: url(/assets/images/fondos/arbusto1.png);
+  left: -120px; 
+	font-size: 1.85em; 
+  background-size: 100%;
+  background-repeat: no-repeat;
+	border-color: #333;
+	transform: rotate(540deg);
+	border-radius: 50%;
+	transition: all 0.4s;
+}
+#hover3:after { 
+	/* content: url(/assets/images/infos/Karen\ info.png); */
+	position:relative; 
+	left: 110px; 
+  top:-85px;
+	font-size: 1.85em; 
+	font-family: helvetica, arial, sans-serif; 
+	font-variant: small-caps; 
+	color:rgb(0, 0, 0);
+	opacity:0; 
+	transition: opacity 1s;
+}
+#hover3:hover:after {
+	opacity: 1;
+	transition: opacity 1s 0.4s;
+}

@@ -2,10 +2,10 @@ class Life {
   constructor(ctx) {
     this.ctx = ctx;
 
-    this.x = 1018;
-    this.y = this.ctx.canvas.height * 0.85;
-    this.w = 80;
-    this.h = 80;
+    this.x = 1015;
+    this.y = 400;
+    this.w = 180;
+    this.h = 110;
     this.total = 1;
 
     this.v = 0.3;
@@ -22,18 +22,19 @@ class Life {
     this.ctx.fillRect(this.x, this.y, this.w * this.total, this.h);
     this.ctx.fillStyle = prevStyle;
     this.ctx.strokeRect(this.x, this.y, this.w, this.h);
-    ctx.fillText("Life", 1018, 505);
+    this.ctx.fillText("Life", 1100, 500)
+    
   }
 
   move() {
     this.y -= this.v
-    if(this.y < 433){
+    if(this.y < 410){
       this.v = -0.3
-    } else if(this.y > 470)
+    } else if(this.y > 430)
     this.v = 0.3
   }
 
   loseLife() {
-    this.total -= 0.2;
+    this.total -= 0.1;
   }
 }

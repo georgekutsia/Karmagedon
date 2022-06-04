@@ -4,18 +4,22 @@ class Game {
 
     this.player = new Player(ctx);
     this.karens = new Karens(ctx);
-    this.time = new Time(ctx)
-    this.muros = new Muros0(ctx);
-    this.muros1 = new Muros1(ctx);
-    this.muros2 = new Muros2(ctx);
-    this.muros3 = new Muros3(ctx);
-    this.muros4 = new Muros4(ctx);
-    this.muros5 = new Muros5(ctx);
-    this.muros6 = new Muros6(ctx);
-    this.muros7 = new Muros7(ctx);
-    this.muros8 = new Muros8(ctx);
+    this.token = new Token(ctx);
+    this.walls = new Wall0(ctx);
+    this.walls1 = new Wall1(ctx);
+    this.walls2 = new Wall2(ctx);
+    this.walls3 = new Wall3(ctx);
+    this.walls4 = new Wall4(ctx);
+    this.walls5 = new Wall5(ctx);
+    this.walls6 = new Wall6(ctx);
+    this.walls7 = new Wall7(ctx);
+    this.walls8 = new Wall8(ctx);
+    this.walls9 = new Wall9(ctx);
+
+    this.puddle = new Puddle(ctx);
 
     this.tack = 0;
+    this.tuck = 0
     this.tick = 0;
     this.tock = 500;
     this.interval = null;
@@ -23,6 +27,7 @@ class Game {
     this.karens = [];
     this.rats = [];
     this.fats = [];
+    this.puddles = [];
 
     this.setListeners();
   }
@@ -31,11 +36,13 @@ class Game {
       this.clear();
       this.draw();
       this.move();
-      this.tack++;
-      this.tick++
-      this.tock++
-      this.checkCollisions();
+      this.tack++;//karen
+      this.tick++; //rat
+      this.tock++; //fat
+      this.tuck++; //puddle 
 
+
+      this.checkCollisions();
       if (this.tack > Math.random() * 100 + 400) {
         this.tack = 0;
         this.karensAlert();
@@ -50,6 +57,10 @@ class Game {
         this.tock = 0;
         this.fatAlert();
         this.addFat();
+      }
+      if (this.tuck > Math.random() * 100 + 1000) {
+        this.tuck = 0;
+        this.addPuddle();
       }
     }, 1000 / 60);
   }
@@ -66,22 +77,27 @@ class Game {
 
   draw() {
     this.player.draw();
-    this.muros.draw();
-    this.muros1.draw();
-    this.muros2.draw();
-    this.muros3.draw();
-    this.muros4.draw();
-    this.muros5.draw();
-    this.muros6.draw();
-    this.muros7.draw();
-    this.muros8.draw();
+    this.walls.draw();
+    this.token.draw();
+    this.walls1.draw();
+    this.walls2.draw();
+    this.walls3.draw();
+    this.walls4.draw();
+    this.walls5.draw();
+    this.walls6.draw();
+    this.walls7.draw();
+    this.walls8.draw();
+    this.walls9.draw();
+    this.puddle.draw();
     this.karens.forEach((e) =>e.draw());
     this.rats.forEach((e) => e.draw());
     this.fats.forEach((e) => e.draw());
+    this.puddles.forEach((e) => e.draw());
   }
 
   move() {
     this.player.move();
+    this.token.move();
     this.karens.forEach((e) =>e.move());
     this.rats.forEach((e) => e.move());
     this.fats.forEach((e) =>e.move());
@@ -97,6 +113,10 @@ class Game {
   addFat(){
       const fats = new Fat(this.ctx);
       this.fats.push(fats);
+  }
+  addPuddle(){
+      const puddles = new Puddle(this.ctx);
+      this.puddles.push(puddles);
   }
   karensAlert(){
     const ratAlert = document.getElementById('karens-alert');
@@ -153,40 +173,49 @@ class Game {
         }
         return true;
       });  
-      // colision de muro
-      if (this.muros.collides(this.player)){
+      // colision de wall
+      if (this.walls.collides(this.player)){
         this.player.vy = 0;
         this.player.vx = 0;
       }
-      if (this.muros1.collides(this.player)){
+      if (this.walls1.collides(this.player)){
         this.player.vy = 0;
         this.player.vx = 0;
       }
-      if (this.muros3.collides(this.player)){
+      if (this.walls3.collides(this.player)){
         this.player.vy = 0;
         this.player.vx = 0;
       }
-      if (this.muros3.collides(this.player)){
+      if (this.walls3.collides(this.player)){
         this.player.vy = 0;
         this.player.vx = 0;
       }
-      if (this.muros4.collides(this.player)){
+      if (this.walls4.collides(this.player)){
         this.player.vy = 0;
         this.player.vx = 0;
       }
-      if (this.muros5.collides(this.player)){
+      if (this.walls5.collides(this.player)){
         this.player.vy = 0;
         this.player.vx = 0;
       }
-      if (this.muros6.collides(this.player)){
+      if (this.walls6.collides(this.player)){
         this.player.vy = 0;
         this.player.vx = 0;
       }
-      if (this.muros7.collides(this.player)){
+      if (this.walls7.collides(this.player)){
         this.player.vy = 0;
         this.player.vx = 0;
       }
-      if (this.muros8.collides(this.player)){
+      if (this.walls8.collides(this.player)){
+        this.player.vy = 0;
+        this.player.vx = 0;
+      }
+      if (this.walls9.collides(this.player)){
+        this.player.vy = 0;
+        this.player.vx = 0;
+      }
+
+      if (this.puddle.collides(this.player)){
         this.player.vy = 0;
         this.player.vx = 0;
       }
