@@ -31,7 +31,6 @@ class Fat {
 
   move() {
     this.y += this.vy;
-    console.log("moves");
 
     this.tick++;
 

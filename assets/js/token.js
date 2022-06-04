@@ -25,11 +25,9 @@ class Token {
       this.w,
       this.h
     );
-    console.log("draw token")
   }
 
   move() {
-console.log(" frame")
     this.tick++;
 
     if (this.tick % 14 === 0) {

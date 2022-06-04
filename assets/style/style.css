@@ -18,7 +18,8 @@ body{
   padding-right: 0;
   margin-left: auto;
   margin-right: auto;
-  display: block;
+  display: none;
+  position: relative;
   width: 1100px; 
   height: 600px;
   border: 2px solid blue;
@@ -43,10 +44,11 @@ h1 {
   border:rgb(227, 147, 147);
   display: inline;
   position: absolute;
-  right: 0px;
+  left: 0px;
+  bottom: 0px;
   font-family: Verdana;
   font-style:oblique;
-  background-color: rgb(196, 162, 162, 0.3);
+  background-color: rgba(237, 226, 226, 0.5);
   text-decoration-color: rgb(29, 142, 213)
 }
 #info-button {
@@ -151,8 +153,8 @@ u{
 .btn-container {
   display: flex;
   position: absolute;
-  bottom:-140px;
-  right: 700px;
+  top:40px;
+  right: 200px;
   font-size: 20px;
 }
 

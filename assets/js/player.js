@@ -9,7 +9,7 @@ class Player {
 
     this.vx = 0;
     this.vy = 0;
-    
+
 
     this.life = 10;
     this.img = new Image();
@@ -18,6 +18,8 @@ class Player {
 
     this.tick = 0;
     this.life = new Life(ctx);
+    this.heats=[];
+    this.direction = 'left'
   }
 
   draw() {
@@ -30,15 +32,16 @@ class Player {
       this.x,
       this.y,
       this.w,
-      this.h
+      this.h,
     );
-
+    this.heats.forEach(heat => heat.draw())
     this.life.draw();
   }
 
   move() {
     this.x += this.vx;
     this.y += this.vy;
+
 
     this.tick++;
 
@@ -74,6 +77,9 @@ class Player {
       this.vx = 0;
     }
     // LIMITES DEL CANVAS <=//
+    this.heats.forEach(heat => {
+      heat.move()
+    })
   }
   hit() {
     this.life.loseLife();
@@ -82,22 +88,34 @@ class Player {
   isAlive() {
     return this.life.total > 0;
   }
-  keyDown(key) {
+
+  keyDown(key) {  
     if (key === UP) {
+      this.direction = 'top'
       this.vy = -2;
       this.img.src = "/assets/images/PJ/MANAGER 1.png";
+      this.heat.vx = 2;
+      console.log(this.heat.vx)
+      
     }
     if (key === DOWN) {
+      this.direction = 'down'
       this.vy = 2;
       this.img.src = "/assets/images/PJ/MANAGER 3.png";
     }
     if (key === RIGHT) {
+      this.direction = 'right'
       this.vx = 2;
       this.img.src = "/assets/images/PJ/MANAGER 2.png";
     }
     if (key === LEFT) {
+      this.direction = 'left'
       this.vx = -2;
       this.img.src = "/assets/images/PJ/MANAGER 4.png";
+    }
+    if(key === Z){
+      this.heater();
+      console.log(this.heat.vx)
     }
   }
   keyUp(key) {
@@ -114,4 +132,24 @@ class Player {
       this.vx = 0;
     }
   }
+
+  heater() {
+    const heat = new Heat(
+      this.ctx,
+      this.x + this.w -40,
+      this.y + this.h -40,
+    )
+
+    if (this.direction === 'right') {
+      heat.vx = 2
+      heat.vy = 0
+    }
+    if (this.direction === 'left') {
+      heat.vx = -2
+      heat.vy = 0
+    }
+    
+    this.heats.push(heat)
+  }
 }
+
