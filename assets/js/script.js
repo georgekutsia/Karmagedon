@@ -14,3 +14,8 @@ btn.addEventListener("click", function () {
     }
   });
   
+  const btnGame = document.getElementById("btn-game");
+  btn.addEventListener("click", function () {
+    
+    });
+    

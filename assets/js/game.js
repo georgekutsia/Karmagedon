@@ -22,6 +22,7 @@ class Game {
     this.tuck = 0
     this.tick = 0;
     this.tock = 500;
+    this.timeTick= 0;
     this.interval = null;
 
     this.karens = [];
@@ -32,6 +33,7 @@ class Game {
     this.setListeners();
   }
   start() {
+    myFunction()
     this.interval = setInterval(() => {
       this.clear();
       this.draw();
@@ -40,6 +42,9 @@ class Game {
       this.tick++; //rat
       this.tock++; //fat
       this.tuck++; //puddle 
+      this.timeTick++ 
+      
+
 
 
       this.checkCollisions();
@@ -67,6 +72,7 @@ class Game {
   stop() {
     clearInterval(this.interval);
     this.interval = null;
+    clearInterval(window.timerInterval)
   }
   clear() {
     this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
@@ -75,7 +81,9 @@ class Game {
     this.fats = this.fats.filter((e) => e.isVisible())
   }
 
-  draw() {
+  draw() {    
+    this.puddle.draw();
+    this.puddles.forEach((e) => e.draw());
     this.player.draw();
     this.walls.draw();
     this.token.draw();
@@ -88,11 +96,10 @@ class Game {
     this.walls7.draw();
     this.walls8.draw();
     this.walls9.draw();
-    this.puddle.draw();
     this.karens.forEach((e) =>e.draw());
     this.rats.forEach((e) => e.draw());
     this.fats.forEach((e) => e.draw());
-    this.puddles.forEach((e) => e.draw());
+
   }
 
   move() {

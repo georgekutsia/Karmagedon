@@ -18,7 +18,7 @@ body{
   padding-right: 0;
   margin-left: auto;
   margin-right: auto;
-  display: none;
+  display: block;
   width: 1100px; 
   height: 600px;
   border: 2px solid blue;
@@ -28,7 +28,7 @@ body{
 }
 
 #intro-canvas:hover {
-  padding: 2%;
+  padding: 1%;
   margin-left: auto;
   margin-right: auto;
   display: block;
@@ -41,10 +41,9 @@ h1 {
   font-size: 30px;
   border-radius: 20px;
   border:rgb(227, 147, 147);
-  display: inline-block;
+  display: inline;
   position: absolute;
-  top:0;
-  left:80;
+  right: 0px;
   font-family: Verdana;
   font-style:oblique;
   background-color: rgb(196, 162, 162, 0.3);
@@ -73,7 +72,7 @@ h1 {
   content: url(/assets/images/infos/Karen\ info.png);
   position: absolute;
   font-size: 20px;
-  top: 220px;
+  top: 70px;
   left:-300px;
 }
 
@@ -152,12 +151,24 @@ u{
 .btn-container {
   display: flex;
   position: absolute;
-  top:340px;
-  right: 440px;
+  bottom:-140px;
+  right: 700px;
   font-size: 20px;
 }
 
 #btn {
+  background: lightblue;
+  color: blue;
+  padding: 3px;
+}
+.btn-game {
+  display: flex;
+  position: absolute;
+  top:300px;
+  right: 400px;
+  font-size: 20px;
+}
+#btn-game {
   background: lightblue;
   color: blue;
   padding: 3px;
@@ -206,8 +217,8 @@ span{
 	margin: 20px 0 0 950px;
 	background: rgb(89, 84, 84, 0.3);
 	border: 8px solid rgb(221, 10, 10);
-	border-radius: 30px;
-	transition: border-radius 9s, border-color 3s;
+	border-radius: 10px;
+	transition: border-radius 2s, border-color 3s;
 }
 #hover1:hover {
   background-image: url(/assets/images/karens/karen1.png);
@@ -220,17 +231,12 @@ span{
 	border-radius: 50%;
 	transition: all 1s;
 }
-#hover1:after { 
-	/* content: url(/assets/images/infos/Karen\ info.png); */
-	position:relative; 
-	left: 110px; 
-  top:-400px;
-	font-size: 1.85em; 
-	font-family: helvetica, arial, sans-serif; 
-	font-variant: small-caps; 
-	color:rgb(0, 0, 0);
-	opacity:0; 
-	transition: opacity 1s ;
+#hover1:hover:after { 
+  content: url(/assets/images/infos/Karen\ info.png);
+  position: absolute;
+  font-size: 20px;
+  top: 100px;
+  right: 100px;
 }
 #hover1:hover:after {
 	opacity: 1;
@@ -248,8 +254,8 @@ span{
 	margin: 40px 0 0 950px;
 	background: #5954544d;
 	border: 8px solid rgb(15, 236, 45);
-	border-radius: 30px;
-	transition: border-radius 9s, border-color 3s;
+	border-radius: 10px;
+	transition: border-radius 2s, border-color 3s;
 }
 #hover2:hover {
   background-image: url(/assets/images/fondos/arbusto1.png);
@@ -289,8 +295,8 @@ span{
 	margin: 40px 0 0 950px;
 	background: #5954544d;
 	border: 8px solid rgb(9, 228, 217);
-	border-radius: 30px;
-	transition: border-radius 9s, border-color 3s;
+	border-radius: 10px;
+	transition: border-radius 2s, border-color 3s;
 }
 #hover3:hover {
   background-image: url(/assets/images/fondos/arbusto1.png);
