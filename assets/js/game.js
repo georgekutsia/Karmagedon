@@ -5,22 +5,89 @@ class Game {
     this.player = new Player(ctx);
     this.karen = new Karens(ctx);
     this.token = new Token(ctx);
-    this.line = new Line(ctx)
-    this.walls = new Wall0(ctx);
-    this.walls1 = new Wall1(ctx);
-    this.walls2 = new Wall2(ctx);
-    this.walls3 = new Wall3(ctx);
-    this.walls4 = new Wall4(ctx);
-    this.walls5 = new Wall5(ctx);
-    this.walls6 = new Wall6(ctx);
-    this.walls7 = new Wall7(ctx);
-    this.walls8 = new Wall8(ctx);
-    this.walls9 = new Wall9(ctx);
+    this.line = new Line(ctx);
+    this.walls = [
+      new Wall(ctx, 60, 50, 30, 70),
+      new Wall(ctx, 60, 110, 30, 70),
+      new Wall(ctx, 60, 170, 30, 70),
 
-    this.tack = 600; //karen
+      new Wall(ctx, 285, 170, 30, 70),
+      new Wall(ctx, 285, 110, 30, 70),
+      new Wall(ctx, 285, 50, 30, 70),
+
+
+      new Wall(ctx, 380, 170, 30, 70),
+      new Wall(ctx, 380, 110, 30, 70),
+      new Wall(ctx, 380, 50, 30, 70),
+
+
+      new Wall(ctx, 610, 170, 30, 70),
+      new Wall(ctx, 610, 110, 30, 70),
+      new Wall(ctx, 610, 50, 30, 70),
+
+      new Wall(ctx, 700, 50, 30, 70),
+      new Wall(ctx, 700, 110, 30, 70),
+      new Wall(ctx, 700, 170, 30, 70),
+
+      new Wall(ctx, 925, 50, 30, 70),
+      new Wall(ctx, 925, 110, 30, 70),
+      new Wall(ctx, 925, 170, 30, 70),
+
+      new Wall(ctx, 90, 50, 50, 30),
+      new Wall(ctx, 240, 50, 50, 30),
+      new Wall(ctx, 410, 205, 50, 30),
+      new Wall(ctx, 560, 205, 50, 30),
+      new Wall(ctx, 490, 130, 30, 50),
+      new Wall(ctx, 490, 80, 30, 50),
+      new Wall(ctx, 730, 50, 50, 30),
+      new Wall(ctx, 870, 50, 50, 30),
+
+      new Wall(ctx, 60, 320, 30, 70),
+      new Wall(ctx, 60, 380, 30, 70),
+      new Wall(ctx, 60, 440, 30, 70),
+      
+      new Wall(ctx, 285, 320, 30, 70),
+      new Wall(ctx, 285, 380, 30, 70),
+      new Wall(ctx, 285, 440, 30, 70),
+      
+      new Wall(ctx, 380, 320, 30, 70),
+      new Wall(ctx, 380, 380, 30, 70),
+      new Wall(ctx, 380, 440, 30, 70),
+
+      
+      new Wall(ctx, 610, 320, 30, 70),
+      new Wall(ctx, 610, 380, 30, 70),
+      new Wall(ctx, 610, 440, 30, 70),
+
+      new Wall(ctx, 700, 320, 30, 70),
+      new Wall(ctx, 700, 380, 30, 70),
+      new Wall(ctx, 700, 440, 30, 70),
+      
+      new Wall(ctx, 925, 320, 30, 70),
+      new Wall(ctx, 925, 380, 30, 70),
+      new Wall(ctx, 925, 440, 30, 70),
+
+      new Wall(ctx, 90, 320, 50, 30),
+      new Wall(ctx, 240, 320, 50, 30),
+      new Wall(ctx, 90, 480, 50, 30),
+      new Wall(ctx, 240, 480, 50, 30),
+
+      new Wall(ctx, 410, 320, 50, 30),
+      new Wall(ctx, 560, 320, 50, 30),
+      new Wall(ctx, 450, 420, 50, 30),
+      new Wall(ctx, 500, 420, 50, 30),
+
+      new Wall(ctx, 880, 320, 50, 30),
+      new Wall(ctx, 830, 320, 50, 30),
+      new Wall(ctx, 730, 480, 50, 30),
+      new Wall(ctx, 780, 480, 50, 30),
+    ]
+    
+    this.tack = 300; //karen
     this.tuck = 0  //puddle
     this.tick = 0;  // rat
-    this.tock = 500; //fat
+    this.tock = 100; //fat
+    this.winTime = 0; 
     this.interval = null;
 
 
@@ -41,8 +108,13 @@ class Game {
       this.tick++; //rat
       this.tock++; //fat
       this.tuck++; //puddle 
+      this.winTime++
       this.checkCollisions();
-      if (this.tack > Math.random() * 100 + 800) {
+      console.log(this.winTime)
+      if(this.winTime > 3000){
+        this.gameWin()
+      }
+      if (this.tack > Math.random() * 100 + 300) {
         this.tack = 0;
         this.karensAlert();
         this.addKarens();
@@ -51,7 +123,7 @@ class Game {
         this.tick = 0;
         this.addRats();
       }
-      if (this.tock > Math.random() * 100 + 1000) {
+      if (this.tock > Math.random() * 100 + 100) {
         this.tock = 0;
         this.fatAlert();
         this.addFat();
@@ -69,7 +141,7 @@ class Game {
   }
   clear() {
     this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
-    this.karens = this.karens.filter((e) => e.isVisible())
+    this.karens = this.karens.filter((e) => e.isVisible());
     this.rats = this.rats.filter((e) => e.isVisible());
     this.fats = this.fats.filter((e) => e.isVisible());
     this.heats = this.heats.filter((e) => e.isVisible()); 
@@ -78,25 +150,19 @@ class Game {
   draw() {    
     this.puddles.forEach((e) => e.draw());
     this.player.draw();
-    this.walls.draw();
+    this.walls.forEach((e) => e.draw());
     this.token.draw();
-    this.walls1.draw();
-    this.walls2.draw();
-    this.walls3.draw();
-    this.walls4.draw();
-    this.walls5.draw();
-    this.walls6.draw();
-    this.walls7.draw();
-    this.walls8.draw();
-    this.walls9.draw();
     this.karens.forEach((e) =>e.draw());
     this.rats.forEach((e) => e.draw());
     this.fats.forEach((e) => e.draw());
     this.heats.forEach((e) => e.draw())
 
     this.line.draw()
+    // console.log(this.karens[1])
+    // if(this.line.y> 110 && this.line.y < 165){
+    //   this.karen.()
+    // }
   }
-
   move() {
     this.player.move();
     this.token.move();
@@ -150,9 +216,13 @@ class Game {
 
     })
 
-    this.karens = this.karens.filter((karens) => {
+    this.karens = this.karens.filter((karens, index) => {
       if (karens.collides(this.player)) {
         SPACE = 32;
+        // if(this.player.discount == 1 )
+        if(this.line.check == 1 ){
+                  return false;
+        }
       }
       return true;
     });
@@ -177,46 +247,14 @@ class Game {
     
 
       // colisiones con las paredes y los charcos que retrasan al jugador
-      if (this.walls.collides(this.player)){
-        this.player.vy = 0;
-        this.player.vx = 0;
-      }
-      if (this.walls1.collides(this.player)){
-        this.player.vy = 0;
-        this.player.vx = 0;
-      }
-      if (this.walls3.collides(this.player)){
-        this.player.vy = 0;
-        this.player.vx = 0;
-      }
-      if (this.walls3.collides(this.player)){
-        this.player.vy = 0;
-        this.player.vx = 0;
-      }
-      if (this.walls4.collides(this.player)){
-        this.player.vy = 0;
-        this.player.vx = 0;
-      }
-      if (this.walls5.collides(this.player)){
-        this.player.vy = 0;
-        this.player.vx = 0;
-      }
-      if (this.walls6.collides(this.player)){
-        this.player.vy = 0;
-        this.player.vx = 0;
-      }
-      if (this.walls7.collides(this.player)){
-        this.player.vy = 0;
-        this.player.vx = 0;
-      }
-      if (this.walls8.collides(this.player)){
-        this.player.vy = 0;
-        this.player.vx = 0;
-      }
-      if (this.walls9.collides(this.player)){
-        this.player.vy = 0;
-        this.player.vx = 0;
-      }
+      this.walls.forEach((wall) => {
+        if(wall.collides(this.player)){
+          this.player.vy = 0;
+          this.player.vx = 0;
+        }
+      })
+      
+
 
       this.puddles.forEach((puddle) => {
         if(puddle.collides(this.player)){
@@ -239,8 +277,19 @@ class Game {
 
   gameOver() {
     this.stop();
+    this.ctx.fillStyle = "red";
     ctx.font = "70px Verdana"
-    this.ctx.fillText("YOU ARE DEAD", 500, 220);
+    this.ctx.fillText("YOU ARE DEAD", 300, 220);
+    this.rats = [];
+    this.fats = [];
+    this.karens = [];
+  }
+  gameWin(){
+    this.stop();
+    ctx.font = "70px Verdana"
+    this.ctx.fillStyle = "blue";
+    this.ctx.strokeText("YOU WON!!! CONGRATULATIONS!", 10, 220);
+    this.ctx.fillText("YOU WON!!! CONGRATULATIONS!", 10,220);
     this.rats = [];
     this.fats = [];
     this.karens = [];

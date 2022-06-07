@@ -13,6 +13,8 @@ class Karens {
       this.vx = -0.3;
       this.vy = -0.3;
   
+
+
       this.karens = new Image();
       this.karens.src = "/assets/images/karens/karen1.png";
       this.tick = 0;
@@ -24,7 +26,11 @@ class Karens {
     draw() {
       this.ctx.drawImage(
         this.karens,this.x, this.y, this.w, this.h,
-      )
+      ) 
+      this.line = new Line(ctx)
+      if(this.line.check <= 3){
+      }     
+      
       //que salgan distintos mensajes a medida que se enfada y se hace grande
 
       this.tick++
@@ -58,18 +64,18 @@ class Karens {
       this.y += this.vy;
       this.tick++
       if(this.tick % 100 === 0){
-        this.vx = 0.3
+        this.vx = 0.3;
       } else if(this.tick % 201 === 0){
         this.vy = 0.3;
       } else if(this.tick % 302 === 0){
-        this.vx = -0.3
+        this.vx = -0.3;
       } else if(this.tick % 403 === 0){
-        this.vx = -0.3
-        this.vy = -0.3
+        this.vx = -0.3;
+        this.vy = -0.3;
       }
       if(this.tick % 400 === 0){
-        this.w += 5
-        this.h += 5
+        this.w += 5;
+        this.h += 5;
       }
     }
   

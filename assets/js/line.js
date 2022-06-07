@@ -39,7 +39,6 @@ class Line {
     this.v = this.b;
 
       const prevStyle = this.ctx.fillStyle;
-      console.log(this.check);
       this.ctx.fillStyle = "white";
       if(this.check > 0 && this.check <= 2){
         this.ctx.font = "18px Arial" 
@@ -74,7 +73,7 @@ class Line {
     if(this.y > 110 && this.y < 165){
       this.check = 1;
     } else{
-      this.check = 4
+      this.check = 4;
     }
     SPACE = 0;
   }

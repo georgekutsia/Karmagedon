@@ -10,6 +10,7 @@ class Player {
     this.vx = 0;
     this.vy = 0;
 
+    this.discount = 0;
 
     this.img = new Image();
     this.img.src = "/assets/images/PJ/MANAGER 1.png";
@@ -54,7 +55,10 @@ class Player {
     if (this.img.frame > 3) {
       this.img.frame = 0;
     }
-
+    if(this.x < 10 && this.y < 10){
+      this.x = 1000;
+      this.y = 200;
+    }
     this.life.move();
 
     // LIMITES DEL CANVAS =>//
@@ -68,8 +72,8 @@ class Player {
       this.vy = 0;
     }
 
-    if (this.x + this.w * 2.7 > this.ctx.canvas.width) {
-      this.x = this.ctx.canvas.width - this.w * 2.7;
+    if (this.x + this.w * 5 > this.ctx.canvas.width) {
+      this.x = this.ctx.canvas.width - this.w * 5;
       this.vx = 0;
     }
 
@@ -143,7 +147,6 @@ class Player {
       this.ctx,
       this.x + this.w -40,
       this.y + this.h -40,
-      
     )
 
     if (this.direction === 'right') {
