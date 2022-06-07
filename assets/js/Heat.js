@@ -14,7 +14,6 @@ class Heat {
     }
   
     draw() {
-      console.log("draw")
       this.ctx.drawImage(
         this.heatImg,this.x, this.y, this.w, this.h
       )
@@ -23,7 +22,15 @@ class Heat {
     move() {
       this.x += this.vx;
       this.y += this.vy;
-      
+    }  
+    isVisible() {
+      return this.y + this.h > 0 || this.x + this.w > 0;
     }
+      
 
+    collides(puddle) {
+      const colX = this.x <= puddle.x + puddle.w && this.x + this.w > puddle.x;
+      const colY = this.y + this.h > puddle.y && this.y < puddle.y + puddle.h;
+      return colX && colY;
+    }
   }

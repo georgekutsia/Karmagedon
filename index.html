@@ -6,8 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="/assets/style/style.css" />
+    <link rel="stylesheet" href="/assets/style/info.css">
+    <link rel="stylesheet" href="/assets/style/intro.css">
   </head>
   <body id="cursor">
+    <!-- first page -->
+    <div id="begin">
+      <span id="begin-game">Let´s play</span>
+    </div>
+    <div id="intro">
+        <a href="./index.html" class="play-button"></a>
+        <video src=""></video>
+    </div>
+    <!-- first page -->
+
     
     <div id="intro-canvas">
       <h1>GAME IN 4K UlTRA HD</h1>
@@ -18,6 +30,10 @@
       <button id="hover4" text-align="center"> </button>
 
 
+      <!-- main canvas start -->
+    </div>
+    <div class="btn-container">
+      <span id="btn">START</span>
     </div>
     <div id="main-canvas">
       <div style="text-align: left">
@@ -28,35 +44,40 @@
         <h2 id="fat-alert" class="event-alert">¡Supersized customer walking!</h2>
        <span id="time"></span>
      </div>
-    <canvas id="canvas" width="1190" height="550"> </canvas>
+    <canvas id="canvas" width="1190" height="550"></canvas>
 
-    <div class="btn-container">
-      <span id="btn">START</span>
-    </div>
+    <img src="/assets/images/elements/hoja de reclamaciones.png" alt="wat" id="forms1">
+    <img src="/assets/images/elements/hoja de reclamaciones.png" alt="who" id="forms2">
+    <img src="/assets/images/elements/hoja de reclamaciones.png" alt="where" id="forms3">
+    <img src="/assets/images/elements/hoja de reclamaciones.png" alt="who" id="forms4">
+    <img src="/assets/images/elements/hoja de reclamaciones.png" alt="where" id="forms5">
+    <!-- main canvas end -->
+
+
     <div class="btn-game">
       <span id="btn-game">Game</span>
     </div>
 
 
+
+<!-- time function  -->
     <script>
       let q = 0;
       function myFunction() { 
         window.timerInterval = setInterval(function () {
           q++;
-          var days = Math.floor(q / (60 * 60 * 24));
-          var hours = 9+(Math.floor((q % (60 * 60 * 24)) / (60 * 60)));
-          var minutes = Math.floor((q % (60 * 60)) / 60);
-          var seconds = Math.floor(q % 60);
-
+          const days = Math.floor(q / (60 * 60 * 24));
+          const hours = 9+(Math.floor((q % (60 * 60 * 24)) / (60 * 60)));
+          const minutes = Math.floor((q % (60 * 60)) / 60);
+          const seconds = Math.floor(q % 60);
+//3621 es "q" cada hora. 12 horas que durará el juego(12 minutos reales) 43452
           document.getElementById("time").innerText =
             hours + "h:" + minutes + "m:" + seconds + " s ";
-        }, 1);
+        }, 15);
       }
 
     </script>
-
-
-
+<!-- time function -->
     <div>
       <texrarea>
         <div class="moves">
@@ -102,18 +123,20 @@
       </div>
     </div>
     <script src="/assets/js/constants.js"></script>
+    <script src="/assets/js/obstacles.js"></script>
     <script src="/assets/js/Heat.js"></script>
     <script src="/assets/js/token.js"></script>
-    <script src="/assets/js/time.js"></script>
-    <script src="/assets/js/gatgets.js"></script>
     <script src="/assets/js/rats.js"></script>
     <script src="/assets/js/fat.js"></script>
+    <script src="/assets/js/obstacleLife.js"></script>
     <script src="/assets/js/life.js"></script>
     <script src="/assets/js/player.js"></script>
     <script src="/assets/js/muros.js"></script>    
+    <script src="/assets/js/forms.js"></script>
     <script src="/assets/js/game.js"></script>
     <script src="/assets/js/index.js"></script>
     <script src="/assets/js/karens.js"></script>
+    <script src="/assets/js/line.js"></script>
     <script src="/assets/js/script.js"></script>
   </body>
 </html>

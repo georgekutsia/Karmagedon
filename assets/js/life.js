@@ -22,8 +22,11 @@ class Life {
     this.ctx.fillRect(this.x, this.y, this.w * this.total, this.h);
     this.ctx.fillStyle = prevStyle;
     this.ctx.strokeRect(this.x, this.y, this.w, this.h);
+
+    this.ctx.fillStyle= prevStyle;
+    this.ctx.strokeStyle = "black"
+    this.ctx.font = "30px Arial" 
     this.ctx.fillText("Life", 1100, 500)
-    
   }
 
   move() {
@@ -35,6 +38,6 @@ class Life {
   }
 
   loseLife() {
-    this.total -= 0.1;
+    this.total -= 0.2;
   }
 }

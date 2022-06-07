@@ -11,11 +11,11 @@ class Player {
     this.vy = 0;
 
 
-    this.life = 10;
     this.img = new Image();
     this.img.src = "/assets/images/PJ/MANAGER 1.png";
     this.img.frame = 0;
 
+    this.bullet = 0;
     this.tick = 0;
     this.life = new Life(ctx);
     this.heats=[];
@@ -23,6 +23,7 @@ class Player {
   }
 
   draw() {
+    formsCheck();
     this.ctx.drawImage(
       this.img,
       0,
@@ -92,30 +93,34 @@ class Player {
   keyDown(key) {  
     if (key === UP) {
       this.direction = 'top'
-      this.vy = -2;
+      this.vy = -4;
       this.img.src = "/assets/images/PJ/MANAGER 1.png";
-      this.heat.vx = 2;
-      console.log(this.heat.vx)
       
     }
     if (key === DOWN) {
       this.direction = 'down'
-      this.vy = 2;
+      this.vy = 4;
       this.img.src = "/assets/images/PJ/MANAGER 3.png";
     }
     if (key === RIGHT) {
       this.direction = 'right'
-      this.vx = 2;
+      this.vx = 4;
       this.img.src = "/assets/images/PJ/MANAGER 2.png";
     }
     if (key === LEFT) {
       this.direction = 'left'
-      this.vx = -2;
+      this.vx = -4;
       this.img.src = "/assets/images/PJ/MANAGER 4.png";
     }
     if(key === Z){
       this.heater();
-      console.log(this.heat.vx)
+      this.bullet++
+      if(this.bullet % 2 === 0){
+        Z = 0
+        setTimeout(function(){
+          Z = 90;
+        },1000)
+      }
     }
   }
   keyUp(key) {
@@ -138,6 +143,7 @@ class Player {
       this.ctx,
       this.x + this.w -40,
       this.y + this.h -40,
+      
     )
 
     if (this.direction === 'right') {
@@ -147,6 +153,14 @@ class Player {
     if (this.direction === 'left') {
       heat.vx = -2
       heat.vy = 0
+    }
+    if (this.direction === 'top') {
+      heat.vx = 0
+      heat.vy = -2
+    }
+    if (this.direction === 'down') {
+      heat.vx = 0
+      heat.vy = 2
     }
     
     this.heats.push(heat)

@@ -1,0 +1,16 @@
+body{
+    background-image: url(/assets/images/fondos/dados\ fondo\ 2.jpeg);
+}
+#intro{
+    background-color: blue;
+    background-size: 100%;
+    display: none;
+}
+#begin{
+    display: block;
+    border: 1px solid blue;
+    font-size: 29px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    position: absolute;
+    left: 50%;
+}

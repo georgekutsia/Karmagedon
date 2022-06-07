@@ -75,4 +75,8 @@ de los personajes y añade más ratas recorriendo el centro comercial
 
 
 DUDAS:
-charcos debajo del personaje
+-como hacer que otras cosas se adapten a las posiciones en el canvas
+-mensajes de karen que desaparezcan después de poco
+-hacer que karens desaparezcan con el line
+-el line se acelera, pero me gustaría que se detuviera un segundo para mostrar donde fue o al menos un texto
+-mensaje de "nicely done!"desaparece muy rápido
