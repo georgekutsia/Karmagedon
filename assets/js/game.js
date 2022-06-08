@@ -74,24 +74,25 @@ class Game {
 
       new Wall(ctx, 410, 320, 50, 30),
       new Wall(ctx, 560, 320, 50, 30),
-      new Wall(ctx, 450, 420, 50, 30),
-      new Wall(ctx, 500, 420, 50, 30),
+      new Wall(ctx, 465, 450, 50, 30),
+      new Wall(ctx, 500, 450, 50, 30),
 
       new Wall(ctx, 880, 320, 50, 30),
       new Wall(ctx, 830, 320, 50, 30),
       new Wall(ctx, 730, 480, 50, 30),
       new Wall(ctx, 780, 480, 50, 30),
     ]
-    
+
     this.tack = 300; //karen
-    this.tuck = 0  //puddle
+    this.tuck = 300  //puddle
     this.tick = 0;  // rat
     this.tock = 100; //fat
     this.winTime = 0; 
     this.interval = null;
+    this.puddleLife = 1;
 
 
-    this.heats = [];
+
     this.karens = [];
     this.rats = [];
     this.fats = [];
@@ -103,33 +104,32 @@ class Game {
     this.interval = setInterval(() => {
       this.clear();
       this.draw();
-      this.move();
+      this.move();  
       this.tack++;//karen
       this.tick++; //rat
       this.tock++; //fat
       this.tuck++; //puddle 
       this.winTime++
       this.checkCollisions();
-      console.log(this.winTime)
-      if(this.winTime > 3000){
+      if(this.winTime > 9000){
         this.gameWin()
       }
-      if (this.tack > Math.random() * 100 + 300) {
+      if (this.tack > Math.random() * 100 + 900) { //karen
         this.tack = 0;
         this.karensAlert();
         this.addKarens();
       }
-      if (this.tick > Math.random() * 100 + 500) {
+      if (this.tick > Math.random() * 100 + 500) { //rat
         this.tick = 0;
         this.addRats();
       }
-      if (this.tock > Math.random() * 100 + 100) {
+      if (this.tock > Math.random() * 100 + 500) { //fat
         this.tock = 0;
         this.fatAlert();
         this.addFat();
       }
-      if (this.tuck > Math.random() * 100 + 100) {
-        this.tuck = 0;
+      if (this.tuck > Math.random() * 100 + 400) { //puddle
+        this.tuck = 300;
         this.addPuddle();
       }
     }, 1000 / 60);
@@ -144,7 +144,8 @@ class Game {
     this.karens = this.karens.filter((e) => e.isVisible());
     this.rats = this.rats.filter((e) => e.isVisible());
     this.fats = this.fats.filter((e) => e.isVisible());
-    this.heats = this.heats.filter((e) => e.isVisible()); 
+    this.player.heats = this.player.heats.filter((e) => e.isVisible());
+    this.player.waters = this.player.waters.filter((e) => e.isVisible());
   }
 
   draw() {    
@@ -155,13 +156,8 @@ class Game {
     this.karens.forEach((e) =>e.draw());
     this.rats.forEach((e) => e.draw());
     this.fats.forEach((e) => e.draw());
-    this.heats.forEach((e) => e.draw())
 
     this.line.draw()
-    // console.log(this.karens[1])
-    // if(this.line.y> 110 && this.line.y < 165){
-    //   this.karen.()
-    // }
   }
   move() {
     this.player.move();
@@ -169,7 +165,7 @@ class Game {
     this.karens.forEach((e) =>e.move());
     this.rats.forEach((e) => e.move());
     this.fats.forEach((e) =>e.move());
-    this.heats.forEach((e) =>e.move());
+    this.puddles.forEach((e) =>e.move());
     this.line.move()
   }
   addKarens() {
@@ -208,20 +204,35 @@ class Game {
   }
   //Colisiones start
   checkCollisions() {
+    this.puddle = new Puddle(ctx)
       this.player.heats.forEach( (heat)=>{
-      this.puddles.forEach((puddle) => {
+      this.puddles.forEach((puddle, pud) => {
        heat.collides(puddle);
+       if(heat.collides(puddle)){
+         this.player.heats.splice(0,1);
+         console.log("es", pud)
+         this.puddleLife -= 0.5;
+         console.log(this.puddleLife)
+         if(this.puddleLife < 0){
+           this.puddles.splice(pud,1)
+           this.puddleLife = 1;
+          //  if(this.winTime > 1000){
+          //    this.addPuddle();
+          //  } //  el intervalo en el que aparecen mas charcos cada vez que los borras
+          //  if(this.winTime > 2000){
+          //   this.addPuddle();
+          // }
+         }
+       }
       })
-      console.log(this.player.heats)
-
     })
 
-    this.karens = this.karens.filter((karens, index) => {
+    this.karens = this.karens.filter((karens) => {
       if (karens.collides(this.player)) {
         SPACE = 32;
         // if(this.player.discount == 1 )
         if(this.line.check == 1 ){
-                  return false;
+        return false;
         }
       }
       return true;

@@ -2,7 +2,7 @@ class Player {
   constructor(ctx) {
     this.ctx = ctx;
     this.x = 485;
-    this.y = 420;
+    this.y = 320;
 
     this.w = 40;
     this.h = 40;
@@ -20,7 +20,8 @@ class Player {
     this.tick = 0;
     this.life = new Life(ctx);
     this.heats=[];
-    this.direction = 'left'
+    this.waters=[];
+    this.direction = 'left';
   }
 
   draw() {
@@ -37,6 +38,7 @@ class Player {
       this.h,
     );
     this.heats.forEach(heat => heat.draw())
+    this.waters.forEach(water => water.draw())
     this.life.draw();
   }
 
@@ -58,6 +60,7 @@ class Player {
     if(this.x < 10 && this.y < 10){
       this.x = 1000;
       this.y = 200;
+      C = 67
     }
     this.life.move();
 
@@ -84,6 +87,9 @@ class Player {
     // LIMITES DEL CANVAS <=//
     this.heats.forEach(heat => {
       heat.move()
+    })
+    this.waters.forEach(water => {
+      water.move()
     })
   }
   hit() {
@@ -119,10 +125,30 @@ class Player {
     if(key === Z){
       this.heater();
       this.bullet++
-      if(this.bullet % 2 === 0){
-        Z = 0
+      if(this.bullet % 3 === 0){
+        Z = 0;      
         setTimeout(function(){
           Z = 90;
+        },1000)
+      }
+    }
+    if(key === C){
+      this.heater();
+      this.bullet++
+      if(this.bullet % 6 === 0){
+        C = 0;      
+        setTimeout(function(){
+          C = 67;
+        },2000)
+      }
+    }
+    if(key === X ){
+      this.waterer();
+      this.bullet++
+      if(this.bullet % 1 === 0){
+        X = 0;      
+        setTimeout(function(){
+          X = 88;
         },1000)
       }
     }
@@ -139,7 +165,7 @@ class Player {
     }
     if (key === LEFT) {
       this.vx = 0;
-    }
+    } 
   }
 
   heater() {
@@ -147,8 +173,7 @@ class Player {
       this.ctx,
       this.x + this.w -40,
       this.y + this.h -40,
-    )
-
+    ) 
     if (this.direction === 'right') {
       heat.vx = 2
       heat.vy = 0
@@ -164,9 +189,32 @@ class Player {
     if (this.direction === 'down') {
       heat.vx = 0
       heat.vy = 2
-    }
-    
+    }   
     this.heats.push(heat)
+  }
+  waterer() {
+    const water = new Water(
+      this.ctx,
+      this.x + this.w -40,
+      this.y + this.h -40,
+    ) 
+    if (this.direction === 'right') {
+      water.vx = 2
+      water.vy = 0
+    }
+    if (this.direction === 'left') {
+      water.vx = -2
+      water.vy = 0
+    }
+    if (this.direction === 'top') {
+      water.vx = 0
+      water.vy = -2
+    }
+    if (this.direction === 'down') {
+      water.vx = 0
+      water.vy = 2
+    }   
+    this.waters.push(water)
   }
 }
 

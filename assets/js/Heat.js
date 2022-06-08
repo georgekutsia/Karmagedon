@@ -10,7 +10,7 @@ class Heat {
       this.vy = 0;
 
       this.heatImg = new Image();
-      this.heatImg.src = "/assets/images/fondos/arbusto1.png";
+      this.heatImg.src = "/assets/images/fondos/fuego.png";
     }
   
     draw() {

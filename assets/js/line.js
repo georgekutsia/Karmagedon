@@ -67,8 +67,8 @@ class Line {
   checkPoint(){
     //se acelera la velocidad de la barra a medida que pasa el juego. cuanto con
     //mas karens se negocia, mas complicado se hace
-    this.a -= 0.3;
-    this.b += 0.3;
+    this.a -= 0.2;
+    this.b += 0.2;
 
     if(this.y > 110 && this.y < 165){
       this.check = 1;
