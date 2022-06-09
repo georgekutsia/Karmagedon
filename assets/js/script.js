@@ -20,16 +20,15 @@ btn.addEventListener("click", function () {
   });
 
 
-
+  const bodyChange = document.getElementById("cursor")
   const begin = document.querySelector(".neon-button");
-  const intro = document.getElementById("intro");
   const info = document.getElementById("intro-canvas");
   const neon = document.getElementById("body-intro");
   const btnGame = document.getElementById("btn")
   begin.addEventListener("click", function(){
+    bodyChange.style.backgroundImage = "/assets/images/fondos/dados.jpeg"
     info.style.display = "block"
     btnGame.style.display = "inline-flex"
     begin.style.display = "none"
-    intro.style.display = "none"
     neon.style.display = "none"
   })

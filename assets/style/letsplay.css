@@ -10,11 +10,10 @@
   box-sizing: border-box;
 }
 
-body {
+#cursor {
     min-height: 100vh;
-    display: absolute;
     place-items: center;
-    background: var(--clr-bg);
+    background-color: black;
     font-family: "Balsamiq Sans", cursive;
     color: var(--clr-neon);
     padding-right: 10rem;

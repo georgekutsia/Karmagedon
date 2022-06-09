@@ -85,6 +85,8 @@ class Game {
     this.tock = 0; //fat
     this.tuck = 0; //puddle
     this.teck= 0; //fire
+    this.crazyTime = 0; //crazy
+    this.babyTime = 0; //crazy
     this.winTime = 0;
     this.puddleLife = 1;
     this.fireLife =  1;
@@ -93,6 +95,8 @@ class Game {
     
     this.karens = [];
     this.rats = [];
+    this.crazys = [];
+    this.babys = [];
     this.fats = [];
     this.puddles = [];
     this.fires = [];
@@ -101,6 +105,7 @@ class Game {
   start() {
     myFunction();
     this.interval = setInterval(() => {
+      console.log(this.crazys)
       this.clear();
       this.draw();
       this.move();
@@ -109,6 +114,8 @@ class Game {
       this.tock++; //fat
       this.tuck++; //puddle
       this.teck++;
+      this.crazyTime++;
+      this.babyTime++;
       this.winTime++;
       this.checkCollisions();
       if (this.winTime > 9000) {
@@ -123,6 +130,7 @@ class Game {
       if (this.tick > Math.random() * 200 + 300) {
         //rat
         this.tick = 0;
+        this.ratAlert();
         this.addRats();
       }
       if (this.tock > Math.random() * 100 + 800) {
@@ -131,17 +139,29 @@ class Game {
         this.fatAlert();
         this.addFat();
       }
-      if (this.tuck > Math.random() * 100 + 300) {
+      if (this.tuck > Math.random() * 100 + 600) {
         //puddle
         this.tuck = 0;
         this.waterAlert();
         this.addPuddle();
       }
-      if (this.teck > Math.random() * 100 + 200) {
+      if (this.teck > Math.random() * 100 + 600) {
         //puddle
         this.teck = 0;
         this.fireAlert();
         this.addFire();
+      }
+      if (this.crazyTime > Math.random() * 100 + 300) {
+        //crazy
+        this.crazyTime = 0;
+        this.crazyAlert();
+        this.addCrazy();
+      }
+      if (this.babyTime > Math.random() * 100 + 100) {
+        //baby
+        this.babyTime = 0;
+        this.babyAlert();
+        this.addBaby();
       }
     }, 1000 / 60);
   }
@@ -155,6 +175,8 @@ class Game {
     this.karens = this.karens.filter((e) => e.isVisible());
     this.rats = this.rats.filter((e) => e.isVisible());
     this.fats = this.fats.filter((e) => e.isVisible());
+    this.crazys = this.crazys.filter((e) => e.isVisible());
+    this.babys = this.babys.filter((e) => e.isVisible());
     this.player.heats = this.player.heats.filter((e) => e.isVisible());
     this.player.waters = this.player.waters.filter((e) => e.isVisible());
   }
@@ -168,6 +190,8 @@ class Game {
     this.karens.forEach((e) => e.draw());
     this.rats.forEach((e) => e.draw());
     this.fats.forEach((e) => e.draw());
+    this.crazys.forEach((e) => e.draw());
+    this.babys.forEach((e) => e.draw());
 
     this.line.draw();
   }
@@ -177,6 +201,8 @@ class Game {
     this.karens.forEach((e) => e.move());
     this.rats.forEach((e) => e.move());
     this.fats.forEach((e) => e.move());
+    this.crazys.forEach((e) => e.move());
+    this.babys.forEach((e) => e.move());
     this.puddles.forEach((e) => e.move());
     this.fires.forEach((e) => e.move());
     this.line.move();
@@ -192,6 +218,14 @@ class Game {
   addFat() {
     const fats = new Fat(this.ctx);
     this.fats.push(fats);
+  }
+  addCrazy() {
+    const crazys = new Crazy(this.ctx);
+    this.crazys.push(crazys);
+  }
+  addBaby() {
+    const babys = new Baby(this.ctx);
+    this.babys.push(babys);
   }
   addPuddle() {
     const puddles = new Puddle(this.ctx);
@@ -219,7 +253,17 @@ class Game {
     const nothingToWorrie = document.getElementById("ok");
     nothingToWorrie.style.display = "none";
     const statusOk = document.getElementById("status")
-    statusOk.style.backgroundColor = "rgb(220, 43, 43)"
+    statusOk.style.backgroundColor = "rgb(252, 5, 5)"
+    statusOk.style.color = "white"
+  }
+  crazyAlert() {
+    const crazyAlert = document.getElementById("crazy-alert");
+    crazyAlert.style.display = "inline-flex";
+    const nothingToWorrie = document.getElementById("ok");
+    nothingToWorrie.style.display = "none";
+    const statusOk = document.getElementById("status")
+    statusOk.style.backgroundColor = "rgb(252, 5, 5)"
+    statusOk.style.color = "white"
   }
   waterAlert() {
     const waterAlert = document.getElementById("water-alert");
@@ -227,10 +271,17 @@ class Game {
     const nothingToWorrie = document.getElementById("ok");
     nothingToWorrie.style.display = "none";
     const statusOk = document.getElementById("status")
-    statusOk.style.backgroundColor = "rgb(220, 43, 43)"
+    statusOk.style.backgroundColor = "rgb(252, 5, 5)"
+    statusOk.style.color = "white"
   }
   fireAlert() {
     const fireAlert = document.getElementById("fire-alert");
+    fireAlert.style.display = "inline-flex";
+    const nothingToWorrie = document.getElementById("ok");
+    nothingToWorrie.style.display = "none";
+  }
+  babyAlert() {
+    const fireAlert = document.getElementById("baby-alert");
     fireAlert.style.display = "inline-flex";
     const nothingToWorrie = document.getElementById("ok");
     nothingToWorrie.style.display = "none";
@@ -288,6 +339,23 @@ class Game {
       }
       return true;
     });
+    this.crazys = this.crazys.filter((crazy) => {
+      if (crazy.collides(this.player)) {
+        this.player.hit();
+        this.player.hit();
+        return false
+      }
+      return true;
+    });
+    this.babys = this.babys.filter((crazy) => {
+      if (crazy.collides(this.player)) {
+        this.player.heal();
+        this.player.x = 0;
+        this.player.x = 0;
+        return false
+      }
+      return true;
+    });
 
     // colisiones con las paredes y los charcos que retrasan al jugador
     this.walls.forEach((wall) => {
@@ -328,6 +396,8 @@ class Game {
     this.ctx.fillText("YOU ARE DEAD", 300, 220);
     this.rats = [];
     this.fats = [];
+    this.crazys = [];
+    this.babys = [];
     this.karens = [];
   }
   gameWin() {
@@ -338,6 +408,8 @@ class Game {
     this.ctx.fillText("YOU WON!!! CONGRATULATIONS!", 10, 220);
     this.rats = [];
     this.fats = [];
+    this.crazys = [];
+    this.babys = [];
     this.karens = [];
   }
 

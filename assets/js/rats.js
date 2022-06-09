@@ -34,17 +34,6 @@ class Rats {
     this.x += this.vx;
     this.y += this.vy;
     this.tick++;
-    this.tock++;
-    if(this.tock % 100 === 0){
-      this.vy += 1
-    }
-    if(this.tock % 150 === 0){
-      this.vy -= 2;
-    }
-    if (this.tock % 401){
-      this.vy + 2
-    }
-
 
     console.log(this.vy)
     if (this.tick > 10) {
