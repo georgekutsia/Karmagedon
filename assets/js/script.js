@@ -3,7 +3,12 @@ const ctx = canvas.getContext('2d');
 
 const game = new Game(ctx);
 
-const btn = document.getElementById("btn");
+const begin = document.querySelector(".neon-button");
+const info = document.getElementById("intro-canvas");
+const manager = document.getElementById("info-manager");
+const btn = document.querySelector(".neon-butt");
+const displ = document.getElementById("main-canvas");
+const cheat = document.getElementById("info-cheatsheet")
 btn.addEventListener("click", function () {
   
     if (game.interval) {
@@ -14,21 +19,18 @@ btn.addEventListener("click", function () {
       game.start();
       btn.innerText = "STOP";
     }
-    const displ = document.getElementById("main-canvas")
     displ.style.display = "block"
     info.style.display = "none"
+    manager.style.display = "none"
+    begin.style.display = "none"
+    cheat.style.display = "inline-block"
   });
 
 
-  const bodyChange = document.getElementById("cursor")
-  const begin = document.querySelector(".neon-button");
-  const info = document.getElementById("intro-canvas");
-  const neon = document.getElementById("body-intro");
-  const btnGame = document.getElementById("btn")
   begin.addEventListener("click", function(){
-    bodyChange.style.backgroundImage = "/assets/images/fondos/dados.jpeg"
     info.style.display = "block"
-    btnGame.style.display = "inline-flex"
     begin.style.display = "none"
-    neon.style.display = "none"
+    manager.style.display = "none"
+    cheat.style.display = "inline-block"
+    cheat.style.opacity = "1"
   })

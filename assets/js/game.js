@@ -127,37 +127,37 @@ class Game {
         this.karensAlert();
         this.addKarens();
       }
-      if (this.tick > Math.random() * 200 + 300) {
+      if (this.tick > Math.random() * 200 + 3000) {
         //rat
         this.tick = 0;
         this.ratAlert();
         this.addRats();
       }
-      if (this.tock > Math.random() * 100 + 800) {
+      if (this.tock > Math.random() * 100 + 8000) {
         //fat
         this.tock = 0;
         this.fatAlert();
         this.addFat();
       }
-      if (this.tuck > Math.random() * 100 + 600) {
+      if (this.tuck > Math.random() * 100 + 1240) {
         //puddle
         this.tuck = 0;
         this.waterAlert();
         this.addPuddle();
       }
-      if (this.teck > Math.random() * 100 + 600) {
-        //puddle
+      if (this.teck > Math.random() * 100 + 740) {
+        //fire
         this.teck = 0;
         this.fireAlert();
         this.addFire();
       }
-      if (this.crazyTime > Math.random() * 100 + 300) {
+      if (this.crazyTime > Math.random() * 200 + 3000) {
         //crazy
         this.crazyTime = 0;
         this.crazyAlert();
         this.addCrazy();
       }
-      if (this.babyTime > Math.random() * 100 + 100) {
+      if (this.babyTime > Math.random() * 100 + 1040) {
         //baby
         this.babyTime = 0;
         this.babyAlert();
@@ -296,7 +296,6 @@ class Game {
         if (heat.collides(puddle)) {
           this.player.heats.splice(heats.indexOf(heat), 1);
           this.puddle.dicrease()
-          console.log(this.puddle.life)
           if (this.puddleLife <= 0) {
             this.puddles.splice(pud, 1);
             //alertas que se van

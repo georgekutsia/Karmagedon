@@ -1,5 +1,4 @@
 body{
-  background-image: url(/assets/images/fondos/dados\ fondo\ 2.jpeg);
   background-size: 100%;
   background-color: black;
   color: black
@@ -16,16 +15,18 @@ body{
 }
 #main-canvas{
   display: none;
-  position:absolute;
-  padding-left: 5%;
+  position: absolute;
+  background-image: url(/assets/images/fondos/dados.jpeg);
+  background-size: 100%;
+  padding: 0% 20% 10% 5%;
+  padding: 0 10% 6% 15%;
 }
 
 #canvas {
     border: 1px solid rgb(227, 147, 147);
-    text-align: center;
     background-image: url(/assets/images/fondos/canvas\ karmagedon.png);
     background-size: 100%;
-
+    left: 1220%
   }
 body{
   background-color: #8d9682;
