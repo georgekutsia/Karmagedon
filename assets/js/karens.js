@@ -61,8 +61,13 @@ class Karens {
 
     move() {
       this.x += this.vx;
-      this.y += this.vy;
       this.tick++
+
+   if(this.tick % 200 === 0){
+     this.vy += 0.5
+   }
+
+
       if(this.tick % 100 === 0){
         this.vx = 0.3;
       } else if(this.tick % 201 === 0){

@@ -10,3 +10,7 @@ let Z = 90;
 let X = 88;
 let C = 0;
 const V = 86;
+const A = 65;
+const W = 87;
+const S = 83;
+const D = 68;

@@ -1,11 +1,11 @@
 class Player {
   constructor(ctx) {
     this.ctx = ctx;
-    this.x = 485;
-    this.y = 320;
+    this.x = 85;
+    this.y = 0;
 
-    this.w = 40;
-    this.h = 40;
+    this.w = 35;
+    this.h = 35;
 
     this.vx = 0;
     this.vy = 0;
@@ -19,9 +19,9 @@ class Player {
     this.bullet = 0;
     this.tick = 0;
     this.life = new Life(ctx);
-    this.heats=[];
-    this.waters=[];
-    this.direction = 'left';
+    this.heats = [];
+    this.waters = [];
+    this.direction = "left";
   }
 
   draw() {
@@ -35,18 +35,16 @@ class Player {
       this.x,
       this.y,
       this.w,
-      this.h,
+      this.h
     );
-    this.heats.forEach(heat => heat.draw())
-    this.waters.forEach(water => water.draw())
+    this.heats.forEach((heat) => heat.draw());
+    this.waters.forEach((water) => water.draw());
     this.life.draw();
   }
 
   move() {
     this.x += this.vx;
     this.y += this.vy;
-
-
     this.tick++;
 
     if ((this.tick > 15 && this.vx) || (this.tick > 15 && this.vy)) {
@@ -57,10 +55,12 @@ class Player {
     if (this.img.frame > 3) {
       this.img.frame = 0;
     }
-    if(this.x < 10 && this.y < 10){
+    if (this.x < 10 && this.y < 10) {
       this.x = 1000;
       this.y = 200;
-      C = 67
+      C = 67;
+      const forms1 = document.getElementById("forms1");
+      forms5.style.display = "inline-block";
     }
     this.life.move();
 
@@ -85,136 +85,147 @@ class Player {
       this.vx = 0;
     }
     // LIMITES DEL CANVAS <=//
-    this.heats.forEach(heat => {
-      heat.move()
-    })
-    this.waters.forEach(water => {
-      water.move()
-    })
+    this.heats.forEach((heat) => {
+      heat.move();
+    });
+    this.waters.forEach((water) => {
+      water.move();
+    });
   }
   hit() {
     this.life.loseLife();
+  }
+  fireHit(){
+    this.life.loseLifeFire();
   }
 
   isAlive() {
     return this.life.total > 0;
   }
 
-  keyDown(key) {  
-    if (key === UP) {
-      this.direction = 'top'
+  keyDown(key) {
+    if (key === UP || key === W) {
+      this.direction = "top";
       this.vy = -4;
       this.img.src = "/assets/images/PJ/MANAGER 1.png";
-      
     }
-    if (key === DOWN) {
-      this.direction = 'down'
+    if (key === DOWN || key === S) {
+      this.direction = "down";
       this.vy = 4;
       this.img.src = "/assets/images/PJ/MANAGER 3.png";
     }
-    if (key === RIGHT) {
-      this.direction = 'right'
+    if (key === RIGHT || key === D) {
+      this.direction = "right";
       this.vx = 4;
       this.img.src = "/assets/images/PJ/MANAGER 2.png";
     }
-    if (key === LEFT) {
-      this.direction = 'left'
+    if (key === LEFT || key === A) {
+      this.direction = "left";
       this.vx = -4;
       this.img.src = "/assets/images/PJ/MANAGER 4.png";
     }
-    if(key === Z){
+    if (key === Z) {
       this.heater();
-      this.bullet++
-      if(this.bullet % 3 === 0){
-        Z = 0;      
-        setTimeout(function(){
+      this.bullet++;
+      if (this.bullet % 2 === 0) {
+        Z = 0;
+        setTimeout(function () {
           Z = 90;
-        },1000)
+        }, 2000);
       }
     }
-    if(key === C){
+    if (key === C) {
       this.heater();
-      this.bullet++
-      if(this.bullet % 6 === 0){
-        C = 0;      
-        setTimeout(function(){
+      this.bullet++;
+      if (this.bullet % 8 === 0) {
+        C = 0;
+        setTimeout(function () {
           C = 67;
-        },2000)
+        }, 2000);
       }
     }
-    if(key === X ){
+    if (key === X) {
       this.waterer();
-      this.bullet++
-      if(this.bullet % 1 === 0){
-        X = 0;      
-        setTimeout(function(){
+      this.bullet++;
+      if (this.bullet % 2 === 0) {
+        X = 0;
+        setTimeout(function () {
           X = 88;
-        },1000)
+        }, 1000);
       }
     }
   }
   keyUp(key) {
-    if (key === UP) {
+    if (key === UP || key === W) {
       this.vy = 0;
     }
-    if (key === DOWN) {
+    if (key === DOWN || key === S) {
       this.vy = 0;
     }
-    if (key === RIGHT) {
+    if (key === RIGHT || key === D) {
       this.vx = 0;
     }
-    if (key === LEFT) {
+    if (key === LEFT || key === A) {
       this.vx = 0;
-    } 
+    }
   }
 
   heater() {
     const heat = new Heat(
       this.ctx,
-      this.x + this.w -40,
-      this.y + this.h -40,
-    ) 
-    if (this.direction === 'right') {
-      heat.vx = 2
-      heat.vy = 0
+      this.x + this.w - 40,
+      this.y + this.h - 40,
+      this
+    );
+    if (this.direction === "right") {
+      heat.vx = 1;
+      heat.vy = 0;
+      heat.heatImg.src = "/assets/images/munición/bola de fuego copia.png";
     }
-    if (this.direction === 'left') {
-      heat.vx = -2
-      heat.vy = 0
+    if (this.direction === "left") {
+      heat.vx = -1;
+      heat.vy = 0;
+      heat.heatImg.src = "/assets/images/munición/bola de fuego copia 3.png";
     }
-    if (this.direction === 'top') {
-      heat.vx = 0
-      heat.vy = -2
+    if (this.direction === "top") {
+      heat.vx = 0;
+      heat.vy = -1;
+      heat.heatImg.src = "/assets/images/munición/bola de fuego.png";
     }
-    if (this.direction === 'down') {
-      heat.vx = 0
-      heat.vy = 2
-    }   
-    this.heats.push(heat)
+    if (this.direction === "down") {
+      heat.vx = 0;
+      heat.vy = 1;
+      heat.heatImg.src = "/assets/images/munición/bola de fuego copia 2.png";
+    }
+    this.heats.push(heat);
   }
   waterer() {
     const water = new Water(
       this.ctx,
-      this.x + this.w -40,
-      this.y + this.h -40,
-    ) 
-    if (this.direction === 'right') {
-      water.vx = 2
-      water.vy = 0
+      this.x + this.w - 40,
+      this.y + this.h - 40,
+      this
+    );
+    if (this.direction === "right") {
+      water.vx = 2;
+      water.vy = 0;
+      water.w = 60;
     }
-    if (this.direction === 'left') {
-      water.vx = -2
-      water.vy = 0
+    if (this.direction === "left") {
+      water.vx = -2;
+      water.vy = 0;
+      water.w = 60;
     }
-    if (this.direction === 'top') {
-      water.vx = 0
-      water.vy = -2
+    if (this.direction === "top") {
+      water.vx = 0;
+      water.vy = -2;
+      water.h = 60;
     }
-    if (this.direction === 'down') {
-      water.vx = 0
-      water.vy = 2
-    }   
-    this.waters.push(water)
+    if (this.direction === "down") {
+      water.vx = 0;
+      water.vy = 2;
+      water.h = 60;
+    }
+    this.waters.push(water);
   }
 }
-

@@ -6,13 +6,14 @@ class Rats {
     this.y = this.salidas[Math.floor(Math.random()*this.salidas.length)]
     this.w = 0.1 * this.ctx.canvas.width;
     this.h = 0.05 * this.ctx.canvas.height;
-    this.vx = -10;
-
+    this.vx = -2;
+    this.vy = 0;
     this.ratImg = new Image();
     this.ratImg.src = "/assets/images/elements/rats.png";
     this.ratImg.frame = 0;
 
     this.tick = 0;
+    this.tock = 0;
   }
 
   draw() {
@@ -31,9 +32,21 @@ class Rats {
 
   move() {
     this.x += this.vx;
-
+    this.y += this.vy;
     this.tick++;
+    this.tock++;
+    if(this.tock % 100 === 0){
+      this.vy += 1
+    }
+    if(this.tock % 150 === 0){
+      this.vy -= 2;
+    }
+    if (this.tock % 401){
+      this.vy + 2
+    }
 
+
+    console.log(this.vy)
     if (this.tick > 10) {
       this.tick = 0;
       this.ratImg.frame++;

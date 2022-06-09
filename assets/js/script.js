@@ -16,16 +16,20 @@ btn.addEventListener("click", function () {
     }
     const displ = document.getElementById("main-canvas")
     displ.style.display = "block"
+    info.style.display = "none"
   });
 
 
 
-  const begin = document.getElementById("begin");
+  const begin = document.querySelector(".neon-button");
   const intro = document.getElementById("intro");
   const info = document.getElementById("intro-canvas");
+  const neon = document.getElementById("body-intro");
+  const btnGame = document.getElementById("btn")
   begin.addEventListener("click", function(){
     info.style.display = "block"
+    btnGame.style.display = "inline-flex"
     begin.style.display = "none"
-    intro.style.direction = "none"
-
+    intro.style.display = "none"
+    neon.style.display = "none"
   })

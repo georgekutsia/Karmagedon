@@ -6,17 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="/assets/style/style.css" />
-    <link rel="stylesheet" href="/assets/style/info.css">
     <link rel="stylesheet" href="/assets/style/intro.css">
+    <link rel="stylesheet" href="/assets/style/letsplay.css">
+    <link rel="stylesheet" href="/assets/style/gamePlay.css">
   </head>
   <body id="cursor">
     <!-- first page -->
-    <div id="begin">
-      <span id="begin-game">Let´s play</span>
-    </div>
-    <div id="intro">
-        <a href="./index.html" class="play-button"></a>
-        <video src=""></video>
+    <div id="body-intro">
+      <a class="neon-button">Let´s play Karmagedón!</a>
     </div>
     <!-- first page -->
 
@@ -39,24 +36,22 @@
       <div style="text-align: left">
        <h2 id="status">Mall status=></h2>
         <h2 id="karens-alert" class="event-alert">Wild Karen Appears!!</h2>
-        <h2 id="rat-alert" class="event-alert">¡LOOKOUT FOR THE RATS!</h2>
+        <h2 id="rat-alert" class="event-alert">LOOKOUT FOR THE RATS!</h2>
         <h2 id="ok">Easy morning. Not a single problem, yet...</h2>
-        <h2 id="fat-alert" class="event-alert">¡Supersized customer walking!</h2>
+        <h2 id="fat-alert" class="event-alert">Supersized customer walking!</h2>
+        <h2 id="water-alert" class="event-alert">Flooding!</h2>
+        <h2 id="fire-alert" class="event-alert">fire!!</h2>
        <span id="time"></span>
      </div>
     <canvas id="canvas" width="1190" height="550"></canvas>
-
     <img src="/assets/images/elements/hoja de reclamaciones.png" alt="wat" id="forms1">
     <img src="/assets/images/elements/hoja de reclamaciones.png" alt="who" id="forms2">
     <img src="/assets/images/elements/hoja de reclamaciones.png" alt="where" id="forms3">
-    <img src="/assets/images/elements/hoja de reclamaciones.png" alt="who" id="forms4">
-    <img src="/assets/images/elements/hoja de reclamaciones.png" alt="where" id="forms5">
+    <img src="/assets/images/elements/hoja de reclamaciones.png" alt="how" id="forms4">
+    <img src="/assets/images/elements/hoja de reclamaciones.png" alt="he" id="forms5">
     <!-- main canvas end -->
 
 
-    <div class="btn-game">
-      <span id="btn-game">Game</span>
-    </div>
 
 
 
@@ -129,7 +124,6 @@
     <script src="/assets/js/token.js"></script>
     <script src="/assets/js/rats.js"></script>
     <script src="/assets/js/fat.js"></script>
-    <script src="/assets/js/obstacleLife.js"></script>
     <script src="/assets/js/life.js"></script>
     <script src="/assets/js/player.js"></script>
     <script src="/assets/js/muros.js"></script>    

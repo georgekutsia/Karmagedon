@@ -40,4 +40,10 @@ class Life {
   loseLife() {
     this.total -= 0.2;
   }
+  loseLifeFire(){
+    this.total -= 0.001;
+  }
+  gainLife(){
+    this.total += 0.2
+  }
 }
