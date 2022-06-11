@@ -34,8 +34,6 @@ class Rats {
     this.x += this.vx;
     this.y += this.vy;
     this.tick++;
-
-    console.log(this.vy)
     if (this.tick > 10) {
       this.tick = 0;
       this.ratImg.frame++;

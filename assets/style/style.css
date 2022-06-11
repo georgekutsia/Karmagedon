@@ -31,18 +31,6 @@ body{
 body{
   background-color: #8d9682;
 }
-.moves{
-  background-image: url(/assets/images/fondos/fondo-textura-madera-marron-claro_53876-75016.jpeg);
-  font-family:'Gill Sans';
-  font-size: 14px;
-  font-style: oblique;
-  padding-top: 8px;
-  padding-left: 2px;
-  border: 5px solid #8d9682;
-  width: 1010px;
-  height: 30px;
-  display: block;
-}
 
 
 /* instrucciones de movimiento start*/
@@ -57,21 +45,6 @@ u{
   cursor:url("/assets/images/elements/cursor.cur"), pointer;
 }
 
-.btn-container {
-  display: flex;
-  position: absolute;
-  top:40px;
-  right: 200px;
-  font-size: 20px;
-}
-
-#btn {
-  position: absolute;
-  background: lightblue;
-  color: blue;
-  padding: 3px;
-  display: none;
-}
 
 #status{
   background-color:rgb(0, 255, 26);
@@ -121,6 +94,13 @@ u{
     color: black;
 	display: none;
 	border: 4px solid black;
+  }
+#boss-alert{
+  font-size: 30px;
+	background-color: rgb(252, 5, 5);
+  color: black;
+	display: none;
+	border: 7px solid black;
   }
   
 #ok{

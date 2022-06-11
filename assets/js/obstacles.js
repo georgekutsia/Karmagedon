@@ -14,8 +14,6 @@ class Puddle{
     this.puddle = new Image();
     this.puddle.src = "/assets/images/elements/puddleCanvas.png";
     this.puddle.frame = 0;
-
-    this.life = 4;
     this.tick = 0;
   }
   draw() {
@@ -32,10 +30,9 @@ class Puddle{
     );
   }
   move(){
-    this.tick++;
+    this.tick++
 
-    if (this.tick > 10) {
-      this.tick = 0;
+    if (this.tick % 8 === 0) {
       this.puddle.frame++;
       this.w += 0.2
       this.h += 0.2
@@ -45,14 +42,12 @@ class Puddle{
     }
   }
   increase(){
-    this.h += 1;
-    this.w += 1;
-    this.life += 1;
+    this.h += 10;
+    this.w += 10;
   }
   dicrease(){
     this.h -= 10;
     this.w -= 10;
-    this.life -= 2;
   }
   collides(player) {
     const colX = this.x <= player.x + player.w && this.x + this.w > player.x;
@@ -81,7 +76,6 @@ class Fire{
     this.fire.src = "/assets/images/elements/flames.png";
     this.fire.frame = 0;
 
-    this.life = 2;
     this.tick = 0;
   }
   draw() {
@@ -99,9 +93,7 @@ class Fire{
   }
   move(){
     this.tick++;
-
-    if (this.tick > 5) {
-      this.tick = 0;
+    if (this.tick % 10 === 0) {
       this.fire.frame++;
       this.w += 0.2
       this.h += 0.2
@@ -113,12 +105,10 @@ class Fire{
   increase(){
     this.h += 1;
     this.w += 1;
-    this.life += 1;
   }
   dicrease(){
-    this.h -= 1;
-    this.w -= 1;
-    this.life -= 1;
+    this.h -= 10;
+    this.w -= 10;
   }
   collides(player) {
     const colX = this.x <= player.x + player.w && this.x + this.w > player.x;

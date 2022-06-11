@@ -90,6 +90,9 @@ class Player {
   }
   hit() {
     this.life.loseLife();
+    this.walk1Audio = new Audio("/assets/audio/ouch.mp3")
+    this.walk1Audio.volume = 0.2;
+    this.walk1Audio.play();
   }
   heal() {
     this.life.gainLife();
@@ -126,13 +129,24 @@ class Player {
     if (key === Z) {
       this.heater();
       this.bullet++;
-      if (this.bullet % 2 === 0) {
+      if (this.bullet % 3 === 0) {
         Z = 0;
         setTimeout(function () {
           Z = 90;
         }, 2000);
       }
     }
+
+    if (key === X) {
+      this.waterer();
+      this.bullet++;
+      if (this.bullet % 3 === 0) {
+        X = 0;
+        setTimeout(function () {
+          X = 88;
+        }, 1000);
+      }
+    }    
     if (key === C) {
       this.heater();
       this.heaterPlus();
@@ -153,16 +167,6 @@ class Player {
         setTimeout(function () {
           V = 86;
         }, 2000);
-      }
-    }
-    if (key === X) {
-      this.waterer();
-      this.bullet++;
-      if (this.bullet % 2 === 0) {
-        X = 0;
-        setTimeout(function () {
-          X = 88;
-        }, 1000);
       }
     }
   }

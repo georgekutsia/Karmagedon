@@ -24,9 +24,9 @@ class Life {
     this.ctx.strokeRect(this.x, this.y, this.w, this.h);
 
     this.ctx.fillStyle= prevStyle;
-    this.ctx.strokeStyle = "black"
-    this.ctx.font = "30px Arial" 
-    this.ctx.fillText("Life", 1100, 500)
+    this.ctx.strokeStyle = "black";
+    this.ctx.font = "50px Sans" ;
+    this.ctx.fillText("Life", 1070, 500)
   }
 
   move() {
@@ -39,6 +39,9 @@ class Life {
 
   loseLife() {
     this.total -= 0.2;
+    this.walkPuddleAudio = new Audio("/assets/audio/walkOnPuddle.mp3")
+    this.walkPuddleAudio.volume = 0.2;
+    this.walkPuddleAudio.play();
   }
   loseLifeFire(){
     this.total -= 0.001;

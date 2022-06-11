@@ -14,6 +14,9 @@ class Heat {
     this.dispose = false;
     this.heatImg = new Image();
     this.heatImg.src = "/assets/images/munición/bola de fuego.png";
+    this.heatShootAudio = new Audio("/assets/audio/fired.mp3")
+    this.heatShootAudio.volume = 0.1;
+    this.heatShootAudio.play();
   }
   draw() {
     this.ctx.drawImage(this.heatImg, this.x, this.y, this.w, this.h);

@@ -13,6 +13,10 @@ class Fat {
     this.fat.frame = 0;
 
     this.tick = 0;
+
+    this.fatAudio = new Audio("/assets/audio/fat.mp3")
+    this.fatAudio.volume = 0.2;
+    this.fatAudio.play();
   }
 
   draw() {

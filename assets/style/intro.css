@@ -1,28 +1,28 @@
-#info-manager{
+#info-manager {
   color: rgb(0, 0, 0);
   position: absolute;
   display: inline-block;
   font-size: 120%;
-  font-family:'Courier New', Courier, monospace;
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
+  font-family: "Courier New", Courier, monospace;
+  background: linear-gradient(-45deg, #ee7752, #d9ff01, #0d0aca, #23d5ab, #99ea17, #b106b1, #daa410);
+  background-size: 900% 900%;
   opacity: 1;
   bottom: 1%;
   border-radius: 30px;
   z-index: 100;
-  font-style:oblique;
+  font-style: oblique;
   padding: 10px;
   animation: gradient 15s ease infinite;
 }
-#info-cheatsheet{
+#info-cheatsheet {
   color: rgb(0, 0, 0);
   position: absolute;
   display: none;
   margin-top: 1px;
   font-size: 130%;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  background: linear-gradient(-45deg, #ee7752, #d9ff01, #0d0aca, #23d5ab, #99ea17, #b106b1, #daa410, #cabbd2, #00aeff, #3a2c04);
+  background-size: 1000% 100%;
   opacity: 0.1;
   top: 20%;
   left: 1.5%;
@@ -31,27 +31,28 @@
   padding: 10px;
   animation: gradient 15s ease infinite;
 }
-#info-cheatsheet:hover{
+#info-cheatsheet:hover {
+  cursor: url("/assets/images/elements/cursorHower"), pointer;
   opacity: 1;
   transition: 2s;
 }
-#info-cheatsheet:hover::after{
+#info-cheatsheet:hover::after {
   opacity: 1;
   transition: 2s;
 }
 
 @keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
-#intro-canvas{
+#intro-canvas {
   padding-left: 0;
   padding-right: 0;
   margin-left: auto;
@@ -59,10 +60,10 @@
   margin-top: auto;
   display: none;
   position: relative;
-  width: 60%; 
+  width: 60%;
   height: 600px;
   border: 10px dashed rgb(250, 250, 250);
-  background-image: url(/assets/images/fondos/centro-comercial-canvas-intro-0.jpeg);
+  background-image: url(/assets/images/fondos/mall\ 2.jpeg);
   background-size: 100%;
   transition: 4s;
 }
@@ -70,11 +71,12 @@
 #intro-canvas:hover {
   margin-left: auto;
   margin-right: auto;
-  width: 110%; 
+  width: 110%;
   height: 800px;
   display: block;
   position: relative;
-  background-image: url(/assets/images/fondos/centro\ comercial\ canvas\ intro\ 1.jpeg);
+  background-image: url(/assets/images/fondos/mall\ 3a.png);
+  background-repeat: no-repeat;
   background-size: 100%;
   transition: 4s;
 }
@@ -82,205 +84,180 @@
 h1 {
   font-size: 30px;
   border-radius: 20px;
-  border:3px dotted rgb(0, 0, 0);
+  border: 3px dotted rgb(0, 0, 0);
   display: inline;
   position: absolute;
-  color:black;
+  color: black;
   left: 0px;
   bottom: 0px;
   font-family: Verdana;
-  font-style:oblique;
+  font-style: oblique;
   background-color: rgba(237, 226, 226, 0.5);
-  text-decoration-color: rgb(29, 142, 213)
+  text-decoration-color: rgb(29, 142, 213);
 }
-#info-button {
-  position: absolute;
-  top: 2%;
-  left: 40%;
-  font-size: 30px;
-  border-radius: 30px ;
-  padding: 0.5em 1.5em;
-  border: none;
-  background: rgba(255,255,255,0.8);
-}
-#info-button:hover{
-  background-color: #8d9682;
-	font-size: 1.85em; 
-	font-family: helvetica, arial, sans-serif; 
-	font-variant: small-caps; 
-	opacity:0; 
-	transition: opacity 40s;
-
-}
-#info-button:hover:after{
-  content: url(/assets/images/infos/Karen\ info.png);
-  position: absolute;
-  font-size: 20px;
-  top: 110%;
-  left: -120%;
-}
-
-
-
-
-
 
 /* hower */
 /* info 1 */
-#hover1 {
-    position: absolute;
-    display: block;
-    justify-content: center;
-    align-items: center;
-    color: rgb(251, 251, 251);
-    width: 100px; height: 100px;
-    top: 10%;
-    right: 10%;
-    background: rgb(89, 84, 84, 0.3);
-    border: 8px solid rgb(221, 10, 10);
-    border-radius: 10px;
-    transition: border-radius 2s, border-color 3s;
-  }
-  #hover1:hover {
-    background-image: url(/assets/images/karens/karen1.png);
-    width: 130px; height: 130px;
-    font-size: 1.85em; 
-    background-size: 100%;
-    background-repeat: no-repeat;
-    border-color: #333;
-    transform: rotate(720deg);
-    border-radius: 50%;
-    transition: all 1s;
-  }
-  #hover1:hover:after { 
-    content: url(/assets/images/infos/Karen\ info.png);
-    position: absolute;
-    font-size: 2px;
-    top: 50%;
-    right: 200%;
-    opacity: 1;
-    transition: opacity 1s 0.4s;
-  }
+#info1 {
+  cursor: url("/assets/images/elements/cursorHower"), pointer;
+  position: absolute;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  color: rgb(251, 251, 251);
+  width: 100px;
+  height: 100px;
+  top: 10%;
+  right: 10%;
+  background: rgb(89, 84, 84, 0.3);
+  border: 8px solid rgb(253, 0, 0);
+  border-radius: 10px;
+  transition: border-radius 2s, border-color 3s;
+  opacity: 0.7;
+}
+#info1:hover {
+  background-image: url(/assets/images/karens/karen1.png);
+  width: 130px;
+  height: 130px;
+  font-size: 1.85em;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  border-color: rgb(255, 0, 255);
+  transform: rotate(720deg);
+  border-radius: 50%;
+  transition: transform 0.7s, opacity 3s;
+  opacity: 1;
+}
+#info1:hover:after {
+  content: url(/assets/images/infos/Karen\ info.png);
+  position: absolute;
+  top: 70%;
+  right: 150%;
+  opacity: 1;
+  transition: opacity 1s 0.4s;
+}
 
-  
-  /* info 2 */
-  
-  #hover2 {
-    position: absolute;
-    display: block;
-    justify-content: center;
-    align-items: center;
-    color: rgb(251, 251, 251);
-      width: 100px; height: 100px;
-      top: 30%;
-      right: 10%;
-      background: #5954544d;
-      border: 8px solid rgb(15, 236, 45);
-      border-radius: 10px;
-      transition: border-radius 2s, border-color 3s;
-  }
-  #hover2:hover {
-    background-image: url(/assets/images/fondos/arbusto1.png);
-    width: 130px; height: 130px;
-      font-size: 1.85em; 
-    background-size: 100%;
-    background-repeat: no-repeat;
-      border-color: #333;
-      transform: rotate(540deg);
-      border-radius: 50%;
-      transition: all 0.4s;
-  }
-  #hover2:after { 
-      /* content: url(/assets/images/infos/Karen\ info.png); */
-      position:relative; 
-      left: 110px; 
-    top:-240px;
-      font-size: 1.85em; 
-      font-family: helvetica, arial, sans-serif; 
-      font-variant: small-caps; 
-      color:rgb(0, 0, 0);
-      opacity:0; 
-      transition: opacity 1s;
-      opacity: 1;
-      transition: opacity 1s 0.4s;
-  }
-  /* info 3 */
-  #hover3 {
-    display: block;
-    position: absolute;
-    justify-content: center;
-    align-items: center;
-    color: rgb(251, 251, 251);
-      width: 100px; height: 100px;
-      top: 50%;
-      right: 10%;
-      background: #5954544d;
-      border: 8px solid rgb(9, 228, 217);
-      border-radius: 10px;
-      transition: border-radius 2s, border-color 3s;
-  }
-  #hover3:hover {
-    background-image: url(/assets/images/fondos/arbusto1.png);
-        width: 130px; height: 130px;
-      font-size: 1.85em; 
-    background-size: 100%;
-    background-repeat: no-repeat;
-      border-color: #333;
-      transform: rotate(540deg);
-      border-radius: 50%;
-      transition: all 0.4s;
-  }
-  #hover3:hover:after { 
-      content: url();
-      position:absolute; 
-      left: 110px; 
-      top:-85px;
-      font-size: 1.85em; 
-      font-family: helvetica, arial, sans-serif; 
-      font-variant: small-caps; 
-      color:rgb(0, 0, 0);
-      opacity:0; 
-      transition: opacity 1s;
-      opacity: 1;
-      transition: opacity 1s 0.4s;
-  }
-  /* info 4 */
-  #hover4 {
-    display: block;
-    position: absolute;
-    justify-content: center;
-    align-items: center;
-    color: rgb(251, 251, 251);
-    width: 100px; height: 100px;
-    top: 70%;
-    right: 10%;
-    background: #5954544d;
-    border: 8px solid rgb(251, 255, 0);
-    border-radius: 10px;
-    transition: border-radius 2s, border-color 3s;
-  }
-  #hover4:hover {
-    background-image: url();
-    width: 130px; height: 130px;
-      font-size: 1.85em; 
-    background-size: 100%;
-    background-repeat: no-repeat;
-      border-color: #333;
-      transform: rotate(540deg);
-      border-radius: 50%;
-      transition: all 0.4s;
-  }
-  #hover4:hover:after { 
-      content: url();
-      position:absolute; 
-      left: 110px; 
-      top:-85px;
-      font-size: 1.85em; 
-      font-family: helvetica, arial, sans-serif; 
-      font-variant: small-caps; 
-      color:rgb(0, 0, 0);
-      opacity:0; 
-      transition: opacity 1s;
-      opacity: 1;
-      transition: opacity 1s 0.4s;
-  }
+/* info 2 */
+#info2 {
+  cursor: url("/assets/images/elements/cursorHower"), pointer;
+  position: absolute;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  color: rgb(251, 251, 251);
+  width: 100px;
+  height: 100px;
+  top: 30%;
+  right: 10%;
+  background: rgb(89, 84, 84, 0.3);
+  border: 8px solid rgb(0, 255, 0);
+  border-radius: 10px;
+  transition: border-radius 2s, border-color 3s;
+  opacity: 0.7;
+}
+#info2:hover {
+  background-image: url(/assets/images/infos/manag.png);
+  width: 130px;
+  height: 130px;
+  font-size: 1.85em;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  border-color: rgb(255, 0, 255);
+  transform: rotate(720deg);
+  border-radius: 50%;
+  transition: transform 0.7s, opacity 3s;
+  opacity: 1;
+}
+#info2:hover:after {
+  content: url(/assets/images/infos/moves.png);
+  position: absolute;
+  font-size: 2px;
+  top: -60%;
+  right: 150%;
+  opacity: 1;
+  transition: opacity 1s 0.4s;
+}
+
+/* info 3 */
+#info3 {
+  cursor: url("/assets/images/elements/cursorHower"), pointer;
+  position: absolute;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  color: rgb(251, 251, 251);
+  width: 100px;
+  height: 100px;
+  top: 50%;
+  right: 10%;
+  background: rgb(89, 84, 84, 0.3);
+  border: 8px solid rgb(0, 68, 255);
+  border-radius: 10px;
+  transition: border-radius 2s, border-color 3s;
+  opacity: 0.7;
+}
+#info3:hover {
+  background-image: url(/assets/images/infos/fatt.png);
+  width: 130px;
+  height: 130px;
+  font-size: 1.85em;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  border-color: rgb(255, 0, 255);
+  transform: rotate(720deg);
+  border-radius: 50%;
+  transition: transform 0.7s, opacity 3s;
+  opacity: 1;
+}
+#info3:hover:after {
+  content: url(/assets/images/infos/events.png);
+  position: absolute;
+  font-size: 2px;
+  top: -200%;
+  right: 150%;
+  opacity: 1;
+  transition: opacity 1s 0.4s;
+}
+
+/* info 2 */
+#info4 {
+  cursor: url("/assets/images/elements/cursorHower"), pointer;
+  position: absolute;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  color: rgb(251, 251, 251);
+  width: 100px;
+  height: 100px;
+  top: 70%;
+  right: 10%;
+  background: rgb(89, 84, 84, 0.3);
+  border: 8px solid rgb(238, 255, 0);
+  border-radius: 10px;
+  transition: border-radius 2s, border-color 3s;
+  opacity: 0.7;
+}
+#info4:hover {
+  background-image: url(/assets/images/karens/karen1.png);
+  width: 130px;
+  height: 130px;
+  font-size: 1.85em;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  border-color: rgb(250, 125, 0);
+  transform: rotate(720deg);
+  border-radius: 50%;
+  transition: transform 0.7s, opacity 3s;
+  opacity: 1;
+}
+#info4:hover:after {
+  content: url(/assets/images/infos/Karen\ info.png);
+  position: absolute;
+  font-size: 2px;
+  top: -340%;
+  right: 150%;
+  opacity: 1;
+  transition: opacity 1s 0.4s;
+}
+
+/* info 2 */

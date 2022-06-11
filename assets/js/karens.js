@@ -18,9 +18,21 @@ class Karens {
       this.karens = new Image();
       this.karens.src = "/assets/images/karens/karen1.png";
       this.tick = 0;
-      this.time = 0
       this.complaints =
-      ["Manager!", "Who`se in charge?", "Police!", "Give me a claim form!"] 
+      ["Manager!", "Police!", "Give me a claim form!"] 
+      this.problems =[" I do not like this shops decor!", 
+                      // "  I've been waiting 5 minutes!", 
+                      // "  Speak English in my country!", 
+                      // "All you workers are $%&# lazy!",
+                      // "  You can't treat me like that!",
+                      // "Why can't I use expired cupons!",
+                      // " I do not like the uniform here!",
+                      // "My husband is this malls CEO",
+                      // "I am late! Work faster! faster!",
+                      "You looked at me with disgust!",
+                      "  I hate how this place smells!"
+                      ]
+      this.problem = this.problems[Math.floor(Math.random()*this.problems.length)]
     }
   
     draw() {
@@ -34,24 +46,43 @@ class Karens {
       //que salgan distintos mensajes a medida que se enfada y se hace grande
 
       this.tick++
-
-      if(this.tick >= 400 ){
+      if(this.tick >= 150 ){
         this.ctx.font = "18px Arial"
-        this.order = this.ctx.fillText(this.complaints[0], this.x-20, this.y-1)
+        this.ctx.save()
+        ctx.fillStyle = 'rgb(251, 209, 209)';
+        ctx.fillRect(this.x - 92, this.y-21, 255, 22);
+        this.ctx.fillStyle = "black"
+        this.order = this.ctx.fillText(this.problem, this.x-90, this.y-3)
+        this.ctx.restore()
       }
       if(this.tick >= 800){
+        this.ctx.save()
+        ctx.fillStyle = 'rgb(235, 106, 106)';
+        ctx.fillRect(this.x + 28, this.y +1, 85, 22);
+        this.ctx.fillStyle = "black"
         this.ctx.font = "19px Arial"
-        this.order = this.ctx.fillText(this.complaints[1], this.x+30, this.y+20)
-      }
-      if(this.tick >= 1200){
-        this.ctx.font = "20px Arial"
-        this.order = this.ctx.fillText(this.complaints[2], this.x-60, this.y+20);
+        this.order = this.ctx.fillText(this.complaints[0], this.x+30, this.y+20)
+        this.ctx.restore()
       }
       if(this.tick >= 1600){
-        this.ctx.font = "22px Arial"
-        this.order = this.ctx.fillText(this.complaints[3], this.x-70, this.y+50);
+        this.ctx.save()
+        ctx.fillStyle = 'rgb(236, 75, 75)';
+        ctx.fillRect(this.x - 62, this.y, 64, 22);
+        this.ctx.fillStyle = "black"
+        this.ctx.font = "20px Arial"
+        this.order = this.ctx.fillText(this.complaints[1], this.x-60, this.y+20);
+        this.ctx.restore()
       }
-      if(this.tick >= 1800 && this.tick<=1801){
+      if(this.tick >= 2400){
+        this.ctx.save()
+        ctx.fillStyle = 'red';
+        ctx.fillRect(this.x - 72, this.y+30, 220, 24);
+        this.ctx.fillStyle = "black"
+        this.ctx.font = "22px Arial"
+        this.order = this.ctx.fillText(this.complaints[2], this.x-70, this.y+50);
+        this.ctx.restore()
+      }
+      if(this.tick >= 2450 && this.tick<=2451){
         formsCheck();
         forms.splice(0,1);
       }
@@ -73,7 +104,7 @@ class Karens {
         this.vx = -0.3;
         this.vy = -0.3;
       }
-      if(this.tick % 400 === 0){
+      if(this.tick % 800 === 0){
         this.w += 5;
         this.h += 5;
       }

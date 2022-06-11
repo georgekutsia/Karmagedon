@@ -37,7 +37,6 @@ class Baby {
     this.y += this.vy;
     this.tick++;
     
-    console.log(this.x)
     if(this.x >= 0){
       this.vy = 0.3
     }
