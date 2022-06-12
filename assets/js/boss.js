@@ -10,8 +10,8 @@ class Boss {
     this.xy = this.salidas[Math.floor(Math.random() * this.salidas.length)];
     this.x = this.xy.x;
     this.y = this.xy.y;
-    this.w = 0.04 * this.ctx.canvas.width;
-    this.h = 0.08 * this.ctx.canvas.height;
+    this.w = 0.06 * this.ctx.canvas.width;
+    this.h = 0.1 * this.ctx.canvas.height;
     this.v = 0.2;
     this.bossImg = new Image();
     this.bossImg.src = "/assets/images/karens/boss derecha.png";
@@ -67,7 +67,7 @@ class Boss {
       this.bossImg.frame = 0;
     }
 
-    if(this.karenEnd >=400){
+    if(this.karenEnd >=4000){
       this.v = 2;
     }
   }

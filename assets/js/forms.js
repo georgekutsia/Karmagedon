@@ -4,7 +4,6 @@ const forms2 = document.getElementById("forms2");
 const forms3 = document.getElementById("forms3");
 const forms4 = document.getElementById("forms4");
 const forms5 = document.getElementById("forms5");
-
 function formsCheck() {
   if (forms.length < 5) {
     forms5.style.display = "none";
@@ -14,6 +13,7 @@ function formsCheck() {
   }
   if (forms.length < 3) {
     forms3.style.display = "none";
+    ALT = 16;
   }
   if (forms.length < 2) {
     forms2.style.display = "none";

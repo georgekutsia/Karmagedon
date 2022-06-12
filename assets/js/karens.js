@@ -46,6 +46,7 @@ class Karens {
       //que salgan distintos mensajes a medida que se enfada y se hace grande
 
       this.tick++
+      console.log(this.tick)
       if(this.tick >= 150 ){
         this.ctx.font = "18px Arial"
         this.ctx.save()
@@ -73,7 +74,7 @@ class Karens {
         this.order = this.ctx.fillText(this.complaints[1], this.x-60, this.y+20);
         this.ctx.restore()
       }
-      if(this.tick >= 2400){
+      if(this.tick >= 2300){
         this.ctx.save()
         ctx.fillStyle = 'red';
         ctx.fillRect(this.x - 72, this.y+30, 220, 24);
@@ -82,11 +83,10 @@ class Karens {
         this.order = this.ctx.fillText(this.complaints[2], this.x-70, this.y+50);
         this.ctx.restore()
       }
-      if(this.tick >= 2450 && this.tick<=2451){
+      if(this.tick >= 2350 && this.tick<= 2351){ //importante que borre de uno en uno
         formsCheck();
         forms.splice(0,1);
       }
-      //tengo 2 cosas que cambia, el tick y el [?], como hacer un loop? a saber..
     }
 
 
@@ -111,7 +111,7 @@ class Karens {
     }
   
     isVisible() {
-      return this.y + this.h > 0 && this.w < 45;
+      return this.y + this.h > 0 && this.w < 35;
     }
   
     collides(player) {

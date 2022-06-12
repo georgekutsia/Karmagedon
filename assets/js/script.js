@@ -14,6 +14,9 @@ const manager = document.getElementById("info-manager");
 const displ = document.getElementById("main-canvas");
 const cheat = document.getElementById("info-cheatsheet")
 const can = document.getElementById("canvas")
+const easy = document.getElementById("neon-easy")
+const hard = document.getElementById("neon-normal")
+const normal = document.getElementById("neon-hard")
 //botón del juego
 btn.addEventListener("click", function () {
     if (game.interval) {
@@ -29,6 +32,9 @@ btn.addEventListener("click", function () {
     begin.style.display = "none"
     cheat.style.display = "inline-block"
     restart.style.display = "flex"
+    easy.style.display = "none";
+    normal.style.display = "none";
+    hard.style.display = "none";
   });
 
   //el botón de reinicio

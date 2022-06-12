@@ -5,79 +5,82 @@ class Game {
     this.player = new Player(ctx);
     this.token = new Token(ctx);
     this.line = new Line(ctx);
+    this.healing = new HealingPlace(ctx)
   
     this.walls = [
-      new Wall(ctx, 60, 50, 30, 70),
-      new Wall(ctx, 60, 110, 30, 70),
-      new Wall(ctx, 60, 170, 30, 70),
+      new Wall(ctx, 60, 50, 20, 70),
+      new Wall(ctx, 60, 110, 20, 70),
+      new Wall(ctx, 60, 170, 20, 70),
 
-      new Wall(ctx, 285, 170, 30, 70),
-      new Wall(ctx, 175, 130, 70, 30),
-      new Wall(ctx, 285, 50, 30, 70),
+      new Wall(ctx, 285, 170, 20, 70),
+      new Wall(ctx, 175, 130, 70,25),
+      new Wall(ctx, 285, 50,25, 70),
 
-      new Wall(ctx, 380, 170, 30, 70),
-      new Wall(ctx, 380, 110, 30, 70),
-      new Wall(ctx, 380, 50, 30, 70),
+      new Wall(ctx, 380, 170,25, 70),
+      new Wall(ctx, 380, 110,25, 70),
+      new Wall(ctx, 380, 50,25, 70),
 
-      new Wall(ctx, 610, 170, 30, 70),
-      new Wall(ctx, 610, 110, 30, 70),
-      new Wall(ctx, 610, 50, 30, 70),
+      new Wall(ctx, 610, 170,25, 70),
+      new Wall(ctx, 610, 110,25, 70),
+      new Wall(ctx, 610, 50,25, 70),
 
-      new Wall(ctx, 700, 50, 30, 70),
-      new Wall(ctx, 700, 110, 30, 70),
-      new Wall(ctx, 700, 170, 30, 70),
+      new Wall(ctx, 700, 50,25, 70),
+      new Wall(ctx, 700, 110,25, 70),
+      new Wall(ctx, 700, 170,25, 70),
 
-      new Wall(ctx, 925, 50, 30, 70),
-      new Wall(ctx, 925, 110, 30, 70),
-      new Wall(ctx, 925, 170, 30, 70),
+      new Wall(ctx, 925, 50,25, 70),
+      new Wall(ctx, 925, 110,25, 70),
+      new Wall(ctx, 925, 170,25, 70),
+      new Wall(ctx, 800, 170,25, 70),
 
-      new Wall(ctx, 90, 50, 50, 30),
-      new Wall(ctx, 240, 50, 50, 30),
-      new Wall(ctx, 410, 205, 50, 30),
-      new Wall(ctx, 560, 205, 50, 30),
-      new Wall(ctx, 490, 130, 30, 50),
-      new Wall(ctx, 490, 80, 30, 50),
-      new Wall(ctx, 730, 50, 50, 30),
-      new Wall(ctx, 870, 50, 50, 30),
+      new Wall(ctx, 90, 50, 50,25),
+      new Wall(ctx, 240, 50, 50,25),
+      new Wall(ctx, 410, 205, 50,25),
+      new Wall(ctx, 560, 205, 50,25),
+      new Wall(ctx, 490, 130,25, 50),
+      new Wall(ctx, 490, 80,25, 50),
+      new Wall(ctx, 730, 50, 50,25),
+      new Wall(ctx, 870, 50, 50,25),
 
-      new Wall(ctx, 60, 320, 30, 70),
-      new Wall(ctx, 60, 380, 30, 70),
-      new Wall(ctx, 60, 440, 30, 70),
+      new Wall(ctx, 60, 320,25, 70),
+      new Wall(ctx, 60, 380,25, 70),
+      new Wall(ctx, 60, 440,25, 70),
 
-      new Wall(ctx, 285, 320, 30, 70),
-      new Wall(ctx, 285, 380, 30, 70),
-      new Wall(ctx, 285, 440, 30, 70),
+      new Wall(ctx, 285, 320,25, 70),
+      new Wall(ctx, 285, 380,25, 70),
+      new Wall(ctx, 285, 440,25, 70),
+      new Wall(ctx, 200, 380,25, 70),
 
-      new Wall(ctx, 380, 320, 30, 70),
-      new Wall(ctx, 380, 380, 30, 70),
-      new Wall(ctx, 380, 440, 30, 70),
+      new Wall(ctx, 380, 320,25, 70),
+      new Wall(ctx, 380, 380,25, 70),
+      new Wall(ctx, 380, 440,25, 70),
 
-      new Wall(ctx, 610, 320, 30, 70),
-      new Wall(ctx, 610, 380, 30, 70),
-      new Wall(ctx, 610, 440, 30, 70),
+      new Wall(ctx, 610, 320,25, 70),
+      new Wall(ctx, 610, 380,25, 70),
+      new Wall(ctx, 610, 440,25, 70),
 
-      new Wall(ctx, 700, 320, 30, 70),
-      new Wall(ctx, 700, 380, 30, 70),
-      new Wall(ctx, 700, 440, 30, 70),
+      new Wall(ctx, 700, 320,25, 70),
+      new Wall(ctx, 700, 380,25, 70),
+      new Wall(ctx, 700, 440,25, 70),
 
-      new Wall(ctx, 925, 320, 30, 70),
-      new Wall(ctx, 925, 380, 30, 70),
-      new Wall(ctx, 925, 440, 30, 70),
+      new Wall(ctx, 925, 320,25, 70),
+      new Wall(ctx, 925, 380,25, 70),
+      new Wall(ctx, 925, 440,25, 70),
 
-      new Wall(ctx, 90, 320, 50, 30),
-      new Wall(ctx, 240, 320, 50, 30),
-      new Wall(ctx, 90, 480, 50, 30),
-      new Wall(ctx, 240, 480, 50, 30),
+      new Wall(ctx, 90, 320, 50,25),
+      new Wall(ctx, 240, 320, 50,25),
+      new Wall(ctx, 90, 480, 50,25),
+      new Wall(ctx, 240, 480, 50,25),
 
-      new Wall(ctx, 410, 320, 50, 30),
-      new Wall(ctx, 560, 320, 50, 30),
-      new Wall(ctx, 465, 450, 50, 30),
-      new Wall(ctx, 500, 450, 50, 30),
+      new Wall(ctx, 410, 320, 50,25),
+      new Wall(ctx, 560, 320, 50,25),
+      new Wall(ctx, 465, 450, 50,25),
+      new Wall(ctx, 500, 450, 50,25),
 
-      new Wall(ctx, 880, 320, 50, 30),
-      new Wall(ctx, 830, 320, 50, 30),
-      new Wall(ctx, 730, 480, 50, 30),
-      new Wall(ctx, 780, 480, 50, 30),
+      new Wall(ctx, 880, 320, 50,25),
+      new Wall(ctx, 830, 320, 50,25),
+      new Wall(ctx, 730, 480, 50,25),
+      new Wall(ctx, 780, 480, 50,25),
     ];
 
     this.tack = 0; //karen
@@ -85,7 +88,7 @@ class Game {
     this.tock = 0; //fat
     this.tuck = 500; //puddle
     this.teck = 500; //fire
-    this.crazyTime = 0; //crazy
+    this.gooseTime = 0; //goose
     this.babyTime = 0; //baby
     this.bossTime = 0;//boss
     this.winTime = 0;
@@ -98,7 +101,7 @@ class Game {
     this.fats = [];
     this.puddles = [];
     this.fires = [];
-    this.crazys = [];
+    this.geese = [];
     this.bosss = [];
     this.setListeners();
 
@@ -107,45 +110,64 @@ class Game {
     this.musicStart.loop = true;
   }
   start() {
+    this.walkPuddleAudio = new Audio("/assets/audio/So1.mp3")
+    this.walkPuddleAudio.volume = 0.2;
+    this.walkPuddleAudio.play();
     this.musicStart.play();
     myFunction();
     this.interval = setInterval(() => {
       this.clear();
       this.draw();
       this.move();
+      console.log(this.player.x)
       this.tack++; //karen
       this.tick++; //rat
       this.tock++; //fat
       this.tuck++; //puddle
       this.teck++;
-      this.crazyTime++;
+      this.gooseTime++;
       this.babyTime++;
       this.bossTime++;
       this.winTime++;
 
       this.checkCollisions();
+
       if (this.winTime > 9000) {
         this.gameWin();
       }
-      if (this.tack > Math.random() * 100 + 3000) {
+      if(this.winTime == 3000){
+        this.thisAudio = new Audio("/assets/audio/Gets serious.mp3")
+        this.thisAudio.volume = 0.2;
+        this.thisAudio.play();
+      }
+      if (this.tack > Math.random() * 100 + 4030) {
         //karen
         this.tack = 0;
         this.karensAlert();
         this.addKarens();
+        this.thisAudio = new Audio("/assets/audio/Karen.mp3")
+        this.thisAudio.volume = 0.2;
+        this.thisAudio.play();
       }
-      if (this.tick > Math.random() * 200 + 100) {
+      if (this.tick > Math.random() * 200 + 5090) {
         //rat
         this.tick = 0;
         this.ratAlert();
         this.addRats();
+        this.thisAudio = new Audio("/assets/audio/Comemos.mp3")
+        this.thisAudio.volume = 0.2;
+        this.thisAudio.play();
       }
-      if (this.tock > Math.random() * 100 + 18300) {
+      if (this.tock > Math.random() * 100 + 1300) {
         //fat
         this.tock = 0;
         this.fatAlert();
         this.addFat();
+        this.thisAudio = new Audio("/assets/audio/Oh fuck.mp3")
+        this.thisAudio.volume = 0.2;
+        this.thisAudio.play();
       }
-      if (this.tuck > Math.random() * 100 + 540) {
+      if (this.tuck > Math.random() * 100 + 940) {
         //puddle
         this.tuck = 0;
         this.waterAlert();
@@ -153,8 +175,11 @@ class Game {
         this.puddleBeginAudio = new Audio("/assets/audio/puddleBegin.mp3")
         this.puddleBeginAudio.volume = 0.2;
         this.puddleBeginAudio.play();
+        this.thisAudio = new Audio("/assets/audio/Now what.mp3")
+        this.thisAudio.volume = 0.2;
+        this.thisAudio.play();
       }
-      if (this.teck > Math.random() * 100 + 540) {
+      if (this.teck > Math.random() * 100 + 640) {
         //fire
         this.teck = 0;
         this.fireAlert();
@@ -162,30 +187,44 @@ class Game {
         this.puddleBeginAudio = new Audio("/assets/audio/fireBegin.wav")
         this.puddleBeginAudio.volume = 0.2;
         this.puddleBeginAudio.play();
+        this.thisAudio = new Audio("/assets/audio/Oh fuck.mp3")
+        this.thisAudio.volume = 0.2;
+        this.thisAudio.play();
       }
-      if (this.crazyTime > Math.random() * 200 + 3000) {
-        //crazy
-        this.crazyTime = 0;
-        this.crazyAlert();
-        this.addCrazy();
+      if (this.gooseTime > Math.random() * 100 + 520) {
+        //goose
+        this.gooseTime = 0;
+        this.gooseAlert();
+        this.addGoose();
+        this.thisAudio = new Audio("/assets/audio/Goose.mp3")
+        this.thisAudio.volume = 0.2;
+        this.thisAudio.play();
+        this.thisAudio = new Audio("/assets/audio/geese.mp3")
+        this.thisAudio.volume = 0.1;
+        this.thisAudio.play();
       }
       if (this.babyTime > Math.random() * 100 + 1040) {
         //baby
         this.babyTime = 0;
         this.babyAlert();
         this.addBaby();
+        this.thisAudio = new Audio("/assets/audio/Los baby.mp3")
+        this.thisAudio.volume = 0.2;
+        this.thisAudio.play();
       }
-      if (this.bossTime > Math.random() * 100 + 4440) {
+      if (this.bossTime > Math.random() * 100 + 4340) {
         //boss
         this.bossTime = 0;
         this.bossAlert();
         this.addBoss();
+        this.thisAudio = new Audio("/assets/audio/Nonono.mp3")
+        this.thisAudio.volume = 0.2;
+        this.thisAudio.play();
       }
     }, 1000 / 60);
   }
   stop() {
     this.musicStart.pause();
-    console.log("")
     clearInterval(this.interval);
     this.interval = null;
     clearInterval(window.timerInterval);
@@ -195,11 +234,14 @@ class Game {
     this.karens = this.karens.filter((e) => e.isVisible());
     this.rats = this.rats.filter((e) => e.isVisible());
     this.fats = this.fats.filter((e) => e.isVisible());
-    this.crazys = this.crazys.filter((e) => e.isVisible());
+    this.geese = this.geese.filter((e) => e.isVisible());
     this.babys = this.babys.filter((e) => e.isVisible());
     this.bosss = this.bosss.filter((e) => e.isVisible());
+    this.puddles = this.puddles.filter((e) => e.isVisible());
+    this.fires = this.fires.filter((e) => e.isVisible());
     this.player.heats = this.player.heats.filter((e) => e.isVisible());
     this.player.waters = this.player.waters.filter((e) => e.isVisible());
+    
   }
 
   draw() {
@@ -212,9 +254,10 @@ class Game {
     this.karens.forEach((e) => e.draw());
     this.rats.forEach((e) => e.draw());
     this.fats.forEach((e) => e.draw());
-    this.crazys.forEach((e) => e.draw());
+    this.geese.forEach((e) => e.draw());
     this.babys.forEach((e) => e.draw());
     this.line.draw();
+    this.healing.draw();
   }
   move() {
     this.player.move();
@@ -222,14 +265,13 @@ class Game {
     this.karens.forEach((e) => e.move());
     this.rats.forEach((e) => e.move());
     this.fats.forEach((e) => e.move());
-    this.crazys.forEach((e) => e.move());
+    this.geese.forEach((e) => e.move());
     this.babys.forEach((e) => e.move());
     this.bosss.forEach((e) => e.move(this.player));
     this.puddles.forEach((e) => e.move());
     this.fires.forEach((e) => e.move());
     this.line.move();
-
-
+    this.healing.move();
   }
   addKarens() {
     const karens = new Karens(this.ctx);
@@ -243,9 +285,9 @@ class Game {
     const fats = new Fat(this.ctx);
     this.fats.push(fats);
   }
-  addCrazy() {
-    const crazys = new Crazy(this.ctx);
-    this.crazys.push(crazys);
+  addGoose() {
+    const geese = new Goose(this.ctx);
+    this.geese.push(geese);
   }
   addBaby() {
     const babys = new Baby(this.ctx);
@@ -284,9 +326,9 @@ class Game {
     statusOk.style.backgroundColor = "rgb(252, 5, 5)";
     statusOk.style.color = "white";
   }
-  crazyAlert() {
-    const crazyAlert = document.getElementById("crazy-alert");
-    crazyAlert.style.display = "inline-flex";
+  gooseAlert() {
+    const gooseAlert = document.getElementById("goose-alert");
+    gooseAlert.style.display = "inline-flex";
     const nothingToWorrie = document.getElementById("ok");
     nothingToWorrie.style.display = "none";
     const statusOk = document.getElementById("status");
@@ -327,7 +369,7 @@ class Game {
           this.player.heats.splice(0, 1);
           puddle.dicrease();
           if (puddle.h <= 20) {
-            this.puddles.splice(0, 1);
+            puddle.vx = 500;
             const waterAlert = document.getElementById("water-alert");
             waterAlert.style.display = "none";
             if (this.winTime > 10000) {
@@ -359,7 +401,7 @@ class Game {
           this.player.waters.splice(0, 1);
           fire.dicrease();
           if (fire.h <= 20) {
-            this.fires.splice(0, 1);
+            fire.vx = 500;
             const waterAlert = document.getElementById("water-alert");
             waterAlert.style.display = "none";
             if (this.winTime > 10000) {
@@ -389,7 +431,7 @@ class Game {
       }
       return true;
     });
-
+//impacto ratas al jugador
     this.rats = this.rats.filter((rat) => {
       if (rat.collides(this.player)) {
         this.player.hit();
@@ -399,14 +441,14 @@ class Game {
       }
       return true;
     });
-     this.rats.forEach((rat) =>{ 
-      this.player.heats = this.player.heats.filter((heat) =>{
-        if (heat.collides(rat)) {
-          this.player.heats.splice(0, 1);
-            this.rats.splice(0, 1);
-            const waterAlert = document.getElementById("rat-alert");
-            waterAlert.style.display = "none";
-          
+//impacto balas a las ratas
+    this.rat = new Rats(ctx);
+    this.rats.forEach((rat) =>{ 
+      this.player.waters = this.player.waters.filter((water) =>{
+        if (water.collides(rat)) {
+          this.player.waters.splice(0, 1);
+          rat.vx += 2;
+          return false
         } else return true
       })
     })
@@ -417,14 +459,39 @@ class Game {
       }
       return true;
     });
-    this.crazys = this.crazys.filter((crazy) => {
-      if (crazy.collides(this.player)) {
+    this.life 
+      if (this.healing.collides(this.player)) {
+        this.player.healslow();
+      }
+    this.geese = this.geese.filter((goose) => {
+      if (goose.collides(this.player)) {
         this.player.hit();
         this.player.hit();
         return false;
       }
       return true;
     });
+    this.goose = new Goose(ctx); //que el fuego mate al agua
+
+    this.geese.forEach((goose) =>{ 
+      this.player.heats = this.player.heats.filter((heat) =>{
+        if (heat.collides(goose)) {
+          this.player.heats.splice(0, 1);
+          if (goose.x < this.player.x) {
+            goose.x -= 50;
+          }
+          if (goose.x > this.player.x) {
+            goose.x += 50;
+          }
+          if (goose.y < this.player.y) {
+            goose.y -= 50;
+          }
+          if (goose.y > this.player.y) {
+            goose.y += 50;
+          }
+        } else return true
+      })
+    })
     this.babys = this.babys.filter((baby) => {
       if (baby.collides(this.player)) {
         this.player.heal();
@@ -436,14 +503,35 @@ class Game {
       if (boss.collides(this.player)) {
         this.player.hit();
         this.player.hit();
-        this.player.x = 0;
-        this.player.x = 0;
         C = 0;
         V = 0;
         return false;
       }
       return true;
     });
+    this.boss = new Boss(ctx); //impacto de agua a boss
+
+    this.bosss.forEach((boss) =>{ 
+      this.player.waters = this.player.waters.filter((water) =>{
+        if (water.collides(boss)) {
+          this.player.waters.splice(0, 1);
+          if (boss.x < this.player.x) {
+            boss.x -= 40;
+          }
+          if (boss.x > this.player.x) {
+            boss.x += 40;
+          }
+          if (boss.y < this.player.y) {
+            boss.y -= 40;
+          }
+          if (boss.y > this.player.y) {
+            boss.y += 40;
+          }
+          return false
+        } else return true
+      })
+    })
+
 
     // colisiones con las paredes y los charcos que retrasan al jugador
     this.walls.forEach((wall) => {
@@ -486,7 +574,7 @@ class Game {
     this.ctx.fillText("YOU ARE DEAD", 300, 220);
     this.rats = [];
     this.fats = [];
-    this.crazys = [];
+    this.geese = [];
     this.babys = [];
     this.karens = [];
     this.fires = [];
@@ -501,7 +589,7 @@ class Game {
     this.ctx.fillText("YOU WON!!! CONGRATULATIONS!", 10, 220);
     this.rats = [];
     this.fats = [];
-    this.crazys = [];
+    this.geese = [];
     this.babys = [];
     this.karens = [];
     this.boss = [];

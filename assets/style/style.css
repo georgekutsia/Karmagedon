@@ -65,7 +65,7 @@ u{
 	display: none;
 	border: 2px solid black;
   }
-#crazy-alert{
+#goose-alert{
 	background-color: rgb(221, 99, 99);
   color: black;
 	display: none;
@@ -118,39 +118,39 @@ span{
   height: 50px;
   display: inline-block;
   position:absolute;
-  top: 450px;
-  right: 0;
+  top: 430px;
+  right: 200px;
 }
 #forms2{
   width: 60px;;
   height: 50px;
   display: inline-block;
   position:absolute;
-  top: 450px;
-  right: 33px
+  top: 430px;
+  right: 233px
 }
 #forms3{
   width: 60px;;
   height: 50px;
   display: inline-block;
   position:absolute;
-  top: 450px;
-  right: 63px
+  top: 430px;
+  right: 263px
 }
 #forms4{
   width: 60px;;
   height: 50px;
   display: inline-block;
   position:absolute;
-  top: 450px;
-  right: 93px
+  top: 430px;
+  right: 293px
 }
 #forms5{
   width: 60px;;
   height: 50px;
   display: inline-block;
   position:absolute;
-  top: 450px;
-  right: 123px;
+  top: 430px;
+  right: 323px;
 }
 

@@ -1,4 +1,4 @@
-class Crazy {
+class Goose {
   constructor(ctx) {
     this.ctx = ctx;
     this.x = -4;
@@ -8,9 +8,9 @@ class Crazy {
     this.h = 0.1 * this.ctx.canvas.height;
     this.vx = 2;
     this.vy = 0;
-    this.crazyImg = new Image();
-    this.crazyImg.src = "/assets/images/elements/gansos.png";
-    this.crazyImg.frame = 0;
+    this.gooseImg = new Image();
+    this.gooseImg.src = "/assets/images/elements/gansos.png";
+    this.gooseImg.frame = 0;
 
     this.tick = 0;
     this.tock = 0;
@@ -18,11 +18,11 @@ class Crazy {
 
   draw() {
     this.ctx.drawImage(
-      this.crazyImg,
-      (this.crazyImg.frame * this.crazyImg.width) / 8,
+      this.gooseImg,
+      (this.gooseImg.frame * this.gooseImg.width) / 8,
       0,
-      this.crazyImg.width / 8, 
-      this.crazyImg.height,
+      this.gooseImg.width / 8, 
+      this.gooseImg.height,
       this.x, 
       this.y, 
       this.w,
@@ -55,24 +55,20 @@ class Crazy {
     }
     if(this.x >= 960){
       this.vx = -2
-      this.crazyImg.src = "/assets/images/elements/gansos reversa.png"
+      this.gooseImg.src = "/assets/images/elements/gansos reversa.png"
     }
   
-
-
-
-    console.log(this.vy)
     if (this.tick > 10) {
       this.tick = 0;
-      this.crazyImg.frame++;
+      this.gooseImg.frame++;
     }
 
     if (this.x < 0) {
       const ratAlert = document.getElementById("rat-alert");
       ratAlert.style.display = "none";
     }
-    if (this.crazyImg.frame > 7) {
-      this.crazyImg.frame = 0;
+    if (this.gooseImg.frame > 7) {
+      this.gooseImg.frame = 0;
     }
   }
 

@@ -1,8 +1,8 @@
 class Rats {
   constructor(ctx) {
     this.ctx = ctx;
-    this.x = this.ctx.canvas.width;
-    this.salidas = [20,260,510]
+    this.x = this.ctx.canvas.width - 300;
+    this.salidas = [20,250,270,510]
     this.y = this.salidas[Math.floor(Math.random()*this.salidas.length)]
     this.w = 0.1 * this.ctx.canvas.width;
     this.h = 0.05 * this.ctx.canvas.height;
@@ -49,7 +49,7 @@ class Rats {
   }
 
   isVisible() {
-    return this.x + this.w > 0;
+    return this.x + this.w > 0 && this.x + this.w < 1400;
   }
 
   collides(player) {

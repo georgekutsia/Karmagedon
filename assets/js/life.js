@@ -44,9 +44,15 @@ class Life {
     this.walkPuddleAudio.play();
   }
   loseLifeFire(){
-    this.total -= 0.001;
+    this.total -= 0.002;
+  }
+  healSlow(){
+    this.total += 0.001;
   }
   gainLife(){
     this.total += 0.2
+    this.walkPuddleAudio = new Audio("/assets/audio/Heal.mp3")
+    this.walkPuddleAudio.volume = 0.2;
+    this.walkPuddleAudio.play();
   }
 }

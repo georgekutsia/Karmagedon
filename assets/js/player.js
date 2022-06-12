@@ -1,8 +1,8 @@
 class Player {
   constructor(ctx) {
     this.ctx = ctx;
-    this.x = 85;
-    this.y = 0;
+    this.x = 999;
+    this.y = 280;
 
     this.w = 35;
     this.h = 35;
@@ -59,7 +59,9 @@ class Player {
       V = 86;
     }
     this.life.move();
-
+    if(this.x < 30 && this.y < 30){
+      healSlow();
+    }
     // LIMITES DEL CANVAS =>//
     if (this.y < 0) {
       this.y = 0;
@@ -71,8 +73,8 @@ class Player {
       this.vy = 0;
     }
 
-    if (this.x + this.w * 5 > this.ctx.canvas.width) {
-      this.x = this.ctx.canvas.width - this.w * 5;
+    if (this.x + this.w * 6 > this.ctx.canvas.width) {
+      this.x = this.ctx.canvas.width - this.w * 6;
       this.vx = 0;
     }
 
@@ -97,12 +99,29 @@ class Player {
   heal() {
     this.life.gainLife();
   }
+  healslow(){
+    this.life.healSlow();
+  }
   fireHit(){
     this.life.loseLifeFire();
   }
 
   isAlive() {
     return this.life.total > 0;
+  }
+  jump(){
+    if(this.direction === "top"){
+      this.y -= 50;
+    }
+    if(this.direction === "down"){
+      this.y += 50;
+    }
+    if(this.direction === "left"){
+      this.x -= 50;
+    }
+    if(this.direction === "right"){
+      this.x += 50;
+    }
   }
 
   keyDown(key) {
@@ -129,7 +148,7 @@ class Player {
     if (key === Z) {
       this.heater();
       this.bullet++;
-      if (this.bullet % 3 === 0) {
+      if (this.bullet % 6 === 0) {
         Z = 0;
         setTimeout(function () {
           Z = 90;
@@ -140,7 +159,7 @@ class Player {
     if (key === X) {
       this.waterer();
       this.bullet++;
-      if (this.bullet % 3 === 0) {
+      if (this.bullet % 6 === 0) {
         X = 0;
         setTimeout(function () {
           X = 88;
@@ -167,6 +186,17 @@ class Player {
         setTimeout(function () {
           V = 86;
         }, 2000);
+      }
+    }
+    if (key === ALT) {
+      console.log("uae")
+      this.jump();
+      this.bullet++;
+      if (this.bullet % 1 === 0) {
+        ALT = 0;
+        setTimeout(function () {
+          ALT = 16;
+        }, 3000);
       }
     }
   }
