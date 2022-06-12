@@ -1,0 +1,58 @@
+#display-adds{
+    border: 1px solid rgb(255, 255, 255);
+    display: inline-block;
+    position: absolute;
+    background-color: rgb(255, 149, 0);
+    font-size: 40px;
+    color: black;
+    z-index: 100;
+    margin-top: 90px;
+}
+.demo{
+    border: 1px solid rgb(255, 255, 255);
+    display: inline-block;
+    position: absolute;
+    background-color: rgb(255, 149, 0);
+    color: black;
+    z-index: 100;
+}
+#add-karen{
+    display: inline-block;
+    margin: 100px 0 0 110px;
+}
+#add-rat{
+    display: inline-block;
+    margin: 100px 0 0 160px;
+}
+#add-fat{
+    display: inline-block;
+    margin: 100px 0 0 195px;
+}
+#add-puddle{
+    display: inline-block;
+    margin: 100px 0 0 230px;
+}
+#add-fire{
+    display: inline-block;
+    margin: 100px 0 0 280px;
+}
+#add-boss{
+    display: inline-block;
+    margin: 100px 0 0 315px;
+}
+#add-goose{
+    display: inline-block;
+    margin: 100px 0 0 350px;
+}
+#add-discount{
+    display: inline-block;
+    margin: 100px 0 0 395px;
+}
+#add-cart{
+    display: inline-block;
+    margin: 100px 0 0 460px;
+}
+#add-baby{
+    display: inline-block;
+    margin: 100px 0 0 500px;
+}

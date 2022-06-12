@@ -17,6 +17,8 @@ const can = document.getElementById("canvas")
 const easy = document.getElementById("neon-easy")
 const hard = document.getElementById("neon-normal")
 const normal = document.getElementById("neon-hard")
+const demo = document.getElementById("display-adds")
+
 //botón del juego
 btn.addEventListener("click", function () {
     if (game.interval) {
@@ -35,6 +37,7 @@ btn.addEventListener("click", function () {
     easy.style.display = "none";
     normal.style.display = "none";
     hard.style.display = "none";
+    demo.style.display = "inline-block";
   });
 
   //el botón de reinicio

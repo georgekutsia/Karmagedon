@@ -10,8 +10,8 @@ class Line {
 
     this.tick = 0;
     this.v = 1;
-    this.a = -1;
-    this.b = 1;
+    this.a = -3;
+    this.b = 3;
 
 
     this.check = 0
@@ -32,11 +32,14 @@ class Line {
   }
 
   move() {
+    this.tick++
     this.y -= this.v
+    
     if(this.y < 50){
-      this.v = this.a
+      this.v = this.a;
     } else if(this.y > 220)
     this.v = this.b;
+    
 
       const prevStyle = this.ctx.fillStyle;
       this.ctx.fillStyle = "white";

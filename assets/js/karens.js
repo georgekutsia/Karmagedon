@@ -21,14 +21,14 @@ class Karens {
       this.complaints =
       ["Manager!", "Police!", "Give me a claim form!"] 
       this.problems =[" I do not like this shops decor!", 
-                      // "  I've been waiting 5 minutes!", 
-                      // "  Speak English in my country!", 
-                      // "All you workers are $%&# lazy!",
-                      // "  You can't treat me like that!",
-                      // "Why can't I use expired cupons!",
-                      // " I do not like the uniform here!",
-                      // "My husband is this malls CEO",
-                      // "I am late! Work faster! faster!",
+                      "  I've been waiting 5 minutes!", 
+                      "  Speak English in my country!", 
+                      "All you workers are $%&# lazy!",
+                      "  You can't treat me like that!",
+                      "Why can't I use expired cupons!",
+                      " I do not like the uniform here!",
+                      "My husband is this malls CEO",
+                      "I am late! Work faster! faster!",
                       "You looked at me with disgust!",
                       "  I hate how this place smells!"
                       ]

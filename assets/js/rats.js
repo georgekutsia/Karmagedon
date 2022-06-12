@@ -40,8 +40,7 @@ class Rats {
     }
 
     if (this.x < 0) {
-      const ratAlert = document.getElementById("rat-alert");
-      ratAlert.style.display = "none";
+
     }
     if (this.ratImg.frame > 5) {
       this.ratImg.frame = 0;

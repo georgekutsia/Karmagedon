@@ -43,8 +43,6 @@ class Fat {
       this.fat.frame++;
     }
     if (this.y < 0) {
-      const fatAlert = document.getElementById("fat-alert");
-      fatAlert.style.display = "none";
     }
     if (this.fat.frame > 7) {
       this.fat.frame = 0;

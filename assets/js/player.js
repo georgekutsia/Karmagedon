@@ -6,7 +6,7 @@ class Player {
 
     this.w = 35;
     this.h = 35;
-
+    this.boost = 0;
     this.vx = 0;
     this.vy = 0;
 
@@ -22,6 +22,8 @@ class Player {
     this.heats = [];
     this.waters = [];
     this.direction = "left";
+    this.coolDownFire = 2000;
+    this.coolDownWater = 2000;
   }
 
   draw() {
@@ -127,32 +129,32 @@ class Player {
   keyDown(key) {
     if (key === UP || key === W) {
       this.direction = "top";
-      this.vy = -4;
+      this.vy = -4 - this.boost;
       this.img.src = "/assets/images/PJ/MANAGER 1.png";
     }
     if (key === DOWN || key === S) {
       this.direction = "down";
-      this.vy = 4;
+      this.vy = 4 + this.boost;
       this.img.src = "/assets/images/PJ/MANAGER 3.png";
     }
     if (key === RIGHT || key === D) {
       this.direction = "right";
-      this.vx = 4;
+      this.vx = 4 + this.boost;
       this.img.src = "/assets/images/PJ/MANAGER 2.png";
     }
     if (key === LEFT || key === A) {
       this.direction = "left";
-      this.vx = -4;
+      this.vx = -4 - this.boost;
       this.img.src = "/assets/images/PJ/MANAGER 4.png";
     }
     if (key === Z) {
       this.heater();
       this.bullet++;
-      if (this.bullet % 6 === 0) {
+      if (this.bullet % 2 === 0) {
         Z = 0;
         setTimeout(function () {
           Z = 90;
-        }, 2000);
+        }, this.coolDownFire);
       }
     }
 
@@ -163,7 +165,7 @@ class Player {
         X = 0;
         setTimeout(function () {
           X = 88;
-        }, 1000);
+        }, this.coolDownWater);
       }
     }    
     if (key === C) {
