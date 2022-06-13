@@ -30,7 +30,13 @@ class Karens {
                       "My husband is this malls CEO",
                       "I am late! Work faster! faster!",
                       "You looked at me with disgust!",
-                      "  I hate how this place smells!"
+                      "  I hate how this place smells!",
+                      "I have never been disrespected!",
+                      "   You dont have it in stack?!",
+                      "My lawyer is the best in town!",
+                      "  Do you imply that i'm fat??!!",
+                      "  What do you don't work here??",
+                      "I've been waiting dor 2 hours!!"
                       ]
       this.problem = this.problems[Math.floor(Math.random()*this.problems.length)]
     }
@@ -42,19 +48,16 @@ class Karens {
       this.line = new Line(ctx)
       if(this.line.check <= 3){
       }     
-      
-      //que salgan distintos mensajes a medida que se enfada y se hace grande
-
       this.tick++
-      console.log(this.tick)
+
       if(this.tick >= 150 ){
-        this.ctx.font = "18px Arial"
-        this.ctx.save()
+        this.ctx.font = "18px Arial";
+        this.ctx.save();
         ctx.fillStyle = 'rgb(251, 209, 209)';
         ctx.fillRect(this.x - 92, this.y-21, 255, 22);
         this.ctx.fillStyle = "black"
         this.order = this.ctx.fillText(this.problem, this.x-90, this.y-3)
-        this.ctx.restore()
+        this.ctx.restore();
       }
       if(this.tick >= 800){
         this.ctx.save()

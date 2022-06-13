@@ -75,7 +75,7 @@ restart.addEventListener("click", function () {
       game.discounts > 0 || game.carts.length > 0) {
       game.fires = []; game.puddles = [];
       game.bosss = []; game.geese = []; game.fats = [];
-      game.rats = []; game.karens = []; game.discounts = []
+      game.rats = []; game.karens = []; game.discounts = [];
       game.carts = []; game.babys = [];
             demo.innerText = "Add it->";
     } 

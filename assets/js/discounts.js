@@ -3,12 +3,15 @@ class Discount {
       this.ctx = ctx;
 
       this.salidas = [
-        {x:15, y:15}, {x:15, y:510}
+        {x:15, y:15}, {x:15, y:510},
+        {x:415, y:15}, {x:415, y:510},
+        {x:650, y:15}, {x:650, y:510}, 
+        {x:900, y:15}, {x:900, y:510}, 
       ]
       this.xy = this.salidas[Math.floor(Math.random()*this.salidas.length)]
       this.x = this.xy.x;
       this.y = this.xy.y;
-      this.w = 0.08 * this.ctx.canvas.width;
+      this.w = 0.04 * this.ctx.canvas.width;
       this.h = 0.05 * this.ctx.canvas.height;
       this.a = new Image();
       this.a.src = "/assets/images/elements/dis0.png";
@@ -16,10 +19,9 @@ class Discount {
       this.b.src = "/assets/images/elements/dis1.png";
       this.c = new Image();
       this.c.src = "/assets/images/elements/dis2.png";
-      this.d = new Image();
-      this.d.src = "/assets/images/elements/dis3.png";
+
       
-      this.randomImage = [this.a,this.b,this.c,this.d]
+      this.randomImage = [this.a,this.b,this.c]
       this.image = this.randomImage[Math.floor(Math.random()*this.randomImage.length)]
       this.image.frame = 0;
   
@@ -31,9 +33,9 @@ class Discount {
       this.ctx.drawImage(
         this.image,
         0,
-        (this.image.frame * this.image.height)/1,
+        (this.image.frame * this.image.height)/4,
         this.image.width, 
-        this.image.height /1,
+        this.image.height /4,
         this.x, 
         this.y, 
         this.w,
@@ -43,14 +45,14 @@ class Discount {
   
     move() {
       this.tick++;
-      if (this.tick > 10) {
+      if (this.tick > 90) {
         this.tick = 0;
         this.image.frame++;
       }
   
       if (this.x < 0) {
       }
-      if (this.image.frame > 0) {
+      if (this.image.frame > 3) {
         this.image.frame = 0;
       }
     }

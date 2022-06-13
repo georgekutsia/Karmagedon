@@ -62,9 +62,6 @@ class Player {
       V = 86;
     }
     this.life.move();
-    if(this.x < 30 && this.y < 30){
-      healSlow();
-    }
     // LIMITES DEL CANVAS =>//
     if (this.y < 0) {
       this.y = 0;
@@ -128,6 +125,7 @@ class Player {
   }
 
   keyDown(key) {
+    this.bullet++
     if (key === UP || key === W) {
       this.direction = "top";
       this.vy = -4 - this.boost;

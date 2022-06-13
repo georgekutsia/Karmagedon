@@ -7,7 +7,8 @@
     color: black;
     z-index: 100;
     bottom: 70px;
-    left: 170px
+    left: 170px;
+    cursor: url("/assets/images/elements/cursorInfo"), pointer;
 }
 .demo{
     border: 1px solid rgb(255, 255, 255);
@@ -16,55 +17,58 @@
     background-color: rgb(255, 149, 0);
     color: black;
     z-index: 100;
+    bottom:70px;
+    cursor: url("/assets/images/elements/cursorInfo"), pointer;
 }
 
 #add-karen{
     display: none;
-    margin: 100px 0 0 310px;
-    bottom:90px;
+    margin: 120px 0 0 310px;
+    
+    
 }
 #add-rat{
     display: none;
     margin: 100px 0 0 360px;
-    bottom:90px;
+    
 }
 #add-fat{
     display: none;
     margin: 100px 0 0 395px;
-    bottom:90px;
+    
 }
 #add-puddle{
     display: none;
     margin: 100px 0 0 430px;
-    bottom:90px;
+    
 }
 #add-fire{
     display: none;
     margin: 100px 0 0 480px;
-    bottom:90px;
+    
 }
 #add-boss{
     display: none;
     margin: 100px 0 0 515px;
-    bottom:90px;
+    
 }
 #add-goose{
     display: none;
     margin: 100px 0 0 550px;
-    bottom:90px;
+    
 }
 #add-discount{
     display: none;
     margin: 100px 0 0 595px;
-    bottom:90px;
+    
 }
 #add-cart{
     display: none;
     margin: 100px 0 0 660px;
-    bottom:90px;
+    
 }
 #add-baby{
     display: none;
     margin: 100px 0 0 700px;
-    bottom:90px;
+    
 }

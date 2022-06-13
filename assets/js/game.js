@@ -5,8 +5,7 @@ class Game {
     this.player = new Player(ctx);
     this.token = new Token(ctx);
     this.line = new Line(ctx);
-    this.healing = new HealingPlace(ctx)
-  
+    this.healing = new HealingPlace(ctx);
     this.walls = [
       new Wall(ctx, 60, 50, 20, 70),
       new Wall(ctx, 60, 110, 20, 70),
@@ -121,6 +120,7 @@ class Game {
     this.musicStart.play();
     myFunction();
     this.interval = setInterval(() => {
+      this.endGame = document.getElementById("time");
       this.clear();
       this.draw();
       this.move();
@@ -135,13 +135,12 @@ class Game {
       this.winTime++;
       this.cartTime++;
       this.discountTime++;
-
       this.checkCollisions();
-      if (this.winTime >= 81120) {
-        this.gameWin();
-      }
-//6760
-      if(this.winTime == 3000){
+      // if (this.winTime >= 81100) {
+      //   this.gameWin();
+      // } // acaba a las 17:00
+
+      if(this.winTime == 5000){
         this.thisAudio = new Audio("/assets/audio/Gets serious.mp3")
         this.thisAudio.volume = 0.2;
         this.thisAudio.play();
@@ -237,6 +236,7 @@ class Game {
         this.thisAudio.volume = 0.2;
         this.thisAudio.play();
       }
+
     }, 1000 / 60);
   }
   stop() {
@@ -319,13 +319,13 @@ class Game {
     this.geese.forEach((e) => e.draw());
     this.babys.forEach((e) => e.draw());
     this.line.draw();
-
+    if(this.winTime > 1550)
+    {this.healing.draw();}
     this.carts.forEach((e) => e.draw());
     this.discounts.forEach((e) => e.draw());
+
   }
   move() {
-    console.log(this.player.coolDownFire)
-    console.log(this.player.coolDownWater)
     this.player.move();
     this.token.move();
     this.karens.forEach((e) => e.move());
@@ -464,6 +464,7 @@ class Game {
   //Colisiones start
 
   checkCollisions() {
+    this.winTime++
     this.puddle = new Puddle(ctx); //que el fuego mate al agua
 
     this.puddles.forEach((puddle) =>{ 
@@ -475,7 +476,7 @@ class Game {
             puddle.vx = 500;
             const waterAlert = document.getElementById("water-alert");
             waterAlert.style.display = "none";
-            if (this.winTime > 10000) {
+            if (this.winTime > 40000) {
               this.addPuddle();
             } //  el intervalo en el que aparecen mas charcos cada vez que los borras
           }
@@ -507,7 +508,7 @@ class Game {
             fire.vx = 500;
             const waterAlert = document.getElementById("water-alert");
             waterAlert.style.display = "none";
-            if (this.winTime > 10000) {
+            if (this.winTime > 40000) {
               this.addPuddle();
             } //  el intervalo en el que aparecen mas charcos cada vez que los borras
           }
@@ -592,7 +593,7 @@ class Game {
       return true;
     });
 
-      if (this.healing.collides(this.player)) {
+      if (this.healing.collides(this.player) && this.winTime >= 1550) {
         this.player.healslow();
       }
     this.geese = this.geese.filter((goose) => {
@@ -657,6 +658,7 @@ class Game {
       if (boss.collides(this.player)) {
         this.player.hit();
         this.player.hit();
+        this.player.boost -=2
         C = 0;
         V = 0;
         return false;
