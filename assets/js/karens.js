@@ -7,8 +7,8 @@ class Karens {
       this.xy = this.salidas[Math.floor(Math.random()*this.salidas.length)]
       this.x = this.xy.x;
       this.y = this.xy.y;
-      this.w = 20;
-      this.h = 20;
+      this.w = 25;
+      this.h = 25;
 
       this.vx = -0.3;
       this.vy = -0.3;
@@ -111,7 +111,7 @@ class Karens {
     }
   
     isVisible() {
-      return this.y + this.h > 0 && this.w < 35;
+      return this.y + this.h > 0 && this.w < 40;
     }
   
     collides(player) {

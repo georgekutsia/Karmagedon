@@ -48,6 +48,9 @@ class Life {
   }
   healSlow(){
     this.total += 0.001;
+    if(this.life >=1){
+      this.life = 1
+    }
   }
   gainLife(){
     this.total += 0.2

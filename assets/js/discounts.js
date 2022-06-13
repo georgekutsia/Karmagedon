@@ -3,12 +3,12 @@ class Discount {
       this.ctx = ctx;
 
       this.salidas = [
-        {x:15, y:15}, {x:15, y:540}
+        {x:15, y:15}, {x:15, y:510}
       ]
       this.xy = this.salidas[Math.floor(Math.random()*this.salidas.length)]
       this.x = this.xy.x;
       this.y = this.xy.y;
-      this.w = 0.1 * this.ctx.canvas.width;
+      this.w = 0.08 * this.ctx.canvas.width;
       this.h = 0.05 * this.ctx.canvas.height;
       this.a = new Image();
       this.a.src = "/assets/images/elements/dis0.png";
@@ -31,9 +31,9 @@ class Discount {
       this.ctx.drawImage(
         this.image,
         0,
-        (this.image.frame * this.image.height)/2,
+        (this.image.frame * this.image.height)/1,
         this.image.width, 
-        this.image.height /2,
+        this.image.height /1,
         this.x, 
         this.y, 
         this.w,
@@ -50,7 +50,7 @@ class Discount {
   
       if (this.x < 0) {
       }
-      if (this.image.frame > 1) {
+      if (this.image.frame > 0) {
         this.image.frame = 0;
       }
     }

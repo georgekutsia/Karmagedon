@@ -1,58 +1,70 @@
 #display-adds{
     border: 1px solid rgb(255, 255, 255);
-    display: inline-block;
+    display: none;
     position: absolute;
     background-color: rgb(255, 149, 0);
     font-size: 40px;
     color: black;
     z-index: 100;
-    margin-top: 90px;
+    bottom: 70px;
+    left: 170px
 }
 .demo{
     border: 1px solid rgb(255, 255, 255);
-    display: inline-block;
+    display: none;
     position: absolute;
     background-color: rgb(255, 149, 0);
     color: black;
     z-index: 100;
 }
+
 #add-karen{
-    display: inline-block;
-    margin: 100px 0 0 110px;
+    display: none;
+    margin: 100px 0 0 310px;
+    bottom:90px;
 }
 #add-rat{
-    display: inline-block;
-    margin: 100px 0 0 160px;
+    display: none;
+    margin: 100px 0 0 360px;
+    bottom:90px;
 }
 #add-fat{
-    display: inline-block;
-    margin: 100px 0 0 195px;
+    display: none;
+    margin: 100px 0 0 395px;
+    bottom:90px;
 }
 #add-puddle{
-    display: inline-block;
-    margin: 100px 0 0 230px;
+    display: none;
+    margin: 100px 0 0 430px;
+    bottom:90px;
 }
 #add-fire{
-    display: inline-block;
-    margin: 100px 0 0 280px;
+    display: none;
+    margin: 100px 0 0 480px;
+    bottom:90px;
 }
 #add-boss{
-    display: inline-block;
-    margin: 100px 0 0 315px;
+    display: none;
+    margin: 100px 0 0 515px;
+    bottom:90px;
 }
 #add-goose{
-    display: inline-block;
-    margin: 100px 0 0 350px;
+    display: none;
+    margin: 100px 0 0 550px;
+    bottom:90px;
 }
 #add-discount{
-    display: inline-block;
-    margin: 100px 0 0 395px;
+    display: none;
+    margin: 100px 0 0 595px;
+    bottom:90px;
 }
 #add-cart{
-    display: inline-block;
-    margin: 100px 0 0 460px;
+    display: none;
+    margin: 100px 0 0 660px;
+    bottom:90px;
 }
 #add-baby{
-    display: inline-block;
-    margin: 100px 0 0 500px;
+    display: none;
+    margin: 100px 0 0 700px;
+    bottom:90px;
 }

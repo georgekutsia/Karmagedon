@@ -49,8 +49,8 @@ class Puddle{
     this.w += 10;
   }
   dicrease(){
-    this.h -= 10;
-    this.w -= 10;
+    this.h -= 15;
+    this.w -= 15;
   }
   isVisible() {
     return this.x + this.w > 0 && this.x + this.w < 1400;
@@ -117,8 +117,8 @@ class Fire{
     this.w += 1;
   }
   dicrease(){
-    this.h -= 10;
-    this.w -= 10;
+    this.h -= 15;
+    this.w -= 15;
   }
   isVisible() {
     return this.x + this.w > 0 && this.x + this.w < 1400;

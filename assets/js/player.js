@@ -17,6 +17,7 @@ class Player {
     this.img.frame = 0;
 
     this.bullet = 0;
+    this.bllet = 0;
     this.tick = 0;
     this.life = new Life(ctx);
     this.heats = [];
@@ -150,7 +151,8 @@ class Player {
     if (key === Z) {
       this.heater();
       this.bullet++;
-      if (this.bullet % 2 === 0) {
+      console.log(this.coolDownFire)
+      if (this.bullet % 4 === 0) {
         Z = 0;
         setTimeout(function () {
           Z = 90;
@@ -160,8 +162,9 @@ class Player {
 
     if (key === X) {
       this.waterer();
-      this.bullet++;
-      if (this.bullet % 6 === 0) {
+      this.bllet++;
+      console.log(this.coolDownWater)
+      if (this.bllet % 3 === 0) {
         X = 0;
         setTimeout(function () {
           X = 88;
@@ -215,6 +218,9 @@ class Player {
     if (key === LEFT || key === A) {
       this.vx = 0;
     }
+
+
+    
   }
 
   heater() {

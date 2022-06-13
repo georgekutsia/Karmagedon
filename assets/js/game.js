@@ -86,8 +86,8 @@ class Game {
     this.karenTime = 0; //karen
     this.ratTime = 0; // rat
     this.fatTime= 0; //fat
-    this.puddleTime = 500; //puddle
-    this.fireTime = 500; //fire
+    this.puddleTime = 0; //puddle
+    this.fireTime = 0; //fire
     this.gooseTime = 0; //goose
     this.babyTime = 0; //baby
     this.bossTime = 0;//boss
@@ -112,6 +112,7 @@ class Game {
     this.musicStart = new Audio("/assets/audio/valse.mp3");
     this.musicStart.volume = 0.1;
     this.musicStart.loop = true;
+    
   }
   start() {
     this.walkPuddleAudio = new Audio("/assets/audio/So1.mp3")
@@ -136,10 +137,10 @@ class Game {
       this.discountTime++;
 
       this.checkCollisions();
-
-      if (this.winTime > 9000) {
+      if (this.winTime >= 81120) {
         this.gameWin();
       }
+//6760
       if(this.winTime == 3000){
         this.thisAudio = new Audio("/assets/audio/Gets serious.mp3")
         this.thisAudio.volume = 0.2;
@@ -149,16 +150,16 @@ class Game {
         //karen
         this.karenTime = 0;
         this.karensAlert();
-        this.addKarens();
+        this.addKaren();
         this.thisAudio = new Audio("/assets/audio/Karen.mp3")
         this.thisAudio.volume = 0.2;
         this.thisAudio.play();
       }
-      if (this.ratTime > Math.random() * 300 + 3004) {
+      if (this.ratTime > Math.random() * 300 + 32004) {
         //rat
         this.ratTime = 0;
         this.ratAlert();
-        this.addRats();
+        this.addRat();
         this.thisAudio = new Audio("/assets/audio/Comemos.mp3")
         this.thisAudio.volume = 0.2;
         this.thisAudio.play();
@@ -172,7 +173,7 @@ class Game {
         this.thisAudio.volume = 0.2;
         this.thisAudio.play();
       }
-      if (this.puddleTime > Math.random() * 100 + 9340) {
+      if (this.puddleTime > Math.random() * 100 + 93340) {
         //puddle
         this.puddleTime = 0;
         this.waterAlert();
@@ -184,7 +185,7 @@ class Game {
         this.thisAudio.volume = 0.2;
         this.thisAudio.play();
       }
-      if (this.fireTime > Math.random() * 100 + 6340) {
+      if (this.fireTime > Math.random() * 100 + 63340) {
         //fire
         this.fireTime = 0;
         this.fireAlert();
@@ -196,7 +197,7 @@ class Game {
         this.thisAudio.volume = 0.2;
         this.thisAudio.play();
       }
-      if (this.gooseTime > Math.random() * 100 + 5320) {
+      if (this.gooseTime > Math.random() * 100 + 53320) {
         //goose
         this.gooseTime = 0;
         this.gooseAlert();
@@ -208,7 +209,7 @@ class Game {
         this.thisAudio.volume = 0.1;
         this.thisAudio.play();
       }
-      if (this.babyTime > Math.random() * 100 + 10340) {
+      if (this.babyTime > Math.random() * 100 + 103340) {
         //baby
         this.babyTime = 0;
         this.babyAlert();
@@ -217,18 +218,17 @@ class Game {
         this.thisAudio.volume = 0.2;
         this.thisAudio.play();
       }
-      if (this.cartTime > Math.random() * 100 + 140) {
+      if (this.cartTime > Math.random() * 100 + 12420) {
         //cart
         this.cartTime = 0;
         this.addCart();
       }
-      if (this.discountTime > Math.random() * 100 + 240) {
+      if (this.discountTime > Math.random() * 100 + 22420) {
         //discount
-        console.log(this.discounts)
         this.discountTime = 0;
         this.addDiscount()
       }
-      if (this.bossTime > Math.random() * 100 + 1430) {
+      if (this.bossTime > Math.random() * 100 + 142230) {
         //boss
         this.bossTime = 0;
         this.bossAlert();
@@ -298,10 +298,15 @@ class Game {
       this.rats.length<= 0 && this.karens.length<= 0){
         const nothingToWorrie = document.getElementById("ok");
         nothingToWorrie.style.display = "inline-block";
+        const statusOk = document.getElementById("status");
+        statusOk.style.backgroundColor = "rgb(0, 128, 0)";
+        statusOk.style.color = "white";
+        statusOk.style.border = "3px solid rgb(0, 0, 255)";
       }
   }
 
   draw() {
+    this.winTime++
     this.puddles.forEach((e) => e.draw());
     this.fires.forEach((e) => e.draw());
     this.bosss.forEach((e) => e.draw());
@@ -314,11 +319,13 @@ class Game {
     this.geese.forEach((e) => e.draw());
     this.babys.forEach((e) => e.draw());
     this.line.draw();
-    this.healing.draw();
+
     this.carts.forEach((e) => e.draw());
     this.discounts.forEach((e) => e.draw());
   }
   move() {
+    console.log(this.player.coolDownFire)
+    console.log(this.player.coolDownWater)
     this.player.move();
     this.token.move();
     this.karens.forEach((e) => e.move());
@@ -334,11 +341,11 @@ class Game {
     this.carts.forEach((e) => e.move());
     this.discounts.forEach((e) => e.move());
   }
-  addKarens() {
+  addKaren() {
     const karens = new Karens(this.ctx);
     this.karens.push(karens);
   }
-  addRats() {
+  addRat() {
     const rats = new Rats(this.ctx);
     this.rats.push(rats);
   }
@@ -367,7 +374,6 @@ class Game {
     this.fires.push(fires);
   }
   addCart() {
-    console.log("wa")
     const carts = new Cart(this.ctx);
     this.carts.push(carts);
   }
@@ -375,21 +381,37 @@ class Game {
     const discounts = new Discount(this.ctx);
     this.discounts.push(discounts);
   }
+  // changeAlert(){
+  //   const nothingToWorrie = document.getElementById("ok");
+  //   nothingToWorrie.style.display = "none";
+  //   const statusOk = document.getElementById("status");
+  //   statusOk.style.backgroundColor = "rgb(252, 5, 5)";
+  //   statusOk.style.color = "white";
+  // } no me funciona llamarlo dentro de las otras alerts por alguna razón
   karensAlert() {
     const karensAlert = document.getElementById("karens-alert");
     karensAlert.style.display = "inline-flex";
+
     const nothingToWorrie = document.getElementById("ok");
     nothingToWorrie.style.display = "none";
+    const statusOk = document.getElementById("status");
+    statusOk.style.backgroundColor = "rgb(252, 5, 5)";
+    statusOk.style.color = "white";
   }
   ratAlert() {
     const ratAlert = document.getElementById("rat-alert");
     ratAlert.style.display = "inline-flex";
     const nothingToWorrie = document.getElementById("ok");
     nothingToWorrie.style.display = "none";
+    const statusOk = document.getElementById("status");
+    statusOk.style.backgroundColor = "rgb(252, 5, 5)";
+    statusOk.style.color = "white";
   }
   fatAlert() {
     const fatAlert = document.getElementById("fat-alert");
     fatAlert.style.display = "inline-flex";
+        const nothingToWorrie = document.getElementById("ok");
+    nothingToWorrie.style.display = "none";
     const statusOk = document.getElementById("status");
     statusOk.style.backgroundColor = "rgb(252, 5, 5)";
     statusOk.style.color = "white";
@@ -397,6 +419,8 @@ class Game {
   gooseAlert() {
     const gooseAlert = document.getElementById("goose-alert");
     gooseAlert.style.display = "inline-flex";
+        const nothingToWorrie = document.getElementById("ok");
+    nothingToWorrie.style.display = "none";
     const statusOk = document.getElementById("status");
     statusOk.style.backgroundColor = "rgb(252, 5, 5)";
     statusOk.style.color = "white";
@@ -404,7 +428,7 @@ class Game {
   waterAlert() {
     const waterAlert = document.getElementById("water-alert");
     waterAlert.style.display = "inline-flex";
-    const nothingToWorrie = document.getElementById("ok");
+        const nothingToWorrie = document.getElementById("ok");
     nothingToWorrie.style.display = "none";
     const statusOk = document.getElementById("status");
     statusOk.style.backgroundColor = "rgb(252, 5, 5)";
@@ -413,7 +437,7 @@ class Game {
   fireAlert() {
     const fireAlert = document.getElementById("fire-alert");
     fireAlert.style.display = "inline-flex";
-    const nothingToWorrie = document.getElementById("ok");
+        const nothingToWorrie = document.getElementById("ok");
     nothingToWorrie.style.display = "none";
     const statusOk = document.getElementById("status");
     statusOk.style.backgroundColor = "rgb(252, 5, 5)";
@@ -422,10 +446,20 @@ class Game {
   babyAlert() {
     const babyAlert = document.getElementById("baby-alert");
     babyAlert.style.display = "inline-flex";
+        const nothingToWorrie = document.getElementById("ok");
+    nothingToWorrie.style.display = "none";
+    const statusOk = document.getElementById("status");
+    statusOk.style.backgroundColor = "rgb(252, 5, 5)";
+    statusOk.style.color = "white";
   }
   bossAlert() {
     const babyAlert = document.getElementById("boss-alert");
     babyAlert.style.display = "inline-flex";
+        const nothingToWorrie = document.getElementById("ok");
+    nothingToWorrie.style.display = "none";
+    const statusOk = document.getElementById("status");
+    statusOk.style.backgroundColor = "rgb(252, 5, 5)";
+    statusOk.style.color = "white";
   }
   //Colisiones start
 
@@ -517,7 +551,7 @@ class Game {
         if (water.collides(rat)) {
           this.player.waters.splice(0, 1);
           rat.vx += 2;
-          this.player.coolDownWater -= 100;
+          this.player.coolDownWater -= 150;
           return false
         } else return true
       })
@@ -527,12 +561,29 @@ class Game {
         if (heat.collides(rat)) {
           this.player.heats.splice(0, 1);
           rat.vx += 2;
-          this.player.coolDownFire -= 100;
-          console.log(this.player.coolDownFire)
+          this.player.coolDownFire -= 150;
           return false
         } else return true
       })
     })
+
+    this.fats.forEach((fat) =>{ 
+      this.player.waters = this.player.waters.filter((water) =>{
+        if (water.collides(fat)) {
+          this.player.waters.splice(0, 1);
+          this.player.coolDownWater -= 150;
+        } else return true
+      })
+    })
+    this.fats.forEach((fat) =>{ 
+      this.player.heats = this.player.heats.filter((heat) =>{
+        if (heat.collides(fat)) {
+          this.player.heats.splice(0, 1);
+          this.player.coolDownFire -= 150;
+        } else return true
+      })
+    })
+
     this.fats = this.fats.filter((fat) => {
       if (fat.collides(this.player)) {
         this.player.vy = 0;
@@ -540,7 +591,7 @@ class Game {
       }
       return true;
     });
-    this.life 
+
       if (this.healing.collides(this.player)) {
         this.player.healslow();
       }
@@ -548,6 +599,9 @@ class Game {
       if (goose.collides(this.player)) {
         this.player.hit();
         this.player.hit();
+        this.player.coolDownWater += 200;
+        this.player.coolDownFire += 200;  
+
         return false;
       }
       return true;

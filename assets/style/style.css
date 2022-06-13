@@ -24,7 +24,7 @@ body{
 
 #canvas {
     border: 1px solid rgb(227, 147, 147);
-    background-image: url(/assets/images/fondos/canvas\ karmagedon.png);
+    background-image: url(/assets/images/fondos/canvas\ karmagedon\ def.png);
     background-size: 100%;
     left: 1220%
   }
@@ -104,10 +104,10 @@ u{
   }
   
 #ok{
-  background-color: green;
+  background-color: rgb(0, 128, 0);
   color: white;
   display: inline-flex;
-  border: 3px solid blue;
+  border: 3px solid rgb(0, 0, 255);
 }
 span{
   background-color:yellowgreen;
@@ -119,7 +119,7 @@ span{
   display: inline-block;
   position:absolute;
   top: 430px;
-  right: 200px;
+  left: 84%;
 }
 #forms2{
   width: 60px;;
@@ -127,7 +127,7 @@ span{
   display: inline-block;
   position:absolute;
   top: 430px;
-  right: 233px
+  left: 82.5%;
 }
 #forms3{
   width: 60px;;
@@ -135,7 +135,7 @@ span{
   display: inline-block;
   position:absolute;
   top: 430px;
-  right: 263px
+  left: 81%;
 }
 #forms4{
   width: 60px;;
@@ -143,7 +143,7 @@ span{
   display: inline-block;
   position:absolute;
   top: 430px;
-  right: 293px
+  left: 79.5%;
 }
 #forms5{
   width: 60px;;
@@ -151,6 +151,6 @@ span{
   display: inline-block;
   position:absolute;
   top: 430px;
-  right: 323px;
+  left: 78%;
 }
 
