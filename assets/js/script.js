@@ -8,6 +8,9 @@ const game2 = new Game2(ctx)
 
 const begin = document.querySelector(".neon-button");
 const btn = document.querySelector(".neon-butt");
+const btneasy = document.querySelector(".neon-butteasy");
+const btnnormal = document.querySelector(".neon-buttnormal");
+const btnhard = document.querySelector(".neon-butthard");
 const restart = document.querySelector(".neon-bu")
 const info = document.getElementById("intro-canvas");
 const manager = document.getElementById("info-manager");
@@ -15,8 +18,8 @@ const displ = document.getElementById("main-canvas");
 const cheat = document.getElementById("info-cheatsheet")
 const can = document.getElementById("canvas")
 const easy = document.getElementById("neon-easy")
-const hard = document.getElementById("neon-normal")
-const normal = document.getElementById("neon-hard")
+const normal = document.getElementById("neon-normal")
+const hard = document.getElementById("neon-hard")
 const demo = document.getElementById("display-adds")
 const zkaren = document.getElementById("add-karen")
 const zrat = document.getElementById("add-rat")
@@ -54,6 +57,41 @@ btn.addEventListener("click", function () {
     hard.style.display = "none";
     demo.style.display = "inline-block";
   });
+
+
+  //  GAME 2 EASY EASY DE CODE START
+easy.addEventListener("click", function () {
+    game2.start();
+    displ.style.display = "block"
+    info.style.display = "none"
+    manager.style.display = "none"
+    begin.style.display = "none"
+    cheat.style.display = "inline-block"
+    restart.style.display = "flex"
+    easy.style.display = "none";
+    normal.style.display = "none";
+    hard.style.display = "none";
+    demo.style.display = "none";
+    btn.style.display = "none"
+    btneasy.style.display = "flex"
+  });
+  btneasy.addEventListener("click", function () {
+    if (game2.interval) {
+      game2.stop();
+      btneasy.innerText = "Go...";
+    } else {
+      game2.start();
+      btneasy.innerText = "Rest...";
+    }
+  });
+
+    //  GAME 2 EASY EASY DE CODE END
+
+
+
+
+
+    
   //el botón de reinicio
 restart.addEventListener("click", function () {
   window.location.reload();

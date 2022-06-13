@@ -6,7 +6,7 @@ class Life {
     this.y = 400;
     this.w = 180;
     this.h = 110;
-    this.total = 1;
+    this.total = 1.5;
 
     this.v = 0.3;
     ctx.font = "40px Verdana";

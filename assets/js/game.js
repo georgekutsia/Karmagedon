@@ -12,8 +12,8 @@ class Game {
       new Wall(ctx, 60, 170, 20, 70),
 
       new Wall(ctx, 285, 170, 20, 70),
-      new Wall(ctx, 175, 130, 70,25),
-      new Wall(ctx, 285, 50,25, 70),
+      new Wall(ctx, 285, 110, 20, 70),
+      new Wall(ctx, 285, 50, 20, 70),
 
       new Wall(ctx, 380, 170,25, 70),
       new Wall(ctx, 380, 110,25, 70),
@@ -70,6 +70,8 @@ class Game {
       new Wall(ctx, 240, 320, 50,25),
       new Wall(ctx, 90, 480, 50,25),
       new Wall(ctx, 240, 480, 50,25),
+      new Wall(ctx, 190, 110, 20, 70),
+      new Wall(ctx, 830, 330, 20, 70),
 
       new Wall(ctx, 410, 320, 50,25),
       new Wall(ctx, 560, 320, 50,25),
@@ -139,6 +141,9 @@ class Game {
       // if (this.winTime >= 81100) {
       //   this.gameWin();
       // } // acaba a las 17:00
+      if (this.winTime >= 81100) {
+        this.gameWin();
+      } 
 
       if(this.winTime == 5000){
         this.thisAudio = new Audio("/assets/audio/Gets serious.mp3")
@@ -319,11 +324,11 @@ class Game {
     this.geese.forEach((e) => e.draw());
     this.babys.forEach((e) => e.draw());
     this.line.draw();
-    if(this.winTime > 1550)
-    {this.healing.draw();}
     this.carts.forEach((e) => e.draw());
     this.discounts.forEach((e) => e.draw());
-
+    if(this.winTime > 550){
+      this.healing.draw();
+    }
   }
   move() {
     this.player.move();
@@ -593,15 +598,15 @@ class Game {
       return true;
     });
 
-      if (this.healing.collides(this.player) && this.winTime >= 1550) {
+      if (this.healing.collides(this.player) && this.winTime >= 550) {
         this.player.healslow();
       }
     this.geese = this.geese.filter((goose) => {
       if (goose.collides(this.player)) {
         this.player.hit();
         this.player.hit();
-        this.player.coolDownWater += 200;
-        this.player.coolDownFire += 200;  
+        this.player.coolDownWater += 300;
+        this.player.coolDownFire += 300;  
 
         return false;
       }
@@ -613,6 +618,7 @@ class Game {
       this.player.heats = this.player.heats.filter((heat) =>{
         if (heat.collides(goose)) {
           this.player.heats.splice(0, 1);
+          this.player.coolDownFire -= 150;
           if (goose.x < this.player.x) {
             goose.x -= 50;
           }
@@ -632,6 +638,7 @@ class Game {
       this.player.waters = this.player.waters.filter((water) =>{
         if (water.collides(goose)) {
           this.player.waters.splice(0, 1);
+          this.player.coolDownWater -= 150;
           if (goose.x < this.player.x) {
             goose.x -= 50;
           }
