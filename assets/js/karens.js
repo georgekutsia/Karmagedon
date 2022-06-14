@@ -2,12 +2,18 @@ class Karens {
   constructor(ctx) {
     this.ctx = ctx;
     this.salidas = [
-      { x: 155, y: 100 },
-      { x: 485, y: 100 },
-      { x: 805, y: 100 },
-      { x: 155, y: 420 },
-      { x: 485, y: 420 },
-      { x: 805, y: 420 },
+      { x: 115, y: 120 },
+      { x: 225, y: 120 },
+      { x: 435, y: 120 },
+      { x: 545, y: 120 },
+      { x: 755, y: 120 },
+      { x: 865, y: 120 },
+      { x: 115, y: 420 },
+      { x: 225, y: 420 },
+      { x: 435, y: 420 },
+      { x: 545, y: 420 },
+      { x: 755, y: 420 },
+      { x: 885, y: 420 },
     ];
     this.xy = this.salidas[Math.floor(Math.random() * this.salidas.length)];
     this.x = this.xy.x;
@@ -84,6 +90,10 @@ class Karens {
       "  Do you imply that i'm fat??!!",
       "  What do you don't work here??",
       "I've been waiting dor 2 hours!!",
+      "My baby is in the car. hurry up!",
+      "I always buy milk in the pharmacy",
+      "   Why can't I get it for free??",
+      "  I don't care about the camera",
     ];
     this.problem =
       this.problems[Math.floor(Math.random() * this.problems.length)];

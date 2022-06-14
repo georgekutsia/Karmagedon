@@ -6,8 +6,8 @@
     font-size: 40px;
     color: black;
     z-index: 100;
-    bottom: 70px;
-    left: 170px;
+    bottom: 60px;
+    left: 210px;
     cursor: url("/assets/images/elements/cursorInfo"), pointer;
 }
 .demo{
@@ -17,7 +17,7 @@
     background-color: rgb(255, 149, 0);
     color: black;
     z-index: 100;
-    bottom:70px;
+    bottom:90px;
     cursor: url("/assets/images/elements/cursorInfo"), pointer;
 }
 

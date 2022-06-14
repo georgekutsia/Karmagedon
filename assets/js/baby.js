@@ -2,7 +2,7 @@ class Baby {
   constructor(ctx) {
     this.ctx = ctx;
     this.salidas = [
-      {x:0, y:0},{x:0, y:200}, {x:0, y:300}, {x:0, y:400}
+      {x:0, y:150},{x:0, y:200}, {x:0, y:300}, {x:0, y:400}, {x:0, y:450}, {x:0, y:250}, {x:0, y:50}, {x:0, y:400}
     ]
     this.xy = this.salidas[Math.floor(Math.random()*this.salidas.length)]
     this.x = this.xy.x;

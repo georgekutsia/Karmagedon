@@ -29,14 +29,14 @@ class Game {
       new Wall(ctx, 925, 50, 25, 70),
       new Wall(ctx, 925, 110, 25, 70),
       new Wall(ctx, 925, 170, 25, 70),
-      new Wall(ctx, 800, 170, 25, 70),
+      new Wall(ctx, 800, 170, 50, 50),
 
       new Wall(ctx, 90, 50, 50, 25),
       new Wall(ctx, 240, 50, 50, 25),
       new Wall(ctx, 410, 205, 50, 25),
       new Wall(ctx, 560, 205, 50, 25),
-      new Wall(ctx, 490, 130, 25, 50),
-      new Wall(ctx, 490, 80, 25, 50),
+      new Wall(ctx, 482, 130, 60, 60),
+      new Wall(ctx, 490, 80, 40, 40),
       new Wall(ctx, 730, 50, 50, 25),
       new Wall(ctx, 870, 50, 50, 25),
 
@@ -47,7 +47,7 @@ class Game {
       new Wall(ctx, 285, 320, 25, 70),
       new Wall(ctx, 285, 380, 25, 70),
       new Wall(ctx, 285, 440, 25, 70),
-      new Wall(ctx, 200, 380, 25, 70),
+      new Wall(ctx, 180, 380, 40, 40),
 
       new Wall(ctx, 380, 320, 25, 70),
       new Wall(ctx, 380, 380, 25, 70),
@@ -69,7 +69,8 @@ class Game {
       new Wall(ctx, 240, 320, 50, 25),
       new Wall(ctx, 90, 480, 50, 25),
       new Wall(ctx, 240, 480, 50, 25),
-      new Wall(ctx, 190, 110, 20, 70),
+      new Wall(ctx, 170, 110, 40, 40),
+      new Wall(ctx, 80, 200, 40, 40),
       new Wall(ctx, 830, 330, 20, 70),
 
       new Wall(ctx, 410, 320, 50, 25),
@@ -143,8 +144,8 @@ class Game {
       this.checkCollisions();
       // if (this.winTime >= 81100) {
       //   this.gameWin();
-      // } // acaba a las 17:00
-      if (this.winTime >= 121600) {
+      // } // acaba a las 17:00     //121600 acaba a las 21:00:15
+      if (this.winTime >= 121550) {
         this.gameWin();
       }
       // if (this.winTime >= 1100) {

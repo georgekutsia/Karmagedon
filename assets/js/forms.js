@@ -10,13 +10,14 @@ function formsCheck() {
   }
   if (forms.length < 4) {
     forms4.style.display = "none";
+    ALT = 16;
   }
   if (forms.length < 3) {
     forms3.style.display = "none";
-    ALT = 16;
   }
   if (forms.length < 2) {
     forms2.style.display = "none";
+    
   }
   if (forms.length < 1) {
     forms1.style.display = "none";

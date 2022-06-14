@@ -30,6 +30,7 @@ class Player {
     this.direction = "left";
     this.coolDownFire = 2000;
     this.coolDownWater = 2000;
+    this.jumptimer = 2000; //quizás haga algo para disminuirlo o aumentar su distancia
   }
 
   draw() {
@@ -48,6 +49,7 @@ class Player {
     this.heats.forEach((heat) => heat.draw());
     this.waters.forEach((water) => water.draw());
     this.life.draw();
+    console.log(this.x)
 
   }
 
@@ -114,16 +116,16 @@ class Player {
   }
   jump(){
     if(this.direction === "top"){
-      this.y -= 50;
+      this.y -= 60;
     }
     if(this.direction === "down"){
-      this.y += 50;
+      this.y += 60;
     }
     if(this.direction === "left"){
-      this.x -= 50;
+      this.x -= 60;
     }
     if(this.direction === "right"){
-      this.x += 50;
+      this.x += 60;
     }
   }
 
@@ -217,11 +219,12 @@ class Player {
     if (key === ALT) {
       this.jump();
       this.altTime++;
-      if (this.altTime % 1 === 0) {
+      if (this.altTime  >= 1) {
+        this.altTime = 0;
         ALT = 0;
         setTimeout(function () {
           ALT = 16;
-        }, 3000);
+        }, this.jumptimer);
       }
     }
 
@@ -239,22 +242,30 @@ class Player {
       heat.vx = 5;
       heat.vy = 0;
       heat.heatImg.src = "/assets/images/munición/bola de fuego copia 3.png";
-      this.img.src = "/assets/images/karens/karen1.png";
+      this.img.src = "/assets/images/PJ/imright.png";
+      this.img.frame++
     }
     if (this.direction === "left") {
       heat.vx = -5;
       heat.vy = 0;
       heat.heatImg.src = "/assets/images/munición/bola de fuego copia.png";
+      this.img.src = "/assets/images/PJ/imleft.png";
+      this.img.frame++
     }
     if (this.direction === "top") {
       heat.vx = 0;
       heat.vy = -5;
       heat.heatImg.src = "/assets/images/munición/bola de fuego copia 2.png";
+      this.img.src = "/assets/images/PJ/imup.png";
+      this.img.frame++
     }
     if (this.direction === "down") {
-      heat.vx = 0;
+      heat.vx = 0;  
       heat.vy = 5;
       heat.heatImg.src = "/assets/images/munición/bola de fuego.png";
+      this.img.src = "/assets/images/PJ/imdown.png";
+      this.img.frame++
+      
     }
     this.heats.push(heat);
   }
@@ -269,21 +280,29 @@ class Player {
       heat.vx = -5;
       heat.vy = 0;
       heat.heatImg.src = "/assets/images/munición/bola de fuego copia.png";
+      this.img.src = "/assets/images/PJ/imright.png";
+      this.img.frame++
     }
     if (this.direction === "left") {
       heat.vx = 5;
       heat.vy = 0;
       heat.heatImg.src = "/assets/images/munición/bola de fuego copia 3.png";
+      this.img.src = "/assets/images/PJ/imleft.png";
+      this.img.frame++
     }
     if (this.direction === "top") {
       heat.vx = 0;
       heat.vy = 5;
       heat.heatImg.src = "/assets/images/munición/bola de fuego.png";
+      this.img.src = "/assets/images/PJ/imup.png";
+      this.img.frame++
     }
     if (this.direction === "down") {
       heat.vx = 0;
       heat.vy = -5;
       heat.heatImg.src = "/assets/images/munición/bola de fuego copia 2.png";
+      this.img.src = "/assets/images/PJ/imdown.png";
+      this.img.frame++
     }
     this.heats.push(heat);
   }
@@ -298,21 +317,29 @@ class Player {
       water.vx = 4;
       water.vy = 0;
       water.w = 60;
+      this.img.src = "/assets/images/PJ/imright.png";
+      this.img.frame++
     }
     if (this.direction === "left") {
       water.vx = -4;
       water.vy = 0;
       water.w = 60;
+      this.img.src = "/assets/images/PJ/imleft.png";
+      this.img.frame++
     }
     if (this.direction === "top") {
       water.vx = 0;
       water.vy = -4;
       water.h = 60;
+      this.img.src = "/assets/images/PJ/imup.png";
+      this.img.frame++
     }
     if (this.direction === "down") {
       water.vx = 0;
       water.vy = 4;
       water.h = 60;
+      this.img.src = "/assets/images/PJ/imdown.png";
+      this.img.frame++
     }
     this.waters.push(water);
   }
@@ -327,21 +354,29 @@ class Player {
       water.vx = 0;
       water.vy = 4;
       water.w = 60;
+      this.img.src = "/assets/images/PJ/imright.png";
+      this.img.frame++
     }
     if (this.direction === "left") {
       water.vx = 0;
       water.vy = -4;
       water.w = 60;
+      this.img.src = "/assets/images/PJ/imdown.png";
+      this.img.frame++
     }
     if (this.direction === "top") {
       water.vx = -4;
       water.vy = 0;
       water.h = 60;
+      this.img.src = "/assets/images/PJ/imup.png";
+      this.img.frame++
     }
     if (this.direction === "down") {
       water.vx = 4;
       water.vy = 0;
       water.h = 60;
+      this.img.src = "/assets/images/PJ/imdown.png";
+      this.img.frame++
     }
     this.waters.push(water);
   }
