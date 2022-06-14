@@ -154,3 +154,16 @@ span{
   left: 78%;
 }
 
+
+#lose{
+  display: none;
+  position: absolute;
+  margin: 8.5% 0 0 17%;
+  z-index: 100;
+}
+#win{
+  display: none;
+  position: absolute;
+  margin: 3.5% 0 0 27%;
+  z-index: 100;
+}

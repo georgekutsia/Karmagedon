@@ -30,7 +30,7 @@
   font-size: 4rem;
   display: inline-block;
   cursor: url("/assets/images/elements/cursorInfo"), pointer;
-  left: 30%;
+  left: 28%;
   top : 200px;
   text-decoration: none;
   color: var(--clr-neon);
@@ -247,7 +247,7 @@
 
   box-shadow: inset 0 0 0.5em 0 var(--clr-neonbu), 0 0 0.5em 0 var(--clr-neonbu);
 
-  left: 35%;
+  left: 32%;
   bottom: 8%;
 }
 
@@ -267,6 +267,7 @@
 #neon-easy:hover{
   opacity:1;
   transition: 1s;
+  content: BULALA;
 }
 #neon-easy::after {
   content: "";
@@ -315,7 +316,7 @@
 
   box-shadow: inset 0 0 0.5em 0 var(--clr-neonbu1), 0 0 0.5em 0 var(--clr-neonbu1);
 
-  left: 43%;
+  left: 42%;
   bottom: 8%;
 }
 

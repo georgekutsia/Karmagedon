@@ -6,7 +6,7 @@ class Life {
     this.y = 400;
     this.w = 180;
     this.h = 110;
-    this.total = 1.5;
+    this.total = 1;
 
     this.v = 0.3;
     ctx.font = "40px Verdana";
@@ -39,9 +39,9 @@ class Life {
 
   loseLife() {
     this.total -= 0.2;
-    this.walkPuddleAudio = new Audio("/assets/audio/walkOnPuddle.mp3")
-    this.walkPuddleAudio.volume = 0.2;
-    this.walkPuddleAudio.play();
+    this.damageAudio = new Audio("/assets/audio/ouch.mp3")
+    this.damageAudio.volume = 0.2;
+    this.damageAudio.play();
   }
   loseLifeFire(){
     this.total -= 0.002;
@@ -54,8 +54,8 @@ class Life {
   }
   gainLife(){
     this.total += 0.2
-    this.walkPuddleAudio = new Audio("/assets/audio/Heal.mp3")
-    this.walkPuddleAudio.volume = 0.2;
-    this.walkPuddleAudio.play();
+    this.healAudio = new Audio("/assets/audios ad/Sanar.mp3")
+    this.healAudio.volume = 0.15;
+    this.healAudio.play();
   }
 }

@@ -8,7 +8,7 @@ class Heat {
 
     this.player = player;
 
-    this.vx = 2;
+    this.vx = 0;
     this.vy = 0;
 
     this.dispose = false;

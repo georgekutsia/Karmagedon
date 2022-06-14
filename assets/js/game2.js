@@ -15,67 +15,65 @@ class Game2 {
       new Wall(ctx, 285, 110, 20, 70),
       new Wall(ctx, 285, 50, 20, 70),
 
-      new Wall(ctx, 380, 170,25, 70),
-      new Wall(ctx, 380, 110,25, 70),
-      new Wall(ctx, 380, 50,25, 70),
+      new Wall(ctx, 380, 170, 25, 70),
+      new Wall(ctx, 380, 110, 25, 70),
+      new Wall(ctx, 380, 50, 25, 70),
 
-      new Wall(ctx, 610, 170,25, 70),
-      new Wall(ctx, 610, 110,25, 70),
-      new Wall(ctx, 610, 50,25, 70),
+      new Wall(ctx, 610, 170, 25, 70),
+      new Wall(ctx, 610, 110, 25, 70),
+      new Wall(ctx, 610, 50, 25, 70),
 
-      new Wall(ctx, 700, 50,25, 70),
-      new Wall(ctx, 700, 110,25, 70),
-      new Wall(ctx, 700, 170,25, 70),
+      new Wall(ctx, 700, 50, 25, 70),
+      new Wall(ctx, 700, 110, 25, 70),
+      new Wall(ctx, 700, 170, 25, 70),
 
-      new Wall(ctx, 925, 50,25, 70),
-      new Wall(ctx, 925, 110,25, 70),
-      new Wall(ctx, 925, 170,25, 70),
+      new Wall(ctx, 925, 50, 25, 70),
+      new Wall(ctx, 925, 110, 25, 70),
+      new Wall(ctx, 925, 170, 25, 70),
 
-      new Wall(ctx, 285, 320,25, 70),
-      new Wall(ctx, 285, 380,25, 70),
-      new Wall(ctx, 285, 440,25, 70),
-      new Wall(ctx, 200, 380,25, 70),
+      new Wall(ctx, 285, 320, 25, 70),
+      new Wall(ctx, 285, 380, 25, 70),
+      new Wall(ctx, 285, 440, 25, 70),
+      new Wall(ctx, 200, 380, 25, 70),
 
-      new Wall(ctx, 240, 50, 50,25),
-      new Wall(ctx, 490, 130,25, 50),
-      new Wall(ctx, 870, 50, 50,25),
+      new Wall(ctx, 240, 50, 50, 25),
+      new Wall(ctx, 490, 130, 25, 50),
+      new Wall(ctx, 870, 50, 50, 25),
 
-      new Wall(ctx, 60, 320,25, 70),
-      new Wall(ctx, 60, 380,25, 70),
-      new Wall(ctx, 60, 440,25, 70),
+      new Wall(ctx, 60, 320, 25, 70),
+      new Wall(ctx, 60, 380, 25, 70),
+      new Wall(ctx, 60, 440, 25, 70),
 
-      new Wall(ctx, 380, 320,25, 70),
-      new Wall(ctx, 380, 380,25, 70),
-      new Wall(ctx, 380, 440,25, 70),
+      new Wall(ctx, 380, 320, 25, 70),
+      new Wall(ctx, 380, 380, 25, 70),
+      new Wall(ctx, 380, 440, 25, 70),
 
-      new Wall(ctx, 610, 320,25, 70),
-      new Wall(ctx, 610, 380,25, 70),
-      new Wall(ctx, 610, 440,25, 70),
+      new Wall(ctx, 610, 320, 25, 70),
+      new Wall(ctx, 610, 380, 25, 70),
+      new Wall(ctx, 610, 440, 25, 70),
 
-      new Wall(ctx, 700, 320,25, 70),
-      new Wall(ctx, 700, 380,25, 70),
-      new Wall(ctx, 700, 440,25, 70),
+      new Wall(ctx, 700, 320, 25, 70),
+      new Wall(ctx, 700, 380, 25, 70),
+      new Wall(ctx, 700, 440, 25, 70),
 
-      new Wall(ctx, 925, 320,25, 70),
-      new Wall(ctx, 925, 380,25, 70),
-      new Wall(ctx, 925, 440,25, 70),
+      new Wall(ctx, 925, 320, 25, 70),
+      new Wall(ctx, 925, 380, 25, 70),
+      new Wall(ctx, 925, 440, 25, 70),
     ];
-
 
     this.karenTime = 0; //karen
     this.ratTime = 0; // rat
-    this.fatTime= 0; //fat
+    this.fatTime = 0; //fat
     this.puddleTime = 0; //puddle
     this.fireTime = 0; //fire
     this.gooseTime = 0; //goose
     this.babyTime = 0; //baby
-    this.bossTime = 0;//boss
-    this.cartTime = 0; 
+    this.bossTime = 0; //boss
+    this.cartTime = 0;
     this.discountTime = 0;
     this.winTime = 0;
     this.interval = null;
 
-    
     this.karens = [];
     this.rats = [];
     this.babys = [];
@@ -91,10 +89,9 @@ class Game2 {
     this.musicStart = new Audio("/assets/audio/valse.mp3");
     this.musicStart.volume = 0.1;
     this.musicStart.loop = true;
-    
   }
   start() {
-    this.walkPuddleAudio = new Audio("/assets/audio/So1.mp3")
+    this.walkPuddleAudio = new Audio("/assets/audio/So1.mp3");
     this.walkPuddleAudio.volume = 0.2;
     this.walkPuddleAudio.play();
     this.musicStart.play();
@@ -116,110 +113,107 @@ class Game2 {
       this.cartTime++;
       this.discountTime++;
       this.checkCollisions();
-      // if (this.winTime >= 81100) {
-      //   this.gameWin();
-      // } // acaba a las 17:00
-      if (this.winTime >= 81100) {
-        this.gameWin();
-      } 
 
-      if(this.winTime == 5000){
-        this.thisAudio = new Audio("/assets/audio/Gets serious.mp3")
+      if (this.winTime >= 100) {
+        this.gameWin();
+      }
+
+      if (this.winTime == 5000) {
+        this.thisAudio = new Audio("/assets/audio/Gets serious.mp3");
         this.thisAudio.volume = 0.2;
         this.thisAudio.play();
       }
-      if (this.karenTime > Math.random() * 100 + 522) {
+      if (this.karenTime > Math.random() * 100 + 9222) {
         //karen
         this.karenTime = 0;
         this.karensAlert();
         this.addKaren();
-        this.thisAudio = new Audio("/assets/audio/Karen.mp3")
+        this.thisAudio = new Audio("/assets/audio/Karen.mp3");
         this.thisAudio.volume = 0.2;
         this.thisAudio.play();
       }
-      if (this.ratTime > Math.random() * 300 + 32004) {
+      if (this.ratTime > Math.random() * 300 + 1024) {
         //rat
         this.ratTime = 0;
         this.ratAlert();
         this.addRat();
-        this.thisAudio = new Audio("/assets/audio/Comemos.mp3")
+        this.thisAudio = new Audio("/assets/audio/Comemos.mp3");
         this.thisAudio.volume = 0.2;
         this.thisAudio.play();
       }
-      if (this.fatTime> Math.random() * 100 + 13030) {
+      if (this.fatTime > Math.random() * 100 + 5320) {
         //fat
-        this.fatTime= 0;
+        this.fatTime = 0;
         this.fatAlert();
         this.addFat();
-        this.thisAudio = new Audio("/assets/audio/Oh fuck.mp3")
+        this.thisAudio = new Audio("/assets/audio/Oh fuck.mp3");
         this.thisAudio.volume = 0.2;
         this.thisAudio.play();
       }
-      if (this.puddleTime > Math.random() * 100 + 540) {
+      if (this.puddleTime > Math.random() * 100 + 640) {
         //puddle
         this.puddleTime = 0;
         this.waterAlert();
         this.addPuddle();
-        this.puddleBeginAudio = new Audio("/assets/audio/puddleBegin.mp3")
+        this.puddleBeginAudio = new Audio("/assets/audio/puddleBegin.mp3");
         this.puddleBeginAudio.volume = 0.2;
         this.puddleBeginAudio.play();
-        this.thisAudio = new Audio("/assets/audio/Now what.mp3")
+        this.thisAudio = new Audio("/assets/audio/Now what.mp3");
         this.thisAudio.volume = 0.2;
         this.thisAudio.play();
       }
-      if (this.fireTime > Math.random() * 100 + 340) {
+      if (this.fireTime > Math.random() * 100 + 640) {
         //fire
         this.fireTime = 0;
         this.fireAlert();
         this.addFire();
-        this.puddleBeginAudio = new Audio("/assets/audio/fireBegin.wav")
+        this.puddleBeginAudio = new Audio("/assets/audio/fireBegin.wav");
         this.puddleBeginAudio.volume = 0.2;
         this.puddleBeginAudio.play();
-        this.thisAudio = new Audio("/assets/audio/Oh fuck.mp3")
+        this.thisAudio = new Audio("/assets/audio/Oh fuck.mp3");
         this.thisAudio.volume = 0.2;
         this.thisAudio.play();
       }
-      if (this.gooseTime > Math.random() * 100 + 53320) {
+      if (this.gooseTime > Math.random() * 100 + 9220) {
         //goose
         this.gooseTime = 0;
         this.gooseAlert();
         this.addGoose();
-        this.thisAudio = new Audio("/assets/audio/Goose.mp3")
+        this.thisAudio = new Audio("/assets/audio/Goose.mp3");
         this.thisAudio.volume = 0.2;
         this.thisAudio.play();
-        this.thisAudio = new Audio("/assets/audio/geese.mp3")
+        this.thisAudio = new Audio("/assets/audio/geese.mp3");
         this.thisAudio.volume = 0.1;
         this.thisAudio.play();
       }
-      if (this.babyTime > Math.random() * 100 + 103340) {
+      if (this.babyTime > Math.random() * 100 + 7240) {
         //baby
         this.babyTime = 0;
         this.babyAlert();
         this.addBaby();
-        this.thisAudio = new Audio("/assets/audio/Los baby.mp3")
+        this.thisAudio = new Audio("/assets/audio/Los baby.mp3");
         this.thisAudio.volume = 0.2;
         this.thisAudio.play();
       }
-      if (this.cartTime > Math.random() * 100 + 12420) {
+      if (this.cartTime > Math.random() * 100 + 720) {
         //cart
         this.cartTime = 0;
         this.addCart();
       }
-      if (this.discountTime > Math.random() * 100 + 22420) {
+      if (this.discountTime > Math.random() * 100 + 14320) {
         //discount
         this.discountTime = 0;
-        this.addDiscount()
+        this.addDiscount();
       }
-      if (this.bossTime > Math.random() * 100 + 142230) {
+      if (this.bossTime > Math.random() * 100 + 3230) {
         //boss
         this.bossTime = 0;
         this.bossAlert();
         this.addBoss();
-        this.thisAudio = new Audio("/assets/audio/Nonono.mp3")
+        this.thisAudio = new Audio("/assets/audio/Nonono.mp3");
         this.thisAudio.volume = 0.2;
         this.thisAudio.play();
       }
-
     }, 1000 / 60);
   }
   stop() {
@@ -243,53 +237,60 @@ class Game2 {
     this.player.heats = this.player.heats.filter((e) => e.isVisible());
     this.player.waters = this.player.waters.filter((e) => e.isVisible());
 
-    if(this.karens.length<= 0){
+    if (this.karens.length <= 0) {
       const alert = document.getElementById("karens-alert");
       alert.style.display = "none";
     }
-    if(this.rats.length<= 0){
+    if (this.rats.length <= 0) {
       const alert = document.getElementById("rat-alert");
       alert.style.display = "none";
     }
-    if(this.fats.length<= 0){
+    if (this.fats.length <= 0) {
       const alert = document.getElementById("fat-alert");
       alert.style.display = "none";
     }
-    if(this.geese.length<= 0){
+    if (this.geese.length <= 0) {
       const alert = document.getElementById("goose-alert");
       alert.style.display = "none";
     }
-    if(this.babys.length<= 0){
+    if (this.babys.length <= 0) {
       const alert = document.getElementById("baby-alert");
       alert.style.display = "none";
     }
-    if(this.puddles.length<= 0){
+    if (this.puddles.length <= 0) {
       const alert = document.getElementById("water-alert");
       alert.style.display = "none";
     }
-    if(this.fires.length<= 0){
+    if (this.fires.length <= 0) {
       const alert = document.getElementById("fire-alert");
       alert.style.display = "none";
     }
-    if(this.bosss.length<= 0){
+
+    if (this.bosss.length <= 0) {
       const alert = document.getElementById("boss-alert");
       alert.style.display = "none";
     }
-    if(this.bosss.length<= 0 && this.fires.length<= 0 && 
-      this.puddles.length<= 0 && this.babys.length<= 0 && 
-      this.geese.length<= 0 && this.fats.length<= 0 && 
-      this.rats.length<= 0 && this.karens.length<= 0){
-        const nothingToWorrie = document.getElementById("ok");
-        nothingToWorrie.style.display = "inline-block";
-        const statusOk = document.getElementById("status");
-        statusOk.style.backgroundColor = "rgb(0, 128, 0)";
-        statusOk.style.color = "white";
-        statusOk.style.border = "3px solid rgb(0, 0, 255)";
-      }
+    if (
+      this.bosss.length <= 0 &&
+      this.fires.length <= 0 &&
+      this.puddles.length <= 0 &&
+      this.babys.length <= 0 &&
+      this.geese.length <= 0 &&
+      this.fats.length <= 0 &&
+      this.rats.length <= 0 &&
+      this.karens.length <= 0
+    ) {
+      const nothingToWorrie = document.getElementById("ok");
+      nothingToWorrie.style.display = "inline-block";
+      const statusOk = document.getElementById("status");
+      statusOk.style.backgroundColor = "rgb(0, 128, 0)";
+      statusOk.style.color = "white";
+      statusOk.style.border = "3px solid rgb(0, 0, 255)";
+    }
   }
 
   draw() {
-    this.winTime++
+    this.winTime++;
     this.puddles.forEach((e) => e.draw());
     this.fires.forEach((e) => e.draw());
     this.bosss.forEach((e) => e.draw());
@@ -362,13 +363,8 @@ class Game2 {
     const discounts = new Discount(this.ctx);
     this.discounts.push(discounts);
   }
-  // changeAlert(){
-  //   const nothingToWorrie = document.getElementById("ok");
-  //   nothingToWorrie.style.display = "none";
-  //   const statusOk = document.getElementById("status");
-  //   statusOk.style.backgroundColor = "rgb(252, 5, 5)";
-  //   statusOk.style.color = "white";
-  // } no me funciona llamarlo dentro de las otras alerts por alguna razón
+
+
   karensAlert() {
     const karensAlert = document.getElementById("karens-alert");
     karensAlert.style.display = "inline-flex";
@@ -391,7 +387,7 @@ class Game2 {
   fatAlert() {
     const fatAlert = document.getElementById("fat-alert");
     fatAlert.style.display = "inline-flex";
-        const nothingToWorrie = document.getElementById("ok");
+    const nothingToWorrie = document.getElementById("ok");
     nothingToWorrie.style.display = "none";
     const statusOk = document.getElementById("status");
     statusOk.style.backgroundColor = "rgb(252, 5, 5)";
@@ -400,7 +396,7 @@ class Game2 {
   gooseAlert() {
     const gooseAlert = document.getElementById("goose-alert");
     gooseAlert.style.display = "inline-flex";
-        const nothingToWorrie = document.getElementById("ok");
+    const nothingToWorrie = document.getElementById("ok");
     nothingToWorrie.style.display = "none";
     const statusOk = document.getElementById("status");
     statusOk.style.backgroundColor = "rgb(252, 5, 5)";
@@ -409,7 +405,7 @@ class Game2 {
   waterAlert() {
     const waterAlert = document.getElementById("water-alert");
     waterAlert.style.display = "inline-flex";
-        const nothingToWorrie = document.getElementById("ok");
+    const nothingToWorrie = document.getElementById("ok");
     nothingToWorrie.style.display = "none";
     const statusOk = document.getElementById("status");
     statusOk.style.backgroundColor = "rgb(252, 5, 5)";
@@ -418,7 +414,7 @@ class Game2 {
   fireAlert() {
     const fireAlert = document.getElementById("fire-alert");
     fireAlert.style.display = "inline-flex";
-        const nothingToWorrie = document.getElementById("ok");
+    const nothingToWorrie = document.getElementById("ok");
     nothingToWorrie.style.display = "none";
     const statusOk = document.getElementById("status");
     statusOk.style.backgroundColor = "rgb(252, 5, 5)";
@@ -427,7 +423,7 @@ class Game2 {
   babyAlert() {
     const babyAlert = document.getElementById("baby-alert");
     babyAlert.style.display = "inline-flex";
-        const nothingToWorrie = document.getElementById("ok");
+    const nothingToWorrie = document.getElementById("ok");
     nothingToWorrie.style.display = "none";
     const statusOk = document.getElementById("status");
     statusOk.style.backgroundColor = "rgb(252, 5, 5)";
@@ -436,7 +432,7 @@ class Game2 {
   bossAlert() {
     const babyAlert = document.getElementById("boss-alert");
     babyAlert.style.display = "inline-flex";
-        const nothingToWorrie = document.getElementById("ok");
+    const nothingToWorrie = document.getElementById("ok");
     nothingToWorrie.style.display = "none";
     const statusOk = document.getElementById("status");
     statusOk.style.backgroundColor = "rgb(252, 5, 5)";
@@ -445,11 +441,11 @@ class Game2 {
   //Colisiones start
 
   checkCollisions() {
-    this.winTime++
+    this.winTime++;
     this.puddle = new Puddle(ctx); //que el fuego mate al agua
 
-    this.puddles.forEach((puddle) =>{ 
-      this.player.heats = this.player.heats.filter((heat) =>{
+    this.puddles.forEach((puddle) => {
+      this.player.heats = this.player.heats.filter((heat) => {
         if (heat.collides(puddle)) {
           this.player.heats.splice(0, 1);
           puddle.dicrease();
@@ -461,43 +457,45 @@ class Game2 {
               this.addPuddle();
             } //  el intervalo en el que aparecen mas charcos cada vez que los borras
           }
-          return false
-        } else return true
-      })
-    })
+          return false;
+        } else return true;
+      });
+    });
 
-    this.player.waters.forEach((water) => {//que el agua con agua lo aumente
+    this.player.waters.forEach((water) => {
+      //que el agua con agua lo aumente
       this.puddles.forEach((puddle) => {
         water.collides(puddle);
         if (water.collides(puddle)) {
           this.player.waters.splice(0, 1);
-          this.puddleBeginAudio = new Audio("/assets/audio/puddleBegin.mp3")
+          this.puddleBeginAudio = new Audio("/assets/audio/puddleBegin.mp3");
           this.puddleBeginAudio.volume = 0.2;
           this.puddleBeginAudio.play();
           puddle.increase();
         }
       });
     });
-    
+
     this.fire = new Fire(ctx); //gue el agua mate al fuego
-    this.fires.forEach((fire) =>{ 
-      this.player.waters = this.player.waters.filter((water) =>{
+    this.fires.forEach((fire) => {
+      this.player.waters = this.player.waters.filter((water) => {
         if (water.collides(fire)) {
           this.player.waters.splice(0, 1);
           fire.dicrease();
           if (fire.h <= 40) {
             fire.vx = 500;
-            const waterAlert = document.getElementById("water-alert");
-            waterAlert.style.display = "none";
+            const fireAlert = document.getElementById("fire-alert");
+            fireAlert.style.display = "none";
             if (this.winTime > 40000) {
               this.addPuddle();
             } //  el intervalo en el que aparecen mas charcos cada vez que los borras
           }
-          return false
-        } else return true
-      })
-    })
-    this.player.heats.forEach((heat) => {//que el fuego con fuego lo aumente
+          return false;
+        } else return true;
+      });
+    });
+    this.player.heats.forEach((heat) => {
+      //que el fuego con fuego lo aumente
       this.fires.forEach((fire) => {
         heat.collides(fire);
         if (heat.collides(fire)) {
@@ -516,7 +514,7 @@ class Game2 {
       }
       return true;
     });
-//impacto ratas al jugador
+    //impacto ratas al jugador
     this.rats = this.rats.filter((rat) => {
       if (rat.collides(this.player)) {
         this.player.hit();
@@ -526,45 +524,45 @@ class Game2 {
       }
       return true;
     });
-//impacto balas a las ratas
+    //impacto balas a las ratas
     this.rat = new Rats(ctx);
-    this.rats.forEach((rat) =>{ 
-      this.player.waters = this.player.waters.filter((water) =>{
+    this.rats.forEach((rat) => {
+      this.player.waters = this.player.waters.filter((water) => {
         if (water.collides(rat)) {
           this.player.waters.splice(0, 1);
           rat.vx += 2;
           this.player.coolDownWater -= 400;
-          return false
-        } else return true
-      })
-    })
-    this.rats.forEach((rat) =>{ 
-      this.player.heats = this.player.heats.filter((heat) =>{
+          return false;
+        } else return true;
+      });
+    });
+    this.rats.forEach((rat) => {
+      this.player.heats = this.player.heats.filter((heat) => {
         if (heat.collides(rat)) {
           this.player.heats.splice(0, 1);
           rat.vx += 2;
           this.player.coolDownFire -= 400;
-          return false
-        } else return true
-      })
-    })
+          return false;
+        } else return true;
+      });
+    });
 
-    this.fats.forEach((fat) =>{ 
-      this.player.waters = this.player.waters.filter((water) =>{
+    this.fats.forEach((fat) => {
+      this.player.waters = this.player.waters.filter((water) => {
         if (water.collides(fat)) {
           this.player.waters.splice(0, 1);
           this.player.coolDownWater -= 400;
-        } else return true
-      })
-    })
-    this.fats.forEach((fat) =>{ 
-      this.player.heats = this.player.heats.filter((heat) =>{
+        } else return true;
+      });
+    });
+    this.fats.forEach((fat) => {
+      this.player.heats = this.player.heats.filter((heat) => {
         if (heat.collides(fat)) {
           this.player.heats.splice(0, 1);
           this.player.coolDownFire -= 400;
-        } else return true
-      })
-    })
+        } else return true;
+      });
+    });
 
     this.fats = this.fats.filter((fat) => {
       if (fat.collides(this.player)) {
@@ -574,15 +572,15 @@ class Game2 {
       return true;
     });
 
-      if (this.healing.collides(this.player)) {
-        this.player.healslow();
-      }
+    if (this.healing.collides(this.player)) {
+      this.player.healslow();
+    }
     this.geese = this.geese.filter((goose) => {
       if (goose.collides(this.player)) {
         this.player.hit();
         this.player.hit();
         this.player.coolDownWater += 200;
-        this.player.coolDownFire += 200;  
+        this.player.coolDownFire += 200;
 
         return false;
       }
@@ -590,8 +588,8 @@ class Game2 {
     });
     this.goose = new Goose(ctx); //que el fuego mate al agua
 
-    this.geese.forEach((goose) =>{ 
-      this.player.heats = this.player.heats.filter((heat) =>{
+    this.geese.forEach((goose) => {
+      this.player.heats = this.player.heats.filter((heat) => {
         if (heat.collides(goose)) {
           this.player.heats.splice(0, 1);
           this.player.coolDownFire -= 400;
@@ -607,11 +605,11 @@ class Game2 {
           if (goose.y > this.player.y) {
             goose.y += 50;
           }
-        } else return true
-      })
-    })
-    this.geese.forEach((goose) =>{ 
-      this.player.waters = this.player.waters.filter((water) =>{
+        } else return true;
+      });
+    });
+    this.geese.forEach((goose) => {
+      this.player.waters = this.player.waters.filter((water) => {
         if (water.collides(goose)) {
           this.player.waters.splice(0, 1);
           this.player.coolDownWater -= 400;
@@ -627,9 +625,9 @@ class Game2 {
           if (goose.y > this.player.y) {
             goose.y += 50;
           }
-        } else return true
-      })
-    })
+        } else return true;
+      });
+    });
     this.babys = this.babys.filter((baby) => {
       if (baby.collides(this.player)) {
         this.player.heal();
@@ -641,7 +639,7 @@ class Game2 {
       if (boss.collides(this.player)) {
         this.player.hit();
         this.player.hit();
-        this.player.boost -=2
+        this.player.boost -= 2;
         C = 0;
         V = 0;
         return false;
@@ -650,8 +648,8 @@ class Game2 {
     });
     this.boss = new Boss(ctx); //impacto de agua a boss
 
-    this.bosss.forEach((boss) =>{ 
-      this.player.waters = this.player.waters.filter((water) =>{
+    this.bosss.forEach((boss) => {
+      this.player.waters = this.player.waters.filter((water) => {
         if (water.collides(boss)) {
           this.player.waters.splice(0, 1);
           if (boss.x < this.player.x) {
@@ -666,11 +664,10 @@ class Game2 {
           if (boss.y > this.player.y) {
             boss.y += 40;
           }
-          return false
-        } else return true
-      })
-    })
-
+          return false;
+        } else return true;
+      });
+    });
 
     // colisiones con las paredes y los charcos que retrasan al jugador
     this.walls.forEach((wall) => {
@@ -762,7 +759,6 @@ class Game2 {
 
     document.addEventListener("keyup", (e) => {
       this.player.keyUp(e.keyCode);
-      // this.line.keyUp(e.keyCode);      no necesito
     });
   }
 }

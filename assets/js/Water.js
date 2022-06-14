@@ -6,7 +6,7 @@ class Water {
       this.w = 30;
       this.h = 30;
       
-      this.vx = 2;
+      this.vx = 0;
       this.vy = 0;
 
       this.player = player;
@@ -15,7 +15,7 @@ class Water {
       this.waterImg = new Image();
       this.waterImg.src = "/assets/images/elements/puddle.png";
       this.waterShootAudio = new Audio("/assets/audio/splash0.mp3")
-      this.waterShootAudio.volume = 0.2;
+      this.waterShootAudio.volume = 0.1;
       this.waterShootAudio.play();
     }
   

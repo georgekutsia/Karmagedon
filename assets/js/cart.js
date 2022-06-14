@@ -1,8 +1,15 @@
 class Cart {
     constructor(ctx) {
       this.ctx = ctx;
-      this.x = 310;
-      this.y = 400
+
+      this.salidas = [
+        {x:310, y:400}, {x:310, y:200}, {x:125, y:15}, {x:155, y:320}, {x:900, y:420}, {x:805, y:120}, {x:950, y:40}
+      ]
+      this.xy = this.salidas[Math.floor(Math.random()*this.salidas.length)]
+      this.x = this.xy.x;
+      this.y = this.xy.y;
+      // this.x = 310;
+      // this.y = 400
       this.w = 30;
       this.h = 40;
       this.cartImg = new Image();
@@ -13,7 +20,6 @@ class Cart {
     }
   
     draw() {
-        console.log("bulala")
       this.ctx.drawImage(
         this.cartImg,
         0,

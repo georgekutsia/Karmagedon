@@ -31,11 +31,19 @@ const zgoose = document.getElementById("add-goose")
 const zdiscount = document.getElementById("add-discount")
 const zcart = document.getElementById("add-cart")
 const zbaby = document.getElementById("add-baby")
+
+const in1 = document.getElementById("info1")
+const in2 = document.getElementById("info2")
+const in3 = document.getElementById("info3")
+const in4 = document.getElementById("info4")
+const infocheat = document.getElementById("info-cheatsheet")
 // const zall = document.querySelectorAll(".demo")
 // const zall = document.querySelector(".demo")
 //
 // const zall = [zbaby,  zboss, zcart, zdiscount, 
 // zfat, zfire, zgoose, zkaren, zpuddle, zrat ]
+
+
 
 //botón del juego
 btn.addEventListener("click", function () {
@@ -56,6 +64,9 @@ btn.addEventListener("click", function () {
     normal.style.display = "none";
     hard.style.display = "none";
     demo.style.display = "inline-block";
+    this.musicStart = new Audio("/assets/audios ad/clic future.wav");
+    this.musicStart.volume = 0.05;
+    this.musicStart.play()
   });
 
 
@@ -65,14 +76,14 @@ easy.addEventListener("click", function () {
     displ.style.display = "block"
     info.style.display = "none"
     manager.style.display = "none"
-    begin.style.display = "none"
-    cheat.style.display = "inline-block"
+    begin.style.display = "none";
+    cheat.style.display = "inline-block";
     restart.style.display = "flex"
     easy.style.display = "none";
     normal.style.display = "none";
     hard.style.display = "none";
     demo.style.display = "none";
-    btn.style.display = "none"
+    btn.style.display = "none";
     btneasy.style.display = "flex"
   });
   btneasy.addEventListener("click", function () {
@@ -83,6 +94,9 @@ easy.addEventListener("click", function () {
       game2.start();
       btneasy.innerText = "Rest...";
     }
+    this.musicStart = new Audio("/assets/audios ad/clic future.wav");
+    this.musicStart.volume = 0.05;
+    this.musicStart.play()
   });
 
     //  GAME 2 EASY EASY DE CODE END
@@ -95,14 +109,28 @@ easy.addEventListener("click", function () {
   //el botón de reinicio
 restart.addEventListener("click", function () {
   window.location.reload();
+  this.musicStart = new Audio("/assets/audios ad/clic future.wav");
+  this.musicStart.volume = 0.05;
+  this.musicStart.play()
   });
+
+
 //el botón de inicio
   begin.addEventListener("click", function(){
     info.style.display = "block"
     begin.style.display = "none"
     manager.style.display = "none"
     cheat.style.display = "inline-block"
+    this.introMusic = new Audio("/assets/audio/Three Days Grace - I Hate Everything About You (Official Video) (DESCARGAMP3.ME).mp3");
+    this.introMusic.volume = 0.04;
+    this.introMusic.loop = true;  
+    restart.style.display = "flex"
+    this.musicStart = new Audio("/assets/audios ad/click laser.mp3");
+    this.musicStart.volume = 0.05;
+    this.musicStart.play()
   })
+
+
 
 //democosas
   demo.addEventListener("click", function () {
@@ -177,3 +205,86 @@ zbaby.addEventListener("click", function(){
   game.babyAlert()
   demo.innerText = "Clean"
 })
+
+
+
+//sonidos para hover sobre las cosas
+
+begin.addEventListener("mouseover", function(){
+  this.musicStart = new Audio("/assets/audios ad/hover sound.mp3");
+  this.musicStart.volume = 0.2;
+  this.musicStart.play()
+})
+btn.addEventListener("mouseover", function(){
+  this.musicStart = new Audio("/assets/audios ad/hover sound.mp3");
+  this.musicStart.volume = 0.2;
+  this.musicStart.play()
+})
+restart.addEventListener("mouseover", function(){
+  this.musicStart = new Audio("/assets/audios ad/hover sound.mp3");
+  this.musicStart.volume = 0.2;
+  this.musicStart.play()
+})
+
+
+btneasy.addEventListener("mouseover", function(){
+  this.musicStart = new Audio("/assets/audios ad/hover sound.mp3");
+  this.musicStart.volume = 0.2;
+  this.musicStart.play()
+})
+btnnormal.addEventListener("mouseover", function(){
+  this.musicStart = new Audio("/assets/audios ad/hover sound.mp3");
+  this.musicStart.volume = 0.2;
+  this.musicStart.play()
+})
+btnhard.addEventListener("mouseover", function(){
+  this.musicStart = new Audio("/assets/audios ad/hover sound.mp3");
+  this.musicStart.volume = 0.2;
+  this.musicStart.play()
+})
+easy.addEventListener("mouseover", function(){
+  this.musicStart = new Audio("/assets/audios ad/hover sound.mp3");
+  this.musicStart.volume = 0.1;
+  this.musicStart.play()
+})
+normal.addEventListener("mouseover", function(){
+  this.musicStart = new Audio("/assets/audios ad/hover sound.mp3");
+  this.musicStart.volume = 0.2;
+  this.musicStart.play()
+})
+hard.addEventListener("mouseover", function(){
+  this.musicStart = new Audio("/assets/audios ad/hover sound.mp3");
+  this.musicStart.volume = 0.3;
+  this.musicStart.play()
+})
+
+
+
+in1.addEventListener("mouseover", function(){
+  this.musicStart = new Audio("/assets/audios ad/girar.mp3");
+  this.musicStart.volume = 0.3;
+  this.musicStart.play()
+})
+in2.addEventListener("mouseover", function(){
+  this.musicStart = new Audio("/assets/audios ad/girar.mp3");
+  this.musicStart.volume = 0.3;
+  this.musicStart.play()
+})
+in3.addEventListener("mouseover", function(){
+  this.musicStart = new Audio("/assets/audios ad/girar.mp3");
+  this.musicStart.volume = 0.3;
+  this.musicStart.play()
+})
+in4.addEventListener("mouseover", function(){
+  this.musicStart = new Audio("/assets/audios ad/girar.mp3");
+  this.musicStart.volume = 0.3;
+  this.musicStart.play()
+})
+
+
+infocheat.addEventListener("mouseover", function(){
+  this.musicStart = new Audio("/assets/audios ad/vibra.mp3");
+  this.musicStart.volume = 0.1;
+  this.musicStart.play()
+})
+
