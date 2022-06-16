@@ -11,6 +11,7 @@ class Water {
 
       this.player = player;
 
+
       this.dispose = false;
       this.waterImg = new Image();
       this.waterImg.src = "/assets/images/elements/puddle.png";
@@ -31,10 +32,10 @@ class Water {
       this.h += 0.2;
       this.w += 0.2;
       if(
-        this.x >= this.player.x + 150 || 
-        this.y >= this.player.y + 150 ||
-        this.x <= this.player.x - 150 || 
-        this.y <= this.player.y - 150
+        this.x >= this.player.x + waterDistance || 
+        this.y >= this.player.y + waterDistance ||
+        this.x <= this.player.x - waterDistance || 
+        this.y <= this.player.y - waterDistance
           ) {
           this.vx = 0;
           this.vy = 0;

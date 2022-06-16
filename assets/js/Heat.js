@@ -27,10 +27,10 @@ class Heat {
     this.h += 0.2;
     this.w += 0.2;
     if (
-      this.x >= this.player.x + 150 ||
-      this.y >= this.player.y + 150 ||
-      this.x <= this.player.x - 150 ||
-      this.y <= this.player.y - 150
+      this.x >= this.player.x + heatDistance ||
+      this.y >= this.player.y + heatDistance ||
+      this.x <= this.player.x - heatDistance ||
+      this.y <= this.player.y - heatDistance
     ) {
       this.vx = 0;
       this.vy = 0;

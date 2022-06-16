@@ -67,7 +67,7 @@ class Boss {
       this.bossImg.frame = 0;
     }
 
-    if(this.karenEnd >=400){
+    if(this.karenEnd >=4000){
       this.v = 2;
       const crazyKaren = document.getElementById("boss-alert");
       crazyKaren.style.display = "none";

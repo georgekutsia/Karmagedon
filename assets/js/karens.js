@@ -69,7 +69,6 @@ class Karens {
       this.karenSounds[
         Math.floor(Math.random() * this.karenSounds.length)
       ].play();
-    console.log(this.karenSounds);
     this.tick = 0;
     this.complaints = ["Manager!", "Police!", "Give me a claim form!"];
     this.problems = [

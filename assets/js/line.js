@@ -78,6 +78,5 @@ class Line {
     } else{
       this.check = 4;
     }
-    SPACE = 0;
   }
 }

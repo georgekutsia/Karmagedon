@@ -1,11 +1,11 @@
 class Game2 {
   constructor(ctx) {
     this.ctx = ctx;
-
     this.player = new Player(ctx);
     this.token = new Token(ctx);
     this.line = new Line(ctx);
     this.healing = new HealingPlace(ctx);
+   
     this.walls = [
       new Wall(ctx, 60, 50, 20, 70),
       new Wall(ctx, 60, 110, 20, 70),
@@ -30,19 +30,25 @@ class Game2 {
       new Wall(ctx, 925, 50, 25, 70),
       new Wall(ctx, 925, 110, 25, 70),
       new Wall(ctx, 925, 170, 25, 70),
+      new Wall(ctx, 800, 170, 50, 50),
 
-      new Wall(ctx, 285, 320, 25, 70),
-      new Wall(ctx, 285, 380, 25, 70),
-      new Wall(ctx, 285, 440, 25, 70),
-      new Wall(ctx, 200, 380, 25, 70),
-
+      new Wall(ctx, 90, 50, 50, 25),
       new Wall(ctx, 240, 50, 50, 25),
-      new Wall(ctx, 490, 130, 25, 50),
+      new Wall(ctx, 410, 205, 50, 25),
+      new Wall(ctx, 560, 205, 50, 25),
+      new Wall(ctx, 482, 130, 60, 60),
+      new Wall(ctx, 490, 80, 40, 40),
+      new Wall(ctx, 730, 50, 50, 25),
       new Wall(ctx, 870, 50, 50, 25),
 
       new Wall(ctx, 60, 320, 25, 70),
       new Wall(ctx, 60, 380, 25, 70),
       new Wall(ctx, 60, 440, 25, 70),
+
+      new Wall(ctx, 285, 320, 25, 70),
+      new Wall(ctx, 285, 380, 25, 70),
+      new Wall(ctx, 285, 440, 25, 70),
+      new Wall(ctx, 180, 380, 40, 40),
 
       new Wall(ctx, 380, 320, 25, 70),
       new Wall(ctx, 380, 380, 25, 70),
@@ -59,9 +65,27 @@ class Game2 {
       new Wall(ctx, 925, 320, 25, 70),
       new Wall(ctx, 925, 380, 25, 70),
       new Wall(ctx, 925, 440, 25, 70),
+
+      new Wall(ctx, 90, 320, 50, 25),
+      new Wall(ctx, 240, 320, 50, 25),
+      new Wall(ctx, 90, 480, 50, 25),
+      new Wall(ctx, 240, 480, 50, 25),
+      new Wall(ctx, 170, 110, 40, 40),
+      new Wall(ctx, 80, 200, 40, 40),
+      new Wall(ctx, 830, 330, 20, 70),
+
+      new Wall(ctx, 410, 320, 50, 25),
+      new Wall(ctx, 560, 320, 50, 25),
+      new Wall(ctx, 465, 450, 50, 25),
+      new Wall(ctx, 500, 450, 50, 25),
+
+      new Wall(ctx, 880, 320, 50, 25),
+      new Wall(ctx, 830, 320, 50, 25),
+      new Wall(ctx, 730, 480, 50, 25),
+      new Wall(ctx, 780, 480, 50, 25),
     ];
 
-    this.karenTime = 0; //karen
+    this.karenTime = 5000; //karen
     this.ratTime = 0; // rat
     this.fatTime = 0; //fat
     this.puddleTime = 0; //puddle
@@ -86,15 +110,21 @@ class Game2 {
     this.discounts = [];
     this.setListeners();
 
+    this.introMusic = new Audio("/assets/audio/TDG.mp3")
+    this.introMusic.volume = 0.04;
+    this.introMusic.loop = true;
+    this.introMusic.play();
+
     this.musicStart = new Audio("/assets/audio/valse.mp3");
-    this.musicStart.volume = 0.1;
+    this.musicStart.volume = 0.02;
     this.musicStart.loop = true;
   }
   start() {
     this.walkPuddleAudio = new Audio("/assets/audio/So1.mp3");
-    this.walkPuddleAudio.volume = 0.2;
+    this.walkPuddleAudio.volume = 0.08;
     this.walkPuddleAudio.play();
     this.musicStart.play();
+    this.introMusic.pause();
     myFunction();
     this.interval = setInterval(() => {
       this.endGame = document.getElementById("time");
@@ -113,107 +143,119 @@ class Game2 {
       this.cartTime++;
       this.discountTime++;
       this.checkCollisions();
-
-      if (this.winTime >= 100) {
+      // if (this.winTime >= 81100) {
+      //   this.gameWin();
+      // } // acaba a las 17:00     //121600 acaba a las 21:00:15
+      if (this.winTime >= 121534.2) {
         this.gameWin();
       }
-
-      if (this.winTime == 5000) {
-        this.thisAudio = new Audio("/assets/audio/Gets serious.mp3");
-        this.thisAudio.volume = 0.2;
-        this.thisAudio.play();
+      // if (this.winTime >= 1100) {
+      //   this.gameOver();
+      // }
+      if (this.winTime % 81000 === 0) {
+        this.almostOver = new Audio("/assets/audio/It’s almost over.mp3");
+        this.almostOver.volume = 0.3;
+        this.almostOver.play()
       }
-      if (this.karenTime > Math.random() * 100 + 9222) {
+      if (this.winTime % 75000 === 0) {
+        this.littleMore = new Audio("/assets/audio/Just a little more.mp3");
+        this.littleMore.volume = 0.3;
+        this.littleMore.play()
+      }
+      if (this.winTime % 70000 === 0) {
+        this.soTired = new Audio("/assets/audio/Tired.mp3");
+        this.soTired.volume = 0.3;
+        this.soTired.play()
+      }
+      if (this.winTime % 50000 === 0) {
+        this.candyShop = new Audio("/assets/audios ad/Candy shop.mp3");
+        this.candyShop.volume = 0.3;
+        this.candyShop.play()
+      }
+      if (this.winTime % 55200 === 0) {
+        this.needCoffee = new Audio("/assets/audios ad/Need coffee.mp3");
+        this.needCoffee.volume = 0.3;
+        this.needCoffee.play()
+      }
+      if (this.winTime % 62000 === 0) {
+        this.pizzaPlace = new Audio("/assets/audios ad/Pizza place.mp3");
+        this.pizzaPlace.volume = 0.3;
+        this.pizzaPlace.play()
+      }
+      if (this.winTime % 32000 === 0) {
+        this.moreIShoot = new Audio("/assets/audios ad/More I shoot.mp3");
+        this.moreIShoot.volume = 0.3;
+        this.moreIShoot.play()
+      }
+
+      if (this.winTime % 8000 === 0) {
+        this.getsSiri = new Audio("/assets/audio/Gets serious.mp3");
+        this.getsSiri.volume = 0.2;
+        this.getsSiri.play();
+      }
+
+      if (this.karenTime > Math.random() * 100 + 530) {
         //karen
         this.karenTime = 0;
         this.karensAlert();
         this.addKaren();
-        this.thisAudio = new Audio("/assets/audio/Karen.mp3");
-        this.thisAudio.volume = 0.2;
-        this.thisAudio.play();
+        this.addKaren();
       }
-      if (this.ratTime > Math.random() * 300 + 1024) {
+      if (this.ratTime > Math.random() * 300 + 10034) {
         //rat
         this.ratTime = 0;
         this.ratAlert();
         this.addRat();
-        this.thisAudio = new Audio("/assets/audio/Comemos.mp3");
-        this.thisAudio.volume = 0.2;
-        this.thisAudio.play();
       }
-      if (this.fatTime > Math.random() * 100 + 5320) {
+      if (this.fatTime > Math.random() * 100 + 12230) {
         //fat
         this.fatTime = 0;
         this.fatAlert();
         this.addFat();
-        this.thisAudio = new Audio("/assets/audio/Oh fuck.mp3");
-        this.thisAudio.volume = 0.2;
-        this.thisAudio.play();
       }
-      if (this.puddleTime > Math.random() * 100 + 640) {
+      if (this.puddleTime > Math.random() * 100 + 340) {
         //puddle
         this.puddleTime = 0;
         this.waterAlert();
         this.addPuddle();
-        this.puddleBeginAudio = new Audio("/assets/audio/puddleBegin.mp3");
-        this.puddleBeginAudio.volume = 0.2;
-        this.puddleBeginAudio.play();
-        this.thisAudio = new Audio("/assets/audio/Now what.mp3");
-        this.thisAudio.volume = 0.2;
-        this.thisAudio.play();
       }
-      if (this.fireTime > Math.random() * 100 + 640) {
+      if (this.fireTime > Math.random() * 100 + 340) {
         //fire
         this.fireTime = 0;
         this.fireAlert();
         this.addFire();
-        this.puddleBeginAudio = new Audio("/assets/audio/fireBegin.wav");
-        this.puddleBeginAudio.volume = 0.2;
-        this.puddleBeginAudio.play();
-        this.thisAudio = new Audio("/assets/audio/Oh fuck.mp3");
-        this.thisAudio.volume = 0.2;
-        this.thisAudio.play();
       }
-      if (this.gooseTime > Math.random() * 100 + 9220) {
+      if (this.gooseTime > Math.random() * 100 + 53320) {
         //goose
         this.gooseTime = 0;
         this.gooseAlert();
         this.addGoose();
-        this.thisAudio = new Audio("/assets/audio/Goose.mp3");
-        this.thisAudio.volume = 0.2;
-        this.thisAudio.play();
-        this.thisAudio = new Audio("/assets/audio/geese.mp3");
-        this.thisAudio.volume = 0.1;
-        this.thisAudio.play();
       }
-      if (this.babyTime > Math.random() * 100 + 7240) {
+      if (this.babyTime > Math.random() * 100 + 103340) {
         //baby
         this.babyTime = 0;
         this.babyAlert();
         this.addBaby();
-        this.thisAudio = new Audio("/assets/audio/Los baby.mp3");
-        this.thisAudio.volume = 0.2;
-        this.thisAudio.play();
       }
-      if (this.cartTime > Math.random() * 100 + 720) {
+      if (this.cartTime > Math.random() * 100 + 12420) {
         //cart
         this.cartTime = 0;
         this.addCart();
       }
-      if (this.discountTime > Math.random() * 100 + 14320) {
+      if (this.discountTime > Math.random() * 100 + 22420) {
         //discount
         this.discountTime = 0;
         this.addDiscount();
       }
-      if (this.bossTime > Math.random() * 100 + 3230) {
+      if (this.bossTime > Math.random() * 100 + 142230) {
         //boss
         this.bossTime = 0;
         this.bossAlert();
         this.addBoss();
-        this.thisAudio = new Audio("/assets/audio/Nonono.mp3");
-        this.thisAudio.volume = 0.2;
-        this.thisAudio.play();
       }
+      if(this.puddles.length >= 7){this.gameOver()}
+      if(this.fires.length >= 7){this.gameOver()}
+      
     }, 1000 / 60);
   }
   stop() {
@@ -221,6 +263,7 @@ class Game2 {
     clearInterval(this.interval);
     this.interval = null;
     clearInterval(window.timerInterval);
+    
   }
   clear() {
     this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
@@ -232,7 +275,6 @@ class Game2 {
     this.bosss = this.bosss.filter((e) => e.isVisible());
     this.puddles = this.puddles.filter((e) => e.isVisible());
     this.fires = this.fires.filter((e) => e.isVisible());
-    this.babys = this.babys.filter((e) => e.isVisible());
     this.discounts = this.discounts.filter((e) => e.isVisible());
     this.player.heats = this.player.heats.filter((e) => e.isVisible());
     this.player.waters = this.player.waters.filter((e) => e.isVisible());
@@ -265,7 +307,6 @@ class Game2 {
       const alert = document.getElementById("fire-alert");
       alert.style.display = "none";
     }
-
     if (this.bosss.length <= 0) {
       const alert = document.getElementById("boss-alert");
       alert.style.display = "none";
@@ -305,7 +346,9 @@ class Game2 {
     this.line.draw();
     this.carts.forEach((e) => e.draw());
     this.discounts.forEach((e) => e.draw());
-    this.healing.draw();
+    if (this.winTime > 600) {
+      this.healing.draw();
+    }
   }
   move() {
     this.player.move();
@@ -326,34 +369,77 @@ class Game2 {
   addKaren() {
     const karens = new Karens(this.ctx);
     this.karens.push(karens);
+    this.thisAudio = new Audio("/assets/audio/Karen.mp3");
+    this.thisAudio.volume = 0.06;
+    this.thisAudio.play();
   }
   addRat() {
     const rats = new Rats(this.ctx);
     this.rats.push(rats);
+    this.thisAudio = new Audio("/assets/audio/Comemos.mp3");
+    this.thisAudio.volume = 0.2;
+    this.thisAudio.play();
+    this.thisAudio = new Audio("/assets/audios ad/Ratas.mp3");
+    this.thisAudio.volume = 0.07;
+    this.thisAudio.play();
+
   }
   addFat() {
     const fats = new Fat(this.ctx);
     this.fats.push(fats);
+    this.thisAudio = new Audio("/assets/audio/Oh fuck.mp3");
+    this.thisAudio.volume = 0.2;
+    this.thisAudio.play();
   }
   addGoose() {
     const geese = new Goose(this.ctx);
     this.geese.push(geese);
+    this.thisAudio = new Audio("/assets/audio/Goose.mp3");
+    this.thisAudio.volume = 0.1;
+    this.thisAudio.play();
+    this.thisAudio = new Audio("/assets/audio/geese.mp3");
+    this.thisAudio.volume = 0.02;
+    this.thisAudio.play();
   }
   addBaby() {
     const babys = new Baby(this.ctx);
     this.babys.push(babys);
+    this.newShoes = new Audio("/assets/audio/Los baby.mp3");
+    this.newShoes.volume = 0.2;
+    this.newShoes.play()
+    this.newShoes = new Audio("/assets/audios ad/Baby.mp3");
+    this.newShoes.volume = 0.07;
+    this.newShoes.play()
   }
   addBoss() {
     const bosss = new Boss(this.ctx);
     this.bosss.push(bosss);
+    this.thisAudio = new Audio("/assets/audio/Nonono.mp3");
+    this.thisAudio.volume = 0.2;
+    this.thisAudio.play();
+    this.thisAudio = new Audio("/assets/audios ad/Karen loca.mp3");
+    this.thisAudio.volume = 0.1;
+    this.thisAudio.play();
   }
   addPuddle() {
     const puddles = new Puddle(this.ctx);
     this.puddles.push(puddles);
+    this.puddleBeginAudio = new Audio("/assets/audio/puddleBegin.mp3");
+    this.puddleBeginAudio.volume = 0.3;
+    this.puddleBeginAudio.play();
+    this.thisAudio = new Audio("/assets/audio/Now what.mp3");
+    this.thisAudio.volume = 0.08;
+    this.thisAudio.play();
   }
   addFire() {
     const fires = new Fire(this.ctx);
     this.fires.push(fires);
+    this.puddleBeginAudio = new Audio("/assets/audio/fireBegin.wav");
+    this.puddleBeginAudio.volume = 0.2;
+    this.puddleBeginAudio.play();
+    this.thisAudio = new Audio("/assets/audio/Oh fuck.mp3");
+    this.thisAudio.volume = 0.2;
+    this.thisAudio.play();
   }
   addCart() {
     const carts = new Cart(this.ctx);
@@ -362,9 +448,17 @@ class Game2 {
   addDiscount() {
     const discounts = new Discount(this.ctx);
     this.discounts.push(discounts);
+    this.disco = new Audio("/assets/audio/Discounts.mp3");
+    this.disco.volume = 0.2;
+    this.disco.play()
   }
-
-
+  // changeAlert(){
+  //   const nothingToWorrie = document.getElementById("ok");
+  //   nothingToWorrie.style.display = "none";
+  //   const statusOk = document.getElementById("status");
+  //   statusOk.style.backgroundColor = "rgb(252, 5, 5)";
+  //   statusOk.style.color = "white";
+  // } no me funciona llamarlo dentro de las otras alerts por alguna razón
   karensAlert() {
     const karensAlert = document.getElementById("karens-alert");
     karensAlert.style.display = "inline-flex";
@@ -430,8 +524,8 @@ class Game2 {
     statusOk.style.color = "white";
   }
   bossAlert() {
-    const babyAlert = document.getElementById("boss-alert");
-    babyAlert.style.display = "inline-flex";
+    const crazyKaren = document.getElementById("boss-alert");
+    crazyKaren.style.display = "inline-flex";
     const nothingToWorrie = document.getElementById("ok");
     nothingToWorrie.style.display = "none";
     const statusOk = document.getElementById("status");
@@ -449,7 +543,7 @@ class Game2 {
         if (heat.collides(puddle)) {
           this.player.heats.splice(0, 1);
           puddle.dicrease();
-          if (puddle.h <= 40) {
+          if (puddle.h <= 20) {
             puddle.vx = 500;
             const waterAlert = document.getElementById("water-alert");
             waterAlert.style.display = "none";
@@ -482,7 +576,7 @@ class Game2 {
         if (water.collides(fire)) {
           this.player.waters.splice(0, 1);
           fire.dicrease();
-          if (fire.h <= 40) {
+          if (fire.h <= 20) {
             fire.vx = 500;
             const fireAlert = document.getElementById("fire-alert");
             fireAlert.style.display = "none";
@@ -506,8 +600,7 @@ class Game2 {
     });
 
     this.karens = this.karens.filter((karen) => {
-      if (karen.collides(this.player)) {
-        SPACE = 32;
+      if (karen.collides(this.player)) {  
         if (this.line.check == 1) {
           return false;
         }
@@ -531,7 +624,7 @@ class Game2 {
         if (water.collides(rat)) {
           this.player.waters.splice(0, 1);
           rat.vx += 2;
-          this.player.coolDownWater -= 400;
+          this.player.coolDownWater -= 150;
           return false;
         } else return true;
       });
@@ -541,7 +634,7 @@ class Game2 {
         if (heat.collides(rat)) {
           this.player.heats.splice(0, 1);
           rat.vx += 2;
-          this.player.coolDownFire -= 400;
+          this.player.coolDownFire -= 150;
           return false;
         } else return true;
       });
@@ -551,7 +644,7 @@ class Game2 {
       this.player.waters = this.player.waters.filter((water) => {
         if (water.collides(fat)) {
           this.player.waters.splice(0, 1);
-          this.player.coolDownWater -= 400;
+          this.player.coolDownWater -= 150;
         } else return true;
       });
     });
@@ -559,7 +652,7 @@ class Game2 {
       this.player.heats = this.player.heats.filter((heat) => {
         if (heat.collides(fat)) {
           this.player.heats.splice(0, 1);
-          this.player.coolDownFire -= 400;
+          this.player.coolDownFire -= 150;
         } else return true;
       });
     });
@@ -572,15 +665,15 @@ class Game2 {
       return true;
     });
 
-    if (this.healing.collides(this.player)) {
+    if (this.healing.collides(this.player) && this.winTime >= 550) {
       this.player.healslow();
     }
     this.geese = this.geese.filter((goose) => {
       if (goose.collides(this.player)) {
         this.player.hit();
         this.player.hit();
-        this.player.coolDownWater += 200;
-        this.player.coolDownFire += 200;
+        this.player.coolDownWater += 300;
+        this.player.coolDownFire += 300;
 
         return false;
       }
@@ -592,7 +685,7 @@ class Game2 {
       this.player.heats = this.player.heats.filter((heat) => {
         if (heat.collides(goose)) {
           this.player.heats.splice(0, 1);
-          this.player.coolDownFire -= 400;
+          this.player.coolDownFire -= 150;
           if (goose.x < this.player.x) {
             goose.x -= 50;
           }
@@ -612,7 +705,7 @@ class Game2 {
       this.player.waters = this.player.waters.filter((water) => {
         if (water.collides(goose)) {
           this.player.waters.splice(0, 1);
-          this.player.coolDownWater -= 400;
+          this.player.coolDownWater -= 150;
           if (goose.x < this.player.x) {
             goose.x -= 50;
           }
@@ -693,6 +786,9 @@ class Game2 {
     //impacto cart
     this.carts = this.carts.filter((cart) => {
       if (cart.collides(this.player)) {
+        this.newShoes = new Audio("/assets/audios ad/Faster running.mp3");
+        this.newShoes.volume = 0.1;
+        this.newShoes.play()
         this.player.boost += 1;
         return false;
       }
@@ -735,13 +831,14 @@ class Game2 {
     this.bosss = [];
     this.carts = [];
     this.dicounts = [];
+    const lose = document.getElementById("lose");
+    lose.style.display = "block"
+    this.winMus = new Audio("/assets/audios ad/losemusic.mp3");
+    this.winMus.volume = 0.1;
+    this.winMus.play();
   }
   gameWin() {
     this.stop();
-    ctx.font = "70px Verdana";
-    this.ctx.fillStyle = "blue";
-    this.ctx.strokeText("YOU WON!!! CONGRATULATIONS!", 10, 220);
-    this.ctx.fillText("YOU WON!!! CONGRATULATIONS!", 10, 220);
     this.rats = [];
     this.fats = [];
     this.geese = [];
@@ -750,6 +847,11 @@ class Game2 {
     this.boss = [];
     this.carts = [];
     this.dicounts = [];
+    const wincon = document.getElementById("win");
+    wincon.style.display = "block"
+    this.winMus = new Audio("/assets/audios ad/winmusic.mp3");
+    this.winMus.volume = 0.1;
+    this.winMus.play();
   }
   setListeners() {
     document.addEventListener("keydown", (e) => {
@@ -759,6 +861,7 @@ class Game2 {
 
     document.addEventListener("keyup", (e) => {
       this.player.keyUp(e.keyCode);
+      // this.line.keyUp(e.keyCode);      no necesito
     });
   }
 }

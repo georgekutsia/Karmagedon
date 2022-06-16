@@ -30,7 +30,7 @@ class Player {
     this.direction = "left";
     this.coolDownFire = 2000;
     this.coolDownWater = 2000;
-    this.jumptimer = 2000; //quizás haga algo para disminuirlo o aumentar su distancia
+    this.jumptimer = 20000; //quizás haga algo para disminuirlo o aumentar su distancia
   }
 
   draw() {
@@ -49,7 +49,6 @@ class Player {
     this.heats.forEach((heat) => heat.draw());
     this.waters.forEach((water) => water.draw());
     this.life.draw();
-    console.log(this.x)
 
   }
 
@@ -114,18 +113,20 @@ class Player {
   isAlive() {
     return this.life.total > 0;
   }
+
+
   jump(){
     if(this.direction === "top"){
-      this.y -= 60;
+      this.y -= distance;
     }
     if(this.direction === "down"){
-      this.y += 60;
+      this.y += distance;
     }
     if(this.direction === "left"){
-      this.x -= 60;
+      this.x -= distance;
     }
     if(this.direction === "right"){
-      this.x += 60;
+      this.x += distance; 
     }
   }
 
@@ -171,9 +172,7 @@ class Player {
     if (key === Z) {
       this.heater();
       this.bheat++;
-      console.log(this.bheat)
-      if (this.bheat % 3 === 0) {
-        this.bheat = 0
+      if (this.bheat % 4 === 0) {
         Z = 0;
         setTimeout(function () {
           Z = 90;
@@ -218,17 +217,11 @@ class Player {
     }
     if (key === ALT) {
       this.jump();
-      this.altTime++;
-      if (this.altTime  >= 1) {
-        this.altTime = 0;
-        ALT = 0;
-        setTimeout(function () {
-          ALT = 16;
-        }, this.jumptimer);
-      }
+      ALT = 0
+      setTimeout(function () {
+        ALT = 16;
+      }, 2000);
     }
-
-    
   }
 
   heater() {
