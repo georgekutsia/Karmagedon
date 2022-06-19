@@ -90,14 +90,14 @@ class Game {
     this.karenTime = 0; //karen
     this.ratTime = 0; // rat
     this.fatTime = 0; //fat
-    this.puddleTime = 0; //puddle
-    this.fireTime = 0; //fire
+    this.puddleTime = 700 ; //puddle
+    this.fireTime = 800; //fire
     this.gooseTime = 0; //goose
     this.babyTime = 0; //baby
-    this.customerTime = 0; //baby
+    this.customerTime = 4500; //baby
     this.bossTime = 0; //boss
-    this.cartTime = 0;
-    this.discountTime = 0;
+    this.cartTime = 3450;
+    this.discountTime = 3700;
     this.winTime = 0;
     this.interval = null;
 
@@ -114,21 +114,15 @@ class Game {
     this.discounts = [];
     this.setListeners();
 
-    this.introMusic = new Audio("/assets/audio/TDG.mp3")
-    this.introMusic.volume = 0.04;
-    this.introMusic.loop = true;
-    this.introMusic.play();
-
     this.musicStart = new Audio("/assets/audio/valse.mp3");
     this.musicStart.volume = 0.02;
     this.musicStart.loop = true;
   }
   start() {
-    this.walkPuddleAudio = new Audio("/assets/audio/So1.mp3");
-    this.walkPuddleAudio.volume = 0.08;
-    this.walkPuddleAudio.play();
+    this.so = new Audio("/assets/audio/So1.mp3");
+    this.so.volume = 0.08;
+    this.so.play();
     this.musicStart.play();
-    this.introMusic.pause();
     myFunction();
     this.interval = setInterval(() => {
       this.endGame = document.getElementById("time");
@@ -151,114 +145,122 @@ class Game {
       // if (this.winTime >= 81100) {
       //   this.gameWin();
       // } // acaba a las 17:00     //121600 acaba a las 21:00:15
-      if (this.winTime >= 121534.2) {
-        this.gameWin();
+      // if (this.winTime >= 121534.2) {
+      //   this.gameWin();
+      // }   //acaba a las 21 con tick del tiempo en 15
+      if(this.winTime >= 60500){
+        this.gameWin()
       }
-      // if (this.winTime >= 1100) {
-      //   this.gameOver();
-      // }
-      if (this.winTime % 81000 === 0) {
+      if (this.winTime % 55000 === 0) {
         this.almostOver = new Audio("/assets/audio/It’s almost over.mp3");
         this.almostOver.volume = 0.3;
         this.almostOver.play()
       }
-      if (this.winTime % 75000 === 0) {
+      if (this.winTime % 45000 === 0) {
         this.littleMore = new Audio("/assets/audio/Just a little more.mp3");
         this.littleMore.volume = 0.3;
         this.littleMore.play()
       }
-      if (this.winTime % 70000 === 0) {
+      if (this.winTime % 40000 === 0) {
         this.soTired = new Audio("/assets/audio/Tired.mp3");
         this.soTired.volume = 0.3;
         this.soTired.play()
       }
-      if (this.winTime % 50000 === 0) {
+      if (this.winTime % 35000 === 0) {
         this.candyShop = new Audio("/assets/audios ad/Candy shop.mp3");
         this.candyShop.volume = 0.3;
         this.candyShop.play()
       }
-      if (this.winTime % 55200 === 0) {
+      if (this.winTime % 30200 === 0) {
         this.needCoffee = new Audio("/assets/audios ad/Need coffee.mp3");
         this.needCoffee.volume = 0.3;
         this.needCoffee.play()
       }
-      if (this.winTime % 62000 === 0) {
+      if (this.winTime % 30000 === 0) {
         this.pizzaPlace = new Audio("/assets/audios ad/Pizza place.mp3");
         this.pizzaPlace.volume = 0.3;
         this.pizzaPlace.play()
       }
-      if (this.winTime % 32000 === 0) {
+      if (this.winTime % 25000 === 0) {
         this.moreIShoot = new Audio("/assets/audios ad/More I shoot.mp3");
         this.moreIShoot.volume = 0.3;
         this.moreIShoot.play()
       }
-
       if (this.winTime % 8000 === 0) {
         this.getsSiri = new Audio("/assets/audio/Gets serious.mp3");
         this.getsSiri.volume = 0.2;
         this.getsSiri.play();
       }
 
-      if (this.karenTime > Math.random() * 100 + 53300) {
-        //karen
-        this.karenTime = 0;
+      if (this.karenTime > Math.random() * 100 + 3500) {
+        //karen  tarda mucho en salir pero luego sale cada 3000
+        this.karenTime = 2000;
         this.karensAlert();
         this.addKaren();
+        if(this.winTime >= 20000){
+          this.karenTime = 3000
+        }
       }
-      if (this.ratTime > Math.random() * 300 + 32004) {
+      if (this.ratTime > Math.random() * 600 + 100099) {
         //rat
         this.ratTime = 0;
         this.ratAlert();
         this.addRat();
       }
-      if (this.fatTime > Math.random() * 100 + 13030) {
+      if (this.fatTime > Math.random() * 100 + 203099) {
         //fat
         this.fatTime = 0;
         this.fatAlert();
         this.addFat();
+        if(this.winTime >= 30000){
+          this.fatTime = 1000
+        }
       }
-      if (this.puddleTime > Math.random() * 100 + 93340) {
+      if (this.puddleTime > Math.random() * 1000 + 100099) {
         //puddle
         this.puddleTime = 0;
         this.waterAlert();
         this.addPuddle();
       }
-      if (this.fireTime > Math.random() * 100 + 63340) {
+      if (this.fireTime > Math.random() * 1000 + 100099) {
         //fire
         this.fireTime = 0;
         this.fireAlert();
         this.addFire();
       }
-      if (this.gooseTime > Math.random() * 100 + 53320) {
+      if (this.gooseTime > Math.random() * 100 + 400099) {
         //goose
         this.gooseTime = 0;
         this.gooseAlert();
         this.addGoose();
+        if(this.winTime >= 30000){
+          this.gooseTime = 2000
+        }
       }
-      if (this.babyTime > Math.random() * 100 + 103340) {
+      if (this.babyTime > Math.random() * 100 + 400099) {
         //baby
         this.babyTime = 0;
         this.babyAlert();
         this.addBaby();
       }
-      if (this.customerTime > Math.random() * 100 + 440) {
+      if (this.customerTime > Math.random() * 1000 + 500099) {
         //customer
         this.customerTime = 0;
         this.addCustomer();
       }
-      if (this.cartTime > Math.random() * 100 + 12420) {
+      if (this.cartTime > Math.random() * 100 + 350099) {
         //cart
         this.cartTime = 0;
         this.addCart();
       }
-      if (this.discountTime > Math.random() * 100 + 22420) {
+      if (this.discountTime > Math.random() * 100 + 380099) {
         //discount
         this.discountTime = 0;
         this.addDiscount();
       }
-      if (this.bossTime > Math.random() * 100 + 142230) {
+      if (this.bossTime > Math.random() * 100 + 1000099) {
         //boss
-        this.bossTime = 0;
+        this.bossTime = 5000;
         this.bossAlert();
         this.addBoss();
       }
@@ -342,6 +344,8 @@ class Game {
     this.puddles.forEach((e) => e.draw());
     this.fires.forEach((e) => e.draw());
     this.bosss.forEach((e) => e.draw());
+    this.babys.forEach((e) => e.draw());
+    this.customers.forEach((e) => e.draw());
     this.player.draw();
     this.walls.forEach((e) => e.draw());
     this.token.draw();
@@ -349,8 +353,7 @@ class Game {
     this.rats.forEach((e) => e.draw());
     this.fats.forEach((e) => e.draw());
     this.geese.forEach((e) => e.draw());
-    this.babys.forEach((e) => e.draw());
-    this.customers.forEach((e) => e.draw());
+
     this.line.draw();
     this.carts.forEach((e) => e.draw());
     this.discounts.forEach((e) => e.draw());
@@ -391,7 +394,7 @@ class Game {
     this.thisAudio.volume = 0.2;
     this.thisAudio.play();
     this.thisAudio = new Audio("/assets/audios ad/Ratas.mp3");
-    this.thisAudio.volume = 0.07;
+    this.thisAudio.volume = 0.03;
     this.thisAudio.play();
 
   }
@@ -440,7 +443,7 @@ class Game {
     const puddle = new Puddle(ctx);
     this.puddles.push(puddle);
     this.puddleBeginAudio = new Audio("/assets/audio/puddleBegin.mp3");
-    this.puddleBeginAudio.volume = 0.3;
+    this.puddleBeginAudio.volume = 0.5;
     this.puddleBeginAudio.play();
     this.thisAudio = new Audio("/assets/audio/Now what.mp3");
     this.thisAudio.volume = 0.08;
@@ -646,7 +649,7 @@ class Game {
         if (water.collides(rat)) {
           this.player.waters.splice(0, 1);
           rat.vx += 2;
-          this.player.coolDownWater -= 150;
+          this.player.coolDownWater -= 300;
           return false;
         } else return true;
       });
@@ -656,7 +659,7 @@ class Game {
         if (heat.collides(rat)) {
           this.player.heats.splice(0, 1);
           rat.vx += 2;
-          this.player.coolDownFire -= 150;
+          this.player.coolDownFire -= 300;
           return false;
         } else return true;
       });
@@ -666,7 +669,7 @@ class Game {
       this.player.waters = this.player.waters.filter((water) => {
         if (water.collides(fat)) {
           this.player.waters.splice(0, 1);
-          this.player.coolDownWater -= 150;
+          this.player.coolDownWater = 30;
         } else return true;
       });
     });
@@ -674,7 +677,7 @@ class Game {
       this.player.heats = this.player.heats.filter((heat) => {
         if (heat.collides(fat)) {
           this.player.heats.splice(0, 1);
-          this.player.coolDownFire -= 150;
+          this.player.coolDownFire = 30;
         } else return true;
       });
     });
@@ -707,7 +710,25 @@ class Game {
       this.player.heats = this.player.heats.filter((heat) => {
         if (heat.collides(goose)) {
           this.player.heats.splice(0, 1);
-          this.player.coolDownFire -= 150;
+          this.player.coolDownFire -= 300;
+          if (goose.x < this.player.x) {
+            goose.x -= 50;
+          }
+          if (goose.x > this.player.x) {
+            goose.x += 50;
+          }
+          if (goose.y < this.player.y) {
+            goose.y -= 50;
+          }
+          if (goose.y > this.player.y) {
+            goose.y += 50;
+          }
+        } else return true;
+      });
+      this.player.waters = this.player.waters.filter((water) => {
+        if (water.collides(goose)) {
+          this.player.waters.splice(0, 1);
+          this.player.coolDownFire -= 300;
           if (goose.x < this.player.x) {
             goose.x -= 50;
           }
@@ -739,6 +760,7 @@ class Game {
           this.babys.splice(0, 1);
           puddle.vx = 500;
           this.player.hit()
+          this.score.addScore()
           return false;
         } else return true;
       });
@@ -750,6 +772,7 @@ class Game {
           this.babys.splice(0, 1);
           fire.vx = 500;
           this.player.hit()
+          this.score.addScore()
           return false;
         } else return true;
       });
@@ -760,10 +783,13 @@ class Game {
     this.customers = this.customers.filter((customer) => {
       if (customer.collides(this.player)) {
         this.player.heal();
+        waterDistance += 20;
+        heatDistance +=20;
         return false;
       }
       return true;
     });
+
     this.puddles.forEach((puddle) => {
       this.customers = this.customers.filter((customer) => {
         if (customer.collides(puddle)) {
@@ -817,7 +843,6 @@ class Game {
           if (boss.y > this.player.y) {
             boss.y += 40;
           }
-          waterDistance += 10;
           return false;
         } else return true;
       });
@@ -836,7 +861,6 @@ class Game {
           if (boss.y > this.player.y) {
             boss.y += 40;
           }
-          heatDistance += 10;
           return false;
         } else return true;
       });

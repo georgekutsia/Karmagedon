@@ -172,7 +172,7 @@ class Player {
     if (key === Z) {
       this.heater();
       this.bheat++;
-      if (this.bheat % 4 === 0) {
+      if (this.bheat % 5 === 0) {
         Z = 0;
         setTimeout(function () {
           Z = 90;
@@ -183,7 +183,7 @@ class Player {
     if (key === X) {
       this.waterer();
       this.bwater++;
-      if (this.bwater >= 4) {
+      if (this.bwater >= 5) {
         this.bwater = 0;
         X = 0;
         setTimeout(function () {

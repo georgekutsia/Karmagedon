@@ -15,7 +15,7 @@ class Fat {
     this.tick = 0;
 
     this.fatAudio = new Audio("/assets/audio/fat.mp3")
-    this.fatAudio.volume = 0.2;
+    this.fatAudio.volume = 0.07;
     this.fatAudio.play();
   }
 

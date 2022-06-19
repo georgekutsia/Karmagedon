@@ -6,7 +6,7 @@ class Goose {
     this.y = this.salidas[Math.floor(Math.random()*this.salidas.length)]
     this.w = 0.04 * this.ctx.canvas.width;
     this.h = 0.1 * this.ctx.canvas.height;
-    this.vx = 2;
+    this.vx = 1.5;
     this.vy = 0;
     this.gooseImg = new Image();
     this.gooseImg.src = "/assets/images/elements/gansos.png";

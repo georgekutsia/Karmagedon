@@ -94,9 +94,9 @@ easy.addEventListener("click", function () {
       game2.start();
       btneasy.innerText = "Rest...";
     }
-    this.musicStart = new Audio("/assets/audios ad/clic future.wav");
-    this.musicStart.volume = 0.05;
-    this.musicStart.play()
+    this.clicking = new Audio("/assets/audios ad/clic future.wav");
+    this.clicking.volume = 0.05;
+    this.clicking.play()
   });
 
     //  GAME 2 EASY EASY DE CODE END
@@ -109,9 +109,9 @@ easy.addEventListener("click", function () {
   //el botón de reinicio
 restart.addEventListener("click", function () {
   window.location.reload();
-  this.musicStart = new Audio("/assets/audios ad/clic future.wav");
-  this.musicStart.volume = 0.05;
-  this.musicStart.play()
+  this.clicking = new Audio("/assets/audios ad/clic future.wav");
+  this.clicking.volume = 0.05;
+  this.clicking.play()
   });
 
 
@@ -121,13 +121,14 @@ restart.addEventListener("click", function () {
     begin.style.display = "none"
     manager.style.display = "none"
     cheat.style.display = "inline-block"
-    this.introMusic = new Audio("/assets/audio/Three Days Grace - I Hate Everything About You (Official Video) (DESCARGAMP3.ME).mp3");
+    this.introMusic = new Audio("/assets/audio/TDG.mp3");
     this.introMusic.volume = 0.04;
     this.introMusic.loop = true;  
+    this.introMusic.play()
     restart.style.display = "flex"
-    this.musicStart = new Audio("/assets/audios ad/click laser.mp3");
-    this.musicStart.volume = 0.05;
-    this.musicStart.play()
+    this.clicklaser = new Audio("/assets/audios ad/click laser.mp3");
+    this.clicklaser.volume = 0.05;
+    this.clicklaser.play()
   })
 
 
