@@ -45,15 +45,16 @@ class Discount {
   
     move() {
       this.tick++;
+      this.tock++
       if (this.tick > 90) {
         this.tick = 0;
         this.image.frame++;
       }
-  
-      if (this.x < 0) {
-      }
       if (this.image.frame > 3) {
         this.image.frame = 0;
+      }
+      if (this.tock >= 1000){
+        this.x = -100
       }
     }
   

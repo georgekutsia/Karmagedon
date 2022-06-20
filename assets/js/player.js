@@ -10,8 +10,6 @@ class Player {
     this.vx = 0;
     this.vy = 0;
 
-    this.discount = 0;
-
     this.img = new Image();
     this.img.src = "/assets/images/PJ/MANAGER 1.png";
     this.img.frame = 0;
@@ -28,8 +26,8 @@ class Player {
     this.heats = [];
     this.waters = [];
     this.direction = "left";
-    this.coolDownFire = 2000;
-    this.coolDownWater = 2000;
+    this.coolDownFire = 500;
+    this.coolDownWater = 500;
     this.jumptimer = 20000; //quizás haga algo para disminuirlo o aumentar su distancia
   }
 
@@ -200,7 +198,7 @@ class Player {
         C = 0;
         setTimeout(function () {
           C = 67;
-        }, 2000);
+        }, this.coolDownFire);
       }
     }
     if (key === V) {
@@ -212,7 +210,7 @@ class Player {
         V = 0;
         setTimeout(function () {
           V = 86;
-        }, 2000);
+        }, this.coolDownFire);
       }
     }
     if (key === ALT) {
@@ -222,6 +220,7 @@ class Player {
         ALT = 16;
       }, 2000);
     }
+    
   }
 
   heater() {

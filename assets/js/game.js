@@ -361,7 +361,6 @@ class Game {
       this.healing.draw();
     }
     this.score.draw();
-    console.log(this.score)
   }
   move() {
     this.player.move();
