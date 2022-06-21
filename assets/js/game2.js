@@ -32,14 +32,12 @@ class Game2 {
       new Wall(ctx, 925, 50, 25, 70),
       new Wall(ctx, 925, 110, 25, 70),
       new Wall(ctx, 925, 170, 25, 70),
-      new Wall(ctx, 800, 170, 50, 50),
 
       new Wall(ctx, 90, 50, 50, 25),
       new Wall(ctx, 240, 50, 50, 25),
       new Wall(ctx, 410, 205, 50, 25),
       new Wall(ctx, 560, 205, 50, 25),
-      new Wall(ctx, 482, 130, 60, 60),
-      new Wall(ctx, 490, 80, 40, 40),
+
       new Wall(ctx, 730, 50, 50, 25),
       new Wall(ctx, 870, 50, 50, 25),
 
@@ -118,12 +116,7 @@ class Game2 {
       this.cartTime++;
       this.discountTime++;
       this.checkCollisions();
-      // if (this.winTime >= 81100) {
-      //   this.gameWin();
-      // } // acaba a las 17:00     //121600 acaba a las 21:00:15
-      // if (this.winTime >= 121534.2) {
-      //   this.gameWin();
-      // }   //acaba a las 21 con tick del tiempo en 15
+
       if (this.winTime >= 60500) {   //sobrevive hasta las 15:00
         this.gameWin();
       }
@@ -355,12 +348,12 @@ class Game2 {
       }
       return true;
     });
-    // this.rats = this.rats.filter((rat) => {
-    //   if (rat.x <=0) {
-    //     this.gameOver()
-    //   }
-    //   return true;
-    // });
+    this.rats = this.rats.filter((rat) => {
+      if (rat.x <=0) {
+        this.gameOver()
+      }
+      return true;
+    });
     //impacto balas a las ratas
     this.rat = new Rats(ctx);
     this.rats.forEach((rat) => {

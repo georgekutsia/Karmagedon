@@ -9,6 +9,7 @@
   --clr-bgdir: rgb(0, 0, 0);
   --clr-ratinva: rgb(140, 7, 185);
   --clr-destruto: rgb(4, 135, 47);
+  --clr-survival: rgb(22, 55, 221);
   --clr-b: rgb(255, 251, 0);
 }
 
@@ -423,7 +424,6 @@
   z-index: -1;
   transition: opacity 0.8s linear;
 }
-
 #neon-hard:hover,
 #neon-hard:focus {
   color: var(--clr-b);
@@ -435,6 +435,74 @@
 }
 #neon-hard:hover::after,
 #neon-hard:focus::after {
+  opacity: 1;
+}
+
+
+#neon-superhard {
+  position: absolute;
+  z-index: 100;
+  font-size: 45px;
+  display: inline-block;
+  background-color: rgb(27, 4, 46);
+  cursor: url("/assets/images/elements/cursorInfo"), pointer;
+  text-decoration: none;
+  color: var( --clr-survival);
+  border: var( --clr-survival) 0.125em solid;
+  padding: 5px 10px;
+  border-radius: 30px;
+  opacity: 0.3;
+  text-shadow: 0 0 0.125em rgba(221, 6, 6, 0.3), 0 0 0.45em currentColor;
+
+  box-shadow: inset 0 0 0.5em 0 var( --clr-survival), 0 0 0.5em 0 var( --clr-survival);
+
+  left: 69%;
+  bottom: 8%;
+}
+
+#neon-superhard::before {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  background: var( --clr-survival);
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: perspective(1em) rotateX(40deg) scale(1, 0.35);
+  filter: blur(1em);
+  opacity: 0.3;
+}
+#neon-superhard:hover{
+  opacity:1;
+  transition: 1s;
+}
+#neon-superhard::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0 0 2em 0.5em var( --clr-survival);
+  opacity: 0;
+  border-radius: 30px;
+  background-color: var( --clr-survival);
+  z-index: -1;
+  transition: opacity 0.8s linear;
+}
+
+#neon-superhard:hover,
+#neon-superhard:focus {
+  color: var(--clr-b);
+  text-shadow: none;
+}
+#neon-superhard:hover::before,
+#neon-superhard:focus::before {
+  opacity: 1;
+}
+#neon-superhard:hover::after,
+#neon-superhard:focus::after {
   opacity: 1;
 }
 

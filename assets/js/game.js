@@ -145,12 +145,10 @@ class Game {
       // if (this.winTime >= 81100) {
       //   this.gameWin();
       // } // acaba a las 17:00     //121600 acaba a las 21:00:15
-      // if (this.winTime >= 121534.2) {
-      //   this.gameWin();
-      // }   //acaba a las 21 con tick del tiempo en 15
-      if(this.winTime >= 60500){
-        this.gameWin()
-      }
+      if (this.winTime >= 121534.2) {
+        this.gameWin();
+      }   //acaba a las 21 con tick del tiempo en 15
+
       if (this.winTime % 55000 === 0) {
         this.almostOver = new Audio("/assets/audio/It’s almost over.mp3");
         this.almostOver.volume = 0.3;

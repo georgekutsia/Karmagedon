@@ -4,6 +4,7 @@ const ctx = canvas.getContext('2d');
 const game = new Game(ctx);
 const game2 = new Game2(ctx)
 const game3 = new Game3(ctx)
+const game4 = new Game4(ctx)
 // const game3 = new Game3(ctx)
 
 
@@ -132,6 +133,36 @@ normal.addEventListener("click", function () {
   });
 
     //  GAME 3 EASY EASY DE CODE END
+  //  GAME 4 EASY EASY DE CODE START
+hard.addEventListener("click", function () {
+    game4.start();
+    displ.style.display = "block"
+    info.style.display = "none"
+    manager.style.display = "none"
+    begin.style.display = "none";
+    cheat.style.display = "inline-block";
+    restart.style.display = "flex"
+    easy.style.display = "none";
+    hard.style.display = "none";
+    hard.style.display = "none";
+    demo.style.display = "none";
+    btn.style.display = "none";
+    btnhard.style.display = "flex"
+  });
+  btnhard.addEventListener("click", function () {
+    if (game4.interval) {
+      game4.stop();
+      btneasy.innerText = "Go...";
+    } else {
+      game4.start();
+      btneasy.innerText = "Rest...";
+    }
+    this.clicking = new Audio("/assets/audios ad/clic future.wav");
+    this.clicking.volume = 0.05;
+    this.clicking.play()
+  });
+
+    //  GAME 34 EASY EASY DE CODE END
 
 
 

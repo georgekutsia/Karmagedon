@@ -2,7 +2,7 @@ class Goose {
   constructor(ctx) {
     this.ctx = ctx;
     this.x = -4;
-    this.salidas = [100, 150, 170, 190, 220, 250, 300, 330]
+    this.salidas = [30, 50, 100, 150, 170, 190, 220, 250, 300, 330, 370, 400, 430, 460, 500, 520]
     this.y = this.salidas[Math.floor(Math.random()*this.salidas.length)]
     this.w = 0.04 * this.ctx.canvas.width;
     this.h = 0.1 * this.ctx.canvas.height;

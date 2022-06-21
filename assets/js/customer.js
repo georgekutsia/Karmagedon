@@ -2,7 +2,7 @@ class Customer {
   constructor(ctx) {
     this.ctx = ctx;
     this.salidas = [
-      {x:200, y:0},{x:300, y:0}, {x:400, y:0}, {x:500, y:0}, {x:600, y:0}, {x:700, y:0}, {x:800, y:50}
+      {x:200, y:0},{x:300, y:0}, {x:400, y:0}, {x:500, y:0}, {x:600, y:0}, {x:700, y:0}, {x:800, y:50}, {x:100, y:0}
     ]
     this.xy = this.salidas[Math.floor(Math.random()*this.salidas.length)]
     this.x = this.xy.x;
