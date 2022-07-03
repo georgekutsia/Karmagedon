@@ -5,6 +5,7 @@ const game = new Game(ctx);
 const game2 = new Game2(ctx)
 const game3 = new Game3(ctx)
 const game4 = new Game4(ctx)
+const game5 = new Game5(ctx)
 // const game3 = new Game3(ctx)
 
 
@@ -13,6 +14,7 @@ const btn = document.querySelector(".neon-butt");
 const btneasy = document.querySelector(".neon-butteasy");
 const btnnormal = document.querySelector(".neon-buttnormal");
 const btnhard = document.querySelector(".neon-butthard");
+const btnsuperhard = document.querySelector(".neon-buttSuperhard");
 const restart = document.querySelector(".neon-bu")
 const info = document.getElementById("intro-canvas");
 const manager = document.getElementById("info-manager");
@@ -22,6 +24,7 @@ const can = document.getElementById("canvas")
 const easy = document.getElementById("neon-easy")
 const normal = document.getElementById("neon-normal")
 const hard = document.getElementById("neon-hard")
+const superhard = document.getElementById("neon-superhard")
 const demo = document.getElementById("display-adds")
 const zkaren = document.getElementById("add-karen")
 const zrat = document.getElementById("add-rat")
@@ -72,7 +75,7 @@ btn.addEventListener("click", function () {
   });
 
 
-  //  GAME 2 EASY EASY DE CODE START
+  //  GAME 2 RAT INVASION START
 easy.addEventListener("click", function () {
     game2.start();
     displ.style.display = "block"
@@ -84,6 +87,7 @@ easy.addEventListener("click", function () {
     easy.style.display = "none";
     normal.style.display = "none";
     hard.style.display = "none";
+    superhard.style.display = "none";
     demo.style.display = "none";
     btn.style.display = "none";
     btneasy.style.display = "flex"
@@ -102,8 +106,8 @@ easy.addEventListener("click", function () {
     this.clicking.play()
   });
 
-    //  GAME 2 EASY EASY DE CODE END
-  //  GAME 3 EASY EASY DE CODE START
+    //  GAME 2 END
+  //  GAME 3 STRUCTURAL DAMAGE START
 normal.addEventListener("click", function () {
     game3.start();
     displ.style.display = "block"
@@ -115,6 +119,7 @@ normal.addEventListener("click", function () {
     easy.style.display = "none";
     normal.style.display = "none";
     hard.style.display = "none";
+    superhard.style.display = "none";
     demo.style.display = "none";
     btn.style.display = "none";
     btnnormal.style.display = "flex"
@@ -122,18 +127,18 @@ normal.addEventListener("click", function () {
   btnnormal.addEventListener("click", function () {
     if (game3.interval) {
       game3.stop();
-      btneasy.innerText = "Go...";
+      btnnormal.innerText = "Hey..play..";
     } else {
       game3.start();
-      btneasy.innerText = "Rest...";
+      btnnormal.innerText = "Coffee?";
     }
     this.clicking = new Audio("/assets/audios ad/clic future.wav");
     this.clicking.volume = 0.05;
     this.clicking.play()
   });
 
-    //  GAME 3 EASY EASY DE CODE END
-  //  GAME 4 EASY EASY DE CODE START
+    //  GAME 3 END
+  //  GAME 4 GEESE INFERNO START
 hard.addEventListener("click", function () {
     game4.start();
     displ.style.display = "block"
@@ -143,8 +148,9 @@ hard.addEventListener("click", function () {
     cheat.style.display = "inline-block";
     restart.style.display = "flex"
     easy.style.display = "none";
+    normal.style.display = "none";
     hard.style.display = "none";
-    hard.style.display = "none";
+    superhard.style.display = "none";
     demo.style.display = "none";
     btn.style.display = "none";
     btnhard.style.display = "flex"
@@ -152,10 +158,44 @@ hard.addEventListener("click", function () {
   btnhard.addEventListener("click", function () {
     if (game4.interval) {
       game4.stop();
-      btneasy.innerText = "Go...";
+      btnhard.innerText = "Don`t be afraid";
     } else {
       game4.start();
-      btneasy.innerText = "Rest...";
+      btnhard.innerText = "Go to pee";
+    }
+    this.clicking = new Audio("/assets/audios ad/clic future.wav");
+    this.clicking.volume = 0.05;
+    this.clicking.play()
+  });
+
+    //  GAME 4 END
+  //  GAME 5 SURVIVE THE IMPOSIBLE START
+superhard.addEventListener("click", function () {
+    game5.start();
+    displ.style.display = "block"
+    info.style.display = "none"
+    manager.style.display = "none"
+    begin.style.display = "none";
+    cheat.style.display = "inline-block";
+    restart.style.display = "flex"
+    easy.style.display = "none";
+    normal.style.display = "none";
+    hard.style.display = "none";
+    easy.style.display = "none";
+    normal.style.display = "none";
+    hard.style.display = "none";
+    superhard.style.display = "none";
+    demo.style.display = "none";
+    btn.style.display = "none";
+    btnhard.style.display = "flex"
+  });
+  btnsuperhard.addEventListener("click", function () {
+    if (game5.interval) {
+      game4.stop();
+      btnsuperhard.innerText = "Too much?";
+    } else {
+      game5.start();
+      btnsuperhard.innerText = "Come on!!";
     }
     this.clicking = new Audio("/assets/audios ad/clic future.wav");
     this.clicking.volume = 0.05;
@@ -317,6 +357,11 @@ normal.addEventListener("mouseover", function(){
   this.musicStart.play()
 })
 hard.addEventListener("mouseover", function(){
+  this.musicStart = new Audio("/assets/audios ad/hover sound.mp3");
+  this.musicStart.volume = 0.3;
+  this.musicStart.play()
+})
+superhard.addEventListener("mouseover", function(){
   this.musicStart = new Audio("/assets/audios ad/hover sound.mp3");
   this.musicStart.volume = 0.3;
   this.musicStart.play()

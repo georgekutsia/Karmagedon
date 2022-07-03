@@ -16,6 +16,7 @@ class Puddle{
     this.w = 30;
     this.h = 30;
     this.vx = 0;
+    this.vy = 0;
     this.puddle = new Image();
     this.puddle.src = "/assets/images/elements/puddleCanvas.png";
     this.puddle.frame = 0;
@@ -35,7 +36,8 @@ class Puddle{
     );
   }
   move(){
-    this.x += this.vx
+    this.x +=this.vx
+    this.y +=this.vy
     this.tick++
 
     if (this.tick % 10 === 0) {
@@ -88,6 +90,7 @@ class Fire{
     this.fire.src = "/assets/images/elements/flames.png";
     this.fire.frame = 0;
     this.vx = 0;
+    this.vy = 0;
 
     this.tick = 0;
   }
@@ -106,7 +109,7 @@ class Fire{
   }
   move(){
     this.x += this.vx;
-    this.y += this.vx;
+    this.y += this.vy;
     this.tick++;
     if (this.tick % 10 === 0) {
       this.fire.frame++;

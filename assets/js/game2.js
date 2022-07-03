@@ -7,7 +7,6 @@ class Game2 {
     this.healing = new HealingPlace(ctx);
     this.water = new Water(ctx);
     this.score = new Score(ctx);
-
     this.walls = [
       new Wall(ctx, 60, 50, 20, 70),
       new Wall(ctx, 60, 110, 20, 70),
@@ -84,6 +83,7 @@ class Game2 {
     this.cartTime = 1400;
     this.discountTime = 0;
     this.winTime = 0;
+    this.loseRats = 0;
     this.interval = null;
 
     this.rats = [];
@@ -105,7 +105,6 @@ class Game2 {
     myFunction();
     this.interval = setInterval(() => {
       this.endGame = document.getElementById("time");
-      console.log(this.rats)
       this.clear();
       this.draw();
       this.move();
@@ -348,9 +347,14 @@ class Game2 {
       }
       return true;
     });
+
     this.rats = this.rats.filter((rat) => {
       if (rat.x <=0) {
-        this.gameOver()
+        this.loseRats += 1
+        console.log(this.loseRats)
+        if(this.loseRats >= 183){
+          this.gameWin()
+        }
       }
       return true;
     });

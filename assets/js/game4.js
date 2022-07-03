@@ -168,6 +168,9 @@ class Game4 {
         this.karenTime = 1000;
         this.karensAlert();
         this.addKaren();
+        if(this.winTime >=20000){
+          this.addGoose()
+        }
       }
       if (this.puddleTime > Math.random() * 1000 + 700) {
         //puddle
@@ -240,6 +243,7 @@ class Game4 {
     this.geese.forEach((e) => e.draw());
 
     this.line.draw();
+    this.healing.draw();
 
   }
   move() {
