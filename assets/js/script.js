@@ -37,16 +37,15 @@ const zdiscount = document.getElementById("add-discount")
 const zcart = document.getElementById("add-cart")
 const zbaby = document.getElementById("add-baby")
 
+const allButtonsGone = [easy, normal, hard, superhard, info, manager, begin]
+
+
 const in1 = document.getElementById("info1")
 const in2 = document.getElementById("info2")
 const in3 = document.getElementById("info3")
 const in4 = document.getElementById("info4")
 const infocheat = document.getElementById("info-cheatsheet")
-// const zall = document.querySelectorAll(".demo")
-// const zall = document.querySelector(".demo")
-//
-// const zall = [zbaby,  zboss, zcart, zdiscount, 
-// zfat, zfire, zgoose, zkaren, zpuddle, zrat ]
+
 
 
 
@@ -60,14 +59,9 @@ btn.addEventListener("click", function () {
       btn.innerText = "STOP";
     }
     displ.style.display = "block"
-    info.style.display = "none"
-    manager.style.display = "none"
-    begin.style.display = "none"
+    allButtonsGone.forEach((button) => button.style.display = "none")
     cheat.style.display = "inline-block"
     restart.style.display = "flex"
-    easy.style.display = "none";
-    normal.style.display = "none";
-    hard.style.display = "none";
     demo.style.display = "inline-block";
     this.musicStart = new Audio("/assets/audios ad/clic future.wav");
     this.musicStart.volume = 0.05;
@@ -79,16 +73,9 @@ btn.addEventListener("click", function () {
 easy.addEventListener("click", function () {
     game2.start();
     displ.style.display = "block"
-    info.style.display = "none"
-    manager.style.display = "none"
-    begin.style.display = "none";
+    allButtonsGone.forEach((button) => button.style.display = "none")
     cheat.style.display = "inline-block";
     restart.style.display = "flex"
-    easy.style.display = "none";
-    normal.style.display = "none";
-    hard.style.display = "none";
-    superhard.style.display = "none";
-    demo.style.display = "none";
     btn.style.display = "none";
     btneasy.style.display = "flex"
   });
@@ -111,16 +98,10 @@ easy.addEventListener("click", function () {
 normal.addEventListener("click", function () {
     game3.start();
     displ.style.display = "block"
-    info.style.display = "none"
-    manager.style.display = "none"
-    begin.style.display = "none";
+
     cheat.style.display = "inline-block";
     restart.style.display = "flex"
-    easy.style.display = "none";
-    normal.style.display = "none";
-    hard.style.display = "none";
-    superhard.style.display = "none";
-    demo.style.display = "none";
+    allButtonsGone.forEach((button) => button.style.display = "none")
     btn.style.display = "none";
     btnnormal.style.display = "flex"
   });
@@ -142,16 +123,9 @@ normal.addEventListener("click", function () {
 hard.addEventListener("click", function () {
     game4.start();
     displ.style.display = "block"
-    info.style.display = "none"
-    manager.style.display = "none"
-    begin.style.display = "none";
+    allButtonsGone.forEach((button) => button.style.display = "none")
     cheat.style.display = "inline-block";
     restart.style.display = "flex"
-    easy.style.display = "none";
-    normal.style.display = "none";
-    hard.style.display = "none";
-    superhard.style.display = "none";
-    demo.style.display = "none";
     btn.style.display = "none";
     btnhard.style.display = "flex"
   });
@@ -173,25 +147,16 @@ hard.addEventListener("click", function () {
 superhard.addEventListener("click", function () {
     game5.start();
     displ.style.display = "block"
-    info.style.display = "none"
-    manager.style.display = "none"
-    begin.style.display = "none";
+
     cheat.style.display = "inline-block";
     restart.style.display = "flex"
-    easy.style.display = "none";
-    normal.style.display = "none";
-    hard.style.display = "none";
-    easy.style.display = "none";
-    normal.style.display = "none";
-    hard.style.display = "none";
-    superhard.style.display = "none";
-    demo.style.display = "none";
+    allButtonsGone.forEach((button) => button.style.display = "none")
     btn.style.display = "none";
-    btnhard.style.display = "flex"
+    btnsuperhard.style.display = "flex"
   });
   btnsuperhard.addEventListener("click", function () {
     if (game5.interval) {
-      game4.stop();
+      game5.stop();
       btnsuperhard.innerText = "Too much?";
     } else {
       game5.start();
@@ -314,82 +279,20 @@ zbaby.addEventListener("click", function(){
 
 //sonidos para hover sobre las cosas
 
-begin.addEventListener("mouseover", function(){
-  this.musicStart = new Audio("/assets/audios ad/hover sound.mp3");
-  this.musicStart.volume = 0.2;
-  this.musicStart.play()
-})
-btn.addEventListener("mouseover", function(){
-  this.musicStart = new Audio("/assets/audios ad/hover sound.mp3");
-  this.musicStart.volume = 0.2;
-  this.musicStart.play()
-})
-restart.addEventListener("mouseover", function(){
-  this.musicStart = new Audio("/assets/audios ad/hover sound.mp3");
-  this.musicStart.volume = 0.2;
-  this.musicStart.play()
-})
+const hoverSoundButtons1 = [begin, btn, restart, btneasy, btnnormal, btnhard, btnsuperhard, easy, normal, hard, superhard]
 
+hoverSoundButtons1.forEach((button) => button.addEventListener("mouseover", function(){
+  this.musicStart = new Audio("/assets/audios ad/hover sound.mp3");
+  this.musicStart.volume = 0.05;
+  this.musicStart.play()
+}))
+const hoverSoundButtons2 = [in1, in2, in3, in4]
 
-btneasy.addEventListener("mouseover", function(){
-  this.musicStart = new Audio("/assets/audios ad/hover sound.mp3");
-  this.musicStart.volume = 0.2;
-  this.musicStart.play()
-})
-btnnormal.addEventListener("mouseover", function(){
-  this.musicStart = new Audio("/assets/audios ad/hover sound.mp3");
-  this.musicStart.volume = 0.2;
-  this.musicStart.play()
-})
-btnhard.addEventListener("mouseover", function(){
-  this.musicStart = new Audio("/assets/audios ad/hover sound.mp3");
-  this.musicStart.volume = 0.2;
-  this.musicStart.play()
-})
-easy.addEventListener("mouseover", function(){
-  this.musicStart = new Audio("/assets/audios ad/hover sound.mp3");
-  this.musicStart.volume = 0.1;
-  this.musicStart.play()
-})
-normal.addEventListener("mouseover", function(){
-  this.musicStart = new Audio("/assets/audios ad/hover sound.mp3");
-  this.musicStart.volume = 0.2;
-  this.musicStart.play()
-})
-hard.addEventListener("mouseover", function(){
-  this.musicStart = new Audio("/assets/audios ad/hover sound.mp3");
-  this.musicStart.volume = 0.3;
-  this.musicStart.play()
-})
-superhard.addEventListener("mouseover", function(){
-  this.musicStart = new Audio("/assets/audios ad/hover sound.mp3");
-  this.musicStart.volume = 0.3;
-  this.musicStart.play()
-})
-
-
-
-in1.addEventListener("mouseover", function(){
+hoverSoundButtons2.forEach((button) => button.addEventListener("mouseover", function(){
   this.musicStart = new Audio("/assets/audios ad/girar.mp3");
-  this.musicStart.volume = 0.3;
+  this.musicStart.volume = 0.05;
   this.musicStart.play()
-})
-in2.addEventListener("mouseover", function(){
-  this.musicStart = new Audio("/assets/audios ad/girar.mp3");
-  this.musicStart.volume = 0.3;
-  this.musicStart.play()
-})
-in3.addEventListener("mouseover", function(){
-  this.musicStart = new Audio("/assets/audios ad/girar.mp3");
-  this.musicStart.volume = 0.3;
-  this.musicStart.play()
-})
-in4.addEventListener("mouseover", function(){
-  this.musicStart = new Audio("/assets/audios ad/girar.mp3");
-  this.musicStart.volume = 0.3;
-  this.musicStart.play()
-})
-
+}))
 
 infocheat.addEventListener("mouseover", function(){
   this.musicStart = new Audio("/assets/audios ad/vibra.mp3");

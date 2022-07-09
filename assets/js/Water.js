@@ -17,7 +17,7 @@ class Water {
       this.waterImg.src = "/assets/images/elements/puddle.png";
       
       this.waterShootAudio = new Audio("/assets/audio/splash0.mp3")
-      this.waterShootAudio.volume = 0.02;
+      this.waterShootAudio.volume = 0.01;
       this.waterShootAudio.play();
     }
   

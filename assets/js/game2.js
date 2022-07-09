@@ -7,74 +7,74 @@ class Game2 {
     this.healing = new HealingPlace(ctx);
     this.water = new Water(ctx);
     this.score = new Score(ctx);
-    this.walls = [
-      new Wall(ctx, 60, 50, 20, 70),
-      new Wall(ctx, 60, 110, 20, 70),
-      new Wall(ctx, 60, 170, 20, 70),
+    this.bushes = [
+      new Bushes(ctx, 60, 50, 20, 70),
+      new Bushes(ctx, 60, 110, 20, 70),
+      new Bushes(ctx, 60, 170, 20, 70),
 
-      new Wall(ctx, 285, 170, 20, 70),
-      new Wall(ctx, 285, 110, 20, 70),
-      new Wall(ctx, 285, 50, 20, 70),
+      new Bushes(ctx, 285, 170, 20, 70),
+      new Bushes(ctx, 285, 110, 20, 70),
+      new Bushes(ctx, 285, 50, 20, 70),
 
-      new Wall(ctx, 380, 170, 25, 70),
-      new Wall(ctx, 380, 110, 25, 70),
-      new Wall(ctx, 380, 50, 25, 70),
+      new Bushes(ctx, 380, 170, 25, 70),
+      new Bushes(ctx, 380, 110, 25, 70),
+      new Bushes(ctx, 380, 50, 25, 70),
 
-      new Wall(ctx, 610, 170, 25, 70),
-      new Wall(ctx, 610, 110, 25, 70),
-      new Wall(ctx, 610, 50, 25, 70),
+      new Bushes(ctx, 610, 170, 25, 70),
+      new Bushes(ctx, 610, 110, 25, 70),
+      new Bushes(ctx, 610, 50, 25, 70),
 
-      new Wall(ctx, 700, 50, 25, 70),
-      new Wall(ctx, 700, 110, 25, 70),
-      new Wall(ctx, 700, 170, 25, 70),
+      new Bushes(ctx, 700, 50, 25, 70),
+      new Bushes(ctx, 700, 110, 25, 70),
+      new Bushes(ctx, 700, 170, 25, 70),
 
-      new Wall(ctx, 925, 50, 25, 70),
-      new Wall(ctx, 925, 110, 25, 70),
-      new Wall(ctx, 925, 170, 25, 70),
+      new Bushes(ctx, 925, 50, 25, 70),
+      new Bushes(ctx, 925, 110, 25, 70),
+      new Bushes(ctx, 925, 170, 25, 70),
 
-      new Wall(ctx, 90, 50, 50, 25),
-      new Wall(ctx, 240, 50, 50, 25),
-      new Wall(ctx, 410, 205, 50, 25),
-      new Wall(ctx, 560, 205, 50, 25),
+      new Bushes(ctx, 90, 50, 50, 25),
+      new Bushes(ctx, 240, 50, 50, 25),
+      new Bushes(ctx, 410, 205, 50, 25),
+      new Bushes(ctx, 560, 205, 50, 25),
 
-      new Wall(ctx, 730, 50, 50, 25),
-      new Wall(ctx, 870, 50, 50, 25),
+      new Bushes(ctx, 730, 50, 50, 25),
+      new Bushes(ctx, 870, 50, 50, 25),
 
-      new Wall(ctx, 60, 320, 25, 70),
-      new Wall(ctx, 60, 380, 25, 70),
-      new Wall(ctx, 60, 440, 25, 70),
+      new Bushes(ctx, 60, 320, 25, 70),
+      new Bushes(ctx, 60, 380, 25, 70),
+      new Bushes(ctx, 60, 440, 25, 70),
 
-      new Wall(ctx, 285, 320, 25, 70),
-      new Wall(ctx, 285, 380, 25, 70),
-      new Wall(ctx, 285, 440, 25, 70),
-      new Wall(ctx, 180, 380, 40, 40),
+      new Bushes(ctx, 285, 320, 25, 70),
+      new Bushes(ctx, 285, 380, 25, 70),
+      new Bushes(ctx, 285, 440, 25, 70),
+      new Bushes(ctx, 180, 380, 40, 40),
 
-      new Wall(ctx, 380, 320, 25, 70),
-      new Wall(ctx, 380, 380, 25, 70),
-      new Wall(ctx, 380, 440, 25, 70),
+      new Bushes(ctx, 380, 320, 25, 70),
+      new Bushes(ctx, 380, 380, 25, 70),
+      new Bushes(ctx, 380, 440, 25, 70),
 
-      new Wall(ctx, 610, 320, 25, 70),
-      new Wall(ctx, 610, 380, 25, 70),
-      new Wall(ctx, 610, 440, 25, 70),
+      new Bushes(ctx, 610, 320, 25, 70),
+      new Bushes(ctx, 610, 380, 25, 70),
+      new Bushes(ctx, 610, 440, 25, 70),
 
-      new Wall(ctx, 700, 320, 25, 70),
-      new Wall(ctx, 700, 380, 25, 70),
-      new Wall(ctx, 700, 440, 25, 70),
+      new Bushes(ctx, 700, 320, 25, 70),
+      new Bushes(ctx, 700, 380, 25, 70),
+      new Bushes(ctx, 700, 440, 25, 70),
 
-      new Wall(ctx, 925, 320, 25, 70),
-      new Wall(ctx, 925, 380, 25, 70),
-      new Wall(ctx, 925, 440, 25, 70),
+      new Bushes(ctx, 925, 320, 25, 70),
+      new Bushes(ctx, 925, 380, 25, 70),
+      new Bushes(ctx, 925, 440, 25, 70),
 
 
-      new Wall(ctx, 410, 320, 50, 25),
-      new Wall(ctx, 560, 320, 50, 25),
-      new Wall(ctx, 465, 450, 50, 25),
-      new Wall(ctx, 500, 450, 50, 25),
+      new Bushes(ctx, 410, 320, 50, 25),
+      new Bushes(ctx, 560, 320, 50, 25),
+      new Bushes(ctx, 465, 450, 50, 25),
+      new Bushes(ctx, 500, 450, 50, 25),
 
-      new Wall(ctx, 880, 320, 50, 25),
-      new Wall(ctx, 830, 320, 50, 25),
-      new Wall(ctx, 730, 480, 50, 25),
-      new Wall(ctx, 780, 480, 50, 25),
+      new Bushes(ctx, 880, 320, 50, 25),
+      new Bushes(ctx, 830, 320, 50, 25),
+      new Bushes(ctx, 730, 480, 50, 25),
+      new Bushes(ctx, 780, 480, 50, 25),
     ];
 
     this.ratTime = 0; // rat
@@ -241,7 +241,7 @@ class Game2 {
     this.winTime++;
     this.bosss.forEach((e) => e.draw());
     this.player.draw();
-    this.walls.forEach((e) => e.draw());
+    this.bushes.forEach((e) => e.draw());
     this.token.draw();
     this.rats.forEach((e) => e.draw());
     this.fats.forEach((e) => e.draw());
@@ -270,7 +270,7 @@ class Game2 {
     const rat = new Rats(ctx);
     this.rats.push(rat);
     this.thisAudio = new Audio("/assets/audio/Comemos.mp3");
-    this.thisAudio.volume = 0.1;
+    this.thisAudio.volume = 0.07;
     this.thisAudio.play();
     this.thisAudio = new Audio("/assets/audios ad/Ratas.mp3");
     this.thisAudio.volume = 0.03;
@@ -280,7 +280,7 @@ class Game2 {
     const fat = new Fat(ctx);
     this.fats.push(fat);
     this.thisAudio = new Audio("/assets/audio/Oh fuck.mp3");
-    this.thisAudio.volume = 0.2;
+    this.thisAudio.volume = 0.1;
     this.thisAudio.play();
   }
   addBoss() {
@@ -351,9 +351,8 @@ class Game2 {
     this.rats = this.rats.filter((rat) => {
       if (rat.x <=0) {
         this.loseRats += 1
-        console.log(this.loseRats)
         if(this.loseRats >= 183){
-          this.gameWin()
+          this.gameOver()
         }
       }
       return true;
@@ -366,7 +365,7 @@ class Game2 {
         if (water.collides(rat)) {
           this.player.waters.splice(0, 1);
           rat.vx += 2;
-          this.player.coolDownWater -= 300;
+          this.player.coolDownWater -= 50;
           if(this.winTime >= 30000){
             this.addRat()
           }
@@ -379,7 +378,7 @@ class Game2 {
         if (heat.collides(rat)) {
           this.player.heats.splice(0, 1);
           rat.vx += 2;
-          this.player.coolDownFire -= 300;
+          this.player.coolDownFire -= 50;
           return false;
         } else return true;
       });
@@ -466,8 +465,8 @@ class Game2 {
     });
 
     // colisiones con las paredes y los charcos que retrasan al jugador
-    this.walls.forEach((wall) => {
-      if (wall.collides(this.player)) {
+    this.bushes.forEach((bush) => {
+      if (bush.collides(this.player)) {
         this.player.vy = 0;
         this.player.vx = 0;
       }

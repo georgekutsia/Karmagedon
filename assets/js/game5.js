@@ -388,10 +388,10 @@ class Game5 {
     const rat = new Rats(ctx);
     this.rats.push(rat);
     this.thisAudio = new Audio("/assets/audio/Comemos.mp3");
-    this.thisAudio.volume = 0.2;
+    this.thisAudio.volume = 0.1;
     this.thisAudio.play();
     this.thisAudio = new Audio("/assets/audios ad/Ratas.mp3");
-    this.thisAudio.volume = 0.03;
+    this.thisAudio.volume = 0.02;
     this.thisAudio.play();
 
   }
@@ -399,7 +399,7 @@ class Game5 {
     const fat = new Fat(ctx);
     this.fats.push(fat);
     this.thisAudio = new Audio("/assets/audio/Oh fuck.mp3");
-    this.thisAudio.volume = 0.2;
+    this.thisAudio.volume = 0.1;
     this.thisAudio.play();
   }
   addGoose() {

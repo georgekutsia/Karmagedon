@@ -115,7 +115,6 @@ class Player {
   }
   chargeAmunition(){
     this.amunition +=2
-    console.log(this.amunition)
   }
 
   jump(){
@@ -256,6 +255,9 @@ class Player {
       this.img.src = "/assets/images/PJ/imdown.png";
       this.img.frame++
       
+    }
+    if(this.coolDownFire <= 600){
+      this.coolDownFire = 600
     }
     this.heats.push(heat);
   }

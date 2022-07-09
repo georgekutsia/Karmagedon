@@ -116,6 +116,11 @@ class Game {
     this.carts = [];
     this.discounts = [];
 
+    this.listOfEvents = [this.karens, this.rats, this.babys, 
+                        this.customers, this.fats, this.puddles,
+                        this.fires, this.geese, this.bosss, this.korens, 
+                        this.carts, this.discounts]
+
     this.setListeners();
 
     this.musicStart = new Audio("/assets/audio/valse.mp3");
@@ -147,8 +152,6 @@ class Game {
       this.cartTime++;
       this.discountTime++;
       this.checkCollisions();
-      console.log(this.player.coolDownFire)
-      console.log(this.player.coolDownWater)
       if (this.winTime >= 121534.2) {
         this.gameWin();
       }   //acaba a las 21 con tick del tiempo en 15
@@ -245,7 +248,7 @@ class Game {
         this.babyAlert();
         this.addBaby();
       }
-      if (this.customerTime > Math.random() * 1000 + 5009) {
+      if (this.customerTime > Math.random() * 1000 + 500009) {
         //customer
         this.customerTime = 0;
         this.addCustomer();
@@ -266,7 +269,7 @@ class Game {
         this.bossAlert();
         this.addBoss();
       }
-      if (this.korenTime > Math.random() * 100 + 99) {
+      if (this.korenTime > Math.random() * 100 + 20099) {
         //koren
         this.korenTime = 0;
         this.addKoren();
@@ -342,7 +345,8 @@ class Game {
       this.geese.length <= 0 &&
       this.fats.length <= 0 &&
       this.rats.length <= 0 &&
-      this.karens.length <= 0
+      this.karens.length <= 0 &&
+      this.korens.lenth <= 0
     ) {
       const nothingToWorrie = document.getElementById("ok");
       nothingToWorrie.style.display = "inline-block";
@@ -355,6 +359,8 @@ class Game {
 
   draw() {
     this.winTime++;
+
+    // this.listOfEvents.forEach((event) => event.forEach((e) => e.draw()))
     this.puddles.forEach((e) => e.draw());
     this.fires.forEach((e) => e.draw());
     this.bosss.forEach((e) => e.draw());
@@ -368,10 +374,10 @@ class Game {
     this.rats.forEach((e) => e.draw());
     this.fats.forEach((e) => e.draw());
     this.geese.forEach((e) => e.draw());
-
-    this.line.draw();
     this.carts.forEach((e) => e.draw());
     this.discounts.forEach((e) => e.draw());
+    this.line.draw();
+
     if (this.winTime > 600) {
       this.healing.draw();
     }
@@ -883,6 +889,7 @@ class Game {
           }
           const koren = new Koren(ctx);
           this.korens.push(koren);
+          this.korenAlert()
           
           this.player.wSpeed += 1
           return false;
