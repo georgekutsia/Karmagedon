@@ -7,85 +7,86 @@ class Game {
     this.healing = new HealingPlace(ctx);
     this.water = new Water(ctx)
     this.score = new Score(ctx);
+    this.food = new Food(ctx);
     this.saved = new Saved(ctx);
 
     this.walls = [
-      new Wall(ctx, 60, 50, 20, 70),
-      new Wall(ctx, 60, 110, 20, 70),
-      new Wall(ctx, 60, 170, 20, 70),
+      new Bushes(ctx, 60, 50, 20, 70),
+      new Bushes(ctx, 60, 110, 20, 70),
+      new Bushes(ctx, 60, 170, 20, 70),
 
-      new Wall(ctx, 285, 170, 20, 70),
-      new Wall(ctx, 285, 110, 20, 70),
-      new Wall(ctx, 285, 50, 20, 70),
+      new Bushes(ctx, 285, 170, 20, 70),
+      new Bushes(ctx, 285, 110, 20, 70),
+      new Bushes(ctx, 285, 50, 20, 70),
 
-      new Wall(ctx, 380, 170, 25, 70),
-      new Wall(ctx, 380, 110, 25, 70),
-      new Wall(ctx, 380, 50, 25, 70),
+      new Bushes(ctx, 380, 170, 25, 70),
+      new Bushes(ctx, 380, 110, 25, 70),
+      new Bushes(ctx, 380, 50, 25, 70),
 
-      new Wall(ctx, 610, 170, 25, 70),
-      new Wall(ctx, 610, 110, 25, 70),
-      new Wall(ctx, 610, 50, 25, 70),
+      new Bushes(ctx, 610, 170, 25, 70),
+      new Bushes(ctx, 610, 110, 25, 70),
+      new Bushes(ctx, 610, 50, 25, 70),
 
-      new Wall(ctx, 700, 50, 25, 70),
-      new Wall(ctx, 700, 110, 25, 70),
-      new Wall(ctx, 700, 170, 25, 70),
+      new Bushes(ctx, 700, 50, 25, 70),
+      new Bushes(ctx, 700, 110, 25, 70),
+      new Bushes(ctx, 700, 170, 25, 70),
 
-      new Wall(ctx, 925, 50, 25, 70),
-      new Wall(ctx, 925, 110, 25, 70),
-      new Wall(ctx, 925, 170, 25, 70),
-      new Wall(ctx, 800, 170, 50, 50),
+      new Bushes(ctx, 925, 50, 25, 70),
+      new Bushes(ctx, 925, 110, 25, 70),
+      new Bushes(ctx, 925, 170, 25, 70),
+      new Bushes(ctx, 800, 170, 50, 50),
 
-      new Wall(ctx, 90, 50, 50, 25),
-      new Wall(ctx, 240, 50, 50, 25),
-      new Wall(ctx, 410, 205, 50, 25),
-      new Wall(ctx, 560, 205, 50, 25),
-      new Wall(ctx, 482, 130, 60, 60),
-      new Wall(ctx, 490, 80, 40, 40),
-      new Wall(ctx, 730, 50, 50, 25),
-      new Wall(ctx, 870, 50, 50, 25),
+      new Bushes(ctx, 90, 50, 50, 25),
+      new Bushes(ctx, 240, 50, 50, 25),
+      new Bushes(ctx, 410, 205, 50, 25),
+      new Bushes(ctx, 560, 205, 50, 25),
+      new Bushes(ctx, 482, 130, 60, 60),
+      new Bushes(ctx, 490, 80, 40, 40),
+      new Bushes(ctx, 730, 50, 50, 25),
+      new Bushes(ctx, 870, 50, 50, 25),
 
-      new Wall(ctx, 60, 320, 25, 70),
-      new Wall(ctx, 60, 380, 25, 70),
-      new Wall(ctx, 60, 440, 25, 70),
+      new Bushes(ctx, 60, 320, 25, 70),
+      new Bushes(ctx, 60, 380, 25, 70),
+      new Bushes(ctx, 60, 440, 25, 70),
 
-      new Wall(ctx, 285, 320, 25, 70),
-      new Wall(ctx, 285, 380, 25, 70),
-      new Wall(ctx, 285, 440, 25, 70),
-      new Wall(ctx, 180, 380, 40, 40),
+      new Bushes(ctx, 285, 320, 25, 70),
+      new Bushes(ctx, 285, 380, 25, 70),
+      new Bushes(ctx, 285, 440, 25, 70),
+      new Bushes(ctx, 180, 380, 40, 40),
 
-      new Wall(ctx, 380, 320, 25, 70),
-      new Wall(ctx, 380, 380, 25, 70),
-      new Wall(ctx, 380, 440, 25, 70),
+      new Bushes(ctx, 380, 320, 25, 70),
+      new Bushes(ctx, 380, 380, 25, 70),
+      new Bushes(ctx, 380, 440, 25, 70),
 
-      new Wall(ctx, 610, 320, 25, 70),
-      new Wall(ctx, 610, 380, 25, 70),
-      new Wall(ctx, 610, 440, 25, 70),
+      new Bushes(ctx, 610, 320, 25, 70),
+      new Bushes(ctx, 610, 380, 25, 70),
+      new Bushes(ctx, 610, 440, 25, 70),
 
-      new Wall(ctx, 700, 320, 25, 70),
-      new Wall(ctx, 700, 380, 25, 70),
-      new Wall(ctx, 700, 440, 25, 70),
+      new Bushes(ctx, 700, 320, 25, 70),
+      new Bushes(ctx, 700, 380, 25, 70),
+      new Bushes(ctx, 700, 440, 25, 70),
 
-      new Wall(ctx, 925, 320, 25, 70),
-      new Wall(ctx, 925, 380, 25, 70),
-      new Wall(ctx, 925, 440, 25, 70),
+      new Bushes(ctx, 925, 320, 25, 70),
+      new Bushes(ctx, 925, 380, 25, 70),
+      new Bushes(ctx, 925, 440, 25, 70),
 
-      new Wall(ctx, 90, 320, 50, 25),
-      new Wall(ctx, 240, 320, 50, 25),
-      new Wall(ctx, 90, 480, 50, 25),
-      new Wall(ctx, 240, 480, 50, 25),
-      new Wall(ctx, 170, 110, 40, 40),
-      new Wall(ctx, 80, 200, 40, 40),
-      new Wall(ctx, 830, 330, 20, 70),
+      new Bushes(ctx, 90, 320, 50, 25),
+      new Bushes(ctx, 240, 320, 50, 25),
+      new Bushes(ctx, 90, 480, 50, 25),
+      new Bushes(ctx, 240, 480, 50, 25),
+      new Bushes(ctx, 170, 110, 40, 40),
+      new Bushes(ctx, 80, 200, 40, 40),
+      new Bushes(ctx, 830, 330, 20, 70),
 
-      new Wall(ctx, 410, 320, 50, 25),
-      new Wall(ctx, 560, 320, 50, 25),
-      new Wall(ctx, 465, 450, 50, 25),
-      new Wall(ctx, 500, 450, 50, 25),
+      new Bushes(ctx, 410, 320, 50, 25),
+      new Bushes(ctx, 560, 320, 50, 25),
+      new Bushes(ctx, 465, 450, 50, 25),
+      new Bushes(ctx, 500, 450, 50, 25),
 
-      new Wall(ctx, 880, 320, 50, 25),
-      new Wall(ctx, 830, 320, 50, 25),
-      new Wall(ctx, 730, 480, 50, 25),
-      new Wall(ctx, 780, 480, 50, 25),
+      new Bushes(ctx, 880, 320, 50, 25),
+      new Bushes(ctx, 830, 320, 50, 25),
+      new Bushes(ctx, 730, 480, 50, 25),
+      new Bushes(ctx, 780, 480, 50, 25),
     ];
 
     this.karenTime = 0; //karen
@@ -99,6 +100,7 @@ class Game {
     this.bossTime = 0; //boss
     this.korenTime = 0; //koren
     this.cartTime = 3450;
+    this.foodTime = 0;
     this.discountTime = 3700;
     this.winTime = 0;
     this.interval = null;
@@ -114,6 +116,7 @@ class Game {
     this.bosss = [];
     this.korens = [];
     this.carts = [];
+    this.foods = [];
     this.discounts = [];
 
     this.listOfEvents = [this.karens, this.rats, this.babys, 
@@ -150,6 +153,7 @@ class Game {
       this.korenTime++;
       this.winTime++;
       this.cartTime++;
+      this.foodTime++;
       this.discountTime++;
       this.checkCollisions();
       if (this.winTime >= 121534.2) {
@@ -258,6 +262,11 @@ class Game {
         this.cartTime = 0;
         this.addCart();
       }
+      if (this.foodTime > Math.random() * 100 + 2259) {
+        //food
+        this.foodTime = 0;
+        this.addFood();
+      }
       if (this.discountTime > Math.random() * 100 + 380099) {
         //discount
         this.discountTime = 0;
@@ -345,8 +354,7 @@ class Game {
       this.geese.length <= 0 &&
       this.fats.length <= 0 &&
       this.rats.length <= 0 &&
-      this.karens.length <= 0 &&
-      this.korens.lenth <= 0
+      this.karens.length <= 0
     ) {
       const nothingToWorrie = document.getElementById("ok");
       nothingToWorrie.style.display = "inline-block";
@@ -375,6 +383,7 @@ class Game {
     this.fats.forEach((e) => e.draw());
     this.geese.forEach((e) => e.draw());
     this.carts.forEach((e) => e.draw());
+    this.foods.forEach((e) => e.draw());
     this.discounts.forEach((e) => e.draw());
     this.line.draw();
 
@@ -400,6 +409,7 @@ class Game {
     this.line.move();
     this.healing.move();
     this.carts.forEach((e) => e.move());
+    this.foods.forEach((e) => e.move());
     this.discounts.forEach((e) => e.move());
   }
   addKaren() {
@@ -494,6 +504,10 @@ class Game {
   addCart() {
     const cart = new Cart(ctx);
     this.carts.push(cart);
+  }
+  addFood() {
+    const food = new Food(ctx);
+    this.foods.push(food);
   }
   addDiscount() {
     const discount = new Discount(ctx);
@@ -784,7 +798,7 @@ class Game {
       if (baby.collides(this.player)) {
         this.saved.addSave()
         if(this.saved.save % 3 === 0){
-          this.player.heal();
+          this.addFood()
           this.player.coolDownWater -= 200;
           this.player.coolDownFire -= 200;
         }
@@ -823,7 +837,7 @@ class Game {
       if (customer.collides(this.player)) {
         this.saved.addSave()
         if(this.saved.save % 3 === 0){
-          this.player.heal();
+          this.addFood()
           this.player.coolDownWater -= 200;
           this.player.coolDownFire -= 200;
         }
@@ -890,9 +904,9 @@ class Game {
           const koren = new Koren(ctx);
           this.korens.push(koren);
           this.korenAlert()
-          
-          this.player.wSpeed += 1
-          return false;
+          this.line.b -= 0.2;
+          this.line.a += 0.2;
+            return false;
         } else return true;
       });
       
@@ -914,8 +928,8 @@ class Game {
           }
           const koren = new Koren(ctx);
           this.korens.push(koren);
-
-          this.player.hSpeed += 1
+          this.line.b -= 0.2;
+          this.line.a += 0.2;
           return false;
         } else return true;
       });
@@ -957,10 +971,23 @@ class Game {
         this.newShoes = new Audio("/assets/audios ad/Faster running.mp3");
         this.newShoes.volume = 0.1;
         this.newShoes.play()
-        this.player.boost += 1;
+        this.player.boost += 0.5;
         distance +=10
-        this.player.chargeAmunition()
-
+        return false;
+      }
+      return true;
+    });
+    //impacto food
+    this.foods = this.foods.filter((food) => {
+      if (food.collides(this.player)) {
+        // this.newShoes = new Audio("/assets/audios ad/Faster running.mp3");
+        // this.newShoes.volume = 0.1;
+        // this.newShoes.play()
+        this.player.wSpeed += 1
+        this.player.hSpeed += 1
+        waterDistance += 10;
+        heatDistance += 10;
+        this.player.heal()
         return false;
       }
       return true;
@@ -970,8 +997,6 @@ class Game {
       if (discount.collides(this.player)) {
         this.line.b -= 0.5;
         this.line.a += 0.5;
-        waterDistance += 20;
-        heatDistance +=20;
         return false;
       }
       return true;
@@ -1002,6 +1027,7 @@ class Game {
     this.bosss = [];
     this.korens = [];
     this.carts = [];
+    this.foods = [];
     this.dicounts = [];
     const lose = document.getElementById("lose");
     lose.style.display = "block"
@@ -1020,6 +1046,7 @@ class Game {
     this.boss = [];
     this.korens = [];
     this.carts = [];
+    this.foods = [];
     this.dicounts = [];
     const wincon = document.getElementById("win");
     wincon.style.display = "block"

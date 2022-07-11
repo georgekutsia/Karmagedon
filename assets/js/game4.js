@@ -8,83 +8,83 @@ class Game4 {
     this.water = new Water(ctx)
     this.score = new Score(ctx);
 
-    this.walls = [
-      new Wall(ctx, 60, 50, 20, 70),
-      new Wall(ctx, 60, 110, 20, 70),
-      new Wall(ctx, 60, 170, 20, 70),
+    this.cactus = [
+      new Cactus(ctx, 60, 50, 20, 70),
+      new Cactus(ctx, 60, 110, 20, 70),
+      new Cactus(ctx, 60, 170, 20, 70),
 
-      new Wall(ctx, 285, 170, 20, 70),
-      new Wall(ctx, 285, 110, 20, 70),
-      new Wall(ctx, 285, 50, 20, 70),
+      new Cactus(ctx, 285, 170, 20, 70),
+      new Cactus(ctx, 285, 110, 20, 70),
+      new Cactus(ctx, 285, 50, 20, 70),
 
-      new Wall(ctx, 380, 170, 25, 70),
-      new Wall(ctx, 380, 110, 25, 70),
-      new Wall(ctx, 380, 50, 25, 70),
+      new Cactus(ctx, 380, 170, 25, 70),
+      new Cactus(ctx, 380, 110, 25, 70),
+      new Cactus(ctx, 380, 50, 25, 70),
 
-      new Wall(ctx, 610, 170, 25, 70),
-      new Wall(ctx, 610, 110, 25, 70),
-      new Wall(ctx, 610, 50, 25, 70),
+      new Cactus(ctx, 610, 170, 25, 70),
+      new Cactus(ctx, 610, 110, 25, 70),
+      new Cactus(ctx, 610, 50, 25, 70),
 
-      new Wall(ctx, 700, 50, 25, 70),
-      new Wall(ctx, 700, 110, 25, 70),
-      new Wall(ctx, 700, 170, 25, 70),
+      new Cactus(ctx, 700, 50, 25, 70),
+      new Cactus(ctx, 700, 110, 25, 70),
+      new Cactus(ctx, 700, 170, 25, 70),
 
-      new Wall(ctx, 925, 50, 25, 70),
-      new Wall(ctx, 925, 110, 25, 70),
-      new Wall(ctx, 925, 170, 25, 70),
-      new Wall(ctx, 800, 170, 50, 50),
+      new Cactus(ctx, 925, 50, 25, 70),
+      new Cactus(ctx, 925, 110, 25, 70),
+      new Cactus(ctx, 925, 170, 25, 70),
+      new Cactus(ctx, 800, 170, 50, 50),
 
-      new Wall(ctx, 90, 50, 50, 25),
-      new Wall(ctx, 240, 50, 50, 25),
-      new Wall(ctx, 410, 205, 50, 25),
-      new Wall(ctx, 560, 205, 50, 25),
-      new Wall(ctx, 482, 130, 60, 60),
-      new Wall(ctx, 490, 80, 40, 40),
-      new Wall(ctx, 730, 50, 50, 25),
-      new Wall(ctx, 870, 50, 50, 25),
+      new Cactus(ctx, 90, 50, 50, 25),
+      new Cactus(ctx, 240, 50, 50, 25),
+      new Cactus(ctx, 410, 205, 50, 25),
+      new Cactus(ctx, 560, 205, 50, 25),
+      new Cactus(ctx, 482, 130, 60, 60),
+      new Cactus(ctx, 490, 80, 40, 40),
+      new Cactus(ctx, 730, 50, 50, 25),
+      new Cactus(ctx, 870, 50, 50, 25),
 
-      new Wall(ctx, 60, 320, 25, 70),
-      new Wall(ctx, 60, 380, 25, 70),
-      new Wall(ctx, 60, 440, 25, 70),
+      new Cactus(ctx, 60, 320, 25, 70),
+      new Cactus(ctx, 60, 380, 25, 70),
+      new Cactus(ctx, 60, 440, 25, 70),
 
-      new Wall(ctx, 285, 320, 25, 70),
-      new Wall(ctx, 285, 380, 25, 70),
-      new Wall(ctx, 285, 440, 25, 70),
-      new Wall(ctx, 180, 380, 40, 40),
+      new Cactus(ctx, 285, 320, 25, 70),
+      new Cactus(ctx, 285, 380, 25, 70),
+      new Cactus(ctx, 285, 440, 25, 70),
+      new Cactus(ctx, 180, 380, 40, 40),
 
-      new Wall(ctx, 380, 320, 25, 70),
-      new Wall(ctx, 380, 380, 25, 70),
-      new Wall(ctx, 380, 440, 25, 70),
+      new Cactus(ctx, 380, 320, 25, 70),
+      new Cactus(ctx, 380, 380, 25, 70),
+      new Cactus(ctx, 380, 440, 25, 70),
 
-      new Wall(ctx, 610, 320, 25, 70),
-      new Wall(ctx, 610, 380, 25, 70),
-      new Wall(ctx, 610, 440, 25, 70),
+      new Cactus(ctx, 610, 320, 25, 70),
+      new Cactus(ctx, 610, 380, 25, 70),
+      new Cactus(ctx, 610, 440, 25, 70),
 
-      new Wall(ctx, 700, 320, 25, 70),
-      new Wall(ctx, 700, 380, 25, 70),
-      new Wall(ctx, 700, 440, 25, 70),
+      new Cactus(ctx, 700, 320, 25, 70),
+      new Cactus(ctx, 700, 380, 25, 70),
+      new Cactus(ctx, 700, 440, 25, 70),
 
-      new Wall(ctx, 925, 320, 25, 70),
-      new Wall(ctx, 925, 380, 25, 70),
-      new Wall(ctx, 925, 440, 25, 70),
+      new Cactus(ctx, 925, 320, 25, 70),
+      new Cactus(ctx, 925, 380, 25, 70),
+      new Cactus(ctx, 925, 440, 25, 70),
 
-      new Wall(ctx, 90, 320, 50, 25),
-      new Wall(ctx, 240, 320, 50, 25),
-      new Wall(ctx, 90, 480, 50, 25),
-      new Wall(ctx, 240, 480, 50, 25),
-      new Wall(ctx, 170, 110, 40, 40),
-      new Wall(ctx, 80, 200, 40, 40),
-      new Wall(ctx, 830, 330, 20, 70),
+      new Cactus(ctx, 90, 320, 50, 25),
+      new Cactus(ctx, 240, 320, 50, 25),
+      new Cactus(ctx, 90, 480, 50, 25),
+      new Cactus(ctx, 240, 480, 50, 25),
+      new Cactus(ctx, 170, 110, 40, 40),
+      new Cactus(ctx, 80, 200, 40, 40),
+      new Cactus(ctx, 830, 330, 20, 70),
 
-      new Wall(ctx, 410, 320, 50, 25),
-      new Wall(ctx, 560, 320, 50, 25),
-      new Wall(ctx, 465, 450, 50, 25),
-      new Wall(ctx, 500, 450, 50, 25),
+      new Cactus(ctx, 410, 320, 50, 25),
+      new Cactus(ctx, 560, 320, 50, 25),
+      new Cactus(ctx, 465, 450, 50, 25),
+      new Cactus(ctx, 500, 450, 50, 25),
 
-      new Wall(ctx, 880, 320, 50, 25),
-      new Wall(ctx, 830, 320, 50, 25),
-      new Wall(ctx, 730, 480, 50, 25),
-      new Wall(ctx, 780, 480, 50, 25),
+      new Cactus(ctx, 880, 320, 50, 25),
+      new Cactus(ctx, 830, 320, 50, 25),
+      new Cactus(ctx, 730, 480, 50, 25),
+      new Cactus(ctx, 780, 480, 50, 25),
     ];
 
     this.karenTime = 0; //karen
@@ -237,7 +237,7 @@ class Game4 {
     this.winTime++;
     this.puddles.forEach((e) => e.draw());
     this.player.draw();
-    this.walls.forEach((e) => e.draw());
+    this.cactus.forEach((e) => e.draw());
     this.token.draw();
     this.karens.forEach((e) => e.draw());
     this.geese.forEach((e) => e.draw());
@@ -410,10 +410,11 @@ class Game4 {
       });
     });
     // colisiones con las paredes y los charcos que retrasan al jugador
-    this.walls.forEach((wall) => {
+    this.cactus.forEach((wall) => {
       if (wall.collides(this.player)) {
         this.player.vy = 0;
         this.player.vx = 0;
+        this.player.wallHit()
       }
     });
 

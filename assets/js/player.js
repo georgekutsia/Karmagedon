@@ -14,7 +14,6 @@ class Player {
     this.img.src = "/assets/images/PJ/MANAGER 1.png";
     this.img.frame = 0;
 
-    this.amunition = 2;
     this.bheat = 0;
     this.bheatplus = 0;
     this.bwater = 0;
@@ -30,6 +29,7 @@ class Player {
     this.hSpeed = 4
     this.coolDownFire = 3000;
     this.coolDownWater = 3000;
+    this.coolDownJump = 3000;
     this.jumptimer = 20000; //quizás haga algo para disminuirlo o aumentar su distancia
   }
 
@@ -100,6 +100,9 @@ class Player {
   hit() {
     this.life.loseLife();
   }
+  wallHit() {
+    this.life.loseLifeSlow()
+  }
   heal() {
     this.life.gainLife();
   }
@@ -112,9 +115,6 @@ class Player {
 
   isAlive() {
     return this.life.total > 0;
-  }
-  chargeAmunition(){
-    this.amunition +=2
   }
 
   jump(){
@@ -212,10 +212,12 @@ class Player {
     }
     if (key === ALT) {
       this.jump();
-      ALT = 0
+      setTimeout(function () {
+        ALT = 0;
+      }, 20);
       setTimeout(function () {
         ALT = 16;
-      }, 2000);
+      }, this.coolDownJump)
     }
     
   }
@@ -332,6 +334,9 @@ class Player {
       water.h = 60;
       this.img.src = "/assets/images/PJ/imdown.png";
       this.img.frame++
+    }
+    if(this.coolDownWater <= 600){
+      this.coolDownWater = 600
     }
     this.waters.push(water);
   }

@@ -52,8 +52,6 @@ class Water {
     isVisible() {
       return !this.dispose
     }
-      
-
     collides(puddle) {
       const colX = this.x <= puddle.x + puddle.w && this.x + this.w > puddle.x;
       const colY = this.y + this.h > puddle.y && this.y < puddle.y + puddle.h;

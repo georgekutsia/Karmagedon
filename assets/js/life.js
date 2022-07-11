@@ -51,6 +51,9 @@ class Life {
   loseLifeFire(){
     this.total -= 0.002;
   }
+  loseLifeSlow(){
+    this.total -= 0.0005;
+  }
   healSlow(){
     this.total += 0.001;
     if(this.life >=1){

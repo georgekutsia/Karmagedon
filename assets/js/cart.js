@@ -8,8 +8,6 @@ class Cart {
       this.xy = this.salidas[Math.floor(Math.random()*this.salidas.length)]
       this.x = this.xy.x;
       this.y = this.xy.y;
-      // this.x = 310;
-      // this.y = 400
       this.w = 30;
       this.h = 40;
       this.cartImg = new Image();

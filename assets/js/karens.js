@@ -87,10 +87,10 @@ class Karens {
       "   You dont have it in stack?!",
       "My lawyer is the best in town!",
       "  Do you imply that i'm fat??!!",
-      "  What do you don't work here??",
+      "I don't care you are on brake",
       "I've been waiting dor 2 hours!!",
-      "My baby is in the car. hurry up!",
-      "I always buy milk in the pharmacy",
+      "My baby is in the car. Hurry up!",
+      "I always buy milk at the pharmacy",
       "   Why can't I get it for free??",
       "  I don't care about the camera",
     ];

@@ -19,4 +19,3 @@ const D = 68;
 let distance = 60;
 let waterDistance = 150;
 let heatDistance = 150;
-

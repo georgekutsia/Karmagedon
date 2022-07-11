@@ -13,7 +13,7 @@ class Boss {
     this.y = this.xy.y;
     this.w = 0.06 * this.ctx.canvas.width;
     this.h = 0.1 * this.ctx.canvas.height;
-    this.v = 0.2;
+    this.v = 0.3;
     this.bossImg = new Image();
     this.bossImg.src = "/assets/images/karens/boss derecha.png";
     this.bossImg.frame = 0;
@@ -44,8 +44,8 @@ class Boss {
     let followX = player.x - this.x;
     let followY = player.y - this.y;
 
-    followX > 0 ? (this.x += this.v) : (this.x += this.v -0.6);
-    followY > 0 ? (this.y += this.v) : (this.y += this.v -0.6);
+    followX > 0 ? (this.x += this.v) : (this.x += this.v -0.9);
+    followY > 0 ? (this.y += this.v) : (this.y += this.v -0.9);
 
     if(followX > 0){
       this.bossImg.src = "/assets/images/karens/boss derecha.png";

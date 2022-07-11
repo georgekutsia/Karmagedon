@@ -7,19 +7,19 @@ const forms5 = document.getElementById("forms5");
 function formsCheck() {
   if (forms.length < 5) {
     forms5.style.display = "none";
-    distance = 100;   //aumenta la distancia de salto a medida que se queda sin hojas de reclamaciones
+    distance = 80;   //aumenta la distancia de salto a medida que se queda sin hojas de reclamaciones
   }
   if (forms.length < 4) {
     forms4.style.display = "none";
-    distance = 130;
+    distance = 100;
   }
   if (forms.length < 3) {
     forms3.style.display = "none";
-    distance = 160;
+    distance = 120;
   }
   if (forms.length < 2) {
     forms2.style.display = "none";
-    distance = 190;
+    distance = 160;
   }
   if (forms.length < 1) {
     forms1.style.display = "none";
