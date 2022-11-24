@@ -89,7 +89,7 @@ class Game {
       new Bushes(ctx, 780, 480, 50, 25),
     ];
 
-    this.karenTime = 0; //karen
+    this.karenTime = 2500; //karen
     this.ratTime = 0; // rat
     this.fatTime = 0; //fat
     this.puddleTime = 700 ; //puddle
@@ -210,13 +210,14 @@ class Game {
           this.karenTime = 3000
         }
       }
-      if (this.ratTime > Math.random() * 600 + 100099) {
+
+      if (this.ratTime > Math.random() * 100 + 7000) {
         //rat
         this.ratTime = 0;
         this.ratAlert();
         this.addRat();
       }
-      if (this.fatTime > Math.random() * 100 + 203099) {
+      if (this.fatTime > Math.random() * 100 + 7000) {
         //fat
         this.fatTime = 0;
         this.fatAlert();
@@ -262,7 +263,7 @@ class Game {
         this.cartTime = 0;
         this.addCart();
       }
-      if (this.foodTime > Math.random() * 100 + 2259) {
+      if (this.foodTime > Math.random() * 100 + 14000) {
         //food
         this.foodTime = 0;
         this.addFood();

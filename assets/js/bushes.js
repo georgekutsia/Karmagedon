@@ -34,7 +34,7 @@ class Wall {
     }
     draw() {
       this.ctx.drawImage(
-        this.img,this.x, this.y, this.w, this.h
+        this.img, this.x, this.y, this.w, this.h
       )
     } 
     

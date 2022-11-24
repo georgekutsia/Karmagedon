@@ -9,8 +9,26 @@
     <link rel="stylesheet" href="/assets/style/intro.css">
     <link rel="stylesheet" href="/assets/style/letsplay.css">
     <link rel="stylesheet" href="/assets/style/demo.css">
+    <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+    crossorigin="anonymous"/>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+/>
   </head>
-      <div>
+
+  <body id="cursor">
+    <div>
       <a id="display-adds">-Add-</a>
       <a id="add-karen" class="demo">Karen </a>
       <a id="add-rat" class="demo">Rat </a>
@@ -23,22 +41,10 @@
       <a id="add-cart" class="demo">Cart </a>
       <a id="add-baby" class="demo">Baby </a>
     </div>
-  <body id="cursor">
     <!-- first page -->
     <div id="body-intro">
       <article id="info-manager"> Make a mall survive a working day the best way you can</article>
-      <article id="info-cheatsheet"> Moves <img src="/assets/images/infos/flechas.png" alt="wups" width="40" height="40" /> 
-        Or <img src="/assets/images/infos/wasd.png" alt="wups" width="40" height="40">  <br><br>
-      Shoot Fire! <img src="/assets/images/infos/z.png" alt="wups" width="40" height="40"> <br><br>
-      Shoot Water! <img src="/assets/images/infos/x.png" alt="wups" width="35" height="35"> <br><br>
-      Negotiate... <img src="/assets/images/infos/spacebar.png" alt="wups" width="50" height="30"><br><br>
-      Special attacks<img src="/assets/images/infos/c.png" alt="wups" width="30" height="30"> 
-      <img src="/assets/images/infos/v.png" alt="wups" width="30" height="30"><br><br>
-      Special move-jump! <img src="/assets/images/infos/alt.png" alt="wups" width="30" height="30"> <br><br>
-      Good luck!
 
-
-     </article>
       <a class="neon-button">How to survive Karengedón</a>     
       <a class="neon-butt">Play Karengedon</a>
       <a class="neon-butteasy">Pause</a>
@@ -62,28 +68,67 @@
       <button id="info4" text-align="center"> </button>
 
     </div>
+    
     <div id="main-canvas">
-      <div style="text-align: left">
-       <h2 id="status">Mall status=></h2>
-        <h2 id="karens-alert" class="event-alert">Wild Karen Appears!!</h2>
-        <h2 id="rat-alert" class="event-alert">LOOKOUT FOR THE RATS!</h2>
-        <h2 id="ok">Nothing to worrie about...</h2>
-        <h2 id="fat-alert" class="event-alert">Supersized customer walking!</h2>
-        <h2 id="goose-alert" class="event-alert">Agressive goose!</h2>
-        <h2 id="baby-alert" class="event-alert">Lost baby!</h2>
-        <h2 id="water-alert" class="event-alert">Flooding!</h2>
-        <h2 id="fire-alert" class="event-alert">fire!!</h2>
-        <h2 id="boss-alert" class="event-alert">--NAKED KAREN! RUN!--</h2>
-        <h2 id="koren-alert" class="event-alert">--Douchebag Koren!--</h2>
+    <span id="time"></span>
 
-       <span id="time"></span>
-     </div>
+      <div style="text-align: left" class="mt-5">
+        <h4 id="status">Mall status=></h4>
+        <h4 id="karens-alert" class="event-alert">Wild Karen Appears!! <span style="color: white">get close to her and press the space bar to negotiate</span></h4>
+        <h4 id="rat-alert" class="event-alert">LOOKOUT FOR THE RATS!</h4>
+        <h4 id="ok">Nothing to worrie about...</h4>
+        <h4 id="fat-alert" class="event-alert">Supersized customer walking!</h4>
+        <h4 id="goose-alert" class="event-alert">Agressive goose!</h4>
+        <h4 id="baby-alert" class="event-alert">Lost baby!</h4>
+        <h4 id="water-alert" class="event-alert">Flooding!</h4>
+        <h4 id="fire-alert" class="event-alert">fire!!</h4>
+        <h4 id="boss-alert" class="event-alert">--NAKED KAREN! RUN!--</h4>
+        <h4 id="koren-alert" class="event-alert">--Douchebag Koren!--</h4>
+    </div>
+
+    <div id="forms-position">
+      <img src="/assets/images/elements/hoja de reclamaciones.png" alt="wat" class="forms-item" id="forms1">
+      <img src="/assets/images/elements/hoja de reclamaciones.png" alt="who" class="forms-item" id="forms2">
+      <img src="/assets/images/elements/hoja de reclamaciones.png" alt="where" class="forms-item" id="forms3">
+      <img src="/assets/images/elements/hoja de reclamaciones.png" alt="how" class="forms-item" id="forms4">
+      <img src="/assets/images/elements/hoja de reclamaciones.png" alt="he" class="forms-item" id="forms5">
+    </div>
+    <div id="info-cheatsheet"> 
+      <div class="justify-content-evenly d-flex">
+        Moves <img src="/assets/images/infos/flechas.png" alt="wups" width="40" height="40" /> 
+        Or <img src="/assets/images/infos/wasd.png" alt="wups" width="40" height="40">  
+      </div>
+      <div>
+        Jump!<img src="/assets/images/infos/alt.png" alt="wups" width="30" height="30"> 
+      </div>
+      <div>
+        Shoot Water! <img src="/assets/images/infos/x.png" alt="wups" width="35" height="35"> 
+      </div>
+      <div>
+        Shoot Fire! <img src="/assets/images/infos/z.png" alt="wups" width="40" height="40"> 
+      </div>
+      <div>
+        Negotiate... <img src="/assets/images/infos/spacebar.png" alt="wups" width="50" height="30">
+      </div>
+      <div>
+        Special attacks <img src="/assets/images/infos/c.png" alt="wups" width="30" height="30"> 
+        <img src="/assets/images/infos/v.png" alt="wups" width="30" height="30">
+      </div>
+      <div>
+      Good luck!
+      </div>
+    </div>
     <canvas id="canvas" width="1190" height="550"></canvas>
-    <img src="/assets/images/elements/hoja de reclamaciones.png" alt="wat" id="forms1">
-    <img src="/assets/images/elements/hoja de reclamaciones.png" alt="who" id="forms2">
-    <img src="/assets/images/elements/hoja de reclamaciones.png" alt="where" id="forms3">
-    <img src="/assets/images/elements/hoja de reclamaciones.png" alt="how" id="forms4">
-    <img src="/assets/images/elements/hoja de reclamaciones.png" alt="he" id="forms5">
+    <div id="info-whatto"> 
+        <div >
+              sdlabdsaljdn dsljndalsjn d
+        </div>
+        <div>
+          Jump!<img src="/assets/images/infos/alt.png" alt="wups" width="30" height="30"> 
+        </div>
+      </div>
+
+    <!-- width="1190" height="550" -->
     <!-- main canvas end -->
 
 
@@ -145,4 +190,5 @@
     <script src="/assets/js/line.js"></script>
     <script src="/assets/js/script.js"></script>
   </body>
+
 </html>

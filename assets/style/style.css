@@ -6,8 +6,10 @@ body{
 #time{
   display: flex;
   position: absolute;
-  margin: 3px 0 0 1010px;
+  margin-top: 30px;
+  margin-left: 1020px;
   font-size: 30px;
+  width: 160px;
   background-color: rgb(185, 155, 90);
   color: rgb(0, 0, 0);
   border: 4px solid rgb(0, 0, 0);
@@ -18,20 +20,27 @@ body{
   position: absolute;
   background-image: url(/assets/images/fondos/dados.jpeg);
   background-size: 100%;
-  padding: 0% 20% 10% 5%;
-  padding: 0 10% 6% 15%;
+  height: 100%;
+  width: 100%;
+  padding: 0 1% 16% 15%;
 }
 
 #canvas {
     border: 1px solid rgb(227, 147, 147);
     background-image: url(/assets/images/fondos/canvas\ karmagedon\ def.png);
     background-size: 100%;
-    left: 1220%
+    left: 1220%;
   }
+#queesesto{
+  font-size: 50px;
+  text-align: center;
+}
 body{
   background-color: #8d9682;
 }
-
+.event-alert{
+  padding: 2px 5px;
+}
 
 /* instrucciones de movimiento start*/
 
@@ -114,50 +123,21 @@ u{
   display: inline-flex;
   border: 3px solid rgb(0, 0, 255);
 }
-span{
-  background-color:yellowgreen;
+
+#forms-position{
+  position: absolute;
+  margin-left: 1010px;
+  margin-top: 350px;
+  display: flex;
+}
+.forms-item{
+  width: 60px;;
+  height: 50px;
+  display: inline-block;
+  margin-right: -30px;
+
 }
 
-#forms1{
-  width: 60px;;
-  height: 50px;
-  display: inline-block;
-  position:absolute;
-  top: 430px;
-  left: 84%;
-}
-#forms2{
-  width: 60px;;
-  height: 50px;
-  display: inline-block;
-  position:absolute;
-  top: 430px;
-  left: 82.5%;
-}
-#forms3{
-  width: 60px;;
-  height: 50px;
-  display: inline-block;
-  position:absolute;
-  top: 430px;
-  left: 81%;
-}
-#forms4{
-  width: 60px;;
-  height: 50px;
-  display: inline-block;
-  position:absolute;
-  top: 430px;
-  left: 79.5%;
-}
-#forms5{
-  width: 60px;;
-  height: 50px;
-  display: inline-block;
-  position:absolute;
-  top: 430px;
-  left: 78%;
-}
 
 
 #lose{
