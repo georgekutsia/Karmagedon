@@ -27,7 +27,7 @@ body{
 
 #canvas {
     border: 1px solid rgb(227, 147, 147);
-    background-image: url(/assets/images/fondos/canvas\ karmagedon\ def.png);
+    background-image: url(/assets/images/fondos/canvas\ karmagedon\ forma\ 3.png);
     background-size: 100%;
     left: 1220%;
   }
@@ -52,6 +52,9 @@ u{
 
 #cursor{
   cursor:url("/assets/images/elements/cursor.cur"), pointer;
+  place-items: center;
+  background-color: black;
+  color: var(--clr-neon);
 }
 
 
@@ -129,6 +132,7 @@ u{
   margin-left: 1010px;
   margin-top: 350px;
   display: flex;
+  z-index: 1;
 }
 .forms-item{
   width: 60px;;

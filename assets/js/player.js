@@ -6,7 +6,8 @@ class Player {
 
     this.w = 35;
     this.h = 35;
-    this.boost = 0;
+    this.extraBoost = 0
+    this.boost = boosteada + this.extraBoost;
     this.vx = 0;
     this.vy = 0;
 
@@ -15,6 +16,7 @@ class Player {
     this.img.frame = 0;
 
     this.bheat = 0;
+    this.baura = 0;
     this.bheatplus = 0;
     this.bwater = 0;
     this.bwaterplus = 0;
@@ -22,7 +24,11 @@ class Player {
 
     this.tick = 0;
     this.life = new Life(ctx);
+    this.respect = new Respect(ctx)
+    this.formins = new Formins(ctx)
+    this.scoreback = new Scoreback(ctx)
     this.heats = [];
+    this.auras = [];
     this.waters = [];
     this.direction = "left";
     this.wSpeed = 3;
@@ -31,6 +37,25 @@ class Player {
     this.coolDownWater = 3000;
     this.coolDownJump = 3000;
     this.jumptimer = 20000; //quizás haga algo para disminuirlo o aumentar su distancia
+  }
+
+  drawOuch() {
+    this.ctx.font = "18px Arial";
+    this.ctx.save();
+    ctx.fillRect(this.x - 42, this.y - 21, 135, 22);
+    ctx.fillStyle = "rgb(251, 209, 209)";
+    this.ctx.fillStyle = "black";
+    this.order = this.ctx.fillText("Ouch! Cactus!", this.x - 30, this.y - 3);
+    this.ctx.restore();
+  }
+  drawSorry() {
+    this.ctx.font = "18px Arial";
+    this.ctx.save();
+    ctx.fillRect(this.x - 42, this.y - 21, 135, 22);
+    ctx.fillStyle = "rgb(251, 209, 209)";
+    this.ctx.fillStyle = "black";
+    this.order = this.ctx.fillText("Sorry! Sorry!", this.x - 30, this.y - 3);
+    this.ctx.restore();
   }
 
   draw() {
@@ -48,7 +73,11 @@ class Player {
     );
     this.heats.forEach((heat) => heat.draw());
     this.waters.forEach((water) => water.draw());
+    this.auras.forEach((aura) => aura.draw());
     this.life.draw();
+    this.respect.draw();
+    this.formins.draw();
+    this.scoreback.draw();
   }
 
   move() {
@@ -59,7 +88,6 @@ class Player {
       this.img.frame++;
       this.tick = 0;
     }
-
     if (this.img.frame > 3) {
       this.img.frame = 0;
     }
@@ -68,6 +96,9 @@ class Player {
       V = 86;
     }
     this.life.move();
+    this.respect.move()
+    this.formins.move()
+    this.scoreback.move()
     // LIMITES DEL CANVAS =>//
     if (this.y < 0) {
       this.y = 0;
@@ -77,12 +108,10 @@ class Player {
       this.y = this.ctx.canvas.height - this.h;
       this.vy = 0;
     }
-
     if (this.x + this.w * 6 > this.ctx.canvas.width) {
       this.x = this.ctx.canvas.width - this.w * 6;
       this.vx = 0;
     }
-
     if (this.x < 0) {
       this.x = 0;
       this.vx = 0;
@@ -94,7 +123,24 @@ class Player {
     this.waters.forEach((water) => {
       water.move();
     });
+    this.auras.forEach((aura) => {
+      aura.move();
+    });
   }
+
+  loseRespect(){
+    this.respect.loseRespect();
+  }
+  loseBigRespect(){
+    this.respect.loseBigRespect();
+  }
+  getRespect(){
+    this.respect.getRespect();
+  }
+  getBigRespect(){
+    this.respect.getBigRespect();
+  }
+
   hit() {
     this.life.loseLife();
   }
@@ -114,6 +160,9 @@ class Player {
   isAlive() {
     return this.life.total > 0;
   }
+  isRespected() {
+    return this.respect.total > 0;
+  }
 
   jump() {
     if (this.direction === "top") {
@@ -129,8 +178,8 @@ class Player {
       this.x += distance;
     }
   }
-
-  keyDown(key) {
+      
+    keyDown(key) {
     if (key === UP || key === W) {
       this.direction = "top";
       this.vy = -4 - this.boost;
@@ -178,6 +227,15 @@ class Player {
         Z = 90;
       }, this.coolDownFire);
     }
+    if (key === N) {
+      this.aurar();
+      setTimeout(function () {
+        N = 0;
+      }, 400);
+      setTimeout(function () {
+        N = 78;
+      }, this.coolDownFire);
+    }
 
     if (key === X) {
       this.waterer();
@@ -219,6 +277,16 @@ class Player {
     }
   }
 
+  aurar() {
+    const aura = new Aura(
+      this.ctx,
+      this.x + this.w - 40,
+      this.y + this.h - 40,
+      this
+    );
+      aura.auraImg.src = "/assets/images/munición/aura1.png";
+    this.auras.push(aura);
+  }
   heater() {
     const heat = new Heat(
       this.ctx,

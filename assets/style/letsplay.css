@@ -19,33 +19,28 @@
   box-sizing: border-box;
 }
 
-#cursor {
-    min-height: 100vh;
-    place-items: center;
-    background-color: black;
-    background-size: 10%;
-    font-family: "Balsamiq Sans", cursive;
-    color: var(--clr-neon);
-    padding-right: 10rem;
-  }
-
+.neon-button-box {
+  display: flex;
+  justify-content: space-evenly;
+}
 .neon-button {
-  font-size: 4rem;
-  display: inline-block;
+  font-size: calc(30px + 2vw);
+  display: flex;
   cursor: url("/assets/images/elements/cursorInfo"), pointer;
-  left: 28%;
-  top : 200px;
+  margin-top: 300px;
+  margin-bottom: 200px;
+  justify-content: center;
+  text-align: center;
   text-decoration: none;
   color: var(--clr-neon);
   border: var(--clr-neon) 0.125em solid;
   padding: 0.25em 1em;
   border-radius: 0.25em;
-
   text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;
-
   box-shadow: inset 0 0 0.5em 0 var(--clr-neon), 0 0 0.5em 0 var(--clr-neon);
-
   position: relative;
+  transition: all ease-in-out 2s;
+  transition-delay: 1s;
 }
 
 .neon-button::before {
@@ -53,11 +48,10 @@
   content: "";
   position: absolute;
   background: var(--clr-neon);
-  top: 120%;
+  top: 100%;
   left: 0;
   width: 100%;
   height: 100%;
-
   transform: perspective(1em) rotateX(40deg) scale(1, 0.35);
   filter: blur(1em);
   opacity: 0.7;
@@ -74,7 +68,7 @@
   opacity: 0;
   background-color: var(--clr-neon);
   z-index: -1;
-  transition: opacity 2s linear;
+  transition: opacity 0.2s linear;
 }
 
 .neon-button:hover,
@@ -108,11 +102,11 @@
   border-radius: 30px;
   opacity: 0.3;
   text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;
-
   box-shadow: inset 0 0 0.5em 0 var(--clr-neondir), 0 0 0.5em 0 var(--clr-neondir);
-
   left: 2%;
   top: 2%;
+  transition: all ease-in-out 3s;
+
 }
 
 .neon-butt::before {
@@ -131,6 +125,7 @@
 .neon-butt:hover{
   opacity:1;
   transition: 1s;
+  
 }
 .neon-butt::after {
   content: "";
@@ -234,11 +229,16 @@
 
 
 /* botones de inicio para modalidades de juego */
-
+.justify-evenly{
+  justify-content: space-around;
+  display: flex;
+  width: 100%;
+}
 #neon-easy {
-  position: absolute;
   z-index: 100;
-  font-size: 45px;
+  transition: all ease-in-out 1s;
+  transition-delay: 1s;
+  font-size: calc(20px + 1.5vw);
   display: inline-block;
   background-color: rgb(27, 4, 46);
   cursor: url("/assets/images/elements/cursorInfo"), pointer;
@@ -249,20 +249,15 @@
   border-radius: 30px;
   opacity: 0.3;
   text-shadow: 0 0 0.125em rgba(221, 6, 6, 0.3), 0 0 0.45em currentColor;
-
   box-shadow: inset 0 0 0.5em 0 var(--clr-ratinva), 0 0 0.5em 0 var(--clr-ratinva);
-
-  left: 12%;
   bottom: 8%;
 }
 
 #neon-easy::before {
   pointer-events: none;
   content: "";
-  position: absolute;
   background: var(--clr-ratinva);
   top: 100%;
-  left: 0;
   width: 100%;
   height: 100%;
   transform: perspective(1em) rotateX(40deg) scale(1, 0.35);
@@ -271,12 +266,11 @@
 }
 #neon-easy:hover{
   opacity:1;
-  transition: 1s;
+  transition: all ease-in-out 0.4s;
   content: BULALA;
 }
 #neon-easy::after {
   content: "";
-  position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
@@ -305,9 +299,10 @@
 
 
 #neon-normal {
-  position: absolute;
   z-index: 100;
-  font-size: 45px;
+  transition: all ease-in-out 1s;
+  transition-delay: 1s;
+  font-size: calc(20px + 1.5vw);
   display: inline-block;
   background-color: rgb(27, 4, 46);
   cursor: url("/assets/images/elements/cursorInfo"), pointer;
@@ -321,17 +316,14 @@
 
   box-shadow: inset 0 0 0.5em 0 var(--clr-destruto), 0 0 0.5em 0 var(--clr-destruto);
 
-  left: 29%;
   bottom: 8%;
 }
 
 #neon-normal::before {
   pointer-events: none;
   content: "";
-  position: absolute;
   background: var(--clr-destruto);
   top: 100%;
-  left: 0;
   width: 100%;
   height: 100%;
   transform: perspective(1em) rotateX(40deg) scale(1, 0.35);
@@ -340,14 +332,12 @@
 }
 #neon-normal:hover{
   opacity:1;
-  transition: 1s;
+  transition: all ease-in-out 0.4s;
 }
 #neon-normal::after {
   content: "";
-  position: absolute;
   top: 0;
   bottom: 0;
-  left: 0;
   right: 0;
   box-shadow: 0 0 2em 0.5em var(--clr-destruto);
   opacity: 0;
@@ -373,9 +363,10 @@
 
 
 #neon-hard {
-  position: absolute;
   z-index: 100;
-  font-size: 45px;
+  transition: all ease-in-out 1s;
+  transition-delay: 1s;
+  font-size: calc(20px + 1.5vw);
   display: inline-block;
   background-color: rgb(27, 4, 46);
   cursor: url("/assets/images/elements/cursorInfo"), pointer;
@@ -386,20 +377,15 @@
   border-radius: 30px;
   opacity: 0.3;
   text-shadow: 0 0 0.125em rgba(221, 6, 6, 0.3), 0 0 0.45em currentColor;
-
   box-shadow: inset 0 0 0.5em 0 var(--clr-neonbu2), 0 0 0.5em 0 var(--clr-neonbu2);
-
-  left: 52%;
   bottom: 8%;
 }
 
 #neon-hard::before {
   pointer-events: none;
   content: "";
-  position: absolute;
   background: var(--clr-neonbu2);
   top: 100%;
-  left: 0;
   width: 100%;
   height: 100%;
   transform: perspective(1em) rotateX(40deg) scale(1, 0.35);
@@ -408,14 +394,12 @@
 }
 #neon-hard:hover{
   opacity:1;
-  transition: 1s;
+  transition: all ease-in-out 0.4s;
 }
 #neon-hard::after {
   content: "";
-  position: absolute;
   top: 0;
   bottom: 0;
-  left: 0;
   right: 0;
   box-shadow: 0 0 2em 0.5em var(--clr-neonbu2);
   opacity: 0;
@@ -440,9 +424,10 @@
 
 
 #neon-superhard {
-  position: absolute;
   z-index: 100;
-  font-size: 45px;
+  transition: all ease-in-out 1s;
+  transition-delay: 1s;
+  font-size: calc(20px + 1.5vw);
   display: inline-block;
   background-color: rgb(27, 4, 46);
   cursor: url("/assets/images/elements/cursorInfo"), pointer;
@@ -453,20 +438,15 @@
   border-radius: 30px;
   opacity: 0.3;
   text-shadow: 0 0 0.125em rgba(221, 6, 6, 0.3), 0 0 0.45em currentColor;
-
   box-shadow: inset 0 0 0.5em 0 var( --clr-survival), 0 0 0.5em 0 var( --clr-survival);
-
-  left: 69%;
   bottom: 8%;
 }
 
 #neon-superhard::before {
   pointer-events: none;
   content: "";
-  position: absolute;
   background: var( --clr-survival);
   top: 100%;
-  left: 0;
   width: 100%;
   height: 100%;
   transform: perspective(1em) rotateX(40deg) scale(1, 0.35);
@@ -475,14 +455,12 @@
 }
 #neon-superhard:hover{
   opacity:1;
-  transition: 1s;
+  transition: all ease-in-out 0.4s;
 }
 #neon-superhard::after {
   content: "";
-  position: absolute;
   top: 0;
   bottom: 0;
-  left: 0;
   right: 0;
   box-shadow: 0 0 2em 0.5em var( --clr-survival);
   opacity: 0;

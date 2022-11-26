@@ -28,6 +28,7 @@
   </head>
 
   <body id="cursor">
+    
     <div>
       <a id="display-adds">-Add-</a>
       <a id="add-karen" class="demo">Karen </a>
@@ -44,19 +45,14 @@
     <!-- first page -->
     <div id="body-intro">
       <article id="info-manager"> Make a mall survive a working day the best way you can</article>
-
-      <a class="neon-button">How to survive Karengedón</a>     
       <a class="neon-butt">Play Karengedon</a>
       <a class="neon-butteasy">Pause</a>
       <a class="neon-buttnormal">Rest your eyes</a>
       <a class="neon-butthard">Rest a little</a>
       <a class="neon-buttSuperhard">Too much action?</a>
       <a class="neon-bu">Restart</a>
-      <a id="neon-easy">Rat invasión</a>
-      <a id="neon-normal">Structural damage</a>
-      <a id="neon-hard">Geese inferno</a>
-      <a id="neon-superhard">Survive the imposible</a>
     </div>
+
     <!-- first page -->
 
     
@@ -72,20 +68,19 @@
     <div id="main-canvas">
     <span id="time"></span>
 
-      <div style="text-align: left" class="mt-5">
+      <div class="wornings-css">
         <h4 id="status">Mall status=></h4>
-        <h4 id="karens-alert" class="event-alert">Wild Karen Appears!! <span style="color: white">get close to her and press the space bar to negotiate</span></h4>
-        <h4 id="rat-alert" class="event-alert">LOOKOUT FOR THE RATS!</h4>
+        <h4 id="karens-alert" class="event-alert">Wild Karen Appears!! <span class="mx-2" style="color: white">=> Get close to her and press the space bar to negotiate</span></h4>
+        <h4 id="rat-alert" class="event-alert">LOOKOUT FOR THE RATS!<span class="mx-2" style="color: white">=> They can harm you and poison a little!</span></h4>
         <h4 id="ok">Nothing to worrie about...</h4>
-        <h4 id="fat-alert" class="event-alert">Supersized customer walking!</h4>
-        <h4 id="goose-alert" class="event-alert">Agressive goose!</h4>
-        <h4 id="baby-alert" class="event-alert">Lost baby!</h4>
+        <h4 id="fat-alert" class="event-alert">Supersized customer walking!<span class="mx-2" style="color: white">=> They will just slow you down</span></h4>
+        <h4 id="goose-alert" class="event-alert">Agressive goose!<span class="mx-2" style="color: white">-> Avoid them or shoot them to push them back!</span></h4>
+        <h4 id="baby-alert" class="event-alert">Lost baby!<span class="mx-2" style="color: white">=> Save them and get respect!</span></h4>
         <h4 id="water-alert" class="event-alert">Flooding!</h4>
         <h4 id="fire-alert" class="event-alert">fire!!</h4>
         <h4 id="boss-alert" class="event-alert">--NAKED KAREN! RUN!--</h4>
         <h4 id="koren-alert" class="event-alert">--Douchebag Koren!--</h4>
-    </div>
-
+      </div>
     <div id="forms-position">
       <img src="/assets/images/elements/hoja de reclamaciones.png" alt="wat" class="forms-item" id="forms1">
       <img src="/assets/images/elements/hoja de reclamaciones.png" alt="who" class="forms-item" id="forms2">
@@ -93,7 +88,7 @@
       <img src="/assets/images/elements/hoja de reclamaciones.png" alt="how" class="forms-item" id="forms4">
       <img src="/assets/images/elements/hoja de reclamaciones.png" alt="he" class="forms-item" id="forms5">
     </div>
-    <div id="info-cheatsheet"> 
+    <div id="info-cheatsheet" class="d-flex align-content-around flex-wrap"> 
       <div class="justify-content-evenly d-flex">
         Moves <img src="/assets/images/infos/flechas.png" alt="wups" width="40" height="40" /> 
         Or <img src="/assets/images/infos/wasd.png" alt="wups" width="40" height="40">  
@@ -114,9 +109,7 @@
         Special attacks <img src="/assets/images/infos/c.png" alt="wups" width="30" height="30"> 
         <img src="/assets/images/infos/v.png" alt="wups" width="30" height="30">
       </div>
-      <div>
-      Good luck!
-      </div>
+
     </div>
     <canvas id="canvas" width="1190" height="550"></canvas>
     <div id="info-whatto"> 
@@ -128,7 +121,6 @@
         </div>
       </div>
 
-    <!-- width="1190" height="550" -->
     <!-- main canvas end -->
 
 
@@ -154,6 +146,18 @@
     </script>
 <!-- time function -->
     </div>
+    <div class="neon-button-box">
+      <a class="neon-button">How to survive Karengedón</a>     
+    </div>
+    <div class="ms-5 mb-3">
+      <h3>Coming next.. </h3>
+    </div>
+    <div class="justify-evenly">
+      <a id="neon-easy">Rat invasión</a>
+      <a id="neon-normal">Structural damage</a>
+      <a id="neon-hard">Geese inferno</a>
+      <a id="neon-superhard">Survive the imposible</a>
+    </div>
     <img id="lose" src="/assets/images/end/fired.jpeg" alt="not..." width="60%" height="60%">
     <img id="win" src="/assets/images/end/wincon.png" alt="sadds" >
 
@@ -167,6 +171,7 @@
     <script src="/assets/js/cart.js"></script>
     <script src="/assets/js/discounts.js"></script>
     <script src="/assets/js/food.js"></script>
+    <script src="/assets/js/Aura.js"></script>
     <script src="/assets/js/Heat.js"></script>
     <script src="/assets/js/Water.js"></script>
     <script src="/assets/js/boss.js"></script>
@@ -178,6 +183,9 @@
     <script src="/assets/js/customer.js"></script>
     <script src="/assets/js/fat.js"></script>
     <script src="/assets/js/life.js"></script>
+    <script src="/assets/js/formins.js"></script>
+    <script src="/assets/js/scoreback.js"></script>
+    <script src="/assets/js/respect.js"></script>
     <script src="/assets/js/player.js"></script>
     <script src="/assets/js/bushes.js"></script>    
     <script src="/assets/js/forms.js"></script>

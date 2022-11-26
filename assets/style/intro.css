@@ -14,6 +14,8 @@
   font-style: oblique;
   padding: 10px;
   animation: gradient 15s ease infinite;
+  transition: all ease-in-out 4s;
+
 }
 #info-cheatsheet div{
   margin-bottom: 10px;
@@ -28,7 +30,7 @@
   margin-top: 1px;
   font-size: calc(12px + 0.5vw);
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  background: linear-gradient(-45deg, #ee7752, #d9ff01, #0d0aca, #23d5ab, #99ea17, #b106b1, #daa410, #cabbd2, #00aeff, #3a2c04);
+  background: linear-gradient(-45deg, #ee7752, #d9ff01, #66666e, #23d5ab, #99ea17, #f356f3, #daa410, #cabbd2, #00aeff, #3a2c04);
   background-size: 1000% 100%;
   opacity: 0.1;
   left: 1.5%;
@@ -58,7 +60,7 @@
   margin-top: 1px;
   font-size: calc(12px + 0.5vw);
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  background: linear-gradient(-45deg, #ee7752, #d9ff01, #0d0aca, #23d5ab, #99ea17, #b106b1, #daa410, #cabbd2, #00aeff, #3a2c04);
+  background: linear-gradient(-45deg, #e1ed75, #d9ff01, #f37777, #23d5ab, #99ea17, #f356f3, #daa410, #cabbd2, #00aeff, #f9b700);
   background-size: 1000% 100%;
   opacity: 0.1;
   bottom: 10px;

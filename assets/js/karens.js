@@ -87,7 +87,7 @@ class Karens {
       "   You dont have it in stack?!",
       "My lawyer is the best in town!",
       "  Do you imply that i'm fat??!!",
-      "I don't care you are on brake",
+      "I don't care you are on a brake",
       "I've been waiting dor 2 hours!!",
       "My baby is in the car. Hurry up!",
       "I always buy milk at the pharmacy",

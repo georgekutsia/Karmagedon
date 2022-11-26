@@ -9,84 +9,69 @@ class Game {
     this.score = new Score(ctx);
     this.food = new Food(ctx);
     this.saved = new Saved(ctx);
-
+    this.cactus = [
+      new Cactus(ctx, 370, 210, 40, 40),
+      new Cactus(ctx, 600, 210, 40, 40),
+      new Cactus(ctx, 800, 320, 40, 40),
+      new Cactus(ctx, 800, 460, 40, 40),
+      new Cactus(ctx, 5, 510, 30, 30),
+    ]
+    this.pfront = [
+      new People(ctx, 90, 360, 60, 60, "/assets/images/people/pep10.png"),
+      new People(ctx, 250, 350, 40, 60, "/assets/images/people/pep3.png"),
+      new People(ctx, 730, 90, 40, 40, "/assets/images/people/pep5.png"),
+      new People(ctx, 850, 80, 80, 80, "/assets/images/people/pep8.png"),
+      new People(ctx, 860, 350, 40, 40, "/assets/images/people/pep11.png"),
+    ]
+    this.pback = [
+      new People(ctx, 250, 420, 40, 60, "/assets/images/people/pep2.png"),
+      new People(ctx, 480, 430, 40, 40, "/assets/images/people/pep.png"),
+      new People(ctx, 730, 420, 80, 50, "/assets/images/people/pep7.png"),
+      new People(ctx, 95, 160, 70, 40, "/assets/images/people/pep1.png"),
+      new People(ctx, 560, 150, 50, 50, "/assets/images/people/pep6.png"),
+      new People(ctx, 410, 160, 40, 40, "/assets/images/people/pep14.png"),
+    ]
+    this.bushesover = [
+      // vertical bushes start
+      new Bush1(ctx, 57, 60, 30, 170),
+      new Bush1(ctx, 287, 60, 30, 170),
+      new Bush3(ctx, 377, 60, 30, 170),
+      new Bush3(ctx, 607, 60, 30, 170),
+      new Bush2(ctx, 697, 60, 30, 170),
+      new Bush2(ctx, 921, 60, 30, 170),
+      new Bush1(ctx, 57, 330, 30, 170),
+      new Bush1(ctx, 287, 330, 30, 170),
+      new Bush3(ctx, 377, 330, 30, 170),
+      new Bush3(ctx, 607, 330, 30, 170),
+      new Bush2(ctx, 697, 330, 30, 170),
+      new Bush2(ctx, 921, 330, 30, 170),
+// vertical bushes end
+    ]
     this.walls = [
-      new Bushes(ctx, 60, 50, 20, 70),
-      new Bushes(ctx, 60, 110, 20, 70),
-      new Bushes(ctx, 60, 170, 20, 70),
-
-      new Bushes(ctx, 285, 170, 20, 70),
-      new Bushes(ctx, 285, 110, 20, 70),
-      new Bushes(ctx, 285, 50, 20, 70),
-
-      new Bushes(ctx, 380, 170, 25, 70),
-      new Bushes(ctx, 380, 110, 25, 70),
-      new Bushes(ctx, 380, 50, 25, 70),
-
-      new Bushes(ctx, 610, 170, 25, 70),
-      new Bushes(ctx, 610, 110, 25, 70),
-      new Bushes(ctx, 610, 50, 25, 70),
-
-      new Bushes(ctx, 700, 50, 25, 70),
-      new Bushes(ctx, 700, 110, 25, 70),
-      new Bushes(ctx, 700, 170, 25, 70),
-
-      new Bushes(ctx, 925, 50, 25, 70),
-      new Bushes(ctx, 925, 110, 25, 70),
-      new Bushes(ctx, 925, 170, 25, 70),
-      new Bushes(ctx, 800, 170, 50, 50),
-
-      new Bushes(ctx, 90, 50, 50, 25),
-      new Bushes(ctx, 240, 50, 50, 25),
-      new Bushes(ctx, 410, 205, 50, 25),
-      new Bushes(ctx, 560, 205, 50, 25),
-      new Bushes(ctx, 482, 130, 60, 60),
-      new Bushes(ctx, 490, 80, 40, 40),
-      new Bushes(ctx, 730, 50, 50, 25),
-      new Bushes(ctx, 870, 50, 50, 25),
-
-      new Bushes(ctx, 60, 320, 25, 70),
-      new Bushes(ctx, 60, 380, 25, 70),
-      new Bushes(ctx, 60, 440, 25, 70),
-
-      new Bushes(ctx, 285, 320, 25, 70),
-      new Bushes(ctx, 285, 380, 25, 70),
-      new Bushes(ctx, 285, 440, 25, 70),
-      new Bushes(ctx, 180, 380, 40, 40),
-
-      new Bushes(ctx, 380, 320, 25, 70),
-      new Bushes(ctx, 380, 380, 25, 70),
-      new Bushes(ctx, 380, 440, 25, 70),
-
-      new Bushes(ctx, 610, 320, 25, 70),
-      new Bushes(ctx, 610, 380, 25, 70),
-      new Bushes(ctx, 610, 440, 25, 70),
-
-      new Bushes(ctx, 700, 320, 25, 70),
-      new Bushes(ctx, 700, 380, 25, 70),
-      new Bushes(ctx, 700, 440, 25, 70),
-
-      new Bushes(ctx, 925, 320, 25, 70),
-      new Bushes(ctx, 925, 380, 25, 70),
-      new Bushes(ctx, 925, 440, 25, 70),
-
-      new Bushes(ctx, 90, 320, 50, 25),
-      new Bushes(ctx, 240, 320, 50, 25),
-      new Bushes(ctx, 90, 480, 50, 25),
-      new Bushes(ctx, 240, 480, 50, 25),
-      new Bushes(ctx, 170, 110, 40, 40),
-      new Bushes(ctx, 80, 200, 40, 40),
-      new Bushes(ctx, 830, 330, 20, 70),
-
-      new Bushes(ctx, 410, 320, 50, 25),
-      new Bushes(ctx, 560, 320, 50, 25),
-      new Bushes(ctx, 465, 450, 50, 25),
-      new Bushes(ctx, 500, 450, 50, 25),
-
-      new Bushes(ctx, 880, 320, 50, 25),
-      new Bushes(ctx, 830, 320, 50, 25),
-      new Bushes(ctx, 730, 480, 50, 25),
-      new Bushes(ctx, 780, 480, 50, 25),
+      new Fence(ctx, 51, 50, 80, 40),
+      new Fence(ctx, 240, 50, 80, 40),
+      new Fence(ctx, 51, 320, 80, 40),
+      new Fence(ctx, 240, 320, 80, 40),
+      new Fence(ctx, 880, 320, 80, 40),
+      new Fence(ctx, 830, 320, 80, 40),
+      new Fence(ctx, 370, 320, 80, 40),
+      new Fence(ctx, 560, 320, 80, 40),
+      new Fence(ctx, 700, 50, 80, 40),
+      new Fence(ctx, 870, 50, 80, 40),
+// round bushes
+      new Bushes(ctx, 180, 390, 30, 30),
+      new Bushes(ctx, 170, 130, 30, 30),
+      new Bushes(ctx, 490, 110, 40, 40),
+      new Bushes(ctx, 482, 60, 60, 60),
+      new Bushes(ctx, 800, 170, 40, 40),
+// round bushes
+      new Fence(ctx, 190, 460, 80, 40),
+      new Fence(ctx, 90, 190, 80, 40),
+      new Fence(ctx, 470, 130, 80, 40),
+// el fence vertical de la ultima fila y columna
+      // new Fence(ctx, 830, 330, 20, 70),
+      new Fence(ctx, 465, 460, 80, 40),
+      new Fence(ctx, 730, 460, 80, 40),
     ];
 
     this.karenTime = 2500; //karen
@@ -118,14 +103,11 @@ class Game {
     this.carts = [];
     this.foods = [];
     this.discounts = [];
-
     this.listOfEvents = [this.karens, this.rats, this.babys, 
                         this.customers, this.fats, this.puddles,
                         this.fires, this.geese, this.bosss, this.korens, 
                         this.carts, this.discounts]
-
     this.setListeners();
-
     this.musicStart = new Audio("/assets/audio/valse.mp3");
     this.musicStart.volume = 0.02;
     this.musicStart.loop = true;
@@ -156,61 +138,19 @@ class Game {
       this.foodTime++;
       this.discountTime++;
       this.checkCollisions();
-      if (this.winTime >= 121534.2) {
-        this.gameWin();
-      }   //acaba a las 21 con tick del tiempo en 15
-
-      if (this.winTime % 55000 === 0) {
-        this.almostOver = new Audio("/assets/audio/It’s almost over.mp3");
-        this.almostOver.volume = 0.3;
-        this.almostOver.play()
+      if(this.winTime >= 5600){
+        console.log("blabal")
       }
-      if (this.winTime % 45000 === 0) {
-        this.littleMore = new Audio("/assets/audio/Just a little more.mp3");
-        this.littleMore.volume = 0.3;
-        this.littleMore.play()
-      }
-      if (this.winTime % 40000 === 0) {
-        this.soTired = new Audio("/assets/audio/Tired.mp3");
-        this.soTired.volume = 0.3;
-        this.soTired.play()
-      }
-      if (this.winTime % 35000 === 0) {
-        this.candyShop = new Audio("/assets/audios ad/Candy shop.mp3");
-        this.candyShop.volume = 0.3;
-        this.candyShop.play()
-      }
-      if (this.winTime % 30200 === 0) {
-        this.needCoffee = new Audio("/assets/audios ad/Need coffee.mp3");
-        this.needCoffee.volume = 0.3;
-        this.needCoffee.play()
-      }
-      if (this.winTime % 30000 === 0) {
-        this.pizzaPlace = new Audio("/assets/audios ad/Pizza place.mp3");
-        this.pizzaPlace.volume = 0.3;
-        this.pizzaPlace.play()
-      }
-      if (this.winTime % 25000 === 0) {
-        this.moreIShoot = new Audio("/assets/audios ad/More I shoot.mp3");
-        this.moreIShoot.volume = 0.3;
-        this.moreIShoot.play()
-      }
-      if (this.winTime % 8000 === 0) {
-        this.getsSiri = new Audio("/assets/audio/Gets serious.mp3");
-        this.getsSiri.volume = 0.2;
-        this.getsSiri.play();
-      }
-
       if (this.karenTime > Math.random() * 100 + 3500) {
-        //karen  tarda mucho en salir pero luego sale cada 3000
         this.karenTime = 0;
         this.karensAlert();
         this.addKaren();
-        if(this.winTime >= 20000){
-          this.karenTime = 3000
+        if(this.winTime >= 5000){
+          // 13.45
+          console.log("karen time ya", this.winTime)
+          this.karenTime = 2000
         }
       }
-
       if (this.ratTime > Math.random() * 100 + 7000) {
         //rat
         this.ratTime = 0;
@@ -285,6 +225,52 @@ class Game {
         this.addKoren();
         this.korenAlert()
       }
+// win time game start -----------------------
+      if (this.winTime >= 121534.2) {
+        this.gameWin();
+      }   //acaba a las 21 con tick del tiempo en 15
+
+      if (this.winTime % 55000 === 0) {
+        this.almostOver = new Audio("/assets/audio/It’s almost over.mp3");
+        this.almostOver.volume = 0.3;
+        this.almostOver.play()
+      }
+      if (this.winTime % 45000 === 0) {
+        this.littleMore = new Audio("/assets/audio/Just a little more.mp3");
+        this.littleMore.volume = 0.3;
+        this.littleMore.play()
+      }
+      if (this.winTime % 40000 === 0) {
+        this.soTired = new Audio("/assets/audio/Tired.mp3");
+        this.soTired.volume = 0.3;
+        this.soTired.play()
+      }
+      if (this.winTime % 35000 === 0) {
+        this.candyShop = new Audio("/assets/audios ad/Candy shop.mp3");
+        this.candyShop.volume = 0.3;
+        this.candyShop.play()
+      }
+      if (this.winTime % 30200 === 0) {
+        this.needCoffee = new Audio("/assets/audios ad/Need coffee.mp3");
+        this.needCoffee.volume = 0.3;
+        this.needCoffee.play()
+      }
+      if (this.winTime % 30000 === 0) {
+        this.pizzaPlace = new Audio("/assets/audios ad/Pizza place.mp3");
+        this.pizzaPlace.volume = 0.3;
+        this.pizzaPlace.play()
+      }
+      if (this.winTime % 25000 === 0) {
+        this.moreIShoot = new Audio("/assets/audios ad/More I shoot.mp3");
+        this.moreIShoot.volume = 0.3;
+        this.moreIShoot.play()
+      }
+      if (this.winTime % 8000 === 0) {
+        this.getsSiri = new Audio("/assets/audio/Gets serious.mp3");
+        this.getsSiri.volume = 0.2;
+        this.getsSiri.play();
+      }
+// win time game end -----------------------
 
     }, 1000 / 60);
   }
@@ -308,6 +294,7 @@ class Game {
     this.fires = this.fires.filter((e) => e.isVisible());
     this.discounts = this.discounts.filter((e) => e.isVisible());
     this.player.heats = this.player.heats.filter((e) => e.isVisible());
+    this.player.auras = this.player.auras.filter((e) => e.isVisible());
     this.player.waters = this.player.waters.filter((e) => e.isVisible());
 
     if (this.karens.length <= 0) {
@@ -376,16 +363,21 @@ class Game {
     this.korens.forEach((e) => e.draw());
     this.babys.forEach((e) => e.draw());
     this.customers.forEach((e) => e.draw());
-    this.player.draw();
+    this.pback.forEach((e) => e.draw());
     this.walls.forEach((e) => e.draw());
-    this.token.draw();
+    this.pfront.forEach((e) => e.draw());
+    this.player.draw();
+    this.bushesover.forEach((e) => e.draw());
     this.karens.forEach((e) => e.draw());
+    this.cactus.forEach((e) => e.draw());
     this.rats.forEach((e) => e.draw());
     this.fats.forEach((e) => e.draw());
-    this.geese.forEach((e) => e.draw());
     this.carts.forEach((e) => e.draw());
     this.foods.forEach((e) => e.draw());
     this.discounts.forEach((e) => e.draw());
+    this.geese.forEach((e) => e.draw());
+    
+    this.token.draw();
     this.line.draw();
 
     if (this.winTime > 600) {
@@ -679,14 +671,13 @@ class Game {
       return true;
     });
         //colisiones con obstáculos End    ::::::::::::>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<
-
     //impacto ratas al jugador
     this.rats = this.rats.filter((rat) => {
       if (rat.collides(this.player)) {
         this.player.hit();
         this.player.vy = -1;
         this.player.vx = -1;
-        return false;
+        return  false;
       }
       return true;
     });
@@ -800,8 +791,7 @@ class Game {
         this.saved.addSave()
         if(this.saved.save % 3 === 0){
           this.addFood()
-          this.player.coolDownWater -= 200;
-          this.player.coolDownFire -= 200;
+          this.player.getBigRespect()
         }
         return false;
       }
@@ -813,7 +803,7 @@ class Game {
         if (baby.collides(puddle)) {
           this.babys.splice(0, 1);
           puddle.vx = 500;
-          this.player.hit()
+          this.player.loseBigRespect()
           this.score.addScore()
           return false;
         } else return true;
@@ -825,7 +815,18 @@ class Game {
         if (heat.collides(fire)) {
           this.babys.splice(0, 1);
           fire.vx = 500;
-          this.player.hit()
+          this.player.loseBigRespect()
+          this.score.addScore()
+          return false;
+        } else return true;
+      });
+    });
+    this.cactus.forEach((cactu) => {
+      this.babys = this.babys.filter((la) => {
+        if (la.collides(cactu)) {
+          this.babys.splice(0, 1);
+          cactu.vx = 500;
+          this.player.loseBigRespect()
           this.score.addScore()
           return false;
         } else return true;
@@ -839,8 +840,7 @@ class Game {
         this.saved.addSave()
         if(this.saved.save % 3 === 0){
           this.addFood()
-          this.player.coolDownWater -= 200;
-          this.player.coolDownFire -= 200;
+          this.player.getBigRespect()
         }
         return false;
       }
@@ -864,7 +864,7 @@ class Game {
         if (heat.collides(fire)) {
           this.customers.splice(0, 1);
           fire.vx = 500;
-          this.player.hit()
+          this.player.loseBigRespect()
           this.score.addScore()
           return false;
         } else return true;
@@ -876,7 +876,7 @@ class Game {
       if (boss.collides(this.player)) {
         this.player.hit();
         this.player.hit();
-        this.player.boost -= 1;
+        this.player.extraBoost -= 1;
         C = 0;
         V = 0;
 
@@ -940,16 +940,49 @@ class Game {
     this.korens = this.korens.filter((koren) => {
       if (koren.collides(this.player)) {
         this.player.hit();
-        this.player.boost -= 0.5;
+        this.player.extraBoost -= 0.5;
         return false;
       }
       return true;
     });
     // colisiones con las paredes y los charcos que retrasan al jugador
+
+    this.bushesover.forEach((wall) => {
+      if (wall.collides(this.player)) {
+        wall.collides
+        this.player.vy = 0;
+        this.player.vx = 0;
+      }
+    });
     this.walls.forEach((wall) => {
+      if (wall.collides(this.player)) {
+        wall.collides
+        this.player.vy = 0;
+        this.player.vx = 0;
+      }
+    });
+    this.pback.forEach((wall) => {
+      if (wall.collides(this.player)) {
+        wall.collides
+        this.player.loseRespect()
+        this.player.drawSorry()
+      }
+    });
+    this.pfront.forEach((wall) => {
+      if (wall.collides(this.player)) {
+        wall.collides
+        this.player.loseRespect()
+        this.player.drawSorry()
+      }
+    });
+
+
+    this.cactus.forEach((wall) => {
       if (wall.collides(this.player)) {
         this.player.vy = 0;
         this.player.vx = 0;
+        this.player.wallHit()
+        this.player.drawOuch()
       }
     });
 
@@ -972,8 +1005,9 @@ class Game {
         this.newShoes = new Audio("/assets/audios ad/Faster running.mp3");
         this.newShoes.volume = 0.1;
         this.newShoes.play()
-        this.player.boost += 0.5;
+        this.player.extra += 0.3;
         distance +=10
+        this.player.getRespect()
         return false;
       }
       return true;
@@ -1005,7 +1039,7 @@ class Game {
     //fin de las colisiones
 
     // evento que se dispara al perder toda la vida, morir clientes y perder hjas de reclamaciones
-    if (!this.player.isAlive() || this.score.score >= 10 || forms.length < 1) {
+    if (!this.player.isAlive() || this.score.score >= 10 || forms.length < 1 || !this.player.isRespected()) {
       this.gameOver();
     } 
     

@@ -11,7 +11,7 @@ class Cart {
       this.w = 30;
       this.h = 40;
       this.cartImg = new Image();
-      this.cartImg.src = "/assets/images/elements/powerUp2.png";
+      this.cartImg.src = "/assets/images/elements/cart.png";
       this.cartImg.frame = 0;
   
       this.tick = 0;
@@ -21,9 +21,9 @@ class Cart {
       this.ctx.drawImage(
         this.cartImg,
         0,
-        (this.cartImg.frame * this.cartImg.height) / 8,
+        (this.cartImg.frame * this.cartImg.height) / 4,
         this.cartImg.width, 
-        this.cartImg.height / 8,
+        this.cartImg.height / 4,
         this.x, 
         this.y, 
         this.w,
@@ -33,11 +33,11 @@ class Cart {
   
     move() {
       this.tick++;
-      if (this.tick > 0) {
+      if (this.tick > 20) {
         this.tick = 0;
         this.cartImg.frame++;
       }
-      if (this.cartImg.frame > 7) {
+      if (this.cartImg.frame > 3) {
         this.cartImg.frame = 0;
       }
     }

@@ -35,27 +35,25 @@ class Line {
     
     if(this.y < 50){
       this.v = this.a;
-    } else if(this.y > 220)
+    } else if(this.y > 165)
     this.v = this.b;
     
-
       const prevStyle = this.ctx.fillStyle;
       this.ctx.fillStyle = "white";
-      if(this.check > 0 && this.check <= 2){
+      if (this.check > 0 && this.check <= 2){
         this.ctx.font = "18px Arial" 
-        this.ctx.strokeText("Bullseye! bye Karen!", this.x, this.y - 2);
         this.ctx.fillText("Bullseye! bye Karen!", this.x, this.y - 2);
         setTimeout(() => {
           this.check = 0
-        }, 2000)
+        }, 3000)
       }
-      if(this.check >= 3){
+      if (this.check >= 3){
         this.ctx.font = "18px Arial"
       this.ctx.strokeText("FAIL!", this.x + 20, this.y - 2);
       this.ctx.fillText("FAIL!", this.x + 20, this.y - 2); 
         setTimeout(() => {
           this.check = 0
-        }, 2000)
+        }, 3000)
       }
       this.ctx.fillStyle = prevStyle;
   }
@@ -68,9 +66,9 @@ class Line {
   checkPoint(){
     //se acelera la velocidad de la barra a medida que pasa el juego. cuanto con
     //mas karens se negocia, mas complicado se hace
-    this.a -= 0.4;
-    this.b += 0.4;
-    if(this.y > 110 && this.y < 165){
+    this.a -= 0.3;
+    this.b += 0.3;
+    if(this.y > 80 && this.y < 125){
       this.check = 1;
     } else{
       this.check = 4;

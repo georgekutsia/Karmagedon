@@ -2,24 +2,23 @@ class Score {
   constructor(ctx) {
     this.ctx = ctx;
     this.x = ctx.canvas.width - 175;
-    this.y = 330;
+    this.y = 290;
     this.score = 0;
   }
 
   draw() {
-    ctx.fillRect(this.x - 3, this.y - 25, 165, 35);
-    this.ctx.font = "17px Arco";
-    this.ctx.fillStyle = "black";
+    this.ctx.font = "27px Arco";
+    this.ctx.fillStyle = "white";
     this.ctx.fillText(
       `Custormers: `,
-      this.x,
+      this.x + 20,
       this.y
     );
-    this.ctx.fillStyle = "red";
+    this.ctx.fillStyle = "lightsalmon";
     this.ctx.fillText(
-      `Dead=${this.score.toString()}`,
-      this.x + 90,
-      this.y -9,
+      `Dead:${this.score.toString()}`,
+      this.x ,
+      this.y + 30,
     );
     ctx.fillStyle = "rgb(251, 209, 209)";
     this.ctx.restore();
@@ -38,12 +37,12 @@ class Saved {
   }
 
   draw() {
-    this.ctx.font = "17px Arco";
-    this.ctx.fillStyle = "blue";
+    this.ctx.font = "27px Arco";
+    this.ctx.fillStyle = "lightblue";
     this.ctx.fillText(
-      `Saved=${this.save.toString()}`,
-      this.x + 90 ,
-      this.y +8
+      `Saved:${this.save.toString()}`,
+      this.x + 85 ,
+      this.y - 10
     );
     ctx.fillStyle = "rgb(251, 209, 209)";
     this.ctx.restore();

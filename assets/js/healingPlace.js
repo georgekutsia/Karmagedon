@@ -2,9 +2,9 @@ class HealingPlace {
   constructor(ctx) {
     this.ctx = ctx;
     this.x = 980;
-    this.y = 250;
-    this.w = 80;
-    this.h = 80;
+    this.y = 190;
+    this.w = 50;
+    this.h = 60;
     this.heal = new Image();
     this.heal.src = "/assets/images/elements/healing.png";
     this.heal.frame = 0;

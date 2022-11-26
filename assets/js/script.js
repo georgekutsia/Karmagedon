@@ -71,13 +71,13 @@ btn.addEventListener("click", function () {
 
   //  GAME 2 RAT INVASION START
 easy.addEventListener("click", function () {
-    game2.start();
-    displ.style.display = "block"
-    allButtonsGone.forEach((button) => button.style.display = "none")
-    cheat.style.display = "inline-block";
-    restart.style.display = "flex"
-    btn.style.display = "none";
-    btneasy.style.display = "flex"
+    // game2.start();
+    // displ.style.display = "block"
+    // allButtonsGone.forEach((button) => button.style.display = "none")
+    // cheat.style.display = "inline-block";
+    // restart.style.display = "flex"
+    // btn.style.display = "none";
+    // btneasy.style.display = "flex"
   });
   
   btneasy.addEventListener("click", function () {
@@ -96,14 +96,14 @@ easy.addEventListener("click", function () {
     //  GAME 2 END
   //  GAME 3 STRUCTURAL DAMAGE START
 normal.addEventListener("click", function () {
-    game3.start();
-    displ.style.display = "block"
+    // game3.start();
+    // displ.style.display = "block"
 
-    cheat.style.display = "inline-block";
-    restart.style.display = "flex"
-    allButtonsGone.forEach((button) => button.style.display = "none")
-    btn.style.display = "none";
-    btnnormal.style.display = "flex"
+    // cheat.style.display = "inline-block";
+    // restart.style.display = "flex"
+    // allButtonsGone.forEach((button) => button.style.display = "none")
+    // btn.style.display = "none";
+    // btnnormal.style.display = "flex"
   });
   btnnormal.addEventListener("click", function () {
     if (game3.interval) {
@@ -121,13 +121,13 @@ normal.addEventListener("click", function () {
     //  GAME 3 END
   //  GAME 4 GEESE INFERNO START
 hard.addEventListener("click", function () {
-    game4.start();
-    displ.style.display = "block"
-    allButtonsGone.forEach((button) => button.style.display = "none")
-    cheat.style.display = "inline-block";
-    restart.style.display = "flex"
-    btn.style.display = "none";
-    btnhard.style.display = "flex"
+    // game4.start();
+    // displ.style.display = "block"
+    // allButtonsGone.forEach((button) => button.style.display = "none")
+    // cheat.style.display = "inline-block";
+    // restart.style.display = "flex"
+    // btn.style.display = "none";
+    // btnhard.style.display = "flex"
   });
   btnhard.addEventListener("click", function () {
     if (game4.interval) {
@@ -145,14 +145,14 @@ hard.addEventListener("click", function () {
     //  GAME 4 END
   //  GAME 5 SURVIVE THE IMPOSIBLE START
 superhard.addEventListener("click", function () {
-    game5.start();
-    displ.style.display = "block"
+    // game5.start();
+    // displ.style.display = "block"
 
-    cheat.style.display = "inline-block";
-    restart.style.display = "flex"
-    allButtonsGone.forEach((button) => button.style.display = "none")
-    btn.style.display = "none";
-    btnsuperhard.style.display = "flex"
+    // cheat.style.display = "inline-block";
+    // restart.style.display = "flex"
+    // allButtonsGone.forEach((button) => button.style.display = "none")
+    // btn.style.display = "none";
+    // btnsuperhard.style.display = "flex"
   });
   btnsuperhard.addEventListener("click", function () {
     if (game5.interval) {

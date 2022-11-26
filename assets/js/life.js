@@ -3,12 +3,11 @@ class Life {
     this.ctx = ctx;
 
     this.x = 1015;
-    this.y = 400;
+    this.y = 488;
     this.w = 180;
-    this.h = 110;
+    this.h = 50;
     this.total = 1;
-
-    this.v = 0.3;
+    this.v = 5;
     ctx.font = "40px Verdana";
   }
 
@@ -25,21 +24,21 @@ class Life {
 
     this.ctx.fillStyle= prevStyle;
     this.ctx.strokeStyle = "black";
-    this.ctx.font = "50px Sans" ;
+    this.ctx.font = "40px Sans" ;
     this.ctx.strokeStyle = "yellow";
     gradient.addColorStop("0.88", "white");
     gradient.addColorStop("0.8", "black");
     ctx.fillStyle = gradient;
-    this.ctx.fillText("Life", 1070, 500)
+    this.ctx.fillText("Life", 1070, 520)
     this.ctx.fillStyle = prevStyle;
   }
 
   move() {
     this.y -= this.v
-    if(this.y < 410){
-      this.v = -0.3
-    } else if(this.y > 430)
-    this.v = 0.3
+    if(this.y < 480){
+      this.v = -0.15
+    } else if(this.y > 485)
+    this.v = 0.15
   }
 
   loseLife() {

@@ -20,7 +20,11 @@
     bottom:90px;
     cursor: url("/assets/images/elements/cursorInfo"), pointer;
 }
-
+.wornings-css{
+    text-align: left;
+    margin-top: 50px;
+    font-family: 'Times New Roman', Times, serif;
+}
 #add-karen{
     display: none;
     margin: 120px 0 0 310px;
