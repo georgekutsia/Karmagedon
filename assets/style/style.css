@@ -27,7 +27,7 @@ body{
 
 #canvas {
     border: 1px solid rgb(227, 147, 147);
-    background-image: url(/assets/images/fondos/canvas\ karmagedon\ forma\ 3.png);
+    background-image: url(/assets/images/fondos/can.png);
     background-size: 100%;
     left: 1220%;
   }
@@ -96,6 +96,12 @@ u{
 	border: 2px solid rgb(38, 3, 233);
   }
 #fire-alert{
+	background-color: rgb(223, 159, 9);
+  color: black;
+	display: none;
+	border: 2px solid rgb(224, 8, 8);
+  }
+#upgrade-alert{
 	background-color: rgb(223, 159, 9);
   color: black;
 	display: none;

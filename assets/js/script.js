@@ -189,10 +189,6 @@ restart.addEventListener("click", function () {
     begin.style.display = "none"
     manager.style.display = "none"
     cheat.style.display = "inline-block"
-    this.introMusic = new Audio("/assets/audio/TDG.mp3");
-    this.introMusic.volume = 0.04;
-    this.introMusic.loop = true;  
-    this.introMusic.play()
     restart.style.display = "flex"
     this.clicklaser = new Audio("/assets/audios ad/click laser.mp3");
     this.clicklaser.volume = 0.05;
@@ -282,21 +278,21 @@ zbaby.addEventListener("click", function(){
 const hoverSoundButtons1 = [begin, btn, restart, btneasy, btnnormal, btnhard, btnsuperhard, easy, normal, hard, superhard]
 
 hoverSoundButtons1.forEach((button) => button.addEventListener("mouseover", function(){
-  this.musicStart = new Audio("/assets/audios ad/hover sound.mp3");
+  this.musicStart = new Audio("/assets/audio/lzr.mp3");
   this.musicStart.volume = 0.05;
   this.musicStart.play()
 }))
 const hoverSoundButtons2 = [in1, in2, in3, in4]
 
 hoverSoundButtons2.forEach((button) => button.addEventListener("mouseover", function(){
-  this.musicStart = new Audio("/assets/audios ad/girar.mp3");
+  this.musicStart = new Audio("/assets/audio/pageturn.mp3");
   this.musicStart.volume = 0.05;
   this.musicStart.play()
 }))
 
-infocheat.addEventListener("mouseover", function(){
-  this.musicStart = new Audio("/assets/audios ad/vibra.mp3");
-  this.musicStart.volume = 0.1;
-  this.musicStart.play()
-})
+// infocheat.addEventListener("mouseover", function(){
+//   this.musicStart = new Audio("/assets/audios ad/vibrsa.mp3");
+//   this.musicStart.volume = 0.1;
+//   this.musicStart.play()
+// })
 

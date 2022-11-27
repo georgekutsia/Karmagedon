@@ -8,6 +8,7 @@ class Game {
     this.water = new Water(ctx)
     this.score = new Score(ctx);
     this.food = new Food(ctx);
+    this.upgrade = new Upgrade(ctx);
     this.saved = new Saved(ctx);
     this.cactus = [
       new Cactus(ctx, 370, 210, 40, 40),
@@ -86,27 +87,16 @@ class Game {
     this.korenTime = 0; //koren
     this.cartTime = 3450;
     this.foodTime = 0;
+    this.upgradeTime = 0;
     this.discountTime = 3700;
+    
     this.winTime = 0;
     this.interval = null;
 
-    this.karens = [];
-    this.rats = [];
-    this.babys = [];
-    this.customers = [];
-    this.fats = [];
-    this.puddles = [];
-    this.fires = [];
-    this.geese = [];
-    this.bosss = [];
-    this.korens = [];
-    this.carts = [];
-    this.foods = [];
-    this.discounts = [];
-    this.listOfEvents = [this.karens, this.rats, this.babys, 
-                        this.customers, this.fats, this.puddles,
-                        this.fires, this.geese, this.bosss, this.korens, 
-                        this.carts, this.discounts]
+    this.karens = this.rats = this.babys = this.customers = this.fats = this.puddles = this.fires = this.geese = this.bosss = this.korens = this.carts = this.foods = this.upgrades = this.discounts = [];
+  
+    this.listOfEvents = [this.karens, this.rats, this.babys,this.customers, this.fats, this.puddles, this.fires, this.geese, this.bosss, this.korens, this.carts, this.discounts]
+  
     this.setListeners();
     this.musicStart = new Audio("/assets/audio/valse.mp3");
     this.musicStart.volume = 0.02;
@@ -123,21 +113,9 @@ class Game {
       this.clear();
       this.draw();
       this.move();
-      this.karenTime++; //karen
-      this.ratTime++; //rat
-      this.fatTime++; //fat
-      this.puddleTime++; //puddle
-      this.fireTime++;
-      this.gooseTime++;
-      this.babyTime++;
-      this.customerTime++;
-      this.bossTime++;
-      this.korenTime++;
-      this.winTime++;
-      this.cartTime++;
-      this.foodTime++;
-      this.discountTime++;
+      this.karenTime++; this.ratTime++; this.fatTime++; this.puddleTime++;  this.fireTime++; this.gooseTime++; this.babyTime++; this.customerTime++; this.bossTime++; this.korenTime++; this.winTime++; this.cartTime++; this.foodTime++; this.upgradeTime++; this.discountTime++;
       this.checkCollisions();
+
       if(this.winTime >= 5600){
         console.log("blabal")
       }
@@ -203,10 +181,16 @@ class Game {
         this.cartTime = 0;
         this.addCart();
       }
-      if (this.foodTime > Math.random() * 100 + 14000) {
+      if (this.foodTime > Math.random() * 100 + 40000) {
         //food
         this.foodTime = 0;
         this.addFood();
+      }
+      if (this.upgradeTime > Math.random() * 100 + 10000) {
+        //upgrade
+        this.upgradeTime = 0;
+        this.upgradeAlert()
+        this.addUpgrade();
       }
       if (this.discountTime > Math.random() * 100 + 380099) {
         //discount
@@ -290,7 +274,10 @@ class Game {
     this.customers = this.customers.filter((e) => e.isVisible());
     this.bosss = this.bosss.filter((e) => e.isVisible());
     this.korens = this.korens.filter((e) => e.isVisible());
+    this.foods = this.foods.filter((e) => e.isVisible());
     this.puddles = this.puddles.filter((e) => e.isVisible());
+    this.upgrades = this.upgrades.filter((e) => e.isVisible());
+    this.carts = this.carts.filter((e) => e.isVisible());
     this.fires = this.fires.filter((e) => e.isVisible());
     this.discounts = this.discounts.filter((e) => e.isVisible());
     this.player.heats = this.player.heats.filter((e) => e.isVisible());
@@ -323,6 +310,10 @@ class Game {
     }
     if (this.fires.length <= 0) {
       const alert = document.getElementById("fire-alert");
+      alert.style.display = "none";
+    }
+    if (this.upgrades.length <= 0) {
+      const alert = document.getElementById("upgrade-alert");
       alert.style.display = "none";
     }
     if (this.bosss.length <= 0) {
@@ -374,11 +365,30 @@ class Game {
     this.fats.forEach((e) => e.draw());
     this.carts.forEach((e) => e.draw());
     this.foods.forEach((e) => e.draw());
+    this.upgrades.forEach((e) => e.draw());
     this.discounts.forEach((e) => e.draw());
     this.geese.forEach((e) => e.draw());
-    
     this.token.draw();
     this.line.draw();
+
+    this.ctx.font = "18px Arial";
+    this.ctx.fillStyle = "white";
+
+    this.ctx.save();
+    ctx.fillStyle = "rgb(21, 209, 209)";
+    ctx.fillRect(this.x - 92, this.y - 21, 255, 22);
+    this.ctx.fillStyle = "black";
+    this.order = this.ctx.fillText(this.problem, this.x - 90, this.y - 3);
+    this.ctx.restore();
+
+    this.ctx.fillText(`Speed:${this.player.vx.toString()}`, 10, 60);
+    this.ctx.fillText(
+      `Speed:${this.player.wSpeed.toString()}`, 10, 180
+    );
+    this.ctx.fillText(
+      `Speed:${this.player.extraBoost.toString()}`, 10, 280
+    );
+
 
     if (this.winTime > 600) {
       this.healing.draw();
@@ -403,6 +413,7 @@ class Game {
     this.healing.move();
     this.carts.forEach((e) => e.move());
     this.foods.forEach((e) => e.move());
+    this.upgrades.forEach((e) => e.move());
     this.discounts.forEach((e) => e.move());
   }
   addKaren() {
@@ -502,6 +513,10 @@ class Game {
     const food = new Food(ctx);
     this.foods.push(food);
   }
+  addUpgrade() {
+    const upgrade = new Upgrade(ctx);
+    this.upgrades.push(upgrade);
+  }
   addDiscount() {
     const discount = new Discount(ctx);
     this.discounts.push(discount);
@@ -513,7 +528,6 @@ class Game {
   karensAlert() {
     const karensAlert = document.getElementById("karens-alert");
     karensAlert.style.display = "inline-flex";
-
     const nothingToWorrie = document.getElementById("ok");
     nothingToWorrie.style.display = "none";
     const statusOk = document.getElementById("status");
@@ -565,6 +579,15 @@ class Game {
     statusOk.style.backgroundColor = "rgb(252, 5, 5)";
     statusOk.style.color = "white";
   }
+  upgradeAlert() {
+    const upgradeAlert = document.getElementById("upgrade-alert");
+    upgradeAlert.style.display = "inline-flex";
+    const nothingToWorrie = document.getElementById("ok");
+    nothingToWorrie.style.display = "none";
+    const statusOk = document.getElementById("status");
+    statusOk.style.backgroundColor = "rgb(252, 5, 5)";
+    statusOk.style.color = "white";
+  }
   babyAlert() {
     const babyAlert = document.getElementById("baby-alert");
     babyAlert.style.display = "inline-flex";
@@ -603,6 +626,7 @@ class Game {
       this.player.heats = this.player.heats.filter((heat) => {
         if (heat.collides(puddle)) {
           this.player.heats.splice(0, 1);
+          this.player.heal()
           puddle.dicrease();
           if (puddle.h <= 20) {
             puddle.vx = 500;
@@ -1005,7 +1029,7 @@ class Game {
         this.newShoes = new Audio("/assets/audios ad/Faster running.mp3");
         this.newShoes.volume = 0.1;
         this.newShoes.play()
-        this.player.extra += 0.3;
+        this.player.extraBoost += 1.3;
         distance +=10
         this.player.getRespect()
         return false;
@@ -1027,11 +1051,24 @@ class Game {
       }
       return true;
     });
+    this.upgrades = this.upgrades.filter((up) => {
+      if (up.collides(this.player)) {
+        this.player.wSpeed += 1
+        this.player.hSpeed += 1
+        waterDistance += 10;
+        heatDistance += 10;
+        const fireAlert = document.getElementById("upgrade-alert");
+        fireAlert.style.display = "none";
+        return false;
+      }
+      return true;
+    });
     //impacto discount
     this.discounts = this.discounts.filter((discount) => {
       if (discount.collides(this.player)) {
         this.line.b -= 0.5;
         this.line.a += 0.5;
+        N = 78 
         return false;
       }
       return true;
@@ -1063,6 +1100,7 @@ class Game {
     this.korens = [];
     this.carts = [];
     this.foods = [];
+    this.upgrades = [];
     this.dicounts = [];
     const lose = document.getElementById("lose");
     lose.style.display = "block"
@@ -1082,6 +1120,7 @@ class Game {
     this.korens = [];
     this.carts = [];
     this.foods = [];
+    this.upgrades = [];
     this.dicounts = [];
     const wincon = document.getElementById("win");
     wincon.style.display = "block"

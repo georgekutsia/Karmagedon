@@ -3,11 +3,11 @@ class Player {
     this.ctx = ctx;
     this.x = 999;
     this.y = 280;
-
     this.w = 35;
     this.h = 35;
-    this.extraBoost = 0
-    this.boost = boosteada + this.extraBoost;
+    this.extraBoost = 4
+    this.boosteada = 0
+    this.boost = this.boosteada + this.extraBoost;
     this.vx = 0;
     this.vy = 0;
 
@@ -21,6 +21,7 @@ class Player {
     this.bwater = 0;
     this.bwaterplus = 0;
     this.altTime = 0;
+    this.goJump = ALT
 
     this.tick = 0;
     this.life = new Life(ctx);
@@ -78,6 +79,7 @@ class Player {
     this.respect.draw();
     this.formins.draw();
     this.scoreback.draw();
+    this.ctx.fillStyle = "lightsalmon";
   }
 
   move() {
@@ -125,6 +127,8 @@ class Player {
     });
     this.auras.forEach((aura) => {
       aura.move();
+      this.healslow()
+      this.hefa()
     });
   }
 
@@ -232,9 +236,6 @@ class Player {
       setTimeout(function () {
         N = 0;
       }, 400);
-      setTimeout(function () {
-        N = 78;
-      }, this.coolDownFire);
     }
 
     if (key === X) {
@@ -284,7 +285,7 @@ class Player {
       this.y + this.h - 40,
       this
     );
-      aura.auraImg.src = "/assets/images/munición/aura1.png";
+    aura.auraImg.src = "/assets/images/munición/aura1.png";
     this.auras.push(aura);
   }
   heater() {

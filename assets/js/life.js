@@ -10,7 +10,6 @@ class Life {
     this.v = 5;
     ctx.font = "40px Verdana";
   }
-
   draw() {
     const prevStyle = this.ctx.fillStyle;
     let gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
@@ -21,7 +20,6 @@ class Life {
     this.ctx.fillRect(this.x, this.y, this.w * this.total, this.h);
     this.ctx.fillStyle = prevStyle;
     this.ctx.strokeRect(this.x, this.y, this.w, this.h);
-
     this.ctx.fillStyle= prevStyle;
     this.ctx.strokeStyle = "black";
     this.ctx.font = "40px Sans" ;
@@ -32,7 +30,6 @@ class Life {
     this.ctx.fillText("Life", 1070, 520)
     this.ctx.fillStyle = prevStyle;
   }
-
   move() {
     this.y -= this.v
     if(this.y < 480){
@@ -40,7 +37,6 @@ class Life {
     } else if(this.y > 485)
     this.v = 0.15
   }
-
   loseLife() {
     this.total -= 0.2;
     this.damageAudio = new Audio("/assets/audio/ouch.mp3")
