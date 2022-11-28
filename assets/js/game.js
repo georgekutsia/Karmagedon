@@ -88,8 +88,8 @@ class Game {
     this.korenTime = 0; //koren
     this.cartTime = 3450;
     this.foodTime = 0;
-    this.upgradeTime = 0;
-    this.upBulletTime = 0;
+    this.upgradeTime = 900;
+    this.upBulletTime = 800;
     this.discountTime = 3700;
     
     this.winTime = 0;
@@ -118,16 +118,13 @@ class Game {
       this.karenTime++; this.ratTime++; this.fatTime++; this.puddleTime++;  this.fireTime++; this.gooseTime++; this.babyTime++; this.customerTime++; this.bossTime++; this.korenTime++; this.winTime++; this.cartTime++; this.foodTime++; this.upgradeTime++; this.upBulletTime++; this.discountTime++;
       this.checkCollisions();
 
-      if(this.winTime >= 5600){
-        console.log("blabal")
-      }
+
       if (this.karenTime > Math.random() * 100 + 3500) {
         this.karenTime = 0;
         this.karensAlert();
         this.addKaren();
         if(this.winTime >= 5000){
           // 13.45
-          console.log("karen time ya", this.winTime)
           this.karenTime = 2000
         }
       }
@@ -188,13 +185,13 @@ class Game {
         this.foodTime = 0;
         this.addFood();
       }
-      if (this.upgradeTime > Math.random() * 100 + 3000) {
+      if (this.upgradeTime > Math.random() * 100 + 1000) {
         //upgrade
         this.upgradeTime = 0;
         this.upgradeAlert()
         this.addUpgrade();
       }
-      if (this.upBulletTime > Math.random() * 100 + 300) {
+      if (this.upBulletTime > Math.random() * 100 + 1000) {
         //upgrade
         this.upBulletTime = 0;
         this.upBulletAlert()
@@ -353,14 +350,13 @@ class Game {
       const statusOk = document.getElementById("status");
       statusOk.style.backgroundColor = "rgb(0, 128, 0)";
       statusOk.style.color = "white";
-      statusOk.style.border = "3px solid rgb(0, 0, 255)";
+      statusOk.style.border = "3px solid rgb(3, 59, 3)";
       statusOk.style.padding = "35px 10px";
     }
   }
 
   draw() {
     this.winTime++;
-
     // this.listOfEvents.forEach((event) => event.forEach((e) => e.draw()))
     this.puddles.forEach((e) => e.draw());
     this.fires.forEach((e) => e.draw());
@@ -387,25 +383,75 @@ class Game {
     this.line.draw();
 // CTX data statistics
 // CTX data statistics
-this.ctx.font = "25px Arial";
-this.ctx.fillStyle = "grey";
+this.ctx.font = "20px Arial";
+this.ctx.fillStyle = "silver";
 this.ctx.save();
 ctx.fillStyle = "rgb(1, 2, 2)";
-ctx.fillRect(70, 555, 110, 50);
+ctx.fillRect(70, 555, 150, 50);
+ctx.fillRect(530, 555, 95, 50);
 this.ctx.font = "30px Arial";
 this.ctx.fillStyle = "white";
-this.ctx.fillText(`Bullets:`, 80, 590);
+this.ctx.fillText(`Weapons:`, 80, 590);
+this.ctx.fillText(`Body:`, 540, 590);
 this.ctx.restore();
-this.ctx.fillText(`speed:${this.player.speed.toString()}`, 190, 570);
-this.ctx.fillText(`distance:${bulletDistance.toString()}`, 190, 600);
-this.ctx.fillText(`Cooldown:${this.player.cooldownBullet.toString()}`, 290, 570);
-// this.ctx.fillText(`distance:${bulletDistance.toString()}`, 290, 600);
+this.ctx.fillText(`Cooldown: ${this.player.cooldownBullet.toString()}`, 370, 570);
+this.ctx.fillText(`Distance: ${bulletDistance.toString()}`, 230, 570);
+this.ctx.fillText(`Speed: ${this.player.speed.toString()}`, 230, 600);
+this.ctx.fillText(`Size: ${bulletSize.toString()}`, 325, 600);
+this.ctx.fillText(`Growth: ${afterSize.toString()}`, 415, 600);
+// body
+this.ctx.fillText(`s ${this.player.cooldownJump.toString()}`, 750, 600);
+this.ctx.fillText(`Jump: ${distance.toString()}ft`, 640, 600);
+this.ctx.fillText(`Speed: ${this.player.boost}`, 640, 570);
+this.ctx.fillText(` ${this.player.life.total.toFixed(2).toString()}`, 1120, 515);
+if (C === 67){
+  this.ctx.font = "18px Arial";
+  this.ctx.save();
+  ctx.fillStyle = "rgb(229, 88, 88)";
+  ctx.fillRect(845, 552, 155, 25);
+  this.ctx.fillStyle = "black";
+  this.ctx.fillText(`Machine Gun: C/V`, 850, 570);
+  this.ctx.restore();
+}
+if (N === 78){
+  this.ctx.font = "18px Arial";
+  this.ctx.save();
+  ctx.fillStyle = "rgb(21, 209, 209)";
+  ctx.fillRect(845, 588, 155, 23);
+  this.ctx.fillStyle = "black";
+  this.ctx.fillText(`Shield ready: N`, 850, 605);
+  this.ctx.restore();
+}
+if(this.saved.save >= 2 && this.saved.save <=3){
+  distance = 80
+} else if(
+  this.saved.save >= 4 && this.saved.save <= 5
+){
+  distance = 100
+} else if(
+  this.saved.save >= 6 && this.saved.save <= 7
+){
+  distance = 120
+} else if(
+  this.saved.save >= 8 && this.saved.save <= 9
+){
+  distance = 140
+} else if(
+  this.saved.save >= 10 
+){
+  distance = 160
+}
+
+
+
 // CTX data statistics
 // CTX data statistics
 
 
     if (this.winTime > 600) {
       this.healing.draw();
+      const iceWorning = document.getElementById("ice");
+      iceWorning.style.display = "inline-block";
     }
     this.score.draw();
     this.saved.draw();
@@ -535,7 +581,6 @@ this.ctx.fillText(`Cooldown:${this.player.cooldownBullet.toString()}`, 290, 570)
   addUpBullet() {
     const upBullet = new Upbullet(ctx);
     this.upBullets.push(upBullet);
-    console.log("bullet")
   }
   addDiscount() {
     const discount = new Discount(ctx);
@@ -740,11 +785,11 @@ this.ctx.fillText(`Cooldown:${this.player.cooldownBullet.toString()}`, 290, 570)
         } else return true;
       });
     });
+
     this.fats.forEach((fat) => {  //fuego al fat
       this.player.heats = this.player.heats.filter((heat) => {
         if (heat.collides(fat)) {
           this.player.heats.splice(0, 1);
-          this.player.coolDownFire = 20;
         } else return true;
       });
     });
@@ -753,6 +798,7 @@ this.ctx.fillText(`Cooldown:${this.player.cooldownBullet.toString()}`, 290, 570)
       if (fat.collides(this.player)) {
         this.player.vy = 0;
         this.player.vx = 0;
+        this.player.loseRespect()
       }
       return true;
     });
@@ -830,6 +876,9 @@ this.ctx.fillText(`Cooldown:${this.player.cooldownBullet.toString()}`, 290, 570)
           puddle.vx = 500;
           this.player.loseBigRespect()
           this.score.addScore()
+          if(this.score.score % 1 === 0){
+            distance -= 30
+          }
           return false;
         } else return true;
       });
@@ -891,6 +940,7 @@ this.ctx.fillText(`Cooldown:${this.player.cooldownBullet.toString()}`, 290, 570)
           fire.vx = 500;
           this.player.loseBigRespect()
           this.score.addScore()
+
           return false;
         } else return true;
       });
@@ -1031,8 +1081,13 @@ this.ctx.fillText(`Cooldown:${this.player.cooldownBullet.toString()}`, 290, 570)
         this.newShoes.volume = 0.1;
         this.newShoes.play()
         this.player.extraBoost += 1.3;
+        this.player.cooldownJump -= 500
+        if(this.player.cooldownJump <= 400){
+          this.player.cooldownJump = 300
+        }
+        console.log("blabla",this.player.cooldownJump)
         distance +=10
-        this.player.getRespect()
+        this.player.getSmallRespect()
         return false;
       }
       return true;
@@ -1043,7 +1098,6 @@ this.ctx.fillText(`Cooldown:${this.player.cooldownBullet.toString()}`, 290, 570)
         // this.newShoes = new Audio("/assets/audios ad/Faster running.mp3");
         // this.newShoes.volume = 0.1;
         // this.newShoes.play()
-        this.player.speed += 1
         this.player.heal()
         return false;
       }
@@ -1051,12 +1105,9 @@ this.ctx.fillText(`Cooldown:${this.player.cooldownBullet.toString()}`, 290, 570)
     });
     this.upgrades = this.upgrades.filter((up) => {
       if (up.collides(this.player)) {
-        this.player.speed += 1;
-        bulletDistance += 20;
-        this.player.cooldownBullet -=600;
-        afterSize +=20
-        bulletSize +=10
-        N=78
+        this.player.speed += 2;
+        bulletDistance += 100;
+        this.player.cooldownBullet -= 600;
         const fireAlert = document.getElementById("upgrade-alert");
         fireAlert.style.display = "none";
         return false;
@@ -1065,12 +1116,8 @@ this.ctx.fillText(`Cooldown:${this.player.cooldownBullet.toString()}`, 290, 570)
     });
     this.upBullets = this.upBullets.filter((up) => {
       if (up.collides(this.player)) {
-        this.player.speed += 1;
-        bulletDistance += 20;
-        this.player.cooldownBullet -=600;
         afterSize +=20
         bulletSize +=10
-        N=78
         const fireAlert = document.getElementById("upgrade-alert");
         fireAlert.style.display = "none";
         return false;

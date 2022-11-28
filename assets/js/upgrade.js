@@ -3,41 +3,32 @@ class Upgrade {
       this.ctx = ctx;
 
 
-      this.x = 1005;
-      this.y = 200;
+      this.x = 990;
+      this.y = 190;
       this.w = 60;
       this.h = 60;
       this.cartImg = new Image();
-      this.cartImg.src = "/assets/images/elements/upgrade.png";
-      this.cartImg.frame = 0;
-  
-      this.tick = 0;
-      this.tock = 0;
+      this.cartImg.src = "/assets/images/elements/upgra.png";  
+      this.tock = 600;
+      this.dispose = true
     }
   
     draw() {
       this.ctx.drawImage(
-        this.cartImg,
-        0,
-        (this.cartImg.frame * this.cartImg.height) / 1,
-        this.cartImg.width, 
-        this.cartImg.height / 1,
-        this.x, 
-        this.y, 
-        this.w,
-        this.h
-      );
-    }
-  
+        this.cartImg,this.x, this.y, this.w, this.h
+      )
+    } 
     move() {
-      this.tick++;
-      this.tock++;
-      if (this.tick > 60) {
-        this.tick = 0;
-        this.cartImg.frame++;
-      }
-      if (this.tock >= 800){
-        this.x = -100
+      this.tock--
+      this.ctx.font = "18px Arial";
+      this.ctx.save();
+      ctx.fillStyle = "black";
+      ctx.fillRect(this.x - 0, this.y - 21, 50, 25);
+      this.ctx.fillStyle = "red";
+      this.ctx.fillText(`${this.tock.toString()}`, 1000, 190);
+      this.ctx.restore();
+      if (this.tock <= 0) {
+        this.x = -100;
       }
     }
     isVisible() {

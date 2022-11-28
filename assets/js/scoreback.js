@@ -3,7 +3,7 @@ class Scoreback
   constructor(ctx) {
     this.ctx = ctx;
     this.x = 1015;
-    this.y = 267;
+    this.y = 550;
     this.w = 180;
     this.h = 60;
     this.total = 1;
@@ -28,14 +28,13 @@ class Scoreback
     gradient.addColorStop("0.88", "white");
     gradient.addColorStop("0.8", "black");
     ctx.fillStyle = gradient;
-    this.ctx.fillText("Life", 1070, 520)
     this.ctx.fillStyle = prevStyle;
   }
   move() {
     this.y -= this.v
-    if(this.y < 266){
+    if(this.y < 545){
       this.v = -0.08
-    } else if(this.y > 269)
+    } else if(this.y > 550)
     this.v = 0.12
   }
 }

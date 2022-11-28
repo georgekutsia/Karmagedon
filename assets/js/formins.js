@@ -27,8 +27,6 @@ class Formins
     this.ctx.strokeStyle = "yellow";
     gradient.addColorStop("0.88", "white");
     gradient.addColorStop("0.8", "black");
-    ctx.fillStyle = gradient;
-    this.ctx.fillText("Life", 1070, 520)
     this.ctx.fillStyle = prevStyle;
   }
   move() {

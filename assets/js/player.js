@@ -6,8 +6,8 @@ class Player {
     this.w = 35;
     this.h = 35;
     this.extraBoost = 0
-    this.boosteada = 0
-    this.boost = this.boosteada + this.extraBoost;
+    this.booster = 0
+    // this.boost = 4 + this.booster + this.extraBoost;
     this.vx = 0;
     this.vy = 0;
 
@@ -34,7 +34,8 @@ class Player {
     this.direction = "left";
     this.speed = 4;
     this.cooldownBullet = 3000;
-    this.coolDownJump = 3000;
+    this.cooldownJump = 3000;   
+    this.cooldownJumpTick = 3000;   
     this.jumptimer = 20000; //quizás haga algo para disminuirlo o aumentar su distancia
   }
 
@@ -56,6 +57,7 @@ class Player {
     this.order = this.ctx.fillText("Sorry! Sorry!", this.x - 30, this.y - 3);
     this.ctx.restore();
   }
+
 
   draw() {
     formsCheck();
@@ -91,7 +93,7 @@ class Player {
     if (this.img.frame > 3) {
       this.img.frame = 0;
     }
-    if (this.life.total <= 0.4) {
+    if (this.life.total <= 5) {
       C = 67;
       V = 86;
     }
@@ -99,6 +101,17 @@ class Player {
     this.respect.move()
     this.formins.move()
     this.scoreback.move()
+
+    if(ALT === 16){
+      this.ctx.font = "24px Arial";
+      this.ctx.save();
+      this.ctx.fillStyle = "red";
+      ctx.fillRect(845, 552, 55, 25);
+      this.ctx.fillStyle = "black";
+      this.ctx.fillText(`Jump on`, 845, 572);
+      ctx.fillStyle = "rgb(251, 209, 209)";
+      this.ctx.restore();
+    }
     // LIMITES DEL CANVAS =>//
     if (this.y < 0) {
       this.y = 0;
@@ -142,6 +155,9 @@ class Player {
   getBigRespect(){
     this.respect.getBigRespect();
   }
+  getSmallRespect(){
+    this.respect.getSmallRespect();
+  }
 
   hit() {
     this.life.loseLife();
@@ -182,24 +198,25 @@ class Player {
   }
       
     keyDown(key) {
+    this.boost = 4 + this.booster + this.extraBoost;
     if (key === UP || key === W) {
       this.direction = "top";
-      this.vy = -4 - this.boost;
+      this.vy = - this.boost;
       this.img.src = "/assets/images/PJ/MANAGER 1.png";
     }
     if (key === DOWN || key === S) {
       this.direction = "down";
-      this.vy = 4 + this.boost;
+      this.vy =  this.boost;
       this.img.src = "/assets/images/PJ/MANAGER 3.png";
     }
     if (key === RIGHT || key === D) {
       this.direction = "right";
-      this.vx = 4 + this.boost;
+      this.vx = this.boost;
       this.img.src = "/assets/images/PJ/MANAGER 2.png";
     }
     if (key === LEFT || key === A) {
       this.direction = "left";
-      this.vx = -4 - this.boost;
+      this.vx = - this.boost;
       this.img.src = "/assets/images/PJ/MANAGER 4.png";
     }
   }
@@ -272,7 +289,7 @@ class Player {
       }, 20);
       setTimeout(function () {
         ALT = 16;
-      }, this.coolDownJump);
+      }, this.cooldownJump);
     }
   }
 

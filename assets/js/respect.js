@@ -6,7 +6,7 @@ class Respect {
     this.y = 415;
     this.w = 180;
     this.h = 50;
-    this.total = 0.5;
+    this.total = 1;
 
     this.v = 5;
     ctx.font = "40px Verdana";
@@ -25,13 +25,13 @@ class Respect {
     this.ctx.strokeRect(this.x, this.y, this.w, this.h);
     this.ctx.fillStyle= prevStyle;
     this.ctx.strokeStyle = "black";
-    this.ctx.font = "40px Sans" ;
+    this.ctx.font = "35px Sans" ;
     this.ctx.strokeStyle = "black";
     gradient.addColorStop("0.88", "black");
     gradient.addColorStop("0.98", "black");
     gradient.addColorStop("1", "black");
     ctx.fillStyle = gradient;
-    this.ctx.fillText("Reputation", 1015, 452)
+    this.ctx.fillText("Reputation", 1020, 452)
     this.ctx.fillStyle = prevStyle;
   }
   move() {
@@ -49,6 +49,9 @@ class Respect {
   }
   getBigRespect(){
     this.total += 0.2
+  }
+  getSmallRespect(){
+    this.total += 0.1
   }
   getRespect(){
     this.total += 0.1;

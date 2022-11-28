@@ -188,7 +188,6 @@ class Game4 {
           this.gooseTime = 200;
           this.addGoose()
         }
-        console.log(this.winTime)
       }
 
     }, 1000 / 60);

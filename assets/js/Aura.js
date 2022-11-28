@@ -13,8 +13,8 @@ class Aura {
     this.life = new Life(ctx)
     this.auraImg = new Image();
     this.auraImg.src = "/assets/images/munición/powerUp1.png";
-    this.auraShootAudio = new Audio("/assets/audio/fired.mp3")
-    this.auraShootAudio.volume = 0.01;
+    this.auraShootAudio = new Audio("/assets/audio/watchslow.mp3")
+    this.auraShootAudio.volume = 0.02;
     this.auraShootAudio.play();
   }
 
@@ -25,9 +25,9 @@ class Aura {
     this.tick ++
     this.x = this.player.x-10;
     this.y = this.player.y-10;
-    this.player.boost = 2
+    this.player.booster = 2
       if(this.tick >= 200){
-        this.player.boost = 0
+        this.player.booster  = 0
         this.dispose = true;
       }
       this.auraImg.src = "/assets/images/munición/aura1.png";

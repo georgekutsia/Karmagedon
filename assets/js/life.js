@@ -17,7 +17,7 @@ class Life {
     gradient.addColorStop("0.88", "red");
     gradient.addColorStop("1", "green");
     ctx.fillStyle = gradient;
-    this.ctx.fillRect(this.x, this.y, this.w * this.total, this.h);
+    this.ctx.fillRect(this.x, this.y, this.w * this.total/10, this.h);
     this.ctx.fillStyle = prevStyle;
     this.ctx.strokeRect(this.x, this.y, this.w, this.h);
     this.ctx.fillStyle= prevStyle;
@@ -27,7 +27,7 @@ class Life {
     gradient.addColorStop("0.88", "white");
     gradient.addColorStop("0.8", "black");
     ctx.fillStyle = gradient;
-    this.ctx.fillText("Life", 1070, 520)
+    this.ctx.fillText("Life", 1050, 520)
     this.ctx.fillStyle = prevStyle;
   }
   move() {
@@ -36,29 +36,34 @@ class Life {
       this.v = -0.15
     } else if(this.y > 485)
     this.v = 0.15
+    
   }
   loseLife() {
-    this.total -= 0.2;
+    this.total -= 2;
     this.damageAudio = new Audio("/assets/audio/ouch.mp3")
     this.damageAudio.volume = 0.2;
     this.damageAudio.play();
   }
   loseLifeFire(){
-    this.total -= 0.002;
+    this.total -= 0.02;
   }
   loseLifeSlow(){
-    this.total -= 0.0005;
+    this.total -= 0.005;
+    
   }
   healSlow(){
-    this.total += 0.001;
-    if(this.life >=1){
-      this.life = 1
+    this.total += 0.01;
+    if(this.total >= 10){
+      this.total = 10
     }
   }
   gainLife(){
-    this.total += 0.2
+    this.total += 2
     this.healAudio = new Audio("/assets/audios ad/Sanar.mp3")
     this.healAudio.volume = 0.15;
     this.healAudio.play();
+    if(this.total >= 10){
+      this.total = 10
+    }
   }
 }
