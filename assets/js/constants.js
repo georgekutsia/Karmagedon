@@ -17,6 +17,7 @@ const S = 83;
 const D = 68;
 
 let distance = 60;
-let waterDistance = 150;
-let heatDistance = 150;
+let bulletDistance = 150;
 let auraDistance = 150;
+let afterSize = 40
+let bulletSize = 20

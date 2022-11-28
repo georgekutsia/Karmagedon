@@ -5,7 +5,7 @@ class Player {
     this.y = 280;
     this.w = 35;
     this.h = 35;
-    this.extraBoost = 4
+    this.extraBoost = 0
     this.boosteada = 0
     this.boost = this.boosteada + this.extraBoost;
     this.vx = 0;
@@ -32,10 +32,8 @@ class Player {
     this.auras = [];
     this.waters = [];
     this.direction = "left";
-    this.wSpeed = 3;
-    this.hSpeed = 4;
-    this.coolDownFire = 3000;
-    this.coolDownWater = 3000;
+    this.speed = 4;
+    this.cooldownBullet = 3000;
     this.coolDownJump = 3000;
     this.jumptimer = 20000; //quizás haga algo para disminuirlo o aumentar su distancia
   }
@@ -106,8 +104,8 @@ class Player {
       this.y = 0;
       this.vy = 0;
     }
-    if (this.y + this.h > this.ctx.canvas.height) {
-      this.y = this.ctx.canvas.height - this.h;
+    if (this.y + this.h > this.ctx.canvas.height - 75) {
+      this.y = this.ctx.canvas.height - this.h - 75;
       this.vy = 0;
     }
     if (this.x + this.w * 6 > this.ctx.canvas.width) {
@@ -229,7 +227,7 @@ class Player {
       }, 400);
       setTimeout(function () {
         Z = 90;
-      }, this.coolDownFire);
+      }, this.cooldownBullet);
     }
     if (key === N) {
       this.aurar();
@@ -245,7 +243,7 @@ class Player {
       }, 400);
       setTimeout(function () {
         X = 88;
-      }, this.coolDownWater);
+      }, this.cooldownBullet);
     }
     if (key === C) {
       this.heater();
@@ -255,7 +253,7 @@ class Player {
       }, 400);
       setTimeout(function () {
         C = 67;
-      }, this.coolDownFire);
+      }, this.cooldownBullet);
     }
     if (key === V) {
       this.waterer();
@@ -265,7 +263,7 @@ class Player {
       }, 400);
       setTimeout(function () {
         V = 86;
-      }, this.coolDownWater);
+      }, this.cooldownBullet);
     }
     if (key === ALT) {
       this.jump();
@@ -296,14 +294,14 @@ class Player {
       this
     );
     if (this.direction === "right") {
-      heat.vx = this.hSpeed;
+      heat.vx = this.speed;
       heat.vy = 0;
       heat.heatImg.src = "/assets/images/munición/bola de fuego copia 3.png";
       this.img.src = "/assets/images/PJ/imright.png";
       this.img.frame++;
     }
     if (this.direction === "left") {
-      heat.vx = -this.hSpeed;
+      heat.vx = -this.speed;
       heat.vy = 0;
       heat.heatImg.src = "/assets/images/munición/bola de fuego copia.png";
       this.img.src = "/assets/images/PJ/imleft.png";
@@ -311,20 +309,20 @@ class Player {
     }
     if (this.direction === "top") {
       heat.vx = 0;
-      heat.vy = -this.hSpeed;
+      heat.vy = -this.speed;
       heat.heatImg.src = "/assets/images/munición/bola de fuego copia 2.png";
       this.img.src = "/assets/images/PJ/imup.png";
       this.img.frame++;
     }
     if (this.direction === "down") {
       heat.vx = 0;
-      heat.vy = this.hSpeed;
+      heat.vy = this.speed;
       heat.heatImg.src = "/assets/images/munición/bola de fuego.png";
       this.img.src = "/assets/images/PJ/imdown.png";
       this.img.frame++;
     }
-    if (this.coolDownFire <= 600) {
-      this.coolDownFire = 600;
+    if (this.cooldownBullet <= 600) {
+      this.cooldownBullet = 600;
     }
     this.heats.push(heat);
   }
@@ -336,14 +334,14 @@ class Player {
       this
     );
     if (this.direction === "right") {
-      heat.vx = -this.hSpeed;
+      heat.vx = -this.speed;
       heat.vy = 0;
       heat.heatImg.src = "/assets/images/munición/bola de fuego copia.png";
       this.img.src = "/assets/images/PJ/imright.png";
       this.img.frame++;
     }
     if (this.direction === "left") {
-      heat.vx = this.hSpeed;
+      heat.vx = this.speed;
       heat.vy = 0;
       heat.heatImg.src = "/assets/images/munición/bola de fuego copia 3.png";
       this.img.src = "/assets/images/PJ/imleft.png";
@@ -351,14 +349,14 @@ class Player {
     }
     if (this.direction === "top") {
       heat.vx = 0;
-      heat.vy = this.hSpeed;
+      heat.vy = this.speed;
       heat.heatImg.src = "/assets/images/munición/bola de fuego.png";
       this.img.src = "/assets/images/PJ/imup.png";
       this.img.frame++;
     }
     if (this.direction === "down") {
       heat.vx = 0;
-      heat.vy = -this.hSpeed;
+      heat.vy = -this.speed;
       heat.heatImg.src = "/assets/images/munición/bola de fuego copia 2.png";
       this.img.src = "/assets/images/PJ/imdown.png";
       this.img.frame++;
@@ -373,14 +371,14 @@ class Player {
       this
     );
     if (this.direction === "right") {
-      water.vx = this.wSpeed;
+      water.vx = this.speed;
       water.vy = 0;
       water.w = 60;
       this.img.src = "/assets/images/PJ/imright.png";
       this.img.frame++;
     }
     if (this.direction === "left") {
-      water.vx = -this.wSpeed;
+      water.vx = -this.speed;
       water.vy = 0;
       water.w = 60;
       this.img.src = "/assets/images/PJ/imleft.png";
@@ -388,20 +386,20 @@ class Player {
     }
     if (this.direction === "top") {
       water.vx = 0;
-      water.vy = -this.wSpeed;
+      water.vy = -this.speed;
       water.h = 60;
       this.img.src = "/assets/images/PJ/imup.png";
       this.img.frame++;
     }
     if (this.direction === "down") {
       water.vx = 0;
-      water.vy = this.wSpeed;
+      water.vy = this.speed;
       water.h = 60;
       this.img.src = "/assets/images/PJ/imdown.png";
       this.img.frame++;
     }
-    if (this.coolDownWater <= 600) {
-      this.coolDownWater = 600;
+    if (this.cooldownBullet <= 600) {
+      this.cooldownBullet = 600;
     }
     this.waters.push(water);
   }
@@ -414,27 +412,27 @@ class Player {
     );
     if (this.direction === "right") {
       water.vx = 0;
-      water.vy = this.wSpeed;
+      water.vy = this.speed;
       water.w = 60;
       this.img.src = "/assets/images/PJ/imright.png";
       this.img.frame++;
     }
     if (this.direction === "left") {
       water.vx = 0;
-      water.vy = -this.wSpeed;
+      water.vy = -this.speed;
       water.w = 60;
       this.img.src = "/assets/images/PJ/imleft.png";
       this.img.frame++;
     }
     if (this.direction === "top") {
-      water.vx = -this.wSpeed;
+      water.vx = -this.speed;
       water.vy = 0;
       water.h = 60;
       this.img.src = "/assets/images/PJ/imup.png";
       this.img.frame++;
     }
     if (this.direction === "down") {
-      water.vx = this.wSpeed;
+      water.vx = this.speed;
       water.vy = 0;
       water.h = 60;
       this.img.src = "/assets/images/PJ/imdown.png";

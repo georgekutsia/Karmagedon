@@ -56,7 +56,8 @@ btn.addEventListener("click", function () {
       btn.innerText = "START";
     } else {
       game.start();
-      btn.innerText = "STOP";
+      
+      btn.innerText = `STOP`;
     }
     displ.style.display = "block"
     allButtonsGone.forEach((button) => button.style.display = "none")
@@ -255,6 +256,11 @@ zboss.addEventListener("click", function(){
 zgoose.addEventListener("click", function(){
   game.addGoose()
   game.gooseAlert()
+  demo.innerText = "Clean"
+})
+zgoose.addEventListener("click", function(){
+  game.addGoose()
+  game.upBulletAlert()
   demo.innerText = "Clean"
 })
 zdiscount.addEventListener("click", function(){

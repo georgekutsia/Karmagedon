@@ -22,24 +22,21 @@
 }
 .wornings-css{
     text-align: left;
-    margin-top: 50px;
+    display: flex;
+    height: 110px;
     font-family: 'Times New Roman', Times, serif;
 }
 #add-karen{
     display: none;
     margin: 120px 0 0 310px;
-    
-    
 }
 #add-rat{
     display: none;
     margin: 100px 0 0 360px;
-    
 }
 #add-fat{
     display: none;
     margin: 100px 0 0 395px;
-    
 }
 #add-puddle{
     display: none;

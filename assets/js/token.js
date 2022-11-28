@@ -1,8 +1,8 @@
 class Token {
   constructor(ctx) {
     this.ctx = ctx;
-    this.x = 970;
-    this.y = 470;
+    this.x = -30;
+    this.y = 520;
     this.w = 130;
     this.h = 130;
 

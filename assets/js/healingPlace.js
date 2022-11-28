@@ -4,9 +4,9 @@ class HealingPlace {
     this.x = 980;
     this.y = 190;
     this.w = 50;
-    this.h = 60;
+    this.h = 50;
     this.heal = new Image();
-    this.heal.src = "/assets/images/elements/healing.png";
+    this.heal.src = "/assets/images/elements/healme.png";
     this.heal.frame = 0;
 
     this.tick = 0;
@@ -15,9 +15,9 @@ class HealingPlace {
   draw() {
     this.ctx.drawImage(
       this.heal,
-      (this.heal.frame * this.heal.width) / 20,
+      (this.heal.frame * this.heal.width) / 13,
       0,
-      this.heal.width / 20,
+      this.heal.width / 13,
       this.heal.height,
       this.x,
       this.y,
@@ -30,7 +30,7 @@ class HealingPlace {
 
     this.tick++;
 
-    if (this.tick > 14) {
+    if (this.tick > 8) {
       this.tick = 0;
       this.heal.frame++;
     }

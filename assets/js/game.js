@@ -9,6 +9,7 @@ class Game {
     this.score = new Score(ctx);
     this.food = new Food(ctx);
     this.upgrade = new Upgrade(ctx);
+    this.upBullet = new Upbullet(ctx);
     this.saved = new Saved(ctx);
     this.cactus = [
       new Cactus(ctx, 370, 210, 40, 40),
@@ -88,12 +89,13 @@ class Game {
     this.cartTime = 3450;
     this.foodTime = 0;
     this.upgradeTime = 0;
+    this.upBulletTime = 0;
     this.discountTime = 3700;
     
     this.winTime = 0;
     this.interval = null;
 
-    this.karens = this.rats = this.babys = this.customers = this.fats = this.puddles = this.fires = this.geese = this.bosss = this.korens = this.carts = this.foods = this.upgrades = this.discounts = [];
+    this.karens = this.rats = this.babys = this.customers = this.fats = this.puddles = this.fires = this.geese = this.bosss = this.korens = this.carts = this.foods = this.upgrades = this.upBullets = this.discounts = [];
   
     this.listOfEvents = [this.karens, this.rats, this.babys,this.customers, this.fats, this.puddles, this.fires, this.geese, this.bosss, this.korens, this.carts, this.discounts]
   
@@ -113,7 +115,7 @@ class Game {
       this.clear();
       this.draw();
       this.move();
-      this.karenTime++; this.ratTime++; this.fatTime++; this.puddleTime++;  this.fireTime++; this.gooseTime++; this.babyTime++; this.customerTime++; this.bossTime++; this.korenTime++; this.winTime++; this.cartTime++; this.foodTime++; this.upgradeTime++; this.discountTime++;
+      this.karenTime++; this.ratTime++; this.fatTime++; this.puddleTime++;  this.fireTime++; this.gooseTime++; this.babyTime++; this.customerTime++; this.bossTime++; this.korenTime++; this.winTime++; this.cartTime++; this.foodTime++; this.upgradeTime++; this.upBulletTime++; this.discountTime++;
       this.checkCollisions();
 
       if(this.winTime >= 5600){
@@ -186,11 +188,17 @@ class Game {
         this.foodTime = 0;
         this.addFood();
       }
-      if (this.upgradeTime > Math.random() * 100 + 10000) {
+      if (this.upgradeTime > Math.random() * 100 + 3000) {
         //upgrade
         this.upgradeTime = 0;
         this.upgradeAlert()
         this.addUpgrade();
+      }
+      if (this.upBulletTime > Math.random() * 100 + 300) {
+        //upgrade
+        this.upBulletTime = 0;
+        this.upBulletAlert()
+        this.addUpBullet();
       }
       if (this.discountTime > Math.random() * 100 + 380099) {
         //discount
@@ -277,6 +285,7 @@ class Game {
     this.foods = this.foods.filter((e) => e.isVisible());
     this.puddles = this.puddles.filter((e) => e.isVisible());
     this.upgrades = this.upgrades.filter((e) => e.isVisible());
+    this.upBullets = this.upBullets.filter((e) => e.isVisible());
     this.carts = this.carts.filter((e) => e.isVisible());
     this.fires = this.fires.filter((e) => e.isVisible());
     this.discounts = this.discounts.filter((e) => e.isVisible());
@@ -316,6 +325,10 @@ class Game {
       const alert = document.getElementById("upgrade-alert");
       alert.style.display = "none";
     }
+    if (this.upBullets.length <= 0) {
+      const alert = document.getElementById("upBullet-alert");
+      alert.style.display = "none";
+    }
     if (this.bosss.length <= 0) {
       const alert = document.getElementById("boss-alert");
       alert.style.display = "none";
@@ -341,6 +354,7 @@ class Game {
       statusOk.style.backgroundColor = "rgb(0, 128, 0)";
       statusOk.style.color = "white";
       statusOk.style.border = "3px solid rgb(0, 0, 255)";
+      statusOk.style.padding = "35px 10px";
     }
   }
 
@@ -366,28 +380,28 @@ class Game {
     this.carts.forEach((e) => e.draw());
     this.foods.forEach((e) => e.draw());
     this.upgrades.forEach((e) => e.draw());
+    this.upBullets.forEach((e) => e.draw());
     this.discounts.forEach((e) => e.draw());
     this.geese.forEach((e) => e.draw());
     this.token.draw();
     this.line.draw();
-
-    this.ctx.font = "18px Arial";
-    this.ctx.fillStyle = "white";
-
-    this.ctx.save();
-    ctx.fillStyle = "rgb(21, 209, 209)";
-    ctx.fillRect(this.x - 92, this.y - 21, 255, 22);
-    this.ctx.fillStyle = "black";
-    this.order = this.ctx.fillText(this.problem, this.x - 90, this.y - 3);
-    this.ctx.restore();
-
-    this.ctx.fillText(`Speed:${this.player.vx.toString()}`, 10, 60);
-    this.ctx.fillText(
-      `Speed:${this.player.wSpeed.toString()}`, 10, 180
-    );
-    this.ctx.fillText(
-      `Speed:${this.player.extraBoost.toString()}`, 10, 280
-    );
+// CTX data statistics
+// CTX data statistics
+this.ctx.font = "25px Arial";
+this.ctx.fillStyle = "grey";
+this.ctx.save();
+ctx.fillStyle = "rgb(1, 2, 2)";
+ctx.fillRect(70, 555, 110, 50);
+this.ctx.font = "30px Arial";
+this.ctx.fillStyle = "white";
+this.ctx.fillText(`Bullets:`, 80, 590);
+this.ctx.restore();
+this.ctx.fillText(`speed:${this.player.speed.toString()}`, 190, 570);
+this.ctx.fillText(`distance:${bulletDistance.toString()}`, 190, 600);
+this.ctx.fillText(`Cooldown:${this.player.cooldownBullet.toString()}`, 290, 570);
+// this.ctx.fillText(`distance:${bulletDistance.toString()}`, 290, 600);
+// CTX data statistics
+// CTX data statistics
 
 
     if (this.winTime > 600) {
@@ -414,6 +428,7 @@ class Game {
     this.carts.forEach((e) => e.move());
     this.foods.forEach((e) => e.move());
     this.upgrades.forEach((e) => e.move());
+    this.upBullets.forEach((e) => e.move());
     this.discounts.forEach((e) => e.move());
   }
   addKaren() {
@@ -517,6 +532,11 @@ class Game {
     const upgrade = new Upgrade(ctx);
     this.upgrades.push(upgrade);
   }
+  addUpBullet() {
+    const upBullet = new Upbullet(ctx);
+    this.upBullets.push(upBullet);
+    console.log("bullet")
+  }
   addDiscount() {
     const discount = new Discount(ctx);
     this.discounts.push(discount);
@@ -525,96 +545,82 @@ class Game {
     this.disco.play()
   }
 
-  karensAlert() {
-    const karensAlert = document.getElementById("karens-alert");
-    karensAlert.style.display = "inline-flex";
+  // alerts start !!!!!! 
+  alerting(){
     const nothingToWorrie = document.getElementById("ok");
     nothingToWorrie.style.display = "none";
     const statusOk = document.getElementById("status");
     statusOk.style.backgroundColor = "rgb(252, 5, 5)";
+    statusOk.style.border = "5px solid rgb(99, 5, 5)";
     statusOk.style.color = "white";
+  }
+  karensAlert() {
+    const karensAlert = document.getElementById("karens-alert");
+    karensAlert.style.display = "inline-flex";
+    this.alerting()
   }
   ratAlert() {
     const ratAlert = document.getElementById("rat-alert");
     ratAlert.style.display = "inline-flex";
-    const nothingToWorrie = document.getElementById("ok");
-    nothingToWorrie.style.display = "none";
-    const statusOk = document.getElementById("status");
-    statusOk.style.backgroundColor = "rgb(252, 5, 5)";
-    statusOk.style.color = "white";
+    this.alerting()
+
   }
   fatAlert() {
     const fatAlert = document.getElementById("fat-alert");
     fatAlert.style.display = "inline-flex";
-    const nothingToWorrie = document.getElementById("ok");
-    nothingToWorrie.style.display = "none";
-    const statusOk = document.getElementById("status");
-    statusOk.style.backgroundColor = "rgb(252, 5, 5)";
-    statusOk.style.color = "white";
+    this.alerting()
+
   }
   gooseAlert() {
     const gooseAlert = document.getElementById("goose-alert");
     gooseAlert.style.display = "inline-flex";
-    const nothingToWorrie = document.getElementById("ok");
-    nothingToWorrie.style.display = "none";
-    const statusOk = document.getElementById("status");
-    statusOk.style.backgroundColor = "rgb(252, 5, 5)";
-    statusOk.style.color = "white";
+    this.alerting()
+
   }
   waterAlert() {
     const waterAlert = document.getElementById("water-alert");
     waterAlert.style.display = "inline-flex";
-    const nothingToWorrie = document.getElementById("ok");
-    nothingToWorrie.style.display = "none";
-    const statusOk = document.getElementById("status");
-    statusOk.style.backgroundColor = "rgb(252, 5, 5)";
-    statusOk.style.color = "white";
+    this.alerting()
+
   }
   fireAlert() {
     const fireAlert = document.getElementById("fire-alert");
     fireAlert.style.display = "inline-flex";
-    const nothingToWorrie = document.getElementById("ok");
-    nothingToWorrie.style.display = "none";
-    const statusOk = document.getElementById("status");
-    statusOk.style.backgroundColor = "rgb(252, 5, 5)";
-    statusOk.style.color = "white";
+    this.alerting()
+
   }
   upgradeAlert() {
     const upgradeAlert = document.getElementById("upgrade-alert");
     upgradeAlert.style.display = "inline-flex";
-    const nothingToWorrie = document.getElementById("ok");
-    nothingToWorrie.style.display = "none";
-    const statusOk = document.getElementById("status");
-    statusOk.style.backgroundColor = "rgb(252, 5, 5)";
-    statusOk.style.color = "white";
+    this.alerting()
+
+  }
+  upBulletAlert() {
+    const upBulletAlert = document.getElementById("upBullet-alert");
+    upBulletAlert.style.display = "inline-flex";
+    this.alerting()
+
   }
   babyAlert() {
     const babyAlert = document.getElementById("baby-alert");
     babyAlert.style.display = "inline-flex";
-    const nothingToWorrie = document.getElementById("ok");
-    nothingToWorrie.style.display = "none";
-    const statusOk = document.getElementById("status");
-    statusOk.style.backgroundColor = "rgb(252, 5, 5)";
-    statusOk.style.color = "white";
+    this.alerting()
+
   }
   bossAlert() {
     const crazyKaren = document.getElementById("boss-alert");
     crazyKaren.style.display = "inline-flex";
-    const nothingToWorrie = document.getElementById("ok");
-    nothingToWorrie.style.display = "none";
-    const statusOk = document.getElementById("status");
-    statusOk.style.backgroundColor = "rgb(252, 5, 5)";
-    statusOk.style.color = "white";
+    this.alerting()
+
   }
   korenAlert() {
     const korenAlert = document.getElementById("koren-alert");
     korenAlert.style.display = "inline-flex";
-    const nothingToWorrie = document.getElementById("ok");
-    nothingToWorrie.style.display = "none";
-    const statusOk = document.getElementById("status");
-    statusOk.style.backgroundColor = "rgb(252, 5, 5)";
-    statusOk.style.color = "white";
+    this.alerting()
+
   }
+  // alerts end !!!!!! 
+
   //Colisiones start
 
 
@@ -712,7 +718,6 @@ class Game {
         if (water.collides(rat)) {
           this.player.waters.splice(0, 1);
           rat.vx += 2;
-          this.player.coolDownWater -= 20;
           return false;
         } else return true;
       });
@@ -732,7 +737,6 @@ class Game {
       this.player.waters = this.player.waters.filter((water) => {
         if (water.collides(fat)) {
           this.player.waters.splice(0, 1);
-          this.player.coolDownWater = 20;
         } else return true;
       });
     });
@@ -760,9 +764,6 @@ class Game {
       if (goose.collides(this.player)) {
         this.player.hit();
         this.player.hit();
-        this.player.coolDownWater += 200;
-        this.player.coolDownFire += 200;
-
         return false;
       }
       return true;
@@ -1042,10 +1043,7 @@ class Game {
         // this.newShoes = new Audio("/assets/audios ad/Faster running.mp3");
         // this.newShoes.volume = 0.1;
         // this.newShoes.play()
-        this.player.wSpeed += 1
-        this.player.hSpeed += 1
-        waterDistance += 10;
-        heatDistance += 10;
+        this.player.speed += 1
         this.player.heal()
         return false;
       }
@@ -1053,10 +1051,26 @@ class Game {
     });
     this.upgrades = this.upgrades.filter((up) => {
       if (up.collides(this.player)) {
-        this.player.wSpeed += 1
-        this.player.hSpeed += 1
-        waterDistance += 10;
-        heatDistance += 10;
+        this.player.speed += 1;
+        bulletDistance += 20;
+        this.player.cooldownBullet -=600;
+        afterSize +=20
+        bulletSize +=10
+        N=78
+        const fireAlert = document.getElementById("upgrade-alert");
+        fireAlert.style.display = "none";
+        return false;
+      }
+      return true;
+    });
+    this.upBullets = this.upBullets.filter((up) => {
+      if (up.collides(this.player)) {
+        this.player.speed += 1;
+        bulletDistance += 20;
+        this.player.cooldownBullet -=600;
+        afterSize +=20
+        bulletSize +=10
+        N=78
         const fireAlert = document.getElementById("upgrade-alert");
         fireAlert.style.display = "none";
         return false;
@@ -1101,6 +1115,7 @@ class Game {
     this.carts = [];
     this.foods = [];
     this.upgrades = [];
+    this.upBullet = [];
     this.dicounts = [];
     const lose = document.getElementById("lose");
     lose.style.display = "block"
@@ -1121,6 +1136,7 @@ class Game {
     this.carts = [];
     this.foods = [];
     this.upgrades = [];
+    this.upBullet = [];
     this.dicounts = [];
     const wincon = document.getElementById("win");
     wincon.style.display = "block"
