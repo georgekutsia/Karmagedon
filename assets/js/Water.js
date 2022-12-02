@@ -1,14 +1,14 @@
 class Water {
-    constructor (ctx, x, y, player){
+    constructor (ctx, x, y,  player){
       this.ctx= ctx;
       this.x = x;
       this.y = y;
-      this.w = bulletSize;
-      this.h = bulletSize;
-      
+      this.sa = 0;
+      this.w = bulletSize + this.sa
+      this.h = bulletSize + this.sa
+      this.bla = 0;
       this.vx = 0;
       this.vy = 0;
-
       this.player = player;
 
 
@@ -30,20 +30,23 @@ class Water {
     move() {
       this.x += this.vx;
       this.y += this.vy;
-      this.h += 0.2;
+      this.h += 0.2 ;
       this.w += 0.2;
       if(
-        this.x >= this.player.x + bulletDistance || 
-        this.y >= this.player.y + bulletDistance ||
-        this.x <= this.player.x - bulletDistance || 
-        this.y <= this.player.y - bulletDistance
+        this.x >= this.player.x + bulletDistance + this.bla || 
+        this.y >= this.player.y + bulletDistance + this.bla ||
+        this.x <= this.player.x - bulletDistance - this.bla || 
+        this.y <= this.player.y - bulletDistance - this.bla 
           ) {
           this.vx = 0;
           this.vy = 0;
-          if (this.h >= afterSize) {
+          this.waterImg.src = "/assets/images/munición/water.png";
+          if (this.h >= afterSize + this.sa  + 40) {
             this.dispose = true;
           }
-          this.waterImg.src = "/assets/images/munición/water.png";
+          if (this.w >= afterSize + this.sa + 40) {
+            this.dispose = true;
+          }
       }  
     }  
     isVisible() {

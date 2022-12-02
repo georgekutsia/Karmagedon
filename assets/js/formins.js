@@ -4,7 +4,7 @@ class Formins
     this.ctx = ctx;
     this.x = 1015;
     this.y = 347;
-    this.w = 180;
+    this.w = 173;
     this.h = 60;
     this.total = 1;
     this.v = 5;

@@ -6,8 +6,7 @@ class Fat {
     this.y = this.ctx.canvas.height;
     this.w = 0.07 * this.ctx.canvas.width;
     this.h = 0.15 * this.ctx.canvas.height;
-    this.vy = -1;
-
+    this.vy = -0.3;
     this.fatlist = [
       "/assets/images/elements/fat.png",
       "/assets/images/elements/gor1.png",
@@ -21,14 +20,11 @@ class Fat {
     this.fat = new Image();
     this.fat.src = this.fatlist[Math.floor(Math.random() * this.fatlist.length)];
     this.fat.frame = 0;
-
     this.tick = 0;
-
     this.fatAudio = new Audio("/assets/audio/fat.mp3")
     this.fatAudio.volume = 0.07;
     this.fatAudio.play();
   }
-
   draw() {
     this.ctx.drawImage(
       this.fat,
@@ -42,17 +38,12 @@ class Fat {
       this.h
     );
   }
-
   move() {
     this.y += this.vy;
-
     this.tick++;
-
     if (this.tick > 14) {
       this.tick = 0;
       this.fat.frame++;
-    }
-    if (this.y < 0) {
     }
     if (this.fat.frame > 7) {
       this.fat.frame = 0;

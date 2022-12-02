@@ -6,14 +6,16 @@ class Goose {
     this.y = this.salidas[Math.floor(Math.random()*this.salidas.length)]
     this.w = 0.04 * this.ctx.canvas.width;
     this.h = 0.1 * this.ctx.canvas.height;
-    this.vx = 1.5;
+    this.vx = 0.5;
     this.vy = 0;
+    this.life = new Life(ctx)
     this.gooseImg = new Image();
     this.gooseImg.src = "/assets/images/elements/gansos.png";
     this.gooseImg.frame = 0;
-
+    this.lifeleft = 10;
     this.tick = 0;
     this.tock = 0;
+    this.dead = 0;
   }
 
   draw() {
@@ -35,6 +37,7 @@ class Goose {
     this.y += this.vy;
     this.tick++;
     this.tock++;
+
     if(this.x >= 0){
       this.vy = 1
     }
@@ -67,11 +70,24 @@ class Goose {
       const ratAlert = document.getElementById("rat-alert");
       ratAlert.style.display = "none";
     }
+    if(this.lifeleft <= 5){
+      this.gooseImg.src = "/assets/images/elements/deadgoose.png"
+      this.vx = 0;
+      this.vy = 0;
+      this.dead++
+      if(this.dead >= 300){
+        this.vx = -2000
+        console.log("bla")
+      }
+  }
     if (this.gooseImg.frame > 7) {
       this.gooseImg.frame = 0;
     }
+    
   }
-
+  gooseDamage() {
+    this.life.loseLife();
+  }
   isVisible() {
     return this.x + this.w > 0;
   }

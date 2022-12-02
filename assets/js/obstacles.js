@@ -19,6 +19,10 @@ class Puddle{
     this.vy = 0;
     this.puddle = new Image();
     this.puddle.src = "/assets/images/elements/puddleCanvas.png";
+    this.worning = new Image();
+    this.worning.src = "/assets/images/elements/excla.png"
+    this.bla = 20
+    this.blu = 30
     this.puddle.frame = 0;
     this.tick = 0;
   }
@@ -34,6 +38,9 @@ class Puddle{
       this.w,
       this.h
     );
+    this.ctx.drawImage(
+      this.worning, this.x + 10, this.y - 20, this.bla, this.blu
+    )
   }
   move(){
     this.x +=this.vx
@@ -44,6 +51,8 @@ class Puddle{
       this.puddle.frame++;
       this.w += 0.1
       this.h += 0.1
+      this.bla += 0.05
+      this.blu += 0.05
     }
     if (this.puddle.frame > 4) {
       this.puddle.frame = 0;
@@ -88,10 +97,13 @@ class Fire{
     this.h = 20;
     this.fire = new Image();
     this.fire.src = "/assets/images/elements/flames.png";
+    this.worning = new Image();
+    this.worning.src = "/assets/images/elements/excla.png"
+    this.bla = 20
+    this.blu = 30
     this.fire.frame = 0;
     this.vx = 0;
     this.vy = 0;
-
     this.tick = 0;
   }
   draw() {
@@ -106,6 +118,9 @@ class Fire{
       this.w,
       this.h
     );
+    this.ctx.drawImage(
+      this.worning, this.x + 10, this.y - 20, this.bla, this.blu
+    )
   }
   move(){
     this.x += this.vx;
@@ -115,6 +130,8 @@ class Fire{
       this.fire.frame++;
       this.w += 0.2
       this.h += 0.2
+      this.bla += 0.05
+      this.blu += 0.05
     }
     if (this.fire.frame > 4) {
       this.fire.frame = 0;

@@ -1,12 +1,11 @@
 class Life {
   constructor(ctx) {
     this.ctx = ctx;
-
     this.x = 1015;
-    this.y = 488;
-    this.w = 180;
-    this.h = 50;
-    this.total = 1;
+    this.y = 465;
+    this.w = 173;
+    this.h = 46;
+    this.total = 10;
     this.v = 5;
     ctx.font = "40px Verdana";
   }
@@ -27,14 +26,14 @@ class Life {
     gradient.addColorStop("0.88", "white");
     gradient.addColorStop("0.8", "black");
     ctx.fillStyle = gradient;
-    this.ctx.fillText("Life", 1050, 520)
+    this.ctx.fillText("Life", 1070, 502)
     this.ctx.fillStyle = prevStyle;
   }
   move() {
     this.y -= this.v
-    if(this.y < 480){
+    if(this.y < 460){
       this.v = -0.15
-    } else if(this.y > 485)
+    } else if(this.y > 470)
     this.v = 0.15
     
   }

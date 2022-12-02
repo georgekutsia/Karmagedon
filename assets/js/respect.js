@@ -3,9 +3,9 @@ class Respect {
     this.ctx = ctx;
 
     this.x = 1015;
-    this.y = 415;
-    this.w = 180;
-    this.h = 50;
+    this.y = 405;
+    this.w = 173;
+    this.h = 46;
     this.total = 1;
 
     this.v = 5;
@@ -31,18 +31,18 @@ class Respect {
     gradient.addColorStop("0.98", "black");
     gradient.addColorStop("1", "black");
     ctx.fillStyle = gradient;
-    this.ctx.fillText("Reputation", 1020, 452)
+    this.ctx.fillText("Reputation", 1020, 440)
     this.ctx.fillStyle = prevStyle;
   }
   move() {
     this.y -= this.v
-    if(this.y < 415){
+    if(this.y < 405){
       this.v = -0.1
-    } else if(this.y > 420)
+    } else if(this.y > 410)
     this.v = 0.1
   }
   loseRespect() {
-    this.total -= 0.001;
+    this.total -= 0.0005;
   }
   loseBigRespect() {
     this.total -= 0.3;
