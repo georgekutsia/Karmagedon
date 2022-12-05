@@ -19,9 +19,8 @@ class Discount {
       this.b.src = "/assets/images/elements/dis1.png";
       this.c = new Image();
       this.c.src = "/assets/images/elements/dis2.png";
-
-      
-      this.randomImage = [this.a,this.b,this.c]
+      this.total = 0;
+      this.randomImage = [this.a, this.b, this.c]
       this.image = this.randomImage[Math.floor(Math.random()*this.randomImage.length)]
       this.image.frame = 0;
   

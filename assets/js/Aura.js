@@ -25,7 +25,7 @@ class Aura {
     this.tick ++
     this.x = this.player.x-10;
     this.y = this.player.y-10;
-    this.player.booster = 2
+    this.player.booster = 1
       if(this.tick >= 200){
         this.player.booster  = 0
         this.dispose = true;

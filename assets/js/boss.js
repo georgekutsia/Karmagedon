@@ -17,7 +17,8 @@ class Boss {
     this.bossImg = new Image();
     this.bossImg.src = "/assets/images/karens/boss derecha.png";
     this.bossImg.frame = 0;
-
+    this.lifeleft = 30
+    this.dead = 0;
     this.tick = 0;
     this.karenEnd = 0;
   }
@@ -37,6 +38,13 @@ class Boss {
   }
 
   move(player) {
+    this.ctx.font = "18px Arial";
+    this.ctx.save();
+    ctx.fillStyle = "rgb(251, 209, 209)";
+    this.ctx.fillStyle = "red";
+    this.order = this.ctx.fillText(`${this.lifeleft.toString()}`, this.x + 15, this.y + 3);
+    this.ctx.restore();
+
     this.x += this.v;
     this.y += this.v;
     this.tick++;
@@ -72,8 +80,11 @@ class Boss {
       this.v = 2;
       const crazyKaren = document.getElementById("boss-alert");
       crazyKaren.style.display = "none";
-
     }
+    if(this.lifeleft <= 0){
+      this.vx = 400;
+      this.vy = 400;
+  }
   }
 
   isVisible() {

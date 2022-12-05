@@ -8,11 +8,11 @@ class Goose {
     this.h = 0.1 * this.ctx.canvas.height;
     this.vx = 0.5;
     this.vy = 0;
-    this.life = new Life(ctx)
     this.gooseImg = new Image();
+    this.score = new Score()
     this.gooseImg.src = "/assets/images/elements/gansos.png";
     this.gooseImg.frame = 0;
-    this.lifeleft = 10;
+    this.lifeleft = 3;
     this.tick = 0;
     this.tock = 0;
     this.dead = 0;
@@ -33,11 +33,17 @@ class Goose {
   }
 
   move() {
+    this.ctx.font = "18px Arial";
+    this.ctx.save();
+    ctx.fillStyle = "rgb(251, 209, 209)";
+    this.ctx.fillStyle = "red";
+    this.order = this.ctx.fillText(`${this.lifeleft.toString()}`, this.x + 15, this.y + 3);
+    this.ctx.restore();
+
     this.x += this.vx;
     this.y += this.vy;
     this.tick++;
     this.tock++;
-
     if(this.x >= 0){
       this.vy = 1
     }
@@ -70,14 +76,13 @@ class Goose {
       const ratAlert = document.getElementById("rat-alert");
       ratAlert.style.display = "none";
     }
-    if(this.lifeleft <= 5){
+    if(this.lifeleft <= 0){
       this.gooseImg.src = "/assets/images/elements/deadgoose.png"
       this.vx = 0;
       this.vy = 0;
       this.dead++
-      if(this.dead >= 300){
+      if(this.dead >= 100){
         this.vx = -2000
-        console.log("bla")
       }
   }
     if (this.gooseImg.frame > 7) {
@@ -93,8 +98,8 @@ class Goose {
   }
 
   collides(player) {
-    const colX = this.x <= player.x + player.w && this.x + this.w > player.x;
-    const colY = this.y + this.h > player.y && this.y < player.y + player.h;
+    const colX = this.x + 5 <= player.x + player.w && this.x + this.w - 10 > player.x;
+    const colY = this.y + this.h - 5 > player.y && this.y + 5 < player.y + player.h;
     return colX && colY;
   }
 }

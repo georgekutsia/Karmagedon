@@ -8,10 +8,11 @@ class Rats {
     this.h = 0.05 * this.ctx.canvas.height;
     this.vx = -2;
     this.vy = 0;
+    this.dead = 0;
+    this.lifeleft = 4;
     this.ratImg = new Image();
     this.ratImg.src = "/assets/images/elements/rats.png";
     this.ratImg.frame = 0;
-
     this.tick = 0;
     this.tock = 0;
   }
@@ -44,6 +45,15 @@ class Rats {
     }
     if (this.ratImg.frame > 5) {
       this.ratImg.frame = 0;
+    }
+    if(this.lifeleft <= 0){
+      this.ratImg.src = "/assets/images/elements/ratsDead.png"
+      this.vx = 0;
+      this.vy = 0;
+      this.dead++
+      if(this.dead >= 100){
+        this.vx = -2000
+      }
     }
   }
 

@@ -11,6 +11,14 @@ class Player {
     this.vy = 0;
     this.img = new Image();
     this.img.src = "/assets/images/PJ/MANAGER 1.png";
+    this.imgJump = new Image()
+    this.imgJump.src = "/assets/images/elements/jumpup.png"
+    this.imgFire = new Image()
+    this.imgFire.src = "/assets/images/elements/fireball.png"
+    this.imgWater = new Image()
+    this.imgWater.src = "/assets/images/elements/waterball.png"
+    this.imgSand = new Image()
+    this.imgSand.src = "/assets/images/elements/sandball.png"
     this.img.frame = 0;
     this.altTime = 0;
     this.goJump = ALT
@@ -25,6 +33,7 @@ class Player {
     this.waters = [];
     this.blasters = [];
     this.sanders = [];
+    this.discountings = []
     this.direction = "left";
     this.speed = 4;
     this.cooldownBullet = 3000;
@@ -32,42 +41,7 @@ class Player {
     this.cooldownJumpTick = 3000;   
     this.jumptimer = 20000; //quizás haga algo para disminuirlo o aumentar su distancia
   }
-  drawOuch() {
-    this.ctx.font = "18px Arial";
-    this.ctx.save();
-    ctx.fillRect(this.x - 42, this.y - 21, 135, 22);
-    ctx.fillStyle = "rgb(251, 209, 209)";
-    this.ctx.fillStyle = "black";
-    this.order = this.ctx.fillText("Ouch! Cactus!", this.x - 30, this.y - 3);
-    this.ctx.restore();
-  }
-  drawFire() {
-    this.ctx.font = "18px Arial";
-    this.ctx.save();
-    ctx.fillRect(this.x - 10, this.y - 21, 75, 22);
-    ctx.fillStyle = "rgb(251, 209, 209)";
-    this.ctx.fillStyle = "black";
-    this.order = this.ctx.fillText("It burns!", this.x - 5, this.y - 3);
-    this.ctx.restore();
-  }
-  drawWater() {
-    this.ctx.font = "18px Arial";
-    this.ctx.save();
-    ctx.fillRect(this.x - 10, this.y - 21, 90, 22);
-    ctx.fillStyle = "rgb(251, 209, 209)";
-    this.ctx.fillStyle = "black";
-    this.order = this.ctx.fillText("I'll drown!", this.x - 5, this.y - 3);
-    this.ctx.restore();
-  }
-  drawSorry() {
-    this.ctx.font = "18px Arial";
-    this.ctx.save();
-    ctx.fillRect(this.x - 42, this.y - 21, 135, 22);
-    ctx.fillStyle = "rgb(251, 209, 209)";
-    this.ctx.fillStyle = "black";
-    this.order = this.ctx.fillText("Sorry! Sorry!", this.x - 30, this.y - 3);
-    this.ctx.restore();
-  }
+  
   draw() {
     formsCheck();
     this.ctx.drawImage(
@@ -79,10 +53,32 @@ class Player {
       this.x,
       this.y,
       this.w,
-      this.h
+      this.h 
     );
+    if(ALT === 16){
+      this.ctx.drawImage(
+        this.imgJump, this.x + 5, this.y - 20, this.w -10, this.h-10
+      )
+    }
+    if(Z === 90){
+      this.ctx.drawImage(
+        this.imgFire, this.x - 15, this.y + 10, this.w - 20, this.h - 20
+      )
+    }
+    if(X === 88){
+      this.ctx.drawImage(
+        this.imgWater, this.x + 35, this.y + 10, this.w - 19, this.h - 19
+      )
+    }
+    if(B === 66){
+      this.ctx.drawImage(
+        this.imgSand, this.x + 10, this.y + 38, this.w - 22, this.h - 22
+      )
+    }
+
     this.heats.forEach((heat) => heat.draw());
     this.sanders.forEach((sand) => sand.draw());
+    this.discountings.forEach((disc) => disc.draw());
     this.waters.forEach((water) => water.draw());
     this.auras.forEach((aura) => aura.draw());
     this.blasters.forEach((blaster) => blaster.draw());
@@ -108,22 +104,15 @@ class Player {
     this.formins.move()
     this.scoreback.move()
     if(ALT === 16){
-      this.ctx.font = "24px Arial";
-      this.ctx.save();
-      this.ctx.fillStyle = "cadetblue";
-      ctx.fillRect(885, 552, 110, 25);
-      this.ctx.fillStyle = "black";
-      this.ctx.fillText(`Jump on`, 890, 572);
-      ctx.fillStyle = "rgb(251, 209, 209)";
-      this.ctx.restore();
+
     }
     // LIMITES DEL CANVAS =>//
     if (this.y < 0) {
       this.y = 0;
       this.vy = 0;
     }
-    if (this.y + this.h > this.ctx.canvas.height - 95) {
-      this.y = this.ctx.canvas.height - this.h - 95;
+    if (this.y + this.h > this.ctx.canvas.height - 75) {
+      this.y = this.ctx.canvas.height - this.h - 75;
       this.vy = 0;
     }
     if (this.x + this.w * 6 > this.ctx.canvas.width) {
@@ -143,6 +132,9 @@ class Player {
     });
     this.sanders.forEach((sand) => {
       sand.move();
+    });
+    this.discountings.forEach((discount) => {
+      discount.move();
     });
     this.waters.forEach((water) => {
       water.move();
@@ -214,29 +206,39 @@ class Player {
       this.direction = "top";
       this.vy = - this.boost;
       this.img.src = "/assets/images/PJ/MANAGER 1.png";
+      this.imgJump.src = "/assets/images/elements/jumpup.png"
     }
     if (key === DOWN || key === S) {
       this.direction = "down";
       this.vy =  this.boost;
       this.img.src = "/assets/images/PJ/MANAGER 3.png";
+      this.imgJump.src = "/assets/images/elements/jumpdown.png"
+
     }
     if (key === RIGHT || key === D) {
       this.direction = "right";
       this.vx = this.boost;
       this.img.src = "/assets/images/PJ/MANAGER 2.png";
+      this.imgJump.src = "/assets/images/elements/jumpright.png"
+
     }
     if (key === LEFT || key === A) {
       this.direction = "left";
       this.vx = - this.boost;
       this.img.src = "/assets/images/PJ/MANAGER 4.png";
+      this.imgJump.src = "/assets/images/elements/jumpleft.png"
+
     }
     if (key === C) {
       this.tick++
-
+      this.tock ++
       if(this.tick >= 10){
       this.heaterExtra();
       this.heaterPlus();
       this.tick = 0
+      if(this.tock >= 100){
+          C = 0
+      }
       }
     }
       if (key === V) {
@@ -260,6 +262,13 @@ class Player {
     if (key === M) {
       this.megablaster();
       M = 0
+    }
+    if (key === Q) {
+      this.discounting();
+      this.discounting1();
+      this.discounting2();
+      this.discounting3();
+      discounting -=1
     }
     if (key === Z) {
       this.heater();
@@ -314,10 +323,58 @@ class Player {
 
 
 
+  discounting() {
+    const discount = new Discounting(
+      this.ctx,
+      this.x + 10,
+      this.y - 20,
+      this
+    );
+    discount.vx = 2
+    discount.vy = 2
+
+    this.discountings.push(discount);
+  }
+  discounting1() {
+    const discount = new Discounting(
+      this.ctx,
+      this.x + 10,
+      this.y - 20,
+      this
+    );
+    discount.vx = 2
+    discount.vy = -2
+
+    this.discountings.push(discount);
+  }
+  discounting2() {
+    const discount = new Discounting(
+      this.ctx,
+      this.x + 10,
+      this.y - 20,
+      this
+    );
+    discount.vx = -2
+    discount.vy = 2
+
+    this.discountings.push(discount);
+  }
+  discounting3() {
+    const discount = new Discounting(
+      this.ctx,
+      this.x + 10,
+      this.y - 20,
+      this
+    );
+    discount.vx = -2
+    discount.vy = -2
+    this.discountings.push(discount);
+  }
+
   megablaster() {
     const blaster = new Megablaster(
       this.ctx,
-      this.x +10,
+      this.x + 10,
       this.y - 20,
       this
     );
@@ -719,4 +776,54 @@ class Player {
   }
   this.waters.push(water);
 }
+
+
+
+
+drawOuch() {
+  this.ctx.font = "18px Arial";
+  this.ctx.save();
+  ctx.fillRect(this.x - 42, this.y - 21, 135, 22);
+  ctx.fillStyle = "rgb(251, 209, 209)";
+  this.ctx.fillStyle = "black";
+  this.order = this.ctx.fillText("Ouch! Cactus!", this.x - 30, this.y - 3);
+  this.ctx.restore();
 }
+drawFire() {
+  this.ctx.font = "18px Arial";
+  this.ctx.save();
+  ctx.fillRect(this.x - 10, this.y - 21, 75, 22);
+  ctx.fillStyle = "rgb(251, 209, 209)";
+  this.ctx.fillStyle = "black";
+  this.order = this.ctx.fillText("It burns!", this.x - 5, this.y - 3);
+  this.ctx.restore();
+}
+drawWater() {
+  this.ctx.font = "18px Arial";
+  this.ctx.save();
+  ctx.fillRect(this.x - 10, this.y - 21, 90, 22);
+  ctx.fillStyle = "rgb(251, 209, 209)";
+  this.ctx.fillStyle = "black";
+  this.order = this.ctx.fillText("I'll drown!", this.x - 5, this.y - 3);
+  this.ctx.restore();
+}
+drawSorry() {
+  this.ctx.font = "18px Arial";
+  this.ctx.save();
+  ctx.fillRect(this.x - 42, this.y - 21, 135, 22);
+  ctx.fillStyle = "rgb(251, 209, 209)";
+  this.ctx.fillStyle = "black";
+  this.order = this.ctx.fillText("Sorry! Sorry!", this.x - 30, this.y - 3);
+  this.ctx.restore();
+}
+drawSmash() {
+  this.ctx.font = "18px Arial";
+  this.ctx.save();
+  ctx.fillRect(this.x - 42, this.y - 21, 175, 22);
+  ctx.fillStyle = "rgb(251, 209, 209)";
+  this.ctx.fillStyle = "black";
+  this.order = this.ctx.fillText("I'm being smashed!", this.x - 30, this.y - 3);
+  this.ctx.restore();
+}
+}
+
