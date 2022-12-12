@@ -413,7 +413,7 @@ class Game4 {
       if (wall.collides(this.player)) {
         this.player.vy = 0;
         this.player.vx = 0;
-        this.player.wallHit()
+        this.player.fireHit()
       }
     });
 

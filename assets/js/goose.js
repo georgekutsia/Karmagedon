@@ -17,7 +17,6 @@ class Goose {
     this.tock = 0;
     this.dead = 0;
   }
-
   draw() {
     this.ctx.drawImage(
       this.gooseImg,
@@ -31,7 +30,6 @@ class Goose {
       this.h
     );
   }
-
   move() {
     this.ctx.font = "18px Arial";
     this.ctx.save();
@@ -39,7 +37,6 @@ class Goose {
     this.ctx.fillStyle = "red";
     this.order = this.ctx.fillText(`${this.lifeleft.toString()}`, this.x + 15, this.y + 3);
     this.ctx.restore();
-
     this.x += this.vx;
     this.y += this.vy;
     this.tick++;
@@ -66,12 +63,10 @@ class Goose {
       this.vx = -2
       this.gooseImg.src = "/assets/images/elements/gansos reversa.png"
     }
-  
     if (this.tick > 10) {
       this.tick = 0;
       this.gooseImg.frame++;
     }
-
     if (this.x < 0) {
       const ratAlert = document.getElementById("rat-alert");
       ratAlert.style.display = "none";
@@ -88,7 +83,6 @@ class Goose {
     if (this.gooseImg.frame > 7) {
       this.gooseImg.frame = 0;
     }
-    
   }
   gooseDamage() {
     this.life.loseLife();

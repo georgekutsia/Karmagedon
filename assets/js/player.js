@@ -54,7 +54,21 @@ class Player {
       this.y,
       this.w,
       this.h 
-    );
+      );
+      // console.log("x",this.x)
+      // console.log("y",this.y)
+    if(this.y + this.h > this.ctx.canvas.height -100 && this.x + this.w > this.ctx.canvas.width - 520 &&this.x + this.w < this.ctx.canvas.width - 470){
+      ctx.fillRect(this.x - 11, this.y - 21, 70, 22);
+      ctx.fillStyle = "rgb(251, 209, 209)";
+      this.ctx.fillStyle = "black";
+      this.order = this.ctx.fillText("Closed", this.x - 10, this.y - 3);
+    }
+    if(this.y + this.h > this.ctx.canvas.height -100 && this.x + this.w > this.ctx.canvas.width - 860 &&this.x + this.w < this.ctx.canvas.width - 800){
+      ctx.fillRect(this.x - 11, this.y - 21, 70, 22);
+      ctx.fillStyle = "rgb(251, 209, 209)";
+      this.ctx.fillStyle = "black";
+      this.order = this.ctx.fillText("Closed", this.x - 10, this.y - 3);
+    }
     if(ALT === 16){
       this.ctx.drawImage(
         this.imgJump, this.x + 5, this.y - 20, this.w -10, this.h-10
@@ -152,6 +166,9 @@ class Player {
   loseBigRespect(){
     this.respect.loseBigRespect();
   }
+  loseCustomerRespect(){
+    this.respect.loseCustomerRespect()
+  }
   getRespect(){
     this.respect.getRespect();
   }
@@ -161,12 +178,11 @@ class Player {
   getSmallRespect(){
     this.respect.getSmallRespect();
   }
-
+  getSmallestRespect(){
+    this.respect.getSmallestRespect();
+  }
   hit() {
     this.life.loseLife();
-  }
-  wallHit() {
-    this.life.loseLifeSlow();
   }
   heal() {
     this.life.gainLife();
@@ -783,10 +799,11 @@ class Player {
 drawOuch() {
   this.ctx.font = "18px Arial";
   this.ctx.save();
-  ctx.fillRect(this.x - 42, this.y - 21, 135, 22);
-  ctx.fillStyle = "rgb(251, 209, 209)";
-  this.ctx.fillStyle = "black";
-  this.order = this.ctx.fillText("Ouch! Cactus!", this.x - 30, this.y - 3);
+  this.ctx.fillStyle = "red";
+  this.order = this.ctx.fillText("Ouch! Cactus!", this.x - 36, this.y - 4);
+  this.order = this.ctx.fillText("Ouch! Cactus!", this.x - 32, this.y );
+  this.ctx.fillStyle = "white";
+  this.order = this.ctx.fillText("Ouch! Cactus!", this.x - 34, this.y - 2);
   this.ctx.restore();
 }
 drawFire() {
@@ -810,10 +827,12 @@ drawWater() {
 drawSorry() {
   this.ctx.font = "18px Arial";
   this.ctx.save();
-  ctx.fillRect(this.x - 42, this.y - 21, 135, 22);
   ctx.fillStyle = "rgb(251, 209, 209)";
-  this.ctx.fillStyle = "black";
-  this.order = this.ctx.fillText("Sorry! Sorry!", this.x - 30, this.y - 3);
+  this.ctx.fillStyle = "red";
+  this.order = this.ctx.fillText("Sorry!", this.x - 11, this.y - 4);
+  this.order = this.ctx.fillText("Sorry!", this.x - 7, this.y );
+  this.ctx.fillStyle = "white";
+  this.order = this.ctx.fillText("Sorry!", this.x - 9, this.y - 2);
   this.ctx.restore();
 }
 drawSmash() {

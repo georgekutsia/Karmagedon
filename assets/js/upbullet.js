@@ -1,14 +1,20 @@
 class Upbullet {
   constructor(ctx) {
     this.ctx = ctx;
-    this.x = 990;
-    this.y = 300;
-    this.w = 50;
-    this.h = 50;
+    this.salidas = [
+      {x:100, y:576}, {x:800, y:576},
+    ]
+    this.xy = this.salidas[Math.floor(Math.random()*this.salidas.length)]
+    this.x = this.xy.x;
+    this.y = this.xy.y;
+    this.w = 45;
+    this.h = 45;
     this.cartImg = new Image();
     this.cartImg.src = "/assets/images/munición/gas.png";
     this.tock = 600;
+
   }
+
 
   draw() {
     this.ctx.drawImage(this.cartImg, this.x, this.y, this.w, this.h);
@@ -21,7 +27,7 @@ class Upbullet {
     ctx.fillStyle = "black";
     ctx.fillRect(this.x - 0, this.y - 21, 50, 25);
     this.ctx.fillStyle = "red";
-    this.ctx.fillText(`${this.tock.toString()}`, 1000, 300);
+    this.ctx.fillText(`${this.tock.toString()}`, this.x  + 9, this.y - 3);
     this.ctx.restore();
     if (this.tock <= 0) {
       this.x = -100;

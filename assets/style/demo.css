@@ -6,7 +6,7 @@
     font-size: 40px;
     color: black;
     z-index: 100;
-    bottom: 60px;
+    bottom: 10px;
     left: 210px;
     cursor: url("/assets/images/elements/cursorInfo"), pointer;
 }
@@ -17,7 +17,7 @@
     background-color: rgb(255, 149, 0);
     color: black;
     z-index: 100;
-    bottom:90px;
+    bottom:20px;
     cursor: url("/assets/images/elements/cursorInfo"), pointer;
     color: rgb(3, 59, 3);
 }
@@ -73,4 +73,7 @@
     display: none;
     margin: 100px 0 0 700px;
     
+}
+.hulala{
+    color: white;
 }

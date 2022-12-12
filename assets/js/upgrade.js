@@ -4,7 +4,7 @@ class Upgrade {
 
 
       this.x = 990;
-      this.y = 190;
+      this.y = 220;
       this.w = 60;
       this.h = 60;
       this.cartImg = new Image();
@@ -25,7 +25,7 @@ class Upgrade {
       ctx.fillStyle = "black";
       ctx.fillRect(this.x - 0, this.y - 21, 50, 25);
       this.ctx.fillStyle = "red";
-      this.ctx.fillText(`${this.tock.toString()}`, 1000, 190);
+      this.ctx.fillText(`${this.tock.toString()}`, this.x  + 9, this.y - 3);
       this.ctx.restore();
       if (this.tock <= 0) {
         this.x = -100;

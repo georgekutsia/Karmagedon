@@ -38,8 +38,8 @@ class Boss {
   }
 
   move(player) {
-    this.ctx.font = "18px Arial";
     this.ctx.save();
+    this.ctx.font = "18px Arial";
     ctx.fillStyle = "rgb(251, 209, 209)";
     this.ctx.fillStyle = "red";
     this.order = this.ctx.fillText(`${this.lifeleft.toString()}`, this.x + 15, this.y + 3);

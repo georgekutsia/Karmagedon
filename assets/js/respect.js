@@ -3,9 +3,9 @@ class Respect {
     this.ctx = ctx;
 
     this.x = 1015;
-    this.y = 405;
+    this.y = 410;
     this.w = 173;
-    this.h = 46;
+    this.h = 43;
     this.total = 1;
 
     this.v = 5;
@@ -36,13 +36,16 @@ class Respect {
   }
   move() {
     this.y -= this.v
-    if(this.y < 405){
+    if(this.y < 410){
       this.v = -0.1
-    } else if(this.y > 410)
+    } else if(this.y > 415)
     this.v = 0.1
   }
   loseRespect() {
     this.total -= 0.0005;
+  }
+  loseCustomerRespect() {
+    this.total -= 0.004;
   }
   loseBigRespect() {
     this.total -= 0.3;
@@ -52,6 +55,9 @@ class Respect {
   }
   getSmallRespect(){
     this.total += 0.1
+  }
+  getSmallestRespect() {
+    this.total += 0.0005;
   }
   getRespect(){
     this.total += 0.1;

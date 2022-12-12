@@ -16,53 +16,47 @@ class Life {
     gradient.addColorStop("0.88", "red");
     gradient.addColorStop("1", "green");
     ctx.fillStyle = gradient;
-    this.ctx.fillRect(this.x, this.y, this.w * this.total/10, this.h);
+    this.ctx.fillRect(this.x, this.y, (this.w * this.total) / 10, this.h);
     this.ctx.fillStyle = prevStyle;
     this.ctx.strokeRect(this.x, this.y, this.w, this.h);
-    this.ctx.fillStyle= prevStyle;
+    this.ctx.fillStyle = prevStyle;
     this.ctx.strokeStyle = "black";
-    this.ctx.font = "40px Sans" ;
+    this.ctx.font = "40px Sans";
     this.ctx.strokeStyle = "yellow";
     gradient.addColorStop("0.88", "white");
     gradient.addColorStop("0.8", "black");
     ctx.fillStyle = gradient;
-    this.ctx.fillText("Life", 1070, 325)
+    this.ctx.fillText("Life", 1070, 325);
     this.ctx.fillStyle = prevStyle;
   }
   move() {
-    this.y -= this.v
-    if(this.y < 285){
-      this.v = -0.15
-    } else if(this.y > 290)
-    this.v = 0.15
-    
+    this.y -= this.v;
+    if (this.y < 285) {
+      this.v = -0.15;
+    } else if (this.y > 290) this.v = 0.15;
   }
   loseLife() {
     this.total -= 2;
-    this.damageAudio = new Audio("/assets/audio/ouch.mp3")
+    this.damageAudio = new Audio("/assets/audio/ouch.mp3");
     this.damageAudio.volume = 0.2;
     this.damageAudio.play();
   }
-  loseLifeFire(){
-    this.total -= 0.02;
-  }
-  loseLifeSlow(){
+  loseLifeFire() {
     this.total -= 0.005;
-    
   }
-  healSlow(){
+  healSlow() {
     this.total += 0.01;
-    if(this.total >= 10){
-      this.total = 10
+    if (this.total >= 10) {
+      this.total = 10;
     }
   }
-  gainLife(){
-    this.total += 2
-    this.healAudio = new Audio("/assets/audios ad/Sanar.mp3")
+  gainLife() {
+    this.total += 2;
+    this.healAudio = new Audio("/assets/audios ad/Sanar.mp3");
     this.healAudio.volume = 0.15;
     this.healAudio.play();
-    if(this.total >= 10){
-      this.total = 10
+    if (this.total >= 10) {
+      this.total = 10;
     }
   }
 }

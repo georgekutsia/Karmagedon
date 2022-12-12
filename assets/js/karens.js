@@ -14,16 +14,17 @@ class Karens {
       { x: 545, y: 420 },
       { x: 755, y: 420 },
       { x: 885, y: 420 },
+      { x: 750, y: 570 },
+      { x: 424, y: 570 },
+      { x: 120, y: 570 },
     ];
     this.xy = this.salidas[Math.floor(Math.random() * this.salidas.length)];
     this.x = this.xy.x;
     this.y = this.xy.y;
     this.w = 25;
     this.h = 25;
-
     this.vx = -0.3;
     this.vy = -0.3;
-
     this.karens = new Image();
     this.karens.src = "/assets/images/karens/karen1.png";
     this.ks1 = new Audio("/assets/audio/ks1.mp3");
@@ -51,52 +52,24 @@ class Karens {
     this.ks12 = new Audio("/assets/audio/ks12.mp3");
     this.ks12.volume = 0.1;
 
-    this.karenSounds = [
-      this.ks1,
-      this.ks2,
-      this.ks3,
-      this.ks4,
-      this.ks5,
-      this.ks6,
-      this.ks7,
-      this.ks8,
-      this.ks9,
-      this.ks10,
-      this.ks11,
-      this.ks12,
-    ];
+    this.karenSounds = [this.ks1,this.ks2,this.ks3,this.ks4,this.ks5,this.ks6,this.ks7,this.ks8,this.ks9,this.ks10,this.ks11,this.ks12,];
     this.karenSound =
-      this.karenSounds[
-        Math.floor(Math.random() * this.karenSounds.length)
-      ].play();
+    this.karenSounds[
+    Math.floor(Math.random() * this.karenSounds.length)
+    ].play();
     this.tick = 0;
+    this.tock = 400;
     this.complaints = ["Manager!", "Police!", "Give me a claim form!"];
     this.problems = [
-      " I do not like this shops decor!",
-      "  I've been waiting 5 minutes!",
-      "  Speak English in my country!",
-      "All you workers are $%&# lazy!",
-      "  You can't treat me like that!",
-      "Why can't I use expired cupons!",
-      " I do not like the uniform here!",
-      "My husband is this malls CEO",
-      "I am late! Work faster! faster!",
-      "You looked at me with disgust!",
-      "  I hate how this place smells!",
-      "I have never been disrespected!",
-      "   You dont have it in stack?!",
-      "My lawyer is the best in town!",
-      "  Do you imply that i'm fat??!!",
-      "I don't care you are on a brake",
-      "I've been waiting dor 2 hours!!",
-      "My baby is in the car. Hurry up!",
-      "I always buy milk at the pharmacy",
-      "   Why can't I get it for free??",
-      "  I don't care about the camera",
+      " I do not like this shops decor!", "  I've been waiting 5 minutes!",    "  Speak English in my country!",
+      "All you workers are $%&# lazy!",   "  You can't treat me like that!",   "Why can't I use expired cupons!",
+      " I do not like the uniform here!",   "My husband is this malls CEO",   "I am late! Work faster! faster!",   
+      "You looked at me with disgust!",   "  I hate how this place smells!",   "I have never been disrespected!",
+      "   You dont have it in stack?!",    "My lawyer is the best in town!",    "  Do you imply that i'm fat??!!",
+      "I don't care you are on a brake",   "I've been waiting dor 2 hours!!",   "My baby is in the car. Hurry up!",
+      "I always buy milk at the pharmacy",  "   Why can't I get it for free??",  "  I don't care about the camera",
     ];
-    this.problem =
-      this.problems[Math.floor(Math.random() * this.problems.length)];
-  }
+    this.problem = this.problems[Math.floor(Math.random() * this.problems.length)]; }
 
   draw() {
     this.karenSound;
@@ -105,7 +78,7 @@ class Karens {
     if (this.line.check <= 3) {
     }
     this.tick++;
-
+console.log(this.tick)
     if (this.tick >= 150) {
       this.ctx.font = "18px Arial";
       this.ctx.save();
@@ -121,10 +94,7 @@ class Karens {
       ctx.fillRect(this.x + 28, this.y + 1, 85, 22);
       this.ctx.fillStyle = "black";
       this.ctx.font = "19px Arial";
-      this.order = this.ctx.fillText(
-        this.complaints[0],
-        this.x + 30,
-        this.y + 20
+      this.order = this.ctx.fillText( this.complaints[0], this.x + 30, this.y + 20
       );
       this.ctx.restore();
     }
@@ -134,27 +104,24 @@ class Karens {
       ctx.fillRect(this.x - 62, this.y, 64, 22);
       this.ctx.fillStyle = "black";
       this.ctx.font = "20px Arial";
-      this.order = this.ctx.fillText(
-        this.complaints[1],
-        this.x - 60,
-        this.y + 20
-      );
+      this.order = this.ctx.fillText( this.complaints[1], this.x - 60, this.y + 20);
       this.ctx.restore();
     }
-    if (this.tick >= 2300) {
+    if (this.tick >= 2400) {
+      this.tock--
       this.ctx.save();
       ctx.fillStyle = "red";
       ctx.fillRect(this.x - 72, this.y + 30, 220, 24);
       this.ctx.fillStyle = "black";
       this.ctx.font = "22px Arial";
-      this.order = this.ctx.fillText(
-        this.complaints[2],
-        this.x - 70,
-        this.y + 50
-      );
+      this.order = this.ctx.fillText( this.complaints[2], this.x - 70, this.y + 50);
+      this.ctx.fillStyle = "red";
+      this.order = this.ctx.fillText( this.tock, this.x, this.y + 30);
+      this.ctx.fillStyle = "white";
+      this.order = this.ctx.fillText( this.tock, this.x + 1, this.y + 31);
       this.ctx.restore();
     }
-    if (this.tick >= 2350 && this.tick <= 2351) {
+    if (this.tick >= 3199 && this.tick <= 3200) {
       //importante que borre de uno en uno
       formsCheck();
       forms.splice(0, 1);
@@ -182,7 +149,7 @@ class Karens {
   }
 
   isVisible() {
-    return this.y + this.h > 0 && this.w < 40;
+    return this.y + this.h > 0 && this.w < 44;
   }
 
   collides(player) {

@@ -11,96 +11,69 @@ class Game {
     this.upgrade = new Upgrade(ctx);
     this.upBullet = new Upbullet(ctx);
     this.saved = new Saved(ctx);
-    
     this.cactus = [
-      new Cactus(ctx, 370, 210, 40, 40),
-      new Cactus(ctx, 600, 210, 40, 40),
-      new Cactus(ctx, 800, 320, 40, 40),
-      new Cactus(ctx, 800, 460, 40, 40),
-      new Cactus(ctx, 5, 510, 30, 30),
+      new Cactus(ctx, 370, 210, 40, 40, "/assets/images/fondos/cact1.png"), new Cactus(ctx, 600, 200, 50, 50, "/assets/images/fondos/cact3.png"),
+      new Cactus(ctx, 820, 320, 30, 40, "/assets/images/fondos/cact5.png"), new Cactus(ctx, 780, 440, 40, 40, "/assets/images/fondos/cact4.png"),
+      new Cactus(ctx, 57, 548, 25, 25),  new Cactus(ctx, 167, 548, 25, 25), new Cactus(ctx, 460, 548, 25, 25),
+      new Cactus(ctx, 387, 548, 25, 25), new Cactus(ctx, 287, 548, 25, 25), new Cactus(ctx, 387, 548, 25, 25),
+      new Cactus(ctx, 450, 548, 25, 25), new Cactus(ctx, 520, 548, 25, 25), new Cactus(ctx, 610, 548, 25, 25),
+
+
+      new Cactus(ctx, 710, 542, 70, 18, "/assets/images/fondos/cact5a.png"), new Cactus(ctx, 750, 542, 70, 18, "/assets/images/fondos/cact5a.png"),
+      new Cactus(ctx, 800, 542, 70, 18, "/assets/images/fondos/cact5b.png"), new Cactus(ctx, 933, 553, 10, 80, "/assets/images/fondos/cact5b.png"),
+      new Cactus(ctx, 740, 536, 35, 35, "/assets/images/fondos/arb10.png"),  new Cactus(ctx, 790, 536, 30, 30, "/assets/images/fondos/arb9.png"),
+      new Cactus(ctx, 690, 536, 30, 30, "/assets/images/fondos/arb2.png"),   new Cactus(ctx, 850, 536, 30, 30, "/assets/images/fondos/arb2.png"),
+      new Cactus(ctx, 928, 555, 23, 23, "/assets/images/fondos/arb4.png"),
+
     ]
     this.pfront = [
-      new People(ctx, 90, 360, 60, 60, "/assets/images/people/pep10.png"),
-      new People(ctx, 250, 350, 40, 60, "/assets/images/people/pep3.png"),
-      new People(ctx, 730, 90, 40, 40, "/assets/images/people/pep5.png"),
-      new People(ctx, 850, 80, 80, 80, "/assets/images/people/pep8.png"),
-      new People(ctx, 860, 350, 40, 40, "/assets/images/people/pep11.png"),
+      new People(ctx, 90, 360, 80, 80, "/assets/images/people/pep10.png"), new People(ctx, 250, 350, 40, 60, "/assets/images/people/pep3.png"),
+      new People(ctx, 730, 90, 40, 40, "/assets/images/people/pep5.png"), new People(ctx, 850, 80, 80, 80, "/assets/images/people/pep8.png"),
+      new People(ctx, 860, 350, 40, 40, "/assets/images/people/pep11.png"), new People(ctx, 160, 590, 30, 30, "/assets/images/people/pep22.png"),
+      new People(ctx, 200, 590, 30, 30, "/assets/images/people/pep23.png"), new People(ctx, 430, 12, 50, 30, "/assets/images/people/pep25.png"),
+      new People(ctx, 800, 12, 60, 35, "/assets/images/people/pep20.png"), new People(ctx, 600, 280, 60, 35, "/assets/images/people/pep24.png"),
+      new People(ctx, 400, 350, 80, 45, "/assets/images/people/pep30.png"), new People(ctx, 835, 575, 80, 45, "/assets/images/people/pep31.png"),
+      new People(ctx, 235, 275, 50, 30, "/assets/images/people/pep32.png"),
     ]
     this.pback = [
-      new People(ctx, 250, 420, 40, 60, "/assets/images/people/pep2.png"),
-      new People(ctx, 480, 430, 40, 40, "/assets/images/people/pep.png"),
-      new People(ctx, 730, 420, 80, 50, "/assets/images/people/pep7.png"),
-      new People(ctx, 95, 160, 70, 40, "/assets/images/people/pep1.png"),
-      new People(ctx, 560, 150, 50, 50, "/assets/images/people/pep6.png"),
-      new People(ctx, 410, 160, 40, 40, "/assets/images/people/pep14.png"),
+      new People(ctx, 250, 420, 40, 60, "/assets/images/people/pep2.png"), new People(ctx, 480, 430, 40, 40, "/assets/images/people/pep.png"),
+      new People(ctx, 730, 400, 80, 50, "/assets/images/people/pep7.png"), new People(ctx, 95, 160, 70, 40, "/assets/images/people/pep1.png"),
+      new People(ctx, 560, 150, 50, 50, "/assets/images/people/pep6.png"), new People(ctx, 410, 160, 40, 40, "/assets/images/people/pep14.png"),
+      new People(ctx, 520, 570, 50, 50, "/assets/images/people/pep15.png"), new People(ctx, 9, 100, 40, 100, "/assets/images/people/pep27.png"),
     ]
     this.bushesover = [
       // vertical bushes start
-      new Bush1(ctx, 57, 60, 30, 170),
-      new Bush1(ctx, 287, 60, 30, 170),
-      new Bush3(ctx, 377, 60, 30, 170),
-      new Bush3(ctx, 607, 60, 30, 170),
-      new Bush2(ctx, 697, 60, 30, 170),
-      new Bush2(ctx, 921, 60, 30, 170),
-      new Bush1(ctx, 57, 330, 30, 170),
-      new Bush1(ctx, 287, 330, 30, 170),
-      new Bush3(ctx, 377, 330, 30, 170),
-      new Bush3(ctx, 607, 330, 30, 170),
-      new Bush2(ctx, 697, 330, 30, 170),
-      new Bush2(ctx, 921, 330, 30, 170),
+      new Bush1(ctx, 57, 60, 30, 170), new Bush1(ctx, 287, 60, 30, 170), new Bush3(ctx, 377, 60, 30, 170), new Bush3(ctx, 607, 60, 30, 170),
+      new Bush2(ctx, 697, 60, 30, 170), new Bush2(ctx, 921, 60, 30, 170), new Bush1(ctx, 57, 330, 30, 170), new Bush1(ctx, 287, 330, 30, 170),
+      new Bush3(ctx, 377, 330, 30, 150), new Bush3(ctx, 607, 330, 30, 150), new Bush2(ctx, 697, 330, 30, 150), new Bush2(ctx, 921, 330, 30, 150),
+      new Bush1(ctx, 57, 560, 30, 64),  new Bush1(ctx, 67, 550, 90, 20),  new Bush2(ctx, 97, 550, 90, 20),  new Bush1(ctx, 287, 550, 20, 75),
+      new Bush1(ctx, 387, 550, 20, 75), new Bush2(ctx, 450, 550, 90, 20), new Bush3(ctx, 387, 550, 90, 20), new Bush2(ctx, 610, 550, 20, 75),
+      new Bush2(ctx, 700, 550, 20, 75),
+
 // vertical bushes end
     ]
     this.walls = [
-      new Fence(ctx, 51, 50, 80, 40),
-      new Fence(ctx, 240, 50, 80, 40),
-      new Fence(ctx, 51, 320, 80, 40),
-      new Fence(ctx, 240, 320, 80, 40),
-      new Fence(ctx, 880, 320, 80, 40),
-      new Fence(ctx, 830, 320, 80, 40),
-      new Fence(ctx, 370, 320, 80, 40),
-      new Fence(ctx, 560, 320, 80, 40),
-      new Fence(ctx, 700, 50, 80, 40),
-      new Fence(ctx, 870, 50, 80, 40),
+      new Fence(ctx, 51, 50, 80, 40), new Fence(ctx, 240, 50, 80, 40), new Fence(ctx, 51, 320, 80, 40), new Fence(ctx, 240, 320, 80, 40),
+      new Fence(ctx, 880, 320, 80, 40), new Fence(ctx, 830, 320, 80, 40), new Fence(ctx, 370, 320, 80, 40), new Fence(ctx, 560, 320, 80, 40),
+      new Fence(ctx, 700, 50, 80, 40), new Fence(ctx, 870, 50, 80, 40),
 // round bushes
-      new Bushes(ctx, 180, 390, 30, 30),
-      new Bushes(ctx, 170, 130, 30, 30),
-      new Bushes(ctx, 490, 110, 40, 40),
-      new Bushes(ctx, 482, 60, 60, 60),
-      new Bushes(ctx, 800, 170, 40, 40),
+      new Bushes(ctx, 160, 410, 40, 40, "/assets/images/fondos/arb11.png"),  new Bushes(ctx, 170, 130, 40, 40, "/assets/images/fondos/arb9.png"),
+      new Bushes(ctx, 490, 110, 40, 40, "/assets/images/fondos/arbusto1.png"), new Bushes(ctx, 482, 60, 60, 60, "/assets/images/fondos/arbusto1.png"),
+      new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"),
 // round bushes
-      new Fence(ctx, 190, 460, 80, 40),
-      new Fence(ctx, 90, 190, 80, 40),
-      new Fence(ctx, 470, 130, 80, 40),
-// el fence vertical de la ultima fila y columna
-      // new Fence(ctx, 830, 330, 20, 70),
-      new Fence(ctx, 465, 460, 80, 40),
-      new Fence(ctx, 730, 460, 80, 40),
+      new Fence(ctx, 230, 460, 60, 40), new Fence(ctx, 90, 190, 80, 40), new Fence(ctx, 470, 130, 80, 40), new Fence(ctx, 465, 450, 60, 40), new Fence(ctx, 720, 440, 80, 40),
     ];
-    this.portals = [new Portal (ctx, 10, 300, 30, 30)]
-    this.karenTime = 2500; //karen
-    this.ratTime = 0; // rat
-    this.fatTime = 0; //fat
-    this.puddleTime = 700 ; //puddle
-    this.fireTime = 800; //fire
-    this.gooseTime = 0; //goose
-    this.babyTime = 0; //baby
-    this.customerTime = 0; //baby
-    this.bossTime = 0; //boss
-    this.korenTime = 0; //koren
-    this.cartTime = 3450;
-    this.foodTime = 0;
-    this.upgradeTime = 200;
-    this.upBulletTime = 200;
-    this.discountTime = 3700;
-    this.deadGoose = 0;
+    this.portals = [new Portal (ctx, 10, 300, 30, 30)]   
+    this.portals2 = [new Portal (ctx, 490, 590, 30, 30)]
+    this.karenTime = 0;
+    this.ratTime = 1600;
+    this.fatTime = 1300; 
     this.winTime = 0;
-    this.machinganTime = 2000
+    this.machinganTime = 1000
     this.machinganRestore = 400
     this.interval = null;
-
+    this.puddleTime =this.fireTime =this.gooseTime =this.babyTime =this.customerTime =this.bossTime =this.korenTime =this.cartTime =this.foodTime =this.upgradeTime =this.upBulletTime =this.discountTime =this.deadGoose = 0
     this.karens = this.rats = this.babys = this.customers = this.fats = this.puddles = this.fires = this.geese = this.bosss = this.korens = this.carts = this.foods = this.upgrades = this.upBullets = this.discounts = [];
-  
-  
     this.setListeners();
     this.musicStart = new Audio("/assets/audio/valse.mp3");
     this.musicStart.volume = 0.002;
@@ -112,115 +85,104 @@ class Game {
     this.so.play();
     this.musicStart.play();
     myFunction();
-      this.interval = setInterval(() => {
-      this.endGame = document.getElementById("time");
-      this.clear();
-      this.draw();
-      this.move();
-      this.karenTime++; this.ratTime++; this.fatTime++; this.puddleTime++;  this.fireTime++; this.gooseTime++; this.babyTime++; this.customerTime++; this.bossTime++; this.korenTime++; this.winTime++; this.cartTime++; this.foodTime++; this.upgradeTime++; this.upBulletTime++; this.discountTime++;
-      this.checkCollisions();
-
-
-      if (this.karenTime > Math.random() * 100 + 36500) {
+    this.interval = setInterval(() => {
+    this.endGame = document.getElementById("time");
+    this.clear();
+    this.draw();
+    this.move();
+    this.karenTime++; this.ratTime++; this.fatTime++; this.puddleTime++;  this.fireTime++; this.gooseTime++; this.babyTime++; this.customerTime++; this.bossTime++; this.korenTime++; this.winTime++; this.cartTime++; this.foodTime++; this.upgradeTime++; this.upBulletTime++; this.discountTime++;
+    this.checkCollisions();
+      if (this.karenTime > 3700) {     // karen
         this.karenTime = 0;
         this.karensAlert();
         this.addKaren();
-        if(this.winTime >= 5000){
-          // 13.45
+        if(this.winTime >= 68500){
           this.karenTime = 2000
         }
       }
-      if (this.ratTime > Math.random() * 100 + 7000) {
-        //rat
+      if (this.ratTime > Math.random() * 100 + 2000) { //rat
         this.ratTime = 0;
         this.ratAlert();
         this.addRat();
+        if(this.winTime >= 48500){
+          this.ratTime = 700
+        }
       }
-      if (this.fatTime > Math.random() * 100 + 7000) {
-        //fat
+      if (this.fatTime > Math.random() * 400 + 1900) { //fat
+        console.log("ya")
         this.fatTime = 0;
         this.fatAlert();
         this.addFat();
-        if(this.winTime >= 30000){
-          this.fatTime = 1000
+        if(this.winTime >= 68500){
+          this.fatTime = 500
         }
       }
-      if (this.puddleTime > Math.random() * 1000 + 100099) {
-        //puddle
+      if (this.puddleTime > Math.random() * 400 + 1500) { //puddle
         this.puddleTime = 0;
         this.waterAlert();
         this.addPuddle();
+        if(this.winTime >= 80000){
+          this.puddleTime = 400
+        }
       }
-      if (this.fireTime > Math.random() * 1000 + 100099) {
-        //fire
+      if (this.fireTime > Math.random() * 400 + 1500) { //fire
         this.fireTime = 0;
         this.fireAlert();
         this.addFire();
-      }
-      if (this.gooseTime > Math.random() * 100 + 400099) {
-        //goose
-        this.gooseTime = 0;
-        this.gooseAlert();
-        this.addGoose();
-        if(this.winTime >= 30000){
-          this.gooseTime = 2000
+        if(this.winTime >= 80000){
+          this.fireTime = 400
         }
       }
-      if (this.babyTime > Math.random() * 100 + 400099) {
-        //baby
-        this.babyTime = 0;
+      if (this.gooseTime > Math.random() * 100 + 11100) { //goose a las 3 horas mas o menos
+        this.gooseTime = 9000;
+        this.gooseAlert();
+        this.addGoose();
+      }
+      if (this.babyTime > Math.random() * 2000 + 14800) {  //baby
+        this.babyTime = 11000;
         this.babyAlert();
         this.addBaby();
       }
-      if (this.customerTime > Math.random() * 100 + 10000) {
-        //customer
-        this.customerTime = 0;
+      if (this.customerTime > Math.random() * 100 + 5000) { //customer
+        this.customerTime = 3000;
         this.addCustomer();
       }
-      if (this.cartTime > Math.random() * 100 + 350099) {
-        //cart
+      if (this.cartTime > Math.random() * 100 + 10000) { //cart
         this.cartTime = 0;
         this.addCart();
       }
-      if (this.foodTime > Math.random() * 100 + 40000) {
-        //food
+      if (this.foodTime > Math.random() * 100 + 8000) {  //food
         this.foodTime = 0;
         this.addFood();
       }
-      if (this.upgradeTime > Math.random() * 100 + 12000) {
-        //upgrade
+      if (this.discountTime > Math.random() * 900 + 6000) {   //discount
+        this.discountTime = 0;
+        this.addDiscount();
+      }
+      if (this.upgradeTime > Math.random() * 100 + 7400) {   //upgrade
         this.upgradeTime = 0;
         this.upgradeAlert()
         this.addUpgrade();
       }
-      if (this.upBulletTime > Math.random() * 100 + 10290) {
-        //upgrade
+      if (this.upBulletTime > Math.random() * 100 + 50000) {   //upgrade
         this.upBulletTime = 0;
         this.upBulletAlert()
         this.addUpBullet();
       }
-      if (this.discountTime > Math.random() * 100 + 380099) {
-        //discount
-        this.discountTime = 0;
-        this.addDiscount();
-      }
-      if (this.bossTime > Math.random() * 100 + 1000099) {
-        //boss
+      if (this.bossTime > Math.random() * 100 + 14800) {   //boss
         this.bossTime = 5000;
         this.bossAlert();
         this.addBoss();
       }
-      if (this.korenTime > Math.random() * 100 + 20099) {
-        //koren
-        this.korenTime = 0;
+      if (this.korenTime > Math.random() * 100 + 15000) {   //koren
+        this.korenTime = 13500;
         this.addKoren();
         this.korenAlert()
       }
 // win time game start -----------------------
-      if (this.winTime >= 121534.2) {
+      if (this.winTime >= 137800) {
         this.gameWin();
       }   //acaba a las 21 con tick del tiempo en 15
-
       if (this.winTime % 55000 === 0) {
         this.almostOver = new Audio("/assets/audio/It’s almost over.mp3");
         this.almostOver.volume = 0.3;
@@ -294,60 +256,19 @@ class Game {
     this.player.waters = this.player.waters.filter((e) => e.isVisible());
     this.player.sanders = this.player.sanders.filter((e) => e.isVisible());
     this.player.discountings = this.player.discountings.filter((e) => e.isVisible());
-    if (this.karens.length <= 0) {
-      const alert = document.getElementById("karens-alert");
-      alert.style.display = "none";
-    }
-    if (this.rats.length <= 0) {
-      const alert = document.getElementById("rat-alert");
-      alert.style.display = "none";
-    }
-    if (this.fats.length <= 0) {
-      const alert = document.getElementById("fat-alert");
-      alert.style.display = "none";
-    }
-    if (this.geese.length <= 0) {
-      const alert = document.getElementById("goose-alert");
-      alert.style.display = "none";
-    }
-    if (this.babys.length <= 0) {
-      const alert = document.getElementById("baby-alert");
-      alert.style.display = "none";
-    }
-    if (this.puddles.length <= 0) {
-      const alert = document.getElementById("water-alert");
-      alert.style.display = "none";
-    }
-    if (this.fires.length <= 0) {
-      const alert = document.getElementById("fire-alert");
-      alert.style.display = "none";
-    }
-    if (this.upgrades.length <= 0) {
-      const alert = document.getElementById("upgrade-alert");
-      alert.style.display = "none";
-    }
-    if (this.upBullets.length <= 0) {
-      const alert = document.getElementById("upBullet-alert");
-      alert.style.display = "none";
-    }
-    if (this.bosss.length <= 0) {
-      const alert = document.getElementById("boss-alert");
-      alert.style.display = "none";
-    }
-    if (this.korens.length <= 0) {
-      const alert = document.getElementById("koren-alert");
-      alert.style.display = "none";
-    }
-    if (
-      this.bosss.length <= 0 &&
-      this.korens.length <= 0 &&
-      this.fires.length <= 0 &&
-      this.puddles.length <= 0 &&
-      this.babys.length <= 0 &&
-      this.geese.length <= 0 &&
-      this.fats.length <= 0 &&
-      this.rats.length <= 0 &&
-      this.karens.length <= 0
+
+    if (this.karens.length <= 0) { const alert = document.getElementById("karens-alert"); alert.style.display = "none";}
+    if (this.rats.length <= 0) { const alert = document.getElementById("rat-alert"); alert.style.display = "none";}
+    if (this.fats.length <= 0) { const alert = document.getElementById("fat-alert"); alert.style.display = "none";}
+    if (this.geese.length <= 0) { const alert = document.getElementById("goose-alert"); alert.style.display = "none";}
+    if (this.babys.length <= 0) { const alert = document.getElementById("baby-alert"); alert.style.display = "none";}
+    if (this.puddles.length <= 0) { const alert = document.getElementById("water-alert"); alert.style.display = "none";}
+    if (this.fires.length <= 0) { const alert = document.getElementById("fire-alert"); alert.style.display = "none";}
+    if (this.upgrades.length <= 0) { const alert = document.getElementById("upgrade-alert"); alert.style.display = "none";}
+    if (this.upBullets.length <= 0) { const alert = document.getElementById("upBullet-alert"); alert.style.display = "none";}
+    if (this.bosss.length <= 0) { const alert = document.getElementById("boss-alert"); alert.style.display = "none";}
+    if (this.korens.length <= 0) { const alert = document.getElementById("koren-alert"); alert.style.display = "none";}
+    if (this.bosss.length <= 0 &&this.korens.length <= 0 &&this.fires.length <= 0 &&this.puddles.length <= 0 &&this.babys.length <= 0 &&this.geese.length <= 0 &&this.fats.length <= 0 &&this.rats.length <= 0 &&this.karens.length <= 0
     ) {
       const nothingToWorrie = document.getElementById("ok");
       nothingToWorrie.style.display = "inline-block";
@@ -357,8 +278,6 @@ class Game {
       statusOk.style.border = "3px solid rgb(3, 59, 3)";
       statusOk.style.padding = "2px 20px";
       statusOk.style.marginBottom = "2px";
-
-
     }
   }
 
@@ -369,14 +288,17 @@ class Game {
     this.korens.forEach((e) => e.draw());
     this.babys.forEach((e) => e.draw());
     this.customers.forEach((e) => e.draw());
-    if(this.winTime >= 1000){
+    if(this.winTime >= 100){
       this.pback.forEach((e) => e.draw());
     }
     this.walls.forEach((e) => e.draw());
-    if(this.winTime >= 20000){
+    if(this.winTime >= 200){
       this.portals.forEach((e) => e.draw());
     }
-    if(this.winTime >= 1500){
+    if(this.winTime >= 200){
+      this.portals2.forEach((e) => e.draw());
+    }
+    if(this.winTime >= 100){
     this.pfront.forEach((e) => e.draw());
     }
     this.puddles.forEach((e) => e.draw());
@@ -384,7 +306,7 @@ class Game {
     this.player.draw();
     this.bushesover.forEach((e) => e.draw());
     this.karens.forEach((e) => e.draw());
-    if(this.winTime >= 10000){
+    if(this.winTime >= 10){
       this.cactus.forEach((e) => e.draw());
     }
     this.rats.forEach((e) => e.draw());
@@ -410,15 +332,14 @@ this.ctx.fillStyle = "white";
 this.ctx.fillText(`Weapons:`, 80, 690);
 this.ctx.fillText(`Body:`, 540, 690);
 this.ctx.restore();
-this.ctx.fillText(`Cooldown: ${this.player.cooldownBullet.toString()}`, 370, 700);
-this.ctx.fillText(`Distance: ${bulletDistance.toString()}`, 230, 700);
-this.ctx.fillText(`Speed: ${this.player.speed.toString()}`, 230, 675);
-this.ctx.fillText(`Size: ${bulletSize.toString()}`, 325, 675);
-this.ctx.fillText(`Growth: ${afterSize.toString()}`, 415, 675);
-// body
-this.ctx.fillText(`Jump: ${distance.toString()}ft`, 640, 675);
-this.ctx.fillText(`Speed: ${this.player.boost}`, 640, 700);
-// this.ctx.fillText(` ${this.player.life.total.toFixed(2).toString()}`, 1120, 500);
+this.ctx.fillText(`Cooldown: ${this.player.cooldownBullet.toString()}`, 370, 704);
+this.ctx.fillText(`Distance: ${bulletDistance.toString()}`, 230, 704);
+this.ctx.fillText(`Speed: ${this.player.speed.toString()}`, 230, 681);
+this.ctx.fillText(`Size: ${bulletSize.toString()}`, 325, 681);
+this.ctx.fillText(`Growth: ${afterSize.toString()}`, 415, 681);
+this.ctx.fillText(`Jump: ${distance.toString()}ft`, 640, 681);
+this.ctx.fillText(`Jump cooldown: ${this.player.cooldownJump}`, 760, 681);
+this.ctx.fillText(`Speed: ${this.player.boost}`, 640, 704);
 if (this.score.total >= 50) {
   this.machinganTime--
     C = 67;
@@ -449,17 +370,17 @@ if (C === 67){
     ctx.fillStyle = "green";
     ctx.fillRect(748, 632, 260, 23);
     this.ctx.fillStyle = "black";
-    this.ctx.fillText(`Machinegun Active for ${this.machinganTimeLeft.toString()}: C/V `, 750, 650);
+    this.ctx.fillText(`Machinegun Active for ${this.machinganTimeLeft.toString()}: -C/V- `, 750, 650);
     this.ctx.restore();
 }
-if (C === 0){
+if (C === 0 && this.score.total >= 50){
   this.machinganRestoreLeft = parseInt(this.machinganRestore/10)
     this.ctx.font = "18px Arial";
     this.ctx.save();
     ctx.fillStyle = "indianred";
     ctx.fillRect(755, 632, 250, 23);
     this.ctx.fillStyle = "black";
-    this.ctx.fillText(`Machine Gun Reactivated in ${this.machinganRestoreLeft.toString()} `, 760, 650);
+    this.ctx.fillText(`Machinegun Reactivated in ${this.machinganRestoreLeft.toString()} `, 760, 650);
     this.ctx.restore();
 
 }
@@ -467,42 +388,41 @@ if (N === 78){
     this.ctx.font = "18px Arial";
     this.ctx.save();
     ctx.fillStyle = "rgb(21, 209, 209)";
-    ctx.fillRect(85, 632, 150, 23);
+    ctx.fillRect(85, 638, 150, 23);
     this.ctx.fillStyle = "black";
-    this.ctx.fillText(`Shield ready: N`, 90, 650);
+    this.ctx.fillText(`Shield ready: -N-`, 90, 655);
     this.ctx.restore();
 }
 if (M === 77){
   this.ctx.font = "18px Arial";
   this.ctx.save();
   ctx.fillStyle = "rgb(255, 149, 0)";
-  ctx.fillRect(245, 632, 190, 23);
+  ctx.fillRect(245, 638, 190, 23);
   this.ctx.fillStyle = "black";
-  this.ctx.fillText(`Sandblaster ready: M `, 250, 650);
+  this.ctx.fillText(`Sandblaster ready: -M- `, 250, 655);
   this.ctx.restore();
 } 
 if (M !== 77){
   this.ctx.font = "18px Arial";
   this.ctx.save();
   ctx.fillStyle = "rgb(255, 149, 0)";
-  ctx.fillRect(240, 632, 200, 23);
+  ctx.fillRect(240, 638, 200, 23);
   this.ctx.fillStyle = "black";
-  this.ctx.fillText(`Charge blaster to 20 : ${charging.toString()}`, 242, 650);
+  this.ctx.fillText(`Charge blaster to 20 : ${charging.toString()}`, 242, 655);
   this.ctx.restore();
 }
 if (Q === 81){
   this.ctx.font = "18px Arial";
   this.ctx.save();
   ctx.fillStyle = "rgb(255, 149, 0)";
-  ctx.fillRect(445, 632, 300, 23);
+  ctx.fillRect(445, 638, 300, 23);
   this.ctx.fillStyle = "black";
-  this.ctx.fillText(`Diagonal dispenser charged : ${this.chargedDisc.toString()}  `, 450, 650);
+  this.ctx.fillText(`Diagonal dispenser charged : ${this.chargedDisc.toString()} -Q- `, 450, 655);
   this.ctx.restore();
 }
 
 if(this.puddles.length + this.fires.length >= 6){
   this.player.loseRespect()
-
 }
 if(this.saved.save >= 2 && this.saved.save <=3){
   distance = 80
@@ -671,7 +591,6 @@ if(this.saved.save >= 2 && this.saved.save <=3){
     this.disco.volume = 0.2;
     this.disco.play()
   }
-
   // alerts start !!!!!! 
   alerting(){
     const nothingToWorrie = document.getElementById("ok");
@@ -753,9 +672,9 @@ if(this.saved.save >= 2 && this.saved.save <=3){
 
   checkCollisions() {
     this.winTime++;
-    
-    this.puddle = new Puddle(ctx); //que el fuego mate al agua
-    this.puddles.forEach((puddle) => {
+    // puddle..puddle..puddle..puddle..puddle..puddle..puddle..puddle..puddle..puddle..puddle..puddle..puddle..
+    // puddle..puddle..puddle..puddle..puddle..puddle..puddle..puddle..puddle..puddle..puddle..puddle..puddle..
+    this.puddles.forEach((puddle) => { //agua con blasters
       this.player.blasters.filter((blast) => {
         if (blast.collides(puddle)) {
           puddle.dicreaseSmall();
@@ -775,7 +694,7 @@ if(this.saved.save >= 2 && this.saved.save <=3){
         } else return true;
       });
     });
-    this.puddles.forEach((puddle) => {
+    this.puddles.forEach((puddle) => {//agua con sanders
       this.player.sanders.filter((sand) => {
         if (sand.collides(puddle)) {
           puddle.dicreaseSmall();
@@ -787,7 +706,7 @@ if(this.saved.save >= 2 && this.saved.save <=3){
               const waterAlert = document.getElementById("water-alert");
               waterAlert.style.display = "none";
             }
-            if (this.winTime > 40000) {
+            if (this.winTime > 120000) {
               this.addPuddle();
             }
           }
@@ -795,7 +714,7 @@ if(this.saved.save >= 2 && this.saved.save <=3){
         } else return true;
       });
     });
-    this.puddles.forEach((puddle) => {
+    this.puddles.forEach((puddle) => {//agua con fuego
       this.player.heats = this.player.heats.filter((heat) => {
         if (heat.collides(puddle)) {
           this.player.heats.splice(0, 1);
@@ -822,8 +741,7 @@ if(this.saved.save >= 2 && this.saved.save <=3){
         } else return true;
       });
     });
-
-    this.player.waters.forEach((water) => {  //que el agua aumente el agua
+    this.player.waters.forEach((water) => {  // agua con agua
       this.puddles.forEach((puddle) => {
         water.collides(puddle);
         if (water.collides(puddle)) {
@@ -835,8 +753,9 @@ if(this.saved.save >= 2 && this.saved.save <=3){
         }
       });
     });
-    this.fire = new Fire(ctx); 
-    this.fires.forEach((fire) => {
+// fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..
+// fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..
+    this.fires.forEach((fire) => {//fuego con blaster
       this.player.blasters.filter((blast) => {
         if (blast.collides(fire)) {
           fire.dicreaseSmall();
@@ -856,7 +775,7 @@ if(this.saved.save >= 2 && this.saved.save <=3){
         } else return true;
       });
     });
-    this.fires.forEach((fire) => {
+    this.fires.forEach((fire) => {//fuego con sanders
       this.player.sanders.filter((sand) => {
         if (sand.collides(fire)) {
           fire.dicreaseSmall();
@@ -868,15 +787,12 @@ if(this.saved.save >= 2 && this.saved.save <=3){
               const fireAlert = document.getElementById("fire-alert");
               fireAlert.style.display = "none";
             }
-            if (this.winTime > 40000) {
-              this.addPuddle();
-            }
           }
           return false;
         } else return true;
       });
     });
-    this.fires.forEach((fire) => {
+    this.fires.forEach((fire) => { //fuego con agua
       this.player.waters = this.player.waters.filter((water) => {
         if (water.collides(fire)) {
           this.player.waters.splice(0, 1);
@@ -894,15 +810,12 @@ if(this.saved.save >= 2 && this.saved.save <=3){
               const fireAlert = document.getElementById("fire-alert");
               fireAlert.style.display = "none";
             }
-            if (this.winTime > 40000) {
-              this.addPuddle();
-            }
           }
           return false;
         } else return true;
       });
     });
-    this.player.heats.forEach((heat) => { //que el fuego aumente al fuego
+    this.player.heats.forEach((heat) => { //fuego con fuego
       this.fires.forEach((fire) => {
         heat.collides(fire);
         if (heat.collides(fire)) {
@@ -911,36 +824,34 @@ if(this.saved.save >= 2 && this.saved.save <=3){
         }
       });
     });
-    //colisiones con obstáculos End     ::::::::::::>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<
-        //colisiones con karencoll start     ::::::::::::>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<
-    this.karens = this.karens.filter((karen) => {
+// karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. 
+// karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. 
+    this.karens = this.karens.filter((karen) => {  //karen con player
       if (karen.collides(this.player)) {
         if (this.line.check == 1) {
+          this.score.addkkarens()
+          this.score.addktotal1()
+          this.score.addktotal1()
           return false;
         }
       }
       return true;
     });
-    this.karens.forEach((karen) => {
+    this.karens.forEach((karen) => {//karen con discounting
       this.player.discountings = this.player.discountings.filter((disc) => {
         if (disc.collides(karen)) {
           this.player.discountings.splice(0, 1);
           karen.w = 60
+          this.score.addkkarens()
+          this.score.addktotal1()
+          this.score.addktotal1()
           return false;
         } else return true;
       });
     });
-    this.karens = this.karens.filter((karen) => {
-      if (karen.collides(this.player.discounting)) {
-        if (this.line.check == 1) {
-          return false;
-        }
-      }
-      return true;
-    });
-        //colisiones con obstáculos End    ::::::::::::>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<
-    //impacto ratas al jugador
-    this.rats = this.rats.filter((rat) => {
+    //Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..
+    //Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..
+    this.rats = this.rats.filter((rat) => { //rat con player
       if (rat.collides(this.player)) {
         this.player.hit();
         this.player.vy = -1;
@@ -950,9 +861,7 @@ if(this.saved.save >= 2 && this.saved.save <=3){
       }
       return true;
     });
-    //impacto balas a las ratas ratcol
-    this.rat = new Rats(ctx);
-    this.rats.forEach((rat) => {
+    this.rats.forEach((rat) => {//rat con water
       this.player.waters = this.player.waters.filter((water) => {
         if (water.collides(rat)) {
           this.player.waters.splice(0, 1);
@@ -966,7 +875,7 @@ if(this.saved.save >= 2 && this.saved.save <=3){
         } else return true;
       });
     });
-    this.rats.forEach((rat) => {
+    this.rats.forEach((rat) => { //rat con fire
       this.player.heats = this.player.heats.filter((heat) => {
         if (heat.collides(rat)) {
           this.player.heats.splice(0, 1);
@@ -975,26 +884,24 @@ if(this.saved.save >= 2 && this.saved.save <=3){
           if(rat.lifeleft === 0){
             this.score.addkrat()
             this.score.addktotal1()
-
           }
           return false;
         } else return true;
       });
     });
-    this.rats.forEach((rat) => {
+    this.rats.forEach((rat) => { //rat con blaster
       this.player.blasters.filter((blast) => {
         if (blast.collides(rat)) {
           rat.lifeleft -= 4;
           if(rat.lifeleft === 0){
             this.score.addkrat()
             this.score.addktotal1()
-
           }
           return false;
         } else return true;
       });
     });
-    this.rats.forEach((rat) => {
+    this.rats.forEach((rat) => {//rat con sanders
       this.player.sanders.filter((sand) => {
         if (sand.collides(rat)) {
           rat.lifeleft -= 4;
@@ -1007,9 +914,19 @@ if(this.saved.save >= 2 && this.saved.save <=3){
         } else return true;
       });
     });
-
-    //colisiones con fatcoll Start    ::::::::::::>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<
-    this.fats.forEach((fat) => {    //agua al fat
+    //fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...
+    //fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...
+    this.fats = this.fats.filter((fat) => { //fat con jugador
+      if (fat.collides(this.player)) {
+        this.player.vy = 0;
+        this.player.vx = 0;
+        this.player.fireHit()
+        this.player.drawSmash()
+        this.player.loseRespect()
+      }
+      return true;
+    });
+    this.fats.forEach((fat) => {    //fat con agua
       this.player.waters = this.player.waters.filter((water) => {
         if (water.collides(fat)) {
           this.player.waters.splice(0, 1);
@@ -1022,7 +939,7 @@ if(this.saved.save >= 2 && this.saved.save <=3){
         } else return true;
       });
     });
-    this.fats.forEach((fat) => {  //fuego al fat
+    this.fats.forEach((fat) => {  //fat con fuego
       this.player.heats = this.player.heats.filter((heat) => {
         if (heat.collides(fat)) {
           this.player.heats.splice(0, 1);
@@ -1035,17 +952,7 @@ if(this.saved.save >= 2 && this.saved.save <=3){
         } else return true;
       });
     });
-    this.fats = this.fats.filter((fat) => { //jugador al fat
-      if (fat.collides(this.player)) {
-        this.player.vy = 0;
-        this.player.vx = 0;
-        this.player.wallHit()
-        this.player.drawSmash()
-        this.player.loseRespect()
-      }
-      return true;
-    });
-    this.fats.forEach((fat) => {
+    this.fats.forEach((fat) => { //fat con sanders
       this.player.sanders.filter((sand) => {
         if (sand.collides(fat)) {
           fat.vy -= 0.05
@@ -1053,7 +960,7 @@ if(this.saved.save >= 2 && this.saved.save <=3){
         } else return true;
       });
     });
-    this.fats.forEach((fat) => {
+    this.fats.forEach((fat) => { //fat con blasters
       this.player.blasters.filter((blast) => {
         if (blast.collides(fat)) {
           fat.vy -= 0.05
@@ -1061,18 +968,165 @@ if(this.saved.save >= 2 && this.saved.save <=3){
         } else return true;
       });
     });
-    
-    //colisiones con fat End     ::::::::::::>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<
-    this.geese = this.geese.filter((goose) => {
-      if (goose.collides(this.player)) {
-        this.player.hit();
-        this.player.hit();
-        return false;
-      }
-      return true;
-    });
-    this.goose = new Goose(ctx); //que el fuego mate al agua
-    this.geese.forEach((goose) => {
+// koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...
+// koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...
+    this.korens.forEach((koren) => {   //koren con heat
+      this.player.heats = this.player.heats.filter((heat) => {
+        if (heat.collides(koren)) {
+          this.player.heats.splice(0, 1);
+          if (koren.x < this.player.x) {
+            koren.x -= 30;
+            koren.h += 5
+            koren.w += 5
+          }
+          if (koren.x > this.player.x) {
+            koren.x += 30;
+            koren.h += 5
+            koren.w += 5
+          }
+          if (koren.y < this.player.y) {
+            koren.y -= 30;
+            koren.h += 5
+            koren.w += 5
+          }
+          if (koren.y > this.player.y) {
+            koren.y += 30;
+            koren.h += 5
+            koren.w += 5
+          }
+          charging+=1
+          if(charging >= 20){
+              M = 77
+              charging = 0
+          }
+          if(koren.h >= 71 && !koren.truth){
+            this.score.addkkorens()
+            this.score.addktotal1()
+            koren.truth = true
+          }
+        } else return true;
+      });
+    })
+    this.korens.forEach((koren) => { //koren con waters
+      this.player.waters = this.player.waters.filter((water) => {
+        if (water.collides(koren)) {
+          this.player.waters.splice(0, 1);
+          if (koren.x < this.player.x) {
+            koren.x -= 30;
+            koren.h += 5
+            koren.w += 5
+          }
+          if (koren.x > this.player.x) {
+            koren.x += 30;
+            koren.h += 5
+            koren.w += 5
+          }
+          if (koren.y < this.player.y) {
+            koren.y -= 30;
+            koren.h += 5
+            koren.w += 5
+          }
+          if (koren.y > this.player.y) {
+            koren.y += 30;
+            koren.h += 5
+            koren.w += 5
+          }
+          charging+=1
+          if(charging >= 20){
+              M = 77
+              charging = 0
+          }
+          if(koren.h >= 71 && !koren.truth){
+            this.score.addkkorens()
+            this.score.addktotal1()
+            koren.truth = true
+          }
+        } else return true;
+      });
+    })
+    this.korens.forEach((koren) => { //koren con sanders
+      this.player.sanders.filter((sand) => {
+        if (sand.collides(koren)) {
+          if (koren.x < this.player.x) {
+            koren.x -= 30;
+            koren.h += 5
+            koren.w += 5
+          }
+          if (koren.x > this.player.x) {
+            koren.x += 30;
+            koren.h += 5
+            koren.w += 5
+          }
+          if (koren.y < this.player.y) {
+            koren.y -= 30;
+            koren.h += 5
+            koren.w += 5
+          }
+          if (koren.y > this.player.y) {
+            koren.y += 30;
+            koren.h += 5
+            koren.w += 5
+          }
+          charging+=1
+          if(charging >= 20){
+              M = 77
+              charging = 0
+          }
+          if(koren.h >= 71 && !koren.truth){
+            this.score.addkkorens()
+            this.score.addktotal1()
+            koren.truth = true
+          }
+        } else return true;
+      });
+    })
+    this.korens.forEach((koren) => { //koren con blasters
+      this.player.blasters.filter((blast) => {
+        if (blast.collides(koren)) {
+          if (koren.x < this.player.x) {
+            koren.x -= 30;
+            koren.h += 5
+            koren.w += 5
+          }
+          if (koren.x > this.player.x) {
+            koren.x += 30;
+            koren.h += 5
+            koren.w += 5
+          }
+          if (koren.y < this.player.y) {
+            koren.y -= 30;
+            koren.h += 5
+            koren.w += 5
+          }
+          if (koren.y > this.player.y) {
+            koren.y += 30;
+            koren.h += 5
+            koren.w += 5
+          }
+          charging+=1
+          if(charging >= 20){
+              M = 77
+              charging = 0
+          }
+          if(koren.h >= 71 && !koren.truth){
+            this.score.addkkorens()
+            this.score.addktotal1()
+            koren.truth = true
+          }
+        } else return true;
+      });
+    })
+// goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...
+// goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...
+this.geese = this.geese.filter((goose) => { //goose con player
+  if (goose.collides(this.player)) {
+    this.player.hit();
+    this.player.hit();
+    return false;
+  }
+  return true;
+});
+    this.geese.forEach((goose) => { //goose con fire
       this.player.heats = this.player.heats.filter((heat) => {
         if (heat.collides(goose)) {
           goose.lifeleft -= 1 
@@ -1100,7 +1154,7 @@ if(this.saved.save >= 2 && this.saved.save <=3){
           }
         } else return true;
       });
-      this.player.waters = this.player.waters.filter((water) => {
+      this.player.waters = this.player.waters.filter((water) => {// goose con water
         if (water.collides(goose)) {
           this.player.waters.splice(0, 1);
           goose.lifeleft -= 1 
@@ -1128,7 +1182,7 @@ if(this.saved.save >= 2 && this.saved.save <=3){
         } else return true;
       });
     });
-    this.geese.forEach((goose) => {
+    this.geese.forEach((goose) => { // goose con blaster
       this.player.blasters.filter((blast) => {
         if (blast.collides(goose)) {
           goose.lifeleft -= 3;
@@ -1140,7 +1194,7 @@ if(this.saved.save >= 2 && this.saved.save <=3){
         } else return true;
       });
     });
-    this.geese.forEach((goose) => {
+    this.geese.forEach((goose) => { // goose con sanders
       this.player.sanders.filter((sand) => {
         if (sand.collides(goose)) {
           goose.lifeleft -= 3;
@@ -1152,10 +1206,9 @@ if(this.saved.save >= 2 && this.saved.save <=3){
         } else return true;
       });
     });
-
-
-    //baby collisions Start
-    this.babys = this.babys.filter((baby) => {
+//babys...babys...babys...babys...babys...babys...babys...babys...babys...babys...babys...babys...babys...
+//babys...babys...babys...babys...babys...babys...babys...babys...babys...babys...babys...babys...babys...
+    this.babys = this.babys.filter((baby) => { //baby con player
       if (baby.collides(this.player)) {
         this.saved.addSave()
         if(this.saved.save % 3 === 0){
@@ -1166,7 +1219,7 @@ if(this.saved.save >= 2 && this.saved.save <=3){
       }
       return true;
     });
-    this.babys.forEach((baby) => {
+    this.babys.forEach((baby) => { //baby con blaster
       this.player.blasters.filter((blast) => {
         if (blast.collides(baby)) {
           this.babys.splice(0,1)
@@ -1176,7 +1229,7 @@ if(this.saved.save >= 2 && this.saved.save <=3){
         } else return true;
       });
     });
-    this.babys.forEach((baby) => {
+    this.babys.forEach((baby) => { //baby con sanders
       this.player.sanders.filter((sand) => {
         if (sand.collides(baby)) {
           this.babys.splice(0,1)
@@ -1187,7 +1240,7 @@ if(this.saved.save >= 2 && this.saved.save <=3){
       });
     });
 
-    this.puddles.forEach((puddle) => {
+    this.puddles.forEach((puddle) => { //baby con puddle
       this.babys = this.babys.filter((baby) => {
         if (baby.collides(puddle)) {
           this.babys.splice(0, 1);
@@ -1202,7 +1255,7 @@ if(this.saved.save >= 2 && this.saved.save <=3){
       });
     });
 
-    this.fires.forEach((fire) => {
+    this.fires.forEach((fire) => { //baby con fire
       this.babys = this.babys.filter((heat) => {
         if (heat.collides(fire)) {
           this.babys.splice(0, 1);
@@ -1213,8 +1266,8 @@ if(this.saved.save >= 2 && this.saved.save <=3){
         } else return true;
       });
     });
-
-    this.cactus.forEach((cactu) => {
+    if(this.winTime >= 10){
+    this.cactus.forEach((cactu) => { //baby con cactus
       this.babys = this.babys.filter((la) => {
         if (la.collides(cactu)) {
           this.babys.splice(0, 1);
@@ -1225,11 +1278,11 @@ if(this.saved.save >= 2 && this.saved.save <=3){
         } else return true;
       });
     });
-    //baby collisions End
-    
-    //customers collisions Start    ::::::::::::>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<
-    this.customers = this.customers.filter((customer) => {
-      if (customer.collides(this.player)) {
+  }
+//customer...customer...customer...customer...customer...customer...customer...customer...customer...customer...
+//customer...customer...customer...customer...customer...customer...customer...customer...customer...customer...
+    this.customers = this.customers.filter((cus) => { //customer con player
+      if (cus.collides(this.player)) {
         this.saved.addSave()
         if(this.saved.save % 3 === 0){
           this.addFood()
@@ -1239,54 +1292,93 @@ if(this.saved.save >= 2 && this.saved.save <=3){
       }
       return true;
     });
-
-    this.customers.forEach((customer) => {
+    this.customers.forEach((cus) => { //customer con heat del player
+      this.player.heats.filter((heat) => {
+        if (heat.collides(cus)) {
+          cus.lifeleft -=1
+          this.player.loseCustomerRespect()
+          if(cus.dead >= 50){
+            this.score.score += 1
+          }
+          return true;
+        } else return true;
+      });
+    });
+    this.customers.forEach((cus) => { //customer con water
+      this.player.waters.filter((water) => {
+        if (water.collides(cus)) {
+          cus.lifeleft -=1
+          this.player.loseCustomerRespect()
+          if(cus.dead >= 50){
+            this.score.score += 1
+          }
+          return true;
+        } else return true;
+      });
+    });
+    this.customers.forEach((cus) => {//customer con blaster
       this.player.blasters.filter((blast) => {
-        if (blast.collides(customer)) {
-          this.customers.splice(0,1)
-          this.player.loseBigRespect()
-          this.score.addScore()
-          return false;
+        if (blast.collides(cus)) {
+          cus.lifeleft -=1
+          this.player.loseCustomerRespect()
+          if(cus.dead >= 50){
+            this.score.score += 1
+          }
+          return true;
         } else return true;
       });
     });
-    this.customers.forEach((customer) => {
+    this.customers.forEach((cus) => { //customer con sanders
       this.player.sanders.filter((sand) => {
-        if (sand.collides(customer)) {
-          this.customers.splice(0,1)
-          this.player.loseBigRespect()
-          this.score.addScore()
-          return false;
+        if (sand.collides(cus)) {
+          cus.lifeleft -=1
+          this.player.loseCustomerRespect()
+          if(cus.dead >= 50){
+            this.score.score += 1
+          }
+          return true;
         } else return true;
       });
     });
-
-    this.puddles.forEach((puddle) => {    //customer con agua
-      this.customers = this.customers.filter((customer) => {
-        if (customer.collides(puddle)) {
-          this.customers.splice(0, 1);
-          puddle.vx = 500;
-          this.player.hit()
-          this.score.addScore()
-          return false;
+    this.puddles.forEach((puddle) => { //customer con puddle
+      this.customers = this.customers.filter((cus) => {
+        if (cus.collides(puddle)) {
+          cus.lifeleft -=1
+          this.player.loseCustomerRespect()
+          if(cus.dead >= 50){
+            this.score.score += 1
+          }
+          return true;
         } else return true;
       });
     });
     this.fires.forEach((fire) => {  //customer con fuego
-      this.customers = this.customers.filter((heat) => {
-        if (heat.collides(fire)) {
-          this.customers.splice(0, 1);
-          fire.vx = 500;
-          this.player.loseBigRespect()
-          this.score.addScore()
-          return false;
+      this.customers = this.customers.filter((cus) => {
+        if (cus.collides(fire)) {
+          cus.lifeleft -=1
+          this.player.loseCustomerRespect()
+          if(cus.dead >= 50){
+            this.score.score += 1
+          }
+          return true;
         } else return true;
       });
     });
-    //colisiones con customer End     ::::::::::::>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<
-    this.boss = new Boss(ctx); 
-
-    this.bosss = this.bosss.filter((boss) => {
+      this.cactus.forEach((cactu) => { //customer con cactus
+        this.customers = this.customers.filter((cus) => {
+          if (cus.collides(cactu)) {
+            cus.lifeleft -=1
+            this.player.loseCustomerRespect()
+            if(cus.dead >= 50){
+              this.score.score += 1
+            }
+            return true;
+          } else return true;
+        });
+      });
+// boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..
+// boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..
+    this.bosss = this.bosss.filter((boss) => {     //boss con player
       if (boss.collides(this.player)) {
         this.player.hit();
         this.player.hit();
@@ -1294,8 +1386,7 @@ if(this.saved.save >= 2 && this.saved.save <=3){
       }
       return true;
     });
-
-    this.bosss.forEach((boss) => {      //impacto de agua a boss
+    this.bosss.forEach((boss) => {      //boss con agua
       this.player.waters = this.player.waters.filter((water) => {
         if (water.collides(boss)) {
           this.player.waters.splice(0, 1);
@@ -1303,13 +1394,13 @@ if(this.saved.save >= 2 && this.saved.save <=3){
           if(boss.lifeleft === 0){
             boss.v = 20;
             this.addFire()
-            this.addFire()
-            this.addPuddle()
             this.addPuddle()
             this.player.getBigRespect()
             this.player.getBigRespect()
             this.score.addkboss()
-            this.score.addktotal3()
+            this.score.addktotal1()
+            this.score.addktotal1()
+            this.score.addktotal1()
           }
           if (boss.x < this.player.x) {
             boss.x -= 20;
@@ -1328,31 +1419,27 @@ if(this.saved.save >= 2 && this.saved.save <=3){
               M = 77
               charging = 0
           }
-          const koren = new Koren(ctx);
-          this.korens.push(koren);
+          this.addKoren()
           this.korenAlert()
           this.line.b -= 0.2;
           this.line.a += 0.2;
             return false;
         } else return true;
       });
-      const koren = new Koren(ctx);
-      
       this.player.heats = this.player.heats.filter((heat) => {
-        if (heat.collides(boss)) {    //impacto de guego a boss
+        if (heat.collides(boss)) {        //boss con fuego
           this.player.heats.splice(0, 1);
             boss.lifeleft -= 1;
           if(boss.lifeleft === 0){
             boss.v = 20;
             this.addFire()
-            this.addFire()
-            this.addPuddle()
             this.addPuddle()
             this.player.getBigRespect()
             this.player.getBigRespect()
             this.score.addkboss()
-            this.score.addktotal3()
-
+            this.score.addktotal1()
+            this.score.addktotal1()
+            this.score.addktotal1()
           }
           if (boss.x < this.player.x) {
             boss.x -= 20;
@@ -1372,19 +1459,8 @@ if(this.saved.save >= 2 && this.saved.save <=3){
               M = 77
               charging = 0
           }
-          this.korens.push(koren);
-          this.korens.forEach((kor) => {  //fuego al fat
-            this.player.heats = this.player.heats.filter((heat) => {
-              if (heat.collides(kor)) {
-                this.player.heats.splice(0, 1);
-                charging+=1
-                if(charging >= 20){
-                  M = 77
-                  charging = 0
-              }
-              } else return true;
-            });
-          });
+          this.addKoren()
+          this.korenAlert()
           this.line.b -= 0.2;
           this.line.a += 0.2;
           
@@ -1392,7 +1468,6 @@ if(this.saved.save >= 2 && this.saved.save <=3){
         } else return true;
       });
     });
-    this.koren = new Koren(ctx)
     this.korens = this.korens.filter((koren) => {
       if (koren.collides(this.player)) {
         this.player.hit();
@@ -1401,7 +1476,7 @@ if(this.saved.save >= 2 && this.saved.save <=3){
       }
       return true;
     });
-    this.bosss.forEach((boss) => {
+    this.bosss.forEach((boss) => {      //boss con blaster
       this.player.blasters.filter((blast) => {
         if (blast.collides(boss)) {
             boss.lifeleft -= 0.2;
@@ -1410,17 +1485,17 @@ if(this.saved.save >= 2 && this.saved.save <=3){
             this.player.getBigRespect()
             this.player.getBigRespect()
             this.addFire()
-            this.addFire()
-            this.addPuddle()
             this.addPuddle()
             this.score.addkboss()
-            this.score.addktotal3()
+            this.score.addktotal1()
+            this.score.addktotal1()
+            this.score.addktotal1()
           }
           return false;
         } else return true;
       });
     });
-    this.bosss.forEach((boss) => {
+    this.bosss.forEach((boss) => {  //boss con sanders
       this.player.sanders.filter((sand) => {
         if (sand.collides(boss)) {
             boss.lifeleft -= 0.02;
@@ -1429,65 +1504,99 @@ if(this.saved.save >= 2 && this.saved.save <=3){
             this.player.getBigRespect()
             this.player.getBigRespect()
             this.addFire()
-            this.addFire()
-            this.addPuddle()
             this.addPuddle()
             this.score.addkboss()
-            this.score.addktotal3()
+            this.score.addktotal1()
+            this.score.addktotal1()
+            this.score.addktotal1()
           }
           return false;
         } else return true;
       });
     });
-
-    // colisiones con las paredes y los charcos que retrasan al jugador
-    this.bushesover.forEach((wall) => {
+// Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..
+// Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..
+this.pfront.forEach((peop) => {     //PFront
+  this.player.discountings.filter((disc) => {
+    if (disc.collides(peop)) {
+      this.player.getSmallestRespect()
+      return false;
+    } else return true;
+  });
+});
+this.pback.forEach((peop) => { //PBack
+  this.player.discountings.filter((disc) => {
+    if (disc.collides(peop)) {
+      this.player.getSmallestRespect()
+      return false;
+    } else return true;
+  });
+});
+    this.bushesover.forEach((wall) => { //bushes
       if (wall.collides(this.player)) {
-        wall.collides
         this.player.vy = 0;
         this.player.vx = 0;
       }
     });
-    this.walls.forEach((wall) => {
+    this.walls.forEach((wall) => { // walls
       if (wall.collides(this.player)) {
-        wall.collides
         this.ad
         this.player.vy = 0;
         this.player.vx = 0;
       }
     });
+    if(this.winTime >= 200){   //portal
     this.portals.forEach((port) => {
       if (port.collides(this.player)) {
-        port.collides
         this.player.y = 300;
         this.player.x = 960;
       }
     });
+  }
+    if(this.winTime >= 200){  //portal
+    this.portals2.forEach((port) => {
+      if (port.collides(this.player)) {
+        this.player.y = 280;
+        this.player.x = 960;
+      }
+    });
+  }
     this.pback.forEach((wall) => {
       if (wall.collides(this.player)) {
-        wall.collides
+        this.excla = new Image();
+        this.excla.src = "/assets/images/elements/exclapep.png"
+        this.ctx.drawImage(
+          this.excla, wall.x + 10, wall.y - 10, 30,  30
+        )
         this.player.loseRespect()
         this.player.drawSorry()
       }
     });
     this.pfront.forEach((wall) => {
       if (wall.collides(this.player)) {
-        wall.collides
+        this.excla = new Image();
+        this.excla.src = "/assets/images/elements/exclapep.png"
+        this.ctx.drawImage(
+          this.excla, wall.x + 10, wall.y - 10, 30,  30
+        )
         this.player.loseRespect()
         this.player.drawSorry()
       }
     });
+    if(this.winTime >= 10){
     this.cactus.forEach((cact) => {
       if (cact.collides(this.player)) {
         this.player.vy = 0;
         this.player.vx = 0;
-        this.player.wallHit()
+        this.player.fireHit()
         this.player.drawOuch()
       }
     });
+  }
     this.puddles.forEach((puddle) => {
       if (puddle.collides(this.player)) {
         this.player.drawWater()
+        this.player.fireHit();
         this.player.vy = 0;
         this.player.vx = 0;
       }
@@ -1500,14 +1609,14 @@ if(this.saved.save >= 2 && this.saved.save <=3){
         this.player.vx = 0;
       }
     });
-    //impacto cart
+//carts...carts...carts...carts...carts...carts...carts...carts...carts...carts...carts...carts...carts...carts...
+//carts...carts...carts...carts...carts...carts...carts...carts...carts...carts...carts...carts...carts...carts...
     this.carts = this.carts.filter((cart) => {
       if (cart.collides(this.player)) {
         this.newShoes = new Audio("/assets/audios ad/Faster running.mp3");
         this.newShoes.volume = 0.1;
         this.newShoes.play()
-        this.player.extraBoost += 1.3;
-        this.player.cooldownJump -= 500
+        this.player.cooldownJump -= 400
         if(this.player.cooldownJump <= 400){
           this.player.cooldownJump = 300
         }
@@ -1517,7 +1626,8 @@ if(this.saved.save >= 2 && this.saved.save <=3){
       }
       return true;
     });
-    //impacto food
+// foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..
+// foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..
     this.foods = this.foods.filter((food) => {
       if (food.collides(this.player)) {
         // this.newShoes = new Audio("/assets/audios ad/Faster running.mp3");
@@ -1528,6 +1638,8 @@ if(this.saved.save >= 2 && this.saved.save <=3){
       }
       return true;
     });
+// upgrades upbulltes...upgrades upbulltes...upgrades upbulltes...upgrades upbulltes...upgrades upbulltes...
+// upgrades upbulltes...upgrades upbulltes...upgrades upbulltes...upgrades upbulltes...upgrades upbulltes...
     this.upgrades = this.upgrades.filter((up) => {
       if (up.collides(this.player)) {
         this.player.speed += 2;
@@ -1542,16 +1654,17 @@ if(this.saved.save >= 2 && this.saved.save <=3){
     });
     this.upBullets = this.upBullets.filter((up) => {
       if (up.collides(this.player)) {
-        afterSize +=3
-        bulletSize +=3
-        bulletSizeExtra -=3
+        afterSize +=10
+        bulletSize +=10
+        bulletSizeExtra -=10
         const fireAlert = document.getElementById("upgrade-alert");
         fireAlert.style.display = "none";
         return false;
       }
       return true;
     });
-    //impacto discount
+//discount...discount...discount...discount...discount...discount...discount...discount...discount...discount...discount...
+//discount...discount...discount...discount...discount...discount...discount...discount...discount...discount...discount...
     this.discounts = this.discounts.filter((discount) => {
       if (discount.collides(this.player)) {
         this.line.b -= 0.5;
@@ -1562,7 +1675,12 @@ if(this.saved.save >= 2 && this.saved.save <=3){
       }
       return true;
     });
-    //fin de las colisiones
+// collision end... collision end... collision end... collision end... collision end... collision end... collision end...
+// collision end... collision end... collision end... collision end... collision end... collision end... collision end...
+// collision end... collision end... collision end... collision end... collision end... collision end... collision end...
+
+
+
     // evento que se dispara al perder toda la vida, morir clientes, perder el respeto y perder hjas de reclamaciones
     if (!this.player.isAlive() || this.score.score >= 10 || forms.length < 1 || !this.player.isRespected()) {
       this.gameOver();
@@ -1621,7 +1739,6 @@ if(this.saved.save >= 2 && this.saved.save <=3){
       this.player.keyDown(e.keyCode);
       this.line.keyDown(e.keyCode);
     });
-
     document.addEventListener("keyup", (e) => {
       this.player.keyUp(e.keyCode);
       // this.line.keyUp(e.keyCode);      no necesito
