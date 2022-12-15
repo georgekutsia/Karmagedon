@@ -111,8 +111,8 @@ class Koren {
     if (this.koren.frame > 5) {
       this.koren.frame = 0;
     }
-    if(this.h >= 71){
-      this.v = 2
+    if(this.h >= 121){
+      this.v = 1.5
       this.y = 550
       this.say = "F U, I'm Moonwalking"
     }

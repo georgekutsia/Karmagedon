@@ -100,7 +100,7 @@
   position: relative;
   width: 60%;
   height: 600px;
-  border: 10px dashed rgb(250, 250, 250);
+  border: 3px dashed rgb(250, 250, 250);
   background-image: url(/assets/images/fondos/mall\ 2.jpeg);
   background-size: 100%;
   transition: all ease-in-out 1s;
@@ -114,20 +114,20 @@
   height: 800px;
   display: block;
   position: relative;
-  background-image: url(/assets/images/fondos/mall\ 3a.png);
+  background-image: url(/assets/images/fondos/mall\ 4.png);
   background-repeat: no-repeat;
   background-size: 100%;
   transition: all ease-in-out 1s;
 }
 
-h1 {
+h2 {
   font-size: 30px;
   border-radius: 20px;
   border: 3px dotted rgb(0, 0, 0);
   display: inline;
   position: absolute;
   color: black;
-  left: 0px;
+  right: 0px;
   bottom: 0px;
   font-family: Verdana;
   font-style: oblique;
@@ -137,6 +137,52 @@ h1 {
 
 /* hower */
 /* info 1 */
+
+
+
+
+
+#info0 {
+  cursor: url("/assets/images/elements/cursorHower"), pointer;
+  position: absolute;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  color: rgb(251, 251, 251);
+  width: 120px;
+  font-size: 25px;
+  height: 120px;
+  top: 5%;
+  right: 20%;
+  background: rgb(89, 84, 84, 0.3);
+  border: 8px solid rgb(253, 0, 0);
+  border-radius: 10px;
+  transition: border-radius 2s, border-color 3s;
+  opacity: 1;
+}
+#info0:hover {
+  background-image: url(/assets/images/karens/karen1.png);
+  width: 130px;
+  height: 130px;
+  font-size: 1.85em;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  border-color: rgb(255, 0, 255);
+  transform: rotate(720deg);
+  border-radius: 50%;
+  transition: transform 0.7s, opacity 3s;
+  opacity: 1;
+  font-size: 0;
+
+}
+#info0:hover:after {
+  content: url(/assets/images/infos/Karen\ info.png);
+  position: absolute;
+  top: 90%;
+  right: 10%;
+  opacity: 1;
+  transition: opacity 1s 0.4s;
+}
 #info1 {
   cursor: url("/assets/images/elements/cursorHower"), pointer;
   position: absolute;
@@ -147,8 +193,8 @@ h1 {
   width: 120px;
   font-size: 25px;
   height: 120px;
-  top: 10%;
-  right: 10%;
+  top: 5%;
+  right: 11%;
   background: rgb(89, 84, 84, 0.3);
   border: 8px solid rgb(253, 0, 0);
   border-radius: 10px;
@@ -173,8 +219,8 @@ h1 {
 #info1:hover:after {
   content: url(/assets/images/infos/Karen\ info.png);
   position: absolute;
-  top: 70%;
-  right: 150%;
+  top: 90%;
+  right: 110%;
   opacity: 1;
   transition: opacity 1s 0.4s;
 }
@@ -190,8 +236,8 @@ h1 {
   width: 120px;
   font-size: 25px;
   height: 120px;
-  top: 30%;
-  right: 10%;
+  top: 22%;
+  right: 11%;
   background: rgb(89, 84, 84, 0.3);
   border: 8px solid rgb(0, 255, 0);
   border-radius: 10px;
@@ -217,8 +263,8 @@ h1 {
   content: url(/assets/images/infos/moves.png);
   position: absolute;
   font-size: 2px;
-  top: -60%;
-  right: 150%;
+  top: -20%;
+  right: 110%;
   opacity: 1;
   transition: opacity 1s 0.4s;
 }
@@ -234,8 +280,8 @@ h1 {
   width: 120px;
   font-size: 25px;
   height: 120px;
-  top: 50%;
-  right: 10%;
+  top: 39%;
+  right: 11%;
   background: rgb(89, 84, 84, 0.3);
   border: 8px solid rgb(0, 68, 255);
   border-radius: 10px;
@@ -261,8 +307,8 @@ h1 {
   content: url(/assets/images/infos/events.png);
   position: absolute;
   font-size: 2px;
-  top: -200%;
-  right: 150%;
+  top: -140%;
+  right: 110%;
   opacity: 1;
   transition: opacity 1s 0.4s;
 }
@@ -278,8 +324,8 @@ h1 {
   width: 120px;
   font-size: 25px;
   height: 120px;
-  top: 70%;
-  right: 10%;
+  top: 56%;
+  right: 11%;
   background: rgb(89, 84, 84, 0.3);
   border: 8px solid rgb(238, 255, 0);
   border-radius: 10px;
@@ -304,10 +350,267 @@ h1 {
   content: url(/assets/images/infos/stategy.png);
   position: absolute;
   font-size: 2px;
-  top: -340%;
-  right: 150%;
+  top: -260%;
+  right: 110%;
+  opacity: 1;
+  transition: opacity 1s 0.4s;
+}
+/* info 2 */
+
+#info4a {
+  cursor: url("/assets/images/elements/cursorHower"), pointer;
+  position: absolute;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  color: rgb(251, 251, 251);
+  width: 120px;
+  font-size: 25px;
+  height: 120px;
+  top: 73%;
+  right: 11%;
+  background: rgb(89, 84, 84, 0.3);
+  border: 8px solid rgb(238, 255, 0);
+  border-radius: 10px;
+  transition: border-radius 2s, border-color 3s;
+  opacity: 1;
+}
+#info4a:hover {
+  background-image: url(/assets/images/elements/dis3.png);
+  width: 130px;
+  height: 130px;
+  font-size: 1.85em;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  border-color: rgb(250, 125, 0);
+  transform: rotate(720deg);
+  border-radius: 50%;
+  transition: transform 0.7s, opacity 3s;
+  font-size: 0;
+  opacity: 1;
+}
+#info4a:hover:after {
+  content: url(/assets/images/infos/stategy.png);
+  position: absolute;
+  font-size: 2px;
+  top: -370%;
+  right: 110%;
+  opacity: 1;
+  transition: opacity 1s 0.4s;
+}
+
+
+
+#info5 {
+  cursor: url("/assets/images/elements/cursorHower"), pointer;
+  position: absolute;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  color: rgb(251, 251, 251);
+  width: 120px;
+  font-size: 25px;
+  height: 120px;
+  top: 5%;
+  right: 2%;
+  background: rgb(89, 84, 84, 0.3);
+  border: 8px solid rgb(253, 0, 0);
+  border-radius: 10px;
+  transition: border-radius 2s, border-color 3s;
+  opacity: 1;
+}
+#info5:hover {
+  background-image: url(/assets/images/karens/karen1.png);
+  width: 130px;
+  height: 130px;
+  font-size: 1.85em;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  border-color: rgb(255, 0, 255);
+  transform: rotate(720deg);
+  border-radius: 50%;
+  transition: transform 0.7s, opacity 3s;
+  opacity: 1;
+  font-size: 0;
+
+}
+#info5:hover:after {
+  content: url(/assets/images/infos/Karen\ info.png);
+  position: absolute;
+  top: 90%;
+  right: 270%;
   opacity: 1;
   transition: opacity 1s 0.4s;
 }
 
 /* info 2 */
+#info6 {
+  cursor: url("/assets/images/elements/cursorHower"), pointer;
+  position: absolute;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  color: rgb(251, 251, 251);
+  width: 120px;
+  font-size: 25px;
+  height: 120px;
+  top: 22%;
+  right: 2%;
+  background: rgb(89, 84, 84, 0.3);
+  border: 8px solid rgb(0, 255, 0);
+  border-radius: 10px;
+  transition: border-radius 2s, border-color 3s;
+  opacity: 1;
+}
+#info6:hover {
+  background-image: url(/assets/images/infos/manag.png);
+  width: 130px;
+  height: 130px;
+  font-size: 1.85em;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  border-color: rgb(255, 0, 255);
+  transform: rotate(720deg);
+  border-radius: 50%;
+  transition: transform 0.7s, opacity 3s;
+  opacity: 1;
+  font-size: 0;
+
+}
+#info6:hover:after {
+  content: url(/assets/images/infos/moves.png);
+  position: absolute;
+  font-size: 2px;
+  top: -20%;
+  right: 270%;
+  opacity: 1;
+  transition: opacity 1s 0.4s;
+}
+
+/* info 3 */
+#info7 {
+  cursor: url("/assets/images/elements/cursorHower"), pointer;
+  position: absolute;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  color: rgb(251, 251, 251);
+  width: 120px;
+  font-size: 25px;
+  height: 120px;
+  top: 39%;
+  right: 2%;
+  background: rgb(89, 84, 84, 0.3);
+  border: 8px solid rgb(0, 68, 255);
+  border-radius: 10px;
+  transition: border-radius 2s, border-color 3s;
+  opacity: 1;
+}
+#info7:hover {
+  background-image: url(/assets/images/infos/fatt.png);
+  width: 130px;
+  height: 130px;
+  font-size: 1.85em;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  border-color: rgb(255, 0, 255);
+  transform: rotate(720deg);
+  border-radius: 50%;
+  transition: transform 0.7s, opacity 3s;
+  opacity: 1;
+  font-size: 0;
+
+}
+#info7:hover:after {
+  content: url(/assets/images/infos/events.png);
+  position: absolute;
+  font-size: 2px;
+  top: -140%;
+  right: 270%;
+  opacity: 1;
+  transition: opacity 1s 0.4s;
+}
+
+#info8 {
+  cursor: url("/assets/images/elements/cursorHower"), pointer;
+  position: absolute;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  color: rgb(251, 251, 251);
+  width: 120px;
+  font-size: 25px;
+  height: 120px;
+  top: 56%;
+  right: 2%;
+  background: rgb(89, 84, 84, 0.3);
+  border: 8px solid rgb(238, 255, 0);
+  border-radius: 10px;
+  transition: border-radius 2s, border-color 3s;
+  opacity: 1;
+}
+#info8:hover {
+  background-image: url(/assets/images/elements/dis3.png);
+  width: 130px;
+  height: 130px;
+  font-size: 1.85em;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  border-color: rgb(250, 125, 0);
+  transform: rotate(720deg);
+  border-radius: 50%;
+  transition: transform 0.7s, opacity 3s;
+  font-size: 0;
+  opacity: 1;
+}
+#info8:hover:after {
+  content: url(/assets/images/infos/stategy.png);
+  position: absolute;
+  font-size: 2px;
+  top: -260%;
+  right: 270%;
+  opacity: 1;
+  transition: opacity 1s 0.4s;
+}
+
+#info9 {
+  cursor: url("/assets/images/elements/cursorHower"), pointer;
+  position: absolute;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  color: rgb(251, 251, 251);
+  width: 120px;
+  font-size: 25px;
+  height: 120px;
+  top: 73%;
+  right: 2%;
+  background: rgb(89, 84, 84, 0.3);
+  border: 8px solid rgb(238, 255, 0);
+  border-radius: 10px;
+  transition: border-radius 2s, border-color 3s;
+  opacity: 1;
+}
+#info9:hover {
+  background-image: url(/assets/images/elements/dis3.png);
+  width: 130px;
+  height: 130px;
+  font-size: 1.85em;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  border-color: rgb(250, 125, 0);
+  transform: rotate(720deg);
+  border-radius: 50%;
+  transition: transform 0.7s, opacity 3s;
+  font-size: 0;
+  opacity: 1;
+}
+#info9:hover:after {
+  content: url(/assets/images/infos/stategy.png);
+  position: absolute;
+  font-size: 2px;
+  top: -370%;
+  right: 270%;
+  opacity: 1;
+  transition: opacity 1s 0.4s;
+}

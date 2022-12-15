@@ -3,13 +3,13 @@ class Cart {
     this.ctx = ctx;
 
     this.salidas = [
-      { x: 871, y: 176 },
+      { x: 70, y: 10 },
       { x: 736, y: 152 },
       { x: 812, y: 384 },
-      { x: 552, y: 384 },
-      { x: 412, y: 104 },
+      { x: 552, y: 505 },
+      { x: 412, y: 260 },
       { x: 96, y: 120 },
-      { x: 105, y: 430 },
+      { x: 105, y: 250 },
       { x: 125, y: 577 },
     ];
     this.xy = this.salidas[Math.floor(Math.random() * this.salidas.length)];

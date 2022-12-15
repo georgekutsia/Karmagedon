@@ -143,20 +143,20 @@ class Game {
         this.babyAlert();
         this.addBaby();
       }
-      if (this.customerTime > Math.random() * 100 + 5000) { //customer
-        this.customerTime = 3000;
+      if (this.customerTime > Math.random() * 100 + 300) { //customer
+        this.customerTime = 0;
         this.addCustomer();
       }
       if (this.cartTime > Math.random() * 100 + 10000) { //cart
         this.cartTime = 0;
         this.addCart();
       }
-      if (this.foodTime > Math.random() * 100 + 8000) {  //food
+      if (this.foodTime > Math.random() * 100 + 20000) {  //food
         this.foodTime = 0;
         this.addFood();
       }
       if (this.discountTime > Math.random() * 900 + 6000) {   //discount
-        this.discountTime = 0;
+        this.discountTime = 3000;
         this.addDiscount();
       }
       if (this.upgradeTime > Math.random() * 100 + 7400) {   //upgrade
@@ -178,7 +178,7 @@ class Game {
         this.korenTime = 13500;
         this.addKoren();
         this.korenAlert()
-      }
+      } //15000            13500
 // win time game start -----------------------
       if (this.winTime >= 137800) {
         this.gameWin();
@@ -337,9 +337,9 @@ this.ctx.fillText(`Distance: ${bulletDistance.toString()}`, 230, 704);
 this.ctx.fillText(`Speed: ${this.player.speed.toString()}`, 230, 681);
 this.ctx.fillText(`Size: ${bulletSize.toString()}`, 325, 681);
 this.ctx.fillText(`Growth: ${afterSize.toString()}`, 415, 681);
-this.ctx.fillText(`Jump: ${distance.toString()}ft`, 640, 681);
-this.ctx.fillText(`Jump cooldown: ${this.player.cooldownJump}`, 760, 681);
-this.ctx.fillText(`Speed: ${this.player.boost}`, 640, 704);
+this.ctx.fillText(`Jump: ${distance.toFixed(1).toString()}ft`, 640, 681);
+this.ctx.fillText(`Jump cooldown: ${this.player.cooldownJump.toFixed(1)}`, 760, 681);
+this.ctx.fillText(`Speed: ${this.player.boost.toFixed(1)}`, 640, 704);
 if (this.score.total >= 50) {
   this.machinganTime--
     C = 67;
@@ -358,10 +358,10 @@ if (this.score.total >= 50) {
     }
 }
 if (discounting >= 1 ){
-  Q = 81
+  R = 82
 }
 if (discounting <= 1 ){
-  Q = 0
+  R = 0
 }
 if (C === 67){
   this.machinganTimeLeft = parseInt(this.machinganTime/10)
@@ -384,13 +384,13 @@ if (C === 0 && this.score.total >= 50){
     this.ctx.restore();
 
 }
-if (N === 78){
+if (T === 84){
     this.ctx.font = "18px Arial";
     this.ctx.save();
     ctx.fillStyle = "rgb(21, 209, 209)";
     ctx.fillRect(85, 638, 150, 23);
     this.ctx.fillStyle = "black";
-    this.ctx.fillText(`Shield ready: -N-`, 90, 655);
+    this.ctx.fillText(`Timeshield on: -T-`, 90, 655);
     this.ctx.restore();
 }
 if (M === 77){
@@ -411,40 +411,19 @@ if (M !== 77){
   this.ctx.fillText(`Charge blaster to 20 : ${charging.toString()}`, 242, 655);
   this.ctx.restore();
 }
-if (Q === 81){
+if (R === 82){
   this.ctx.font = "18px Arial";
   this.ctx.save();
   ctx.fillStyle = "rgb(255, 149, 0)";
   ctx.fillRect(445, 638, 300, 23);
   this.ctx.fillStyle = "black";
-  this.ctx.fillText(`Diagonal dispenser charged : ${this.chargedDisc.toString()} -Q- `, 450, 655);
+  this.ctx.fillText(`Diagonal dispenser charged : ${this.chargedDisc.toString()} -R- `, 450, 655);
   this.ctx.restore();
 }
 
-if(this.puddles.length + this.fires.length >= 6){
+if(this.puddles.length + this.fires.length >= 9){
   this.player.loseRespect()
 }
-if(this.saved.save >= 2 && this.saved.save <=3){
-  distance = 80
-} else if(
-  this.saved.save >= 4 && this.saved.save <= 5
-){
-  distance = 100
-} else if(
-  this.saved.save >= 6 && this.saved.save <= 7
-){
-  distance = 120
-} else if(
-  this.saved.save >= 8 && this.saved.save <= 9
-){
-  distance = 140
-} else if(
-  this.saved.save >= 10 
-){
-  distance = 160
-}
-
-
 
 // CTX data statistics
 // CTX data statistics
@@ -667,9 +646,30 @@ if(this.saved.save >= 2 && this.saved.save <=3){
   }
   // alerts end !!!!!! 
 
-  //Colisiones start
-
-
+  
+  
+  saving(){
+    this.saved.addSave()
+    distance += 10
+    this.player.booster += 0.5
+    this.player.cooldownJump -= 100
+    this.player.getBigRespect()
+  }
+  dying(){
+    this.player.loseBigRespect()
+    this.score.addScore()
+    distance -= 10
+    this.player.booster -= 0.5
+    this.player.cooldownJump += 100
+  }
+  dyingCus(){
+    this.player.loseCustomerRespect()
+    distance -= 0.05
+    this.player.booster -= 0.010
+    this.player.cooldownJump += 5
+  }
+  //Colisiones start..Colisiones start..Colisiones start..Colisiones start..Colisiones start..Colisiones start..
+  //Colisiones start..Colisiones start..Colisiones start..Colisiones start..Colisiones start..Colisiones start..
   checkCollisions() {
     this.winTime++;
     // puddle..puddle..puddle..puddle..puddle..puddle..puddle..puddle..puddle..puddle..puddle..puddle..puddle..
@@ -718,7 +718,6 @@ if(this.saved.save >= 2 && this.saved.save <=3){
       this.player.heats = this.player.heats.filter((heat) => {
         if (heat.collides(puddle)) {
           this.player.heats.splice(0, 1);
-          this.player.heal()
           puddle.dicrease();
           charging+=1
           if(charging >= 20){
@@ -856,10 +855,33 @@ if(this.saved.save >= 2 && this.saved.save <=3){
         this.player.hit();
         this.player.vy = -1;
         this.player.vx = -1;
-        
         return  false;
       }
       return true;
+    });
+    this.rats.forEach((rat) => {//rat con discount
+      this.discounts = this.discounts.filter((disc) => {
+        if (disc.collides(rat)) {
+          this.discounts.splice(0, 1);
+          return false;
+        } else return true;
+      });
+    });
+    this.rats.forEach((rat) => {//rat con food
+      this.foods = this.foods.filter((food) => {
+        if (food.collides(rat)) {
+          this.foods.splice(0, 1);
+          return false;
+        } else return true;
+      });
+    });
+    this.rats.forEach((rat) => {//rat con cart
+      this.carts = this.carts.filter((cart) => {
+        if (cart.collides(rat)) {
+          this.carts.splice(0, 1);
+          return false;
+        } else return true;
+      });
     });
     this.rats.forEach((rat) => {//rat con water
       this.player.waters = this.player.waters.filter((water) => {
@@ -867,6 +889,21 @@ if(this.saved.save >= 2 && this.saved.save <=3){
           this.player.waters.splice(0, 1);
           rat.lifeleft -= 1;
           rat.vx += 1;
+          console.log("rat v",)
+          if(rat.vx >= 2){
+            const discRandom = Math.floor(Math.random() * 3)
+            const foodRandom = Math.floor(Math.random() * 3)
+            if(foodRandom === 1){
+              const food = new Food(ctx, rat.x, rat.y);
+              this.foods.push(food);
+            if(discRandom === 1){
+              this.disImage = new Image()
+              this.disImage.src = "/assets/images/elements/disrat.png"
+              const discount = new Discount(ctx, rat.x + 80, rat.y, this.disImage);
+              this.discounts.push(discount);
+            }
+          }
+        }
           if(rat.lifeleft === 0 ){
             this.score.addkrat()
             this.score.addktotal1()
@@ -881,6 +918,20 @@ if(this.saved.save >= 2 && this.saved.save <=3){
           this.player.heats.splice(0, 1);
           rat.lifeleft -= 1;
           rat.vx += 1;
+          if(rat.vx >= 2){
+            const discRandom = Math.floor(Math.random() * 2)
+            const foodRandom = Math.floor(Math.random() * 2)
+            if(foodRandom === 1){
+              const food = new Food(ctx, rat.x, rat.y);
+              this.foods.push(food);
+            if(discRandom === 1){
+              this.disImage = new Image()
+              this.disImage.src = "/assets/images/elements/disrat.png"
+              const discount = new Discount(ctx, rat.x + 80, rat.y, this.disImage);
+              this.discounts.push(discount);
+            }
+          }
+        }
           if(rat.lifeleft === 0){
             this.score.addkrat()
             this.score.addktotal1()
@@ -930,8 +981,15 @@ if(this.saved.save >= 2 && this.saved.save <=3){
       this.player.waters = this.player.waters.filter((water) => {
         if (water.collides(fat)) {
           this.player.waters.splice(0, 1);
-          fat.vy -= 0.3
           charging+=1
+          fat.vy -= 0.3
+          if(fat.vy <= -1.1){
+            const foodRandom = Math.floor(Math.random() * 3)
+            if(foodRandom === 1){
+              const food = new Food(ctx, fat.x, fat.y);
+              this.foods.push(food);
+            }
+          }
           if(charging >= 20){
               M = 77
               charging = 0
@@ -945,6 +1003,14 @@ if(this.saved.save >= 2 && this.saved.save <=3){
           this.player.heats.splice(0, 1);
           charging+=1
           fat.vy -= 0.3
+          if(fat.vy <= -1.5){
+            const foodRandom = Math.floor(Math.random() * 3)
+            console.log("blasblsdjabd", foodRandom)
+            if(foodRandom === 1){
+              const food = new Food(ctx, fat.x, fat.y);
+              this.foods.push(food);
+            }
+          }
           if(charging >= 20){
             M = 77
             charging = 0
@@ -955,7 +1021,7 @@ if(this.saved.save >= 2 && this.saved.save <=3){
     this.fats.forEach((fat) => { //fat con sanders
       this.player.sanders.filter((sand) => {
         if (sand.collides(fat)) {
-          fat.vy -= 0.05
+          fat.vy -= 0.04
           return false;
         } else return true;
       });
@@ -970,6 +1036,13 @@ if(this.saved.save >= 2 && this.saved.save <=3){
     });
 // koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...
 // koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...
+      this.korens = this.korens.filter((koren) => {
+        if (koren.collides(this.player)) {
+          this.player.fireHit();
+          this.player.extraBoost -= 0.005;
+        }
+        return true;
+      });
     this.korens.forEach((koren) => {   //koren con heat
       this.player.heats = this.player.heats.filter((heat) => {
         if (heat.collides(koren)) {
@@ -999,7 +1072,7 @@ if(this.saved.save >= 2 && this.saved.save <=3){
               M = 77
               charging = 0
           }
-          if(koren.h >= 71 && !koren.truth){
+          if(koren.h >= 121 && !koren.truth){
             this.score.addkkorens()
             this.score.addktotal1()
             koren.truth = true
@@ -1036,7 +1109,7 @@ if(this.saved.save >= 2 && this.saved.save <=3){
               M = 77
               charging = 0
           }
-          if(koren.h >= 71 && !koren.truth){
+          if(koren.h >= 121 && !koren.truth){
             this.score.addkkorens()
             this.score.addktotal1()
             koren.truth = true
@@ -1067,12 +1140,12 @@ if(this.saved.save >= 2 && this.saved.save <=3){
             koren.h += 5
             koren.w += 5
           }
-          charging+=1
+          charging+= 0.1
           if(charging >= 20){
               M = 77
               charging = 0
           }
-          if(koren.h >= 71 && !koren.truth){
+          if(koren.h >= 121 && !koren.truth){
             this.score.addkkorens()
             this.score.addktotal1()
             koren.truth = true
@@ -1103,12 +1176,12 @@ if(this.saved.save >= 2 && this.saved.save <=3){
             koren.h += 5
             koren.w += 5
           }
-          charging+=1
+          charging+=0.1
           if(charging >= 20){
               M = 77
               charging = 0
           }
-          if(koren.h >= 71 && !koren.truth){
+          if(koren.h >= 121 && !koren.truth){
             this.score.addkkorens()
             this.score.addktotal1()
             koren.truth = true
@@ -1118,14 +1191,46 @@ if(this.saved.save >= 2 && this.saved.save <=3){
     })
 // goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...
 // goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...
-this.geese = this.geese.filter((goose) => { //goose con player
-  if (goose.collides(this.player)) {
-    this.player.hit();
-    this.player.hit();
-    return false;
-  }
-  return true;
-});
+    this.geese = this.geese.filter((goose) => { //goose con player
+      if (goose.collides(this.player)) {
+        this.player.hit();
+        if(discounting >= 5){
+          discounting -= 5
+        }
+        if(goose.lifeleft <= 4){
+          this.player.hit();
+        }
+        if(goose.lifeleft <= 2){
+          this.player.hit();
+        }
+        return false;
+      }
+      return true;
+    });
+    this.geese.forEach((goose) => {//goose con discount
+      this.discounts = this.discounts.filter((disc) => {
+        if (disc.collides(goose)) {
+          this.discounts.splice(0, 1);
+          return false;
+        } else return true;
+      });
+    });
+    this.geese.forEach((goose) => {//goose con food
+      this.foods = this.foods.filter((food) => {
+        if (food.collides(goose)) {
+          this.foods.splice(0, 1);
+          return false;
+        } else return true;
+      });
+    });
+    this.geese.forEach((goose) => {//goose con cart
+      this.carts = this.carts.filter((cart) => {
+        if (cart.collides(goose)) {
+          this.carts.splice(0, 1);
+          return false;
+        } else return true;
+      });
+    });
     this.geese.forEach((goose) => { //goose con fire
       this.player.heats = this.player.heats.filter((heat) => {
         if (heat.collides(goose)) {
@@ -1206,15 +1311,12 @@ this.geese = this.geese.filter((goose) => { //goose con player
         } else return true;
       });
     });
+
 //babys...babys...babys...babys...babys...babys...babys...babys...babys...babys...babys...babys...babys...
 //babys...babys...babys...babys...babys...babys...babys...babys...babys...babys...babys...babys...babys...
     this.babys = this.babys.filter((baby) => { //baby con player
       if (baby.collides(this.player)) {
-        this.saved.addSave()
-        if(this.saved.save % 3 === 0){
-          this.addFood()
-          this.player.getBigRespect()
-        }
+        this.saving()
         return false;
       }
       return true;
@@ -1223,8 +1325,7 @@ this.geese = this.geese.filter((goose) => { //goose con player
       this.player.blasters.filter((blast) => {
         if (blast.collides(baby)) {
           this.babys.splice(0,1)
-          this.player.loseBigRespect()
-          this.score.addScore()
+          this.dying()
           return false;
         } else return true;
       });
@@ -1233,8 +1334,7 @@ this.geese = this.geese.filter((goose) => { //goose con player
       this.player.sanders.filter((sand) => {
         if (sand.collides(baby)) {
           this.babys.splice(0,1)
-          this.player.loseBigRespect()
-          this.score.addScore()
+          this.dying()
           return false;
         } else return true;
       });
@@ -1245,8 +1345,7 @@ this.geese = this.geese.filter((goose) => { //goose con player
         if (baby.collides(puddle)) {
           this.babys.splice(0, 1);
           puddle.vx = 500;
-          this.player.loseBigRespect()
-          this.score.addScore()
+          this.dying()
           if(this.score.score % 1 === 0){
             distance -= 30
           }
@@ -1260,34 +1359,27 @@ this.geese = this.geese.filter((goose) => { //goose con player
         if (heat.collides(fire)) {
           this.babys.splice(0, 1);
           fire.vx = 500;
-          this.player.loseBigRespect()
-          this.score.addScore()
+          this.dying()
           return false;
         } else return true;
       });
     });
-    if(this.winTime >= 10){
+
     this.cactus.forEach((cactu) => { //baby con cactus
       this.babys = this.babys.filter((la) => {
         if (la.collides(cactu)) {
           this.babys.splice(0, 1);
           cactu.vx = 500;
-          this.player.loseBigRespect()
-          this.score.addScore()
+          this.dying()
           return false;
         } else return true;
       });
     });
-  }
 //customer...customer...customer...customer...customer...customer...customer...customer...customer...customer...
 //customer...customer...customer...customer...customer...customer...customer...customer...customer...customer...
     this.customers = this.customers.filter((cus) => { //customer con player
       if (cus.collides(this.player)) {
-        this.saved.addSave()
-        if(this.saved.save % 3 === 0){
-          this.addFood()
-          this.player.getBigRespect()
-        }
+        this.saving()
         return false;
       }
       return true;
@@ -1295,8 +1387,8 @@ this.geese = this.geese.filter((goose) => { //goose con player
     this.customers.forEach((cus) => { //customer con heat del player
       this.player.heats.filter((heat) => {
         if (heat.collides(cus)) {
+          this.dyingCus()
           cus.lifeleft -=1
-          this.player.loseCustomerRespect()
           if(cus.dead >= 50){
             this.score.score += 1
           }
@@ -1307,8 +1399,8 @@ this.geese = this.geese.filter((goose) => { //goose con player
     this.customers.forEach((cus) => { //customer con water
       this.player.waters.filter((water) => {
         if (water.collides(cus)) {
+          this.dyingCus()
           cus.lifeleft -=1
-          this.player.loseCustomerRespect()
           if(cus.dead >= 50){
             this.score.score += 1
           }
@@ -1319,8 +1411,8 @@ this.geese = this.geese.filter((goose) => { //goose con player
     this.customers.forEach((cus) => {//customer con blaster
       this.player.blasters.filter((blast) => {
         if (blast.collides(cus)) {
+          this.dyingCus()
           cus.lifeleft -=1
-          this.player.loseCustomerRespect()
           if(cus.dead >= 50){
             this.score.score += 1
           }
@@ -1331,8 +1423,8 @@ this.geese = this.geese.filter((goose) => { //goose con player
     this.customers.forEach((cus) => { //customer con sanders
       this.player.sanders.filter((sand) => {
         if (sand.collides(cus)) {
+          this.dyingCus()
           cus.lifeleft -=1
-          this.player.loseCustomerRespect()
           if(cus.dead >= 50){
             this.score.score += 1
           }
@@ -1344,7 +1436,7 @@ this.geese = this.geese.filter((goose) => { //goose con player
       this.customers = this.customers.filter((cus) => {
         if (cus.collides(puddle)) {
           cus.lifeleft -=1
-          this.player.loseCustomerRespect()
+          this.dyingCus()
           if(cus.dead >= 50){
             this.score.score += 1
           }
@@ -1356,7 +1448,7 @@ this.geese = this.geese.filter((goose) => { //goose con player
       this.customers = this.customers.filter((cus) => {
         if (cus.collides(fire)) {
           cus.lifeleft -=1
-          this.player.loseCustomerRespect()
+          this.dyingCus()
           if(cus.dead >= 50){
             this.score.score += 1
           }
@@ -1367,8 +1459,8 @@ this.geese = this.geese.filter((goose) => { //goose con player
       this.cactus.forEach((cactu) => { //customer con cactus
         this.customers = this.customers.filter((cus) => {
           if (cus.collides(cactu)) {
+            this.dyingCus()
             cus.lifeleft -=1
-            this.player.loseCustomerRespect()
             if(cus.dead >= 50){
               this.score.score += 1
             }
@@ -1380,6 +1472,11 @@ this.geese = this.geese.filter((goose) => { //goose con player
 // boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..
     this.bosss = this.bosss.filter((boss) => {     //boss con player
       if (boss.collides(this.player)) {
+        this.player.speed -= 1;
+        this.player.cooldownBullet += 600;
+        afterSize -=5
+        bulletSize -=5
+        bulletSizeExtra +=5
         this.player.hit();
         this.player.hit();
         return false;
@@ -1468,14 +1565,6 @@ this.geese = this.geese.filter((goose) => { //goose con player
         } else return true;
       });
     });
-    this.korens = this.korens.filter((koren) => {
-      if (koren.collides(this.player)) {
-        this.player.hit();
-        this.player.extraBoost -= 0.5;
-        return false;
-      }
-      return true;
-    });
     this.bosss.forEach((boss) => {      //boss con blaster
       this.player.blasters.filter((blast) => {
         if (blast.collides(boss)) {
@@ -1520,6 +1609,13 @@ this.pfront.forEach((peop) => {     //PFront
   this.player.discountings.filter((disc) => {
     if (disc.collides(peop)) {
       this.player.getSmallestRespect()
+      this.ctx.font = "20px Arial";
+      this.ctx.fillStyle = "blue";
+      this.ctx.fillText(`Thanx!:`, peop.x, peop.y);
+      this.ctx.fillStyle = "blue";
+      this.ctx.fillText(`Thanx!:`, peop.x-1, peop.y-1);
+      this.ctx.fillStyle = "aqua";
+      this.ctx.fillText(`Thanx!:`, peop.x+1, peop.y+1);
       return false;
     } else return true;
   });
@@ -1528,6 +1624,13 @@ this.pback.forEach((peop) => { //PBack
   this.player.discountings.filter((disc) => {
     if (disc.collides(peop)) {
       this.player.getSmallestRespect()
+      this.ctx.font = "20px Arial";
+      this.ctx.fillStyle = "blue";
+      this.ctx.fillText(`Thanx!:`, peop.x, peop.y);
+      this.ctx.fillStyle = "blue";
+      this.ctx.fillText(`Thanx!:`, peop.x-1, peop.y-1);
+      this.ctx.fillStyle = "aqua";
+      this.ctx.fillText(`Thanx!:`, peop.x+1, peop.y+1);
       return false;
     } else return true;
   });
@@ -1545,7 +1648,7 @@ this.pback.forEach((peop) => { //PBack
         this.player.vx = 0;
       }
     });
-    if(this.winTime >= 200){   //portal
+    if(this.winTime >= 20000){   //portal
     this.portals.forEach((port) => {
       if (port.collides(this.player)) {
         this.player.y = 300;
@@ -1553,7 +1656,7 @@ this.pback.forEach((peop) => { //PBack
       }
     });
   }
-    if(this.winTime >= 200){  //portal
+    if(this.winTime >= 20000){  //portal
     this.portals2.forEach((port) => {
       if (port.collides(this.player)) {
         this.player.y = 280;
@@ -1616,11 +1719,12 @@ this.pback.forEach((peop) => { //PBack
         this.newShoes = new Audio("/assets/audios ad/Faster running.mp3");
         this.newShoes.volume = 0.1;
         this.newShoes.play()
-        this.player.cooldownJump -= 400
-        if(this.player.cooldownJump <= 400){
-          this.player.cooldownJump = 300
+        charging+=2
+        if(charging >= 20){
+            M = 77
+            charging = 0
         }
-        distance +=10
+        T = 84 
         this.player.getSmallRespect()
         return false;
       }
@@ -1670,7 +1774,6 @@ this.pback.forEach((peop) => { //PBack
         this.line.b -= 0.5;
         this.line.a += 0.5;
         discounting += 5
-        N = 78 
         return false;
       }
       return true;

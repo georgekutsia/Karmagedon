@@ -2,14 +2,14 @@ class Rats {
   constructor(ctx) {
     this.ctx = ctx;
     this.x = this.ctx.canvas.width - 300;
-    this.salidas = [20, 240,280, 505]
+    this.salidas = [20, 240, 280, 505]
     this.y = this.salidas[Math.floor(Math.random()*this.salidas.length)]
     this.w = 0.1 * this.ctx.canvas.width;
     this.h = 0.05 * this.ctx.canvas.height;
     this.vx = -2;
     this.vy = 0;
     this.dead = 0;
-    this.lifeleft = 4;
+    this.lifeleft = 5;
     this.ratImg = new Image();
     this.ratImg.src = "/assets/images/elements/rats.png";
     this.ratImg.frame = 0;

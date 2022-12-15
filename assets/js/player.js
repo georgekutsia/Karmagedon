@@ -19,9 +19,11 @@ class Player {
     this.imgWater.src = "/assets/images/elements/waterball.png"
     this.imgSand = new Image()
     this.imgSand.src = "/assets/images/elements/sandball.png"
+    this.imgQ = new Image()
+    this.imgQ.src = "/assets/images/elements/dodgeq.png"
+    this.imgE = new Image()
+    this.imgE.src = "/assets/images/elements/dodgee.png"
     this.img.frame = 0;
-    this.altTime = 0;
-    this.goJump = ALT
     this.tick = 0;
     this.tock = 0;
     this.life = new Life(ctx);
@@ -74,6 +76,16 @@ class Player {
         this.imgJump, this.x + 5, this.y - 20, this.w -10, this.h-10
       )
     }
+    if(Q === 81){
+      this.ctx.drawImage(
+        this.imgQ, this.x - 5, this.y - 20, this.w -25, this.h - 15 
+      )
+    }
+    if(E === 69){
+      this.ctx.drawImage(
+        this.imgE, this.x + 31, this.y - 20, this.w -25, this.h - 15 
+      )
+    }
     if(Z === 90){
       this.ctx.drawImage(
         this.imgFire, this.x - 15, this.y + 10, this.w - 20, this.h - 20
@@ -117,9 +129,6 @@ class Player {
     this.respect.move()
     this.formins.move()
     this.scoreback.move()
-    if(ALT === 16){
-
-    }
     // LIMITES DEL CANVAS =>//
     if (this.y < 0) {
       this.y = 0;
@@ -215,6 +224,35 @@ class Player {
       this.x += distance;
     }
   }
+
+  dodgeq() {
+    if (this.direction === "top") {
+      this.x = this.x -50
+    }
+    if (this.direction === "down") {
+      this.x = this.x + 50;;
+    }
+    if (this.direction === "left") {
+      this.y = this.y + 50;;
+    }
+    if (this.direction === "right") {
+      this.y = this.y - 50;;
+    }
+  }
+  dodgee() {
+    if (this.direction === "top") {
+      this.x = this.x + 50
+    }
+    if (this.direction === "down") {
+      this.x = this.x - 50;;
+    }
+    if (this.direction === "left") {
+      this.y = this.y - 50;;
+    }
+    if (this.direction === "right") {
+      this.y = this.y + 50;;
+    }
+  }
       
     keyDown(key) {
     this.boost = 4 + this.booster + this.extraBoost;
@@ -279,12 +317,12 @@ class Player {
       this.megablaster();
       M = 0
     }
-    if (key === Q) {
+    if (key === R) {
       this.discounting();
       this.discounting1();
       this.discounting2();
       this.discounting3();
-      discounting -=1
+      discounting -= 1
     }
     if (key === Z) {
       this.heater();
@@ -295,9 +333,9 @@ class Player {
         Z = 90;
       }, this.cooldownBullet);
     }
-    if (key === N) {
+    if (key === T) {
       this.aurar();
-      N = 0;
+      T = 0;
     }
     if (key === B) {
       this.sander();
@@ -317,12 +355,24 @@ class Player {
     }
     if (key === ALT) {
       this.jump();
-      setTimeout(function () {
         ALT = 0;
-      }, 20);
       setTimeout(function () {
         ALT = 16;
       }, this.cooldownJump);
+    }
+    if (key === Q) {
+      this.dodgeq();
+        Q = 0;
+      setTimeout(function () {
+        Q = 81;
+      }, this.cooldownJump + 1000);
+    }
+    if (key === E) {
+      this.dodgee();
+        E = 0;
+      setTimeout(function () {
+        E = 69;
+      }, this.cooldownJump + 1000);
     }
   }
 

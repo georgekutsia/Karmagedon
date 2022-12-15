@@ -1,17 +1,17 @@
 class Discount {
-    constructor(ctx) {
+    constructor(ctx, discx, discy, image) {
       this.ctx = ctx;
 
       this.salidas = [
-        {x:10, y:15}, {x:10, y:584},
-        {x:323, y:15}, {x:323, y:584},
-        {x:645, y:15}, {x:645, y:584}, 
-        {x:950, y:15}, {x:950, y:584}, 
+        {x:10, y:20}, {x:10, y:584},
+        {x:323, y:20}, {x:323, y:250},
+        {x:645, y:20}, {x:645, y:584}, 
+        {x:950, y:20}, {x:800, y:260}, 
       ]
       this.xy = this.salidas[Math.floor(Math.random()*this.salidas.length)]
-      this.x = this.xy.x;
-      this.y = this.xy.y;
-      this.w = 0.05 * this.ctx.canvas.width;
+      this.x = discx || this.xy.x;
+      this.y = discy || this.xy.y;
+      this.w = 0.04 * this.ctx.canvas.width;
       this.h = 0.04 * this.ctx.canvas.height;
       this.a = new Image();
       this.a.src = "/assets/images/elements/dis0.png";
@@ -21,11 +21,11 @@ class Discount {
       this.c.src = "/assets/images/elements/dis2.png";
       this.total = 0;
       this.randomImage = [this.a, this.b, this.c]
-      this.image = this.randomImage[Math.floor(Math.random()*this.randomImage.length)]
+      this.image = image || this.randomImage[Math.floor(Math.random()*this.randomImage.length)]
       this.image.frame = 0;
   
       this.tick = 0;
-      this.tock = 1000;
+      this.tock = 800;
     }
   
     draw() {
@@ -53,10 +53,11 @@ class Discount {
         this.image.frame = 0;
       }
       this.ctx.font = "18px Arial";
-      ctx.fillStyle = "rgb(251, 209, 209)";
-      ctx.fillRect(this.x +10, this.y - 21, 40, 20);
       this.ctx.fillStyle = "red";
-      this.order = this.ctx.fillText(`${this.tock.toString()}`, this.x + 15, this.y - 3);
+      this.ctx.fillText(`${this.tock.toString()}`, this.x + 13, this.y - 5);
+      this.ctx.fillText(`${this.tock.toString()}`, this.x + 17, this.y - 1);
+      this.ctx.fillStyle = "lime";
+      this.ctx.fillText(`${this.tock.toString()}`, this.x + 15, this.y - 3);
       if (this.tock <= 0){
         this.x = -100
       }

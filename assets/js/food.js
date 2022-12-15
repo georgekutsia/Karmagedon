@@ -1,13 +1,13 @@
 class Food {
-    constructor(ctx) {
+    constructor(ctx, foodx, foody) {
       this.ctx = ctx;
 
       this.salidas = [
-        {x:310, y:400}, {x:310, y:200}, {x:125, y:15}, {x:155, y:320}, {x:900, y:420}, {x:805, y:120}, {x:950, y:40}
+        {x:310, y:10}, {x:310, y:260}, {x:125, y:15}, {x:155, y:320}, {x:900, y:420}, {x:805, y:505}, {x:950, y:40}
       ]
       this.xy = this.salidas[Math.floor(Math.random()*this.salidas.length)]
-      this.x = this.xy.x;
-      this.y = this.xy.y;
+      this.x = foodx || this.xy.x;
+      this.y = foody || this.xy.y;
       this.w = 45;
       this.h = 40;
       this.cartImg = new Image();
@@ -15,7 +15,7 @@ class Food {
       this.cartImg.frame = 0;
   
       this.tick = 0;
-      this.tock = 0;
+      this.tock = 900;
     }
   
     draw() {
@@ -34,7 +34,7 @@ class Food {
   
     move() {
       this.tick++;
-      this.tock++;
+      this.tock--;
       if (this.tick > 40) {
         this.tick = 0;
         this.cartImg.frame++;
@@ -42,7 +42,13 @@ class Food {
       if (this.cartImg.frame > 15) {
         this.cartImg.frame = 0;
       }
-      if (this.tock >= 800){
+      this.ctx.font = "18px Arial";
+      this.ctx.fillStyle = "red";
+      this.ctx.fillText(`${this.tock.toString()}`, this.x + 9, this.y - 5);
+      this.ctx.fillText(`${this.tock.toString()}`, this.x + 13, this.y - 1);
+      this.ctx.fillStyle = "lime";
+      this.ctx.fillText(`${this.tock.toString()}`, this.x + 11, this.y - 3);
+      if (this.tock <= 0){
         this.x = -100
       }
     }
