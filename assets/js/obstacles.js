@@ -57,6 +57,7 @@ class Puddle{
     if (this.puddle.frame > 4) {
       this.puddle.frame = 0;
     }
+
   }
   increase(){
     this.h +=20;
@@ -97,8 +98,8 @@ class Fire{
     this.xy = this.salidas[Math.floor(Math.random()*this.salidas.length)]
     this.x = this.xy.x;
     this.y = this.xy.y;
-    this.w = 20;
-    this.h = 20;
+    this.w = 25;
+    this.h = 25;
     this.fire = new Image();
     this.fire.src = "/assets/images/elements/flames.png";
     this.worning = new Image();
@@ -140,6 +141,7 @@ class Fire{
     if (this.fire.frame > 4) {
       this.fire.frame = 0;
     }
+
   }
   increase(){
     this.h += 15;

@@ -23,6 +23,11 @@ class Player {
     this.imgQ.src = "/assets/images/elements/dodgeq.png"
     this.imgE = new Image()
     this.imgE.src = "/assets/images/elements/dodgee.png"
+    this.bodyImg = new Image();
+    this.bodyImg.src = "/assets/images/elements/body.png"
+    this.throwerImg = new Image();
+    this.throwerImg.src = "/assets/images/elements/backpack.png"
+    this.ctx.font = "20px Arial";
     this.img.frame = 0;
     this.tick = 0;
     this.tock = 0;
@@ -42,6 +47,7 @@ class Player {
     this.cooldownJump = 3000;   
     this.cooldownJumpTick = 3000;   
     this.jumptimer = 20000; //quizás haga algo para disminuirlo o aumentar su distancia
+    this.luck = 1
   }
   
   draw() {
@@ -59,6 +65,14 @@ class Player {
       );
       // console.log("x",this.x)
       // console.log("y",this.y)
+      this.ctx.drawImage(
+        this.bodyImg, 600, 660, 50, 50
+      )
+      this.ctx.drawImage(
+        this.throwerImg, 230, 665, 70, 40
+      )
+
+      
     if(this.y + this.h > this.ctx.canvas.height -100 && this.x + this.w > this.ctx.canvas.width - 520 &&this.x + this.w < this.ctx.canvas.width - 470){
       ctx.fillRect(this.x - 11, this.y - 21, 70, 22);
       ctx.fillStyle = "rgb(251, 209, 209)";
@@ -96,7 +110,7 @@ class Player {
         this.imgWater, this.x + 35, this.y + 10, this.w - 19, this.h - 19
       )
     }
-    if(B === 66){
+    if(N === 78){
       this.ctx.drawImage(
         this.imgSand, this.x + 10, this.y + 38, this.w - 22, this.h - 22
       )
@@ -298,7 +312,6 @@ class Player {
       if (key === V) {
       this.tick++
       if(this.tick >= 10){
-
         this.watererExtraPlus();
         this.watererPlus();
         this.watererPlusExtra();
@@ -337,11 +350,11 @@ class Player {
       this.aurar();
       T = 0;
     }
-    if (key === B) {
+    if (key === N) {
       this.sander();
-        B = 0;
+        N = 0;
         setTimeout(function () {
-        B = 66;
+        N = 78;
       }, 20000);
     }
     if (key === X) {

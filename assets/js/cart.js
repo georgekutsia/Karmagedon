@@ -1,5 +1,5 @@
 class Cart {
-  constructor(ctx) {
+  constructor(ctx, cartx, carty) {
     this.ctx = ctx;
 
     this.salidas = [
@@ -13,8 +13,8 @@ class Cart {
       { x: 125, y: 577 },
     ];
     this.xy = this.salidas[Math.floor(Math.random() * this.salidas.length)];
-    this.x = this.xy.x;
-    this.y = this.xy.y;
+    this.x = cartx || this.xy.x;
+    this.y = carty||this.xy.y;
     this.w = 43;
     this.h = 47;
     this.cartImg = new Image();

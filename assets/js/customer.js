@@ -35,7 +35,7 @@ class Customer {
     this.deadSays = [
       "What a horrible death!",
       "Im dead now!",
-      "Why manager? why!?",
+      "Why man!? why!?",
       "This hurts so much!",
       "So much blood!!"
     ]
@@ -140,8 +140,8 @@ class Customer {
   }
 
   collides(player) {
-    const colX = this.x <= player.x + player.w && this.x + this.w > player.x;
-    const colY = this.y + this.h > player.y && this.y < player.y + player.h;
+    const colX = this.x + 10 <= player.x + player.w && this.x + this.w - 20 > player.x;
+    const colY = this.y + this.h-5 > player.y && this.y + 10 < player.y + player.h;
     return colX && colY;
   }
 }

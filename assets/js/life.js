@@ -51,7 +51,7 @@ class Life {
     }
   }
   gainLife() {
-    this.total += 2;
+    this.total += 1;
     this.healAudio = new Audio("/assets/audios ad/Sanar.mp3");
     this.healAudio.volume = 0.15;
     this.healAudio.play();
