@@ -20,25 +20,21 @@ class Customer {
                     "/assets/images/elements/customer13.png", 
                     "/assets/images/elements/customer8.png", 
                     "/assets/images/elements/customer15.png"]
-    this.says = [
-      "Such a nice place",
-      "I'ts beautiful!",
-      "I love this mall",
-      "Ironmall is the best",
-      "I hope I don't die",
-      "Happy to be alive",
-      "Hope nothing goes wrong",
-      "What a clean place",
-      "Just enjoying my life",
-      "I like being alive so much"
-    ]
-    this.deadSays = [
-      "What a horrible death!",
-      "Im dead now!",
-      "Why man!? why!?",
-      "This hurts so much!",
-      "So much blood!!"
-    ]
+    this.says = [ "Such a nice place",
+                  "I'ts beautiful!",
+                  "I love this mall",
+                  "Ironmall is the best",
+                  "I hope I don't die",
+                  "Happy to be alive",
+                  "Hope nothing goes wrong",
+                  "What a clean place",
+                  "Just enjoying my life",
+                  "I like being alive so much" ]
+    this.deadSays = [ "What a horrible death!",
+                    "Im dead now!",
+                    "Why man!? why!?",
+                    "This hurts so much!",
+                    "So much blood!!" ]
     this.image = this.images[Math.floor(Math.random() * this.images.length)]
     this.say = this.says[Math.floor(Math.random() * this.says.length)]
     this.deadSay = this.deadSays[Math.floor(Math.random() * this.deadSays.length)]

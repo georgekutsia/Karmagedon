@@ -86,6 +86,14 @@ u {
   display: none;
   margin: 0px;
 }
+#poisoned {
+  color: rgb(214, 59, 245);
+  display: inline-flex;
+  border: 3px solid rgb(157, 6, 177);
+  padding: 2px 4px;
+  display: none;
+  margin: 0px;
+}
 .good-alert {
   color: chocolate;
   display: inline-flex;

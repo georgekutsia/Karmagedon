@@ -46,7 +46,7 @@ class Player {
     this.cooldownBullet = 3000;
     this.cooldownJump = 3000;   
     this.cooldownJumpTick = 3000;   
-    this.jumptimer = 20000; //quizás haga algo para disminuirlo o aumentar su distancia
+    this.jumptimer = 20000; //quizás haga ala para disminuirlo o aumentar su distancia
     this.luck = 1
   }
   
@@ -297,6 +297,7 @@ class Player {
       this.imgJump.src = "/assets/images/elements/jumpleft.png"
 
     }
+
     if (key === C) {
       this.tick++
       this.tock ++
@@ -324,8 +325,6 @@ class Player {
     if (key === DOWN || key === S) {this.vy = 0;}
     if (key === RIGHT || key === D) {this.vx = 0;}
     if (key === LEFT || key === A) {this.vx = 0;}
-
-
     if (key === M) {
       this.megablaster();
       M = 0
@@ -367,6 +366,16 @@ class Player {
       }, this.cooldownBullet);
     }
     if (key === ALT) {
+      if(Z == 0, X == 0, N == 0, Q == 0, E == 0){
+        this.discounting()
+        this.discounting1()
+        this.discounting2()
+        this.discounting3()
+        this.megablast1()
+        this.megablast2()
+        this.megablast3()
+        this.megablast4()
+      }
       this.jump();
         ALT = 0;
       setTimeout(function () {
@@ -387,6 +396,7 @@ class Player {
         E = 69;
       }, this.cooldownJump + 1000);
     }
+
   }
 
   aurar() {
@@ -449,7 +459,83 @@ class Player {
     discount.vy = -2
     this.discountings.push(discount);
   }
-
+    megablast1(){
+      const blaster = new Megablaster(
+        this.ctx,
+        this.x + 10,
+        this.y - 20,
+        this
+        );
+        blaster.vx += 0.5;
+        blaster.vy = 0;
+        setTimeout(function(){
+          blaster.blasterImg.src = "/assets/images/munición/pn.png";
+          blaster.vx += 3
+        }, 3000)
+        setTimeout(function(){
+          blaster.vx -= 8
+        blaster.blasterImg.src = "/assets/images/munición/pn.png";
+        }, 5200)
+        blaster.blasterImg.src = "/assets/images/munición/pn.png";
+    this.blasters.push(blaster);
+    }
+    megablast2(){
+      const blaster = new Megablaster(
+        this.ctx,
+        this.x + 10,
+        this.y - 20,
+        this
+      );
+      blaster.vx -= 0.5;
+      blaster.vy = 0;
+      setTimeout(function(){
+        blaster.vx -= 3
+      }, 3000)
+      setTimeout(function(){
+        blaster.vx += 8
+      blaster.blasterImg.src = "/assets/images/munición/SandRight.png";
+      }, 5200)
+      blaster.blasterImg.src = "/assets/images/munición/SandLeft.png";
+    this.blasters.push(blaster);
+    }
+    megablast3(){
+      const blaster = new Megablaster(
+        this.ctx,
+        this.x + 10,
+        this.y - 20,
+        this
+      );
+      blaster.vx = 0;
+      blaster.vy -= 0.5;
+      setTimeout(function(){
+        blaster.vy -= 3
+      }, 3000)
+      setTimeout(function(){
+        blaster.vy += 8
+      blaster.blasterImg.src = "/assets/images/munición/SandDown.png";
+      }, 5200)
+      blaster.blasterImg.src = "/assets/images/munición/SandUp.png";
+    this.blasters.push(blaster);
+    }
+    megablast4(){
+      const blaster = new Megablaster(
+        this.ctx,
+        this.x + 10,
+        this.y - 20,
+        this
+      );
+      blaster.vx = 0;
+      blaster.vy += 0.5;
+      setTimeout(function(){
+        blaster.vy += 3
+      }, 3000)
+      setTimeout(function(){
+        blaster.vy -= 8
+      blaster.blasterImg.src = "/assets/images/munición/sandup.png";
+      }, 5200)
+      blaster.blasterImg.src = "/assets/images/munición/SandDown.png";
+    this.blasters.push(blaster);
+    }
   megablaster() {
     const blaster = new Megablaster(
       this.ctx,
@@ -855,10 +941,6 @@ class Player {
   }
   this.waters.push(water);
 }
-
-
-
-
 drawOuch() {
   this.ctx.font = "18px Arial";
   this.ctx.save();
@@ -901,10 +983,10 @@ drawSorry() {
 drawSmash() {
   this.ctx.font = "18px Arial";
   this.ctx.save();
-  ctx.fillRect(this.x - 42, this.y - 21, 175, 22);
+  ctx.fillRect(this.x - 57, this.y - 21, 175, 22);
   ctx.fillStyle = "rgb(251, 209, 209)";
   this.ctx.fillStyle = "black";
-  this.order = this.ctx.fillText("I'm being smashed!", this.x - 30, this.y - 3);
+  this.order = this.ctx.fillText("I'm being smashed!", this.x - 55, this.y - 3);
   this.ctx.restore();
 }
 }

@@ -3,7 +3,7 @@ class Fat {
     this.ctx = ctx;
     this.salidas = [311,630,940,0]
     this.x = this.salidas[Math.floor(Math.random() * this.salidas.length)]
-    this.y = this.ctx.canvas.height - 125;
+    this.y = this.ctx.canvas.height - 165;
     this.w = 0.07 * this.ctx.canvas.width;
     this.h = 0.15 * this.ctx.canvas.height;
     this.vy = -0.3;

@@ -11,6 +11,9 @@ class Game {
     this.upgrade = new Upgrade(ctx);
     this.upBullet = new Upbullet(ctx);
     this.saved = new Saved(ctx);
+    this.weird1 = 0
+    this.iceTime = 0
+    this.poisonedTime = 2000
     this.cactus = [
       new Cactus(ctx, 370, 210, 40, 40, "/assets/images/fondos/cact1.png"), new Cactus(ctx, 600, 200, 50, 50, "/assets/images/fondos/cact3.png"),
       new Cactus(ctx, 820, 320, 30, 40, "/assets/images/fondos/cact5.png"), new Cactus(ctx, 780, 440, 40, 40, "/assets/images/fondos/cact4.png"),
@@ -106,10 +109,10 @@ class Game {
         this.addRat();
         if(this.winTime >= 48500){
           this.ratTime = 700
+          this.addRat();
         }
       }
       if (this.fatTime > Math.random() * 400 + 1900) { //fat
-        console.log("ya")
         this.fatTime = 0;
         this.fatAlert();
         this.addFat();
@@ -178,11 +181,11 @@ class Game {
         this.korenTime = 13500;
         this.addKoren();
         this.korenAlert()
-      } //15000            13500
+      } 
 // win time game start -----------------------
       if (this.winTime >= 137800) {
         this.gameWin();
-      }   //acaba a las 21 con tick del tiempo en 15
+      } 
       if (this.winTime % 55000 === 0) {
         this.almostOver = new Audio("/assets/audio/It’s almost over.mp3");
         this.almostOver.volume = 0.3;
@@ -234,7 +237,7 @@ class Game {
     clearInterval(window.timerInterval);
   }
   clear() {
-    this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
+    this.ctx.clearRect(this.weird1, 0, this.ctx.canvas.width, this.ctx.canvas.height);
     this.karens = this.karens.filter((e) => e.isVisible());
     this.rats = this.rats.filter((e) => e.isVisible());
     this.fats = this.fats.filter((e) => e.isVisible());
@@ -256,7 +259,6 @@ class Game {
     this.player.waters = this.player.waters.filter((e) => e.isVisible());
     this.player.sanders = this.player.sanders.filter((e) => e.isVisible());
     this.player.discountings = this.player.discountings.filter((e) => e.isVisible());
-
     if (this.karens.length <= 0) { const alert = document.getElementById("karens-alert"); alert.style.display = "none";}
     if (this.rats.length <= 0) { const alert = document.getElementById("rat-alert"); alert.style.display = "none";}
     if (this.fats.length <= 0) { const alert = document.getElementById("fat-alert"); alert.style.display = "none";}
@@ -288,6 +290,7 @@ class Game {
     this.korens.forEach((e) => e.draw());
     this.babys.forEach((e) => e.draw());
     this.customers.forEach((e) => e.draw());
+    this.iceTimer = 300 - chance * 50
     if(this.winTime >= 100){
       this.pback.forEach((e) => e.draw());
     }
@@ -309,8 +312,8 @@ class Game {
     if(this.winTime >= 10){
       this.cactus.forEach((e) => e.draw());
     }
-    this.rats.forEach((e) => e.draw());
     this.fats.forEach((e) => e.draw());
+    this.rats.forEach((e) => e.draw());
     this.carts.forEach((e) => e.draw());
     this.foods.forEach((e) => e.draw());
     this.upgrades.forEach((e) => e.draw());
@@ -319,124 +322,132 @@ class Game {
     this.geese.forEach((e) => e.draw());
     this.token.draw();
     this.line.draw();
-// CTX data statistics
-// CTX data statistics
-this.bodyImg = new Image();
-this.bodyImg.src = "/assets/images/elements/body.png"
-this.thrower = new Image();
-this.thrower.src = "/assets/images/elements/.png"
-this.ctx.font = "20px Arial";
-this.ctx.fillStyle = "silver";
-this.ctx.save();
-ctx.fillStyle = "rgb(1, 2, 2)";
-this.ctx.font = "30px Arial";
-this.ctx.fillStyle = "white";
-this.ctx.restore();
-this.ctx.fillText(`Cooldown: ${this.player.cooldownBullet.toString()}`, 450, 704);
-this.ctx.fillText(`Distance: ${bulletDistance.toString()}`, 310, 704);
-this.ctx.fillText(`Speed: ${this.player.speed.toString()}`, 310, 681);
-this.ctx.fillText(`Size: ${bulletSize.toString()}`, 405, 681);
-this.ctx.fillText(`Growth: ${afterSize.toString()}`, 495, 681);
-this.ctx.fillText(`Jump: ${distance.toFixed(1).toString()}ft`, 640, 681);
-this.ctx.fillText(`Jump cooldown: ${this.player.cooldownJump.toFixed(1)}`, 760, 681);
-this.ctx.fillText(`Speed: ${this.player.boost.toFixed(1)}`, 640, 704);
-if (this.score.total >= 50) {
-  this.machinganTime--
-    C = 67;
-    V = 86;
-    if(this.machinganTime <= 0){
-      C = 0;
-      V = 0;
-      this.machinganTime = 0
-      this.machinganRestore --
-      if(this.machinganRestore <= 0){
-        this.machinganTime = 300
-        this.machinganRestore = 600
+    // CTX data statistics
+    // CTX data statistics
+    this.ctx.font = "20px Arial";
+    this.ctx.fillStyle = "silver";
+    this.ctx.save();
+    ctx.fillStyle = "rgb(1, 2, 2)";
+    this.ctx.font = "30px Arial";
+    this.ctx.fillStyle = "white";
+    this.ctx.restore();
+    this.ctx.fillText(`Cooldown: ${this.player.cooldownBullet.toString()}`, 450, 704);
+    this.ctx.fillText(`Distance: ${bulletDistance.toString()}`, 310, 704);
+    this.ctx.fillText(`Speed: ${this.player.speed.toString()}`, 310, 681);
+    this.ctx.fillText(`Size: ${bulletSize.toString()}`, 405, 681);
+    this.ctx.fillText(`Growth: ${afterSize.toString()}`, 495, 681);
+    this.ctx.fillText(`Jump: ${distance.toFixed(1).toString()}ft`, 640, 681);
+    this.ctx.fillText(`Jump cooldown: ${this.player.cooldownJump.toFixed(1)}`, 760, 681);
+    this.ctx.fillText(`Speed: ${this.player.booster.toFixed(1)}`, 640, 704);
+    if (this.score.total >= 50) {
+      this.machinganTime--
         C = 67;
         V = 86;
+        if(this.machinganTime <= 0){
+          C = 0;
+          V = 0;
+          this.machinganTime = 0
+          this.machinganRestore --
+          if(this.machinganRestore <= 0){
+            this.machinganTime = 300
+            this.machinganRestore = 600
+            C = 67;
+            V = 86;
+          }
+        }
+    }
+    if (discounting >= 1 ){
+      R = 82
+    }
+    if (discounting <= 1 ){
+      R = 0
+    }
+    if(this.weird1 === 1010){
+      const poison = document.getElementById("poisoned");
+      poison.style.display = "inline-block";
+      this.poisonedTime--
+      this.ctx.font = "23px Sans";
+      ctx.fillStyle = "green";
+      ctx.fillRect(1020, 295, 165, 28);
+      this.ctx.fillStyle = "purple";
+      this.ctx.fillText(`Poisoned for ${this.poisonedTime.toString()}`, 1025, 315);
+      if(this.poisonedTime <= 0){
+        this.weird1 = 0
+      this.poisonedTime = 1000
       }
     }
-}
+    if (C === 67){
+      this.machinganTimeLeft = parseInt(this.machinganTime/10)
+        this.ctx.font = "18px Arial";
+        this.ctx.save();
+        ctx.fillStyle = "green";
+        ctx.fillRect(748, 638, 260, 23);
+        this.ctx.fillStyle = "black";
+        this.ctx.fillText(`Machinegun Active for ${this.machinganTimeLeft.toString()}: -C/V- `, 750, 655);
+        this.ctx.restore();
+    }
+    if (C === 0 && this.score.total >= 50){
+        this.machinganRestoreLeft = parseInt(this.machinganRestore/10)
+        this.ctx.font = "18px Arial";
+        this.ctx.save();
+        ctx.fillStyle = "indianred";
+        ctx.fillRect(755, 638, 250, 23);
+        this.ctx.fillStyle = "black";
+        this.ctx.fillText(`Machinegun Reactivated in ${this.machinganRestoreLeft.toString()} `, 760, 655);
+        this.ctx.restore();
+    }
+    if (T === 84){
+        this.ctx.font = "18px Arial";
+        this.ctx.save();
+        ctx.fillStyle = "rgb(21, 209, 209)";
+        ctx.fillRect(85, 638, 150, 23);
+        this.ctx.fillStyle = "black";
+        this.ctx.fillText(`Timeshield on: -T-`, 90, 655);
+        this.ctx.restore();
+    }
+    if (M === 77 && this.score.total >= 20){
+      this.ctx.font = "18px Arial";
+      this.ctx.save();
+      ctx.fillStyle = "rgb(255, 149, 0)";
+      ctx.fillRect(245, 638, 190, 23);
+      this.ctx.fillStyle = "black";
+      this.ctx.fillText(`Sandblaster ready: -M- `, 250, 655);
+      this.ctx.restore();
+    } 
+    if (this.score.total <= 19){
+      this.ctx.font = "18px Arial";
+      this.ctx.save();
+      ctx.fillStyle = "rgb(86, 6, 6)";
+      ctx.fillRect(245, 638, 190, 23);
+      this.ctx.fillStyle = "white";
+      this.ctx.fillText(`Megablaster: pending.. `, 250, 655);
+      this.ctx.restore();
+    } 
+    if (M !== 77 && this.score.total >= 20){
+      this.ctx.font = "18px Arial";
+      this.ctx.save();
+      ctx.fillStyle = "rgb(255, 149, 0)";
+      ctx.fillRect(240, 638, 200, 23);
+      this.ctx.fillStyle = "black";
+      this.ctx.fillText(`Charge blaster to 20 : ${charging.toString()}`, 242, 655);
+      this.ctx.restore();
+    }
+    if (R === 82){
+      this.ctx.font = "18px Arial";
+      this.ctx.save();
+      ctx.fillStyle = "rgb(255, 149, 0)";
+      ctx.fillRect(445, 638, 300, 23);
+      this.ctx.fillStyle = "black";
+      this.ctx.fillText(`Diagonal dispenser charged : ${this.chargedDisc.toString()} -R- `, 450, 655);
+      this.ctx.restore();
+    }
 
-if (discounting >= 1 ){
-  R = 82
-}
-if (discounting <= 1 ){
-  R = 0
-}
-if (C === 67){
-  this.machinganTimeLeft = parseInt(this.machinganTime/10)
-    this.ctx.font = "18px Arial";
-    this.ctx.save();
-    ctx.fillStyle = "green";
-    ctx.fillRect(748, 638, 260, 23);
-    this.ctx.fillStyle = "black";
-    this.ctx.fillText(`Machinegun Active for ${this.machinganTimeLeft.toString()}: -C/V- `, 750, 655);
-    this.ctx.restore();
-}
-if (C === 0 && this.score.total >= 50){
-    this.machinganRestoreLeft = parseInt(this.machinganRestore/10)
-    this.ctx.font = "18px Arial";
-    this.ctx.save();
-    ctx.fillStyle = "indianred";
-    ctx.fillRect(755, 638, 250, 23);
-    this.ctx.fillStyle = "black";
-    this.ctx.fillText(`Machinegun Reactivated in ${this.machinganRestoreLeft.toString()} `, 760, 655);
-    this.ctx.restore();
+    if(this.puddles.length + this.fires.length >= 9){
+      this.player.loseRespect()
+    }
 
-}
-if (T === 84){
-    this.ctx.font = "18px Arial";
-    this.ctx.save();
-    ctx.fillStyle = "rgb(21, 209, 209)";
-    ctx.fillRect(85, 638, 150, 23);
-    this.ctx.fillStyle = "black";
-    this.ctx.fillText(`Timeshield on: -T-`, 90, 655);
-    this.ctx.restore();
-}
-if (M === 77 && this.score.total >= 20){
-  this.ctx.font = "18px Arial";
-  this.ctx.save();
-  ctx.fillStyle = "rgb(255, 149, 0)";
-  ctx.fillRect(245, 638, 190, 23);
-  this.ctx.fillStyle = "black";
-  this.ctx.fillText(`Sandblaster ready: -M- `, 250, 655);
-  this.ctx.restore();
-} 
-if (this.score.total <= 19){
-  this.ctx.font = "18px Arial";
-  this.ctx.save();
-  ctx.fillStyle = "rgb(86, 6, 6)";
-  ctx.fillRect(245, 638, 190, 23);
-  this.ctx.fillStyle = "white";
-  this.ctx.fillText(`Megablaster: pending.. `, 250, 655);
-  this.ctx.restore();
-} 
-if (M !== 77 && this.score.total >= 20){
-  this.ctx.font = "18px Arial";
-  this.ctx.save();
-  ctx.fillStyle = "rgb(255, 149, 0)";
-  ctx.fillRect(240, 638, 200, 23);
-  this.ctx.fillStyle = "black";
-  this.ctx.fillText(`Charge blaster to 20 : ${charging.toString()}`, 242, 655);
-  this.ctx.restore();
-}
-if (R === 82){
-  this.ctx.font = "18px Arial";
-  this.ctx.save();
-  ctx.fillStyle = "rgb(255, 149, 0)";
-  ctx.fillRect(445, 638, 300, 23);
-  this.ctx.fillStyle = "black";
-  this.ctx.fillText(`Diagonal dispenser charged : ${this.chargedDisc.toString()} -R- `, 450, 655);
-  this.ctx.restore();
-}
-
-if(this.puddles.length + this.fires.length >= 9){
-  this.player.loseRespect()
-}
-
-// CTX data statistics
-// CTX data statistics
+    // CTX data statistics
+    // CTX data statistics
 
 
     if (this.winTime > 600) {
@@ -852,6 +863,10 @@ if(this.puddles.length + this.fires.length >= 9){
         this.player.hit();
         this.player.vy = -1;
         this.player.vx = -1;
+        this.weird1 = 1010
+        if(this.poisonedTime <= 0){
+          this.weird = 1
+        }
         return  false;
       }
       return true;
@@ -887,7 +902,7 @@ if(this.puddles.length + this.fires.length >= 9){
           rat.lifeleft -= 1;
           rat.vx += 1;
         this.checkCharger()
-          const discRandom = Math.floor(Math.random() * 8 - chance)
+          const discRandom = Math.floor(Math.random() * 10 - chance)
           const foodRandom = Math.floor(Math.random() * 5 - chance)
           if(foodRandom === 1){
             const food = new Food(ctx, rat.x, rat.y + 40);
@@ -1207,6 +1222,7 @@ if(this.puddles.length + this.fires.length >= 9){
       this.player.heats = this.player.heats.filter((heat) => {
         if (heat.collides(goose)) {
           goose.lifeleft -= 1 
+          const foodRandom = Math.floor(Math.random() * 8 - chance)
           if(goose.lifeleft <= 0){
             this.score.addkgoose()
             this.score.addktotal1()
@@ -1214,6 +1230,10 @@ if(this.puddles.length + this.fires.length >= 9){
           this.player.heats.splice(0, 1);
           if (goose.x < this.player.x) {
             goose.x -= 20;
+            if(foodRandom === 1){
+              const food = new Food(ctx, goose.x - 80, goose.y);
+              this.foods.push(food);
+            }
           }
           if (goose.x > this.player.x) {
             goose.x += 20;
@@ -1223,6 +1243,10 @@ if(this.puddles.length + this.fires.length >= 9){
           }
           if (goose.y > this.player.y) {
             goose.y += 20;
+            if(foodRandom === 1){
+              const food = new Food(ctx, goose.x, goose.y + 80);
+              this.foods.push(food);
+            }
           }
         this.checkCharger()
         } else return true;
@@ -1231,12 +1255,18 @@ if(this.puddles.length + this.fires.length >= 9){
         if (water.collides(goose)) {
           this.player.waters.splice(0, 1);
           goose.lifeleft -= 1 
+          const foodRandom = Math.floor(Math.random() * 2 - chance)
           if(goose.lifeleft <= 0){
             this.score.addkgoose()
             this.score.addktotal1()
           }
+          this.player.heats.splice(0, 1);
           if (goose.x < this.player.x) {
             goose.x -= 20;
+            if(foodRandom === 1){
+              const food = new Food(ctx, goose.x - 80, goose.y);
+              this.foods.push(food);
+            }
           }
           if (goose.x > this.player.x) {
             goose.x += 20;
@@ -1246,6 +1276,10 @@ if(this.puddles.length + this.fires.length >= 9){
           }
           if (goose.y > this.player.y) {
             goose.y += 20;
+            if(foodRandom === 1){
+              const food = new Food(ctx, goose.x, goose.y + 80);
+              this.foods.push(food);
+            }
           }
         this.checkCharger()
         } else return true;
@@ -1771,6 +1805,13 @@ this.pback.forEach((peop) => { //PBack
     } 
       if (this.healing.collides(this.player) && this.winTime >= 550) {
       this.player.healslow();
+      this.iceTime++
+      if(this.iceTime >= this.iceTimer ){
+        this.weird1 = 0
+        this.iceTime = 0
+        const poison = document.getElementById("poisoned");
+        poison.style.display = "none";
+      }
     }
   }  
   //Colisiones end

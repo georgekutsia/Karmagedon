@@ -6,7 +6,7 @@ class Scoreback
     this.y = 480;
     this.w = 173;
     this.h = 220;
-    this.total = 1;
+    this.total = 0;
     this.v = 5;
     ctx.font = "40px Verdana";
   }

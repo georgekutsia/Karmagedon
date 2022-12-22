@@ -78,7 +78,6 @@ class Karens {
     if (this.line.check <= 3) {
     }
     this.tick++;
-console.log(this.tick)
     if (this.tick >= 150) {
       this.ctx.font = "18px Arial";
       this.ctx.save();

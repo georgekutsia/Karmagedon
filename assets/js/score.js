@@ -10,7 +10,7 @@ class Score {
     this.kboss = 0;
     this.kkarens = 0;
     this.kkorens = 0;
-    this.total = 10;
+    this.total = 60;
   }
 
   draw() {
