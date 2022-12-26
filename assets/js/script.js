@@ -8,7 +8,9 @@ const game4 = new Game4(ctx)
 const game5 = new Game5(ctx)
 // const game3 = new Game3(ctx)
 
-
+const infoData = document.getElementById("display-info");
+const infoData1 = document.getElementById("display-info1");
+const infoData2 = document.getElementById("display-info2");
 const begin = document.querySelector(".neon-button");
 const btn = document.querySelector(".neon-butt");
 const btneasy = document.querySelector(".neon-butteasy");
@@ -48,6 +50,34 @@ const infocheat = document.getElementById("info-cheatsheet")
 
 
 
+infoData.addEventListener("click", function(){
+  if (infoData.style.opacity === "0.01") {
+    infoData.innerText = "Show Stats and Activations";
+    infoData.style.opacity = "1"
+  } else {
+    infoData.innerText = `Hide Information`;
+    infoData.style.opacity = "0.01"
+  }
+})
+
+infoData1.addEventListener("click", function(){
+  if (infoData1.style.opacity === "0.01") {
+    infoData1.innerText = "Show Progress";
+    infoData1.style.opacity = "1"
+  } else {
+    infoData1.innerText = `Hide Progress`;
+    infoData1.style.opacity = "0.01"
+  }
+})
+infoData2.addEventListener("click", function(){
+  if (infoData2.style.opacity === "0.01") {
+    infoData2.innerText = "Show Mall Status";
+    infoData2.style.opacity = "1"
+  } else {
+    infoData2.innerText = `Hide Mall Status`;
+    infoData2.style.opacity = "0.01"
+  }
+})
 
 //botón del juego
 btn.addEventListener("click", function () {
@@ -56,7 +86,6 @@ btn.addEventListener("click", function () {
       btn.innerText = "START";
     } else {
       game.start();
-      
       btn.innerText = `STOP`;
     }
     displ.style.display = "block"
@@ -64,6 +93,9 @@ btn.addEventListener("click", function () {
     cheat.style.display = "inline-block"
     restart.style.display = "flex"
     demo.style.display = "inline-block";
+    infoData.style.display = "block"
+    infoData1.style.display = "block"
+    infoData2.style.display = "block"
     this.musicStart = new Audio("/assets/audios ad/clic future.wav");
     this.musicStart.volume = 0.05;
     this.musicStart.play()

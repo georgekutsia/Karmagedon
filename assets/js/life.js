@@ -6,7 +6,7 @@ class Life {
     this.w = 173;
     this.h = 46;
     this.total = 10;
-    this.v = 5;
+    this.v = 2;
     ctx.font = "40px Verdana";
   }
   draw() {
@@ -32,8 +32,8 @@ class Life {
   move() {
     this.y -= this.v;
     if (this.y < 285) {
-      this.v = -0.15;
-    } else if (this.y > 290) this.v = 0.15;
+      this.v = -0.01;
+    } else if (this.y > 290) this.v = 0.01;
   }
   loseLife() {
     this.total -= 2;

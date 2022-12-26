@@ -32,8 +32,8 @@ class Formins
   move() {
     this.y -= this.v
     if(this.y < 342){
-      this.v = -0.05
+      this.v = -0.01
     } else if(this.y > 347)
-    this.v = 0.05
+    this.v = 0.01
   }
 }

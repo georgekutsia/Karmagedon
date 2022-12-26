@@ -167,7 +167,7 @@ class Game {
         this.upgradeAlert()
         this.addUpgrade();
       }
-      if (this.upBulletTime > Math.random() * 100 + 50000) {   //upgrade
+      if (this.upBulletTime > Math.random() * 100 + 200) {   //upgrade
         this.upBulletTime = 0;
         this.upBulletAlert()
         this.addUpBullet();
@@ -368,9 +368,9 @@ class Game {
       this.poisonedTime--
       this.ctx.font = "23px Sans";
       ctx.fillStyle = "green";
-      ctx.fillRect(1020, 295, 165, 28);
+      ctx.fillRect(1020, 295, 155, 28);
       this.ctx.fillStyle = "purple";
-      this.ctx.fillText(`Poisoned for ${this.poisonedTime.toString()}`, 1025, 315);
+      this.ctx.fillText(`Poisoned ${this.poisonedTime.toString()}`, 1035, 315);
       if(this.poisonedTime <= 0){
         this.weird1 = 0
       this.poisonedTime = 1000
@@ -441,15 +441,11 @@ class Game {
       this.ctx.fillText(`Diagonal dispenser charged : ${this.chargedDisc.toString()} -R- `, 450, 655);
       this.ctx.restore();
     }
-
     if(this.puddles.length + this.fires.length >= 9){
       this.player.loseRespect()
     }
-
     // CTX data statistics
     // CTX data statistics
-
-
     if (this.winTime > 600) {
       this.healing.draw();
       const iceWorning = document.getElementById("ice");

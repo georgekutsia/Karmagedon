@@ -37,9 +37,9 @@ class Respect {
   move() {
     this.y -= this.v
     if(this.y < 410){
-      this.v = -0.1
+      this.v = -0.01
     } else if(this.y > 415)
-    this.v = 0.1
+    this.v = 0.01
   }
   loseRespect() {
     this.total -= 0.0005;
