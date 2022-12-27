@@ -40,6 +40,7 @@ class Player {
     this.waters = [];
     this.blasters = [];
     this.sanders = [];
+    this.toxics = [];
     this.discountings = []
     this.direction = "left";
     this.speed = 4;
@@ -118,6 +119,7 @@ class Player {
 
     this.heats.forEach((heat) => heat.draw());
     this.sanders.forEach((sand) => sand.draw());
+    this.toxics.forEach((tox) => tox.draw());
     this.discountings.forEach((disc) => disc.draw());
     this.waters.forEach((water) => water.draw());
     this.auras.forEach((aura) => aura.draw());
@@ -170,6 +172,9 @@ class Player {
     this.sanders.forEach((sand) => {
       sand.move();
     });
+    this.toxics.forEach((tox) => {
+      tox.move();
+    });
     this.discountings.forEach((discount) => {
       discount.move();
     });
@@ -212,6 +217,9 @@ class Player {
   }
   healslow() {
     this.life.healSlow();
+  }
+  healSlower() {
+    this.life.healSlower();
   }
   fireHit() {
     this.life.loseLifeFire();
@@ -319,6 +327,9 @@ class Player {
         this.tick = 0
       }
       }
+      if (key === P) {
+        this.toxicar()
+      }
   }
   keyUp(key) {
     if (key === UP || key === W) { this.vy = 0;}
@@ -349,6 +360,7 @@ class Player {
       this.aurar();
       T = 0;
     }
+
     if (key === N) {
       this.sander();
         N = 0;
@@ -611,7 +623,15 @@ class Player {
     this.sanders.push(sand);
   }
 
-
+  toxicar(){
+    const tox = new Toxic(
+      this.ctx,
+      this.x + 8,
+      this.y + 8,
+      this
+    );
+    this.toxics.push(tox);
+  }
   heater() {
     const heat = new Heat(
       this.ctx,

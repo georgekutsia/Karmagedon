@@ -47,7 +47,7 @@
   opacity: 1;
   transition: all ease-in-out 0.5s;
   backdrop-filter: blur(10px);
-  background-color: rgba(255, 248, 248, 0.541);
+  background-color: rgba(6, 157, 170, 0.541);
 }
 #intro-canvas {
   padding-left: 0;

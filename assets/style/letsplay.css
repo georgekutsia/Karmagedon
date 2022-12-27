@@ -99,12 +99,12 @@
 #display-info{
   display: none;
   position: absolute;
-  font-size: 2rem;
+  font-size: 1.8rem;
   background-color: rgb(38, 22, 6);
   cursor: url("/assets/images/elements/cursorInfo"), pointer;
   text-decoration: none;
-  color: rgb(214, 127, 65);
-  border: rgb(214, 127, 65) 1px solid;
+  color: rgb(8, 218, 255);
+  border: rgb(8, 218, 255) 1px solid;
   padding: 5px 10px;
   border-radius: 10px;
   opacity: 1;
@@ -131,11 +131,12 @@
 }
 #display-info:hover{
   opacity:1;
+  font-size: 2.2rem;
   transition: 0.2s;
   background-color: black;
-  text-shadow: 1px 1px rgb(233, 151, 93);
-  color: rgb(255, 106, 0);
-  border: rgb(255, 106, 0) 1px solid;
+  text-shadow: 1px 1px rgb(255, 255, 255);
+  color: rgb(8, 218, 255);
+  border: rgb(15, 168, 191) 1px solid;
 }
 #display-info::after {
   content: "";
@@ -154,12 +155,12 @@
 #display-info1{
   display: none;
   position: absolute;
-  font-size: 2rem;
+  font-size: 1.8rem;
   background-color: rgb(38, 22, 6);
   cursor: url("/assets/images/elements/cursorInfo"), pointer;
   text-decoration: none;
-  color: rgb(214, 127, 65);
-  border: rgb(214, 127, 65) 1px solid;
+  color: rgb(8, 218, 255);
+  border: rgb(8, 218, 255) 1px solid;
   padding: 5px 10px;
   border-radius: 10px;
   opacity: 1;
@@ -186,11 +187,12 @@
 }
 #display-info1:hover{
   opacity:1;
+  font-size: 2.2rem;
   transition: 0.2s;
   background-color: black;
-  text-shadow: 1px 1px rgb(233, 151, 93);
-  color: rgb(255, 106, 0);
-  border: rgb(255, 106, 0) 1px solid;
+  text-shadow: 1px 1px rgb(255, 255, 255);
+  color: rgb(8, 218, 255);
+  border: rgb(15, 168, 191) 1px solid;
 }
 #display-info1::after {
   content: "";
@@ -209,10 +211,10 @@
 #display-info2{
   display: none;
   position: absolute;
-  font-size: 2rem;
+  font-size: 1.8rem;
   background-color: rgb(38, 22, 6);
-  color: rgb(214, 127, 65);
-  border: rgb(214, 127, 65) 1px solid;
+  color: rgb(8, 218, 255);
+  border: rgb(8, 218, 255) 1px solid;
   cursor: url("/assets/images/elements/cursorInfo"), pointer;
   text-decoration: none;
   padding: 5px 10px;
@@ -241,11 +243,12 @@
 }
 #display-info2:hover{
   opacity:1;
+  font-size: 2.2rem;
   transition: 0.2s;
   background-color: black;
-  text-shadow: 1px 1px rgb(233, 151, 93);
-  color: rgb(255, 106, 0);
-  border: rgb(255, 106, 0) 1px solid;
+  text-shadow: 1px 1px rgb(255, 255, 255);
+  color: rgb(8, 218, 255);
+  border: rgb(15, 168, 191) 1px solid;
 }
 #display-info2::after {
   content: "";

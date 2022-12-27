@@ -12,9 +12,16 @@ class Life {
   draw() {
     const prevStyle = this.ctx.fillStyle;
     let gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
-    this.ctx.strokeStyle = "yellow";
-    gradient.addColorStop("0.88", "red");
-    gradient.addColorStop("1", "green");
+    if(this.total <= 3){
+      gradient.addColorStop("0.68", "red");
+      gradient.addColorStop("1", "red");
+    } else if(this.total >=7){
+      gradient.addColorStop("0.88", "limegreen");
+      gradient.addColorStop("1", "chartreuse");
+    } else {      
+      gradient.addColorStop("0.68", "red");
+      gradient.addColorStop("1", "green");
+    }
     ctx.fillStyle = gradient;
     this.ctx.fillRect(this.x, this.y, (this.w * this.total) / 10, this.h);
     this.ctx.fillStyle = prevStyle;
@@ -46,6 +53,12 @@ class Life {
   }
   healSlow() {
     this.total += 0.01;
+    if (this.total >= 10) {
+      this.total = 10;
+    }
+  }
+  healSlower() {
+    this.total += 0.001;
     if (this.total >= 10) {
       this.total = 10;
     }

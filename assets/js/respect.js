@@ -24,7 +24,6 @@ class Respect {
     this.ctx.fillStyle = prevStyle;
     this.ctx.strokeRect(this.x, this.y, this.w, this.h);
     this.ctx.fillStyle= prevStyle;
-    this.ctx.strokeStyle = "black";
     this.ctx.font = "35px Sans" ;
     this.ctx.strokeStyle = "black";
     gradient.addColorStop("0.88", "black");

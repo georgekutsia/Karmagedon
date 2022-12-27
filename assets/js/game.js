@@ -254,6 +254,7 @@ class Game {
     this.fires = this.fires.filter((e) => e.isVisible());
     this.discounts = this.discounts.filter((e) => e.isVisible());
     this.player.heats = this.player.heats.filter((e) => e.isVisible());
+    this.player.toxics = this.player.toxics.filter((e) => e.isVisible());
     this.player.blasters = this.player.blasters.filter((e) => e.isVisible());
     this.player.auras = this.player.auras.filter((e) => e.isVisible());
     this.player.waters = this.player.waters.filter((e) => e.isVisible());
@@ -860,6 +861,10 @@ class Game {
         this.player.vy = -1;
         this.player.vx = -1;
         this.weird1 = 1010
+        venom += 1
+        if(venom >= 5){
+          console.log("bulala")
+        }
         if(this.poisonedTime <= 0){
           this.weird = 1
         }
@@ -969,6 +974,20 @@ class Game {
         } else return true;
       });
     });
+    this.rats.forEach((rat) => {//rat con sanders
+      this.player.toxics.filter((sand) => {
+        if (sand.collides(rat)) {
+          rat.lifeleft -= 0.05;
+          rat.vx += 0.01
+          console.log(rat.lifeleft)
+          if(rat.lifeleft >= 0 && rat.lifeleft <= 0.001 ){
+            this.score.addkrat()
+            this.score.addktotal1()
+          }
+          return false;
+        } else return true;
+      });
+    });
     //fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...
     //fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...
     this.fats = this.fats.filter((fat) => { //fat con jugador
@@ -1017,6 +1036,18 @@ class Game {
         } else return true;
       });
     });
+    this.fats.forEach((fat) => { //fat con sanders
+      this.player.toxics.filter((tox) => {
+        if (tox.collides(fat)) {
+          fat.vy += 0.001
+          if(fat.vy >= 0){
+            fat.y = -500
+          }
+          return false;
+        } else return true;
+      });
+    });
+
     this.fats.forEach((fat) => { //fat con blasters
       this.player.blasters.filter((blast) => {
         if (blast.collides(fat)) {
@@ -1789,6 +1820,15 @@ this.pback.forEach((peop) => { //PBack
       }
       return true;
     });
+    this.player.toxics = this.player.toxics.filter((tox) => {
+      if (tox.collides(this.player)) {
+          this.player.healSlower()
+      }
+      return true;
+    });
+
+
+
 // collision end... collision end... collision end... collision end... collision end... collision end... collision end...
 // collision end... collision end... collision end... collision end... collision end... collision end... collision end...
 // collision end... collision end... collision end... collision end... collision end... collision end... collision end...
