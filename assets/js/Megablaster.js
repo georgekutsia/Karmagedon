@@ -10,24 +10,45 @@ class Megablaster {
     this.vy = 0;
     this.dispose = false;
     this.blasterImg = new Image();
-    this.blasterImg.src = "/assets/images/munición/SandUp.png";
+    this.blasterImg.src = "/assets/images/munición/stormstorm.png";
     this.blasterShootAudio = new Audio("/assets/audio/sandSound.mp3")
+    this.blasterImg.frame = 0;
     this.blasterShootAudio.volume = 0.01;
     this.blasterShootAudio.play();
+    this.tick = 0;
+    this.framer = 1
   }
   draw() {
-    this.ctx.drawImage(this.blasterImg, this.x, this.y, this.w, this.h);
+    this.ctx.drawImage(
+      this.blasterImg,
+      (this.blasterImg.frame * this.blasterImg.width) / this.framer,
+      0,
+      this.blasterImg.width / this.framer, 
+      this.blasterImg.height,
+      this.x, 
+      this.y, 
+      this.w,
+      this.h
+    );
   }
   move() {
     this.x += this.vx - 0.15;
     this.y += this.vy - 0.15;
     this.h += 0.4;
     this.w += 0.4;
+    this.tick++
       if (this.h >= 300) {
         this.dispose = true;
       }
       if (this.w >= 300) {
         this.dispose = true;
+      }
+      if (this.tick > 2) {
+        this.tick = 0;
+        this.blasterImg.frame++;
+      }
+      if (this.blasterImg.frame > this.framer - 1) {
+        this.blasterImg.frame = 0;
       }
   }
   isVisible() {
@@ -74,7 +95,7 @@ class Discounting {
 }
 
 class Sandstorm {
-  constructor(ctx, x, y, player) {
+  constructor(ctx, x, y, sandAlterImg, player) {
     this.ctx = ctx;
     this.x = x;
     this.y = y;
@@ -89,7 +110,7 @@ class Sandstorm {
     this.dispose = false;
     this.sandImg = new Image();
     this.sandImg.frame = 0;
-    this.sandImg.src = "/assets/images/munición/sandstrom2.png";
+    this.sandImg.src = sandAlterImg || "/assets/images/munición/hurricanestorm1.png";
     this.sandShootAudio = new Audio("/assets/audio/sandSound.mp3")
     this.sandShootAudio.volume = 0.01;
     this.sandShootAudio.play();
@@ -98,9 +119,9 @@ class Sandstorm {
     this.ctx.drawImage(
         this.sandImg,
         0,
-        (this.sandImg.frame * this.sandImg.height) / 6,
+        (this.sandImg.frame * this.sandImg.height) / 8,
         this.sandImg.width,
-        this.sandImg.height / 6,
+        this.sandImg.height / 8,
         this.x,
         this.y,
         this.w,
@@ -114,11 +135,11 @@ class Sandstorm {
     this.y -= 0.05;
     this.h += 0.14
     this.w += 0.14
-    if (this.tick > 5) {
+    if (this.tick > 4) {
       this.tick = 0;
       this.sandImg.frame++;
     }
-    if (this.sandImg.frame > 5) {
+    if (this.sandImg.frame > 6) {
       this.sandImg.frame = 0;
     }
     if (this.tock >= 500 + afterSize * 4){

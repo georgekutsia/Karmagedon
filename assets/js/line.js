@@ -13,7 +13,6 @@ class Line {
     this.check = 0;
     ctx.font = "20px Verdana";
   }
-
   draw() {
     const prevStyle = this.ctx.fillStyle;
     let gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
@@ -56,7 +55,6 @@ class Line {
       this.checkPoint();
     }
   }
-
   checkPoint() {
     //se acelera la velocidad de la barra a medida que pasa el juego. cuanto con
     //mas karens se negocia, mas complicado se hace

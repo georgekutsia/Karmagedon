@@ -2,7 +2,7 @@ class Upbullet {
   constructor(ctx) {
     this.ctx = ctx;
     this.salidas = [
-      {x:100, y:576}, {x:800, y:576},
+      {x:100, y:576}, {x:800, y:576}, {x:450, y:576}
     ]
     this.xy = this.salidas[Math.floor(Math.random()*this.salidas.length)]
     this.x = this.xy.x;
@@ -11,8 +11,7 @@ class Upbullet {
     this.h = 45;
     this.cartImg = new Image();
     this.cartImg.src = "/assets/images/munición/gas.png";
-    this.tock = 600;
-
+    this.tock = 900;
   }
 
 

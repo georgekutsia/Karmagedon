@@ -69,7 +69,7 @@
   margin-left: auto;
   margin-right: auto;
   width: 100%;
-  height: 800px;
+  height: 850px;
   display: block;
   position: relative;
   background-image: url(/assets/images/fondos/mall\ 4.png);
@@ -96,6 +96,118 @@ h2 {
 /* hower */
 /* info 1 */
 
+#infoSecret3 {
+  cursor: url("/assets/images/elements/cursorHower"), pointer;
+  position: absolute;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  color: rgb(251, 251, 251);
+  font-size: 25px;
+  width: 80px;
+  height: 80px;
+  top: 15%;
+  right: 2%;
+  background: rgba(89, 84, 84, 0);
+  transition: border-radius 2s, border-color 3s;
+  opacity: 0;
+  z-index: 100;
+}
+#infoSecret3:hover {
+  background-image: url(/assets/images/infos/secretarc.png);
+  width: 80px;
+  height: 80px;
+  font-size: 1.85em;
+  background-size: 100%;
+  border: none;
+  background-repeat: no-repeat;
+  transform: rotate(720deg);
+  transition: transform 0.7s, opacity 1s;
+  opacity: 1;
+  font-size: 0;
+}
+#infoSecret3:hover:after {
+  content: url(/assets/images/infos/secret3.png);
+  position: absolute;
+  top: -100%;
+  right: 110%;
+  opacity: 1;
+  transition: opacity 0.5s 0.4s;
+}
+#infoSecret2 {
+  cursor: url("/assets/images/elements/cursorHower"), pointer;
+  position: absolute;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  color: rgb(251, 251, 251);
+  font-size: 25px;
+  width: 80px;
+  height: 80px;
+  bottom: 50%;
+  right: 1%;
+  background: rgba(89, 84, 84, 0);
+  transition: border-radius 2s, border-color 3s;
+  opacity: 0;
+}
+#infoSecret2:hover {
+  background-image: url(/assets/images/infos/secretarc.png);
+  width: 80px;
+  height: 80px;
+  font-size: 1.85em;
+  background-size: 100%;
+  border: none;
+  background-repeat: no-repeat;
+  transform: rotate(720deg);
+  transition: transform 0.7s, opacity 1s;
+  opacity: 1;
+  font-size: 0;
+}
+#infoSecret2:hover:after {
+  content: url(/assets/images/infos/secret2.png);
+  position: absolute;
+  top: -100%;
+  right: 110%;
+  opacity: 1;
+  transition: opacity 0.5s 0.4s;
+}
+#infoSecret1 {
+  cursor: url("/assets/images/elements/cursorHower"), pointer;
+  position: absolute;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  color: rgb(251, 251, 251);
+  font-size: 25px;
+  width: 80px;
+  height: 80px;
+  bottom: 1%;
+  left: 1%;
+  background: rgba(89, 84, 84, 0);
+  transition: border-radius 2s, border-color 3s;
+  opacity: 0;
+}
+#infoSecret1:hover {
+  background-image: url(/assets/images/infos/secretarc.png);
+  width: 80px;
+  height: 80px;
+  font-size: 1.85em;
+  background-size: 100%;
+  border: none;
+  background-repeat: no-repeat;
+  transform: rotate(720deg);
+  transition: transform 0.7s, opacity 1s;
+  opacity: 1;
+  font-size: 0;
+}
+#infoSecret1:hover:after {
+  content: url(/assets/images/infos/secret1.png);
+  position: absolute;
+  top: -100%;
+  right: -630%;
+  opacity: 1;
+  transition: opacity 0.5s 0.4s;
+}
 #info0 {
   cursor: url("/assets/images/elements/cursorHower"), pointer;
   position: absolute;
@@ -108,29 +220,26 @@ h2 {
   height: 120px;
   top: 5%;
   right: 20%;
-  background: rgb(89, 84, 84, 0.3);
-  border: 8px solid rgb(253, 0, 0);
-  border-radius: 10px;
+  background: rgba(89, 84, 84, 0);
   transition: border-radius 2s, border-color 3s;
-  opacity: 1;
+  border: none;
+  opacity: 0.1;
 }
 #info0:hover {
-  background-image: url(/assets/images/karens/karen1.png);
+  background-image: url(/assets/images/infos/secretarc.png);
   width: 130px;
   height: 130px;
   font-size: 1.85em;
   background-size: 100%;
   background-repeat: no-repeat;
-  border-color: rgb(255, 0, 255);
   transform: rotate(720deg);
-  border-radius: 50%;
-  transition: transform 0.7s, opacity 3s;
+  transition: transform 0.7s, opacity 1s;
   opacity: 1;
   font-size: 0;
 
 }
 #info0:hover:after {
-  content: url(/assets/images/infos/Karen\ info.png);
+  content: url(/assets/images/infos/secretfold.png);
   position: absolute;
   top: 90%;
   right: 10%;
@@ -146,6 +255,7 @@ h2 {
   color: rgb(251, 251, 251);
   width: 120px;
   font-size: 25px;
+  text-shadow: 1px 1px black ;
   height: 120px;
   top: 5%;
   right: 11%;
@@ -156,7 +266,7 @@ h2 {
   opacity: 1;
 }
 #info1:hover {
-  background-image: url(/assets/images/karens/karen1.png);
+  background-image: url(/assets/images/infos/you.png);
   width: 130px;
   height: 130px;
   font-size: 1.85em;
@@ -171,9 +281,9 @@ h2 {
 
 }
 #info1:hover:after {
-  content: url(/assets/images/infos/Karen\ info.png);
+  content: url(/assets/images/infos/InfonfoNew1.png);
   position: absolute;
-  top: 90%;
+  top: -25%;
   right: 110%;
   opacity: 1;
   transition: opacity 1s 0.4s;
@@ -189,6 +299,7 @@ h2 {
   color: rgb(251, 251, 251);
   width: 120px;
   font-size: 25px;
+  text-shadow: 1px 1px black ;
   height: 120px;
   top: 22%;
   right: 11%;
@@ -199,7 +310,7 @@ h2 {
   opacity: 1;
 }
 #info2:hover {
-  background-image: url(/assets/images/infos/manag.png);
+  background-image: url(/assets/images/infos/karen1.png);
   width: 130px;
   height: 130px;
   font-size: 1.85em;
@@ -214,7 +325,7 @@ h2 {
 
 }
 #info2:hover:after {
-  content: url(/assets/images/infos/moves.png);
+  content: url(/assets/images/infos/KarenInfoNew.png);
   position: absolute;
   font-size: 2px;
   top: -20%;
@@ -233,6 +344,7 @@ h2 {
   color: rgb(251, 251, 251);
   width: 120px;
   font-size: 25px;
+  text-shadow: 1px 1px black ;
   height: 120px;
   top: 39%;
   right: 11%;
@@ -243,7 +355,7 @@ h2 {
   opacity: 1;
 }
 #info3:hover {
-  background-image: url(/assets/images/infos/fatt.png);
+  background-image: url(/assets/images/infos/bosskaren1.png);
   width: 130px;
   height: 130px;
   font-size: 1.85em;
@@ -258,7 +370,7 @@ h2 {
 
 }
 #info3:hover:after {
-  content: url(/assets/images/infos/events.png);
+  content: url(/assets/images/infos/MegakarenInfoNew.xcf.png);
   position: absolute;
   font-size: 2px;
   top: -140%;
@@ -277,6 +389,7 @@ h2 {
   color: rgb(251, 251, 251);
   width: 120px;
   font-size: 25px;
+  text-shadow: 1px 1px black ;
   height: 120px;
   top: 56%;
   right: 11%;
@@ -287,7 +400,7 @@ h2 {
   opacity: 1;
 }
 #info4:hover {
-  background-image: url(/assets/images/elements/dis3.png);
+  background-image: url(/assets/images/infos/bodybuilder.png);
   width: 130px;
   height: 130px;
   font-size: 1.85em;
@@ -301,7 +414,7 @@ h2 {
   opacity: 1;
 }
 #info4:hover:after {
-  content: url(/assets/images/infos/stategy.png);
+  content: url(/assets/images/infos/KorenInfoNew.png);
   position: absolute;
   font-size: 2px;
   top: -260%;
@@ -320,6 +433,7 @@ h2 {
   color: rgb(251, 251, 251);
   width: 120px;
   font-size: 25px;
+  text-shadow: 1px 1px black ;
   height: 120px;
   top: 73%;
   right: 11%;
@@ -330,7 +444,7 @@ h2 {
   opacity: 1;
 }
 #info4a:hover {
-  background-image: url(/assets/images/elements/dis3.png);
+  background-image: url(/assets/images/infos/fatt.png);
   width: 130px;
   height: 130px;
   font-size: 1.85em;
@@ -344,7 +458,7 @@ h2 {
   opacity: 1;
 }
 #info4a:hover:after {
-  content: url(/assets/images/infos/stategy.png);
+  content: url(/assets/images/infos/FatInfoNew.png);
   position: absolute;
   font-size: 2px;
   top: -370%;
@@ -364,6 +478,7 @@ h2 {
   color: rgb(251, 251, 251);
   width: 120px;
   font-size: 25px;
+  text-shadow: 1px 1px black ;
   height: 120px;
   top: 5%;
   right: 2%;
@@ -374,7 +489,7 @@ h2 {
   opacity: 1;
 }
 #info5:hover {
-  background-image: url(/assets/images/karens/karen1.png);
+  background-image: url(/assets/images/infos/dis3.png);
   width: 130px;
   height: 130px;
   font-size: 1.85em;
@@ -389,7 +504,7 @@ h2 {
 
 }
 #info5:hover:after {
-  content: url(/assets/images/infos/Karen\ info.png);
+  content: url(/assets/images/infos/BenefitInfoNew.png);
   position: absolute;
   top: 90%;
   right: 270%;
@@ -407,6 +522,7 @@ h2 {
   color: rgb(251, 251, 251);
   width: 120px;
   font-size: 25px;
+  text-shadow: 1px 1px black ;
   height: 120px;
   top: 22%;
   right: 2%;
@@ -417,7 +533,7 @@ h2 {
   opacity: 1;
 }
 #info6:hover {
-  background-image: url(/assets/images/infos/manag.png);
+  background-image: url(/assets/images/infos/ratima.png);
   width: 130px;
   height: 130px;
   font-size: 1.85em;
@@ -432,7 +548,7 @@ h2 {
 
 }
 #info6:hover:after {
-  content: url(/assets/images/infos/moves.png);
+  content: url(/assets/images/infos/RatInfoNew.png);
   position: absolute;
   font-size: 2px;
   top: -20%;
@@ -451,6 +567,8 @@ h2 {
   color: rgb(251, 251, 251);
   width: 120px;
   font-size: 25px;
+  text-shadow: 1px 1px black ;
+
   height: 120px;
   top: 39%;
   right: 2%;
@@ -461,7 +579,7 @@ h2 {
   opacity: 1;
 }
 #info7:hover {
-  background-image: url(/assets/images/infos/fatt.png);
+  background-image: url(/assets/images/infos/gooses.png);
   width: 130px;
   height: 130px;
   font-size: 1.85em;
@@ -476,7 +594,7 @@ h2 {
 
 }
 #info7:hover:after {
-  content: url(/assets/images/infos/events.png);
+  content: url(/assets/images/infos/GooseInfoNew.png);
   position: absolute;
   font-size: 2px;
   top: -140%;
@@ -493,7 +611,9 @@ h2 {
   align-items: center;
   color: rgb(251, 251, 251);
   width: 120px;
-  font-size: 25px;
+  font-size: 21px;
+  text-shadow: 1px 1px black ;
+
   height: 120px;
   top: 56%;
   right: 2%;
@@ -504,7 +624,7 @@ h2 {
   opacity: 1;
 }
 #info8:hover {
-  background-image: url(/assets/images/elements/dis3.png);
+  background-image: url(/assets/images/infos/cactus1.png);
   width: 130px;
   height: 130px;
   font-size: 1.85em;
@@ -518,7 +638,7 @@ h2 {
   opacity: 1;
 }
 #info8:hover:after {
-  content: url(/assets/images/infos/stategy.png);
+  content: url(/assets/images/infos/ObstaclesInfoNew.png);
   position: absolute;
   font-size: 2px;
   top: -260%;
@@ -535,7 +655,8 @@ h2 {
   align-items: center;
   color: rgb(251, 251, 251);
   width: 120px;
-  font-size: 25px;
+  font-size: 22px;
+  text-shadow: 1px 1px black ;
   height: 120px;
   top: 73%;
   right: 2%;
@@ -546,7 +667,7 @@ h2 {
   opacity: 1;
 }
 #info9:hover {
-  background-image: url(/assets/images/elements/dis3.png);
+  background-image: url(/assets/images/infos/cust.png);
   width: 130px;
   height: 130px;
   font-size: 1.85em;
@@ -555,16 +676,16 @@ h2 {
   border-color: rgb(250, 125, 0);
   transform: rotate(720deg);
   border-radius: 50%;
-  transition: transform 0.7s, opacity 3s;
+  transition: transform 0.7s, opacity 46s;
   font-size: 0;
   opacity: 1;
 }
 #info9:hover:after {
-  content: url(/assets/images/infos/stategy.png);
+  content: url(/assets/images/infos/CustomerInfoNew.png);
   position: absolute;
   font-size: 2px;
   top: -370%;
   right: 270%;
   opacity: 1;
-  transition: opacity 1s 0.4s;
+  transition: opacity 1s 64s;
 }

@@ -1,13 +1,11 @@
 class Respect {
   constructor(ctx) {
     this.ctx = ctx;
-
     this.x = 1015;
     this.y = 410;
     this.w = 173;
     this.h = 43;
     this.total = 1;
-
     this.v = 5;
     ctx.font = "40px Verdana";
   }
@@ -42,6 +40,7 @@ class Respect {
   }
   loseRespect() {
     this.total -= 0.0005;
+    
   }
   loseCustomerRespect() {
     this.total -= 0.004;
@@ -51,12 +50,21 @@ class Respect {
   }
   getBigRespect(){
     this.total += 0.2
+    if (this.total >= 1) {
+      this.total = 1;
+    }
   }
   getSmallRespect(){
     this.total += 0.1
+    if (this.total >= 1) {
+      this.total = 1;
+    }
   }
   getSmallestRespect() {
     this.total += 0.0005;
+    if (this.total >= 1) {
+      this.total = 1;
+    }
   }
   getRespect(){
     this.total += 0.1;

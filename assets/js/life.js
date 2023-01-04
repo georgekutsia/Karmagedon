@@ -57,8 +57,14 @@ class Life {
       this.total = 10;
     }
   }
-  healSlower() {
-    this.total += 0.001;
+  healslower() {
+    this.total += 0.004;
+    if (this.total >= 10) {
+      this.total = 10;
+    }
+  }
+  dieSlower() {
+    this.total -= 0.001;
     if (this.total >= 10) {
       this.total = 10;
     }

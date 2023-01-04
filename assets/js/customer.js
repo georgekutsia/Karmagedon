@@ -11,7 +11,6 @@ class Customer {
     this.h = 0.10 * this.ctx.canvas.height;
     this.vx = 0;
     this.vy = 0.2;
-
     this.lifeleft = 1;
     this.dead = 0;
     this.tick = 0;
@@ -41,14 +40,15 @@ class Customer {
     this.customImg = new Image();
     this.customImg.src = this.image;
     this.customImg.frame = 0;
+    this.customFrame = 5
   }
 
   draw() {
     this.ctx.drawImage(
       this.customImg,
-      (this.customImg.frame * this.customImg.width) / 5,
+      (this.customImg.frame * this.customImg.width) / this.customFrame,
       0,
-      this.customImg.width / 5, 
+      this.customImg.width / this.customFrame, 
       this.customImg.height,
       this.x, 
       this.y, 
@@ -57,18 +57,18 @@ class Customer {
     );
     this.ctx.font = "18px Arial";
     ctx.fillStyle = "rgb(251, 209, 209)";
-    this.ctx.fillStyle = "black";
-    this.order = this.ctx.fillText(this.say, this.x - 30, this.y - 3);
     this.ctx.fillStyle = "green";
-    this.order = this.ctx.fillText(this.say, this.x - 29, this.y - 3);
+    this.order = this.ctx.fillText(this.say, this.x - 32, this.y - 5);
+    this.ctx.fillStyle = "green";
+    this.order = this.ctx.fillText(this.say, this.x - 28, this.y - 1);
+    this.ctx.fillStyle = "white";
+    this.order = this.ctx.fillText(this.say, this.x - 30, this.y - 3);
     this.ctx.restore();
   }
-
   move() {
     this.x += this.vx;
     this.y += this.vy;
     this.tick++;
-    
     if(this.y >= 0){
       this.vx = 0.4;
     }
@@ -113,10 +113,9 @@ class Customer {
       this.tick = 0;
       this.customImg.frame++;
     }
-
     if (this.x < 0) {
     }
-    if (this.customImg.frame > 4) {
+    if (this.customImg.frame > this.customFrame - 1) {
       this.customImg.frame = 0;
     }
     if(this.lifeleft <= 0){
@@ -130,14 +129,12 @@ class Customer {
       }
   }
   }
-
   isVisible() {
-    return this.x + this.w > 0;
+    return this.x + this.w > 0 && this.x <= 980;
   }
-
   collides(player) {
-    const colX = this.x + 10 <= player.x + player.w && this.x + this.w - 20 > player.x;
-    const colY = this.y + this.h-5 > player.y && this.y + 10 < player.y + player.h;
+    let colX = this.x + 10 <= player.x + player.w && this.x + this.w - 20 > player.x;
+    let colY = this.y + this.h-5 > player.y && this.y + 10 < player.y + player.h;
     return colX && colY;
   }
 }

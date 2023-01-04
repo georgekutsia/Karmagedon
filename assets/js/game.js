@@ -11,11 +11,25 @@ class Game {
     this.upgrade = new Upgrade(ctx);
     this.upBullet = new Upbullet(ctx);
     this.saved = new Saved(ctx);
+    this.helper1 = new Image();
+    this.helper1.src = "/assets/images/pj/helper1.png"
+    this.helper2 = new Image();
+    this.helper2.src = "/assets/images/pj/helper2.png"
+    this.helper3 = new Image();
+    this.helper3.src = "/assets/images/pj/helper3.png"
+    this.helper4 = new Image();
+    this.helper4.src = "/assets/images/pj/helper4.png"
+    this.bodyImg = new Image();
+    this.bodyImg.src = "/assets/images/elements/body.png"
+    this.throwerImg = new Image();
+    this.throwerImg.src = "/assets/images/elements/backpack.png"
     this.weird1 = 0
-    this.iceTime = 0
-    this.poisonedTime = 2000
+    this.iceCurePoison = 0
+    this.poisonedTime = 3000 - chance * 300
+    this.tick = 0
+
     this.cactus = [
-      new Cactus(ctx, 370, 210, 40, 40, "/assets/images/fondos/cact1.png"), new Cactus(ctx, 600, 200, 50, 50, "/assets/images/fondos/cact3.png"),
+      new Cactus(ctx, 375, 200, 40, 40, "/assets/images/fondos/cact1.png"), new Cactus(ctx, 600, 190, 50, 50, "/assets/images/fondos/cact3.png"),
       new Cactus(ctx, 820, 320, 30, 40, "/assets/images/fondos/cact5.png"), new Cactus(ctx, 780, 440, 40, 40, "/assets/images/fondos/cact4.png"),
       new Cactus(ctx, 57, 548, 25, 25),  new Cactus(ctx, 167, 548, 25, 25), new Cactus(ctx, 460, 548, 25, 25),
       new Cactus(ctx, 387, 548, 25, 25), new Cactus(ctx, 287, 548, 25, 25), new Cactus(ctx, 387, 548, 25, 25),
@@ -23,9 +37,9 @@ class Game {
 
 
       new Cactus(ctx, 710, 542, 70, 18, "/assets/images/fondos/cact5a.png"), new Cactus(ctx, 750, 542, 70, 18, "/assets/images/fondos/cact5a.png"),
-      new Cactus(ctx, 800, 542, 70, 18, "/assets/images/fondos/cact5b.png"), new Cactus(ctx, 933, 553, 10, 80, "/assets/images/fondos/cact5b.png"),
+      new Cactus(ctx, 800, 542, 60, 18, "/assets/images/fondos/cact5b.png"), new Cactus(ctx, 933, 553, 10, 80, "/assets/images/fondos/cact5b.png"),
       new Cactus(ctx, 740, 536, 35, 35, "/assets/images/fondos/arb10.png"),  new Cactus(ctx, 790, 536, 30, 30, "/assets/images/fondos/arb9.png"),
-      new Cactus(ctx, 690, 536, 30, 30, "/assets/images/fondos/arb2.png"),   new Cactus(ctx, 850, 536, 30, 30, "/assets/images/fondos/arb2.png"),
+      new Cactus(ctx, 700, 536, 30, 30, "/assets/images/fondos/arb2.png"),   new Cactus(ctx, 840, 536, 30, 30, "/assets/images/fondos/arb2.png"),
       new Cactus(ctx, 928, 555, 23, 23, "/assets/images/fondos/arb4.png"),
 
     ]
@@ -36,7 +50,7 @@ class Game {
       new People(ctx, 200, 590, 30, 30, "/assets/images/people/pep23.png"), new People(ctx, 430, 12, 50, 30, "/assets/images/people/pep25.png"),
       new People(ctx, 800, 12, 60, 35, "/assets/images/people/pep20.png"), new People(ctx, 600, 280, 60, 35, "/assets/images/people/pep24.png"),
       new People(ctx, 400, 350, 80, 45, "/assets/images/people/pep30.png"), new People(ctx, 835, 575, 80, 45, "/assets/images/people/pep31.png"),
-      new People(ctx, 235, 275, 50, 30, "/assets/images/people/pep32.png"),
+      new People(ctx, 235, 275, 50, 30, "/assets/images/people/pep32.png"), new People(ctx, 385, 575, 50, 30, "/assets/images/people/pep33.png"),
     ]
     this.pback = [
       new People(ctx, 250, 420, 40, 60, "/assets/images/people/pep2.png"), new People(ctx, 480, 430, 40, 40, "/assets/images/people/pep.png"),
@@ -46,24 +60,24 @@ class Game {
     ]
     this.bushesover = [
       // vertical bushes start
-      new Bush1(ctx, 57, 60, 30, 170), new Bush1(ctx, 287, 60, 30, 170), new Bush3(ctx, 377, 60, 30, 170), new Bush3(ctx, 607, 60, 30, 170),
-      new Bush2(ctx, 697, 60, 30, 170), new Bush2(ctx, 921, 60, 30, 170), new Bush1(ctx, 57, 330, 30, 120), new Bush1(ctx, 287, 330, 30, 150),
-      new Bush3(ctx, 377, 330, 30, 150), new Bush3(ctx, 607, 330, 30, 150), new Bush2(ctx, 697, 330, 30, 150), new Bush2(ctx, 921, 330, 30, 150),
-      new Bush1(ctx, 57, 560, 30, 64),  new Bush1(ctx, 67, 550, 90, 20),  new Bush2(ctx, 97, 550, 90, 20),  new Bush1(ctx, 287, 550, 20, 75),
-      new Bush1(ctx, 387, 550, 20, 75), new Bush2(ctx, 450, 550, 90, 20), new Bush3(ctx, 387, 550, 90, 20), new Bush2(ctx, 610, 550, 20, 75),
+      new Bush1(ctx, 57, 60, 20, 170), new Bush1(ctx, 287, 60, 20, 170), new Bush3(ctx, 385, 60, 20, 170), new Bush3(ctx, 607, 60, 20, 170),
+      new Bush2(ctx, 705, 60, 20, 170), new Bush2(ctx, 921, 60, 20, 170), new Bush1(ctx, 57, 330, 20, 120), new Bush1(ctx, 287, 330, 20, 150),
+      new Bush3(ctx, 385, 330, 20, 150), new Bush3(ctx, 607, 330, 20, 150), new Bush2(ctx, 705, 330, 20, 150), new Bush2(ctx, 921, 330, 20, 150),
+      new Bush1(ctx, 57, 560, 20, 64),  new Bush1(ctx, 67, 550, 90, 20),  new Bush2(ctx, 97, 550, 90, 20),  new Bush1(ctx, 287, 550, 20, 75),
+      new Bush2(ctx, 450, 550, 90, 20), new Bush3(ctx, 387, 550, 90, 20), new Bush2(ctx, 610, 550, 20, 75),
       new Bush2(ctx, 700, 550, 20, 75), new Fence(ctx, 60, 420, 60, 40),
 
 // vertical bushes end
     ]
     this.walls = [
-      new Fence(ctx, 51, 50, 80, 40), new Fence(ctx, 240, 50, 80, 40), new Fence(ctx, 51, 320, 80, 40), new Fence(ctx, 240, 320, 80, 40),
-      new Fence(ctx, 880, 320, 80, 40), new Fence(ctx, 830, 320, 80, 40), new Fence(ctx, 370, 320, 80, 40), new Fence(ctx, 560, 320, 80, 40),
+      new Fence(ctx, 51, 50, 80, 40), new Fence(ctx, 220, 50, 80, 40), new Fence(ctx, 51, 320, 80, 40), new Fence(ctx, 220, 320, 80, 40),
+      new Fence(ctx, 880, 320, 80, 40), new Fence(ctx, 830, 320, 80, 40), new Fence(ctx, 390, 320, 80, 40), new Fence(ctx, 560, 320, 80, 40),
       new Fence(ctx, 700, 50, 80, 40), new Fence(ctx, 870, 50, 80, 40),
 // round bushes
       new Bushes(ctx, 160, 410, 40, 40, "/assets/images/fondos/arb11.png"),  new Bushes(ctx, 170, 130, 40, 40, "/assets/images/fondos/arb9.png"),
       new Bushes(ctx, 490, 110, 40, 40, "/assets/images/fondos/arbusto1.png"), new Bushes(ctx, 482, 60, 60, 60, "/assets/images/fondos/arbusto1.png"),
       new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"),
-// round bushes
+
       new Fence(ctx, 90, 190, 80, 40), new Fence(ctx, 470, 130, 80, 40), new Fence(ctx, 465, 450, 60, 40), new Fence(ctx, 720, 440, 80, 40),
     ];
     this.portals = [new Portal (ctx, 10, 300, 30, 30)]   
@@ -146,7 +160,7 @@ class Game {
         this.babyAlert();
         this.addBaby();
       }
-      if (this.customerTime > Math.random() * 100 + 2500) { //customer
+      if (this.customerTime > Math.random() * 100 + 4000) { //customer
         this.customerTime = 0;
         this.addCustomer();
       }
@@ -162,12 +176,12 @@ class Game {
         this.discountTime = 3000;
         this.addDiscount();
       }
-      if (this.upgradeTime > Math.random() * 100 + 7400) {   //upgrade
+      if (this.upgradeTime > Math.random() * 100 + 7400 - chance * 300) {   //upgrade
         this.upgradeTime = 0;
         this.upgradeAlert()
         this.addUpgrade();
       }
-      if (this.upBulletTime > Math.random() * 100 + 200) {   //upgrade
+      if (this.upBulletTime > Math.random() * 100 + 6000 - chance * 200) {   //upbullet
         this.upBulletTime = 0;
         this.upBulletAlert()
         this.addUpBullet();
@@ -254,6 +268,7 @@ class Game {
     this.fires = this.fires.filter((e) => e.isVisible());
     this.discounts = this.discounts.filter((e) => e.isVisible());
     this.player.heats = this.player.heats.filter((e) => e.isVisible());
+    this.player.hooks = this.player.hooks.filter((e) => e.isVisible());
     this.player.toxics = this.player.toxics.filter((e) => e.isVisible());
     this.player.blasters = this.player.blasters.filter((e) => e.isVisible());
     this.player.auras = this.player.auras.filter((e) => e.isVisible());
@@ -286,12 +301,76 @@ class Game {
 
   draw() {
     this.winTime++;
+    console.log(this.discounts)
+    this.upgrades.forEach((e) => e.draw());
+    this.upBullets.forEach((e) => e.draw());
+    this.ctx.drawImage(
+      this.bodyImg, 600, 660, 50, 50
+    )
+    this.ctx.drawImage(
+      this.throwerImg, 230, 665, 70, 40
+    )
+    if(this.player.respect.total <= 0.3 && this.player.life.total <=3){
+      this.player.sandstate = true
+    }
+    if(this.player.respect.total >= 0.7 || this.player.life.total >=8){
+      this.player.sandstate = false
+    }
+    if(this.upBullets.length >= 1){
+      this.ctx.font = "23px Sans";
+      ctx.fillStyle = "black";
+      ctx.globalAlpha = 0.5
+      ctx.fillRect(1020, 215, 155, 68);
+      ctx.globalAlpha = 1
+      this.ctx.fillStyle = "white";
+      this.ctx.fillText(`Hey boss! `, 1070, 235);
+      this.ctx.font = "18px Sans";
+      this.ctx.fillText(`Get new ammo`, 1060, 255);
+      this.ctx.fillText(`before it spoils! `, 1060, 273);
+      this.ctx.drawImage(
+        this.helper1, 1020, 215, 40, 60
+      )
+    }
+    if(this.upgrades.length >= 1){
+      this.ctx.font = "23px Sans";
+      ctx.fillStyle = "black";
+      ctx.globalAlpha = 0.5
+      ctx.fillRect(1020, 215, 155, 68);
+      ctx.globalAlpha = 1
+      this.ctx.fillStyle = "white";
+      this.ctx.fillText(`I remember`, 1075, 235);
+      this.ctx.font = "18px Sans";
+      this.ctx.fillText(`Let me upgrade`, 1070, 250);
+      this.ctx.fillText(`the equippment `, 1070, 264);
+      this.ctx.fillText(`before I forget! `, 1070, 278);
+      this.ctx.drawImage(
+        this.helper3, 1020, 215, 40, 60
+      )
+    }
+
+    if(this.upgrades.length <= 0 && this.upBullets.length <=0 && this.carts.length >= 1){
+      this.ctx.font = "19px Sans";
+      ctx.fillStyle = "black";
+      ctx.globalAlpha = 0.5
+      ctx.fillRect(1020, 215, 155, 68);
+      ctx.globalAlpha = 1
+      this.ctx.fillStyle = "white";
+      this.ctx.fillText(`Need more items`, 1060, 235);
+      this.ctx.fillText(`to improve your`, 1060, 252);
+      this.ctx.fillText(`equippment boss! `, 1060, 273);
+      this.ctx.drawImage(
+        this.helper4, 1010, 215, 40, 60
+      )
+    }
+      // this.ctx.drawImage(
+      //   this.helper4, 1050, 215, 40, 60
+      // )
     this.chargedDisc = discounting / 5
     this.bosss.forEach((e) => e.draw());
     this.korens.forEach((e) => e.draw());
     this.babys.forEach((e) => e.draw());
     this.customers.forEach((e) => e.draw());
-    this.iceTimer = 300 - chance * 50
+    this.curePoisonTimer = 300 - chance * 50
     if(this.winTime >= 100){
       this.pback.forEach((e) => e.draw());
     }
@@ -317,8 +396,7 @@ class Game {
     this.rats.forEach((e) => e.draw());
     this.carts.forEach((e) => e.draw());
     this.foods.forEach((e) => e.draw());
-    this.upgrades.forEach((e) => e.draw());
-    this.upBullets.forEach((e) => e.draw());
+
     this.discounts.forEach((e) => e.draw());
     this.geese.forEach((e) => e.draw());
     this.token.draw();
@@ -338,8 +416,8 @@ class Game {
     this.ctx.fillText(`Size: ${bulletSize.toString()}`, 405, 681);
     this.ctx.fillText(`Growth: ${afterSize.toString()}`, 495, 681);
     this.ctx.fillText(`Jump: ${distance.toFixed(1).toString()}ft`, 640, 681);
-    this.ctx.fillText(`Jump cooldown: ${this.player.cooldownJump.toFixed(1)}`, 760, 681);
-    this.ctx.fillText(`Speed: ${this.player.booster.toFixed(1)}`, 640, 704);
+    this.ctx.fillText(`Jump cooldown: ${this.player.cooldownJump.toFixed(1)}`, 775, 681);
+    this.ctx.fillText(`Speed: ${this.player.boost.toFixed(1)}`, 640, 704);
     if (this.score.total >= 50) {
       this.machinganTime--
         C = 67;
@@ -452,6 +530,14 @@ class Game {
       const iceWorning = document.getElementById("ice");
       iceWorning.style.display = "inline-block";
     }
+    if(this.player.sandstate === true){
+      this.player.sandAlterImg = "/assets/images/munición/hurricanestorm2.png"
+      this.player.imgSand.src = "/assets/images/elements/sandballHeal.png"
+
+      } else {
+        this.player.sandAlterImg = ""
+        this.player.imgSand.src = "/assets/images/elements/sandball.png"
+      }
     this.score.draw();
     this.saved.draw();
   }
@@ -735,8 +821,13 @@ class Game {
       this.player.heats = this.player.heats.filter((heat) => {
         if (heat.collides(puddle)) {
           this.player.heats.splice(0, 1);
-          puddle.dicrease();
-        this.checkCharger()
+          this.checkCharger()
+            puddle.dicrease();
+          if(bulletSize >= 40){
+            puddle.dicrease();
+          } else if( bulletSize >= 60){
+            puddle.dicrease();
+          }
           if (puddle.h <= 20) {
             puddle.vx = 500;
             this.score.addkobstacle()
@@ -804,8 +895,13 @@ class Game {
       this.player.waters = this.player.waters.filter((water) => {
         if (water.collides(fire)) {
           this.player.waters.splice(0, 1);
+          this.checkCharger()
           fire.dicrease();
-        this.checkCharger()
+          if(bulletSize >= 40){
+            fire.dicrease();
+          } else if( bulletSize >= 60){
+            fire.dicrease();
+          }
           if (fire.h <= 20) {
             fire.vx = 500;
             this.score.addkobstacle()
@@ -853,6 +949,20 @@ class Game {
         } else return true;
       });
     });
+    this.karens.forEach((karen) => {//karens con toxics
+      this.player.toxics.filter((sand) => {
+        if (sand.collides(karen)) {
+          this.ctx.font = "20px Arial";
+          this.ctx.fillStyle = "red";
+          this.ctx.fillText(`Im going nowhere!`, karen.x - 49, karen.y-26);
+          this.ctx.fillStyle = "tomato";
+          this.ctx.fillText(`Im going nowhere!`, karen.x - 46, karen.y-24);
+          this.ctx.fillStyle = "white";
+          this.ctx.fillText(`Im going nowhere!`, karen.x - 48, karen.y - 25);
+          return false;
+        } else return true;
+      });
+    });
     //Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..
     //Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..
     this.rats = this.rats.filter((rat) => { //rat con player
@@ -863,7 +973,7 @@ class Game {
         this.weird1 = 1010
         venom += 1
         if(venom >= 5){
-          console.log("bulala")
+          P = 80
         }
         if(this.poisonedTime <= 0){
           this.weird = 1
@@ -903,8 +1013,8 @@ class Game {
           rat.lifeleft -= 1;
           rat.vx += 1;
         this.checkCharger()
-          const discRandom = Math.floor(Math.random() * 10 - chance)
-          const foodRandom = Math.floor(Math.random() * 5 - chance)
+          const discRandom = Math.floor(Math.random() * 14 - chance)
+          const foodRandom = Math.floor(Math.random() * 9 - chance)
           if(foodRandom === 1){
             const food = new Food(ctx, rat.x, rat.y + 40);
             this.foods.push(food);
@@ -930,8 +1040,8 @@ class Game {
           rat.lifeleft -= 1;
           rat.vx += 1;
         this.checkCharger()
-          const discRandom = Math.floor(Math.random() * 8 - chance)
-          const foodRandom = Math.floor(Math.random() * 5 - chance)
+          const discRandom = Math.floor(Math.random() * 12 - chance)
+          const foodRandom = Math.floor(Math.random() * 9 - chance)
           if(foodRandom === 1){
             const food = new Food(ctx, rat.x, rat.y + 40);
             this.foods.push(food);
@@ -974,11 +1084,21 @@ class Game {
         } else return true;
       });
     });
-    this.rats.forEach((rat) => {//rat con sanders
+    this.rats.forEach((rat) => {//rat con toxics
       this.player.toxics.filter((sand) => {
         if (sand.collides(rat)) {
-          rat.lifeleft -= 0.05;
-          rat.vx += 0.01
+          rat.lifeleft -= 0.005;
+          rat.vx += 0.003
+          if(rat.vx >= 0){
+            rat.vx = 0
+          }
+          this.ctx.font = "20px Arial";
+          this.ctx.fillStyle = "red";
+          this.ctx.fillText(`Scared rat noises:`, rat.x - 29, rat.y-16);
+          this.ctx.fillStyle = "tomato";
+          this.ctx.fillText(`Scared rat noises:`, rat.x - 26, rat.y-14);
+          this.ctx.fillStyle = "white";
+          this.ctx.fillText(`Scared rat noises:`, rat.x - 28, rat.y - 15);
           console.log(rat.lifeleft)
           if(rat.lifeleft >= 0 && rat.lifeleft <= 0.001 ){
             this.score.addkrat()
@@ -1006,7 +1126,7 @@ class Game {
           this.player.waters.splice(0, 1);
         this.checkCharger()
           fat.vy -= 0.3
-          const foodRandom = Math.floor(Math.random() * 6 - chance)
+          const foodRandom = Math.floor(Math.random() * 11 - chance)
           if(foodRandom === 1){
             const food = new Food(ctx, fat.x, fat.y);
             this.foods.push(food);
@@ -1020,7 +1140,7 @@ class Game {
           this.player.heats.splice(0, 1);
         this.checkCharger()
           fat.vy -= 0.3
-            const foodRandom = Math.floor(Math.random() * 6 - chance)
+            const foodRandom = Math.floor(Math.random() * 11 - chance)
             if(foodRandom === 1){
               const food = new Food(ctx, fat.x, fat.y);
               this.foods.push(food);
@@ -1036,13 +1156,17 @@ class Game {
         } else return true;
       });
     });
-    this.fats.forEach((fat) => { //fat con sanders
+    this.fats.forEach((fat) => { //fat con toxic
       this.player.toxics.filter((tox) => {
         if (tox.collides(fat)) {
-          fat.vy += 0.001
-          if(fat.vy >= 0){
-            fat.y = -500
-          }
+          fat.vy -= 0.001
+          this.ctx.font = "20px Arial";
+          this.ctx.fillStyle = "red";
+          this.ctx.fillText(`Can't breath!:`, fat.x - 29, fat.y-16);
+          this.ctx.fillStyle = "tomato";
+          this.ctx.fillText(`Can't breath!:`, fat.x - 26, fat.y-14);
+          this.ctx.fillStyle = "white";
+          this.ctx.fillText(`Can't breath!:`, fat.x - 28, fat.y - 15);
           return false;
         } else return true;
       });
@@ -1249,7 +1373,7 @@ class Game {
       this.player.heats = this.player.heats.filter((heat) => {
         if (heat.collides(goose)) {
           goose.lifeleft -= 1 
-          const foodRandom = Math.floor(Math.random() * 8 - chance)
+          const foodRandom = Math.floor(Math.random() * 14 - chance)
           if(goose.lifeleft <= 0){
             this.score.addkgoose()
             this.score.addktotal1()
@@ -1282,7 +1406,7 @@ class Game {
         if (water.collides(goose)) {
           this.player.waters.splice(0, 1);
           goose.lifeleft -= 1 
-          const foodRandom = Math.floor(Math.random() * 2 - chance)
+          const foodRandom = Math.floor(Math.random() * 10 - chance)
           if(goose.lifeleft <= 0){
             this.score.addkgoose()
             this.score.addktotal1()
@@ -1336,6 +1460,35 @@ class Game {
         } else return true;
       });
     });
+    this.geese.forEach((goose) => { // goose con toxic
+      this.player.toxics.filter((tox) => {
+        if (tox.collides(goose)) {
+          goose.lifeleft -= 0.005;
+          if(goose.vx > 0){
+            goose.vx -= 0.0005
+          } else if(goose.vx < 0 ){
+            goose.vx += 0.0005
+          }
+          if(goose.vy > 0){
+            goose.vy = 0.005
+          } else if (goose.vy < 0){
+            goose.vy = 0.005
+          }
+          this.ctx.font = "20px Arial";
+          this.ctx.fillStyle = "red";
+          this.ctx.fillText(`Can't breath!:`, goose.x - 29, goose.y-16);
+          this.ctx.fillStyle = "tomato";
+          this.ctx.fillText(`Can't breath!:`, goose.x - 26, goose.y-14);
+          this.ctx.fillStyle = "peachpuff";
+          this.ctx.fillText(`Can't breath!:`, goose.x - 28, goose.y - 15);
+          if(goose.lifeleft >= 0 && goose.lifeleft <= 0.001){
+            this.score.addkgoose()
+            this.score.addktotal1()
+          }
+          return false;
+        } else return true;
+      });
+    });
 
 //babys...babys...babys...babys...babys...babys...babys...babys...babys...babys...babys...babys...babys...
 //babys...babys...babys...babys...babys...babys...babys...babys...babys...babys...babys...babys...babys...
@@ -1346,6 +1499,7 @@ class Game {
       }
       return true;
     });
+    
     this.babys.forEach((baby) => { //baby con blaster
       this.player.blasters.filter((blast) => {
         if (blast.collides(baby)) {
@@ -1415,6 +1569,30 @@ class Game {
         } else return true;
       });
     });
+    this.babys.forEach((baby) => { //baby con toxic
+      this.player.toxics.filter((tox) => {
+        if (tox.collides(baby)) {
+          baby.babyLife -= 0.005
+          this.ctx.font = "20px Arial";
+          this.ctx.fillStyle = "red";
+          this.ctx.fillText(`Gugu gaga! blah!:`, baby.x - 39, baby.y-16);
+          this.ctx.fillStyle = "tomato";
+          this.ctx.fillText(`Gugu gaga! blah!:`, baby.x - 36, baby.y-14);
+          this.ctx.fillStyle = "white";
+          this.ctx.fillText(`Gugu gaga! blah!:`, baby.x - 38, baby.y - 15);
+          if(baby.babyLife <= 1){
+            baby.babyImg.src = "/assets/images/elements/blood.png"
+            baby.babyFrame = 1
+            baby.vx = 0
+            baby.vy = 0
+            if(baby.babyLife <= -1){
+              baby.x = 1800
+            }
+          }
+          return false;
+        } else return true;
+      });
+    });
 //customer...customer...customer...customer...customer...customer...customer...customer...customer...customer...
 //customer...customer...customer...customer...customer...customer...customer...customer...customer...customer...
     this.customers = this.customers.filter((cus) => { //customer con player
@@ -1423,6 +1601,19 @@ class Game {
         return false;
       }
       return true;
+    });
+    this.customers.forEach((cust) => {//cust con discounting
+      this.player.discountings = this.player.discountings.filter((disc) => {
+        if (disc.collides(cust)) {
+          this.player.discountings.splice(0, 1);
+          this.saving()
+          cust.x = 930
+          cust.y = 280
+          cust.vx = 19
+          cust.say = "Thanx! Bye!"
+          return false;
+        } else return true;
+      });
     });
     this.customers.forEach((cus) => { //customer con heat del player
       this.player.heats.filter((heat) => {
@@ -1505,6 +1696,32 @@ class Game {
               this.score.score += 1
             }
             return true;
+          } else return true;
+        });
+      });
+      this.customers.forEach((customer) => { //customer con toxic
+        this.player.toxics.filter((tox) => {
+          if (tox.collides(customer)) {
+            customer.lifeleft -= 0.005;
+            customer.vy -= 0.0001;
+            this.ctx.font = "20px Arial";
+            this.ctx.fillStyle = "red";
+            this.ctx.fillText(`Gugu gaga! blah!:`, customer.x - 39, customer.y-16);
+            this.ctx.fillStyle = "tomato";
+            this.ctx.fillText(`Gugu gaga! blah!:`, customer.x - 36, customer.y-14);
+            this.ctx.fillStyle = "white";
+            this.ctx.fillText(`Gugu gaga! blah!:`, customer.x - 38, customer.y - 15);
+            if(customer.lifeleft <= 0.3){
+              customer.customImg.src = "/assets/images/elements/blood.png"
+              customer.customFrame = 1
+              customer.vx = 0;
+              customer.vy = 0;
+            }
+            if(customer.lifeleft <= 0.1 && customer.lifeleft >= 0.09  ){
+              this.dyingCus()
+              this.score.score += 0.5
+            }
+            return false;
           } else return true;
         });
       });
@@ -1756,9 +1973,9 @@ this.pback.forEach((peop) => { //PBack
 //carts...carts...carts...carts...carts...carts...carts...carts...carts...carts...carts...carts...carts...carts...
     this.carts = this.carts.filter((cart) => {
       if (cart.collides(this.player)) {
-        this.newShoes = new Audio("/assets/audios ad/Faster running.mp3");
-        this.newShoes.volume = 0.1;
-        this.newShoes.play()
+        // this.newShoes = new Audio("/assets/audios ad/Faster running.mp3");
+        // this.newShoes.volume = 0.1;
+        // this.newShoes.play()
         charging+=1
         if(charging >= 20 && this.score.total >= 20){
             M = 77
@@ -1772,6 +1989,24 @@ this.pback.forEach((peop) => { //PBack
       }
       return true;
     });
+    this.carts.forEach((cart) => {//hook con carts
+      this.player.hooks.filter((hook) => {
+        if (hook.collides(cart)) {
+          charging+=1
+          if(charging >= 20 && this.score.total >= 20){
+              M = 77
+              charging = 0
+          }
+          if(this.score.total >= 35){
+            T = 84
+          }
+          this.player.getSmallRespect()
+          hook.dispose = true
+          cart.x = -200
+          return false;
+        } else return true;
+      });
+    });
 // foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..
 // foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..
     this.foods = this.foods.filter((food) => {
@@ -1784,6 +2019,16 @@ this.pback.forEach((peop) => { //PBack
       }
       return true;
     });
+    this.foods.forEach((food) => {//hook con foods
+      this.player.hooks.filter((hook) => {
+        if (hook.collides(food)) {
+          this.player.heal()
+          hook.dispose = true
+          food.x = -200
+          return false;
+        } else return true;
+      });
+    });
 // upgrades upbulltes...upgrades upbulltes...upgrades upbulltes...upgrades upbulltes...upgrades upbulltes...
 // upgrades upbulltes...upgrades upbulltes...upgrades upbulltes...upgrades upbulltes...upgrades upbulltes...
     this.upgrades = this.upgrades.filter((up) => {
@@ -1792,8 +2037,10 @@ this.pback.forEach((peop) => { //PBack
         bulletDistance += 50;
         bulletDistanceExtra -= 50
         this.player.cooldownBullet -= 600;
-        const fireAlert = document.getElementById("upgrade-alert");
-        fireAlert.style.display = "none";
+        if(this.upgrades.length === 0){
+          const upAlert = document.getElementById("upgrade-alert");
+          upAlert.style.display = "none";
+        }
         return false;
       }
       return true;
@@ -1803,11 +2050,46 @@ this.pback.forEach((peop) => { //PBack
         afterSize +=10
         bulletSize +=10
         bulletSizeExtra -=10
-        const fireAlert = document.getElementById("upgrade-alert");
-        fireAlert.style.display = "none";
+        if(this.upBullets.length === 0){
+          const upgAlert = document.getElementById("upBullet-alert");
+          upgAlert.style.display = "none";
+        }
         return false;
       }
       return true;
+    });
+    this.upBullets.forEach((upbullet) => {//hook con upbullets
+      this.player.hooks.filter((hook) => {
+        if (hook.collides(upbullet)) {
+          afterSize +=10
+          bulletSize +=10
+          bulletSizeExtra -=10
+          if(this.upBullets.length === 0){
+            const upgAlert = document.getElementById("upBullet-alert");
+            upgAlert.style.display = "none";
+          }
+          hook.dispose = true
+          upbullet.x = -200
+          return false;
+        } else return true;
+      });
+    });
+    this.upgrades.forEach((upgrade) => {//hook con upgrades
+      this.player.hooks.filter((hook) => {
+        if (hook.collides(upgrade)) {
+          this.player.speed += 2;
+          bulletDistance += 50;
+          bulletDistanceExtra -= 50
+          this.player.cooldownBullet -= 600;
+          if(this.upgrades.length === 0){
+            const upAlert = document.getElementById("upgrade-alert");
+            upAlert.style.display = "none";
+          }
+          hook.dispose = true
+          upgrade.x = -200
+          return false;
+        } else return true;
+      });
     });
 //discount...discount...discount...discount...discount...discount...discount...discount...discount...discount...discount...
 //discount...discount...discount...discount...discount...discount...discount...discount...discount...discount...discount...
@@ -1820,15 +2102,92 @@ this.pback.forEach((peop) => { //PBack
       }
       return true;
     });
+    this.discounts.forEach((discount) => {//hook con discounts
+      this.player.hooks.filter((hook) => {
+        if (hook.collides(discount)) {
+          this.line.b -= 0.5;
+          this.line.a += 0.5;
+          discounting += 5
+          hook.dispose = true
+          discount.x = -200
+          return false;
+        } else return true;
+      });
+    });
     this.player.toxics = this.player.toxics.filter((tox) => {
       if (tox.collides(this.player)) {
-          this.player.healSlower()
-      }
+          this.player.dieSlower()
+          this.ctx.font = "20px Arial";
+          this.ctx.fillStyle = "red";
+          this.ctx.fillText("My skin burns!", this.player.x - 40, this.player.y - 28);
+          this.ctx.fillStyle = "red";
+          this.ctx.fillText("My skin burns!", this.player.x - 36, this.player.y-24);
+          this.ctx.fillStyle = "white";
+          this.ctx.fillText("My skin burns!", this.player.x - 38, this.player.y-26);
+        }
       return true;
     });
 
-
-
+    this.player.sanders = this.player.sanders.filter((sand) => { //sandheal con player
+      if (sand.collides(this.player)) {
+        if(this.player.sandstate === true){
+          this.player.healslower()
+          this.ctx.font = "20px Arial";
+          this.ctx.fillStyle = "blue";
+          this.ctx.fillText("Healing!", this.player.x - 40, this.player.y - 28);
+          this.ctx.fillStyle = "ble";
+          this.ctx.fillText("Healing!", this.player.x - 36, this.player.y-24);
+          this.ctx.fillStyle = "aqua";
+          this.ctx.fillText("Healing!", this.player.x - 38, this.player.y-26);
+        }
+      }
+      return true;
+    });
+    this.pfront.forEach((pfro) => {//pfro con sanders
+      this.player.sanders.filter((sand) => {
+        if (sand.collides(pfro)) {
+          if(this.player.sandstate === true){
+            this.player.getSmallestRespect()
+            this.ctx.font = "20px Arial";
+            this.ctx.fillStyle = "blue";
+            this.ctx.fillText(pfro.complainOne, pfro.x - 40, pfro.y - 28);
+            this.ctx.fillStyle = "ble";
+            this.ctx.fillText(pfro.complainOne, pfro.x - 36, pfro.y-24);
+            this.ctx.fillStyle = "aqua";
+            this.ctx.fillText(pfro.complainOne, pfro.x - 38, pfro.y-26);
+          }
+          return false;
+        } else return true;
+      });
+    });
+    this.pback.forEach((pfro) => {//pfro con sanders
+      this.player.sanders.filter((sand) => {
+        if (sand.collides(pfro)) {
+          if(this.player.sandstate === true){
+            this.player.getSmallestRespect()
+            this.ctx.font = "20px Arial";
+            this.ctx.fillStyle = "blue";
+            this.ctx.fillText(pfro.complainOne, pfro.x - 40, pfro.y - 28);
+            this.ctx.fillStyle = "ble";
+            this.ctx.fillText(pfro.complainOne, pfro.x - 36, pfro.y-24);
+            this.ctx.fillStyle = "aqua";
+            this.ctx.fillText(pfro.complainOne, pfro.x - 38, pfro.y-26);
+          }
+          return false;
+        } else return true;
+      });
+    });
+    this.player.blasters.forEach((blast) => {// con sanders
+      this.player.sanders.filter((sand) => {
+        if (sand.collides(blast)) {
+          this.tick++ 
+          if (this.tick % 35 === 0 && this.player.blasters.length <= 20){
+            this.player.megablaster()
+          }
+          return false;
+        } else return true;
+      });
+    });
 // collision end... collision end... collision end... collision end... collision end... collision end... collision end...
 // collision end... collision end... collision end... collision end... collision end... collision end... collision end...
 // collision end... collision end... collision end... collision end... collision end... collision end... collision end...
@@ -1836,15 +2195,32 @@ this.pback.forEach((peop) => { //PBack
 
 
     // evento que se dispara al perder toda la vida, morir clientes, perder el respeto y perder hjas de reclamaciones
-    if (!this.player.isAlive() || this.score.score >= 10 || forms.length < 1 || !this.player.isRespected()) {
+    if (!this.player.isRespected()) {
       this.gameOver();
+      const lose = document.getElementById("loseRespect");
+      lose.style.display = "flex"
     } 
+    if (forms.length < 1) {
+      this.gameOver();
+      const lose = document.getElementById("loseClaim");
+      lose.style.display = "flex"
+    } 
+    if (this.score.score >= 10) {
+      this.gameOver();
+      const lose = document.getElementById("loseDead");
+      lose.style.display = "flex"
+    } 
+    if(!this.player.isAlive()){
+      this.gameOver()
+      const lose = document.getElementById("loseDied");
+      lose.style.display = "flex"
+    }
       if (this.healing.collides(this.player) && this.winTime >= 550) {
       this.player.healslow();
-      this.iceTime++
-      if(this.iceTime >= this.iceTimer ){
+      this.iceCurePoison++
+      if(this.iceCurePoison >= this.curePoisonTimer ){
         this.weird1 = 0
-        this.iceTime = 0
+        this.iceCurePoison = 0
         const poison = document.getElementById("poisoned");
         poison.style.display = "none";
       }
@@ -1853,39 +2229,41 @@ this.pback.forEach((peop) => { //PBack
   //Colisiones end
   gameOver() {
     this.stop();
+    this.karens = [];
     this.rats = [];
-    this.fats = [];
-    this.geese = [];
     this.babys = [];
     this.customers = [];
-    this.karens = [];
-    this.fires = [];
+    this.fats = [];
     this.puddles = [];
+    this.fires = [];
+    this.geese = [];
     this.bosss = [];
     this.korens = [];
     this.carts = [];
     this.foods = [];
+    this.korens = [];
     this.upgrades = [];
     this.upBullet = [];
     this.dicounts = [];
-    const lose = document.getElementById("lose");
-    lose.style.display = "block"
     this.winMus = new Audio("/assets/audios ad/losemusic.mp3");
     this.winMus.volume = 0.1;
     this.winMus.play();
   }
   gameWin() {
     this.stop();
+    this.karens = [];
     this.rats = [];
-    this.fats = [];
-    this.geese = [];
     this.babys = [];
     this.customers = [];
-    this.karens = [];
-    this.boss = [];
+    this.fats = [];
+    this.puddles = [];
+    this.fires = [];
+    this.geese = [];
+    this.bosss = [];
     this.korens = [];
     this.carts = [];
     this.foods = [];
+    this.korens = [];
     this.upgrades = [];
     this.upBullet = [];
     this.dicounts = [];

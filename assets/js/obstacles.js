@@ -114,9 +114,9 @@ class Fire{
   draw() {
     this.ctx.drawImage(
       this.fire,
-      (this.fire.frame * this.fire.width) / 5,
+      (this.fire.frame * this.fire.width) / 9,
       0,
-      this.fire.width / 5,
+      this.fire.width / 9,
       this.fire.height,
       this.x,
       this.y,
@@ -138,7 +138,7 @@ class Fire{
       this.bla += 0.05
       this.blu += 0.05
     }
-    if (this.fire.frame > 4) {
+    if (this.fire.frame > 8) {
       this.fire.frame = 0;
     }
 

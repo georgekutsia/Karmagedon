@@ -14,16 +14,17 @@ class Baby {
     this.babyImg = new Image();
     this.babyImg.src = "/assets/images/elements/bebe.png";
     this.babyImg.frame = 0;
-
     this.tick = 0;
+    this.babyLife = 5
+    this.babyFrame = 18
   }
 
   draw() {
     this.ctx.drawImage(
       this.babyImg,
-      (this.babyImg.frame * this.babyImg.width) / 18,
+      (this.babyImg.frame * this.babyImg.width) / this.babyFrame,
       0,
-      this.babyImg.width / 18, 
+      this.babyImg.width / this.babyFrame, 
       this.babyImg.height,
       this.x, 
       this.y, 
@@ -31,7 +32,6 @@ class Baby {
       this.h
     );
   }
-
   move() {
     this.x += this.vx;
     this.y += this.vy;
@@ -68,23 +68,19 @@ class Baby {
       this.vy = 200;
       this.vx = 0;
     }
-    
     if (this.tick > 10) {
       this.tick = 0;
       this.babyImg.frame++;
     }
-
     if (this.x < 0) {
     }
-    if (this.babyImg.frame > 17) {
+    if (this.babyImg.frame > this.babyFrame-1) {
       this.babyImg.frame = 0;
     }
   }
-
   isVisible() {
     return this.x + this.w > 0;
   }
-
   collides(player) {
     const colX = this.x <= player.x + player.w && this.x + this.w > player.x;
     const colY = this.y + this.h > player.y && this.y < player.y + player.h;

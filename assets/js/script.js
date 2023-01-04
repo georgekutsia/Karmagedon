@@ -38,6 +38,11 @@ const zgoose = document.getElementById("add-goose")
 const zdiscount = document.getElementById("add-discount")
 const zcart = document.getElementById("add-cart")
 const zbaby = document.getElementById("add-baby")
+const zkoren = document.getElementById("add-koren")
+const zcustomer = document.getElementById("add-customer")
+const zfood = document.getElementById("add-food")
+const zupgrade = document.getElementById("add-upgrade")
+const zupbullet = document.getElementById("add-upbullet")
 
 const allButtonsGone = [easy, normal, hard, superhard, info, manager, begin]
 
@@ -253,6 +258,11 @@ restart.addEventListener("click", function () {
     zdiscount.style.display = "inline-block"
     zcart.style.display = "inline-block"
     zbaby.style.display = "inline-block"
+    zkoren.style.display = "inline-block"
+    zcustomer.style.display = "inline-block"
+    zupgrade.style.display = "inline-block"
+    zupbullet.style.display = "inline-block"
+    zfood.style.display = "inline-block"
 
 })
 zkaren.addEventListener("click", function(){
@@ -306,6 +316,29 @@ zcart.addEventListener("click", function(){
 zbaby.addEventListener("click", function(){
   game.addBaby()
   game.babyAlert()
+  demo.innerText = "Clean"
+})
+zkoren.addEventListener("click", function(){
+  game.addKoren()
+  game.korenAlert()
+  demo.innerText = "Clean"
+})
+zcustomer.addEventListener("click", function(){
+  game.addCustomer()
+  demo.innerText = "Clean"
+})
+zfood.addEventListener("click", function(){
+  game.addFood()
+  demo.innerText = "Clean"
+})
+zupgrade.addEventListener("click", function(){
+  game.addUpgrade()
+  game.upgradeAlert()
+  demo.innerText = "Clean"
+})
+zupbullet.addEventListener("click", function(){
+  game.addUpBullet()
+  game.upBulletAlert()
   demo.innerText = "Clean"
 })
 

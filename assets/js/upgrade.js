@@ -9,7 +9,7 @@ class Upgrade {
       this.h = 60;
       this.cartImg = new Image();
       this.cartImg.src = "/assets/images/elements/upgra.png";  
-      this.tock = 600;
+      this.tock = 900;
       this.dispose = true
     }
   

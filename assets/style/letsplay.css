@@ -111,7 +111,7 @@
   text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;
   box-shadow: inset 0 0 0.5em 0 var(--clr-neondir), 0 0 0.5em 0 var(--clr-neondir);
   left: 250px;
-  bottom: 53px;
+  top: 760px;
   transition: all ease-in-out 3s;
   z-index: 100;
   height: 72px;
@@ -131,7 +131,7 @@
 }
 #display-info:hover{
   opacity:1;
-  font-size: 2.2rem;
+  font-size: 2rem;
   transition: 0.2s;
   background-color: black;
   text-shadow: 1px 1px rgb(255, 255, 255);
@@ -167,7 +167,7 @@
   text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;
   box-shadow: inset 0 0 0.5em 0 var(--clr-neondir), 0 0 0.5em 0 var(--clr-neondir);
   left: 1253px;
-  bottom: 53px;
+  top: 588px;
   transition: all ease-in-out 3s;
   z-index: 100;
   height: 245px;
@@ -187,7 +187,7 @@
 }
 #display-info1:hover{
   opacity:1;
-  font-size: 2.2rem;
+  font-size: 2rem;
   transition: 0.2s;
   background-color: black;
   text-shadow: 1px 1px rgb(255, 255, 255);
@@ -243,7 +243,7 @@
 }
 #display-info2:hover{
   opacity:1;
-  font-size: 2.2rem;
+  font-size: 2rem;
   transition: 0.2s;
   background-color: black;
   text-shadow: 1px 1px rgb(255, 255, 255);

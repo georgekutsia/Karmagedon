@@ -36,19 +36,7 @@
       <button id="display-info2">Show Mall Status</button>
 <!-- info data -->
 
-    <div>
-      <a id="display-adds">-Add-</a>
-      <a id="add-karen" class="demo">Karen </a>
-      <a id="add-rat" class="demo">Rat </a>
-      <a id="add-fat" class="demo">Fat </a>
-      <a id="add-puddle" class="demo">Puddle </a>
-      <a id="add-fire" class="demo">Fire </a>
-      <a id="add-boss" class="demo">Boss </a>
-      <a id="add-goose" class="demo">Goose </a>
-      <a id="add-discount" class="demo">Discount </a>
-      <a id="add-cart" class="demo">Cart </a>
-      <a id="add-baby" class="demo">Baby </a>
-    </div>
+
     <!-- first page -->
     <div id="body-intro">
       <article id="info-manager"> Make a mall survive a working day the best way you can</article>
@@ -65,21 +53,23 @@
     
     <div id="intro-canvas">
       <h2>GAME IN 4K UlTRA HD</h2>
-      <button id="info0" text-align="center"><div>Karens</div></button>
-      <button id="info1" text-align="center"><div>Karens</div></button>
-      <button id="info2" text-align="center"><div>Supervisor</div></button>
-      <button id="info3" text-align="center"><div>Events</div></button>
-      <button id="info4" text-align="center"><div>Strategy</div></button>
-      <button id="info4a" text-align="center"><div>Strategy</div></button>
-      <button id="info5" text-align="center"><div>Strategy</div></button>
-      <button id="info6" text-align="center"><div>Strategy</div></button>
-      <button id="info7" text-align="center"><div>Strategy</div></button>
-      <button id="info8" text-align="center"><div>Strategy</div></button>
-      <button id="info9" text-align="center"><div>Strategy</div></button>
+      <button id="infoSecret1" text-align="center"><div></div></button>
+      <button id="info0" text-align="center"><div></div></button>
+      <button id="info1" text-align="center"><div>You</div></button>
+      <button id="info5" text-align="center"><div>Gains</div></button>
+      <button id="info2" text-align="center"><div>Karen</div></button>
+      <button id="info3" text-align="center"><div>Boss</div></button>
+      <button id="info4" text-align="center"><div>Koren</div></button>
+      <button id="info4a" text-align="center"><div>Fat</div></button>
+      <button id="info6" text-align="center"><div>Rats</div></button>
+      <button id="info7" text-align="center"><div>Goose</div></button>
+      <button id="info8" text-align="center"><div>Accident</div></button>
+      <button id="info9" text-align="center"><div>Customer</div></button>
     </div>
     
     <div id="main-canvas">
     <span id="time"></span>
+      <button id="infoSecret3" text-align="center"><div></div></button>
       <div class="wornings-css">
         <div id="status">
           <h3 >Mall <br> Status</h3>
@@ -96,7 +86,7 @@
           <h5 id="water-alert" class="event-alert"><i class="fa-solid fa-water"></i>&nbsp;  Flooding!</h5>
           <h5 id="fire-alert" class="event-alert"><i class="fa-solid fa-fire"></i>&nbsp;  Fire!!</h5>
           <h5 id="upgrade-alert" class="good-alert"><i class="fa-solid fa-suitcase-rolling"></i>&nbsp;  Upgrade your equipment!</h5>
-          <h5 id="upBullet-alert" class="good-alert"><i class="fa-solid fa-person-rifle"></i>&nbsp;  Upgrade your bullets!</h5>
+          <h5 id="upBullet-alert" class="good-alert"><i class="fa-solid fa-person-rifle"></i>&nbsp;  Upgrade your ammo!</h5>
           <h5 id="boss-alert" class="event-alert"><i class="fa-solid fa-warning "><i class="fa solid fa-face-frown"></i></i>&nbsp;MEGAKAREN! RUN!&nbsp;<i class="fa-solid fa-face-frown "><i class="fa solid fa-warning"></i></i></h5>
           <h5 id="koren-alert" class="event-alert"><i class="fa-solid fa-user"></i>&nbsp;Douchebag Koren!</h5>
         </div>
@@ -108,6 +98,7 @@
       <img src="/assets/images/elements/hoja de reclamaciones.png" alt="how" class="forms-item" id="forms4">
       <img src="/assets/images/elements/hoja de reclamaciones.png" alt="he" class="forms-item" id="forms5">
     </div>
+    
     <div id="info-cheatsheet" class="d-flex align-content-around flex-wrap"> 
       <div class="justify-content-evenly d-flex"> Moves <img src="/assets/images/infos/flechas.png" alt="wups" width="40" height="40" />  
       Or <img src="/assets/images/infos/wasd.png" alt="wups" width="40" height="40">  </div>
@@ -128,7 +119,24 @@
 
 
 
-
+    <div id="demo-spacing" class="">
+      <a id="display-adds">-Add-</a>
+      <a id="add-karen" class="demo">Karen </a>
+      <a id="add-puddle" class="demo">Puddle </a>
+      <a id="add-fire" class="demo">Fire </a>
+      <a id="add-rat" class="demo">Rat </a>
+      <a id="add-fat" class="demo">Fat </a>
+      <a id="add-goose" class="demo">Goose </a>
+      <a id="add-boss" class="demo">Boss </a>
+      <a id="add-koren" class="demo">Koren </a>
+      <a id="add-discount" class="demo">Discount </a>
+      <a id="add-cart" class="demo">Cart </a>
+      <a id="add-baby" class="demo">Baby </a>
+      <a id="add-customer" class="demo">Customer </a>
+      <a id="add-food" class="demo">food </a>
+      <a id="add-upgrade" class="demo">upgrade </a>
+      <a id="add-upbullet" class="demo">upbullet </a>
+    </div>
 <!-- time function  -->
     <script>
       let q = 0;
@@ -148,9 +156,12 @@
     </script>
 <!-- time function -->
     </div>
+    
     <div class="neon-button-box">
       <a class="neon-button">How to survive Karengedón</a>     
     </div>
+    <button id="infoSecret2" text-align="center"><div></div></button>
+    
     <div class="ms-5 mb-3">
       <h3>Coming up next... </h3>
     </div>
@@ -160,7 +171,11 @@
       <a id="neon-hard">Geese inferno</a>
       <a id="neon-superhard">Survive the imposible</a>
     </div>
-    <img id="lose" src="/assets/images/end/fired.jpeg" alt="not..." width="60%" height="60%">
+    
+    <img id="loseDead" src="/assets/images/end/firedDead.jpeg" alt="not..." width="995px" height="615px">
+    <img id="loseDied" src="/assets/images/end/firedDied.jpeg" alt="not..." width="995px" height="615px">
+    <img id="loseRespect" src="/assets/images/end/firedRespect.jpeg" alt="not..." width="995px" height="615px">
+    <img id="loseClaim" src="/assets/images/end/firedClaim.jpeg" alt="not..." width="995px" height="615px">
     <img id="win" src="/assets/images/end/wincon.png" alt="sadds" >
 
 

@@ -5,14 +5,11 @@ class Token {
     this.y = 610;
     this.w = 130;
     this.h = 130;
-
     this.token = new Image();
     this.token.src = "/assets/images/PJ/token life.png";
     this.token.frame = 0;
-
     this.tick = 0;
   }
-
   draw() {
     this.ctx.drawImage(
       this.token,
@@ -26,10 +23,8 @@ class Token {
       this.h
     );
   }
-
   move() {
     this.tick++;
-
     if (this.tick % 14 === 0) {
       this.token.frame++;
     }

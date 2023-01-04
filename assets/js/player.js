@@ -12,7 +12,7 @@ class Player {
     this.img = new Image();
     this.img.src = "/assets/images/PJ/MANAGER 1.png";
     this.imgJump = new Image()
-    this.imgJump.src = "/assets/images/elements/jumpup.png"
+    this.imgJump.src = "/assets/images/jumps/jumpup1.png"
     this.imgFire = new Image()
     this.imgFire.src = "/assets/images/elements/fireball.png"
     this.imgWater = new Image()
@@ -23,19 +23,17 @@ class Player {
     this.imgQ.src = "/assets/images/elements/dodgeq.png"
     this.imgE = new Image()
     this.imgE.src = "/assets/images/elements/dodgee.png"
-    this.bodyImg = new Image();
-    this.bodyImg.src = "/assets/images/elements/body.png"
-    this.throwerImg = new Image();
-    this.throwerImg.src = "/assets/images/elements/backpack.png"
     this.ctx.font = "20px Arial";
     this.img.frame = 0;
     this.tick = 0;
     this.tock = 0;
+    this.truck = 0;
     this.life = new Life(ctx);
     this.respect = new Respect(ctx)
     this.formins = new Formins(ctx)
     this.scoreback = new Scoreback(ctx)
     this.heats = [];
+    this.hooks = [];
     this.auras = [];
     this.waters = [];
     this.blasters = [];
@@ -48,11 +46,14 @@ class Player {
     this.cooldownJump = 3000;   
     this.cooldownJumpTick = 3000;   
     this.jumptimer = 20000; //quizás haga ala para disminuirlo o aumentar su distancia
-    this.luck = 1
+    this.toxicity = false
+    this.sandstate = false
+    this.sandAlterImg = ""
   }
   
   draw() {
     formsCheck();
+    console.log(hookCount)
     this.ctx.drawImage(
       this.img,
       0,
@@ -64,27 +65,20 @@ class Player {
       this.w,
       this.h 
       );
+
       // console.log("x",this.x)
       // console.log("y",this.y)
-      this.ctx.drawImage(
-        this.bodyImg, 600, 660, 50, 50
-      )
-      this.ctx.drawImage(
-        this.throwerImg, 230, 665, 70, 40
-      )
-
-      
     if(this.y + this.h > this.ctx.canvas.height -100 && this.x + this.w > this.ctx.canvas.width - 520 &&this.x + this.w < this.ctx.canvas.width - 470){
-      ctx.fillRect(this.x - 11, this.y - 21, 70, 22);
+      ctx.fillRect(this.x - 11, this.y - 41, 70, 22);
       ctx.fillStyle = "rgb(251, 209, 209)";
       this.ctx.fillStyle = "black";
-      this.order = this.ctx.fillText("Closed", this.x - 10, this.y - 3);
+      this.order = this.ctx.fillText("Closed", this.x - 10, this.y - 23);
     }
     if(this.y + this.h > this.ctx.canvas.height -100 && this.x + this.w > this.ctx.canvas.width - 860 &&this.x + this.w < this.ctx.canvas.width - 800){
-      ctx.fillRect(this.x - 11, this.y - 21, 70, 22);
+      ctx.fillRect(this.x - 11, this.y - 41, 70, 22);
       ctx.fillStyle = "rgb(251, 209, 209)";
       this.ctx.fillStyle = "black";
-      this.order = this.ctx.fillText("Closed", this.x - 10, this.y - 3);
+      this.order = this.ctx.fillText("Closed", this.x - 10, this.y - 23);
     }
     if(ALT === 16){
       this.ctx.drawImage(
@@ -118,6 +112,7 @@ class Player {
     }
 
     this.heats.forEach((heat) => heat.draw());
+    this.hooks.forEach((hook) => hook.draw());
     this.sanders.forEach((sand) => sand.draw());
     this.toxics.forEach((tox) => tox.draw());
     this.discountings.forEach((disc) => disc.draw());
@@ -134,6 +129,9 @@ class Player {
     this.x += this.vx;
     this.y += this.vy;
     this.tick++;
+    if(this.toxicity ===true && this.tick % 5 === 0){
+      this.toxicar()
+    }
     if ((this.tick > 10 && this.vx) || (this.tick > 10 && this.vy)) {
       this.img.frame++;
       this.tick = 0;
@@ -150,8 +148,8 @@ class Player {
       this.y = 0;
       this.vy = 0;
     }
-    if (this.y + this.h > this.ctx.canvas.height - 75) {
-      this.y = this.ctx.canvas.height - this.h - 75;
+    if (this.y + this.h > this.ctx.canvas.height - 80) {
+      this.y = this.ctx.canvas.height - this.h - 80;
       this.vy = 0;
     }
     if (this.x + this.w * 6 > this.ctx.canvas.width) {
@@ -168,6 +166,9 @@ class Player {
     });
     this.heats.forEach((heat) => {
       heat.move();
+    });
+    this.hooks.forEach((hook) => {
+      hook.move();
     });
     this.sanders.forEach((sand) => {
       sand.move();
@@ -218,20 +219,21 @@ class Player {
   healslow() {
     this.life.healSlow();
   }
-  healSlower() {
+  healslower() {
+    this.life.healslower();
+  }
+  dieSlower() {
     this.life.healSlower();
   }
   fireHit() {
     this.life.loseLifeFire();
   }
-
   isAlive() {
     return this.life.total > 0;
   }
   isRespected() {
     return this.respect.total > 0;
   }
-
   jump() {
     if (this.direction === "top") {
       this.y -= distance;
@@ -246,66 +248,100 @@ class Player {
       this.x += distance;
     }
   }
-
   dodgeq() {
     if (this.direction === "top") {
-      this.x = this.x -50
+      this.x = this.x - distance 
     }
     if (this.direction === "down") {
-      this.x = this.x + 50;;
+      this.x = this.x +  distance;;
     }
     if (this.direction === "left") {
-      this.y = this.y + 50;;
+      this.y = this.y +  distance;;
     }
     if (this.direction === "right") {
-      this.y = this.y - 50;;
+      this.y = this.y -  distance;;
     }
   }
   dodgee() {
     if (this.direction === "top") {
-      this.x = this.x + 50
+      this.x = this.x +  distance
     }
     if (this.direction === "down") {
-      this.x = this.x - 50;;
+      this.x = this.x -  distance;;
     }
     if (this.direction === "left") {
-      this.y = this.y - 50;;
+      this.y = this.y -  distance;;
     }
     if (this.direction === "right") {
-      this.y = this.y + 50;;
+      this.y = this.y +  distance;;
     }
   }
-      
     keyDown(key) {
     this.boost = 4 + this.booster + this.extraBoost;
     if (key === UP || key === W) {
       this.direction = "top";
       this.vy = - this.boost;
       this.img.src = "/assets/images/PJ/MANAGER 1.png";
-      this.imgJump.src = "/assets/images/elements/jumpup.png"
+      if(distance <= 60){
+        this.imgJump.src = "/assets/images/jumps/jumpup1.png"
+      } else if( distance >= 70 && distance <= 85){
+        this.imgJump.src = "/assets/images/jumps/jumpup2.png"
+      } else if(distance >= 90 && distance <= 105){
+        this.imgJump.src = "/assets/images/jumps/jumpup3.png"
+      } else if(distance >= 110 && distance <= 125){
+        this.imgJump.src = "/assets/images/jumps/jumpup4.png"
+      } else if(distance >= 130){
+        this.imgJump.src = "/assets/images/jumps/jumpup5.png"
+      }
     }
     if (key === DOWN || key === S) {
       this.direction = "down";
       this.vy =  this.boost;
       this.img.src = "/assets/images/PJ/MANAGER 3.png";
-      this.imgJump.src = "/assets/images/elements/jumpdown.png"
-
+      if(distance <= 60){
+        this.imgJump.src = "/assets/images/jumps/jumpdown1.png"
+      } else if( distance >= 70 && distance <= 85){
+        this.imgJump.src = "/assets/images/jumps/jumpdown2.png"
+      } else if(distance >= 90 && distance <= 105){
+        this.imgJump.src = "/assets/images/jumps/jumpdown3.png"
+      } else if(distance >= 110 && distance <= 125){
+        this.imgJump.src = "/assets/images/jumps/jumpdown4.png"
+      } else if(distance >= 130){
+        this.imgJump.src = "/assets/images/jumps/jumpdown5.png"
+      }
     }
     if (key === RIGHT || key === D) {
       this.direction = "right";
       this.vx = this.boost;
       this.img.src = "/assets/images/PJ/MANAGER 2.png";
-      this.imgJump.src = "/assets/images/elements/jumpright.png"
-
+      if(distance <= 60){
+        this.imgJump.src = "/assets/images/jumps/jumpright1.png"
+      } else if( distance >= 70 && distance <= 85){
+        this.imgJump.src = "/assets/images/jumps/jumpright2.png"
+      } else if(distance >= 90 && distance <= 105){
+        this.imgJump.src = "/assets/images/jumps/jumpright3.png"
+      } else if(distance >= 110 && distance <= 125){
+        this.imgJump.src = "/assets/images/jumps/jumpright4.png"
+      } else if(distance >= 130){
+        this.imgJump.src = "/assets/images/jumps/jumpright5.png"
+      }
     }
     if (key === LEFT || key === A) {
       this.direction = "left";
       this.vx = - this.boost;
       this.img.src = "/assets/images/PJ/MANAGER 4.png";
-      this.imgJump.src = "/assets/images/elements/jumpleft.png"
-
+      if(distance <= 60){
+        this.imgJump.src = "/assets/images/jumps/jumpleft1.png"
+      } else if( distance >= 70 && distance <= 85){
+        this.imgJump.src = "/assets/images/jumps/jumpleft2.png"
+      } else if(distance >= 90 && distance <= 105){
+        this.imgJump.src = "/assets/images/jumps/jumpleft3.png"
+      } else if(distance >= 110 && distance <= 125){
+        this.imgJump.src = "/assets/images/jumps/jumpleft4.png"
+      } else if(distance >= 130){
+        this.imgJump.src = "/assets/images/jumps/jumpleft5.png"
+      }
     }
-
     if (key === C) {
       this.tick++
       this.tock ++
@@ -315,7 +351,7 @@ class Player {
       this.tick = 0
       if(this.tock >= 100){
           C = 0
-      }
+        }
       }
     }
       if (key === V) {
@@ -325,10 +361,10 @@ class Player {
         this.watererPlus();
         this.watererPlusExtra();
         this.tick = 0
-      }
+        }
       }
       if (key === P) {
-        this.toxicar()
+        this.toxicity = !this.toxicity
       }
   }
   keyUp(key) {
@@ -377,8 +413,18 @@ class Player {
         X = 88;
       }, this.cooldownBullet);
     }
+    if (key === B) {
+      if(hookCount >= 1){
+        this.hooker();
+          B = 0;
+        hookCount -= 1
+        setTimeout(function () {
+          B = 66;
+        }, this.cooldownBullet/2);
+      }
+    }
     if (key === ALT) {
-      if(Z == 0, X == 0, N == 0, Q == 0, E == 0){
+      if(Z == 0, X == 0, N == 0, Q == 0, E == 0 && this.life.total <=3){
         this.discounting()
         this.discounting1()
         this.discounting2()
@@ -410,7 +456,6 @@ class Player {
     }
 
   }
-
   aurar() {
     const aura = new Aura(
       this.ctx,
@@ -478,17 +523,18 @@ class Player {
         this.y - 20,
         this
         );
+        blaster.framer = 12
         blaster.vx += 0.5;
         blaster.vy = 0;
         setTimeout(function(){
-          blaster.blasterImg.src = "/assets/images/munición/pn.png";
+          blaster.blasterImg.src = "/assets/images/munición/stormstorm1.png";
           blaster.vx += 3
         }, 3000)
         setTimeout(function(){
           blaster.vx -= 8
-        blaster.blasterImg.src = "/assets/images/munición/pn.png";
+        blaster.blasterImg.src = "/assets/images/munición/stormstorm1.png";
         }, 5200)
-        blaster.blasterImg.src = "/assets/images/munición/pn.png";
+        blaster.blasterImg.src = "/assets/images/munición/stormstorm1.png";
     this.blasters.push(blaster);
     }
     megablast2(){
@@ -498,6 +544,7 @@ class Player {
         this.y - 20,
         this
       );
+      blaster.framer = 12
       blaster.vx -= 0.5;
       blaster.vy = 0;
       setTimeout(function(){
@@ -505,9 +552,9 @@ class Player {
       }, 3000)
       setTimeout(function(){
         blaster.vx += 8
-      blaster.blasterImg.src = "/assets/images/munición/SandRight.png";
+      blaster.blasterImg.src = "/assets/images/munición/stormstorm1.png";
       }, 5200)
-      blaster.blasterImg.src = "/assets/images/munición/SandLeft.png";
+      blaster.blasterImg.src = "/assets/images/munición/stormstorm1.png";
     this.blasters.push(blaster);
     }
     megablast3(){
@@ -517,6 +564,7 @@ class Player {
         this.y - 20,
         this
       );
+      blaster.framer = 12
       blaster.vx = 0;
       blaster.vy -= 0.5;
       setTimeout(function(){
@@ -524,9 +572,9 @@ class Player {
       }, 3000)
       setTimeout(function(){
         blaster.vy += 8
-      blaster.blasterImg.src = "/assets/images/munición/SandDown.png";
+      blaster.blasterImg.src = "/assets/images/munición/stormstorm1.png";
       }, 5200)
-      blaster.blasterImg.src = "/assets/images/munición/SandUp.png";
+      blaster.blasterImg.src = "/assets/images/munición/stormstorm1.png";
     this.blasters.push(blaster);
     }
     megablast4(){
@@ -536,6 +584,7 @@ class Player {
         this.y - 20,
         this
       );
+      blaster.framer = 12
       blaster.vx = 0;
       blaster.vy += 0.5;
       setTimeout(function(){
@@ -543,9 +592,9 @@ class Player {
       }, 3000)
       setTimeout(function(){
         blaster.vy -= 8
-      blaster.blasterImg.src = "/assets/images/munición/sandup.png";
+      blaster.blasterImg.src = "/assets/images/munición/stormstorm1.png";
       }, 5200)
-      blaster.blasterImg.src = "/assets/images/munición/SandDown.png";
+      blaster.blasterImg.src = "/assets/images/munición/stormstorm1.png";
     this.blasters.push(blaster);
     }
   megablaster() {
@@ -618,6 +667,7 @@ class Player {
       this.ctx,
       this.x + 8,
       this.y + 8,
+      this.sandAlterImg,
       this
     );
     this.sanders.push(sand);
@@ -632,11 +682,55 @@ class Player {
     );
     this.toxics.push(tox);
   }
+
+
+
+
+  hooker() {
+    const hook = new Hook(
+      this.ctx,
+      this.x + 10,
+      this.y + 10,
+      this
+    );
+    if (this.direction === "right") {
+      hook.vx = this.speed;
+      hook.vy = 0;
+      hook.hookImg.src = "/assets/images/munición/hookright.png";
+      this.img.src = "/assets/images/PJ/imright.png";
+      this.img.frame++;
+    }
+    if (this.direction === "left") {
+      hook.vx = -this.speed;
+      hook.vy = 0;
+      hook.hookImg.src = "/assets/images/munición/hookleft.png";
+      this.img.src = "/assets/images/PJ/imleft.png";
+      this.img.frame++;
+    }
+    if (this.direction === "top") {
+      hook.vx = 0;
+      hook.vy = -this.speed;
+      hook.hookImg.src = "/assets/images/munición/hookup.png";
+      this.img.src = "/assets/images/PJ/imup.png";
+      this.img.frame++;
+    }
+    if (this.direction === "down") {
+      hook.vx = 0;
+      hook.vy = this.speed;
+      hook.hookImg.src = "/assets/images/munición/hookdown.png";
+      this.img.src = "/assets/images/PJ/imdown.png";
+      this.img.frame++;
+    }
+    if (this.cooldownBullet <= 600) {
+      this.cooldownBullet = 600;
+    }
+    this.hooks.push(hook);
+  }
   heater() {
     const heat = new Heat(
       this.ctx,
-      this.x + 8,
-      this.y + 8,
+      this.x + 10,
+      this.y + 10,
       this
     );
     if (this.direction === "right") {
@@ -767,41 +861,42 @@ class Player {
 
 
 
-
+// water...water...water...water...water...water...water...water...water...
+// water...water...water...water...water...water...water...water...water...
 
 
   waterer() {
     const water = new Water(
       this.ctx,
-      this.x + 1,
-      this.y + 8,
+      this.x + 10,
+      this.y + 10,
       this
     );
     if (this.direction === "right") {
       water.vx = this.speed;
       water.vy = 0;
-      water.w = 60;
+      water.waterImg.src = "/assets/images/munición/waterright.png"
       this.img.src = "/assets/images/PJ/imright.png";
       this.img.frame++;
     }
     if (this.direction === "left") {
       water.vx = -this.speed;
       water.vy = 0;
-      water.w = 60;
+      water.waterImg.src = "/assets/images/munición/waterleft.png"
       this.img.src = "/assets/images/PJ/imleft.png";
       this.img.frame++;
     }
     if (this.direction === "top") {
       water.vx = 0;
       water.vy = -this.speed;
-      water.h = 60;
+      water.waterImg.src = "/assets/images/munición/waterup.png"
       this.img.src = "/assets/images/PJ/imup.png";
       this.img.frame++;
     }
     if (this.direction === "down") {
       water.vx = 0;
       water.vy = this.speed;
-      water.h = 60;
+      water.waterImg.src = "/assets/images/munición/waterdown.png"
       this.img.src = "/assets/images/PJ/imdown.png";
       this.img.frame++;
     }
@@ -810,13 +905,6 @@ class Player {
     }
     this.waters.push(water);
   }
-
-
-
-
-
-
-
   watererPlus() {
     const water = new Water(
       this.ctx,
@@ -829,7 +917,7 @@ class Player {
       water.vy = 4;
       water.bla = bulletDistanceExtra - 90
       water.sa = bulletSizeExtra
-      water.w = 60;
+      water.waterImg.src = "/assets/images/munición/waterright.png"
       this.img.src = "/assets/images/PJ/imright.png";
       this.img.frame++;
     }
@@ -838,7 +926,7 @@ class Player {
       water.vy = -4;
       water.bla = bulletDistanceExtra - 90
       water.sa = bulletSizeExtra
-      water.w = 60;
+      water.waterImg.src = "/assets/images/munición/waterleft.png"
       this.img.src = "/assets/images/PJ/imleft.png";
       this.img.frame++;
     }
@@ -847,7 +935,7 @@ class Player {
       water.vy = -4;
       water.bla = bulletDistanceExtra - 90
       water.sa = bulletSizeExtra
-      water.h = 60;
+      water.waterImg.src = "/assets/images/munición/waterup.png"
       this.img.src = "/assets/images/PJ/imup.png";
       this.img.frame++;
     }
@@ -856,7 +944,7 @@ class Player {
       water.vy = 4;
       water.bla = bulletDistanceExtra - 90
       water.sa = bulletSizeExtra
-      water.h = 60;
+      water.waterImg.src = "/assets/images/munición/waterdown.png"
       this.img.src = "/assets/images/PJ/imdown.png";
       this.img.frame++;
     }
@@ -874,8 +962,7 @@ class Player {
       water.vy = -4;
       water.bla = bulletDistanceExtra - 90
       water.sa = bulletSizeExtra
-
-      water.w = 60;
+      water.waterImg.src = "/assets/images/munición/waterright.png"
       this.img.src = "/assets/images/PJ/imright.png";
       this.img.frame++;
     }
@@ -884,8 +971,7 @@ class Player {
       water.vy = 4;
       water.bla = bulletDistanceExtra - 90
       water.sa = bulletSizeExtra
-
-      water.w = 60;
+      water.waterImg.src = "/assets/images/munición/waterleft.png"
       this.img.src = "/assets/images/PJ/imleft.png";
       this.img.frame++;
     }
@@ -894,8 +980,7 @@ class Player {
       water.vy = -4;
       water.bla = bulletDistanceExtra - 90
       water.sa = bulletSizeExtra
-      
-      water.h = 60;
+      water.waterImg.src = "/assets/images/munición/waterup.png"
       this.img.src = "/assets/images/PJ/imup.png";
       this.img.frame++;
     }
@@ -904,8 +989,7 @@ class Player {
       water.vy = 4;
       water.bla = bulletDistanceExtra - 90
       water.sa = bulletSizeExtra
-
-      water.h = 60;
+      water.waterImg.src = "/assets/images/munición/waterdown.png"
       this.img.src = "/assets/images/PJ/imdown.png";
       this.img.frame++;
     }
@@ -923,7 +1007,7 @@ class Player {
     water.vy = 0;
     water.bla = bulletDistanceExtra - 60
     water.sa = bulletSizeExtra
-    water.w = 60;
+    water.waterImg.src = "/assets/images/munición/waterright.png"
     this.img.src = "/assets/images/PJ/imright.png";
     this.img.frame++;
   }
@@ -933,7 +1017,7 @@ class Player {
     water.bla = bulletDistanceExtra - 60
     water.sa = bulletSizeExtra
 
-    water.w = 60;
+    water.waterImg.src = "/assets/images/munición/waterleft.png"
     this.img.src = "/assets/images/PJ/imleft.png";
     this.img.frame++;
   }
@@ -942,8 +1026,7 @@ class Player {
     water.vy = -6.5;
     water.bla = bulletDistanceExtra - 60
     water.sa = bulletSizeExtra
-
-    water.h = 60;
+    water.waterImg.src = "/assets/images/munición/waterup.png"
     this.img.src = "/assets/images/PJ/imup.png";
     this.img.frame++;
   }
@@ -952,7 +1035,7 @@ class Player {
     water.vy = 6.5;
     water.bla = bulletDistanceExtra - 60
     water.sa = bulletSizeExtra
-    water.h = 60;
+    water.waterImg.src = "/assets/images/munición/waterdown.png"
     this.img.src = "/assets/images/PJ/imdown.png";
     this.img.frame++;
   }

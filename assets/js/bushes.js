@@ -192,6 +192,16 @@ class People {
       this.h = h;
       this.img = new Image();
       this.img.src = other;
+      this.complaintList  = [
+        "Nice spectacle!",
+        "Cool entertainment",
+        "Good job with that!",
+        "Incredible effects!",
+        "Can`t believe my eyes",
+        "Such a nice ambience"
+      ]
+      this.complainOne = this.complaintList[Math.floor(Math.random() * this.complaintList.length)]
+
     }
     draw() {
       this.ctx.drawImage(

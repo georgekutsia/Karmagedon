@@ -10,23 +10,29 @@ class Water {
       this.vx = 0;
       this.vy = 0;
       this.player = player;
-
-
       this.dispose = false;
       this.waterImg = new Image();
       this.waterImg.src = "/assets/images/elements/puddle.png";
-      
+      this.waterImg.frame = 0;      
       this.waterShootAudio = new Audio("/assets/audio/splash0.mp3")
       this.waterShootAudio.volume = 0.01;
       this.waterShootAudio.play();
+      this.framer = 1
+      this.tick = 0
     }
-  
     draw() {
       this.ctx.drawImage(
-        this.waterImg,this.x, this.y, this.w, this.h
-      )
+        this.waterImg,
+        (this.waterImg.frame * this.waterImg.width) / this.framer,
+        0,
+        this.waterImg.width / this.framer, 
+        this.waterImg.height,
+        this.x, 
+        this.y, 
+        this.w,
+        this.h
+      );
     }
-  
     move() {
       this.x += this.vx;
       this.y += this.vy;
@@ -38,16 +44,27 @@ class Water {
         this.x <= this.player.x - bulletDistance - this.bla || 
         this.y <= this.player.y - bulletDistance - this.bla 
           ) {
+          this.x -= 0.09;
+          this.y -= 0.09;
           this.vx = 0;
           this.vy = 0;
-          this.waterImg.src = "/assets/images/munición/water.png";
-          if (this.h >= afterSize + this.sa  + 40) {
+          this.framer = 8
+          this.tick++
+          this.waterImg.src = "/assets/images/munición/waterspin.png";
+          if (this.h >= afterSize + this.sa + 20) {
             this.dispose = true;
           }
-          if (this.w >= afterSize + this.sa + 40) {
+          if (this.w >= afterSize + this.sa + 20) {
             this.dispose = true;
           }
       }  
+      if (this.tick > 2) {
+        this.tick = 0;
+        this.waterImg.frame++;
+      }
+      if (this.waterImg.frame > this.framer - 1) {
+        this.waterImg.frame = 0;
+      }
     }  
     isVisible() {
       return !this.dispose
