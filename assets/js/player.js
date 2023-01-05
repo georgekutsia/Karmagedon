@@ -7,6 +7,7 @@ class Player {
     this.h = 35;
     this.extraBoost = 0
     this.booster = 0
+    this.boost = 4
     this.vx = 0;
     this.vy = 0;
     this.img = new Image();
@@ -420,7 +421,7 @@ class Player {
         hookCount -= 1
         setTimeout(function () {
           B = 66;
-        }, this.cooldownBullet/2);
+        }, this.cooldownBullet/4);
       }
     }
     if (key === ALT) {

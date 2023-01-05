@@ -2,7 +2,7 @@ class Upbullet {
   constructor(ctx) {
     this.ctx = ctx;
     this.salidas = [
-      {x:100, y:576}, {x:800, y:576}, {x:450, y:576}
+      {x:990, y:150}, {x:990, y:250}, {x:990, y:350}
     ]
     this.xy = this.salidas[Math.floor(Math.random()*this.salidas.length)]
     this.x = this.xy.x;
@@ -12,15 +12,24 @@ class Upbullet {
     this.cartImg = new Image();
     this.cartImg.src = "/assets/images/munición/gas.png";
     this.tock = 900;
+    this.total = 0;
+    this.v = 0;
+    this.vNegative = 0
   }
-
-
   draw() {
     this.ctx.drawImage(this.cartImg, this.x, this.y, this.w, this.h);
   }
-
-  move() {
+  move(player) {
     this.tock--
+    this.x += this.v;
+    this.y += this.v;
+    let followX = player.x - this.x;
+    let followY = player.y - this.y;
+    followX > 0 ? (this.x += this.v) : (this.x += this.v -this.vNegative);
+    followY > 0 ? (this.y += this.v) : (this.y += this.v -this.vNegative);
+    if (this.x == player.x && this.y == player.y) {
+      this.v = 0;
+    }
     this.ctx.font = "18px Arial";
     this.ctx.save();
     ctx.fillStyle = "black";

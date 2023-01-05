@@ -1,7 +1,6 @@
 class Food {
     constructor(ctx, foodx, foody) {
       this.ctx = ctx;
-
       this.salidas = [
         {x:310, y:10}, {x:310, y:260}, {x:125, y:15}, {x:155, y:320}, {x:900, y:420}, {x:805, y:505}, {x:950, y:40}
       ]
@@ -13,11 +12,11 @@ class Food {
       this.cartImg = new Image();
       this.cartImg.src = "/assets/images/elements/comidas.png";
       this.cartImg.frame = 0;
-  
       this.tick = 0;
       this.tock = 900;
+      this.v = 0;
+      this.vNegative = 0
     }
-  
     draw() {
       this.ctx.drawImage(
         this.cartImg,
@@ -31,10 +30,18 @@ class Food {
         this.h
       );
     }
-  
-    move() {
+    move(player) {
       this.tick++;
       this.tock--;
+      this.x += this.v;
+      this.y += this.v;
+      let followX = player.x - this.x;
+      let followY = player.y - this.y;
+      followX > 0 ? (this.x += this.v) : (this.x += this.v -this.vNegative);
+      followY > 0 ? (this.y += this.v) : (this.y += this.v -this.vNegative);
+      if (this.x == player.x && this.y == player.y) {
+        this.v = 0;
+      }
       if (this.tick > 40) {
         this.tick = 0;
         this.cartImg.frame++;

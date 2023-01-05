@@ -1,7 +1,6 @@
 class Cart {
   constructor(ctx, cartx, carty) {
     this.ctx = ctx;
-
     this.salidas = [
       { x: 70, y: 10 },
       { x: 736, y: 152 },
@@ -14,16 +13,16 @@ class Cart {
     ];
     this.xy = this.salidas[Math.floor(Math.random() * this.salidas.length)];
     this.x = cartx || this.xy.x;
-    this.y = carty||this.xy.y;
+    this.y = carty || this.xy.y;
     this.w = 43;
     this.h = 47;
+    this.v = 0;
+    this.vNegative = 0
     this.cartImg = new Image();
     this.cartImg.src = "/assets/images/elements/cart11.png";
     this.cartImg.frame = 0;
-
     this.tick = 0;
   }
-
   draw() {
     this.ctx.drawImage(
       this.cartImg,
@@ -37,9 +36,17 @@ class Cart {
       this.h
     );
   }
-
-  move() {
+  move(player) {
     this.tick++;
+    this.x += this.v;
+    this.y += this.v;
+    let followX = player.x - this.x;
+    let followY = player.y - this.y;
+    followX > 0 ? (this.x += this.v) : (this.x += this.v -this.vNegative);
+    followY > 0 ? (this.y += this.v) : (this.y += this.v -this.vNegative);
+    if (this.x == player.x && this.y == player.y) {
+      this.v = 0;
+    }
     if (this.tick > 20) {
       this.tick = 0;
       this.cartImg.frame++;

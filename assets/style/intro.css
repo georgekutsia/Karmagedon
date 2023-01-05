@@ -281,9 +281,9 @@ h2 {
 
 }
 #info1:hover:after {
-  content: url(/assets/images/infos/InfonfoNew1.png);
+  content: url(/assets/images/infos/InfonfoNew.png);
   position: absolute;
-  top: -25%;
+  top: -32%;
   right: 110%;
   opacity: 1;
   transition: opacity 1s 0.4s;

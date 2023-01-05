@@ -301,7 +301,6 @@ class Game {
 
   draw() {
     this.winTime++;
-    console.log(this.discounts)
     this.upgrades.forEach((e) => e.draw());
     this.upBullets.forEach((e) => e.draw());
     this.ctx.drawImage(
@@ -475,13 +474,23 @@ class Game {
         this.ctx.fillText(`Machinegun Reactivated in ${this.machinganRestoreLeft.toString()} `, 760, 655);
         this.ctx.restore();
     }
+    if(this.score.total <= 49){
+      this.machinganRestoreLeft = parseInt(this.machinganRestore/10)
+      this.ctx.font = "18px Arial";
+      this.ctx.save();
+      ctx.fillStyle = "rgb(86, 6, 6)";
+      ctx.fillRect(755, 638, 250, 23);
+      this.ctx.fillStyle = "white";
+      this.ctx.fillText(`Machingan is being designed`, 760, 655);
+      this.ctx.restore();
+    }
     if (T === 84){
         this.ctx.font = "18px Arial";
         this.ctx.save();
         ctx.fillStyle = "rgb(21, 209, 209)";
-        ctx.fillRect(85, 638, 150, 23);
+        ctx.fillRect(80, 638, 150, 23);
         this.ctx.fillStyle = "black";
-        this.ctx.fillText(`Timeshield on: -T-`, 90, 655);
+        this.ctx.fillText(`Timeshield ON:-T-`, 84, 655);
         this.ctx.restore();
     }
     if (M === 77 && this.score.total >= 20){
@@ -508,16 +517,43 @@ class Game {
       ctx.fillStyle = "rgb(255, 149, 0)";
       ctx.fillRect(240, 638, 200, 23);
       this.ctx.fillStyle = "black";
-      this.ctx.fillText(`Charge blaster to 20 : ${charging.toString()}`, 242, 655);
+      this.ctx.fillText(`Charge Blaster to 20 : ${charging.toString()}`, 242, 655);
       this.ctx.restore();
     }
     if (R === 82){
       this.ctx.font = "18px Arial";
       this.ctx.save();
       ctx.fillStyle = "rgb(255, 149, 0)";
-      ctx.fillRect(445, 638, 300, 23);
+      ctx.fillRect(445, 638, 155, 23);
       this.ctx.fillStyle = "black";
-      this.ctx.fillText(`Diagonal dispenser charged : ${this.chargedDisc.toString()} -R- `, 450, 655);
+      this.ctx.fillText(`Discounters: ${this.chargedDisc.toString()} -R- `, 450, 655);
+      this.ctx.restore();
+    }
+    if (this.chargedDisc <= 0){
+      this.ctx.font = "15px Arial";
+      this.ctx.save();
+      ctx.fillStyle = "rgb(86, 6, 6)";
+      ctx.fillRect(445, 638, 157, 23);
+      this.ctx.fillStyle = "white";
+      this.ctx.fillText(`No discounts avaliable`, 450, 655);
+      this.ctx.restore();
+    }
+    if (B === 66){
+      this.ctx.font = "18px Arial";
+      this.ctx.save();
+      ctx.fillStyle = "rgb(255, 149, 0)";
+      ctx.fillRect(615, 638, 115, 23);
+      this.ctx.fillStyle = "black";
+      this.ctx.fillText(`Hooks: ${hookCount.toString()} -B- `, 620, 655);
+      this.ctx.restore();
+    }
+    if (B === 0){
+      this.ctx.font = "18px Arial";
+      this.ctx.save();
+      ctx.fillStyle = "rgb(86, 6, 6)";
+      ctx.fillRect(610, 638, 138, 23);
+      this.ctx.fillStyle = "white";
+      this.ctx.fillText(`Hook: pending...`, 615, 655);
       this.ctx.restore();
     }
     if(this.puddles.length + this.fires.length >= 9){
@@ -556,11 +592,11 @@ class Game {
     this.fires.forEach((e) => e.move());
     this.line.move();
     this.healing.move();
-    this.carts.forEach((e) => e.move());
-    this.foods.forEach((e) => e.move());
-    this.upgrades.forEach((e) => e.move());
-    this.upBullets.forEach((e) => e.move());
-    this.discounts.forEach((e) => e.move());
+    this.carts.forEach((e) => e.move(this.player));
+    this.foods.forEach((e) => e.move(this.player));
+    this.upgrades.forEach((e) => e.move(this.player));
+    this.upBullets.forEach((e) => e.move(this.player));
+    this.discounts.forEach((e) => e.move(this.player));
   }
   addKaren() {
     const karen = new Karens(ctx);
@@ -852,6 +888,24 @@ class Game {
         }
       });
     });
+    this.player.hooks.forEach((hook) => { //fuego con fuego
+      this.puddles.forEach((puddle) => {
+        hook.collides(puddle);
+        if (hook.collides(puddle)) {
+            if(puddle.x < this.player.x){
+              puddle.x = puddle.x + 40
+            } else if (puddle.x > this.player.x){
+              puddle.x = puddle.x - 40
+            } 
+            if(puddle.y < this.player.y){
+              puddle.y = puddle.y +40
+            } else if(puddle.y > this.player.y){
+              puddle.y = puddle.y - 40
+            }
+            hook.dispose = true
+        }
+      });
+    });
 // fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..
 // fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..
     this.fires.forEach((fire) => {//fuego con blaster
@@ -924,6 +978,26 @@ class Game {
         }
       });
     });
+    this.player.hooks.forEach((hook) => { //fuego con fuego
+      this.fires.forEach((fire) => {
+        hook.collides(fire);
+        if (hook.collides(fire)) {
+            if(fire.x < this.player.x){
+              fire.x = fire.x + 40
+            } else if (fire.x > this.player.x){
+              fire.x = fire.x - 40
+            } 
+            if(fire.y < this.player.y){
+              fire.y = fire.y +40
+            } else if(fire.y > this.player.y){
+              fire.y = fire.y - 40
+            }
+            hook.dispose = true
+        }
+      });
+    });
+
+
 // karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. 
 // karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. 
     this.karens = this.karens.filter((karen) => {  //karen con player
@@ -1327,8 +1401,8 @@ class Game {
         } else return true;
       });
     })
-// goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...
-// goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...
+// goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...
+// goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...
     this.geese = this.geese.filter((goose) => { //goose con player
       if (goose.collides(this.player)) {
         this.player.hit();
@@ -1969,18 +2043,14 @@ this.pback.forEach((peop) => { //PBack
         this.player.vx = 0;
       }
     });
-//carts...carts...carts...carts...carts...carts...carts...carts...carts...carts...carts...carts...carts...carts...
-//carts...carts...carts...carts...carts...carts...carts...carts...carts...carts...carts...carts...carts...carts...
+//carts...carts...carts...carts...carts...carts...carts...carts...carts...carts...carts...carts...
+//carts...carts...carts...carts...carts...carts...carts...carts...carts...carts...carts...carts...
     this.carts = this.carts.filter((cart) => {
       if (cart.collides(this.player)) {
         // this.newShoes = new Audio("/assets/audios ad/Faster running.mp3");
         // this.newShoes.volume = 0.1;
         // this.newShoes.play()
-        charging+=1
-        if(charging >= 20 && this.score.total >= 20){
-            M = 77
-            charging = 0
-        }
+        hookCount+=3
         if(this.score.total >= 35){
           T = 84
         }
@@ -1992,23 +2062,15 @@ this.pback.forEach((peop) => { //PBack
     this.carts.forEach((cart) => {//hook con carts
       this.player.hooks.filter((hook) => {
         if (hook.collides(cart)) {
-          charging+=1
-          if(charging >= 20 && this.score.total >= 20){
-              M = 77
-              charging = 0
-          }
-          if(this.score.total >= 35){
-            T = 84
-          }
-          this.player.getSmallRespect()
+          cart.v = 2.4
+          cart.vNegative = 7.2
           hook.dispose = true
-          cart.x = -200
           return false;
         } else return true;
       });
     });
-// foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..
-// foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..
+// foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..
+// foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..
     this.foods = this.foods.filter((food) => {
       if (food.collides(this.player)) {
         // this.newShoes = new Audio("/assets/audios ad/Faster running.mp3");
@@ -2022,9 +2084,9 @@ this.pback.forEach((peop) => { //PBack
     this.foods.forEach((food) => {//hook con foods
       this.player.hooks.filter((hook) => {
         if (hook.collides(food)) {
-          this.player.heal()
           hook.dispose = true
-          food.x = -200
+          food.v = 2.4
+          food.vNegative = 7.2
           return false;
         } else return true;
       });
@@ -2037,6 +2099,7 @@ this.pback.forEach((peop) => { //PBack
         bulletDistance += 50;
         bulletDistanceExtra -= 50
         this.player.cooldownBullet -= 600;
+        B = 66
         if(this.upgrades.length === 0){
           const upAlert = document.getElementById("upgrade-alert");
           upAlert.style.display = "none";
@@ -2050,6 +2113,7 @@ this.pback.forEach((peop) => { //PBack
         afterSize +=10
         bulletSize +=10
         bulletSizeExtra -=10
+        B = 66
         if(this.upBullets.length === 0){
           const upgAlert = document.getElementById("upBullet-alert");
           upgAlert.style.display = "none";
@@ -2061,15 +2125,13 @@ this.pback.forEach((peop) => { //PBack
     this.upBullets.forEach((upbullet) => {//hook con upbullets
       this.player.hooks.filter((hook) => {
         if (hook.collides(upbullet)) {
-          afterSize +=10
-          bulletSize +=10
-          bulletSizeExtra -=10
+          upbullet.v = 1
+          upbullet.vNegative = 7.2
+          hook.dispose = true
           if(this.upBullets.length === 0){
             const upgAlert = document.getElementById("upBullet-alert");
             upgAlert.style.display = "none";
           }
-          hook.dispose = true
-          upbullet.x = -200
           return false;
         } else return true;
       });
@@ -2077,22 +2139,19 @@ this.pback.forEach((peop) => { //PBack
     this.upgrades.forEach((upgrade) => {//hook con upgrades
       this.player.hooks.filter((hook) => {
         if (hook.collides(upgrade)) {
-          this.player.speed += 2;
-          bulletDistance += 50;
-          bulletDistanceExtra -= 50
-          this.player.cooldownBullet -= 600;
+          upgrade.v = 1
+          upgrade.vNegative = 7.2
+          hook.dispose = true
           if(this.upgrades.length === 0){
             const upAlert = document.getElementById("upgrade-alert");
             upAlert.style.display = "none";
           }
-          hook.dispose = true
-          upgrade.x = -200
           return false;
         } else return true;
       });
     });
-//discount...discount...discount...discount...discount...discount...discount...discount...discount...discount...discount...
-//discount...discount...discount...discount...discount...discount...discount...discount...discount...discount...discount...
+//discount...discount...discount...discount...discount...discount...discount...discount...discount...
+//discount...discount...discount...discount...discount...discount...discount...discount...discount...
     this.discounts = this.discounts.filter((discount) => {
       if (discount.collides(this.player)) {
         this.line.b -= 0.5;
@@ -2105,11 +2164,9 @@ this.pback.forEach((peop) => { //PBack
     this.discounts.forEach((discount) => {//hook con discounts
       this.player.hooks.filter((hook) => {
         if (hook.collides(discount)) {
-          this.line.b -= 0.5;
-          this.line.a += 0.5;
-          discounting += 5
+          discount.v = 2.4
+          discount.vNegative = 7.2
           hook.dispose = true
-          discount.x = -200
           return false;
         } else return true;
       });

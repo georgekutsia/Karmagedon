@@ -22,7 +22,6 @@ class Boss {
     this.tick = 0;
     this.karenEnd = 0;
   }
-
   draw() {
     this.ctx.drawImage(
       this.bossImg,
@@ -36,7 +35,6 @@ class Boss {
       this.h
     );
   }
-
   move(player) {
     this.ctx.save();
     this.ctx.font = "18px Arial";
@@ -44,38 +42,30 @@ class Boss {
     this.ctx.fillStyle = "red";
     this.order = this.ctx.fillText(`${this.lifeleft.toString()}`, this.x + 15, this.y + 3);
     this.ctx.restore();
-
     this.x += this.v;
     this.y += this.v;
     this.tick++;
     this.karenEnd++;
     let followX = player.x - this.x;
     let followY = player.y - this.y;
-
     followX > 0 ? (this.x += this.v) : (this.x += this.v -0.9);
     followY > 0 ? (this.y += this.v) : (this.y += this.v -0.9);
-
+    
     if(followX > 0){
       this.bossImg.src = "/assets/images/karens/boss3.png";
     } else {
       this.bossImg.src = "/assets/images/karens/boss4.png";
     }
-
     if (this.x == player.x && this.y == player.y) {
       this.v = 0;
     }
-
     if (this.tick > 10) {
       this.tick = 0;
       this.bossImg.frame++;
     }
-
-    if (this.x < 0) {
-    }
     if (this.bossImg.frame > 12) {
       this.bossImg.frame = 0;
     }
-
     if(this.karenEnd >=4000){
       this.v = 2;
       const crazyKaren = document.getElementById("boss-alert");
@@ -86,11 +76,9 @@ class Boss {
       this.vy = 400;
   }
   }
-
   isVisible() {
     return this.x + this.w > 0 && this.y + this.h < 600;
   }
-
   collides(player) {
     const colX = this.x <= player.x + player.w && this.x + this.w > player.x;
     const colY = this.y + this.h > player.y && this.y < player.y + player.h;

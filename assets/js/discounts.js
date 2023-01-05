@@ -23,11 +23,12 @@ class Discount {
       this.randomImage = [this.a, this.b, this.c]
       this.image = image || this.randomImage[Math.floor(Math.random()*this.randomImage.length)]
       this.image.frame = 0;
-  
       this.tick = 0;
       this.tock = 800;
+      this.v = 0;
+      this.vNegative = 0
     }
-  
+  // 2.4  7.2
     draw() {
       this.ctx.drawImage(
         this.image,
@@ -42,9 +43,18 @@ class Discount {
       );
     }
   
-    move() {
+    move(player) {
       this.tick++;
       this.tock--
+      this.x += this.v;
+      this.y += this.v;
+      let followX = player.x - this.x;
+      let followY = player.y - this.y;
+      followX > 0 ? (this.x += this.v) : (this.x += this.v -this.vNegative);
+      followY > 0 ? (this.y += this.v) : (this.y += this.v -this.vNegative);
+      if (this.x == player.x && this.y == player.y) {
+        this.v = 0;
+      }
       if (this.tick > 90) {
         this.tick = 0;
         this.image.frame++;
@@ -62,11 +72,9 @@ class Discount {
         this.x = -100
       }
     }
-  
     isVisible() {
       return this.x + this.w > 0 && this.x + this.w < 1400;
     }
-  
     collides(player) {
       const colX = this.x <= player.x + player.w && this.x + this.w > player.x;
       const colY = this.y + this.h > player.y && this.y < player.y + player.h;
