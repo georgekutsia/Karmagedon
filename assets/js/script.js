@@ -6,7 +6,6 @@ const game2 = new Game2(ctx)
 const game3 = new Game3(ctx)
 const game4 = new Game4(ctx)
 const game5 = new Game5(ctx)
-// const game3 = new Game3(ctx)
 
 const infoData = document.getElementById("display-info");
 const infoData1 = document.getElementById("display-info1");

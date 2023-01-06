@@ -504,7 +504,7 @@ h2 {
 
 }
 #info5:hover:after {
-  content: url(/assets/images/infos/BenefitInfoNew.png);
+  content: url(/assets/images/infos/infoGains.png);
   position: absolute;
   top: 90%;
   right: 270%;

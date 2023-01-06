@@ -25,16 +25,23 @@ class Game {
     this.throwerImg.src = "/assets/images/elements/backpack.png"
     this.weird1 = 0
     this.iceCurePoison = 0
+    this.ratTick = 0;
+    this.ratTickIs = false;
+    this.upBulletTick = 0
+    this.upBulletIs = false
+    this.upgradeTick = 0
+    this.upgradeIs = false
+    this.customerTick = 0
+    this.customerIs = false
+    this.perjudiceTick = 0
+    this.perjudiceIs = false
     this.poisonedTime = 3000 - chance * 300
-    this.tick = 0
-
     this.cactus = [
       new Cactus(ctx, 375, 200, 40, 40, "/assets/images/fondos/cact1.png"), new Cactus(ctx, 600, 190, 50, 50, "/assets/images/fondos/cact3.png"),
       new Cactus(ctx, 820, 320, 30, 40, "/assets/images/fondos/cact5.png"), new Cactus(ctx, 780, 440, 40, 40, "/assets/images/fondos/cact4.png"),
       new Cactus(ctx, 57, 548, 25, 25),  new Cactus(ctx, 167, 548, 25, 25), new Cactus(ctx, 460, 548, 25, 25),
       new Cactus(ctx, 387, 548, 25, 25), new Cactus(ctx, 287, 548, 25, 25), new Cactus(ctx, 387, 548, 25, 25),
       new Cactus(ctx, 450, 548, 25, 25), new Cactus(ctx, 520, 548, 25, 25), new Cactus(ctx, 610, 548, 25, 25),
-
 
       new Cactus(ctx, 710, 542, 70, 18, "/assets/images/fondos/cact5a.png"), new Cactus(ctx, 750, 542, 70, 18, "/assets/images/fondos/cact5a.png"),
       new Cactus(ctx, 800, 542, 60, 18, "/assets/images/fondos/cact5b.png"), new Cactus(ctx, 933, 553, 10, 80, "/assets/images/fondos/cact5b.png"),
@@ -315,6 +322,20 @@ class Game {
     if(this.player.respect.total >= 0.7 || this.player.life.total >=8){
       this.player.sandstate = false
     }
+    if(this.ratTickIs === true){
+      this.ratTick++
+      this.ctx.font = "20px Arial";
+      this.ctx.fillStyle = "red";
+      this.ctx.fillText(`Poisoned ${venom} times. Icecream can help!`, this.player.x - 29, this.player.y-16);
+      this.ctx.fillStyle = "tomato";
+      this.ctx.fillText(`Poisoned ${venom} times. Icecream can help!`, this.player.x - 26, this.player.y-14);
+      this.ctx.fillStyle = "white";
+      this.ctx.fillText(`Poisoned ${venom} times. Icecream can help!`, this.player.x - 28, this.player.y - 15);
+      if(this.ratTick >= 400){
+        this.ratTick = 0
+        this.ratTickIs = false
+      }
+    }
     if(this.upBullets.length >= 1){
       this.ctx.font = "23px Sans";
       ctx.fillStyle = "black";
@@ -403,20 +424,67 @@ class Game {
     // CTX data statistics
     // CTX data statistics
     this.ctx.font = "20px Arial";
-    this.ctx.fillStyle = "silver";
+    this.ctx.fillStyle = "white";
     this.ctx.save();
     ctx.fillStyle = "rgb(1, 2, 2)";
     this.ctx.font = "30px Arial";
     this.ctx.fillStyle = "white";
     this.ctx.restore();
-    this.ctx.fillText(`Cooldown: ${this.player.cooldownBullet.toString()}`, 450, 704);
-    this.ctx.fillText(`Distance: ${bulletDistance.toString()}`, 310, 704);
     this.ctx.fillText(`Speed: ${this.player.speed.toString()}`, 310, 681);
-    this.ctx.fillText(`Size: ${bulletSize.toString()}`, 405, 681);
+    this.ctx.fillText(`Distance: ${bulletDistance.toString()}`, 310, 704);
+    this.ctx.fillText(`Cooldown: ${this.player.cooldownBullet.toString()}`, 450, 704);
+    if(this.upgradeIs === true) {
+      this.upgradeTick++
+      this.ctx.fillStyle = "aqua";
+      this.ctx.fillText(`Speed: ${this.player.speed.toString()}`, 310, 681);
+      this.ctx.fillText(`Distance: ${bulletDistance.toString()}`, 310, 704);
+      this.ctx.fillText(`Cooldown: ${this.player.cooldownBullet.toString()}`, 450, 704);
+      this.ctx.fillStyle = "white";
+      if(this.upgradeTick >=150){
+        this.upgradeIs = false
+        this.upgradeTick = 0
+      }
+    }
     this.ctx.fillText(`Growth: ${afterSize.toString()}`, 495, 681);
+    this.ctx.fillText(`Size: ${bulletSize.toString()}`, 405, 681);
+      if(this.upBulletIs === true){
+        this.upBulletTick++
+        this.ctx.fillStyle = "aqua";
+        this.ctx.fillText(`Growth: ${afterSize.toString()}`, 495, 681);
+        this.ctx.fillText(`Size: ${bulletSize.toString()}`, 405, 681);
+        this.ctx.fillStyle = "white";
+        if(this.upBulletTick >=150){
+          this.upBulletIs = false
+          this.upBulletTick = 0
+        }
+      }
     this.ctx.fillText(`Jump: ${distance.toFixed(1).toString()}ft`, 640, 681);
     this.ctx.fillText(`Jump cooldown: ${this.player.cooldownJump.toFixed(1)}`, 775, 681);
     this.ctx.fillText(`Speed: ${this.player.boost.toFixed(1)}`, 640, 704);
+    if(this.customerIs === true){
+      this.customerTick++
+      this.ctx.fillStyle = "aqua"; 
+      this.ctx.fillText(`Jump: ${distance.toFixed(1).toString()}ft`, 640, 681);
+      this.ctx.fillText(`Jump cooldown: ${this.player.cooldownJump.toFixed(1)}`, 775, 681);
+      this.ctx.fillText(`Speed: ${this.player.boost.toFixed(1)}`, 640, 704);
+      this.ctx.fillStyle = "white";
+      if(this.customerTick >= 150){
+        this.customerTick = 0
+        this.customerIs = false
+      }
+    } 
+    if(this.perjudiceIs === true){
+      this.perjudiceTick++
+      this.ctx.fillStyle = "tomato"; 
+      this.ctx.fillText(`Jump: ${distance.toFixed(1).toString()}ft`, 640, 681);
+      this.ctx.fillText(`Jump cooldown: ${this.player.cooldownJump.toFixed(1)}`, 775, 681);
+      this.ctx.fillText(`Speed: ${this.player.boost.toFixed(1)}`, 640, 704);
+      this.ctx.fillStyle = "white";
+      if(this.perjudiceTick >= 150){
+        this.perjudiceTick = 0
+        this.perjudiceIs = false
+      }
+    }
     if (this.score.total >= 50) {
       this.machinganTime--
         C = 67;
@@ -458,7 +526,7 @@ class Game {
       this.machinganTimeLeft = parseInt(this.machinganTime/10)
         this.ctx.font = "18px Arial";
         this.ctx.save();
-        ctx.fillStyle = "green";
+        ctx.fillStyle = "rgb(255, 149, 0)";
         ctx.fillRect(748, 638, 260, 23);
         this.ctx.fillStyle = "black";
         this.ctx.fillText(`Machinegun Active for ${this.machinganTimeLeft.toString()}: -C/V- `, 750, 655);
@@ -468,7 +536,7 @@ class Game {
         this.machinganRestoreLeft = parseInt(this.machinganRestore/10)
         this.ctx.font = "18px Arial";
         this.ctx.save();
-        ctx.fillStyle = "indianred";
+        ctx.fillStyle = "rgb(255, 80, 0)";
         ctx.fillRect(755, 638, 250, 23);
         this.ctx.fillStyle = "black";
         this.ctx.fillText(`Machinegun Reactivated in ${this.machinganRestoreLeft.toString()} `, 760, 655);
@@ -493,6 +561,15 @@ class Game {
         this.ctx.fillText(`Timeshield ON:-T-`, 84, 655);
         this.ctx.restore();
     }
+    if (T === 0){
+        this.ctx.font = "18px Arial";
+        this.ctx.save();
+        ctx.fillStyle = "rgb(86, 6, 6)";
+        ctx.fillRect(60, 638, 180, 23);
+        this.ctx.fillStyle = "white";
+        this.ctx.fillText(`Timeshield: pending...`, 63, 655);
+        this.ctx.restore();
+    }
     if (M === 77 && this.score.total >= 20){
       this.ctx.font = "18px Arial";
       this.ctx.save();
@@ -514,7 +591,7 @@ class Game {
     if (M !== 77 && this.score.total >= 20){
       this.ctx.font = "18px Arial";
       this.ctx.save();
-      ctx.fillStyle = "rgb(255, 149, 0)";
+      ctx.fillStyle = "rgb(255, 80, 0)";
       ctx.fillRect(240, 638, 200, 23);
       this.ctx.fillStyle = "black";
       this.ctx.fillText(`Charge Blaster to 20 : ${charging.toString()}`, 242, 655);
@@ -807,6 +884,7 @@ class Game {
     distance -= 0.05
     this.player.booster -= 0.010
     this.player.cooldownJump += 5
+    this.perjudiceIs = true
   }
   //Colisiones start..Colisiones start..Colisiones start..Colisiones start..Colisiones start..Colisiones start..
   //Colisiones start..Colisiones start..Colisiones start..Colisiones start..Colisiones start..Colisiones start..
@@ -1046,6 +1124,7 @@ class Game {
         this.player.vx = -1;
         this.weird1 = 1010
         venom += 1
+        this.ratTickIs = true
         if(venom >= 5){
           P = 80
         }
@@ -1236,11 +1315,11 @@ class Game {
           fat.vy -= 0.001
           this.ctx.font = "20px Arial";
           this.ctx.fillStyle = "red";
-          this.ctx.fillText(`Can't breath!:`, fat.x - 29, fat.y-16);
+          this.ctx.fillText(`Can't breath!`, fat.x - 29, fat.y-16);
           this.ctx.fillStyle = "tomato";
-          this.ctx.fillText(`Can't breath!:`, fat.x - 26, fat.y-14);
+          this.ctx.fillText(`Can't breath!`, fat.x - 26, fat.y-14);
           this.ctx.fillStyle = "white";
-          this.ctx.fillText(`Can't breath!:`, fat.x - 28, fat.y - 15);
+          this.ctx.fillText(`Can't breath!`, fat.x - 28, fat.y - 15);
           return false;
         } else return true;
       });
@@ -1550,11 +1629,11 @@ class Game {
           }
           this.ctx.font = "20px Arial";
           this.ctx.fillStyle = "red";
-          this.ctx.fillText(`Can't breath!:`, goose.x - 29, goose.y-16);
+          this.ctx.fillText(`Weird goose noises`, goose.x - 29, goose.y-16);
           this.ctx.fillStyle = "tomato";
-          this.ctx.fillText(`Can't breath!:`, goose.x - 26, goose.y-14);
+          this.ctx.fillText(`Weird goose noises`, goose.x - 26, goose.y-14);
           this.ctx.fillStyle = "peachpuff";
-          this.ctx.fillText(`Can't breath!:`, goose.x - 28, goose.y - 15);
+          this.ctx.fillText(`Weird goose noises`, goose.x - 28, goose.y - 15);
           if(goose.lifeleft >= 0 && goose.lifeleft <= 0.001){
             this.score.addkgoose()
             this.score.addktotal1()
@@ -1672,6 +1751,7 @@ class Game {
     this.customers = this.customers.filter((cus) => { //customer con player
       if (cus.collides(this.player)) {
         this.saving()
+        this.customerIs = true
         return false;
       }
       return true;
@@ -2100,6 +2180,7 @@ this.pback.forEach((peop) => { //PBack
         bulletDistanceExtra -= 50
         this.player.cooldownBullet -= 600;
         B = 66
+        this.upgradeIs = true
         if(this.upgrades.length === 0){
           const upAlert = document.getElementById("upgrade-alert");
           upAlert.style.display = "none";
@@ -2114,6 +2195,7 @@ this.pback.forEach((peop) => { //PBack
         bulletSize +=10
         bulletSizeExtra -=10
         B = 66
+        this.upBulletIs = true
         if(this.upBullets.length === 0){
           const upgAlert = document.getElementById("upBullet-alert");
           upgAlert.style.display = "none";
