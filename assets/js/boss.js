@@ -17,7 +17,7 @@ class Boss {
     this.bossImg = new Image();
     this.bossImg.src = "/assets/images/karens/boss4.png";
     this.bossImg.frame = 0;
-    this.lifeleft = 30
+    this.lifeleft = 5
     this.dead = 0;
     this.tick = 0;
     this.karenEnd = 0;
@@ -40,6 +40,7 @@ class Boss {
     this.ctx.font = "18px Arial";
     ctx.fillStyle = "rgb(251, 209, 209)";
     this.ctx.fillStyle = "red";
+    this.ctx.fillRect(this.x, this.y, (10 * this.lifeleft) / 10, 10);
     this.order = this.ctx.fillText(`${this.lifeleft.toString()}`, this.x + 15, this.y + 3);
     this.ctx.restore();
     this.x += this.v;

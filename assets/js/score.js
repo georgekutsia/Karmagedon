@@ -10,7 +10,7 @@ class Score {
     this.kboss = 0;
     this.kkarens = 0;
     this.kkorens = 0;
-    this.total = 80;
+    this.total = 0;
   }
 
   draw() {
@@ -78,6 +78,9 @@ class Score {
     this.ctx.fillStyle = "white";
     this.order = this.ctx.fillText(`Luck lvl: ${chance.toString()}`, 95, 700);
   }
+  // addTotalScore(){
+  //   this.total += 50
+  // }
   addkobstacle(){
     this.kobstacle++
   }

@@ -33,6 +33,7 @@ class Player {
     this.respect = new Respect(ctx)
     this.formins = new Formins(ctx)
     this.scoreback = new Scoreback(ctx)
+    this.score = new Score(ctx)
     this.heats = [];
     this.hooks = [];
     this.auras = [];
@@ -54,7 +55,6 @@ class Player {
   
   draw() {
     formsCheck();
-    console.log(hookCount)
     this.ctx.drawImage(
       this.img,
       0,
@@ -224,7 +224,7 @@ class Player {
     this.life.healslower();
   }
   dieSlower() {
-    this.life.healSlower();
+    this.life.dieSlower();
   }
   fireHit() {
     this.life.loseLifeFire();
@@ -397,7 +397,6 @@ class Player {
       this.aurar();
       T = 0;
     }
-
     if (key === N) {
       this.sander();
         N = 0;
@@ -455,6 +454,28 @@ class Player {
         E = 69;
       }, this.cooldownJump + 1000);
     }
+    if( Z == 0 && X == 0){
+      Y = 89
+      if(key === Y){
+        U = 85 
+        }
+      }
+      if(key === U){
+        I = 73
+      }
+      if(key === I){
+        hookCount += 10
+        discounting += 50
+        M = 77
+        P = 80
+        // this.score.addTotalScore()
+      }
+      if(key === Y){
+        if(I = 73){
+          this.life.total -= 2
+          this.respect.total -= 0.2
+        }
+      }
 
   }
   aurar() {
@@ -467,9 +488,9 @@ class Player {
     aura.auraImg.src = "/assets/images/munición/aura1.png";
     this.auras.push(aura);
   }
-
-
-
+  // totalizacion(){
+  //   this.score.addTotalScore()
+  // }
   discounting() {
     const discount = new Discounting(
       this.ctx,

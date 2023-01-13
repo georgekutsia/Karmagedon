@@ -58,7 +58,7 @@ class Heat {
         this.dispose = true;
       }
     }
-    if (this.tick > 2) {
+    if (this.tick > 1) {
       this.tick = 0;
       this.heatImg.frame++;
     }
@@ -82,8 +82,8 @@ class Hook {
     this.x = x;
     this.y = y;
     this.sa = 0;
-    this.w = bulletSize / 3 + this.sa + 20
-    this.h = bulletSize / 3 + this.sa + 20
+    this.w = 25
+    this.h = 25
     this.player = player;
     this.bla = 0;
     this.vx = 0;
@@ -116,10 +116,10 @@ class Hook {
     this.y += this.vy;
 
     if (
-      this.x >= this.player.x + bulletDistance * 2 + this.bla || 
-      this.y >= this.player.y + bulletDistance * 2 + this.bla ||
-      this.x <= this.player.x - bulletDistance * 2 - this.bla || 
-      this.y <= this.player.y - bulletDistance * 2 - this.bla 
+      this.x >= this.player.x + bulletDistance * 20 + this.bla || 
+      this.y >= this.player.y + bulletDistance * 20 + this.bla ||
+      this.x <= this.player.x - bulletDistance * 20 - this.bla || 
+      this.y <= this.player.y - bulletDistance * 20 - this.bla 
     ){
       this.dispose = true
     }

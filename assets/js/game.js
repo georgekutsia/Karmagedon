@@ -35,14 +35,16 @@ class Game {
     this.customerIs = false
     this.perjudiceTick = 0
     this.perjudiceIs = false
+    this.bossPerjTick = 0
+    this.bossPerjIs = false
+    this.hitOnKarenCounter = 0
     this.poisonedTime = 3000 - chance * 300
     this.cactus = [
       new Cactus(ctx, 375, 200, 40, 40, "/assets/images/fondos/cact1.png"), new Cactus(ctx, 600, 190, 50, 50, "/assets/images/fondos/cact3.png"),
       new Cactus(ctx, 820, 320, 30, 40, "/assets/images/fondos/cact5.png"), new Cactus(ctx, 780, 440, 40, 40, "/assets/images/fondos/cact4.png"),
-      new Cactus(ctx, 57, 548, 25, 25),  new Cactus(ctx, 167, 548, 25, 25), new Cactus(ctx, 460, 548, 25, 25),
+      new Cactus(ctx, 460, 548, 25, 25),
       new Cactus(ctx, 387, 548, 25, 25), new Cactus(ctx, 287, 548, 25, 25), new Cactus(ctx, 387, 548, 25, 25),
-      new Cactus(ctx, 450, 548, 25, 25), new Cactus(ctx, 520, 548, 25, 25), new Cactus(ctx, 610, 548, 25, 25),
-
+      new Cactus(ctx, 450, 548, 25, 25), new Cactus(ctx, 520, 548, 25, 25), 
       new Cactus(ctx, 710, 542, 70, 18, "/assets/images/fondos/cact5a.png"), new Cactus(ctx, 750, 542, 70, 18, "/assets/images/fondos/cact5a.png"),
       new Cactus(ctx, 800, 542, 60, 18, "/assets/images/fondos/cact5b.png"), new Cactus(ctx, 933, 553, 10, 80, "/assets/images/fondos/cact5b.png"),
       new Cactus(ctx, 740, 536, 35, 35, "/assets/images/fondos/arb10.png"),  new Cactus(ctx, 790, 536, 30, 30, "/assets/images/fondos/arb9.png"),
@@ -67,7 +69,7 @@ class Game {
     ]
     this.bushesover = [
       // vertical bushes start
-      new Bush1(ctx, 57, 60, 20, 170), new Bush1(ctx, 287, 60, 20, 170), new Bush3(ctx, 385, 60, 20, 170), new Bush3(ctx, 607, 60, 20, 170),
+      new Bush1(ctx, 57, 60, 20, 100), new Bush1(ctx, 287, 60, 20, 170), new Bush3(ctx, 385, 60, 20, 170), new Bush3(ctx, 607, 60, 20, 170),
       new Bush2(ctx, 705, 60, 20, 170), new Bush2(ctx, 921, 60, 20, 170), new Bush1(ctx, 57, 330, 20, 120), new Bush1(ctx, 287, 330, 20, 150),
       new Bush3(ctx, 385, 330, 20, 150), new Bush3(ctx, 607, 330, 20, 150), new Bush2(ctx, 705, 330, 20, 150), new Bush2(ctx, 921, 330, 20, 150),
       new Bush1(ctx, 57, 560, 20, 64),  new Bush1(ctx, 67, 550, 90, 20),  new Bush2(ctx, 97, 550, 90, 20),  new Bush1(ctx, 287, 550, 20, 75),
@@ -76,10 +78,18 @@ class Game {
 
 // vertical bushes end
     ]
+    this.lamps = [
+      new Bushes(ctx, 160, -2, 40, 40, "/assets/images/elements/lamp.png"), new Bushes(ctx, 650, -2, 40, 40, "/assets/images/elements/lamp.png"), 
+      new Bushes(ctx, 270, 200, 40, 40, "/assets/images/elements/lamp.png"), new Bushes(ctx, 910, 200, 40, 40, "/assets/images/elements/lamp.png"), 
+      new Bushes(ctx, 270, 450, 40, 40, "/assets/images/elements/lamp.png"), new Bushes(ctx, 690, 450, 40, 40, "/assets/images/elements/lamp.png"), 
+      new Bushes(ctx, -9, 250, 40, 40, "/assets/images/elements/lamp.png"), new Bushes(ctx, 690, 450, 40, 40, "/assets/images/elements/lamp.png"), 
+      new Bushes(ctx, 40, 540, 40, 40, "/assets/images/elements/lamp.png"), new Bushes(ctx, 690, 450, 40, 40, "/assets/images/elements/lamp.png"),
+      new Bushes(ctx, 595, 540, 40, 40, "/assets/images/elements/lamp.png"), new Bushes(ctx, 985, 330, 40, 40, "/assets/images/elements/lamp.png"),
+    ]
     this.walls = [
       new Fence(ctx, 51, 50, 80, 40), new Fence(ctx, 220, 50, 80, 40), new Fence(ctx, 51, 320, 80, 40), new Fence(ctx, 220, 320, 80, 40),
-      new Fence(ctx, 880, 320, 80, 40), new Fence(ctx, 830, 320, 80, 40), new Fence(ctx, 390, 320, 80, 40), new Fence(ctx, 560, 320, 80, 40),
-      new Fence(ctx, 700, 50, 80, 40), new Fence(ctx, 870, 50, 80, 40),
+      new Fence(ctx, 880, 320, 60, 40), new Fence(ctx, 830, 320, 80, 40), new Fence(ctx, 390, 320, 80, 40), new Fence(ctx, 560, 320, 70, 40),
+      new Fence(ctx, 700, 50, 80, 40), new Fence(ctx, 870, 50, 70, 40),
 // round bushes
       new Bushes(ctx, 160, 410, 40, 40, "/assets/images/fondos/arb11.png"),  new Bushes(ctx, 170, 130, 40, 40, "/assets/images/fondos/arb9.png"),
       new Bushes(ctx, 490, 110, 40, 40, "/assets/images/fondos/arbusto1.png"), new Bushes(ctx, 482, 60, 60, 60, "/assets/images/fondos/arbusto1.png"),
@@ -87,8 +97,9 @@ class Game {
 
       new Fence(ctx, 90, 190, 80, 40), new Fence(ctx, 470, 130, 80, 40), new Fence(ctx, 465, 450, 60, 40), new Fence(ctx, 720, 440, 80, 40),
     ];
-    this.portals = [new Portal (ctx, 10, 300, 30, 30)]   
-    this.portals2 = [new Portal (ctx, 490, 590, 30, 30)]
+    this.portals = [new Portal (ctx, 200, 590, 50, 50, )]   
+    this.portals2 = [new Portal (ctx, 800, 5, 50, 50, )]
+
     this.karenTime = 0;
     this.ratTime = 1600;
     this.fatTime = 1300; 
@@ -124,7 +135,7 @@ class Game {
           this.karenTime = 2000
         }
       }
-      if (this.ratTime > Math.random() * 100 + 2000) { //rat
+      if (this.ratTime > Math.random() * 100 + 92000) { //rat
         this.ratTime = 0;
         this.ratAlert();
         this.addRat();
@@ -385,41 +396,41 @@ class Game {
       // this.ctx.drawImage(
       //   this.helper4, 1050, 215, 40, 60
       // )
-    this.chargedDisc = discounting / 5
+      this.chargedDisc = discounting / 5
+      this.curePoisonTimer = 300 - chance * 50
     this.bosss.forEach((e) => e.draw());
     this.korens.forEach((e) => e.draw());
     this.babys.forEach((e) => e.draw());
     this.customers.forEach((e) => e.draw());
-    this.curePoisonTimer = 300 - chance * 50
-    if(this.winTime >= 100){
+    if(this.winTime >= 0){
       this.pback.forEach((e) => e.draw());
     }
     this.walls.forEach((e) => e.draw());
-    if(this.winTime >= 200){
+    if(this.winTime >= 0){
       this.portals.forEach((e) => e.draw());
     }
-    if(this.winTime >= 200){
+    if(this.winTime >= 0){
       this.portals2.forEach((e) => e.draw());
     }
-    if(this.winTime >= 100){
-    this.pfront.forEach((e) => e.draw());
+    if(this.winTime >= 0){
+      this.pfront.forEach((e) => e.draw());
     }
     this.puddles.forEach((e) => e.draw());
     this.fires.forEach((e) => e.draw());
     this.player.draw();
     this.bushesover.forEach((e) => e.draw());
     this.karens.forEach((e) => e.draw());
-    if(this.winTime >= 10){
+    if(this.winTime >= 0){
       this.cactus.forEach((e) => e.draw());
     }
     this.fats.forEach((e) => e.draw());
     this.rats.forEach((e) => e.draw());
     this.carts.forEach((e) => e.draw());
     this.foods.forEach((e) => e.draw());
-
     this.discounts.forEach((e) => e.draw());
     this.geese.forEach((e) => e.draw());
     this.token.draw();
+    this.lamps.forEach((e) => e.draw());
     this.line.draw();
     // CTX data statistics
     // CTX data statistics
@@ -483,6 +494,19 @@ class Game {
       if(this.perjudiceTick >= 150){
         this.perjudiceTick = 0
         this.perjudiceIs = false
+      }
+    }
+    if(this.bossPerjIs === true){
+      this.bossPerjTick++
+      this.ctx.fillStyle = "tomato"; 
+      this.ctx.fillText(`Growth: ${afterSize.toString()}`, 495, 681);
+      this.ctx.fillText(`Size: ${bulletSize.toString()}`, 405, 681);
+      this.ctx.fillText(`Cooldown: ${this.player.cooldownBullet.toString()}`, 450, 704);
+      this.ctx.fillText(`Speed: ${this.player.speed.toString()}`, 310, 681);
+      this.ctx.fillStyle = "white";
+      if(this.bossPerjTick >= 150){
+        this.bossPerjTick = 0
+        this.bossPerjIs = false
       }
     }
     if (this.score.total >= 50) {
@@ -658,6 +682,8 @@ class Game {
     this.player.move();
     this.token.move();
     this.karens.forEach((e) => e.move());
+    this.portals.forEach((e) => e.move());
+    this.portals2.forEach((e) => e.move());
     this.rats.forEach((e) => e.move());
     this.fats.forEach((e) => e.move());
     this.geese.forEach((e) => e.move());
@@ -1252,7 +1278,6 @@ class Game {
           this.ctx.fillText(`Scared rat noises:`, rat.x - 26, rat.y-14);
           this.ctx.fillStyle = "white";
           this.ctx.fillText(`Scared rat noises:`, rat.x - 28, rat.y - 15);
-          console.log(rat.lifeleft)
           if(rat.lifeleft >= 0 && rat.lifeleft <= 0.001 ){
             this.score.addkrat()
             this.score.addktotal1()
@@ -1888,6 +1913,7 @@ class Game {
         afterSize -=5
         bulletSize -=5
         bulletSizeExtra +=5
+        this.bossPerjIs = true
         this.player.hit();
         this.player.hit();
         return false;
@@ -1899,8 +1925,8 @@ class Game {
         if (water.collides(boss)) {
           this.player.waters.splice(0, 1);
             boss.lifeleft -= 1;
-          if(boss.lifeleft === 0){
-            boss.v = 20;
+          if(boss.lifeleft <= 0){
+            boss.y = 2000;
             this.addFire()
             this.addPuddle()
             this.player.getBigRespect()
@@ -1927,7 +1953,10 @@ class Game {
               M = 77
               charging = 0
           }
-          this.addKoren()
+          this.hitOnKarenCounter++
+          if(this.hitOnKarenCounter % 3 === 0){
+            this.addKoren()
+          }
           this.korenAlert()
           this.line.b -= 0.2;
           this.line.a += 0.2;
@@ -1938,8 +1967,8 @@ class Game {
         if (heat.collides(boss)) {        //boss con fuego
           this.player.heats.splice(0, 1);
             boss.lifeleft -= 1;
-          if(boss.lifeleft === 0){
-            boss.v = 20;
+          if(boss.lifeleft <= 0){
+            boss.y = 2000;
             this.addFire()
             this.addPuddle()
             this.player.getBigRespect()
@@ -1967,7 +1996,9 @@ class Game {
               M = 77
               charging = 0
           }
-          this.addKoren()
+          if(this.hitOnKarenCounter % 3 === 0){
+            this.addKoren()
+          }
           this.korenAlert()
           this.line.b -= 0.2;
           this.line.a += 0.2;
@@ -1981,7 +2012,7 @@ class Game {
         if (blast.collides(boss)) {
             boss.lifeleft -= 0.2;
           if(boss.lifeleft <= 0.1){
-            boss.v = 20;
+            boss.y = 2000;
             this.player.getBigRespect()
             this.player.getBigRespect()
             this.addFire()
@@ -2059,22 +2090,139 @@ this.pback.forEach((peop) => { //PBack
         this.player.vx = 0;
       }
     });
-    if(this.winTime >= 20000){   //portal
+    this.portals.forEach((port) => {//hook con portal hooktal
+      this.player.hooks.filter((hook) => {
+        if (hook.collides(port)) {
+          this.portals2.forEach((pro) => {
+            //horizontal impact
+            if(pro.vx === -1 && hook.vx <=0 ){
+              hook.x = pro.x - 30;
+              hook.y = pro.y;
+            }
+            if(pro.vx === -1 && hook.vx >=0 ){
+              hook.x = pro.x + 52;
+              hook.y = pro.y;
+            }
+            if(pro.vx === 1 && hook.vx <=0){
+              hook.x = pro.x - 30;
+              hook.y = pro.y;
+            }
+            if(pro.vx === 1 && hook.vx >=0){
+              hook.x = pro.x + 52;
+              hook.y = pro.y;
+            }
+            if(pro.vy === -1&& hook.vy <= 0){
+              hook.x = pro.x;
+              hook.y = pro.y - 30;
+            }
+            if(pro.vy === -1 && hook.vy >= 0){
+              hook.x = pro.x;
+              hook.y = pro.y + 52;
+            }
+            if(pro.vy === 1 && hook.vy >= 0){
+              hook.x = pro.x;
+              hook.y = pro.y + 52;
+            }
+            if(pro.vy === 1 && hook.vy <= 0){
+              hook.x = pro.x;
+              hook.y = pro.y - 30;
+            }
+          })
+          return false;
+        } else return true;
+      });
+    });
+    this.portals2.forEach((port) => {//hook con portal
+      this.player.hooks.filter((hook) => {
+        if (hook.collides(port)) {
+          this.portals.forEach((pro) => {
+            //horizontal impact
+            if(pro.vx === -1 && hook.vx <=0 ){
+              hook.x = pro.x - 30;
+              hook.y = pro.y;
+            }
+            if(pro.vx === -1 && hook.vx >=0 ){
+              hook.x = pro.x + 52;
+              hook.y = pro.y;
+            }
+            if(pro.vx === 1 && hook.vx <=0){
+              hook.x = pro.x - 30;
+              hook.y = pro.y;
+            }
+            if(pro.vx === 1 && hook.vx >=0){
+              hook.x = pro.x + 52;
+              hook.y = pro.y;
+            }
+            if(pro.vy === -1&& hook.vy <= 0){
+              hook.x = pro.x;
+              hook.y = pro.y - 30;
+            }
+            if(pro.vy === -1 && hook.vy >= 0){
+              hook.x = pro.x;
+              hook.y = pro.y + 52;
+            }
+            if(pro.vy === 1 && hook.vy >= 0){
+              hook.x = pro.x;
+              hook.y = pro.y + 52;
+            }
+            if(pro.vy === 1 && hook.vy <= 0){
+              hook.x = pro.x;
+              hook.y = pro.y - 30;
+            }
+          })
+          return false;
+        } else return true;
+      });
+    });
+
+    if(this.winTime >= 3){   //portal
     this.portals.forEach((port) => {
       if (port.collides(this.player)) {
-        this.player.y = 300;
-        this.player.x = 960;
+        this.portals2.forEach((pro) => {
+          if(pro.vx === -1){
+            this.player.x = pro.x + 40;
+            this.player.y = pro.y;
+          }
+          if(pro.vx === 1){
+            this.player.x = pro.x - 40;
+            this.player.y = pro.y;
+          }
+          if(pro.vy === -1){
+            this.player.x = pro.x;
+            this.player.y = pro.y + 40;
+          }
+          if(pro.vy === 1){
+            this.player.x = pro.x;
+            this.player.y = pro.y - 40;
+          }
+        })
       }
     });
   }
-    if(this.winTime >= 20000){  //portal
-    this.portals2.forEach((port) => {
-      if (port.collides(this.player)) {
-        this.player.y = 280;
-        this.player.x = 960;
-      }
-    });
-  }
+  if(this.winTime >= 3){  //portal
+  this.portals2.forEach((port) => {
+    if (port.collides(this.player)) {
+      this.portals.forEach((pro) => {
+        if(pro.vx === -1){
+          this.player.x = pro.x + 40;
+          this.player.y = pro.y;
+        }
+        if(pro.vx === 1){
+          this.player.x = pro.x - 40;
+          this.player.y = pro.y;
+        }
+        if(pro.vy === -1){
+          this.player.x = pro.x;
+          this.player.y = pro.y + 40;
+        }
+        if(pro.vy === 1){
+          this.player.x = pro.x;
+          this.player.y = pro.y - 40;
+        }
+      })
+    }
+  });
+}
     this.pback.forEach((wall) => {
       if (wall.collides(this.player)) {
         this.excla = new Image();
@@ -2232,6 +2380,17 @@ this.pback.forEach((peop) => { //PBack
         } else return true;
       });
     });
+
+    // this.lamps.forEach((lamp) => {//hook con lamps
+    //   this.player.hooks.filter((hook) => {
+    //     if (hook.collides(lamp)) {
+    //     this.player.x = lamp.x
+    //     this.player.y = lamp.y
+    //     hook.dispose = true
+    //       return false;
+    //     } else return true;
+    //   });
+    // });
 //discount...discount...discount...discount...discount...discount...discount...discount...discount...
 //discount...discount...discount...discount...discount...discount...discount...discount...discount...
     this.discounts = this.discounts.filter((discount) => {

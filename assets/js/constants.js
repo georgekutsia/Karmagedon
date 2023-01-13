@@ -11,12 +11,12 @@ let Z = 90;
 let X = 88;
 let C = 0;
 let V = 0;
-let B = 0;//66
+let B = 66;//66
 let Q = 81;
 let E = 69;
 let R = 0;
-let T = 0
-let P = 0;
+let T = 0 //84
+let P = 0; //80
 let chance = 0
 const A = 65;
 const W = 87;
@@ -32,4 +32,12 @@ let bulletSize = 20
 let charging = 0
 let discounting = 10;
 let venom = 0
-let hookCount = 1
+let hookCount = 19
+
+
+
+// secret code
+let Y = 0 //89
+let U = 0 //85
+let I = 0 //73
+let O = 0 //79
