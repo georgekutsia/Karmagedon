@@ -2,7 +2,7 @@ class Token {
   constructor(ctx) {
     this.ctx = ctx;
     this.x = -30;
-    this.y = 610;
+    this.y = 800;
     this.w = 130;
     this.h = 130;
     this.token = new Image();

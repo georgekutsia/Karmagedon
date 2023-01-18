@@ -1,8 +1,8 @@
 class Respect {
   constructor(ctx) {
     this.ctx = ctx;
-    this.x = 1015;
-    this.y = 410;
+    this.x = 1212;
+    this.y = 70;
     this.w = 173;
     this.h = 43;
     this.total = 1;
@@ -28,14 +28,14 @@ class Respect {
     gradient.addColorStop("0.98", "black");
     gradient.addColorStop("1", "black");
     ctx.fillStyle = gradient;
-    this.ctx.fillText("Reputation", 1020, 440)
+    this.ctx.fillText("Reputation", 1220, 100)
     this.ctx.fillStyle = prevStyle;
   }
   move() {
     this.y -= this.v
-    if(this.y < 410){
+    if(this.y < 70){
       this.v = -0.01
-    } else if(this.y > 415)
+    } else if(this.y > 75)
     this.v = 0.01
   }
   loseRespect() {

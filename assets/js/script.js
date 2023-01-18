@@ -7,6 +7,7 @@ const game3 = new Game3(ctx)
 const game4 = new Game4(ctx)
 const game5 = new Game5(ctx)
 
+const infoDataAll = document.getElementById("display-all");
 const infoData = document.getElementById("display-info");
 const infoData1 = document.getElementById("display-info1");
 const infoData2 = document.getElementById("display-info2");
@@ -54,6 +55,23 @@ const infocheat = document.getElementById("info-cheatsheet")
 
 
 
+
+infoDataAll.addEventListener("click", function(){
+  if (infoDataAll.style.opacity === "0.5") {
+    infoDataAll.innerText = "Show All";
+    infoDataAll.style.opacity = "1"
+    infoData.style.opacity = "1"
+    infoData1.style.opacity = "1"
+    infoData2.style.opacity = "1"
+  } else {
+    infoDataAll.innerText = `Hide all`;
+    infoDataAll.style.opacity = "0.5"
+    infoData.style.opacity = "0.01"
+    infoData1.style.opacity = "0.01"
+    infoData2.style.opacity = "0.01"
+  }
+})
+
 infoData.addEventListener("click", function(){
   if (infoData.style.opacity === "0.01") {
     infoData.innerText = "Show Stats and Activations";
@@ -100,6 +118,7 @@ btn.addEventListener("click", function () {
     infoData.style.display = "block"
     infoData1.style.display = "block"
     infoData2.style.display = "block"
+    infoDataAll.style.display = "block"
     this.musicStart = new Audio("/assets/audios ad/clic future.wav");
     this.musicStart.volume = 0.05;
     this.musicStart.play()

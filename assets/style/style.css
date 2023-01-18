@@ -31,7 +31,7 @@ h5{
 #canvas {
   border: 1px solid rgb(227, 147, 147);
   position:absolute;
-  background-image: url(/assets/images/fondos/can3.jpeg);
+  background-image: url(/assets/images/fondos/can4mod.png);
   background-size: 100%;
   left: 240px
 }
@@ -110,8 +110,8 @@ u {
 }
 #forms-position {
   position: absolute;
-  margin-left: 1010px;
-  margin-top: 350px;
+  margin-left: 1210px;
+  margin-top: 130px;
   display: flex;
   z-index: 1;
 }

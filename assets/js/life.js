@@ -1,8 +1,8 @@
 class Life {
   constructor(ctx) {
     this.ctx = ctx;
-    this.x = 1015;
-    this.y = 285;
+    this.x = 1212;
+    this.y = 15;
     this.w = 173;
     this.h = 46;
     this.total = 10;
@@ -33,14 +33,14 @@ class Life {
     gradient.addColorStop("0.88", "white");
     gradient.addColorStop("0.8", "black");
     ctx.fillStyle = gradient;
-    this.ctx.fillText("Life", 1070, 325);
+    this.ctx.fillText("Life", 1260, 50);
     this.ctx.fillStyle = prevStyle;
   }
   move() {
     this.y -= this.v;
-    if (this.y < 285) {
+    if (this.y < 15) {
       this.v = -0.01;
-    } else if (this.y > 290) this.v = 0.01;
+    } else if (this.y > 20) this.v = 0.01;
   }
   loseLife() {
     this.total -= 2;

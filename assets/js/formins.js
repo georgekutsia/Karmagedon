@@ -2,8 +2,8 @@ class Formins
  {
   constructor(ctx) {
     this.ctx = ctx;
-    this.x = 1015;
-    this.y = 347;
+    this.x = 1212;
+    this.y = 120;
     this.w = 173;
     this.h = 60;
     this.total = 1;
@@ -31,9 +31,9 @@ class Formins
   }
   move() {
     this.y -= this.v
-    if(this.y < 342){
+    if(this.y < 120){
       this.v = -0.01
-    } else if(this.y > 347)
+    } else if(this.y > 125)
     this.v = 0.01
   }
 }

@@ -77,15 +77,15 @@ class Portal {
         this.w += this.wgrow
         this.h += this.wgrow
       }
-      if(this.x === 950){
+      if(this.x === 1160){
         this.vx = 0
         this.vy = 1
       }
-      if(this.y === 590){
+      if(this.y === 770){
         this.vy = 0
         this.vx = -1
       }
-      if (this.y === 590 && this.x === 5){
+      if (this.y === 770 && this.x === 5){
         this.vx = 0
         this.vy = -1
       }
@@ -211,15 +211,14 @@ class Bush3 {
     }
   }
 class Fence {
-    constructor(ctx, x, y, w, h , stn) {
+    constructor(ctx, x, y, w, h , fence) {
       this.ctx = ctx;
       this.x = x;
       this.y = y;
       this.w = w;
       this.h = h;
-      this.stn =stn
       this.img = new Image();
-      this.img.src = "/assets/images/elements/fence1.png";
+      this.img.src = fence || "/assets/images/elements/fence1.png";
     }
     draw() {
       this.ctx.drawImage(

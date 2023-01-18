@@ -2,7 +2,7 @@ class Scoreback
  {
   constructor(ctx) {
     this.ctx = ctx;
-    this.x = 1015;
+    this.x = 1215;
     this.y = 480;
     this.w = 173;
     this.h = 220;
