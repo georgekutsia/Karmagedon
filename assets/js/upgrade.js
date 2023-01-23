@@ -1,10 +1,10 @@
 class Upgrade {
     constructor(ctx) {
       this.ctx = ctx;
-      this.x = 980;
-      this.y = 220;
-      this.w = 60;
-      this.h = 60;
+      this.x = 1080;
+      this.y = 130;
+      this.w = 50;
+      this.h = 50;
       this.cartImg = new Image();
       this.cartImg.src = "/assets/images/elements/upgra.png";  
       this.tock = 900;

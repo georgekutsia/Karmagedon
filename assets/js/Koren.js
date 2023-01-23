@@ -6,10 +6,12 @@ class Koren {
       { x: 433, y: 100 },
       { x: 533, y: 100 },
       { x: 633, y: 100 },
+      { x: 1033, y: 100 },
       { x: 333, y: 400 },
       { x: 433, y: 400 },
       { x: 533, y: 400 },
       { x: 633, y: 400 },
+      { x: 833, y: 400 },
 
     ];
     this.xy = this.salidas[Math.floor(Math.random() * this.salidas.length)];

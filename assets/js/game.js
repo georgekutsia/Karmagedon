@@ -3,10 +3,10 @@ class Game {
     this.ctx = ctx;
     this.player = new Player(ctx);
     this.token = new Token(ctx);
-    this.line = new Line(ctx);
     this.healing = new HealingPlace(ctx);
     this.water = new Water(ctx)
     this.score = new Score(ctx);
+    this.line = new Line(ctx, this.player, this.player.x, this.player.y);
     this.food = new Food(ctx);
     this.upgrade = new Upgrade(ctx);
     this.upBullet = new Upbullet(ctx);
@@ -67,17 +67,30 @@ class Game {
       new People(ctx, 730, 400, 80, 50, "/assets/images/people/pep7.png"), new People(ctx, 95, 160, 70, 40, "/assets/images/people/pep1.png"),
       new People(ctx, 560, 150, 50, 50, "/assets/images/people/pep6.png"), new People(ctx, 410, 160, 40, 40, "/assets/images/people/pep14.png"),
       new People(ctx, 520, 570, 50, 50, "/assets/images/people/pep15.png"), new People(ctx, 9, 100, 40, 100, "/assets/images/people/pep27.png"),
+      new People(ctx, 940, 350, 40, 90, "/assets/images/people/peop72.png"), new People(ctx, 1060, 600, 30, 60, "/assets/images/people/peop77.png"),
+      new People(ctx, 1060, 470, 60, 30, "/assets/images/people/peop71.png"), new People(ctx, 490, 640, 30, 50, "/assets/images/people/peop70.png"),
+      new People(ctx, 1075, 80, 40, 40, "/assets/images/people/peop74.png"), new People(ctx, 1075, 120, 40, 40, "/assets/images/people/peop75.png"),
+      new People(ctx, 1115, 380, 20, 50, "/assets/images/people/peop76.png"), new People(ctx, 730, 670, 60, 40, "/assets/images/people/peop78.png"),
+      new People(ctx, 1055, 380, 30, 60, "/assets/images/people/peop77.png"), new People(ctx, 730, 670, 60, 40, "/assets/images/people/peop78.png"),
     ]
     this.bushesover = [
+      // weaponizer
+      new Fence(ctx, 1050, 440, 100, 30, "/assets/images/elements/fence5.png"), new Fence(ctx, 1050, 435, 100, 30, "/assets/images/elements/fence5.png"), new Fence(ctx, 1053, 450, 100, 20, "/assets/images/elements/fence3.png"),
+      new Fence(ctx, 1050, 340, 100, 30, "/assets/images/elements/fence5.png"), new Fence(ctx, 1050, 335, 100, 30, "/assets/images/elements/fence5.png"), new Fence(ctx, 1053, 350, 100, 20, "/assets/images/elements/fence3.png"),
+      new Fence(ctx, 1130, 340, 20, 130, "/assets/images/elements/fence5.png"), new Fence(ctx, 1130, 335, 20, 130, "/assets/images/elements/fence5.png"), new Fence(ctx, 1140, 350, 10, 120, "/assets/images/elements/fence3.png"),
+      // warhouse
+      new Fence(ctx, 1040, 200, 105, 30, "/assets/images/elements/fence5.png"), new Fence(ctx, 1040, 202, 105, 30, "/assets/images/elements/fence5.png"), new Fence(ctx, 1050, 204, 80, 30, "/assets/images/elements/fence7.png"),
+      new Fence(ctx, 1040, 70, 105, 30, "/assets/images/elements/fence5.png"), new Fence(ctx, 1040, 72, 105, 30, "/assets/images/elements/fence5.png"), new Fence(ctx, 1045, 74, 80, 30, "/assets/images/elements/fence7.png"),
+      new Fence(ctx, 1045, 70, 10, 160, "/assets/images/elements/fence5.png"), new Fence(ctx, 1045, 72, 10, 160, "/assets/images/elements/fence5.png"), new Fence(ctx, 1045, 74, 10, 160, "/assets/images/elements/fence5.png"),
+      
       // vertical bushes start
       new Bush1(ctx, 57, 60, 20, 100), new Bush1(ctx, 287, 60, 20, 170), new Bush3(ctx, 385, 60, 20, 170), new Bush3(ctx, 607, 60, 20, 170),
       new Bush2(ctx, 705, 60, 20, 170), new Bush2(ctx, 921, 60, 20, 170), new Bush1(ctx, 57, 330, 20, 120), new Bush1(ctx, 287, 330, 20, 150),
       new Bush3(ctx, 385, 330, 20, 150), new Bush3(ctx, 607, 330, 20, 150), new Bush2(ctx, 705, 330, 20, 150), new Bush2(ctx, 921, 330, 20, 150),
-      new Bush1(ctx, 57, 560, 20, 64),  new Bush1(ctx, 67, 550, 90, 20),  new Bush2(ctx, 97, 550, 90, 20),  new Bush1(ctx, 287, 550, 20, 75),
+      new Bush1(ctx, 57, 560, 20, 120), new Bush1(ctx, 385, 560, 20, 120),  new Bush1(ctx, 67, 550, 90, 20),  new Bush2(ctx, 97, 550, 90, 20),  new Bush1(ctx, 287, 550, 20, 75),
       new Bush2(ctx, 450, 550, 90, 20), new Bush3(ctx, 387, 550, 90, 20), new Bush2(ctx, 610, 660, 20, 95), new Bush2(ctx, 540, 737, 90, 15),
       new Bush2(ctx, 700, 550, 20, 75), new Fence(ctx, 60, 420, 60, 40), new Bush2(ctx, 480, 737, 90, 15), new Bush2(ctx, 200, 737, 90, 15),new Bush2(ctx, 130, 737, 90, 15),
-
-// vertical bushes end
+    // vertical bushes end
     ]
     this.lamps = [
       new Bushes(ctx, 160, -2, 40, 40, "/assets/images/elements/lamp.png"), new Bushes(ctx, 650, -2, 40, 40, "/assets/images/elements/lamp.png"), 
@@ -92,15 +105,6 @@ class Game {
       new Fence(ctx, 51, 50, 80, 40), new Fence(ctx, 220, 50, 80, 40), new Fence(ctx, 51, 320, 80, 40), new Fence(ctx, 220, 320, 80, 40),
       new Fence(ctx, 880, 320, 60, 40), new Fence(ctx, 830, 320, 80, 40), new Fence(ctx, 390, 320, 80, 40), new Fence(ctx, 560, 320, 70, 40),
       new Fence(ctx, 700, 50, 80, 40), new Fence(ctx, 870, 50, 70, 40), new Fence(ctx, 1050, 690, 100, 30), new Fence(ctx, 1050, 550, 100, 30), 
-      // weaponizer
-      new Fence(ctx, 1050, 440, 100, 30, "/assets/images/elements/fence5.png"), new Fence(ctx, 1050, 435, 100, 30, "/assets/images/elements/fence5.png"), new Fence(ctx, 1053, 450, 100, 20, "/assets/images/elements/fence3.png"),
-      new Fence(ctx, 1050, 340, 100, 30, "/assets/images/elements/fence5.png"), new Fence(ctx, 1050, 335, 100, 30, "/assets/images/elements/fence5.png"), new Fence(ctx, 1053, 350, 100, 20, "/assets/images/elements/fence3.png"),
-      new Fence(ctx, 1130, 340, 20, 130, "/assets/images/elements/fence5.png"), new Fence(ctx, 1130, 335, 20, 130, "/assets/images/elements/fence5.png"), new Fence(ctx, 1140, 350, 10, 120, "/assets/images/elements/fence3.png"),
-      // warhouse
-      new Fence(ctx, 1040, 200, 105, 30, "/assets/images/elements/fence5.png"), new Fence(ctx, 1040, 202, 105, 30, "/assets/images/elements/fence5.png"), new Fence(ctx, 1050, 204, 80, 30, "/assets/images/elements/fence7.png"),
-      new Fence(ctx, 1040, 70, 105, 30, "/assets/images/elements/fence5.png"), new Fence(ctx, 1040, 72, 105, 30, "/assets/images/elements/fence5.png"), new Fence(ctx, 1045, 74, 80, 30, "/assets/images/elements/fence7.png"),
-      new Fence(ctx, 1045, 70, 10, 160, "/assets/images/elements/fence5.png"), new Fence(ctx, 1045, 72, 10, 160, "/assets/images/elements/fence5.png"), new Fence(ctx, 1045, 74, 10, 160, "/assets/images/elements/fence5.png"),
-
 // round bushes
       new Bushes(ctx, 160, 410, 40, 40, "/assets/images/fondos/arb11.png"),  new Bushes(ctx, 170, 130, 40, 40, "/assets/images/fondos/arb9.png"),
       new Bushes(ctx, 490, 110, 40, 40, "/assets/images/fondos/arbusto1.png"), new Bushes(ctx, 482, 60, 60, 60, "/assets/images/fondos/arbusto1.png"),
@@ -385,10 +389,10 @@ class Game {
       )
     }
     if(this.upgrades.length >= 1){
-      this.ctx.font = "23px Sans";
+      this.ctx.font = "20px Sans";
       ctx.fillStyle = "black";
       ctx.globalAlpha = 0.5
-      ctx.fillRect(1210, 215, 177, 88);
+      ctx.fillRect(1210, 210, 177, 130);
       ctx.globalAlpha = 1
       this.ctx.fillStyle = "white";
       this.ctx.fillText(`New Upgrades!`, 1258, 235);
@@ -454,7 +458,6 @@ class Game {
     this.geese.forEach((e) => e.draw());
     this.token.draw();
     this.lamps.forEach((e) => e.draw());
-    this.line.draw();
     // CTX data statistics
     // CTX data statistics
     this.ctx.font = "20px Arial";
@@ -510,8 +513,8 @@ class Game {
     if(this.perjudiceIs === true){
       this.perjudiceTick++
       this.ctx.fillStyle = "tomato"; 
-      this.ctx.fillText(`Jump: ${distance.toFixed(1).toString()}ft`, 640, 681);
-      this.ctx.fillText(`Jump cooldown: ${this.player.cooldownJump.toFixed(1)}`, 775, 681);
+      this.ctx.fillText(`Jump: ${distance.toFixed(1).toString()}ft`, 640, 860);
+      this.ctx.fillText(`Jump cooldown: ${this.player.cooldownJump.toFixed(1)}`, 775, 860);
       this.ctx.fillText(`Speed: ${this.player.boost.toFixed(1)}`, 640, 884);
       this.ctx.fillStyle = "white";
       if(this.perjudiceTick >= 150){
@@ -569,115 +572,116 @@ class Game {
       this.poisonedTime = 1000
       }
     }
+
     if (C === 67){
       this.machinganTimeLeft = parseInt(this.machinganTime/10)
-        this.ctx.font = "18px Arial";
+        this.ctx.font = "15.5px Arial";
         this.ctx.save();
-        ctx.fillStyle = "rgb(255, 149, 0)";
-        ctx.fillRect(748, 818, 260, 23);
+        ctx.fillStyle = "lime";
+        ctx.fillRect(1215, 663, 170, 23);
         this.ctx.fillStyle = "black";
-        this.ctx.fillText(`Machinegun Active for ${this.machinganTimeLeft.toString()}: -C/V- `, 750, 835);
+        this.ctx.fillText(`Machinegun on: ${this.machinganTimeLeft.toString()} C/V`, 1218, 680);
         this.ctx.restore();
     }
     if (C === 0 && this.score.total >= 50){
         this.machinganRestoreLeft = parseInt(this.machinganRestore/10)
-        this.ctx.font = "18px Arial";
+        this.ctx.font = "16px Arial";
         this.ctx.save();
         ctx.fillStyle = "rgb(255, 80, 0)";
-        ctx.fillRect(755, 818, 250, 23);
+        ctx.fillRect(1230, 663, 150, 23);
         this.ctx.fillStyle = "black";
-        this.ctx.fillText(`Machinegun Reactivated in ${this.machinganRestoreLeft.toString()} `, 760, 835);
+        this.ctx.fillText(`Machinegun Off: ${this.machinganRestoreLeft.toString()} `, 1233, 680);
         this.ctx.restore();
     }
     if(this.score.total <= 49){
       this.machinganRestoreLeft = parseInt(this.machinganRestore/10)
-      this.ctx.font = "18px Arial";
+      this.ctx.font = "16px Arial";
       this.ctx.save();
       ctx.fillStyle = "rgb(86, 6, 6)";
-      ctx.fillRect(755, 818, 250, 23);
+      ctx.fillRect(1215, 663, 250, 23);
       this.ctx.fillStyle = "white";
-      this.ctx.fillText(`Machingan is being designed`, 760, 835);
+      this.ctx.fillText(`Machingan is being designed`, 1218, 680);
       this.ctx.restore();
     }
     if (T === 84){
-        this.ctx.font = "18px Arial";
+        this.ctx.font = "16px Arial";
         this.ctx.save();
         ctx.fillStyle = "rgb(21, 209, 209)";
-        ctx.fillRect(80, 818, 150, 23);
+        ctx.fillRect(1230, 693, 140, 23);
         this.ctx.fillStyle = "black";
-        this.ctx.fillText(`Timeshield ON:-T-`, 84, 835);
+        this.ctx.fillText(`Timeshield ON: T`, 1235, 710);
         this.ctx.restore();
     }
     if (T === 0){
-        this.ctx.font = "18px Arial";
+        this.ctx.font = "16px Arial";
         this.ctx.save();
         ctx.fillStyle = "rgb(86, 6, 6)";
-        ctx.fillRect(60, 818, 180, 23);
+        ctx.fillRect(1215, 693, 165, 23);
         this.ctx.fillStyle = "white";
-        this.ctx.fillText(`Timeshield: pending...`, 63, 835);
+        this.ctx.fillText(`Timeshield: pending...`, 1215, 710);
         this.ctx.restore();
     }
     if (M === 77 && this.score.total >= 20){
-      this.ctx.font = "18px Arial";
+      this.ctx.font = "17px Arial";
       this.ctx.save();
-      ctx.fillStyle = "rgb(255, 149, 0)";
-      ctx.fillRect(245, 818, 190, 23);
+      ctx.fillStyle = "lime";
+      ctx.fillRect(1215, 724, 168, 23);
       this.ctx.fillStyle = "black";
-      this.ctx.fillText(`Sandblaster ready: -M- `, 250, 835);
+      this.ctx.fillText(`Sandblaster ready: M `, 1218, 741);
       this.ctx.restore();
     } 
     if (this.score.total <= 19){
       this.ctx.font = "18px Arial";
       this.ctx.save();
       ctx.fillStyle = "rgb(86, 6, 6)";
-      ctx.fillRect(245, 818, 190, 23);
+      ctx.fillRect(1215, 724, 190, 23);
       this.ctx.fillStyle = "white";
-      this.ctx.fillText(`Megablaster: pending.. `, 250, 835);
+      this.ctx.fillText(`Sandblaster: pending.. `, 1218, 741);
       this.ctx.restore();
     } 
     if (M !== 77 && this.score.total >= 20){
-      this.ctx.font = "18px Arial";
+      this.ctx.font = "16px Arial";
       this.ctx.save();
       ctx.fillStyle = "rgb(255, 80, 0)";
-      ctx.fillRect(240, 818, 200, 23);
+      ctx.fillRect(1220, 724, 158, 23);
       this.ctx.fillStyle = "black";
-      this.ctx.fillText(`Charge Blaster to 20 : ${charging.toString()}`, 242, 835);
+      this.ctx.fillText(`Charge Blaster 20/${charging.toString()}`, 1223, 741);
       this.ctx.restore();
     }
     if (R === 82){
       this.ctx.font = "18px Arial";
       this.ctx.save();
-      ctx.fillStyle = "rgb(255, 149, 0)";
-      ctx.fillRect(445, 818, 155, 23);
+      ctx.fillStyle = "lime";
+      ctx.fillRect(1221, 755, 155, 23);
       this.ctx.fillStyle = "black";
-      this.ctx.fillText(`Discounters: ${this.chargedDisc.toString()} -R- `, 450, 835);
+      this.ctx.fillText(`Discounters: ${this.chargedDisc.toString()} -R- `, 1224, 773);
       this.ctx.restore();
     }
     if (this.chargedDisc <= 0){
       this.ctx.font = "15px Arial";
       this.ctx.save();
       ctx.fillStyle = "rgb(86, 6, 6)";
-      ctx.fillRect(445, 818, 157, 23);
+      ctx.fillRect(1218, 755, 157, 23);
       this.ctx.fillStyle = "white";
-      this.ctx.fillText(`No discounts avaliable`, 450, 835);
+      this.ctx.fillText(`No discounts avaliable`, 1221, 773);
       this.ctx.restore();
     }
     if (B === 66){
       this.ctx.font = "18px Arial";
       this.ctx.save();
-      ctx.fillStyle = "rgb(255, 149, 0)";
-      ctx.fillRect(615, 818, 115, 23);
+      ctx.fillStyle = "lime";
+      ctx.fillRect(1248, 785, 105, 23);
       this.ctx.fillStyle = "black";
-      this.ctx.fillText(`Hooks: ${hookCount.toString()} -B- `, 620, 835);
+      this.ctx.fillText(`Hooks: ${hookCount.toString()} B `, 1252, 803);
       this.ctx.restore();
     }
     if (B === 0){
       this.ctx.font = "18px Arial";
       this.ctx.save();
       ctx.fillStyle = "rgb(86, 6, 6)";
-      ctx.fillRect(610, 818, 138, 23);
+      ctx.fillRect(1230, 785, 138, 23);
       this.ctx.fillStyle = "white";
-      this.ctx.fillText(`Hook: pending...`, 615, 835);
+      this.ctx.fillText(`Hook: pending...`, 1233, 803);
       this.ctx.restore();
     }
     if(this.puddles.length + this.fires.length >= 9){
@@ -716,7 +720,6 @@ class Game {
     this.korens.forEach((e) => e.move(this.player));
     this.puddles.forEach((e) => e.move());
     this.fires.forEach((e) => e.move());
-    this.line.move();
     this.healing.move();
     this.carts.forEach((e) => e.move(this.player));
     this.foods.forEach((e) => e.move(this.player));
@@ -1119,6 +1122,16 @@ class Game {
             } else if(fire.y > this.player.y){
               fire.y = fire.y - 40
             }
+            if(fire.x < this.player.x){
+              fire.x = fire.x + 40
+            } else if (fire.x > this.player.x){
+              fire.x = fire.x - 40
+            } 
+            if(fire.y < this.player.y){
+              fire.y = fire.y +40
+            } else if(fire.y > this.player.y){
+              fire.y = fire.y - 40
+            }
             hook.dispose = true
         }
       });
@@ -1128,8 +1141,13 @@ class Game {
 // karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. 
 // karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. 
     this.karens = this.karens.filter((karen) => {  //karen con player
-      if (karen.collides(this.player)) {
-        if (this.line.check == 1) {
+      if (karen.collides(this.player)) {     
+        this.line.draw()
+        this.line.move()
+        if(this.line.y < this.player.y - 10 || this.line.y > this.player.y + 180){
+          this.line.y = this.player.y + 25
+        }
+        if (this.line.check === 1) {
           this.score.addkkarens()
           this.score.addktotal1()
           this.score.addktotal1()
@@ -1385,6 +1403,7 @@ class Game {
 // koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...
       this.korens = this.korens.filter((koren) => {
         if (koren.collides(this.player)) {
+          this.player.fireHit();
           this.player.fireHit();
           this.player.extraBoost -= 0.005;
         }
@@ -2104,6 +2123,22 @@ this.pback.forEach((peop) => { //PBack
       if (wall.collides(this.player)) {
         this.player.vy = 0;
         this.player.vx = 0;
+        if (this.player.y < wall.y) {
+          this.player.y = wall.y - this.player.h;
+          this.vy = wall.y;
+        }
+        if (this.player.y + this.player.h > wall.y + wall.h) {
+          this.player.y = wall.y + wall.h;
+          this.player.vy = 0;
+        }
+        if (this.player.x + this.player.w > wall.x + wall.w) {
+          this.player.x = wall.x + wall.w;
+          this.vx = 0;
+        }
+        if (this.player.x < wall.x) {
+          this.player.x = wall.x - this.player.w;
+          this.vx = wall.x;
+        }
       }
     });
     this.walls.forEach((wall) => { // walls

@@ -2,16 +2,18 @@ class Food {
     constructor(ctx, foodx, foody) {
       this.ctx = ctx;
       this.salidas = [
-        {x:310, y:10}, {x:310, y:260}, {x:125, y:15}, {x:155, y:320}, {x:900, y:420}, {x:805, y:505}, {x:950, y:40}
+        {x:110, y:120},  {x:540, y:120}, {x:730, y:120},{x:890, y:120},
+        {x:110, y:370},  {x:540, y:370}, {x:730, y:370}, {x:890, y:370},
       ]
       this.xy = this.salidas[Math.floor(Math.random()*this.salidas.length)]
+      this.imgFrame = Math.floor(Math.random() * 16) + 1
       this.x = foodx || this.xy.x;
       this.y = foody || this.xy.y;
       this.w = 45;
       this.h = 40;
       this.cartImg = new Image();
       this.cartImg.src = "/assets/images/elements/comidas.png";
-      this.cartImg.frame = 0;
+      this.cartImg.frame = this.imgFrame;
       this.tick = 0;
       this.tock = 900;
       this.v = 0;
@@ -41,13 +43,6 @@ class Food {
       followY > 0 ? (this.y += this.v) : (this.y += this.v -this.vNegative);
       if (this.x == player.x && this.y == player.y) {
         this.v = 0;
-      }
-      if (this.tick > 40) {
-        this.tick = 0;
-        this.cartImg.frame++;
-      }
-      if (this.cartImg.frame > 15) {
-        this.cartImg.frame = 0;
       }
       this.ctx.font = "18px Arial";
       this.ctx.fillStyle = "red";

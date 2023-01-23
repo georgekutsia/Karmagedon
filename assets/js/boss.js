@@ -4,9 +4,11 @@ class Boss {
     this.salidas = [
       { x: 11, y: 50 },
       { x: 11, y: 210 },
-      { x: 11, y: 400 },
-      { x: 950, y: 200 },
-      { x: 950, y: 400 },
+      { x: 11, y: 500 },
+      { x: 11, y: 750 },
+      { x: 1180, y: 20 },
+      { x: 1180, y: 400 },
+      { x: 1180, y: 750 },
     ];
     this.xy = this.salidas[Math.floor(Math.random() * this.salidas.length)];
     this.x = this.xy.x;
@@ -17,7 +19,7 @@ class Boss {
     this.bossImg = new Image();
     this.bossImg.src = "/assets/images/karens/boss4.png";
     this.bossImg.frame = 0;
-    this.lifeleft = 5
+    this.lifeleft = 30
     this.dead = 0;
     this.tick = 0;
     this.karenEnd = 0;
@@ -78,7 +80,7 @@ class Boss {
   }
   }
   isVisible() {
-    return this.x + this.w > 0 && this.y + this.h < 600;
+    return this.x + this.w > 0 && this.y + this.h < 770;
   }
   collides(player) {
     const colX = this.x <= player.x + player.w && this.x + this.w > player.x;

@@ -67,8 +67,8 @@ class Player {
       this.h 
       );
 
-      console.log("x",this.x)
-      console.log("y",this.y)
+      // console.log("x",this.x)
+      // console.log("y",this.y)
     if(this.y + this.h > this.ctx.canvas.height -100 && this.x + this.w > this.ctx.canvas.width - 520 &&this.x + this.w < this.ctx.canvas.width - 470){
       ctx.fillRect(this.x - 11, this.y - 41, 70, 22);
       ctx.fillStyle = "rgb(251, 209, 209)";

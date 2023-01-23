@@ -32,7 +32,7 @@ let bulletSize = 20
 let charging = 0
 let discounting = 10;
 let venom = 0
-let hookCount = 19
+let hookCount = 2
 
 
 

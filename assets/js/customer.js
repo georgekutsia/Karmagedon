@@ -7,8 +7,8 @@ class Customer {
     this.xy = this.salidas[Math.floor(Math.random()*this.salidas.length)]
     this.x = this.xy.x;
     this.y = this.xy.y;
-    this.w = 0.06 * this.ctx.canvas.width;
-    this.h = 0.10 * this.ctx.canvas.height;
+    this.w = 45;
+    this.h = 70;
     this.vx = 0;
     this.vy = 0.2;
     this.lifeleft = 1;
@@ -41,6 +41,7 @@ class Customer {
     this.customImg.src = this.image;
     this.customImg.frame = 0;
     this.customFrame = 5
+    this.color = "green"
   }
 
   draw() {
@@ -57,9 +58,9 @@ class Customer {
     );
     this.ctx.font = "18px Arial";
     ctx.fillStyle = "rgb(251, 209, 209)";
-    this.ctx.fillStyle = "green";
+    this.ctx.fillStyle = this.color;
     this.order = this.ctx.fillText(this.say, this.x - 32, this.y - 5);
-    this.ctx.fillStyle = "green";
+    this.ctx.fillStyle = this.color;
     this.order = this.ctx.fillText(this.say, this.x - 28, this.y - 1);
     this.ctx.fillStyle = "white";
     this.order = this.ctx.fillText(this.say, this.x - 30, this.y - 3);
@@ -70,10 +71,10 @@ class Customer {
     this.y += this.vy;
     this.tick++;
     if(this.y >= 0){
-      this.vx = 0.4;
+      this.vx = 0.3;
     }
     if(this.y >= 100){
-      this.vx = -0.4;
+      this.vx = -0.3;
       if(this.image === "/assets/images/elements/customer4.png"){
         this.customImg.src = "/assets/images/elements/customer3.png";
       } else if(this.image === "/assets/images/elements/customer17.png"){
@@ -120,6 +121,7 @@ class Customer {
     }
     if(this.lifeleft <= 0){
       this.customImg.src = "/assets/images/elements/bloodStain.png"
+      this.color = "red"
       this.say = this.deadSay
       this.vx = 0;
       this.vy = 0;

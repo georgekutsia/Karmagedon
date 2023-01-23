@@ -2,14 +2,8 @@ class Cart {
   constructor(ctx, cartx, carty) {
     this.ctx = ctx;
     this.salidas = [
-      { x: 70, y: 10 },
-      { x: 736, y: 152 },
-      { x: 812, y: 384 },
-      { x: 552, y: 505 },
-      { x: 412, y: 260 },
-      { x: 96, y: 120 },
-      { x: 105, y: 250 },
-      { x: 125, y: 577 },
+      { x: 70, y: 10 },{ x: 736, y: 152 },{ x: 812, y: 384 },{ x: 552, y: 505 },{ x: 412, y: 260 },
+      { x: 96, y: 120 },{ x: 105, y: 250 },{ x: 125, y: 577 },{ x:1052, y: 655 },{ x: 900, y: 60 },{ x:452, y: 705 },{ x: 700, y: 560 },
     ];
     this.xy = this.salidas[Math.floor(Math.random() * this.salidas.length)];
     this.x = cartx || this.xy.x;

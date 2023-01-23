@@ -161,8 +161,8 @@ class Bush1 {
       )
     } 
     collides(player) {
-      const colX = this.x + 10 <= player.x + player.w && this.x + this.w - 10 > player.x;
-      const colY = this.y + this.h -10 > player.y && this.y + 10 < player.y + player.h;
+      const colX = this.x <= player.x + player.w && this.x + this.w  > player.x;
+      const colY = this.y + this.h > player.y && this.y < player.y + player.h;
       return colX && colY;
     }
   }
@@ -183,8 +183,8 @@ class Bush2 {
       )
     } 
     collides(player) {
-      const colX = this.x + 10 <= player.x + player.w && this.x + this.w - 10 > player.x;
-      const colY = this.y + this.h -10 > player.y && this.y + 10 < player.y + player.h;
+      const colX = this.x <= player.x + player.w && this.x + this.w  > player.x;
+      const colY = this.y + this.h > player.y && this.y < player.y + player.h;
       return colX && colY;
     }
   }
@@ -205,8 +205,8 @@ class Bush3 {
       )
     } 
     collides(player) {
-      const colX = this.x + 10 <= player.x + player.w && this.x + this.w - 10 > player.x;
-      const colY = this.y + this.h -10 > player.y && this.y + 10 < player.y + player.h;
+      const colX = this.x <= player.x + player.w && this.x + this.w  > player.x;
+      const colY = this.y + this.h > player.y && this.y < player.y + player.h;
       return colX && colY;
     }
   }
@@ -227,8 +227,8 @@ class Fence {
     } 
     
     collides(player) {
-      const colX = this.x + 10 <= player.x + player.w && this.x + this.w - 20 > player.x;
-      const colY = this.y + this.h > player.y && this.y + 10 < player.y + player.h;
+      const colX = this.x <= player.x + player.w && this.x + this.w > player.x;
+      const colY = this.y + this.h > player.y && this.y  < player.y + player.h;
       return colX && colY;
     }
   }

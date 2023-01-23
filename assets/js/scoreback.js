@@ -3,9 +3,9 @@ class Scoreback
   constructor(ctx) {
     this.ctx = ctx;
     this.x = 1215;
-    this.y = 480;
+    this.y = 410;
     this.w = 173;
-    this.h = 220;
+    this.h = 240;
     this.total = 0;
     this.v = 5;
     ctx.font = "40px Verdana";
@@ -32,9 +32,9 @@ class Scoreback
   }
   move() {
     this.y -= this.v
-    if(this.y < 480){
+    if(this.y < 410){
       this.v = -0.08
-    } else if(this.y > 485)
+    } else if(this.y > 415)
     this.v = 0.12
   }
 }

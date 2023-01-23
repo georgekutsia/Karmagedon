@@ -2,7 +2,7 @@ class Rats {
   constructor(ctx) {
     this.ctx = ctx;
     this.x = this.ctx.canvas.width - 300;
-    this.salidas = [20, 240, 280, 505]
+    this.salidas = [20, 240, 280, 505, 750]
     this.y = this.salidas[Math.floor(Math.random()*this.salidas.length)]
     this.w = 0.1 * this.ctx.canvas.width;
     this.h = 0.05 * this.ctx.canvas.height;

@@ -3,10 +3,9 @@ class Discount {
       this.ctx = ctx;
 
       this.salidas = [
-        {x:10, y:20}, {x:10, y:584},
-        {x:323, y:20}, {x:323, y:250},
-        {x:645, y:20}, {x:645, y:584}, 
-        {x:950, y:20}, {x:800, y:260}, 
+        {x:10, y:20}, {x:10, y:584}, {x:323, y:20}, {x:323, y:250},
+        {x:645, y:20}, {x:645, y:584}, {x:950, y:20}, {x:800, y:260}, 
+        {x:1120, y:750}, {x:400, y:750}, {x:80, y:750}, {x:700, y:750}, 
       ]
       this.xy = this.salidas[Math.floor(Math.random()*this.salidas.length)]
       this.x = discx || this.xy.x;

@@ -1,7 +1,7 @@
 class Fat {
   constructor(ctx) {
     this.ctx = ctx;
-    this.salidas = [311,630,940,0]
+    this.salidas = [311,630,940,0,1120]
     this.x = this.salidas[Math.floor(Math.random() * this.salidas.length)]
     this.y = this.ctx.canvas.height - 165;
     this.w = 0.07 * this.ctx.canvas.width;
