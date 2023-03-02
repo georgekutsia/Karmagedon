@@ -12,6 +12,7 @@ class Koren {
     this.w = 0.04 * this.ctx.canvas.width;
     this.h = 0.07 * this.ctx.canvas.height;
     this.v = 0.3;
+    this.vNegative = 0.9 
     this.ks1 = new Audio("/assets/audio/korens/koren1.m4a");
     this.ks1.volume = 0.1;
     this.ks2 = new Audio("/assets/audio/korens/koren2.m4a");
@@ -53,7 +54,10 @@ class Koren {
     this.koren = new Image();
     this.koren.src = this.image;
     this.koren.frame = 0;
-
+    this.cageImg = new Image();
+    this.cageImg.src = "/assets/images/munición/cage.png"
+    this.cage = false
+    this.cageTick = 0
   }
 
   draw() {
@@ -75,6 +79,21 @@ class Koren {
     this.ctx.fillStyle = "red";
     this.order = this.ctx.fillText(this.say, this.x - 39, this.y - 3);
     this.ctx.restore();
+    if(this.cage){
+      this.ctx.drawImage(
+        this.cageImg, this.x-10, this.y -10, 70, 90
+      )
+      this.cageTick++
+      if(this.cageTick >= 200){
+        this.cage = false
+        this.v = 0.3
+        this.vNegative = 0.9
+        this.cageTick = 0
+        this.atraer = new Audio("/assets/audios ad/jaulaRota.mp3")
+        this.atraer.volume = 0.15;
+        this.atraer.play();
+      }
+    }
   }
 
   move(player) {
@@ -84,9 +103,8 @@ class Koren {
     this.korenEnd++;
     let followX = player.x - this.x;
     let followY = player.y - this.y;
-
-    followX > 0 ? (this.x += this.v) : (this.x += this.v -0.9);
-    followY > 0 ? (this.y += this.v) : (this.y += this.v -0.9);
+    followX > 0 ? (this.x += this.v) : (this.x += this.v - this.vNegative);
+    followY > 0 ? (this.y += this.v) : (this.y += this.v - this.vNegative);
     if(followX > 0){
       if(this.image === "/assets/images/elements/koren1.png"){
         this.koren.src = "/assets/images/elements/koren1.png";
@@ -127,11 +145,12 @@ class Koren {
       this.y = 650
       this.say = "F U, I'm Moonwalking"
     }
-    if(this.korenEnd >=400){
+    if(this.korenEnd >=1400){
       this.v = 2;
       this.say = "F THIS, I'm leaving backwords"
+      this.cage = false
     }
-    if(this.huckSound === true && this.h>=121 || this.huckSound === true && this.korenEnd >= 400){
+    if(this.huckSound === true && this.h>=121 || this.huckSound === true && this.korenEnd >= 1000){
       this.huckYou = new Audio("/assets/audio/korens/huckYou.m4a");
       this.huckYou.volume = 0.1;
       this.huckYou.play();

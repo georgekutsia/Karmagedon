@@ -87,11 +87,9 @@ class Hook {
     this.ctx = ctx;
     this.x = x;
     this.y = y;
-    this.sa = 0;
     this.w = 25
     this.h = 25
     this.player = player;
-    this.bla = 0;
     this.vx = 0;
     this.vy = 0;
     this.dispose = false;
@@ -122,10 +120,10 @@ class Hook {
     this.y += this.vy;
 
     if (
-      this.x >= this.player.x + bulletDistance * 20 + this.bla || 
-      this.y >= this.player.y + bulletDistance * 20 + this.bla ||
-      this.x <= this.player.x - bulletDistance * 20 - this.bla || 
-      this.y <= this.player.y - bulletDistance * 20 - this.bla 
+      this.x >= this.player.x + bulletDistance * 20|| 
+      this.y >= this.player.y + bulletDistance * 20||
+      this.x <= this.player.x - bulletDistance * 20|| 
+      this.y <= this.player.y - bulletDistance * 20
     ){
       this.dispose = true
     }

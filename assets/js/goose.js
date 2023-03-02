@@ -17,6 +17,9 @@ class Goose {
     this.tick = 0;
     this.tock = 0;
     this.dead = 0;
+    this.cageImg = new Image();
+    this.cageImg.src = "/assets/images/munición/cage.png"
+    this.cage = false
   }
   draw() {
     this.ctx.drawImage(
@@ -30,6 +33,11 @@ class Goose {
       this.w,
       this.h
     );
+    if(this.cage){
+      this.ctx.drawImage(
+        this.cageImg, this.x-10, this.y -10, 70, 80
+      )
+    }
   }
   move() {
     this.ctx.font = "18px Arial";

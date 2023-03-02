@@ -1,7 +1,6 @@
 class Discount {
     constructor(ctx, discx, discy, image) {
       this.ctx = ctx;
-
       this.salidas = [
         {x:10, y:20}, {x:10, y:584}, {x:323, y:20}, {x:323, y:250},
         {x:645, y:20}, {x:645, y:584}, {x:950, y:20}, {x:800, y:260}, 
@@ -26,6 +25,7 @@ class Discount {
       this.tock = 800;
       this.v = 0;
       this.vNegative = 0
+
     }
   // 2.4  7.2
     draw() {

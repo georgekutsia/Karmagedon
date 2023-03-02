@@ -801,9 +801,6 @@ class Player {
     this.toxics.push(tox);
   }
 
-
-
-
   hooker() {
     const hook = new Hook(
       this.ctx,

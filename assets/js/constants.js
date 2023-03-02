@@ -30,6 +30,7 @@ let auraDistance = 150;
 let afterSize = 60
 let bulletSize = 20
 let charging = 20
+let chargingTrue = false
 let discounting = 100;
 let venom = 5
 let hookCount = 41

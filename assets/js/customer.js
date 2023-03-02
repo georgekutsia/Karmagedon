@@ -9,11 +9,16 @@ class Customer {
     this.y = this.xy.y;
     this.w = 45;
     this.h = 70;
-    this.vx = 0;
+    this.moveX = 0.3
+    this.vx = this.moveX;
     this.vy = 0.2;
     this.lifeleft = 1;
     this.dead = 0;
     this.tick = 0;
+    this.cageImg = new Image();
+    this.cageImg.src = "/assets/images/munición/cage.png"
+    this.cage = false
+    this.cageTick = 0
     this.images = [ "/assets/images/elements/customer4.png", 
                     "/assets/images/elements/customer17.png", 
                     "/assets/images/elements/customer13.png", 
@@ -37,6 +42,18 @@ class Customer {
     this.image = this.images[Math.floor(Math.random() * this.images.length)]
     this.say = this.says[Math.floor(Math.random() * this.says.length)]
     this.deadSay = this.deadSays[Math.floor(Math.random() * this.deadSays.length)]
+    this.customerSound1 = new Audio("/assets/audios ad/customerHappy1.m4a");
+    this.customerSound1.volume = 0.1;
+    this.customerSound2 = new Audio("/assets/audios ad/customerHappy2.m4a");
+    this.customerSound2.volume = 0.1;
+    this.customerSound3 = new Audio("/assets/audios ad/customerHappy3.m4a");
+    this.customerSound3.volume = 0.1;
+    this.customerSound4 = new Audio("/assets/audios ad/customerHappy4.m4a");
+    this.customerSound4.volume = 0.1;
+    this.customerSound5 = new Audio("/assets/audios ad/customerHappy5.m4a");
+    this.customerSound5.volume = 0.1;
+    this.customerSounds = [this.customerSound1,this.customerSound2,this.customerSound3,this.customerSound4,this.customerSound5];
+    this.customerSounds[Math.floor(Math.random() * this.customerSounds.length)].play();
     this.customImg = new Image();
     this.customImg.src = this.image;
     this.customImg.frame = 0;
@@ -56,6 +73,21 @@ class Customer {
       this.w,
       this.h
     );
+    if(this.cage){
+      this.ctx.drawImage(
+        this.cageImg, this.x-15, this.y -10, 70, 90
+      )
+      this.cageTick++
+      if(this.cageTick >= 900){
+        this.cage = false
+        this.moveX = 0.3
+        this.vy = 0.3;
+        this.cageTick = 0
+        this.atraer = new Audio("/assets/audios ad/jaulaRota.mp3")
+        this.atraer.volume = 0.15;
+        this.atraer.play();
+      }
+    }
     this.ctx.font = "18px Arial";
     ctx.fillStyle = "rgb(251, 209, 209)";
     this.ctx.fillStyle = this.color;
@@ -71,10 +103,10 @@ class Customer {
     this.y += this.vy;
     this.tick++;
     if(this.y >= 0){
-      this.vx = 0.3;
+      this.vx = this.moveX;
     }
     if(this.y >= 100){
-      this.vx = -0.3;
+      this.vx = -this.moveX;
       if(this.image === "/assets/images/elements/customer4.png"){
         this.customImg.src = "/assets/images/elements/customer3.png";
       } else if(this.image === "/assets/images/elements/customer17.png"){
@@ -88,11 +120,11 @@ class Customer {
       }
     }
     if(this.y >= 200){
-      this.vx = 0.4;
+      this.vx = this.moveX;
       this.customImg.src = this.image;
     }
     if(this.y >= 300){
-      this.vx = -0.4;;
+      this.vx = -this.moveX;;
       if(this.image === "/assets/images/elements/customer4.png"){
         this.customImg.src = "/assets/images/elements/customer3.png";
       } else if(this.image === "/assets/images/elements/customer17.png"){
@@ -106,7 +138,7 @@ class Customer {
       }
     }
     if(this.y >= 400){
-      this.vx = 0.4;
+      this.vx = this.moveX;
       this.customImg.src = this.image;
     }
     

@@ -16,6 +16,7 @@ class Boss {
     this.w = 0.05 * this.ctx.canvas.width;
     this.h = 0.09 * this.ctx.canvas.height;
     this.v = 0.3;
+    this.vNegative = 0.9 
     this.bossImg = new Image();
     this.bossImg.src = "/assets/images/karens/boss4.png";
     this.bossImg.frame = 0;
@@ -23,6 +24,10 @@ class Boss {
     this.dead = 0;
     this.tick = 0;
     this.karenEnd = 0;
+    this.cageImg = new Image();
+    this.cageImg.src = "/assets/images/munición/cage.png"
+    this.cage = false
+    this.cageTick = 0
   }
   draw() {
     this.ctx.drawImage(
@@ -36,6 +41,21 @@ class Boss {
       this.w,
       this.h
     );
+    if(this.cage){
+      this.ctx.drawImage(
+        this.cageImg, this.x-10, this.y -10, 70, 90
+      )
+      this.cageTick++
+      if(this.cageTick >= 200){
+        this.cage = false
+        this.v = 0.3
+        this.vNegative = 0.9
+        this.cageTick = 0
+        this.atraer = new Audio("/assets/audios ad/jaulaRota.mp3")
+        this.atraer.volume = 0.15;
+        this.atraer.play();
+      }
+    }
   }
   move(player) {
     this.ctx.save();
@@ -54,8 +74,8 @@ class Boss {
     this.karenEnd++;
     let followX = player.x - this.x;
     let followY = player.y - this.y;
-    followX > 0 ? (this.x += this.v) : (this.x += this.v -0.9);
-    followY > 0 ? (this.y += this.v) : (this.y += this.v -0.9);
+    followX > 0 ? (this.x += this.v) : (this.x += this.v - this.vNegative);
+    followY > 0 ? (this.y += this.v) : (this.y += this.v - this.vNegative);
     
     if(followX > 0){
       this.bossImg.src = "/assets/images/karens/boss3.png";

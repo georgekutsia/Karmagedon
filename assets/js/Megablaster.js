@@ -73,9 +73,9 @@ class Discounting {
     this.dispose = false;
     this.discountImg = new Image();
     this.discountImg.src = "/assets/images/munición/discounting1.png";
-    // this.blasterShootAudio = new Audio("/assets/audio/sandSound.mp3")
-    // this.blasterShootAudio.volume = 0.01;
-    // this.blasterShootAudio.play();
+    this.atraer = new Audio("/assets/audios ad/discountSound1.wav")
+    this.atraer.volume = 0.01;
+    this.atraer.play();
   }
   draw() {
     this.ctx.drawImage(this.discountImg, this.x, this.y, this.w, this.h);

@@ -5,10 +5,10 @@ class Bushes {
       this.y = y;
       this.w = w;
       this.h = h;
-      this.bla = new Player(ctx)
       this.img = new Image();
       this.img.src = imagen;
-      this.bla =  false    }
+      this.lights =  false    
+    }
     draw() {
       this.ctx.drawImage(
         this.img,this.x, this.y, this.w, this.h
@@ -34,7 +34,6 @@ class Portal {
       this.h = h;
       this.vx = 1
       this.vy = 0
-      this.bla = new Player(ctx)
       this.img = new Image();
       this.img.src =  "/assets/images/shield/darkPortal.png";
       this.img.frame = 0;

@@ -15,6 +15,9 @@ class Rats {
     this.ratImg.frame = 0;
     this.tick = 0;
     this.tock = 0;
+    this.cageImg = new Image();
+    this.cageImg.src = "/assets/images/munición/cage.png"
+    this.cage = false
   }
 
   draw() {
@@ -29,6 +32,11 @@ class Rats {
       this.w,
       this.h
     );
+    if(this.cage){
+      this.ctx.drawImage(
+        this.cageImg, this.x-10, this.y -10, 170, 80
+      )
+    }
   }
 
   move() {
@@ -39,9 +47,8 @@ class Rats {
       this.tick = 0;
       this.ratImg.frame++;
     }
-
-    if (this.x < 0) {
-
+    if(this.vx !== 0){
+      this.cage = false
     }
     if (this.ratImg.frame > 5) {
       this.ratImg.frame = 0;

@@ -21,7 +21,7 @@ class Fat {
     this.fat.src = this.fatlist[Math.floor(Math.random() * this.fatlist.length)];
     this.fat.frame = 0;
     this.tick = 0;
-    this.fatAudio = new Audio("/assets/audio/fat.mp3")
+    this.fatAudio = new Audio("/assets/audio/fat1.m4a")
     this.fatAudio.volume = 0.07;
     this.fatAudio.play();
   }

@@ -46,6 +46,7 @@ class Game {
     this.hitOnKarenCounter = 0
     this.poisonedTime = 3000 - chance * 300
     this.tick = 0;
+    this.chargeTick = 0
     this.cactus = [
       new Cactus(ctx, 375, 200, 40, 40, "/assets/images/fondos/cact1.png"), new Cactus(ctx, 600, 190, 50, 50, "/assets/images/fondos/cact3.png"),
       new Cactus(ctx, 820, 320, 30, 40, "/assets/images/fondos/cact5.png"), new Cactus(ctx, 780, 440, 40, 40, "/assets/images/fondos/cact4.png"),
@@ -103,8 +104,8 @@ class Game {
       new Bushes(ctx, 270, 450, 40, 40, this.lampOff), new Bushes(ctx, 1120, 370, 40, 40, this.lampOff), 
       new Bushes(ctx, -9, 100, 40, 40, this.lampOff), new Bushes(ctx, 595, 310, 40, 40, this.lampOff), 
       new Bushes(ctx, 40, 540, 40, 40, this.lampOff), new Bushes(ctx, 690, 450, 40, 40, this.lampOff),
-      new Bushes(ctx, 595, 640, 40, 40, this.lampOff), new Bushes(ctx, 1180, 430, 40, 40, this.lampOff),
-      new Bushes(ctx, 820, 780, 40, 40, this.lampOff), new Bushes(ctx, 290, 780, 40, 40, this.lampOff),
+      new Bushes(ctx, 595, 640, 40, 40, this.lampOff), new Bushes(ctx, 1180, 490, 40, 40, this.lampOff),
+      new Bushes(ctx, 820, 780, 40, 40, this.lampOff), new Bushes(ctx, 320, 780, 40, 40, this.lampOff),
     ]
     this.walls = [
       new Fence(ctx, 51, 50, 80, 40), new Fence(ctx, 220, 50, 80, 40), new Fence(ctx, 51, 320, 80, 40), new Fence(ctx, 220, 320, 80, 40),
@@ -131,6 +132,20 @@ class Game {
     this.musicStart = new Audio("/assets/audio/valse.mp3");
     this.musicStart.volume = 0.002;
     this.musicStart.loop = true;
+    // random sound Boss
+    this.karens.src = "/assets/images/karens/karen1.png";
+    this.bossSound1 = new Audio("/assets/audios ad/bossOuch1.m4a");
+    this.bossSound1.volume = 0.1;
+    this.bossSound2 = new Audio("/assets/audios ad/bossOuch2.m4a");
+    this.bossSound2.volume = 0.1;
+    this.bossSound3 = new Audio("/assets/audios ad/bossOuch3.m4a");
+    this.bossSound3.volume = 0.1;
+    this.bossSound4 = new Audio("/assets/audios ad/bossOuch4.m4a");
+    this.bossSound4.volume = 0.1;
+    this.bossSound5 = new Audio("/assets/audios ad/bossOuch5.m4a");
+    this.bossSound5.volume = 0.1;
+    this.karenSounds = [this.bossSound1,this.bossSound2,this.bossSound3,this.bossSound4,this.bossSound5];
+    
   }
   start() {
     this.so = new Audio("/assets/audio/So1.mp3");
@@ -574,7 +589,7 @@ class Game {
           this.machinganTime = 0
           this.machinganRestore --
           if(this.machinganRestore <= 0){
-            this.machinganTime = 300
+            this.machinganTime = 800
             this.machinganRestore = 600
             C = 67;
             V = 86;
@@ -674,15 +689,21 @@ class Game {
     //   this.ctx.fillText(`Sandblaster: pending.. `, 1218, 741);
     //   this.ctx.restore();
     // } 
-    // if (M !== 77 && this.score.total >= 20){
-    //   this.ctx.font = "16px Arial";
-    //   this.ctx.save();
-    //   ctx.fillStyle = "rgb(255, 80, 0)";
-    //   ctx.fillRect(1220, 724, 158, 23);
-    //   this.ctx.fillStyle = "black";
-    //   this.ctx.fillText(`Charge Blaster 20/${charging.toString()}`, 1223, 741);
-    //   this.ctx.restore();
-    // }
+    if (chargingTrue){
+      this.chargeTick++
+      if(this.chargeTick >= 50){
+        chargingTrue = false
+        this.chargeTick = 0
+      }
+      this.ctx.font = "16px Arial";
+      this.ctx.save();
+      this.ctx.fillStyle = "black";
+      this.ctx.fillText(`Blaster 20/${charging.toString()}`, this.player.x - 20, this.player.y + 70);
+      this.ctx.font = "16px Arial";
+      this.ctx.fillStyle = "white";
+      this.ctx.fillText(`Blaster 20/${charging.toString()}`, this.player.x - 19, this.player.y + 69);
+      this.ctx.restore();
+    }
     // if (R === 82){
     //   this.ctx.font = "18px Arial";
     //   this.ctx.save();
@@ -995,6 +1016,7 @@ class Game {
   //Colisiones start..Colisiones start..Colisiones start..Colisiones start..Colisiones start..Colisiones start..
   checkCharger(){
     charging+=1
+    chargingTrue = true
     if(charging >= 20 && this.score.total >= 20){
         M = 77
         charging = 0
@@ -1087,6 +1109,16 @@ class Game {
           this.luzOnAudio = new Audio("/assets/audio/evap.mp3")
           this.luzOnAudio.volume = 0.07;
           this.luzOnAudio.play();
+            if(puddle.x < this.player.x){
+              puddle.x = puddle.x + 40
+            } else if (puddle.x > this.player.x){
+              puddle.x = puddle.x - 40
+            } 
+            if(puddle.y < this.player.y){
+              puddle.y = puddle.y +40
+            } else if(puddle.y > this.player.y){
+              puddle.y = puddle.y - 40
+            }
             if(puddle.x < this.player.x){
               puddle.x = puddle.x + 40
             } else if (puddle.x > this.player.x){
@@ -1362,6 +1394,7 @@ class Game {
         if (heat.collides(rat)) {
           this.player.hooks.splice(0, 1);
           rat.vx = 0;
+          rat.cage = true
           this.checkCharger()
           this.luzOnAudio = new Audio("/assets/audios ad/ratHook.mp3")
           this.luzOnAudio.volume = 0.07;
@@ -1490,6 +1523,22 @@ class Game {
         } else return true;
       });
     });
+    this.fats.forEach((fat) => {//hook con fats
+      this.player.hooks.filter((hook) => {
+        if (hook.collides(fat)) {
+        this.hookShootAudio = new Audio("/assets/audios ad/fatImpact.mp3")
+        this.hookShootAudio.volume = 0.07;
+        this.hookShootAudio.play();
+        this.hookShootAudio = new Audio("/assets/audios ad/fatHookImpact.m4a")
+        this.hookShootAudio.volume = 0.07;
+        this.hookShootAudio.play();
+        this.player.x = fat.x + 20
+        this.player.y = fat.y + 40
+        hook.dispose = true
+          return false;
+        } else return true;
+      });
+    });
 // koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...
 // koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...
       this.korens = this.korens.filter((koren) => {
@@ -1530,6 +1579,19 @@ class Game {
             this.score.addktotal1()
             koren.truth = true
           }
+        } else return true;
+      });
+    })
+    this.korens.forEach((koren) => {   //koren con hook
+      this.player.hooks = this.player.hooks.filter((hook) => {
+        if (hook.collides(koren)) {
+          this.atraer = new Audio("/assets/audios ad/jaula.mp3")
+          this.atraer.volume = 0.07;
+          this.atraer.play();
+          this.player.hooks.splice(0, 1);
+          koren.vNegative = 0
+          koren.v = 0
+          koren.cage = true
         } else return true;
       });
     })
@@ -1740,7 +1802,7 @@ class Game {
             goose.y += 20;
             if(foodRandom === 1){
               const food = new Food(ctx, goose.x, goose.y + 80);
-              this.foods.push(food);
+              this.foods.push(food);checkcha
             }
           }
         this.checkCharger()
@@ -1749,7 +1811,7 @@ class Game {
         this.player.hooks.filter((hook) => {// goose con hook
         if (hook.collides(goose)) {
           this.player.hooks.splice(0, 1);
-          goose.lifeleft -= 1 
+          goose.cage = true
           const foodRandom = Math.floor(Math.random() * 10 - chance)
           if(goose.lifeleft <= 0){
             this.score.addkgoose()
@@ -1865,6 +1927,20 @@ class Game {
         } else return true;
       });
     });
+    this.babys.forEach((baby) => { //baby con hooks
+      this.player.hooks.filter((hook) => {
+        if (hook.collides(baby)) {
+          this.atraer = new Audio("/assets/audios ad/jaula.mp3")
+          this.atraer.volume = 0.07;
+          this.atraer.play();
+          baby.vx = 0
+          baby.moveY = 0
+          baby.cage = true
+          hook.dispose = true
+          return false;
+        } else return true;
+      });
+    });
     this.puddles.forEach((puddle) => { //baby con puddle
       this.babys = this.babys.filter((baby) => {
         if (baby.collides(puddle)) {
@@ -1950,6 +2026,9 @@ class Game {
           this.dyingCus()
           cus.lifeleft -=1
           if(cus.dead >= 50){
+            this.atraer = new Audio("/assets/audios ad/dustBite.m4a")
+            this.atraer.volume = 0.07;
+            this.atraer.play();
             this.score.score += 1
           }
           return true;
@@ -1962,6 +2041,9 @@ class Game {
           this.dyingCus()
           cus.lifeleft -=1
           if(cus.dead >= 50){
+            this.atraer = new Audio("/assets/audios ad/dustBite.m4a")
+            this.atraer.volume = 0.07;
+            this.atraer.play();
             this.score.score += 1
           }
           return true;
@@ -1998,6 +2080,9 @@ class Game {
           cus.lifeleft -=1
           this.dyingCus()
           if(cus.dead >= 50){
+            this.atraer = new Audio("/assets/audios ad/dustBite.m4a")
+            this.atraer.volume = 0.07;
+            this.atraer.play();
             this.score.score += 1
           }
           return true;
@@ -2010,6 +2095,9 @@ class Game {
           cus.lifeleft -=1
           this.dyingCus()
           if(cus.dead >= 50){
+            this.atraer = new Audio("/assets/audios ad/dustBite.m4a")
+            this.atraer.volume = 0.07;
+            this.atraer.play();
             this.score.score += 1
           }
           return true;
@@ -2022,6 +2110,9 @@ class Game {
             this.dyingCus()
             cus.lifeleft -=1
             if(cus.dead >= 50){
+              this.atraer = new Audio("/assets/audios ad/dustBite.m4a")
+              this.atraer.volume = 0.07;
+              this.atraer.play();
               this.score.score += 1
             }
             return true;
@@ -2054,9 +2145,61 @@ class Game {
           } else return true;
         });
       });
+      this.customers.forEach((customer) => { //customer con hooks
+        this.player.hooks.filter((hook) => {
+          if (hook.collides(customer)) {
+            this.atraer = new Audio("/assets/audios ad/jaula.mp3")
+            this.atraer.volume = 0.07;
+            this.atraer.play();
+            customer.vy = 0
+            customer.moveX = 0
+            customer.cage = true
+            hook.dispose = true
+            return false;
+          } else return true;
+        });
+      });
 // boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..
 // boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..
     this.bosss = this.bosss.filter((boss) => {     //boss con player
+      this.player.hooks = this.player.hooks.filter((hook) => {
+        if (hook.collides(boss)) {        //boss con hook
+          this.karenSounds[Math.floor(Math.random() * this.karenSounds.length)].play();
+          this.player.hooks.splice(0, 1);
+          this.atraer = new Audio("/assets/audios ad/jaula.mp3")
+          this.atraer.volume = 0.07;
+          this.atraer.play();
+          boss.cage = true
+            if(boss.x < this.player.x){
+              boss.x = boss.x - 20
+            } else if (boss.x > this.player.x){
+              boss.x = boss.x + 20
+            } 
+            if(boss.y < this.player.y){
+              boss.y = boss.y -20
+            } else if(boss.y > this.player.y){
+              boss.y = boss.y + 20
+            }
+            if(boss.x < this.player.x){
+              boss.x = boss.x - 20
+            } else if (boss.x > this.player.x){
+              boss.x = boss.x + 20
+            } 
+            if(boss.y < this.player.y){
+              boss.y = boss.y - 20
+            } else if(boss.y > this.player.y){
+              boss.y = boss.y + 20
+            }
+          boss.v = 0
+          boss.vNegative = 0
+          charging+=3
+          if(charging >= 20 && this.score.total >= 20){
+              M = 77
+              charging = 0
+          }
+          return false;
+        } else return true;
+      });
       if (boss.collides(this.player)) {
         this.player.speed -= 1;
         this.player.cooldownBullet += 600;
@@ -2073,8 +2216,10 @@ class Game {
     this.bosss.forEach((boss) => {      //boss con agua
       this.player.waters = this.player.waters.filter((water) => {
         if (water.collides(boss)) {
+          this.karenSounds[Math.floor(Math.random() * this.karenSounds.length)].play();
           this.player.waters.splice(0, 1);
             boss.lifeleft -= 1;
+            this.checkCharger()
           if(boss.lifeleft <= 0){
             boss.y = 2000;
             this.addFire()
@@ -2116,7 +2261,9 @@ class Game {
       this.player.heats = this.player.heats.filter((heat) => {
         if (heat.collides(boss)) {        //boss con fuego
           this.player.heats.splice(0, 1);
-            boss.lifeleft -= 1;
+          this.karenSounds[Math.floor(Math.random() * this.karenSounds.length)].play();
+          boss.lifeleft -= 1;
+          this.checkCharger()
           if(boss.lifeleft <= 0){
             boss.y = 2000;
             this.addFire()
@@ -2157,6 +2304,7 @@ class Game {
         } else return true;
       });
     });
+
     this.bosss.forEach((boss) => {      //boss con blaster
       this.player.blasters.filter((blast) => {
         if (blast.collides(boss)) {
@@ -2446,10 +2594,10 @@ this.pback.forEach((peop) => { //PBack
 //carts...carts...carts...carts...carts...carts...carts...carts...carts...carts...carts...carts...
     this.carts = this.carts.filter((cart) => {
       if (cart.collides(this.player)) {
-        // this.newShoes = new Audio("/assets/audios ad/Faster running.mp3");
-        // this.newShoes.volume = 0.1;
-        // this.newShoes.play()
-        hookCount+=3
+        this.newShoes = new Audio("/assets/audios ad/shieldActivated.wav");
+        this.newShoes.volume = 0.05;
+        this.newShoes.play()
+        hookCount+=3 + chance*2
         if(this.score.total >= 35){
           T = 84
         }
@@ -2566,8 +2714,8 @@ this.pback.forEach((peop) => { //PBack
     this.lamps.forEach((lamp) => {//hook con lamps
       this.player.hooks.filter((hook) => {
         if (hook.collides(lamp)) {
-          if( lamp.bla === false){
-            lamp.bla = true
+          if( lamp.lights === false){
+            lamp.lights = true
             this.luzOnAudio = new Audio("/assets/audios ad/luzOn.mp3")
             this.luzOnAudio.volume = 0.07;
             this.luzOnAudio.play();
@@ -2679,7 +2827,7 @@ this.pback.forEach((peop) => { //PBack
       this.player.sanders.filter((sand) => {
         if (sand.collides(blast)) {
           this.tick++ 
-          if (this.tick % 35 === 0 && this.player.blasters.length <= 20){
+          if (this.tick % 45 === 0 && this.player.blasters.length <= 20 && hookCount === 0){
             this.player.megablaster()
           }
           return false;
