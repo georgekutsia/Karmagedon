@@ -19,6 +19,8 @@ class Heat {
     this.heatShootAudio.play();
     this.framer = 1
     this.tick = 0
+    this.afterTick = 0
+    this.heatFar = false
   }
   draw() {
     this.ctx.drawImage(
@@ -44,19 +46,23 @@ class Heat {
       this.x <= this.player.x - bulletDistance - this.bla || 
       this.y <= this.player.y - bulletDistance - this.bla 
     ) {
+      this.heatFar = true
+    }
+    if (afterSpin && this.heatFar) {
+      this.tick++
+      this.afterTick++
+      this.heatImg.src = "/assets/images/munición/heatspin.png";
       this.x -= 0.09;
       this.y -= 0.09;
       this.vx = 0;
       this.vy = 0;
       this.framer = 5
-      this.tick++
-      this.heatImg.src = "/assets/images/munición/heatspin.png";
-      if (this.h >= afterSize + this.sa + 20) {
+      if (this.afterTick >= afterSize + this.sa + 20) {
         this.dispose = true;
       }
-      if (this.w >= afterSize + this.sa + 20) {
-        this.dispose = true;
-      }
+    }
+    if (!afterSpin && this.heatFar) {
+      this.dispose = true;
     }
     if (this.tick > 1) {
       this.tick = 0;
@@ -92,8 +98,8 @@ class Hook {
     this.hookImg = new Image();
     this.hookImg.src = "/assets/images/munición/hookdown.png.png";
     this.hookImg.frame = 0;
-    this.hookShootAudio = new Audio("/assets/audio/fired.mp3")
-    this.hookShootAudio.volume = 0.01;
+    this.hookShootAudio = new Audio("/assets/audio/hookShort.m4a  ")
+    this.hookShootAudio.volume = 0.03;
     this.hookShootAudio.play();
     this.framer = 1
     this.tick = 0

@@ -1,8 +1,4 @@
-body {
-  background-size: 100%;
-  background-color: black;
-  color: black;
-}
+
 h5{
   margin: 10px;
 }
@@ -23,8 +19,8 @@ h5{
   position: absolute;
   background-image: url(/assets/images/fondos/dados.jpeg);
   background-size: 100%;
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
   padding: 0 10px 200px 240px;
 }
 
@@ -38,9 +34,6 @@ h5{
 #queesesto {
   font-size: 50px;
   text-align: center;
-}
-body {
-  background-color: #8d9682;
 }
 .event-alert-karen {
   padding: 2px 2px;
@@ -70,7 +63,8 @@ u {
   cursor: url("/assets/images/elements/cursor.cur"), pointer;
   place-items: center;
   background-color: black;
-  color: var(--clr-neon);
+  width: 100vw;
+  height: 100vh;
 }
 
 #ok {
@@ -126,7 +120,7 @@ u {
   display: none;
   position: absolute;
   margin-left: 250px;
-  margin-top: 85px;
+  margin-top: 585px;
   z-index: 100;
 }
 #loseDied {
@@ -155,4 +149,9 @@ u {
   position: absolute;
   margin: 3.5% 0 0 27%;
   z-index: 100;
+}
+
+#losePos{
+  position: absolute;
+  display: flex;
 }

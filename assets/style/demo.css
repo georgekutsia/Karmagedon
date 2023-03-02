@@ -80,3 +80,162 @@
 .hulala{
     color: white;
 }
+#intro-animation-excla{
+    display: flex;
+    position: absolute;
+    width: 6vw;
+    left: 82vw;
+    top: 15vw;
+    overflow: hidden;
+	animation: movingExcla 5s linear,  movingExclaMove 2s linear infinite ;
+}
+#intro-animation-insult{
+    display: flex;
+    position: absolute;
+    width: 6vw;
+    left: 76vw;
+    top: 26vw;
+	animation: movingExcla 5s linear,  movingExclaMove 1.5s linear infinite ;
+}
+#intro-animation-sound{
+    display: flex;
+    position: absolute;
+    width: 4vw;
+    left: 74.8vw;
+    top: 13.5vw;
+	animation: movingExcla 5s linear,  movingSound 2.5s linear infinite ;
+}
+@keyframes movingExcla {
+	0% {
+        opacity: 0;
+	}
+	80% {
+        opacity: 0.1;
+	}
+    100%{
+        opacity: 1;
+    }
+}
+@keyframes movingExclaMove {
+	0% {
+        width: 6vw;
+	}
+	50% {
+        width: 5vw;
+
+	}
+    100%{
+        width: 6vw;
+
+    }
+}
+@keyframes movingSound {
+	0% {
+        width: 4vw;
+        rotate: 0deg
+	}
+	50% {
+        width: 4.4vw;
+        rotate: 195deg
+	}
+    100%{
+        width: 4vw;
+        rotate: 360deg
+    }
+}
+#intro-animation-karen1{
+    display: flex;
+    position: absolute;
+    width: 8vw;
+    left: 80vw;
+    top: 18.5vw;
+    border-radius: 50%;
+    overflow: hidden;
+	animation: movingKaren1 3s linear;
+}
+@keyframes movingKaren1 {
+	0% {
+		left: 130vw;
+        opacity: 0;
+	}
+	50% {
+		left: 80vw;
+        opacity: 0.2;
+	}
+    100%{
+		left: 80vw;
+        opacity: 1;
+    }
+}
+#intro-animation-karen2{
+    display: flex;
+    position: absolute;
+    width: 8vw;
+    left: 73vw;
+    top: 9.5vw;
+    border-radius: 50%;
+    overflow: hidden;
+	animation: movingKaren2 5s linear;
+}
+@keyframes movingKaren2 {
+	0% {
+		left: 140vw;
+        opacity: 0;
+	}
+	50% {
+		left: 73vw;
+        opacity: 0.2;
+	}
+    100%{
+		left: 73vw;
+        opacity: 1;
+    }
+}
+#intro-animation-karen3{
+    display: flex;
+    position: absolute;
+    width: 8vw;
+    left: 70vw;
+    top: 25vw;
+    border-radius: 50%;
+    overflow: hidden;
+	animation: movingKaren3 4s linear;
+}
+@keyframes movingKaren3 {
+	0% {
+		left: 140vw;
+        opacity: 0;
+	}
+	50% {
+		left: 70vw;
+        opacity: 0.2;
+	}
+    100%{
+		left: 70vw;
+        opacity: 1;
+    }
+}
+
+#intro-animation-man{
+    display: flex;
+    position: absolute;
+    width: 13vw;
+    right: 80vw;
+    top: 13vw;
+    overflow: hidden;
+	animation: movingMan 4s linear;
+}
+@keyframes movingMan {
+	0% {
+		right: 130vw;
+        opacity: 0;
+	}
+	80% {
+		right: 80vw;
+        opacity: 0.1;
+	}
+    100%{
+		right: 80vw;
+        opacity: 1;
+    }
+}

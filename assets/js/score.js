@@ -10,10 +10,11 @@ class Score {
     this.kboss = 0;
     this.kkarens = 0;
     this.kkorens = 0;
-    this.total = 60;
+    this.total = 53;
   }
-
+  
   draw() {
+    this.pImageCount = pImage 
     this.ctx.font = "27px Arco";
     this.ctx.fillStyle = "white";
     this.ctx.fillText(`Customers: `, 1240, 435);
@@ -23,8 +24,8 @@ class Score {
     this.ctx.font = "22px Arco";
     this.ctx.fillText(`Boss:${this.kboss.toString()}`, 1312, 610);
     this.ctx.font = "20px Arco";
-    this.ctx.fillText(`Korens:${this.kkorens.toString()}`, 1220, 580);
-    this.ctx.fillText(`Karens:${this.kkarens.toString()}`, 1305, 580);
+    this.ctx.fillText(`Korens: ${this.kkorens.toString()}`, 1220, 580);
+    this.ctx.fillText(`Karens: ${this.kkarens.toString()}`, 1305, 580);
     this.ctx.fillStyle = "white";
     ctx.fillRect(1220, 615, 150, 25);
     this.ctx.fillStyle = "black";
@@ -32,11 +33,11 @@ class Score {
     this.ctx.fillText(`Total solved: ${this.total.toString()}`, 1223, 635);
     this.ctx.fillStyle = "red";
     this.ctx.font = "22px Arco";
-    this.ctx.fillText(`Dead:${this.score.toString()}`, 1220, 465);
+    this.ctx.fillText(`Dead: ${this.score.toString()}`, 1220, 465);
     this.ctx.fillStyle = "lightsalmon";
-    this.ctx.fillText(`Geese:${this.kgoose.toString()}`, 1220, 520);
-    this.ctx.fillText(`Rats:${this.krat.toString()}`, 1310, 520);
-    this.ctx.fillText(`Fires/floods:${this.kobstacle.toString()}`, 1240, 550);
+    this.ctx.fillText(`Geese: ${this.kgoose.toString()}`, 1220, 520);
+    this.ctx.fillText(`Rats: ${this.krat.toString()}`, 1310, 520);
+    this.ctx.fillText(`Fires/floods: ${this.kobstacle.toString()}`, 1240, 550);
     ctx.fillStyle = "rgb(251, 209, 209)";
     this.ctx.restore();
     this.ctx.font = "26px Arial";
@@ -47,6 +48,7 @@ class Score {
       this.ctx.fillText(`Supervisor`, 1242, 366);
     } else if(this.total >= 20 && this.total <= 34){
       chance = 1
+      afterSpin = true
       this.ctx.fillStyle = "tomato";
       this.ctx.fillText(`Manager`, 1244, 365);
       this.ctx.fillStyle = "tomato";
@@ -55,6 +57,7 @@ class Score {
       this.ctx.fillText(`Manager`, 1245, 366);
     } else if(this.total >= 35 && this.total <= 49){
       chance = 2
+      afterSpin = true
       this.ctx.font = "22px Arial";
       this.ctx.fillStyle = "red";
       this.ctx.fillText(`General Manager`, 1211, 365);
@@ -64,6 +67,7 @@ class Score {
       this.ctx.fillText(`General Manager`, 1212, 366);
     } else if(this.total >= 50){
       chance = 3
+      afterSpin = true
       this.ctx.font = "32px Arial";
       this.ctx.fillStyle = "aqua";
       this.ctx.fillText(`Director`, 1244, 365);
@@ -72,9 +76,10 @@ class Score {
       this.ctx.fillStyle = "white";
       this.ctx.fillText(`Director`, 1245, 366);
     }
-    this.ctx.font = "26px Arial";
+    this.ctx.font = "22px Arial";
     this.ctx.fillStyle = "white";
-    this.order = this.ctx.fillText(`Luck lvl: ${chance.toString()}`, 1240, 395);
+    this.order = this.ctx.fillText(`Luck lvl: ${chance.toString()}`, 970, 840);
+    this.order = this.ctx.fillText(`Public Image: ${this.pImageCount.toString()}`, 970, 860);
   }
   // addTotalScore(){
   //   this.total += 50
@@ -114,7 +119,7 @@ class Saved {
   draw() {
     this.ctx.font = "22px Arco";
     this.ctx.fillStyle = "lightblue";
-    this.ctx.fillText( `Saved:${this.save.toString()}`, 1300, 465); 
+    this.ctx.fillText( `Saved: ${this.save.toString()}`, 1300, 465); 
     ctx.fillStyle = "rgb(251, 209, 209)"; 
     this.ctx.restore();
   }

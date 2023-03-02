@@ -8,6 +8,7 @@ class Goose {
     this.h = 0.1 * this.ctx.canvas.height;
     this.vx = 0.5;
     this.vy = 0;
+    this.moveY = 1
     this.gooseImg = new Image();
     this.score = new Score()
     this.gooseImg.src = "/assets/images/elements/gansos.png";
@@ -42,28 +43,28 @@ class Goose {
     this.tick++;
     this.tock++;
     if(this.x >= 0){
-      this.vy = 1
+      this.vy = this.moveY
     }
     if(this.x >= 100){
-      this.vy = -1
+      this.vy = -this.moveY
     }
     if(this.x >= 300){
-      this.vy = 1;
+      this.vy = this.moveY;
     }
     if(this.x >= 500){
-      this.vy = -1
+      this.vy = -this.moveY
     }
     if(this.x >= 700){
-      this.vy = 1;
+      this.vy = this.moveY;
     }
     if(this.x >= 900){
-      this.vy = -1
+      this.vy = -this.moveY
     }
     if(this.x >= 1100){
-      this.vy = 1
+      this.vy = this.moveY
     }
     if(this.x >= 1180){
-      this.vx = -2
+      this.vx = -this.moveY * 2
       this.gooseImg.src = "/assets/images/elements/gansos reversa.png"
     }
     if (this.tick > 10) {
@@ -97,6 +98,7 @@ class Goose {
   collides(player) {
     const colX = this.x + 5 <= player.x + player.w && this.x + this.w - 10 > player.x;
     const colY = this.y + this.h - 5 > player.y && this.y + 5 < player.y + player.h;
+    
     return colX && colY;
   }
 }

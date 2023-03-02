@@ -14,6 +14,7 @@ class Puddle{
       {x:850, y:160}, {x:890, y:390}, {x:900, y:520},
       {x:1060, y:60}, {x:1010, y:300}, {x:1020, y:650},
       {x:1100, y:10}, {x:1110, y:320}, {x:1020, y:740},
+      {x: 327, y:260 }
     ]
     this.xy = this.salidas[Math.floor(Math.random()*this.salidas.length)]
     this.x = this.xy.x;
@@ -26,32 +27,67 @@ class Puddle{
     this.puddle.src = "/assets/images/elements/puddleCanvas.png";
     this.worning = new Image();
     this.worning.src = "/assets/images/elements/excla.png"
+    this.puff = new Image();
+    this.puff.src = "/assets/images/elements/Puff1.png"
     this.bla = 20
     this.blu = 30
     this.puddle.frame = 0;
+    this.puff.frame = 0;
     this.tick = 0;
+    this.puffTick = 0;
+    this.puddleIsOn = true
+    this.puffIsOn = false
   }
   draw() {
-    this.ctx.drawImage(
-      this.puddle,
-      0,
-      (this.puddle.frame * this.puddle.height) / 5,
-      this.puddle.width,
-      this.puddle.height / 5,
-      this.x,
-      this.y,
-      this.w,
-      this.h
-    );
-    this.ctx.drawImage(
-      this.worning, this.x + 10, this.y - 20, this.bla, this.blu
-    )
+    if(this.puddleIsOn){
+      this.ctx.drawImage(
+        this.puddle,
+        0,
+        (this.puddle.frame * this.puddle.height) / 5,
+        this.puddle.width,
+        this.puddle.height / 5,
+        this.x,
+        this.y,
+        this.w,
+        this.h
+        );
+        this.ctx.drawImage(
+          this.worning, this.x + 10, this.y - 20, this.bla, this.blu
+        )
+      }
+    if(this.puffIsOn){
+      this.ctx.drawImage(
+        this.puff,
+        (this.puff.frame * this.puff.width) / 16,
+        0,
+        this.puff.width / 16,
+        this.puff.height,
+        this.x,
+        this.y,
+        this.w,
+        this.h
+        );
+      }
   }
   move(){
     this.x += this.vx
     this.y += this.vy
     this.tick++
-
+    if(this.puffIsOn){
+      this.puffTick++
+      
+      if (this.puffTick % 2 === 0) {
+        this.puff.frame++;
+      }
+      if (this.puff.frame > 16) {
+        this.vx = 2000;
+      }
+      if(this.puff.frame === 0){
+        this.luzOnAudio = new Audio("/assets/audio/evaporar.mp3")
+        this.luzOnAudio.volume = 0.07;
+        this.luzOnAudio.play();
+      }
+    }
     if (this.tick % 10 === 0) {
       this.puddle.frame++;
       this.w += 0.1
@@ -62,7 +98,6 @@ class Puddle{
     if (this.puddle.frame > 4) {
       this.puddle.frame = 0;
     }
-
   }
   increase(){
     this.h +=20;
@@ -85,10 +120,6 @@ class Puddle{
     return colX && colY;
   }
 }
-
-
-
-
 class Fire{
   constructor(ctx) {
     this.ctx = ctx;      
@@ -103,6 +134,7 @@ class Fire{
       {x:800, y:30}, {x:830, y:250}, {x:865, y:390},
       {x:900, y:530}, {x:950, y:650}, {x:990, y:100},
       {x:1100, y:150}, {x:1050, y:350}, {x:1140, y:500},
+      {x: 527, y:260 }
     ]
     this.xy = this.salidas[Math.floor(Math.random()*this.salidas.length)]
     this.x = this.xy.x;
@@ -113,33 +145,68 @@ class Fire{
     this.fire.src = "/assets/images/elements/flames.png";
     this.worning = new Image();
     this.worning.src = "/assets/images/elements/excla.png"
+    this.puff = new Image();
+    this.puff.src = "/assets/images/elements/Puff1.png"
     this.bla = 20
     this.blu = 30
     this.fire.frame = 0;
+    this.puff.frame = 0;
     this.vx = 0;
     this.vy = 0;
     this.tick = 0;
+    this.puffTick = 0;
+    this.fireIsOn = true;
+    this.puffIsOn = false;
   }
   draw() {
-    this.ctx.drawImage(
-      this.fire,
-      (this.fire.frame * this.fire.width) / 9,
-      0,
-      this.fire.width / 9,
-      this.fire.height,
-      this.x,
-      this.y,
-      this.w,
-      this.h
-    );
-    this.ctx.drawImage(
-      this.worning, this.x + 10, this.y - 20, this.bla, this.blu
-    )
+    if(this.fireIsOn){
+      this.ctx.drawImage(
+        this.fire,
+        (this.fire.frame * this.fire.width) / 9,
+        0,
+        this.fire.width / 9,
+        this.fire.height,
+        this.x,
+        this.y,
+        this.w,
+        this.h
+        );
+        this.ctx.drawImage(
+          this.worning, this.x + 10, this.y - 20, this.bla, this.blu
+          )
+        }
+      if(this.puffIsOn){
+        this.ctx.drawImage(
+          this.puff,
+          (this.puff.frame * this.puff.width) / 16,
+          0,
+          this.puff.width / 16,
+          this.puff.height,
+          this.x,
+          this.y,
+          this.w,
+          this.h
+          );
+        }
   }
   move(){
     this.x += this.vx;
     this.y += this.vy;
     this.tick++;
+    if(this.puffIsOn){
+      this.puffTick++
+      if (this.puffTick % 2 === 0) {
+        this.puff.frame++;
+      }
+      if (this.puff.frame > 16) {
+        this.vx = 2000;
+      }
+      if(this.puff.frame === 0){
+        this.luzOnAudio = new Audio("/assets/audio/evaporar.mp3")
+        this.luzOnAudio.volume = 0.07;
+        this.luzOnAudio.play();
+      }
+    }
     if (this.tick % 10 === 0) {
       this.fire.frame++;
       this.w += 0.2
@@ -150,7 +217,6 @@ class Fire{
     if (this.fire.frame > 8) {
       this.fire.frame = 0;
     }
-
   }
   increase(){
     this.h += 15;

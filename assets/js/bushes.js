@@ -8,7 +8,7 @@ class Bushes {
       this.bla = new Player(ctx)
       this.img = new Image();
       this.img.src = imagen;
-    }
+      this.bla =  false    }
     draw() {
       this.ctx.drawImage(
         this.img,this.x, this.y, this.w, this.h
@@ -26,7 +26,7 @@ class Bushes {
     }
   }
 class Portal {
-    constructor(ctx, x, y, w, h , imgSrc) {
+    constructor(ctx, x, y, w, h, portalState) {
       this.ctx = ctx;
       this.x = x;
       this.y = y;
@@ -36,11 +36,12 @@ class Portal {
       this.vy = 0
       this.bla = new Player(ctx)
       this.img = new Image();
-      this.img.src = imgSrc || "/assets/images/shield/darkPortal.png";
+      this.img.src =  "/assets/images/shield/darkPortal.png";
       this.img.frame = 0;
       this.tock = 0
       this.tick = 0
       this.wgrow = 1
+      this.portalIs = portalState
     }
     draw() {
       this.ctx.drawImage(
@@ -95,9 +96,11 @@ class Portal {
       }
     }
     collides(player) {
-      const colX = this.x + 5 <= player.x + player.w && this.x + this.w - 10 > player.x;
-      const colY = this.y + this.h - 5 > player.y && this.y + 10 < player.y  + player.h;
-      return colX && colY;
+      if(this.portalIs === true){
+        const colX = this.x + 5 <= player.x + player.w && this.x + this.w - 10 > player.x;
+        const colY = this.y + this.h - 5 > player.y && this.y + 10 < player.y  + player.h;
+        return colX && colY;
+      }
     }
   }
 class Wall {
@@ -153,7 +156,7 @@ class Bush1 {
       this.h = h;
       this.stn =stn
       this.img = new Image();
-      this.img.src = "/assets/images/elements/bush1.png";
+      this.img.src = "/assets/images/elements/bush10.png";
     }
     draw() {
       this.ctx.drawImage(
@@ -175,7 +178,7 @@ class Bush2 {
       this.h = h;
       this.stn =stn
       this.img = new Image();
-      this.img.src = "/assets/images/elements/bush2.png";
+      this.img.src = "/assets/images/elements/bush20.png";
     }
     draw() {
       this.ctx.drawImage(
@@ -197,7 +200,7 @@ class Bush3 {
       this.h = h;
       this.stn =stn
       this.img = new Image();
-      this.img.src = "/assets/images/elements/bush3.png";
+      this.img.src = "/assets/images/elements/bush30.png";
     }
     draw() {
       this.ctx.drawImage(

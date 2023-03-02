@@ -4,7 +4,7 @@ class Game {
     this.player = new Player(ctx);
     this.token = new Token(ctx);
     this.healing = new HealingPlace(ctx);
-    this.water = new Water(ctx)
+    // this.water = new Water(ctx)
     this.score = new Score(ctx);
     this.line = new Line(ctx, this.player, this.player.x, this.player.y);
     this.food = new Food(ctx);
@@ -21,8 +21,10 @@ class Game {
     this.helper4.src = "/assets/images/pj/helper4.png"
     this.bodyImg = new Image();
     this.bodyImg.src = "/assets/images/elements/body.png"
-    this.throwerImg = new Image();
-    this.throwerImg.src = "/assets/images/elements/backpack.png"
+    this.backPack = new Image();
+    this.backPack.src = "/assets/images/elements/backpack.png"
+    this.brain = new Image();
+    this.brain.src = "/assets/images/elements/brain.png"
     this.mainOffice = new Image();
     this.mainOffice.src = "/assets/images/fondos/mainOffice.png"
     this.weird1 = 0
@@ -39,8 +41,11 @@ class Game {
     this.perjudiceIs = false
     this.bossPerjTick = 0
     this.bossPerjIs = false
+    this.lampTick = 0
+    this.lampOff = "/assets/images/elements/lampOfff.png"
     this.hitOnKarenCounter = 0
     this.poisonedTime = 3000 - chance * 300
+    this.tick = 0;
     this.cactus = [
       new Cactus(ctx, 375, 200, 40, 40, "/assets/images/fondos/cact1.png"), new Cactus(ctx, 600, 190, 50, 50, "/assets/images/fondos/cact3.png"),
       new Cactus(ctx, 820, 320, 30, 40, "/assets/images/fondos/cact5.png"), new Cactus(ctx, 780, 440, 40, 40, "/assets/images/fondos/cact4.png"),
@@ -88,18 +93,18 @@ class Game {
       new Bush2(ctx, 705, 60, 20, 170), new Bush2(ctx, 921, 60, 20, 170), new Bush1(ctx, 57, 330, 20, 120), new Bush1(ctx, 287, 330, 20, 150),
       new Bush3(ctx, 385, 330, 20, 150), new Bush3(ctx, 607, 330, 20, 150), new Bush2(ctx, 705, 330, 20, 150), new Bush2(ctx, 921, 330, 20, 150),
       new Bush1(ctx, 57, 560, 20, 120), new Bush1(ctx, 385, 560, 20, 120),  new Bush1(ctx, 67, 550, 90, 20),  new Bush2(ctx, 97, 550, 90, 20),  new Bush1(ctx, 287, 550, 20, 75),
-      new Bush2(ctx, 450, 550, 90, 20), new Bush3(ctx, 387, 550, 90, 20), new Bush2(ctx, 610, 660, 20, 95), new Bush2(ctx, 540, 737, 90, 15),
+      new Bush2(ctx, 450, 550, 90, 20), new Bush3(ctx, 387, 550, 90, 20), new Bush2(ctx, 610, 660, 20, 95), new Bush2(ctx, 540, 737, 90, 15), new Bush1(ctx, 1040, 630, 20, 75),
       new Bush2(ctx, 700, 550, 20, 75), new Fence(ctx, 60, 420, 60, 40), new Bush2(ctx, 480, 737, 90, 15), new Bush2(ctx, 200, 737, 90, 15),new Bush2(ctx, 130, 737, 90, 15),
     // vertical bushes end
     ]
     this.lamps = [
-      new Bushes(ctx, 160, -2, 40, 40, "/assets/images/elements/lamp.png"), new Bushes(ctx, 650, -2, 40, 40, "/assets/images/elements/lamp.png"), 
-      new Bushes(ctx, 270, 200, 40, 40, "/assets/images/elements/lamp.png"), new Bushes(ctx, 910, 200, 40, 40, "/assets/images/elements/lamp.png"), 
-      new Bushes(ctx, 270, 450, 40, 40, "/assets/images/elements/lamp.png"), new Bushes(ctx, 690, 450, 40, 40, "/assets/images/elements/lamp.png"), 
-      new Bushes(ctx, -9, 200, 40, 40, "/assets/images/elements/lamp.png"), new Bushes(ctx, 690, 450, 40, 40, "/assets/images/elements/lamp.png"), 
-      new Bushes(ctx, 40, 540, 40, 40, "/assets/images/elements/lamp.png"), new Bushes(ctx, 690, 450, 40, 40, "/assets/images/elements/lamp.png"),
-      new Bushes(ctx, 595, 640, 40, 40, "/assets/images/elements/lamp.png"), new Bushes(ctx, 1180, 430, 40, 40, "/assets/images/elements/lamp.png"),
-      new Bushes(ctx, 820, 780, 40, 40, "/assets/images/elements/lamp.png"), new Bushes(ctx, 290, 780, 40, 40, "/assets/images/elements/lamp.png"),
+      new Bushes(ctx, 160, -2, 40, 40, this.lampOff), new Bushes(ctx, 650, -2, 40, 40, this.lampOff), 
+      new Bushes(ctx, 270, 200, 40, 40, this.lampOff), new Bushes(ctx, 910, 200, 40, 40, this.lampOff), 
+      new Bushes(ctx, 270, 450, 40, 40, this.lampOff), new Bushes(ctx, 1120, 370, 40, 40, this.lampOff), 
+      new Bushes(ctx, -9, 100, 40, 40, this.lampOff), new Bushes(ctx, 595, 310, 40, 40, this.lampOff), 
+      new Bushes(ctx, 40, 540, 40, 40, this.lampOff), new Bushes(ctx, 690, 450, 40, 40, this.lampOff),
+      new Bushes(ctx, 595, 640, 40, 40, this.lampOff), new Bushes(ctx, 1180, 430, 40, 40, this.lampOff),
+      new Bushes(ctx, 820, 780, 40, 40, this.lampOff), new Bushes(ctx, 290, 780, 40, 40, this.lampOff),
     ]
     this.walls = [
       new Fence(ctx, 51, 50, 80, 40), new Fence(ctx, 220, 50, 80, 40), new Fence(ctx, 51, 320, 80, 40), new Fence(ctx, 220, 320, 80, 40),
@@ -111,12 +116,11 @@ class Game {
       new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(ctx, 380, 710, 40, 40, "/assets/images/fondos/arb9.png"),
       new Fence(ctx, 90, 190, 80, 40), new Fence(ctx, 470, 130, 80, 40), new Fence(ctx, 465, 450, 60, 40), new Fence(ctx, 1040, 210, 100, 20),new Fence(ctx, 1040, 70, 100, 20),
     ];
-    this.portals = [new Portal (ctx, 200, 770, 50, 50, )]   
-    this.portals2 = [new Portal (ctx, 800, 5, 50, 50, )]
-
+    this.portals = [new Portal (ctx, 200, 770, 50, 50, false )]   
+    this.portals2 = [new Portal (ctx, 800, 5, 50, 50, false)]
     this.karenTime = 0;
     this.ratTime = 1600;
-    this.fatTime = 1300; 
+    this.fatTime = 100; 
     this.winTime = 0;
     this.machinganTime = 1000
     this.machinganRestore = 400
@@ -141,7 +145,7 @@ class Game {
     this.move();
     this.karenTime++; this.ratTime++; this.fatTime++; this.puddleTime++;  this.fireTime++; this.gooseTime++; this.babyTime++; this.customerTime++; this.bossTime++; this.korenTime++; this.winTime++; this.cartTime++; this.foodTime++; this.upgradeTime++; this.upBulletTime++; this.discountTime++;
     this.checkCollisions();
-      if (this.karenTime > 3700) {     // karen
+      if (this.karenTime > 37000) {     // karen
         this.karenTime = 0;
         this.karensAlert();
         this.addKaren();
@@ -149,7 +153,7 @@ class Game {
           this.karenTime = 2000
         }
       }
-      if (this.ratTime > Math.random() * 100 + 92000) { //rat
+      if (this.ratTime > Math.random() * 100 + 20000) { //rat
         this.ratTime = 0;
         this.ratAlert();
         this.addRat();
@@ -158,7 +162,7 @@ class Game {
           this.addRat();
         }
       }
-      if (this.fatTime > Math.random() * 400 + 1900) { //fat
+      if (this.fatTime > Math.random() * 400 + 19000) { //fat
         this.fatTime = 0;
         this.fatAlert();
         this.addFat();
@@ -166,7 +170,7 @@ class Game {
           this.fatTime = 500
         }
       }
-      if (this.puddleTime > Math.random() * 400 + 2000) { //puddle
+      if (this.puddleTime > Math.random() * 400 + 20000) { //puddle
         this.puddleTime = 0;
         this.waterAlert();
         this.addPuddle();
@@ -174,7 +178,7 @@ class Game {
           this.puddleTime = 400
         }
       }
-      if (this.fireTime > Math.random() * 400 + 2000) { //fire
+      if (this.fireTime > Math.random() * 400 + 20000) { //fire
         this.fireTime = 0;
         this.fireAlert();
         this.addFire();
@@ -192,7 +196,7 @@ class Game {
         this.babyAlert();
         this.addBaby();
       }
-      if (this.customerTime > Math.random() * 100 + 4000) { //customer
+      if (this.customerTime > Math.random() * 100 + 40000) { //customer
         this.customerTime = 0;
         this.addCustomer();
       }
@@ -223,8 +227,8 @@ class Game {
         this.bossAlert();
         this.addBoss();
       }
-      if (this.korenTime > Math.random() * 100 + 15000) {   //koren
-        this.korenTime = 13500;
+      if (this.korenTime > Math.random() * 100 + 22500) {   //koren
+        this.korenTime = 100;
         this.addKoren();
         this.korenAlert()
       } 
@@ -307,6 +311,7 @@ class Game {
     this.player.waters = this.player.waters.filter((e) => e.isVisible());
     this.player.sanders = this.player.sanders.filter((e) => e.isVisible());
     this.player.discountings = this.player.discountings.filter((e) => e.isVisible());
+    this.lampTick++
     if (this.karens.length <= 0) { const alert = document.getElementById("karens-alert"); alert.style.display = "none";}
     if (this.rats.length <= 0) { const alert = document.getElementById("rat-alert"); alert.style.display = "none";}
     if (this.fats.length <= 0) { const alert = document.getElementById("fat-alert"); alert.style.display = "none";}
@@ -318,6 +323,8 @@ class Game {
     if (this.upBullets.length <= 0) { const alert = document.getElementById("upBullet-alert"); alert.style.display = "none";}
     if (this.bosss.length <= 0) { const alert = document.getElementById("boss-alert"); alert.style.display = "none";}
     if (this.korens.length <= 0) { const alert = document.getElementById("koren-alert"); alert.style.display = "none";}
+
+    
     if (this.bosss.length <= 0 &&this.korens.length <= 0 &&this.fires.length <= 0 &&this.puddles.length <= 0 &&this.babys.length <= 0 &&this.geese.length <= 0 &&this.fats.length <= 0 &&this.rats.length <= 0 &&this.karens.length <= 0
     ) {
       const nothingToWorrie = document.getElementById("ok");
@@ -339,6 +346,7 @@ class Game {
       this.ctx.drawImage(
         this.mainOffice, 1200, 200, 190, 130
       ) 
+      
     } else {
       ctx.globalAlpha = 0.2
       this.ctx.drawImage(
@@ -347,10 +355,13 @@ class Game {
       ctx.globalAlpha = 1
     }
     this.ctx.drawImage(
-      this.bodyImg, 600, 660, 50, 50
+      this.backPack, 100, 825, 70, 60
     )
     this.ctx.drawImage(
-      this.throwerImg, 230, 665, 70, 40
+      this.bodyImg, 580, 820, 70, 70
+    )
+    this.ctx.drawImage(
+      this.brain, 900, 825, 50, 60
     )
     if(this.player.respect.total <= 0.3 && this.player.life.total <=3){
       this.player.sandstate = true
@@ -358,7 +369,7 @@ class Game {
     if(this.player.respect.total >= 0.7 || this.player.life.total >=8){
       this.player.sandstate = false
     }
-    if(this.ratTickIs === true){
+    if(this.ratTickIs){
       this.ratTick++
       this.ctx.font = "20px Arial";
       this.ctx.fillStyle = "red";
@@ -433,11 +444,18 @@ class Game {
       this.pback.forEach((e) => e.draw());
     }
     this.walls.forEach((e) => e.draw());
-    if(this.winTime >= 0){
+    // se dibuja tras 5 horas
+    if(this.winTime >= 57500){
       this.portals.forEach((e) => e.draw());
+      if(this.winTime >= 57500){
+        this.portals.forEach((port) => port.portalIs = true)
+      }
     }
-    if(this.winTime >= 0){
+    if(this.winTime >= 57500){
       this.portals2.forEach((e) => e.draw());
+      if(this.winTime >= 57500){
+        this.portals2.forEach((port) => port.portalIs = true)
+      }
     }
     if(this.winTime >= 0){
       this.pfront.forEach((e) => e.draw());
@@ -458,6 +476,17 @@ class Game {
     this.geese.forEach((e) => e.draw());
     this.token.draw();
     this.lamps.forEach((e) => e.draw());
+    console.log(this.lampTick)
+        if(this.lampTick >= 7640 ){
+          // se reinicia cada 2 horas
+          this.lamps.forEach((lamp) =>lamp.img.src = "/assets/images/elements/lampOfff.png")
+          this.lamps.forEach((lamp) =>lamp.bla= false)
+          this.alertingSound = new Audio("/assets/audios ad/lampOff.wav");
+          this.alertingSound.volume = 0.05;
+          this.alertingSound.play()
+          this.lampTick = 0
+          lampOn = 0
+    }
     // CTX data statistics
     // CTX data statistics
     this.ctx.font = "20px Arial";
@@ -467,43 +496,43 @@ class Game {
     this.ctx.font = "30px Arial";
     this.ctx.fillStyle = "white";
     this.ctx.restore();
-    this.ctx.fillText(`Speed: ${this.player.speed.toString()}`, 310, 860);
-    this.ctx.fillText(`Distance: ${bulletDistance.toString()}`, 310, 884);
-    this.ctx.fillText(`Cooldown: ${this.player.cooldownBullet.toString()}`, 450, 884);
+    this.ctx.fillText(`Bullet Speed: ${this.player.speed.toString()}`, 190, 860);
+    this.ctx.fillText(`Shooting Range: ${bulletDistance.toString()}`, 190, 884);
+    this.ctx.fillText(`Recharge Time: ${this.player.cooldownBullet.toString()}`, 190, 836);
     if(this.upgradeIs === true) {
       this.upgradeTick++
       this.ctx.fillStyle = "aqua";
-      this.ctx.fillText(`Speed: ${this.player.speed.toString()}`, 310, 860);
-      this.ctx.fillText(`Distance: ${bulletDistance.toString()}`, 310, 884);
-      this.ctx.fillText(`Cooldown: ${this.player.cooldownBullet.toString()}`, 450, 884);
+      this.ctx.fillText(`Bullet Speed: ${this.player.speed.toString()}`, 190, 860);
+      this.ctx.fillText(`Shooting Range: ${bulletDistance.toString()}`, 190, 884);
+      this.ctx.fillText(`Recharge Time: ${this.player.cooldownBullet.toString()}`, 190, 836);
       this.ctx.fillStyle = "white";
       if(this.upgradeTick >=150){
         this.upgradeIs = false
         this.upgradeTick = 0
       }
     }
-    this.ctx.fillText(`Growth: ${afterSize.toString()}`, 495, 860);
-    this.ctx.fillText(`Size: ${bulletSize.toString()}`, 405, 860);
+    this.ctx.fillText(`After Growth: ${afterSize.toString()}`, 410, 875);
+    this.ctx.fillText(`Ammo size: ${bulletSize.toString()}`, 410, 845);
       if(this.upBulletIs === true){
         this.upBulletTick++
         this.ctx.fillStyle = "aqua";
-        this.ctx.fillText(`Growth: ${afterSize.toString()}`, 495, 860);
-        this.ctx.fillText(`Size: ${bulletSize.toString()}`, 405, 860);
+        this.ctx.fillText(`After Growth: ${afterSize.toString()}`, 410, 875);
+        this.ctx.fillText(`Ammo size: ${bulletSize.toString()}`, 410, 845);
         this.ctx.fillStyle = "white";
         if(this.upBulletTick >=150){
           this.upBulletIs = false
           this.upBulletTick = 0
         }
       }
-    this.ctx.fillText(`Jump: ${distance.toFixed(1).toString()}ft`, 640, 860);
-    this.ctx.fillText(`Jump cooldown: ${this.player.cooldownJump.toFixed(1)}`, 775, 860);
-    this.ctx.fillText(`Speed: ${this.player.boost.toFixed(1)}`, 640, 884);
+    this.ctx.fillText(`Jump distance: ${distance.toFixed(1).toString()}ft`, 640, 860);
+    this.ctx.fillText(`Jump cooldown: ${this.player.cooldownJump.toFixed(1)}`, 640, 836);
+    this.ctx.fillText(`Walk Speed: ${this.player.boost.toFixed(1)}`, 640, 884);
     if(this.customerIs === true){
       this.customerTick++
       this.ctx.fillStyle = "aqua"; 
-      this.ctx.fillText(`Jump: ${distance.toFixed(1).toString()}ft`, 640, 860);
-      this.ctx.fillText(`Jump cooldown: ${this.player.cooldownJump.toFixed(1)}`, 775, 860);
-      this.ctx.fillText(`Speed: ${this.player.boost.toFixed(1)}`, 640, 884);
+      this.ctx.fillText(`Jump distance: ${distance.toFixed(1).toString()}ft`, 640, 860);
+      this.ctx.fillText(`Jump cooldown: ${this.player.cooldownJump.toFixed(1)}`, 640, 836);
+      this.ctx.fillText(`Walk Speed: ${this.player.boost.toFixed(1)}`, 640, 884);
       this.ctx.fillStyle = "white";
       if(this.customerTick >= 150){
         this.customerTick = 0
@@ -513,9 +542,9 @@ class Game {
     if(this.perjudiceIs === true){
       this.perjudiceTick++
       this.ctx.fillStyle = "tomato"; 
-      this.ctx.fillText(`Jump: ${distance.toFixed(1).toString()}ft`, 640, 860);
-      this.ctx.fillText(`Jump cooldown: ${this.player.cooldownJump.toFixed(1)}`, 775, 860);
-      this.ctx.fillText(`Speed: ${this.player.boost.toFixed(1)}`, 640, 884);
+      this.ctx.fillText(`Jump distance: ${distance.toFixed(1).toString()}ft`, 640, 860);
+      this.ctx.fillText(`Jump cooldown: ${this.player.cooldownJump.toFixed(1)}`, 640, 836);
+      this.ctx.fillText(`Walk Speed: ${this.player.boost.toFixed(1)}`, 640, 884);
       this.ctx.fillStyle = "white";
       if(this.perjudiceTick >= 150){
         this.perjudiceTick = 0
@@ -525,10 +554,10 @@ class Game {
     if(this.bossPerjIs === true){
       this.bossPerjTick++
       this.ctx.fillStyle = "tomato"; 
-      this.ctx.fillText(`Growth: ${afterSize.toString()}`, 495, 681);
-      this.ctx.fillText(`Size: ${bulletSize.toString()}`, 405, 681);
-      this.ctx.fillText(`Cooldown: ${this.player.cooldownBullet.toString()}`, 450, 884);
-      this.ctx.fillText(`Speed: ${this.player.speed.toString()}`, 310, 681);
+      this.ctx.fillText(`After Growth: ${afterSize.toString()}`, 410, 875);
+      this.ctx.fillText(`Ammo size: ${bulletSize.toString()}`, 410, 845);
+      this.ctx.fillText(`Recharge Time: ${this.player.cooldownBullet.toString()}`, 190, 836);
+      this.ctx.fillText(`Bullet Speed: ${this.player.speed.toString()}`, 190, 860);
       this.ctx.fillStyle = "white";
       if(this.bossPerjTick >= 150){
         this.bossPerjTick = 0
@@ -564,140 +593,158 @@ class Game {
       this.poisonedTime--
       this.ctx.font = "23px Sans";
       ctx.fillStyle = "green";
-      ctx.fillRect(1020, 295, 155, 28);
+      ctx.fillRect(1220, 30, 155, 28);
       this.ctx.fillStyle = "purple";
-      this.ctx.fillText(`Poisoned ${this.poisonedTime.toString()}`, 1035, 315);
+      this.ctx.fillText(`Poisoned ${this.poisonedTime.toString()}`, 1235, 52);
       if(this.poisonedTime <= 0){
         this.weird1 = 0
       this.poisonedTime = 1000
       }
     }
 
-    if (C === 67){
-      this.machinganTimeLeft = parseInt(this.machinganTime/10)
-        this.ctx.font = "15.5px Arial";
-        this.ctx.save();
-        ctx.fillStyle = "lime";
-        ctx.fillRect(1215, 663, 170, 23);
-        this.ctx.fillStyle = "black";
-        this.ctx.fillText(`Machinegun on: ${this.machinganTimeLeft.toString()} C/V`, 1218, 680);
-        this.ctx.restore();
-    }
-    if (C === 0 && this.score.total >= 50){
-        this.machinganRestoreLeft = parseInt(this.machinganRestore/10)
-        this.ctx.font = "16px Arial";
-        this.ctx.save();
-        ctx.fillStyle = "rgb(255, 80, 0)";
-        ctx.fillRect(1230, 663, 150, 23);
-        this.ctx.fillStyle = "black";
-        this.ctx.fillText(`Machinegun Off: ${this.machinganRestoreLeft.toString()} `, 1233, 680);
-        this.ctx.restore();
-    }
-    if(this.score.total <= 49){
-      this.machinganRestoreLeft = parseInt(this.machinganRestore/10)
-      this.ctx.font = "16px Arial";
-      this.ctx.save();
-      ctx.fillStyle = "rgb(86, 6, 6)";
-      ctx.fillRect(1215, 663, 250, 23);
-      this.ctx.fillStyle = "white";
-      this.ctx.fillText(`Machingan is being designed`, 1218, 680);
-      this.ctx.restore();
-    }
-    if (T === 84){
-        this.ctx.font = "16px Arial";
-        this.ctx.save();
-        ctx.fillStyle = "rgb(21, 209, 209)";
-        ctx.fillRect(1230, 693, 140, 23);
-        this.ctx.fillStyle = "black";
-        this.ctx.fillText(`Timeshield ON: T`, 1235, 710);
-        this.ctx.restore();
-    }
-    if (T === 0){
-        this.ctx.font = "16px Arial";
-        this.ctx.save();
-        ctx.fillStyle = "rgb(86, 6, 6)";
-        ctx.fillRect(1215, 693, 165, 23);
-        this.ctx.fillStyle = "white";
-        this.ctx.fillText(`Timeshield: pending...`, 1215, 710);
-        this.ctx.restore();
-    }
-    if (M === 77 && this.score.total >= 20){
-      this.ctx.font = "17px Arial";
-      this.ctx.save();
-      ctx.fillStyle = "lime";
-      ctx.fillRect(1215, 724, 168, 23);
-      this.ctx.fillStyle = "black";
-      this.ctx.fillText(`Sandblaster ready: M `, 1218, 741);
-      this.ctx.restore();
-    } 
-    if (this.score.total <= 19){
-      this.ctx.font = "18px Arial";
-      this.ctx.save();
-      ctx.fillStyle = "rgb(86, 6, 6)";
-      ctx.fillRect(1215, 724, 190, 23);
-      this.ctx.fillStyle = "white";
-      this.ctx.fillText(`Sandblaster: pending.. `, 1218, 741);
-      this.ctx.restore();
-    } 
-    if (M !== 77 && this.score.total >= 20){
-      this.ctx.font = "16px Arial";
-      this.ctx.save();
-      ctx.fillStyle = "rgb(255, 80, 0)";
-      ctx.fillRect(1220, 724, 158, 23);
-      this.ctx.fillStyle = "black";
-      this.ctx.fillText(`Charge Blaster 20/${charging.toString()}`, 1223, 741);
-      this.ctx.restore();
-    }
-    if (R === 82){
-      this.ctx.font = "18px Arial";
-      this.ctx.save();
-      ctx.fillStyle = "lime";
-      ctx.fillRect(1221, 755, 155, 23);
-      this.ctx.fillStyle = "black";
-      this.ctx.fillText(`Discounters: ${this.chargedDisc.toString()} -R- `, 1224, 773);
-      this.ctx.restore();
-    }
-    if (this.chargedDisc <= 0){
-      this.ctx.font = "15px Arial";
-      this.ctx.save();
-      ctx.fillStyle = "rgb(86, 6, 6)";
-      ctx.fillRect(1218, 755, 157, 23);
-      this.ctx.fillStyle = "white";
-      this.ctx.fillText(`No discounts avaliable`, 1221, 773);
-      this.ctx.restore();
-    }
-    if (B === 66){
-      this.ctx.font = "18px Arial";
-      this.ctx.save();
-      ctx.fillStyle = "lime";
-      ctx.fillRect(1248, 785, 105, 23);
-      this.ctx.fillStyle = "black";
-      this.ctx.fillText(`Hooks: ${hookCount.toString()} B `, 1252, 803);
-      this.ctx.restore();
-    }
-    if (B === 0){
-      this.ctx.font = "18px Arial";
-      this.ctx.save();
-      ctx.fillStyle = "rgb(86, 6, 6)";
-      ctx.fillRect(1230, 785, 138, 23);
-      this.ctx.fillStyle = "white";
-      this.ctx.fillText(`Hook: pending...`, 1233, 803);
-      this.ctx.restore();
-    }
+      // this.machinganTimeLeft = parseInt(this.machinganTime/10)
+      //   this.ctx.font = "21px Arial";
+      //   this.ctx.save();
+      //   this.ctx.fillStyle = "white";
+      //   this.ctx.fillText(`Special Weapons`, 1218, 680);
+      //   this.ctx.restore();
+    // if (C === 67){
+    //   this.machinganTimeLeft = parseInt(this.machinganTime/10)
+    //     this.ctx.font = "15.5px Arial";
+    //     this.ctx.save();
+    //     ctx.fillStyle = "lime";
+    //     ctx.fillRect(1215, 815, 170, 23);
+    //     this.ctx.fillStyle = "black";
+    //     this.ctx.fillText(`Machinegun on: ${this.machinganTimeLeft.toString()} C/V`, 1218, 832);
+    //     this.ctx.restore();
+    // }
+    // if (C === 0 && this.score.total >= 50){
+    //     this.machinganRestoreLeft = parseInt(this.machinganRestore/10)
+    //     this.ctx.font = "16px Arial";
+    //     this.ctx.save();
+    //     ctx.fillStyle = "rgb(255, 80, 0)";
+    //     ctx.fillRect(1230, 815, 150, 23);
+    //     this.ctx.fillStyle = "black";
+    //     this.ctx.fillText(`Machinegun Off: ${this.machinganRestoreLeft.toString()} `, 1233, 832);
+    //     this.ctx.restore();
+    // }
+    // if(this.score.total <= 49){
+    //   this.machinganRestoreLeft = parseInt(this.machinganRestore/10)
+    //   this.ctx.font = "16px Arial";
+    //   this.ctx.save();
+    //   ctx.fillStyle = "rgb(86, 6, 6)";
+    //   ctx.fillRect(1215, 815, 250, 23);
+    //   this.ctx.fillStyle = "white";
+    //   this.ctx.fillText(`Machingan is being designed`, 1218, 832);
+    //   this.ctx.restore();
+    // }
+    // if (T === 84){
+    //     this.ctx.font = "16px Arial";
+    //     this.ctx.save();
+    //     ctx.fillStyle = "rgb(21, 209, 209)";
+    //     ctx.fillRect(1230, 693, 140, 23);
+    //     this.ctx.fillStyle = "black";
+    //     this.ctx.fillText(`Timeshield ON: T`, 1235, 710);
+    //     this.ctx.restore();
+    // }
+    // if (T === 0){
+    //     this.ctx.font = "16px Arial";
+    //     this.ctx.save();
+    //     ctx.fillStyle = "rgb(86, 6, 6)";
+    //     ctx.fillRect(1215, 693, 165, 23);
+    //     this.ctx.fillStyle = "white";
+    //     this.ctx.fillText(`Timeshield: pending...`, 1215, 710);
+    //     this.ctx.restore();
+    // }
+    // if (M === 77 && this.score.total >= 20){
+    //   this.ctx.font = "17px Arial";
+    //   this.ctx.save();
+    //   ctx.fillStyle = "lime";
+    //   ctx.fillRect(1215, 724, 168, 23);
+    //   this.ctx.fillStyle = "black";
+    //   this.ctx.fillText(`Sandblaster ready: M `, 1218, 741);
+    //   this.ctx.restore();
+    // } 
+    // if (this.score.total <= 19){
+    //   this.ctx.font = "18px Arial";
+    //   this.ctx.save();
+    //   ctx.fillStyle = "rgb(86, 6, 6)";
+    //   ctx.fillRect(1215, 724, 190, 23);
+    //   this.ctx.fillStyle = "white";
+    //   this.ctx.fillText(`Sandblaster: pending.. `, 1218, 741);
+    //   this.ctx.restore();
+    // } 
+    // if (M !== 77 && this.score.total >= 20){
+    //   this.ctx.font = "16px Arial";
+    //   this.ctx.save();
+    //   ctx.fillStyle = "rgb(255, 80, 0)";
+    //   ctx.fillRect(1220, 724, 158, 23);
+    //   this.ctx.fillStyle = "black";
+    //   this.ctx.fillText(`Charge Blaster 20/${charging.toString()}`, 1223, 741);
+    //   this.ctx.restore();
+    // }
+    // if (R === 82){
+    //   this.ctx.font = "18px Arial";
+    //   this.ctx.save();
+    //   ctx.fillStyle = "lime";
+    //   ctx.fillRect(1221, 755, 155, 23);
+    //   this.ctx.fillStyle = "black";
+    //   this.ctx.fillText(`Discounters: ${this.chargedDisc.toString()} -R- `, 1224, 773);
+    //   this.ctx.restore();
+    // }
+    // if (this.chargedDisc <= 0){
+    //   this.ctx.font = "15px Arial";
+    //   this.ctx.save();
+    //   ctx.fillStyle = "rgb(86, 6, 6)";
+    //   ctx.fillRect(1218, 755, 157, 23);
+    //   this.ctx.fillStyle = "white";
+    //   this.ctx.fillText(`No discounts avaliable`, 1221, 773);
+    //   this.ctx.restore();
+    // }
+    // if (B === 66){
+    //   this.ctx.font = "18px Arial";
+    //   this.ctx.save();
+    //   ctx.fillStyle = "lime";
+    //   ctx.fillRect(1248, 785, 105, 23);
+    //   this.ctx.fillStyle = "black";
+    //   this.ctx.fillText(`Hooks: ${hookCount.toString()} B `, 1252, 803);
+    //   this.ctx.restore();
+    // }
+    // if (B === 0){
+    //   this.ctx.font = "18px Arial";
+    //   this.ctx.save();
+    //   ctx.fillStyle = "rgb(86, 6, 6)";
+    //   ctx.fillRect(1230, 785, 138, 23);
+    //   this.ctx.fillStyle = "white";
+    //   this.ctx.fillText(`Hook: pending...`, 1233, 803);
+    //   this.ctx.restore();
+    // }
+    // if (B === 66 && hookCount === 0){
+    //   this.ctx.font = "18px Arial";
+    //   this.ctx.save();
+    //   ctx.fillStyle = "rgb(255, 80, 0)";
+    //   ctx.fillRect(1230, 785, 138, 23);
+    //   this.ctx.fillStyle = "black";
+    //   this.ctx.fillText(`No Hook ammo`, 1233, 803);
+    //   this.ctx.restore();
+    // }
     if(this.puddles.length + this.fires.length >= 9){
       this.player.loseRespect()
     }
     // CTX data statistics
     // CTX data statistics
-    if (this.winTime > 600) {
+    if (this.winTime >= 960) {
       this.healing.draw();
-      const iceWorning = document.getElementById("ice");
-      iceWorning.style.display = "inline-block";
+      this.iceCreamAlert()
+    }
+    if (this.winTime >= 961 && this.winTime <= 964) {
+      this.alertingSound = new Audio("/assets/audios ad/alerting.wav");
+      this.alertingSound.volume = 0.05;
+      this.alertingSound.play()
     }
     if(this.player.sandstate === true){
       this.player.sandAlterImg = "/assets/images/munición/hurricanestorm2.png"
       this.player.imgSand.src = "/assets/images/elements/sandballHeal.png"
-
       } else {
         this.player.sandAlterImg = ""
         this.player.imgSand.src = "/assets/images/elements/sandball.png"
@@ -730,9 +777,6 @@ class Game {
   addKaren() {
     const karen = new Karens(ctx);
     this.karens.push(karen);
-    this.thisAudio = new Audio("/assets/audio/Karen.mp3");
-    this.thisAudio.volume = 0.06;
-    this.thisAudio.play();
   }
   addRat() {
     const rat = new Rats(ctx);
@@ -748,17 +792,11 @@ class Game {
   addFat() {
     const fat = new Fat(ctx);
     this.fats.push(fat);
-    this.thisAudio = new Audio("/assets/audio/Oh fuck.mp3");
-    this.thisAudio.volume = 0.2;
-    this.thisAudio.play();
   }
   addGoose() {
     const goose = new Goose(ctx);
     this.geese.push(goose);
-    this.thisAudio = new Audio("/assets/audio/Goose.mp3");
-    this.thisAudio.volume = 0.1;
-    this.thisAudio.play();
-    this.thisAudio = new Audio("/assets/audio/geese.mp3");
+    this.thisAudio = new Audio("/assets/audio/angryGoose.mp3");
     this.thisAudio.volume = 0.02;
     this.thisAudio.play();
   }
@@ -789,12 +827,6 @@ class Game {
   addKoren() {
     const koren = new Koren(ctx);
     this.korens.push(koren);
-    // this.thisAudio = new Audio("/assets/audio/Nonono.mp3");
-    // this.thisAudio.volume = 0.2;
-    // this.thisAudio.play();
-    // this.thisAudio = new Audio("/assets/audios ad/Karen loca.mp3");
-    // this.thisAudio.volume = 0.1;
-    // this.thisAudio.play();
   }
   addPuddle() {
     const puddle = new Puddle(ctx);
@@ -802,43 +834,57 @@ class Game {
     this.puddleBeginAudio = new Audio("/assets/audio/puddleBegin.mp3");
     this.puddleBeginAudio.volume = 0.5;
     this.puddleBeginAudio.play();
-    this.thisAudio = new Audio("/assets/audio/Now what.mp3");
-    this.thisAudio.volume = 0.08;
-    this.thisAudio.play();
   }
   addFire() {
     const fire = new Fire(ctx);
     this.fires.push(fire);
     this.puddleBeginAudio = new Audio("/assets/audio/fireBegin.wav");
-    this.puddleBeginAudio.volume = 0.2;
+    this.puddleBeginAudio.volume = 0.05;
     this.puddleBeginAudio.play();
-    this.thisAudio = new Audio("/assets/audio/Oh fuck.mp3");
-    this.thisAudio.volume = 0.2;
-    this.thisAudio.play();
   }
   addCart() {
     const cart = new Cart(ctx);
     this.carts.push(cart);
+    this.luzOnAudio = new Audio("/assets/audios ad/cartLeft2.wav")
+    this.luzOnAudio.volume = 0.07;
+    this.luzOnAudio.play();
+
   }
   addFood() {
     const food = new Food(ctx);
     this.foods.push(food);
+    this.disco = new Audio("/assets/audios ad/food.wav");
+    this.disco.volume = 0.01;
+    this.disco.play()
   }
   addUpgrade() {
     const upgrade = new Upgrade(ctx);
     this.upgrades.push(upgrade);
+    this.luzOnAudio = new Audio("/assets/audios ad/upgrades.m4a")
+    this.luzOnAudio.volume = 0.03;
+    this.luzOnAudio.play();
+    this.luzOnAudio = new Audio("/assets/audios ad/upgradeSound.wav")
+    this.luzOnAudio.volume = 0.03;
+    this.luzOnAudio.play();
   }
   addUpBullet() {
     const upBullet = new Upbullet(ctx);
     this.upBullets.push(upBullet);
+    this.luzOnAudio = new Audio("/assets/audios ad/upgradeForBullets.m4a")
+    this.luzOnAudio.volume = 0.03;
+    this.luzOnAudio.play();
+    this.luzOnAudio = new Audio("/assets/audios ad/upgradeSound.wav")
+    this.luzOnAudio.volume = 0.03;
+    this.luzOnAudio.play();
   }
   addDiscount() {
     const discount = new Discount(ctx);
     this.discounts.push(discount);
-    this.disco = new Audio("/assets/audio/Discounts.mp3");
-    this.disco.volume = 0.2;
+    this.disco = new Audio("/assets/audio/discount.wav");
+    this.disco.volume = 0.01;
     this.disco.play()
   }
+  // alerts start !!!!!! 
   // alerts start !!!!!! 
   alerting(){
     const nothingToWorrie = document.getElementById("ok");
@@ -847,6 +893,9 @@ class Game {
     statusOk.style.backgroundColor = "rgb(252, 5, 5)";
     statusOk.style.border = "5px solid rgb(99, 5, 5)";
     statusOk.style.color = "white";
+    this.disco = new Audio("/assets/audios ad/alerting.wav");
+    this.disco.volume = 0.05;
+    this.disco.play()
   }
   karensAlert() {
     const karensAlert = document.getElementById("karens-alert");
@@ -887,13 +936,11 @@ class Game {
     const upgradeAlert = document.getElementById("upgrade-alert");
     upgradeAlert.style.display = "inline-flex";
     this.alerting()
-
   }
   upBulletAlert() {
     const upBulletAlert = document.getElementById("upBullet-alert");
     upBulletAlert.style.display = "inline-flex";
     this.alerting()
-
   }
   babyAlert() {
     const babyAlert = document.getElementById("baby-alert");
@@ -911,7 +958,11 @@ class Game {
     const korenAlert = document.getElementById("koren-alert");
     korenAlert.style.display = "inline-flex";
     this.alerting()
-
+  }
+  iceCreamAlert(){
+    const iceWorning = document.getElementById("ice");
+    iceWorning.style.display = "inline-block";
+      
   }
   // alerts end !!!!!! 
 
@@ -921,15 +972,17 @@ class Game {
     this.saved.addSave()
     distance += 10
     this.player.booster += 0.5
-    this.player.cooldownJump -= 100
+    this.player.cooldownJump += 100
     this.player.getBigRespect()
+    this.customerIs = true
   }
   dying(){
     this.player.loseBigRespect()
     this.score.addScore()
     distance -= 10
     this.player.booster -= 0.5
-    this.player.cooldownJump += 100
+    this.player.cooldownJump -= 100
+    this.perjudiceIs = true
   }
   dyingCus(){
     this.player.loseCustomerRespect()
@@ -956,7 +1009,10 @@ class Game {
         if (blast.collides(puddle)) {
           puddle.dicreaseSmall();
           if (puddle.h <= 20) {
-            puddle.vx = 500;
+            puddle.puddleIsOn = false
+            puddle.puffIsOn = true
+            puddle.h = 30
+            puddle.w = 30
             this.score.addkobstacle()
             this.score.addktotal1()
             if (this.winTime > 40000) {
@@ -972,7 +1028,10 @@ class Game {
         if (sand.collides(puddle)) {
           puddle.dicreaseSmall();
           if (puddle.h <= 20) {
-            puddle.vx = 500;
+            puddle.puddleIsOn = false
+            puddle.puffIsOn = true
+            puddle.h = 30
+            puddle.w = 30
             this.score.addkobstacle()
             this.score.addktotal1()
             if (this.winTime > 120000) {
@@ -995,7 +1054,10 @@ class Game {
             puddle.dicrease();
           }
           if (puddle.h <= 20) {
-            puddle.vx = 500;
+            puddle.puddleIsOn = false
+            puddle.puffIsOn = true
+            puddle.h = 30
+            puddle.w = 30
             this.score.addkobstacle()
             this.score.addktotal1()
             if (this.winTime > 40000) {
@@ -1018,10 +1080,13 @@ class Game {
         }
       });
     });
-    this.player.hooks.forEach((hook) => { //fuego con fuego
+    this.player.hooks.forEach((hook) => { //hook con agua
       this.puddles.forEach((puddle) => {
         hook.collides(puddle);
         if (hook.collides(puddle)) {
+          this.luzOnAudio = new Audio("/assets/audio/evap.mp3")
+          this.luzOnAudio.volume = 0.07;
+          this.luzOnAudio.play();
             if(puddle.x < this.player.x){
               puddle.x = puddle.x + 40
             } else if (puddle.x > this.player.x){
@@ -1043,7 +1108,10 @@ class Game {
         if (blast.collides(fire)) {
           fire.dicreaseSmall();
           if (fire.h <= 20) {
-            fire.vx = 500;
+            fire.fireIsOn = false
+            fire.puffIsOn = true
+            fire.h = 40
+            fire.w = 40
             this.score.addkobstacle()
             this.score.addktotal1()
             if(this.fires.length <= 0){
@@ -1063,7 +1131,10 @@ class Game {
         if (sand.collides(fire)) {
           fire.dicreaseSmall();
           if (fire.h <= 20) {
-            fire.vx = 500;
+            fire.fireIsOn = false
+            fire.puffIsOn = true
+            fire.h = 40
+            fire.w = 40
             this.score.addkobstacle()
             this.score.addktotal1()
             if(this.fires.length <= 0){
@@ -1087,7 +1158,10 @@ class Game {
             fire.dicrease();
           }
           if (fire.h <= 20) {
-            fire.vx = 500;
+            fire.fireIsOn = false
+            fire.puffIsOn = true
+            fire.h = 40
+            fire.w = 40
             this.score.addkobstacle()
             this.score.addktotal1()
             if(this.fires.length <= 0){
@@ -1108,10 +1182,13 @@ class Game {
         }
       });
     });
-    this.player.hooks.forEach((hook) => { //fuego con fuego
+    this.player.hooks.forEach((hook) => { //fuego con hook
       this.fires.forEach((fire) => {
         hook.collides(fire);
         if (hook.collides(fire)) {
+          this.luzOnAudio = new Audio("/assets/audio/evap.mp3")
+          this.luzOnAudio.volume = 0.07;
+          this.luzOnAudio.play();
             if(fire.x < this.player.x){
               fire.x = fire.x + 40
             } else if (fire.x > this.player.x){
@@ -1280,6 +1357,19 @@ class Game {
         } else return true;
       });
     });
+    this.rats.forEach((rat) => { //rat con hook
+      this.player.hooks = this.player.hooks.filter((heat) => {
+        if (heat.collides(rat)) {
+          this.player.hooks.splice(0, 1);
+          rat.vx = 0;
+          this.checkCharger()
+          this.luzOnAudio = new Audio("/assets/audios ad/ratHook.mp3")
+          this.luzOnAudio.volume = 0.07;
+          this.luzOnAudio.play();
+          return false;
+        } else return true;
+      });
+    });
     this.rats.forEach((rat) => { //rat con blaster
       this.player.blasters.filter((blast) => {
         if (blast.collides(rat)) {
@@ -1325,8 +1415,9 @@ class Game {
           }
           return false;
         } else return true;
-      });
+      }); 
     });
+    
     //fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...
     //fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...
     this.fats = this.fats.filter((fat) => { //fat con jugador
@@ -1655,6 +1746,24 @@ class Game {
         this.checkCharger()
         } else return true;
       });
+        this.player.hooks.filter((hook) => {// goose con hook
+        if (hook.collides(goose)) {
+          this.player.hooks.splice(0, 1);
+          goose.lifeleft -= 1 
+          const foodRandom = Math.floor(Math.random() * 10 - chance)
+          if(goose.lifeleft <= 0){
+            this.score.addkgoose()
+            this.score.addktotal1()
+          }
+          this.luzOnAudio = new Audio("/assets/audios ad/gooseHook.mp3")
+          this.luzOnAudio.volume = 0.07;
+          this.luzOnAudio.play();
+          goose.moveY = 0
+          goose.vx = 0
+          this.player.heats.splice(0, 1);
+        this.checkCharger()
+        } else return true;
+      });
     });
     this.geese.forEach((goose) => { // goose con blaster
       this.player.blasters.filter((blast) => {
@@ -1818,7 +1927,6 @@ class Game {
     this.customers = this.customers.filter((cus) => { //customer con player
       if (cus.collides(this.player)) {
         this.saving()
-        this.customerIs = true
         return false;
       }
       return true;
@@ -1828,7 +1936,7 @@ class Game {
         if (disc.collides(cust)) {
           this.player.discountings.splice(0, 1);
           this.saving()
-          cust.x = 930
+          cust.x = 1130
           cust.y = 280
           cust.vx = 19
           cust.say = "Thanx! Bye!"
@@ -2150,84 +2258,89 @@ this.pback.forEach((peop) => { //PBack
     });
     this.portals.forEach((port) => {//hook con portal hooktal
       this.player.hooks.filter((hook) => {
-        if (hook.collides(port)) {
-          this.portals2.forEach((pro) => {
-            //horizontal impact
-            if(pro.vx === -1 && hook.vx <=0 ){
-              hook.x = pro.x - 30;
-              hook.y = pro.y;
-            }
-            if(pro.vx === -1 && hook.vx >=0 ){
-              hook.x = pro.x + 52;
-              hook.y = pro.y;
-            }
-            if(pro.vx === 1 && hook.vx <=0){
-              hook.x = pro.x - 30;
-              hook.y = pro.y;
-            }
-            if(pro.vx === 1 && hook.vx >=0){
-              hook.x = pro.x + 52;
-              hook.y = pro.y;
-            }
-            if(pro.vy === -1&& hook.vy <= 0){
-              hook.x = pro.x;
-              hook.y = pro.y - 30;
-            }
-            if(pro.vy === -1 && hook.vy >= 0){
-              hook.x = pro.x;
-              hook.y = pro.y + 52;
-            }
-            if(pro.vy === 1 && hook.vy >= 0){
-              hook.x = pro.x;
-              hook.y = pro.y + 52;
-            }
-            if(pro.vy === 1 && hook.vy <= 0){
-              hook.x = pro.x;
-              hook.y = pro.y - 30;
-            }
-          })
-          return false;
+            if(port.portalIs === true){
+              if (hook.collides(port)) {
+                this.portals2.forEach((pro) => {
+                  //horizontal impact
+                  if(pro.vx === -1 && hook.vx <=0 ){
+                    hook.x = pro.x - 30;
+                    hook.y = pro.y;
+                  }
+                  if(pro.vx === -1 && hook.vx >=0 ){
+                    hook.x = pro.x + 52;
+                    hook.y = pro.y;
+                  }
+                  if(pro.vx === 1 && hook.vx <=0){
+                    hook.x = pro.x - 30;
+                    hook.y = pro.y;
+                  }
+                  if(pro.vx === 1 && hook.vx >=0){
+                    hook.x = pro.x + 52;
+                    hook.y = pro.y;
+                  }
+                  if(pro.vy === -1&& hook.vy <= 0){
+                    hook.x = pro.x;
+                    hook.y = pro.y - 30;
+                  }
+                  if(pro.vy === -1 && hook.vy >= 0){
+                    hook.x = pro.x;
+                    hook.y = pro.y + 52;
+                  }
+                  if(pro.vy === 1 && hook.vy >= 0){
+                    hook.x = pro.x;
+                    hook.y = pro.y + 52;
+                  }
+                  if(pro.vy === 1 && hook.vy <= 0){
+                    hook.x = pro.x;
+                    hook.y = pro.y - 30;
+                  }
+                })
+              }
+            return false;
         } else return true;
       });
     });
     this.portals2.forEach((port) => {//hook con portal
       this.player.hooks.filter((hook) => {
-        if (hook.collides(port)) {
-          this.portals.forEach((pro) => {
-            //horizontal impact
-            if(pro.vx === -1 && hook.vx <=0 ){
-              hook.x = pro.x - 30;
-              hook.y = pro.y;
+        if(port.portalIs === true){
+            if (hook.collides(port)) {
+              this.portals.forEach((pro) => {
+                //horizontal impact
+                if(pro.vx === -1 && hook.vx <=0 ){
+                  hook.x = pro.x - 30;
+                  hook.y = pro.y;
+                }
+                if(pro.vx === -1 && hook.vx >=0 ){
+                  hook.x = pro.x + 52;
+                  hook.y = pro.y;
+                }
+                if(pro.vx === 1 && hook.vx <=0){
+                  hook.x = pro.x - 30;
+                  hook.y = pro.y;
+                }
+                if(pro.vx === 1 && hook.vx >=0){
+                  hook.x = pro.x + 52;
+                  hook.y = pro.y;
+                }
+                if(pro.vy === -1&& hook.vy <= 0){
+                  hook.x = pro.x;
+                  hook.y = pro.y - 30;
+                }
+                if(pro.vy === -1 && hook.vy >= 0){
+                  hook.x = pro.x;
+                  hook.y = pro.y + 52;
+                }
+                if(pro.vy === 1 && hook.vy >= 0){
+                  hook.x = pro.x;
+                  hook.y = pro.y + 52;
+                }
+                if(pro.vy === 1 && hook.vy <= 0){
+                  hook.x = pro.x;
+                  hook.y = pro.y - 30;
+                }
+                
+              })
             }
-            if(pro.vx === -1 && hook.vx >=0 ){
-              hook.x = pro.x + 52;
-              hook.y = pro.y;
-            }
-            if(pro.vx === 1 && hook.vx <=0){
-              hook.x = pro.x - 30;
-              hook.y = pro.y;
-            }
-            if(pro.vx === 1 && hook.vx >=0){
-              hook.x = pro.x + 52;
-              hook.y = pro.y;
-            }
-            if(pro.vy === -1&& hook.vy <= 0){
-              hook.x = pro.x;
-              hook.y = pro.y - 30;
-            }
-            if(pro.vy === -1 && hook.vy >= 0){
-              hook.x = pro.x;
-              hook.y = pro.y + 52;
-            }
-            if(pro.vy === 1 && hook.vy >= 0){
-              hook.x = pro.x;
-              hook.y = pro.y + 52;
-            }
-            if(pro.vy === 1 && hook.vy <= 0){
-              hook.x = pro.x;
-              hook.y = pro.y - 30;
-            }
-          })
           return false;
         } else return true;
       });
@@ -2348,6 +2461,9 @@ this.pback.forEach((peop) => { //PBack
     this.carts.forEach((cart) => {//hook con carts
       this.player.hooks.filter((hook) => {
         if (hook.collides(cart)) {
+          this.atraer = new Audio("/assets/audio/atraer2.mp3")
+          this.atraer.volume = 0.07;
+          this.atraer.play();
           cart.v = 2.4
           cart.vNegative = 7.2
           hook.dispose = true
@@ -2370,6 +2486,9 @@ this.pback.forEach((peop) => { //PBack
     this.foods.forEach((food) => {//hook con foods
       this.player.hooks.filter((hook) => {
         if (hook.collides(food)) {
+          this.atraer = new Audio("/assets/audio/atraer2.mp3")
+          this.atraer.volume = 0.07;
+          this.atraer.play();
           hook.dispose = true
           food.v = 2.4
           food.vNegative = 7.2
@@ -2397,7 +2516,7 @@ this.pback.forEach((peop) => { //PBack
     });
     this.upBullets = this.upBullets.filter((up) => {
       if (up.collides(this.player)) {
-        afterSize +=10
+        afterSize +=20
         bulletSize +=10
         bulletSizeExtra -=10
         B = 66
@@ -2413,6 +2532,9 @@ this.pback.forEach((peop) => { //PBack
     this.upBullets.forEach((upbullet) => {//hook con upbullets
       this.player.hooks.filter((hook) => {
         if (hook.collides(upbullet)) {
+          this.atraer = new Audio("/assets/audio/atraer2.mp3")
+          this.atraer.volume = 0.07;
+          this.atraer.play();
           upbullet.v = 1
           upbullet.vNegative = 7.2
           hook.dispose = true
@@ -2427,6 +2549,9 @@ this.pback.forEach((peop) => { //PBack
     this.upgrades.forEach((upgrade) => {//hook con upgrades
       this.player.hooks.filter((hook) => {
         if (hook.collides(upgrade)) {
+          this.atraer = new Audio("/assets/audio/atraer2.mp3")
+          this.atraer.volume = 0.07;
+          this.atraer.play();
           upgrade.v = 1
           upgrade.vNegative = 7.2
           hook.dispose = true
@@ -2438,10 +2563,24 @@ this.pback.forEach((peop) => { //PBack
         } else return true;
       });
     });
-
     this.lamps.forEach((lamp) => {//hook con lamps
       this.player.hooks.filter((hook) => {
         if (hook.collides(lamp)) {
+          if( lamp.bla === false){
+            lamp.bla = true
+            this.luzOnAudio = new Audio("/assets/audios ad/luzOn.mp3")
+            this.luzOnAudio.volume = 0.07;
+            this.luzOnAudio.play();
+            lampOn+=1
+            if(lampOn === 14){
+              pImage += 1
+              lamp.img.src = "/assets/images/elements/lampOfff.png"
+            }
+            lamp.img.src = "/assets/images/elements/lamp.png"
+        }
+        this.hookShootAudio = new Audio("/assets/audios ad/impactoHook.mp3")
+        this.hookShootAudio.volume = 0.07;
+        this.hookShootAudio.play();
         this.player.x = lamp.x
         this.player.y = lamp.y
         hook.dispose = true
@@ -2463,6 +2602,9 @@ this.pback.forEach((peop) => { //PBack
     this.discounts.forEach((discount) => {//hook con discounts
       this.player.hooks.filter((hook) => {
         if (hook.collides(discount)) {
+          this.atraer = new Audio("/assets/audio/atraer2.mp3")
+          this.atraer.volume = 0.07;
+          this.atraer.play();
           discount.v = 2.4
           discount.vNegative = 7.2
           hook.dispose = true
@@ -2571,7 +2713,7 @@ this.pback.forEach((peop) => { //PBack
       const lose = document.getElementById("loseDied");
       lose.style.display = "flex"
     }
-      if (this.healing.collides(this.player) && this.winTime >= 550) {
+      if (this.healing.collides(this.player) && this.winTime >= 3550) {
       this.player.healslow();
       this.iceCurePoison++
       if(this.iceCurePoison >= this.curePoisonTimer ){

@@ -30,6 +30,7 @@ class Respect {
     ctx.fillStyle = gradient;
     this.ctx.fillText("Reputation", 1220, 100)
     this.ctx.fillStyle = prevStyle;
+
   }
   move() {
     this.y -= this.v
@@ -40,7 +41,6 @@ class Respect {
   }
   loseRespect() {
     this.total -= 0.0005;
-    
   }
   loseCustomerRespect() {
     this.total -= 0.004;
@@ -49,27 +49,21 @@ class Respect {
     this.total -= 0.3;
   }
   getBigRespect(){
-    this.total += 0.2
+    this.total += 0.2 + pImage
     if (this.total >= 1) {
       this.total = 1;
     }
   }
   getSmallRespect(){
-    this.total += 0.1
+    this.total += 0.1 + pImage/2
     if (this.total >= 1) {
       this.total = 1;
     }
   }
   getSmallestRespect() {
-    this.total += 0.0005;
+    this.total += 0.0005 + pImage/1000
     if (this.total >= 1) {
       this.total = 1;
-    }
-  }
-  getRespect(){
-    this.total += 0.1;
-    if(this.respect >=1){
-      this.respect = 1
     }
   }
 }

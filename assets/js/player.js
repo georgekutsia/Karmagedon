@@ -24,6 +24,16 @@ class Player {
     this.imgQ.src = "/assets/images/elements/dodgeq.png"
     this.imgE = new Image()
     this.imgE.src = "/assets/images/elements/dodgee.png"
+    this.imgHookGun = new Image()
+    this.imgHookGun.src = "/assets/images/munición/hookGun.png"
+    this.discountGun = new Image()
+    this.discountGun.src = "/assets/images/munición/discountGun1.png"
+    this.shieldAura = new Image()
+    this.shieldAura.src = "/assets/images/munición/au.png"
+    this.machinegun = new Image();
+    this.machinegun.src =  "/assets/images/munición/machinegunSpin.png";
+    this.machinegun.frame = 0;
+    this.machinegunTick = 0
     this.ctx.font = "20px Arial";
     this.img.frame = 0;
     this.tick = 0;
@@ -69,6 +79,67 @@ class Player {
 
       // console.log("x",this.x)
       // console.log("y",this.y)
+      if(C === 67){
+        this.ctx.drawImage(
+          this.machinegun,
+          (this.machinegun.frame * this.machinegun.width) / 5,
+          0,
+          this.machinegun.width / 5, 
+          this.machinegun.height, 
+          this.x - 21,  
+          this.y - 5,  
+          this.w -8, 
+          this.h -8
+          );
+        this.ctx.drawImage(
+          this.machinegun,
+          (this.machinegun.frame * this.machinegun.width) / 5,
+          0,
+          this.machinegun.width / 5, 
+          this.machinegun.height, 
+          this.x + 29,  
+          this.y - 5,  
+          this.w -8, 
+          this.h -8
+          );
+          this.machinegunTick++
+          if (this.machinegunTick > 1) {
+            this.machinegunTick = 0;
+            this.machinegun.frame++;
+          }
+          if (this.machinegun.frame > 4) {
+            this.machinegun.frame = 0;
+          }
+        }
+        if(M === 77){
+          this.ctx.drawImage(
+            this.machinegun,
+            (this.machinegun.frame * this.machinegun.width) / 5,
+            0,
+            this.machinegun.width / 5, 
+            this.machinegun.height, 
+            this.x + 3,  
+            this.y + 32,  
+            this.w -10, 
+            this.h -10
+            );
+            this.machinegunTick++
+            if (this.machinegunTick > 1) {
+              this.machinegunTick = 0;
+              this.machinegun.frame++;
+            }
+            if (this.machinegun.frame > 4) {
+              this.machinegun.frame = 0;
+            }
+          }
+
+      if(T === 84){
+        ctx.globalAlpha = 0.8
+        this.ctx.drawImage(
+          this.shieldAura, this.x - 4, this.y - 20, this.w + 10, this.h -10
+        )
+        ctx.globalAlpha = 1
+      }
     if(this.y + this.h > this.ctx.canvas.height -100 && this.x + this.w > this.ctx.canvas.width - 520 &&this.x + this.w < this.ctx.canvas.width - 470){
       ctx.fillRect(this.x - 11, this.y - 41, 70, 22);
       ctx.fillStyle = "rgb(251, 209, 209)";
@@ -98,18 +169,46 @@ class Player {
     }
     if(Z === 90){
       this.ctx.drawImage(
-        this.imgFire, this.x - 15, this.y + 10, this.w - 20, this.h - 20
+        this.imgFire, this.x - 15, this.y + 1, this.w - 20, this.h - 20
       )
     }
     if(X === 88){
       this.ctx.drawImage(
-        this.imgWater, this.x + 35, this.y + 10, this.w - 19, this.h - 19
+        this.imgWater, this.x + 35, this.y + 1, this.w - 19, this.h - 19
       )
     }
+    if(hookCount>0 && B ===66){
+      this.ctx.drawImage(
+        this.imgHookGun, this.x + 29, this.y + 21, this.w - 10, this.h - 10
+      )
+      ctx.fillStyle = "rgb(251, 209, 209)";
+      this.ctx.fillStyle = "yellow";
+      this.ctx.font = "17px Arial";
+      this.order = this.ctx.fillText(`${hookCount.toString()}`, this.x + 48, this.y + 42);
+      this.order = this.ctx.fillText(`${hookCount.toString()}`, this.x + 50, this.y + 42);
+      this.ctx.fillStyle = "black";
+      this.ctx.font = "15px Arial";
+      this.order = this.ctx.fillText(`x${hookCount.toString()}`, this.x + 43, this.y + 42);
+    }
+    if(discounting > 0){
+      this.ctx.drawImage(
+        this.discountGun, this.x - 40, this.y + 15, this.w + 10, this.h
+      )
+      ctx.fillStyle = "rgb(251, 209, 209)";
+      this.ctx.fillStyle = "black";
+      this.ctx.font = "15px Arial";
+      if(discounting >=50){
+        this.order = this.ctx.fillText(`x${discounting.toString()/5}`, this.x - 30, this.y + 40);
+      } else {
+        this.order = this.ctx.fillText(`x${discounting.toString()/5}`, this.x - 25, this.y + 40);
+      }
+    }
+
     if(N === 78){
       this.ctx.drawImage(
         this.imgSand, this.x + 10, this.y + 38, this.w - 22, this.h - 22
       )
+
     }
 
     this.heats.forEach((heat) => heat.draw());
@@ -186,7 +285,7 @@ class Player {
     this.auras.forEach((aura) => {
       aura.move();
       this.healslow()
-      this.hefa()
+      this.hefa() //this.hefa() is not a function
     });
   }
 
@@ -198,9 +297,6 @@ class Player {
   }
   loseCustomerRespect(){
     this.respect.loseCustomerRespect()
-  }
-  getRespect(){
-    this.respect.getRespect();
   }
   getBigRespect(){
     this.respect.getBigRespect();
@@ -420,7 +516,7 @@ class Player {
         hookCount -= 1
         setTimeout(function () {
           B = 66;
-        }, this.cooldownBullet/4);
+        }, this.cooldownBullet/3);
       }
     }
     if (key === ALT) {
@@ -716,14 +812,14 @@ class Player {
       this
     );
     if (this.direction === "right") {
-      hook.vx = this.speed;
+      hook.vx = this.speed + 5;
       hook.vy = 0;
       hook.hookImg.src = "/assets/images/munición/hookright.png";
       this.img.src = "/assets/images/PJ/imright.png";
       this.img.frame++;
     }
     if (this.direction === "left") {
-      hook.vx = -this.speed;
+      hook.vx = -this.speed - 5;
       hook.vy = 0;
       hook.hookImg.src = "/assets/images/munición/hookleft.png";
       this.img.src = "/assets/images/PJ/imleft.png";
@@ -731,14 +827,14 @@ class Player {
     }
     if (this.direction === "top") {
       hook.vx = 0;
-      hook.vy = -this.speed;
+      hook.vy = -this.speed - 5;
       hook.hookImg.src = "/assets/images/munición/hookup.png";
       this.img.src = "/assets/images/PJ/imup.png";
       this.img.frame++;
     }
     if (this.direction === "down") {
       hook.vx = 0;
-      hook.vy = this.speed;
+      hook.vy = this.speed + 5;
       hook.hookImg.src = "/assets/images/munición/hookdown.png";
       this.img.src = "/assets/images/PJ/imdown.png";
       this.img.frame++;

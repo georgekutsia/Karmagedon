@@ -30,7 +30,6 @@ class Line {
     this.ctx.fillRect(this.pla.x + 40, this.y - 50, this.w * this.total, this.h);
     this.ctx.fillStyle = prevStyle;
     this.ctx.strokeRect(this.pla.x + 40, this.y - 50, this.w, this.h);
-    console.log("check", this.check)
   }
   move() {
     this.tick++;

@@ -34,11 +34,9 @@
   justify-content: space-evenly;
 }
 .neon-button {
-  font-size: calc(30px + 2vw);
+  font-size: 3vw;
   display: flex;
   cursor: url("/assets/images/elements/cursorInfo"), pointer;
-  margin-top: 300px;
-  margin-bottom: 200px;
   justify-content: center;
   text-align: center;
   text-decoration: none;
@@ -50,7 +48,7 @@
   box-shadow: inset 0 0 0.5em 0 var(--clr-neon), 0 0 0.5em 0 var(--clr-neon);
   position: relative;
   transition: all ease-in-out 2s;
-  transition-delay: 1s;
+  top: 30vh;
 }
 
 .neon-button::before {
@@ -58,10 +56,7 @@
   content: "";
   position: absolute;
   background: var(--clr-neon);
-  top: 100%;
   left: 0;
-  width: 100%;
-  height: 100%;
   transform: perspective(1em) rotateX(40deg) scale(1, 0.35);
   filter: blur(1em);
   opacity: 0.7;
@@ -110,7 +105,7 @@
   opacity: 1;
   text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;
   box-shadow: inset 0 0 0.5em 0 var(--clr-neondir), 0 0 0.5em 0 var(--clr-neondir);
-  left: 165px;
+  left: 1465px;
   top: 45px;
   transition: all ease-in-out 0.5s;
   z-index: 100;
@@ -324,7 +319,7 @@
 .neon-butt {
   position: absolute;
   z-index: 100;
-  font-size: 2rem;
+  font-size: 1.9vw;
   display: flex;
   background-color: rgb(27, 4, 46);
   cursor: url("/assets/images/elements/cursorInfo"), pointer;
@@ -336,8 +331,8 @@
   opacity: 0.3;
   text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;
   box-shadow: inset 0 0 0.5em 0 var(--clr-neondir), 0 0 0.5em 0 var(--clr-neondir);
-  left: 70px;
-  top: 20px;
+  left: 3vw;
+  top: 1vw;
   transition: all ease-in-out 3s;
 
 }
@@ -470,7 +465,7 @@
   z-index: 100;
   transition: all ease-in-out 1s;
   transition-delay: 1s;
-  font-size: calc(20px + 1.5vw);
+  font-size: calc(10px + 1.5vw);
   display: inline-block;
   background-color: rgb(27, 4, 46);
   cursor: url("/assets/images/elements/cursorInfo"), pointer;
@@ -534,7 +529,7 @@
   z-index: 100;
   transition: all ease-in-out 1s;
   transition-delay: 1s;
-  font-size: calc(20px + 1.5vw);
+  font-size: calc(10px + 1.5vw);
   display: inline-block;
   background-color: rgb(27, 4, 46);
   cursor: url("/assets/images/elements/cursorInfo"), pointer;
@@ -598,7 +593,7 @@
   z-index: 100;
   transition: all ease-in-out 1s;
   transition-delay: 1s;
-  font-size: calc(20px + 1.5vw);
+  font-size: calc(10px + 1.5vw);
   display: inline-block;
   background-color: rgb(27, 4, 46);
   cursor: url("/assets/images/elements/cursorInfo"), pointer;
@@ -659,7 +654,7 @@
   z-index: 100;
   transition: all ease-in-out 1s;
   transition-delay: 1s;
-  font-size: calc(20px + 1.5vw);
+  font-size: calc(10px + 1.5vw);
   display: inline-block;
   background-color: rgb(27, 4, 46);
   cursor: url("/assets/images/elements/cursorInfo"), pointer;

@@ -5,16 +5,16 @@ class Boss {
       { x: 11, y: 50 },
       { x: 11, y: 210 },
       { x: 11, y: 500 },
-      { x: 11, y: 750 },
+      { x: 11, y: 650 },
       { x: 1180, y: 20 },
       { x: 1180, y: 400 },
-      { x: 1180, y: 750 },
+      { x: 1180, y: 650 },
     ];
     this.xy = this.salidas[Math.floor(Math.random() * this.salidas.length)];
     this.x = this.xy.x;
     this.y = this.xy.y;
-    this.w = 0.06 * this.ctx.canvas.width;
-    this.h = 0.1 * this.ctx.canvas.height;
+    this.w = 0.05 * this.ctx.canvas.width;
+    this.h = 0.09 * this.ctx.canvas.height;
     this.v = 0.3;
     this.bossImg = new Image();
     this.bossImg.src = "/assets/images/karens/boss4.png";
@@ -40,10 +40,13 @@ class Boss {
   move(player) {
     this.ctx.save();
     this.ctx.font = "18px Arial";
-    ctx.fillStyle = "rgb(251, 209, 209)";
+    this.ctx.fillStyle = "grey";
+    this.ctx.fillRect(this.x, this.y -2, 90, 8);
     this.ctx.fillStyle = "red";
-    this.ctx.fillRect(this.x, this.y, (10 * this.lifeleft) / 10, 10);
-    this.order = this.ctx.fillText(`${this.lifeleft.toString()}`, this.x + 15, this.y + 3);
+    this.ctx.fillRect(this.x, this.y -2, (30 * this.lifeleft) / 10, 8);
+    this.ctx.fillStyle = "black";
+    this.ctx.font = "22px Arial";
+    this.order = this.ctx.fillText(`${this.lifeleft.toString()}`, this.x + 33, this.y - 5);
     this.ctx.restore();
     this.x += this.v;
     this.y += this.v;
@@ -80,7 +83,7 @@ class Boss {
   }
   }
   isVisible() {
-    return this.x + this.w > 0 && this.y + this.h < 770;
+    return this.x + this.w > 0 && this.y + this.h < 890;
   }
   collides(player) {
     const colX = this.x <= player.x + player.w && this.x + this.w > player.x;

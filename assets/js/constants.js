@@ -27,13 +27,15 @@ let bulletDistance = 150;
 let bulletDistanceExtra = 0;
 let bulletSizeExtra = 50;
 let auraDistance = 150;
-let afterSize = 40
+let afterSize = 60
 let bulletSize = 20
-let charging = 0
-let discounting = 10;
-let venom = 0
-let hookCount = 2
-
+let charging = 20
+let discounting = 100;
+let venom = 5
+let hookCount = 41
+let lampOn = 0
+let pImage = 0
+let afterSpin = false
 
 
 // secret code

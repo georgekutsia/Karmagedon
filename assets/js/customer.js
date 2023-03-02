@@ -132,7 +132,7 @@ class Customer {
   }
   }
   isVisible() {
-    return this.x + this.w > 0 && this.x <= 980;
+    return this.x + this.w > 0 && this.x <= 1180;
   }
   collides(player) {
     let colX = this.x + 10 <= player.x + player.w && this.x + this.w - 20 > player.x;

@@ -6,7 +6,7 @@ class Food {
         {x:110, y:370},  {x:540, y:370}, {x:730, y:370}, {x:890, y:370},
       ]
       this.xy = this.salidas[Math.floor(Math.random()*this.salidas.length)]
-      this.imgFrame = Math.floor(Math.random() * 16) + 1
+      this.imgFrame = Math.floor(Math.random() * 15) + 1
       this.x = foodx || this.xy.x;
       this.y = foody || this.xy.y;
       this.w = 45;
