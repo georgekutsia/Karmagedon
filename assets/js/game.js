@@ -27,6 +27,18 @@ class Game {
     this.brain.src = "/assets/images/elements/brain.png"
     this.mainOffice = new Image();
     this.mainOffice.src = "/assets/images/fondos/mainOffice.png"
+    this.levelupImg1 = new Image();
+    this.levelupImg1.src = "/assets/images/infos/hookUpgrade1.png"
+    this.levelupImg2 = new Image();
+    this.levelupImg2.src = "/assets/images/infos/machinegunUpgrade1.png"
+    this.levelupImg3 = new Image();
+    this.levelupImg3.src = "/assets/images/infos/elementUpgrade.png"
+    this.levelupElement = new Image();
+    this.levelupElement.src = "/assets/images/munición/elementUpgrade.png"
+    this.levelupMachinegun = new Image();
+    this.levelupMachinegun.src = "/assets/images/munición/upgradeMachinegun.png"
+    this.levelupHook = new Image();
+    this.levelupHook.src = "/assets/images/munición/hookUpgrade.png"
     this.weird1 = 0
     this.iceCurePoison = 0
     this.ratTick = 0;
@@ -42,6 +54,7 @@ class Game {
     this.bossPerjTick = 0
     this.bossPerjIs = false
     this.lampTick = 0
+    this.wider = 1
     this.lampOff = "/assets/images/elements/lampOfff.png"
     this.hitOnKarenCounter = 0
     this.poisonedTime = 3000 - chance * 300
@@ -117,17 +130,21 @@ class Game {
       new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(ctx, 380, 710, 40, 40, "/assets/images/fondos/arb9.png"),
       new Fence(ctx, 90, 190, 80, 40), new Fence(ctx, 470, 130, 80, 40), new Fence(ctx, 465, 450, 60, 40), new Fence(ctx, 1040, 210, 100, 20),new Fence(ctx, 1040, 70, 100, 20),
     ];
-    this.portals = [new Portal (ctx, 200, 770, 50, 50, false )]   
-    this.portals2 = [new Portal (ctx, 800, 5, 50, 50, false)]
+    this.portals = [new Portal (ctx, 200, 770, 50, 50 )]   
+    this.portals2 = [new Portal (ctx, 800, 5, 50, 50)]
+    this.levelUps1 = new Bushes(ctx, 140, 250, 80, 60, "/assets/images/munición/hookUpgrade.png")
+    this.levelUps2 = new Bushes(ctx, 440, 250, 100, 70, "/assets/images/munición/upgradeMachinegun.png")
+    this.levelUps3 = new Bushes(ctx, 780, 250, 80, 80, "/assets/images/munición/elementUpgrade.png")
     this.karenTime = 0;
     this.ratTime = 1600;
     this.fatTime = 100; 
     this.winTime = 0;
     this.machinganTime = 1000
     this.machinganRestore = 400
+    this.levelMessage1 = false
     this.interval = null;
     this.puddleTime =this.fireTime =this.gooseTime =this.babyTime =this.customerTime =this.bossTime =this.korenTime =this.cartTime =this.foodTime =this.upgradeTime =this.upBulletTime =this.discountTime =this.deadGoose = 0
-    this.karens = this.rats = this.babys = this.customers = this.fats = this.puddles = this.fires = this.geese = this.bosss = this.korens = this.carts = this.foods = this.upgrades = this.upBullets = this.discounts = [];
+    this.karens = this.rats = this.babys = this.customers = this.fats = this.puddles = this.fires = this.geese = this.bosss = this.korens = this.carts = this.drugs = this.foods = this.upgrades = this.upBullets = this.discounts = [];
     this.setListeners();
     this.musicStart = new Audio("/assets/audio/valse.mp3");
     this.musicStart.volume = 0.002;
@@ -145,7 +162,6 @@ class Game {
     this.bossSound5 = new Audio("/assets/audios ad/bossOuch5.m4a");
     this.bossSound5.volume = 0.1;
     this.karenSounds = [this.bossSound1,this.bossSound2,this.bossSound3,this.bossSound4,this.bossSound5];
-    
   }
   start() {
     this.so = new Audio("/assets/audio/So1.mp3");
@@ -168,9 +184,10 @@ class Game {
           this.karenTime = 2000
         }
       }
-      if (this.ratTime > Math.random() * 100 + 20000) { //rat
+      if (this.ratTime > Math.random() * 100 + 2000) { //rat
         this.ratTime = 0;
         this.ratAlert();
+        this.addDrug()
         this.addRat();
         if(this.winTime >= 48500){
           this.ratTime = 700
@@ -291,8 +308,13 @@ class Game {
         this.getsSiri.volume = 0.2;
         this.getsSiri.play();
       }
+      if(this.winTime >= 2500 && this.winTime <=3999){
+        extraLife = 2
+      } 
+      if(this.winTime >=4000){
+        extraLife = 3
+      }
 // win time game end -----------------------
-
     }, 1000 / 60);
   }
   stop() {
@@ -316,6 +338,7 @@ class Game {
     this.upgrades = this.upgrades.filter((e) => e.isVisible());
     this.upBullets = this.upBullets.filter((e) => e.isVisible());
     this.carts = this.carts.filter((e) => e.isVisible());
+    this.drugs = this.drugs.filter((e) => e.isVisible());
     this.fires = this.fires.filter((e) => e.isVisible());
     this.discounts = this.discounts.filter((e) => e.isVisible());
     this.player.heats = this.player.heats.filter((e) => e.isVisible());
@@ -338,8 +361,6 @@ class Game {
     if (this.upBullets.length <= 0) { const alert = document.getElementById("upBullet-alert"); alert.style.display = "none";}
     if (this.bosss.length <= 0) { const alert = document.getElementById("boss-alert"); alert.style.display = "none";}
     if (this.korens.length <= 0) { const alert = document.getElementById("koren-alert"); alert.style.display = "none";}
-
-    
     if (this.bosss.length <= 0 &&this.korens.length <= 0 &&this.fires.length <= 0 &&this.puddles.length <= 0 &&this.babys.length <= 0 &&this.geese.length <= 0 &&this.fats.length <= 0 &&this.rats.length <= 0 &&this.karens.length <= 0
     ) {
       const nothingToWorrie = document.getElementById("ok");
@@ -352,16 +373,15 @@ class Game {
       statusOk.style.marginBottom = "2px";
     }
   }
-
   draw() {
     this.winTime++;
     this.upgrades.forEach((e) => e.draw());
     this.upBullets.forEach((e) => e.draw());
+    console.log("money",money)
     if(this.upgrades.length <= 0 && this.upBullets.length <=0 && this.carts.length <= 0){
       this.ctx.drawImage(
         this.mainOffice, 1200, 200, 190, 130
       ) 
-      
     } else {
       ctx.globalAlpha = 0.2
       this.ctx.drawImage(
@@ -398,6 +418,7 @@ class Game {
         this.ratTickIs = false
       }
     }
+
     if(this.upBullets.length >= 1){
       this.ctx.font = "23px Sans";
       ctx.fillStyle = "black";
@@ -446,9 +467,6 @@ class Game {
         this.helper4, 1220, 215, 40, 60
       )
     }
-      // this.ctx.drawImage(
-      //   this.helper4, 1050, 215, 40, 60
-      // )
       this.chargedDisc = discounting / 5
       this.curePoisonTimer = 300 - chance * 50
     this.bosss.forEach((e) => e.draw());
@@ -459,18 +477,18 @@ class Game {
       this.pback.forEach((e) => e.draw());
     }
     this.walls.forEach((e) => e.draw());
+
+
     // se dibuja tras 5 horas
-    if(this.winTime >= 57500){
+    if(this.winTime >= 57500){ //14 de la tarde 57500
       this.portals.forEach((e) => e.draw());
-      if(this.winTime >= 57500){
-        this.portals.forEach((port) => port.portalIs = true)
-      }
     }
     if(this.winTime >= 57500){
       this.portals2.forEach((e) => e.draw());
-      if(this.winTime >= 57500){
-        this.portals2.forEach((port) => port.portalIs = true)
-      }
+    }
+    if(this.winTime >=500 && this.winTime <= 550){
+      this.karens = this.rats = this.babys = this.customers = this.fats = this.puddles = this.fires = this.geese = this.bosss = this.korens = this.carts = this.foods = this.upgrades = this.upBullets = this.discounts = [];
+      leveler = true
     }
     if(this.winTime >= 0){
       this.pfront.forEach((e) => e.draw());
@@ -486,12 +504,12 @@ class Game {
     this.fats.forEach((e) => e.draw());
     this.rats.forEach((e) => e.draw());
     this.carts.forEach((e) => e.draw());
+    this.drugs.forEach((e) => e.draw());
     this.foods.forEach((e) => e.draw());
     this.discounts.forEach((e) => e.draw());
     this.geese.forEach((e) => e.draw());
     this.token.draw();
     this.lamps.forEach((e) => e.draw());
-    console.log(this.lampTick)
         if(this.lampTick >= 7640 ){
           // se reinicia cada 2 horas
           this.lamps.forEach((lamp) =>lamp.img.src = "/assets/images/elements/lampOfff.png")
@@ -579,7 +597,7 @@ class Game {
         this.bossPerjIs = false
       }
     }
-    if (this.score.total >= 50) {
+    if (machinegunBoost === true) {
       this.machinganTime--
         C = 67;
         V = 86;
@@ -593,6 +611,9 @@ class Game {
             this.machinganRestore = 600
             C = 67;
             V = 86;
+            this.alertingSound = new Audio("/assets/audios ad/reloadMachinegun.mp3");
+            this.alertingSound.volume = 0.05;
+            this.alertingSound.play()
           }
         }
     }
@@ -619,10 +640,10 @@ class Game {
 
       // this.machinganTimeLeft = parseInt(this.machinganTime/10)
       //   this.ctx.font = "21px Arial";
-      //   this.ctx.save();
-      //   this.ctx.fillStyle = "white";
-      //   this.ctx.fillText(`Special Weapons`, 1218, 680);
-      //   this.ctx.restore();
+        // this.ctx.save();
+        // this.ctx.fillStyle = "white";
+        // this.ctx.fillText(`Special Weapons`, 1218, 680);
+        // this.ctx.restore();
     // if (C === 67){
     //   this.machinganTimeLeft = parseInt(this.machinganTime/10)
     //     this.ctx.font = "15.5px Arial";
@@ -689,21 +710,6 @@ class Game {
     //   this.ctx.fillText(`Sandblaster: pending.. `, 1218, 741);
     //   this.ctx.restore();
     // } 
-    if (chargingTrue){
-      this.chargeTick++
-      if(this.chargeTick >= 50){
-        chargingTrue = false
-        this.chargeTick = 0
-      }
-      this.ctx.font = "16px Arial";
-      this.ctx.save();
-      this.ctx.fillStyle = "black";
-      this.ctx.fillText(`Blaster 20/${charging.toString()}`, this.player.x - 20, this.player.y + 70);
-      this.ctx.font = "16px Arial";
-      this.ctx.fillStyle = "white";
-      this.ctx.fillText(`Blaster 20/${charging.toString()}`, this.player.x - 19, this.player.y + 69);
-      this.ctx.restore();
-    }
     // if (R === 82){
     //   this.ctx.font = "18px Arial";
     //   this.ctx.save();
@@ -749,6 +755,147 @@ class Game {
     //   this.ctx.fillText(`No Hook ammo`, 1233, 803);
     //   this.ctx.restore();
     // }
+    
+    // levelup messages..levelup messages..levelup messages..levelup messages..levelup messages..
+    // levelup messages..levelup messages..levelup messages..levelup messages..levelup messages..
+      if(hookBoost || machinegunBoost || elementBoost){
+        this.ctx.save();
+        this.ctx.fillStyle = "white";
+        this.ctx.fillText(`Special Weapons`, 1218, 680);
+        this.ctx.font = "15px Arial";
+        if(hookBoost){this.ctx.drawImage( this.levelupHook, 1212, 695, 60 , 45 ) 
+          this.ctx.fillText(`G=>teleport to `, 1277, 715);
+          this.ctx.fillText(`hook position`, 1277, 735);
+          this.ctx.fillText(`3 hooks every 15 seconds`, 1212, 755);
+          ;}
+        if(machinegunBoost){this.ctx.drawImage( 
+          this.levelupMachinegun, 1210, 695, 60 , 45 );
+          this.ctx.fillText(`C=>fire-machine`, 1266, 715);
+          this.ctx.fillText(`V=>water-machine`, 1258, 735);
+        }
+        if(elementBoost){this.ctx.drawImage( 
+          this.levelupElement, 1218, 695, 45 , 45); 
+          this.ctx.fillText(`N=> Sandstorm +`, 1263, 715);
+          this.ctx.fillText(`elemental shield`, 1263, 735);
+        }
+        this.ctx.restore();
+      }
+    if(this.levelMessage1){
+      this.tick++
+      this.ctx.drawImage(
+        this.levelupHook, 140 - this.tick/4, 250 - this.tick/4, 80 + this.tick/2 , 60 + this.tick/2 
+      )
+      this.ctx.drawImage(
+        this.levelupImg1, 65, 65, 240, 160 
+      )
+        this.ctx.font = "25px Arial";
+        this.ctx.save();
+        this.ctx.fillStyle = "black";
+        this.ctx.fillText(`Upgrated HookGun!`, this.player.x - 105, this.player.y + 60);
+        this.ctx.fillText(`Upgrated HookGun!`, this.player.x - 106, this.player.y + 61);
+        this.ctx.font = "25px Arial";
+        this.ctx.fillStyle = "blue";
+        if(this.tick >= 20 && this.tick <= 39){
+          this.ctx.fillStyle = "rgb(100, 245, 100)"
+        } else if(this.tick >= 40 &&this.tick <= 59){
+          this.ctx.fillStyle = "rgb(75, 245, 75)"
+        } else if(this.tick >= 60 &&this.tick <= 89){
+          this.ctx.fillStyle = "rgb(0, 245, 0)"
+        }
+      this.ctx.fillText(`Upgrated HookGun!`, this.player.x - 104, this.player.y + 59);
+      this.ctx.restore();
+      if(this.tick >= 150){
+        this.levelMessage1 = false
+        this.tick = 0
+      }
+    }
+    if(this.levelMessage2){
+      this.tick++
+      this.ctx.drawImage(
+        this.levelupMachinegun, 440 - this.tick/4, 250 - this.tick/4, 100 + this.tick/2 , 70 + this.tick/2 
+      )
+      this.ctx.drawImage(
+        this.levelupImg2, 385, 65, 240, 160 
+      )
+        this.ctx.font = "25px Arial";
+        this.ctx.save();
+        this.ctx.fillStyle = "black";
+        this.ctx.fillText(`Machinegun ready!`, this.player.x - 105, this.player.y + 60);
+        this.ctx.fillText(`Machinegun ready!`, this.player.x - 106, this.player.y + 61);
+        this.ctx.font = "25px Arial";
+        this.ctx.fillStyle = "blue";
+        if(this.tick >= 20 && this.tick <= 39){
+          this.ctx.fillStyle = "rgb(100, 245, 100)"
+        } else if(this.tick >= 40 &&this.tick <= 59){
+          this.ctx.fillStyle = "rgb(75, 245, 75)"
+        } else if(this.tick >= 60 &&this.tick <= 89){
+          this.ctx.fillStyle = "rgb(0, 245, 0)"
+        }
+      this.ctx.fillText(`Machinegun ready!`, this.player.x - 104, this.player.y + 59);
+      this.ctx.restore();
+      if(this.tick >= 150){
+        this.levelMessage2 = false
+        this.tick = 0
+      }
+    }
+    if(this.levelMessage3){
+      this.tick++
+      this.ctx.drawImage(
+        this.levelupImg3, 705 , 65 , 240 , 160 
+      )
+      this.ctx.drawImage(
+        this.levelupElement, 780 - this.tick/4, 250 - this.tick/4, 80 + this.tick/2 , 80 + this.tick/2 
+      )
+      this.ctx.font = "25px Arial";
+      this.ctx.save();
+      this.ctx.fillStyle = "black";
+      this.ctx.fillText(`Elemental Shield On!`, this.player.x - 105 -this, this.player.y + 60);
+      this.ctx.fillText(`Elemental Shield On!`, this.player.x - 106, this.player.y + 61);
+      this.ctx.font = "25px Arial";
+      this.ctx.fillStyle = "rgb(200, 245, 200)";
+      if(this.tick >= 20 && this.tick <= 39){
+        this.ctx.fillStyle = "rgb(100, 245, 100)"
+      } else if(this.tick >= 40 &&this.tick <= 59){
+        this.ctx.fillStyle = "rgb(75, 245, 75)"
+      } else if(this.tick >= 60 &&this.tick <= 89){
+        this.ctx.fillStyle = "rgb(0, 245, 0)"
+      }
+      this.ctx.fillText(`Elemental Shield On!`, this.player.x - 104, this.player.y + 59);
+      this.ctx.restore();
+      if(this.tick >= 150){
+        this.levelMessage3 = false
+        this.tick = 0
+      }
+    }
+    // levelup messages..levelup messages..levelup messages..levelup messages..levelup messages..
+    // levelup messages..levelup messages..levelup messages..levelup messages..levelup messages..
+    if (chargingTrue){
+      this.chargeTick++
+      if(this.chargeTick >= 50){
+        chargingTrue = false
+        this.chargeTick = 0
+      }
+      if(charging !== 0){
+        this.ctx.font = "16px Arial";
+        this.ctx.save();
+        this.ctx.fillStyle = "white";
+        this.ctx.fillText(`Blaster 20/${charging.toString()}`, this.player.x - 20, this.player.y + 70);
+        this.ctx.font = "16px Arial";
+        this.ctx.fillStyle = "blue";
+        this.ctx.fillText(`Blaster 20/${charging.toString()}`, this.player.x - 19, this.player.y + 69);
+        this.ctx.restore();
+      }
+      if(charging === 0 ){
+        this.ctx.font = "16px Arial";
+        this.ctx.save();
+        this.ctx.fillStyle = "white";
+        this.ctx.fillText(`Megablaster Charged!`, this.player.x - 20, this.player.y + 70);
+        this.ctx.font = "16px Arial";
+        this.ctx.fillStyle = "blue";
+        this.ctx.fillText(`Megablaster Charged!`, this.player.x - 19, this.player.y + 69);
+        this.ctx.restore();
+      }
+    }
     if(this.puddles.length + this.fires.length >= 9){
       this.player.loseRespect()
     }
@@ -772,6 +919,39 @@ class Game {
       }
     this.score.draw();
     this.saved.draw();
+    if(hookBoost === true){
+      if(this.winTime % 1333 === 0){ //cada 20 segundos recarga 3 contadores de hook
+        hookCount +=3
+      }
+    }
+    if(leveler === true){
+      this.ctx.font = "20px Sans";
+      ctx.fillStyle = "black";
+      ctx.globalAlpha = 0.8
+      ctx.fillRect(1210, 210, 177, 130);
+      ctx.globalAlpha = 1
+      this.ctx.fillStyle = "white";
+      this.ctx.fillText(`Level Ups Boss`, 1258, 235);
+      this.ctx.font = "18px Sans";
+      this.ctx.fillText(`Choose one...`, 1270, 260);
+      this.ctx.fillText(`I'll improve your`, 1265, 278);
+      this.ctx.fillText(`weapon of choice soon`, 1220, 296);
+      this.ctx.drawImage(
+        this.helper2, 1220, 215, 40, 60
+      )
+      this.ctx.drawImage(
+        this.levelupImg1, 65, 65, 240, 160
+      )
+      this.ctx.drawImage(
+        this.levelupImg2, 385, 65, 240, 160
+      )
+      this.ctx.drawImage(
+        this.levelupImg3, 705, 65, 240, 160
+      )
+    this.levelUps1.draw();
+    this.levelUps2.draw();
+    this.levelUps3.draw();
+}
   }
   move() {
     this.player.move();
@@ -790,6 +970,7 @@ class Game {
     this.fires.forEach((e) => e.move());
     this.healing.move();
     this.carts.forEach((e) => e.move(this.player));
+    this.drugs.forEach((e) => e.move(this.player));
     this.foods.forEach((e) => e.move(this.player));
     this.upgrades.forEach((e) => e.move(this.player));
     this.upBullets.forEach((e) => e.move(this.player));
@@ -860,7 +1041,7 @@ class Game {
     const fire = new Fire(ctx);
     this.fires.push(fire);
     this.puddleBeginAudio = new Audio("/assets/audio/fireBegin.wav");
-    this.puddleBeginAudio.volume = 0.05;
+    this.puddleBeginAudio.volume = 0.02;
     this.puddleBeginAudio.play();
   }
   addCart() {
@@ -869,8 +1050,15 @@ class Game {
     this.luzOnAudio = new Audio("/assets/audios ad/cartLeft2.wav")
     this.luzOnAudio.volume = 0.07;
     this.luzOnAudio.play();
-
   }
+  addDrug() {
+    const drug = new Drugs(ctx);
+    this.drugs.push(drug);
+    this.luzOnAudio = new Audio("/assets/audios ad/cartLeft2.wav")
+    this.luzOnAudio.volume = 0.07;
+    this.luzOnAudio.play();
+  }
+  
   addFood() {
     const food = new Food(ctx);
     this.foods.push(food);
@@ -1012,14 +1200,41 @@ class Game {
     this.player.cooldownJump += 5
     this.perjudiceIs = true
   }
+  timeDamage(koren){
+    if (koren.x < this.player.x) {
+      koren.x -= 30;
+      koren.h += (6-extraLife)
+      koren.w += (6-extraLife)
+    }
+    if (koren.x > this.player.x) {
+      koren.x += 30;
+      koren.h += (6-extraLife)
+      koren.w += (6-extraLife)
+    }
+    if (koren.y < this.player.y) {
+      koren.y -= 30;
+      koren.h += (6-extraLife)
+      koren.w += (6-extraLife)
+    }
+    if (koren.y > this.player.y) {
+      koren.y += 30;
+      koren.h += (6-extraLife)
+      koren.w += (6-extraLife)
+    }
+  }
   //Colisiones start..Colisiones start..Colisiones start..Colisiones start..Colisiones start..Colisiones start..
   //Colisiones start..Colisiones start..Colisiones start..Colisiones start..Colisiones start..Colisiones start..
   checkCharger(){
-    charging+=1
-    chargingTrue = true
-    if(charging >= 20 && this.score.total >= 20){
+    if(M === 0){
+      charging+=1
+      chargingTrue = true
+      if(charging >= 20 && this.score.total >= 20){
         M = 77
         charging = 0
+        this.luzOnAudio = new Audio("/assets/audios ad/reloadBlaster.wav")
+        this.luzOnAudio.volume = 0.1;
+        this.luzOnAudio.play();
+      }
     }
   }
   checkCollisions() {
@@ -1406,6 +1621,7 @@ class Game {
     this.rats.forEach((rat) => { //rat con blaster
       this.player.blasters.filter((blast) => {
         if (blast.collides(rat)) {
+          blast.rocketDetonation = true
           rat.lifeleft -= 4;
           if(rat.lifeleft === 0){
             this.score.addkrat()
@@ -1518,6 +1734,7 @@ class Game {
     this.fats.forEach((fat) => { //fat con blasters
       this.player.blasters.filter((blast) => {
         if (blast.collides(fat)) {
+          blast.rocketDetonation = true
           fat.vy -= 0.05
           return false;
         } else return true;
@@ -1553,27 +1770,8 @@ class Game {
       this.player.heats = this.player.heats.filter((heat) => {
         if (heat.collides(koren)) {
           this.player.heats.splice(0, 1);
-          if (koren.x < this.player.x) {
-            koren.x -= 30;
-            koren.h += 5
-            koren.w += 5
-          }
-          if (koren.x > this.player.x) {
-            koren.x += 30;
-            koren.h += 5
-            koren.w += 5
-          }
-          if (koren.y < this.player.y) {
-            koren.y -= 30;
-            koren.h += 5
-            koren.w += 5
-          }
-          if (koren.y > this.player.y) {
-            koren.y += 30;
-            koren.h += 5
-            koren.w += 5
-          }
-        this.checkCharger()
+          this.timeDamage(koren)
+          this.checkCharger()
           if(koren.h >= 121 && !koren.truth){
             this.score.addkkorens()
             this.score.addktotal1()
@@ -1599,26 +1797,7 @@ class Game {
       this.player.waters = this.player.waters.filter((water) => {
         if (water.collides(koren)) {
           this.player.waters.splice(0, 1);
-          if (koren.x < this.player.x) {
-            koren.x -= 30;
-            koren.h += 5
-            koren.w += 5
-          }
-          if (koren.x > this.player.x) {
-            koren.x += 30;
-            koren.h += 5
-            koren.w += 5
-          }
-          if (koren.y < this.player.y) {
-            koren.y -= 30;
-            koren.h += 5
-            koren.w += 5
-          }
-          if (koren.y > this.player.y) {
-            koren.y += 30;
-            koren.h += 5
-            koren.w += 5
-          }
+          this.timeDamage(koren)
         this.checkCharger()
           if(koren.h >= 121 && !koren.truth){
             this.score.addkkorens()
@@ -1631,26 +1810,7 @@ class Game {
     this.korens.forEach((koren) => { //koren con sanders
       this.player.sanders.filter((sand) => {
         if (sand.collides(koren)) {
-          if (koren.x < this.player.x) {
-            koren.x -= 30;
-            koren.h += 5
-            koren.w += 5
-          }
-          if (koren.x > this.player.x) {
-            koren.x += 30;
-            koren.h += 5
-            koren.w += 5
-          }
-          if (koren.y < this.player.y) {
-            koren.y -= 30;
-            koren.h += 5
-            koren.w += 5
-          }
-          if (koren.y > this.player.y) {
-            koren.y += 30;
-            koren.h += 5
-            koren.w += 5
-          }
+          this.timeDamage(koren)
           charging+= 0.1
           if(charging >= 20 && this.score.total >= 20){
               M = 77
@@ -1667,26 +1827,8 @@ class Game {
     this.korens.forEach((koren) => { //koren con blasters
       this.player.blasters.filter((blast) => {
         if (blast.collides(koren)) {
-          if (koren.x < this.player.x) {
-            koren.x -= 30;
-            koren.h += 5
-            koren.w += 5
-          }
-          if (koren.x > this.player.x) {
-            koren.x += 30;
-            koren.h += 5
-            koren.w += 5
-          }
-          if (koren.y < this.player.y) {
-            koren.y -= 30;
-            koren.h += 5
-            koren.w += 5
-          }
-          if (koren.y > this.player.y) {
-            koren.y += 30;
-            koren.h += 5
-            koren.w += 5
-          }
+          blast.rocketDetonation = true
+          this.timeDamage(koren)
           charging+=0.1
           if(charging >= 20 && this.score.total >= 20){
               M = 77
@@ -1830,6 +1972,7 @@ class Game {
     this.geese.forEach((goose) => { // goose con blaster
       this.player.blasters.filter((blast) => {
         if (blast.collides(goose)) {
+          blast.rocketDetonation = true
           goose.lifeleft -= 3;
           if(goose.lifeleft === 0){
             this.score.addkgoose()
@@ -1842,7 +1985,7 @@ class Game {
     this.geese.forEach((goose) => { // goose con sanders
       this.player.sanders.filter((sand) => {
         if (sand.collides(goose)) {
-          goose.lifeleft -= 3;
+          goose.lifeleft -= 0.5;
           if(goose.lifeleft === 0){
             this.score.addkgoose()
             this.score.addktotal1()
@@ -1895,6 +2038,7 @@ class Game {
       this.player.blasters.filter((blast) => {
         if (blast.collides(baby)) {
           this.babys.splice(0,1)
+          this.player.loseRespect()
           this.dying()
           return false;
         } else return true;
@@ -2053,6 +2197,7 @@ class Game {
     this.customers.forEach((cus) => {//customer con blaster
       this.player.blasters.filter((blast) => {
         if (blast.collides(cus)) {
+          this.player.loseRespect()
           this.dyingCus()
           cus.lifeleft -=1
           if(cus.dead >= 50){
@@ -2304,10 +2449,10 @@ class Game {
         } else return true;
       });
     });
-
     this.bosss.forEach((boss) => {      //boss con blaster
       this.player.blasters.filter((blast) => {
         if (blast.collides(boss)) {
+            blast.rocketDetonation = true
             boss.lifeleft -= 0.2;
           if(boss.lifeleft <= 0.1){
             boss.y = 2000;
@@ -2345,17 +2490,47 @@ class Game {
     });
 // Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..
 // Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..
+this.pfront.forEach((peop) => {     //PFront con blaster
+  this.player.blasters.filter((blast) => {
+    if (blast.collides(peop)) {
+      this.player.loseRespect()
+      this.ctx.font = "20px Arial";
+      this.ctx.fillStyle = "red";
+      this.ctx.fillText(`Thanx!:`, peop.x, peop.y);
+      this.ctx.fillStyle = "red";
+      this.ctx.fillText(`Thanx!:`, peop.x-1, peop.y-1);
+      this.ctx.fillStyle = "black";
+      this.ctx.fillText(`Thanx!:`, peop.x+1, peop.y+1);
+      return false;
+    } else return true;
+  });
+});
+this.pback.forEach((peop) => { //PBack con blaster
+  this.player.blasters.filter((blast) => {
+    if (blast.collides(peop)) {
+      this.player.loseRespect()
+      this.ctx.font = "20px Arial";
+      this.ctx.fillStyle = "red";
+      this.ctx.fillText(`Ouch!!:`, peop.x, peop.y);
+      this.ctx.fillStyle = "red";
+      this.ctx.fillText(`Ouch!!:`, peop.x-1, peop.y-1);
+      this.ctx.fillStyle = "black";
+      this.ctx.fillText(`Ouch!!:`, peop.x+1, peop.y+1);
+      return false;
+    } else return true;
+  });
+});
 this.pfront.forEach((peop) => {     //PFront
   this.player.discountings.filter((disc) => {
     if (disc.collides(peop)) {
       this.player.getSmallestRespect()
       this.ctx.font = "20px Arial";
       this.ctx.fillStyle = "blue";
-      this.ctx.fillText(`Thanx!:`, peop.x, peop.y);
+      this.ctx.fillText(`Ouch!!:`, peop.x, peop.y);
       this.ctx.fillStyle = "blue";
-      this.ctx.fillText(`Thanx!:`, peop.x-1, peop.y-1);
+      this.ctx.fillText(`Ouch!!:`, peop.x-1, peop.y-1);
       this.ctx.fillStyle = "aqua";
-      this.ctx.fillText(`Thanx!:`, peop.x+1, peop.y+1);
+      this.ctx.fillText(`Ouch!!:`, peop.x+1, peop.y+1);
       return false;
     } else return true;
   });
@@ -2404,9 +2579,9 @@ this.pback.forEach((peop) => { //PBack
         this.player.vx = 0;
       }
     });
+  if(this.winTime >= 57500){ //esto abarca desde los hooks al jugador
     this.portals.forEach((port) => {//hook con portal hooktal
       this.player.hooks.filter((hook) => {
-            if(port.portalIs === true){
               if (hook.collides(port)) {
                 this.portals2.forEach((pro) => {
                   //horizontal impact
@@ -2443,14 +2618,13 @@ this.pback.forEach((peop) => { //PBack
                     hook.y = pro.y - 30;
                   }
                 })
-              }
+              
             return false;
         } else return true;
       });
     });
     this.portals2.forEach((port) => {//hook con portal
       this.player.hooks.filter((hook) => {
-        if(port.portalIs === true){
             if (hook.collides(port)) {
               this.portals.forEach((pro) => {
                 //horizontal impact
@@ -2486,39 +2660,33 @@ this.pback.forEach((peop) => { //PBack
                   hook.x = pro.x;
                   hook.y = pro.y - 30;
                 }
-                
               })
-            }
           return false;
         } else return true;
       });
     });
-
-    if(this.winTime >= 3){   //portal
-    this.portals.forEach((port) => {
-      if (port.collides(this.player)) {
-        this.portals2.forEach((pro) => {
-          if(pro.vx === -1){
-            this.player.x = pro.x + 40;
-            this.player.y = pro.y;
-          }
-          if(pro.vx === 1){
-            this.player.x = pro.x - 40;
-            this.player.y = pro.y;
-          }
-          if(pro.vy === -1){
-            this.player.x = pro.x;
-            this.player.y = pro.y + 40;
-          }
-          if(pro.vy === 1){
-            this.player.x = pro.x;
-            this.player.y = pro.y - 40;
-          }
-        })
-      }
-    });
-  }
-  if(this.winTime >= 3){  //portal
+  this.portals.forEach((port) => {
+    if (port.collides(this.player)) {
+      this.portals2.forEach((pro) => {
+        if(pro.vx === -1){
+          this.player.x = pro.x + 40;
+          this.player.y = pro.y;
+        }
+        if(pro.vx === 1){
+          this.player.x = pro.x - 40;
+          this.player.y = pro.y;
+        }
+        if(pro.vy === -1){
+          this.player.x = pro.x;
+          this.player.y = pro.y + 40;
+        }
+        if(pro.vy === 1){
+          this.player.x = pro.x;
+          this.player.y = pro.y - 40;
+        }
+      })
+    }
+  });
   this.portals2.forEach((port) => {
     if (port.collides(this.player)) {
       this.portals.forEach((pro) => {
@@ -2542,7 +2710,7 @@ this.pback.forEach((peop) => { //PBack
     }
   });
 }
-    this.pback.forEach((wall) => {
+  this.pback.forEach((wall) => {
       if (wall.collides(this.player)) {
         this.excla = new Image();
         this.excla.src = "/assets/images/elements/exclapep.png"
@@ -2594,10 +2762,13 @@ this.pback.forEach((peop) => { //PBack
 //carts...carts...carts...carts...carts...carts...carts...carts...carts...carts...carts...carts...
     this.carts = this.carts.filter((cart) => {
       if (cart.collides(this.player)) {
-        this.newShoes = new Audio("/assets/audios ad/shieldActivated.wav");
-        this.newShoes.volume = 0.05;
-        this.newShoes.play()
+        this.shielOn = new Audio("/assets/audios ad/shieldActivated.wav");
+        this.shielOn.volume = 0.05;
+        this.shielOn.play()
         hookCount+=3 + chance*2
+        this.atraer = new Audio("/assets/audios ad/bonus.mp3")
+        this.atraer.volume = 0.03;
+        this.atraer.play();
         if(this.score.total >= 35){
           T = 84
         }
@@ -2606,6 +2777,22 @@ this.pback.forEach((peop) => { //PBack
       }
       return true;
     });
+    
+    this.drugs = this.drugs.filter((drug) => {
+      if (drug.collides(this.player)) {
+        // this.shielOn = new Audio("/assets/audios ad/shieldActivated.wav");
+        // this.shielOn.volume = 0.05;
+        // this.shielOn.play()
+        // this.atraer = new Audio("/assets/audios ad/bonus.mp3")
+        // this.atraer.volume = 0.03;
+        // this.atraer.play();
+        this.player.extraBoostState = true
+        return false;
+      }
+      return true;
+    });
+
+
     this.carts.forEach((cart) => {//hook con carts
       this.player.hooks.filter((hook) => {
         if (hook.collides(cart)) {
@@ -2623,9 +2810,9 @@ this.pback.forEach((peop) => { //PBack
 // foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..
     this.foods = this.foods.filter((food) => {
       if (food.collides(this.player)) {
-        // this.newShoes = new Audio("/assets/audios ad/Faster running.mp3");
-        // this.newShoes.volume = 0.1;
-        // this.newShoes.play()
+        this.atraer = new Audio("/assets/audios ad/bonus.mp3")
+        this.atraer.volume = 0.03;
+        this.atraer.play();
         this.player.heal()
         return false;
       }
@@ -2653,6 +2840,9 @@ this.pback.forEach((peop) => { //PBack
         bulletDistanceExtra -= 50
         this.player.cooldownBullet -= 600;
         B = 66
+        this.atraer = new Audio("/assets/audios ad/bonus.mp3")
+        this.atraer.volume = 0.03;
+        this.atraer.play();
         this.upgradeIs = true
         if(this.upgrades.length === 0){
           const upAlert = document.getElementById("upgrade-alert");
@@ -2668,6 +2858,9 @@ this.pback.forEach((peop) => { //PBack
         bulletSize +=10
         bulletSizeExtra -=10
         B = 66
+        this.atraer = new Audio("/assets/audios ad/bonus.mp3")
+        this.atraer.volume = 0.03;
+        this.atraer.play();
         this.upBulletIs = true
         if(this.upBullets.length === 0){
           const upgAlert = document.getElementById("upBullet-alert");
@@ -2743,6 +2936,9 @@ this.pback.forEach((peop) => { //PBack
         this.line.b -= 0.5;
         this.line.a += 0.5;
         discounting += 5
+        this.atraer = new Audio("/assets/audios ad/bonus.mp3")
+        this.atraer.volume = 0.03;
+        this.atraer.play();
         return false;
       }
       return true;
@@ -2834,6 +3030,40 @@ this.pback.forEach((peop) => { //PBack
         } else return true;
       });
     });
+
+// levelups...levelups...levelups...levelups...levelups...levelups...levelups...levelups...levelups...
+// levelups...levelups...levelups...levelups...levelups...levelups...levelups...levelups...levelups...
+if(leveler === true){
+// levels
+    if (this.levelUps1.collides(this.player)) {
+      G = 71
+      hookCount += 5
+      hookBoost = true
+      this.levelupSound = new Audio("/assets/audios ad/levelupHookSound.mp3");
+      this.levelupSound.volume = 0.05;
+      this.levelupSound.play()
+      this.levelMessage1 = true
+      leveler = false
+    };
+    if (this.levelUps2.collides(this.player)) {
+      machinegunBoost = true
+      this.levelupSound = new Audio("/assets/audios ad/reloadMachinegun.mp3");
+      this.levelupSound.volume = 0.05;
+      this.levelupSound.play()
+      this.levelMessage2 = true
+      leveler = false
+    }
+    if (this.levelUps3.collides(this.player)) {
+      N = 78
+      elementBoost = true
+      this.levelupSound = new Audio("/assets/audios ad/levelupElementalSound.mp3");
+      this.levelupSound.volume = 0.05;
+      this.levelupSound.play()
+      this.levelMessage3 = true
+      leveler = false
+    }
+}
+  
 // collision end... collision end... collision end... collision end... collision end... collision end... collision end...
 // collision end... collision end... collision end... collision end... collision end... collision end... collision end...
 // collision end... collision end... collision end... collision end... collision end... collision end... collision end...

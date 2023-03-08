@@ -161,8 +161,8 @@
   opacity: 1;
   text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;
   box-shadow: inset 0 0 0.5em 0 var(--clr-neondir), 0 0 0.5em 0 var(--clr-neondir);
-  left: 250px;
-  top: 945px;
+  left: 247px;
+  top: 870px;
   transition: all ease-in-out 0.5s;
   z-index: 100;
   height: 72px;
@@ -218,7 +218,7 @@
   text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;
   box-shadow: inset 0 0 0.5em 0 var(--clr-neondir), 0 0 0.5em 0 var(--clr-neondir);
   left: 1450px;
-  top: 458px;
+  top: 385px;
   transition: all ease-in-out 0.5s;
   z-index: 100;
   height: 559px;

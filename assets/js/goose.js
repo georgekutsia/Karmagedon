@@ -13,7 +13,7 @@ class Goose {
     this.score = new Score()
     this.gooseImg.src = "/assets/images/elements/gansos.png";
     this.gooseImg.frame = 0;
-    this.lifeleft = 5;
+    this.lifeleft = 5 * extraLife;
     this.tick = 0;
     this.tock = 0;
     this.dead = 0;

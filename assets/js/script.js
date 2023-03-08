@@ -7,7 +7,7 @@ const game3 = new Game3(ctx)
 const game4 = new Game4(ctx)
 const game5 = new Game5(ctx)
 
-const infoDataAll = document.getElementById("display-all");
+// const infoDataAll = document.getElementById("display-all");
 const infoData = document.getElementById("display-info");
 const infoData1 = document.getElementById("display-info1");
 const infoData2 = document.getElementById("display-info2");
@@ -43,6 +43,21 @@ const zcustomer = document.getElementById("add-customer")
 const zfood = document.getElementById("add-food")
 const zupgrade = document.getElementById("add-upgrade")
 const zupbullet = document.getElementById("add-upbullet")
+const wornings = document.querySelector(".wornings-css")
+
+const buyButtons = document.getElementById("buy-buttons")
+const buyRockets = document.getElementById("buy-rockets")
+const buyMines = document.getElementById("buy-mines")
+const buyHooks = document.getElementById("buy-hooks")
+const buyDiscounts = document.getElementById("buy-discounts")
+const buyTimeShield = document.getElementById("buy-timeShield")
+
+const sellRockets = document.getElementById("sell-rockets")
+const sellMines = document.getElementById("sell-mines")
+const sellHooks = document.getElementById("sell-hooks")
+const sellDiscounts = document.getElementById("sell-discounts")
+const askFood = document.getElementById("ask-food")
+
 
 const allButtonsGone = [easy, normal, hard, superhard, info, manager, begin]
 
@@ -51,26 +66,112 @@ const in1 = document.getElementById("info1")
 const in2 = document.getElementById("info2")
 const in3 = document.getElementById("info3")
 const in4 = document.getElementById("info4")
-const infocheat = document.getElementById("info-cheatsheet")
 
 
-
-
-infoDataAll.addEventListener("click", function(){
-  if (infoDataAll.style.opacity === "0.5") {
-    infoDataAll.innerText = "Show All";
-    infoDataAll.style.opacity = "1"
-    infoData.style.opacity = "1"
-    infoData1.style.opacity = "1"
-    infoData2.style.opacity = "1"
-  } else {
-    infoDataAll.innerText = `Hide all`;
-    infoDataAll.style.opacity = "0.5"
-    infoData.style.opacity = "0.01"
-    infoData1.style.opacity = "0.01"
-    infoData2.style.opacity = "0.01"
+buyRockets.addEventListener("click", function(){
+  if(money >= 100){
+    money -= 100
+    rocketCount += 5
+    this.sandShootAudio = new Audio("/assets/audios ad/buy.wav")
+    this.sandShootAudio.volume = 0.4;
+    this.sandShootAudio.play();
   }
 })
+
+buyMines.addEventListener("click", function(){
+  if(money >= 50){
+    money -= 50
+    elementalMineCount += 1
+    this.sandShootAudio = new Audio("/assets/audios ad/buy.wav")
+    this.sandShootAudio.volume = 0.4;
+    this.sandShootAudio.play();
+  }
+})
+buyHooks.addEventListener("click", function(){
+  if(money >= 20){
+    money -= 20
+    hookCount += 1
+    this.sandShootAudio = new Audio("/assets/audios ad/buy.wav")
+    this.sandShootAudio.volume = 0.4;
+    this.sandShootAudio.play();
+  }
+})
+
+buyDiscounts.addEventListener("click", function(){
+  if(money >= 20){
+    money -= 20
+    discounting += 5
+    this.sandShootAudio = new Audio("/assets/audios ad/buy.wav")
+    this.sandShootAudio.volume = 0.4;
+    this.sandShootAudio.play();
+  }
+})
+buyTimeShield.addEventListener("click", function(){
+  if(money >= 250){
+  money -= 250
+  T = 84
+  this.sandShootAudio = new Audio("/assets/audios ad/buy.wav")
+  this.sandShootAudio.volume = 0.4;
+  this.sandShootAudio.play();
+  }
+})
+
+sellRockets.addEventListener("click", function(){
+  if(rocketCount >=5){
+    money += 50
+    rocketCount -= 5
+    this.sandShootAudio = new Audio("/assets/audios ad/sell.wav")
+    this.sandShootAudio.volume = 0.4;
+    this.sandShootAudio.play();
+  }
+})
+sellMines.addEventListener("click", function(){
+  if(elementalMineCount >=1){
+    money += 25
+    elementalMineCount -= 1
+    this.sandShootAudio = new Audio("/assets/audios ad/sell.wav")
+    this.sandShootAudio.volume = 0.4;
+    this.sandShootAudio.play();
+  }
+})
+sellHooks.addEventListener("click", function(){
+  if(hookCount >=1){
+    money += 10
+    hookCount -= 1
+    this.sandShootAudio = new Audio("/assets/audios ad/sell.wav")
+    this.sandShootAudio.volume = 0.4;
+    this.sandShootAudio.play();
+  }
+})
+sellDiscounts.addEventListener("click", function(){
+  if(discounting >=5){
+    money += 10
+    discounting -= 5
+    this.sandShootAudio = new Audio("/assets/audios ad/sell.wav")
+    this.sandShootAudio.volume = 0.4;
+    this.sandShootAudio.play();
+  }
+})
+
+
+askFood.addEventListener("click", function(){
+  game.addFood()
+})
+// infoDataAll.addEventListener("click", function(){
+//   if (infoDataAll.style.opacity === "0.5") {
+//     infoDataAll.innerText = "Show All";
+//     infoDataAll.style.opacity = "1"
+//     infoData.style.opacity = "1"
+//     infoData1.style.opacity = "1"
+//     infoData2.style.opacity = "1"
+//   } else {
+//     infoDataAll.innerText = `Hide all`;
+//     infoDataAll.style.opacity = "0.5"
+//     infoData.style.opacity = "0.01"
+//     infoData1.style.opacity = "0.01"
+//     infoData2.style.opacity = "0.01"
+//   }
+// })
 
 infoData.addEventListener("click", function(){
   if (infoData.style.opacity === "0.01") {
@@ -91,15 +192,15 @@ infoData1.addEventListener("click", function(){
     infoData1.style.opacity = "0.01"
   }
 })
-infoData2.addEventListener("click", function(){
-  if (infoData2.style.opacity === "0.01") {
-    infoData2.innerText = "Show Mall Status";
-    infoData2.style.opacity = "1"
-  } else {
-    infoData2.innerText = `Hide Mall Status`;
-    infoData2.style.opacity = "0.01"
-  }
-})
+// infoData2.addEventListener("click", function(){
+//   if (infoData2.style.opacity === "0.01") {
+//     infoData2.innerText = "Show Mall Status";
+//     infoData2.style.opacity = "1"
+//   } else {
+//     infoData2.innerText = `Hide Mall Status`;
+//     infoData2.style.opacity = "0.01"
+//   }
+// })
 
 //botón del juego
 btn.addEventListener("click", function () {
@@ -113,12 +214,13 @@ btn.addEventListener("click", function () {
     displ.style.display = "block"
     allButtonsGone.forEach((button) => button.style.display = "none")
     cheat.style.display = "inline-block"
+    wornings.style.display = "flex"
     restart.style.display = "flex"
     demo.style.display = "inline-block";
+    buyButtons.style.display = "block"
     infoData.style.display = "block"
     infoData1.style.display = "block"
     infoData2.style.display = "block"
-    infoDataAll.style.display = "block"
     this.musicStart = new Audio("/assets/audios ad/clic future.wav");
     this.musicStart.volume = 0.05;
     this.musicStart.play()
@@ -263,7 +365,7 @@ restart.addEventListener("click", function () {
       game.fires = []; game.puddles = [];
       game.bosss = []; game.geese = []; game.fats = [];
       game.rats = []; game.karens = []; game.discounts = [];
-      game.carts = []; game.babys = [];
+      game.carts = []; game.babys = []; game.korens = [];
             demo.innerText = "Add it->";
     } 
     zkaren.style.display = "inline-block"
@@ -378,10 +480,4 @@ hoverSoundButtons2.forEach((button) => button.addEventListener("mouseover", func
   this.musicStart.volume = 0.05;
   this.musicStart.play()
 }))
-
-// infocheat.addEventListener("mouseover", function(){
-//   this.musicStart = new Audio("/assets/audios ad/vibrsa.mp3");
-//   this.musicStart.volume = 0.1;
-//   this.musicStart.play()
-// })
 

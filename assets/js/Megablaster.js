@@ -11,10 +11,10 @@ class Megablaster {
     this.dispose = false;
     this.blasterImg = new Image();
     this.blasterImg.src = "/assets/images/munición/stormstorm.png";
-    this.blasterShootAudio = new Audio("/assets/audio/sandSound.mp3")
-    this.blasterImg.frame = 0;
-    this.blasterShootAudio.volume = 0.01;
+    this.blasterShootAudio = new Audio("/assets/audios ad/blasterStorm.wav")
+    this.blasterShootAudio.volume = 0.2;
     this.blasterShootAudio.play();
+    this.blasterImg.frame = 0;
     this.tick = 0;
     this.framer = 1
   }
@@ -60,6 +60,82 @@ class Megablaster {
     return colX && colY;
   }
 }
+class RocketLauncher {
+  constructor(ctx, x, y, player) {
+    this.ctx = ctx;
+    this.x = x;
+    this.y = y;
+    this.w = 40;
+    this.h = 40;
+    this.player = player;
+    this.vx = 0;
+    this.vy = 0;
+    this.dispose = false;
+    this.blasterImg = new Image();
+    this.blasterImg.src = "/assets/images/munición/roquetRight.png";
+    this.sandShootAudio = new Audio("/assets/audios ad/rocketLaunchSound0.mp3")
+    this.sandShootAudio.volume = 0.06;
+    this.sandShootAudio.play();
+    this.blasterImg.frame = 0;
+    this.tick = 0;
+    this.tock = 0;
+    this.teck = 0;
+    this.framer = 6
+    this.rocketDetonation = false
+  }
+  draw() {
+    this.ctx.drawImage(
+      this.blasterImg,
+      0,
+      (this.blasterImg.frame * this.blasterImg.height) / this.framer,
+      this.blasterImg.width,
+      this.blasterImg.height / this.framer, 
+      this.x, 
+      this.y, 
+      this.w,
+      this.h
+    );
+  }
+  move() {
+    this.x += this.vx - 0.1;
+    this.y += this.vy - 0.1;
+    this.tick++
+    this.tock++
+      if (this.tick > 3) {
+        this.tick = 0;
+        this.blasterImg.frame++;
+      }
+      if (this.blasterImg.frame > this.framer - 1) {
+        this.blasterImg.frame = 0;
+      }
+      if(this.tock >= 100){
+        this.rocketDetonation = true
+      }
+      if(this.rocketDetonation === true){
+        this.vx = 0;
+        this.vy = 0;
+        this.x= this.x-1
+        this.y= this.y-1
+        this.h = 120;
+        this.w = 120;
+        this.blasterImg.src = "/assets/images/munición/roquetExplosion.png";
+        this.teck++
+        if(this.teck >= 22){
+          this.dispose = true
+          this.tock = 0
+          this.teck = 0
+        }
+      }
+  }
+  isVisible() {
+    return !this.dispose;
+  }
+  collides(puddle) {
+    const colX = this.x <= puddle.x + puddle.w && this.x + this.w > puddle.x;
+    const colY = this.y + this.h > puddle.y && this.y < puddle.y + puddle.h;
+    return colX && colY;
+  }
+}
 class Discounting {
   constructor(ctx, x, y, player) {
     this.ctx = ctx;
@@ -74,7 +150,7 @@ class Discounting {
     this.discountImg = new Image();
     this.discountImg.src = "/assets/images/munición/discounting1.png";
     this.atraer = new Audio("/assets/audios ad/discountSound1.wav")
-    this.atraer.volume = 0.01;
+    this.atraer.volume = 0.003;
     this.atraer.play();
   }
   draw() {
@@ -155,6 +231,141 @@ class Sandstorm {
     return colX && colY;
   }
 }
+class ElementShield {
+  constructor(ctx, x, y, player) {
+    this.ctx = ctx;
+    this.x = x;
+    this.y = y;
+    this.w = 90;
+    this.h = 90;
+    this.player = player;
+    this.vx = 0;
+    this.vy = 0;
+    this.tick = 0
+    this.tock = 0
+    this.tuck = 0
+    this.dispose = false;
+    this.eleImg = new Image();
+    this.eleImg.frame = 0;
+    this.eleImg.src = "/assets/images/munición/stormstorm.png";
+    this.eleAudio = new Audio("/assets/audio/sandSound.mp3")
+    this.eleAudio.volume = 0.01;
+    this.eleAudio.play();
+  }
+  draw() {
+    this.ctx.drawImage(
+        this.eleImg,
+        0,
+        (this.eleImg.frame * this.eleImg.height) / 12,
+        this.eleImg.width,
+        this.eleImg.height / 12,
+        this.x,
+        this.y,
+        this.w,
+        this.h
+      );
+  }
+  move() {
+    this.tick++;
+    this.tock++
+    this.x = this.player.x - 25;
+    this.y = this.player.y - 25;
+    if (this.tick > 4) {
+      this.tick = 0;
+      this.eleImg.frame++;
+    }
+    if (this.eleImg.frame > 11) {
+      this.eleImg.frame = 0;
+    }
+    if (this.tock >= 500 + afterSize * 4){
+      this.dispose = true
+    }
+  }
+  isVisible() {
+    return !this.dispose;
+  }
+  collides(puddle) {
+    const colX = this.x <= puddle.x + puddle.w && this.x + this.w > puddle.x;
+    const colY = this.y + this.h > puddle.y && this.y < puddle.y + puddle.h;
+    return colX && colY;
+  }
+}
+class ElementBomb{
+  constructor(ctx, x, y, player) {
+    this.ctx = ctx;
+    this.x = x;
+    this.y = y;
+    this.w = 50;
+    this.h = 50;
+    this.player = player;
+    this.vx = 0;
+    this.vy = 0;
+    this.tick = 0
+    this.tock = 0
+    this.tuck = 0
+    this.dispose = false;
+    this.eleImg = new Image();
+    this.eleImg.frame = 0;
+    this.eleImg.src = "/assets/images/munición/stormstorm.png";
+    this.eleAudio = new Audio("/assets/audio/sandSound.mp3")
+    this.eleAudio.volume = 0.01;
+    this.eleAudio.play();
+  }
+  draw() {
+    this.ctx.drawImage(
+        this.eleImg,
+        0,
+        (this.eleImg.frame * this.eleImg.height) / 12,
+        this.eleImg.width,
+        this.eleImg.height / 12,
+        this.x,
+        this.y,
+        this.w,
+        this.h
+      );
+  }
+  move() {
+    this.tick++;
+    this.tock++
+    this.x += 0.05;
+    this.y += 0.05;
+    this.h -= 0.2
+    this.w -= 0.2
+    if (this.tick > 0.01) {
+      this.tick = 0;
+      this.eleImg.frame++;
+    }
+    if (this.eleImg.frame > 11) {
+      this.eleImg.frame = 0;
+    }
+    if(this.tock >=220){
+      this.x -= 5;
+      this.y -= 5;
+      this.h += 12
+      this.w += 12
+    }
+    if (this.tock >= 240){
+      this.dispose = true
+    }
+  }
+  isVisible() {
+    return !this.dispose;
+  }
+  mineBomber() {
+    const elem = new ElementBomb (
+      this.ctx,
+      this.x,
+      this.y,
+      this
+    );
+  }
+  collides(puddle) {
+    const colX = this.x <= puddle.x + puddle.w && this.x + this.w > puddle.x;
+    const colY = this.y + this.h > puddle.y && this.y < puddle.y + puddle.h;
+    return colX && colY;
+  }
+}
+
 class Airshield {
   constructor(ctx, x, y, airAlterImg, player) {
     this.ctx = ctx;

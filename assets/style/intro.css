@@ -25,21 +25,21 @@
   color: white;
   position: absolute;
   display: none;
-  margin-top: 30px;
+  margin-top: 2.8vw;
   font-size: calc(14px + 0.5vw);
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  opacity: 0.1;
-  left: 20px;
-  width: 210px;
+  opacity: 0.01;
+  left: 1vw;
+  width: 220px;
   height: 650px;
-  border-radius: 30px;
+  border-radius: 10px;
   z-index: 90;
   padding: 10px;
   font-weight: 900;
   text-shadow: 1px 1px rgb(117, 117, 117);
   animation: gradient 40s ease infinite;
   transition: all ease-in-out 0.5s;
-  transition-delay: 3s;
+  transition-delay: 1s;
   margin-bottom: 0px;
 }
 #info-cheatsheet:hover {

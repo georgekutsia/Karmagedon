@@ -6,10 +6,10 @@ class Rats {
     this.y = this.salidas[Math.floor(Math.random()*this.salidas.length)]
     this.w = 0.1 * this.ctx.canvas.width;
     this.h = 0.05 * this.ctx.canvas.height;
-    this.vx = -2;
+    this.vx = -2 - extraLife/2;
     this.vy = 0;
     this.dead = 0;
-    this.lifeleft = 5;
+    this.lifeleft = 5 + extraLife/2;
     this.ratImg = new Image();
     this.ratImg.src = "/assets/images/elements/rats.png";
     this.ratImg.frame = 0;
@@ -18,6 +18,7 @@ class Rats {
     this.cageImg = new Image();
     this.cageImg.src = "/assets/images/munición/cage.png"
     this.cage = false
+    console.log(this.vx)
   }
 
   draw() {

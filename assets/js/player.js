@@ -1,11 +1,13 @@
 class Player {
-  constructor(ctx) {
+  constructor(ctx, position) {
     this.ctx = ctx;
     this.x = 999;
     this.y = 280;
     this.w = 35;
     this.h = 35;
+    this.position = position
     this.extraBoost = 0
+    this.extraBoostState = false
     this.booster = 0
     this.boost = 4
     this.vx = 0;
@@ -26,14 +28,24 @@ class Player {
     this.imgE.src = "/assets/images/elements/dodgee.png"
     this.imgHookGun = new Image()
     this.imgHookGun.src = "/assets/images/munición/hookGun.png"
+    this.imgRocket = new Image()
+    this.imgRocket.src = "/assets/images/munición/rocketImg.png"
     this.discountGun = new Image()
     this.discountGun.src = "/assets/images/munición/discountGun1.png"
+    this.mineImg = new Image()
+    this.mineImg.src = "/assets/images/munición/elementUpgrade.png"
     this.shieldAura = new Image()
     this.shieldAura.src = "/assets/images/munición/au.png"
+    this.bullsEye = new Image()
+    this.bullsEye.src = "/assets/images/elements/bullsEye.png"
     this.machinegun = new Image();
     this.machinegun.src =  "/assets/images/munición/machinegunSpin.png";
     this.machinegun.frame = 0;
     this.machinegunTick = 0
+    this.elementalImg = new Image();
+    this.elementalImg.src = "/assets/images/munición/stormstorm1.png"
+    this.elementalImg.frame = 0;
+    this.elementalImgTick = 0
     this.ctx.font = "20px Arial";
     this.img.frame = 0;
     this.tick = 0;
@@ -62,9 +74,9 @@ class Player {
     this.sandstate = false
     this.sandAlterImg = ""
   }
-  
   draw() {
     formsCheck();
+    this.rocketCountDiv =  rocketCount/5 
     this.ctx.drawImage(
       this.img,
       0,
@@ -76,7 +88,6 @@ class Player {
       this.w,
       this.h 
       );
-
       // console.log("x",this.x)
       // console.log("y",this.y)
       if(C === 67){
@@ -118,13 +129,13 @@ class Player {
             0,
             this.machinegun.width / 5, 
             this.machinegun.height, 
-            this.x + 3,  
-            this.y + 32,  
-            this.w -10, 
-            this.h -10
+            this.x -2,  
+            this.y + 29,  
+            this.w , 
+            this.h 
             );
             this.machinegunTick++
-            if (this.machinegunTick > 1) {
+            if (this.machinegunTick > 4) {
               this.machinegunTick = 0;
               this.machinegun.frame++;
             }
@@ -132,7 +143,6 @@ class Player {
               this.machinegun.frame = 0;
             }
           }
-
       if(T === 84){
         ctx.globalAlpha = 0.8
         this.ctx.drawImage(
@@ -159,12 +169,12 @@ class Player {
     }
     if(Q === 81){
       this.ctx.drawImage(
-        this.imgQ, this.x - 5, this.y - 20, this.w -25, this.h - 15 
+        this.imgQ, this.x - 5, this.y - 15, this.w -25, this.h - 18 
       )
     }
     if(E === 69){
       this.ctx.drawImage(
-        this.imgE, this.x + 31, this.y - 20, this.w -25, this.h - 15 
+        this.imgE, this.x + 31, this.y - 15, this.w -25, this.h - 18 
       )
     }
     if(Z === 90){
@@ -190,6 +200,19 @@ class Player {
       this.ctx.font = "15px Arial";
       this.order = this.ctx.fillText(`x${hookCount.toString()}`, this.x + 43, this.y + 42);
     }
+    if(rocketCount>0){
+      this.ctx.drawImage(
+        this.imgRocket, this.x + 19, this.y + 51, this.w - 10, this.h - 15
+      )
+      ctx.fillStyle = "rgb(251, 209, 209)";
+      this.ctx.fillStyle = "aqua";
+      this.ctx.font = "17px Arial";
+      this.order = this.ctx.fillText(`${this.rocketCountDiv.toString()}`, this.x + 48, this.y + 70);
+      this.order = this.ctx.fillText(`${this.rocketCountDiv.toString()}`, this.x + 50, this.y + 70);
+      this.ctx.fillStyle = "black";
+      this.ctx.font = "15px Arial";
+      this.order = this.ctx.fillText(`x${this.rocketCountDiv.toString()}`, this.x + 43, this.y + 70);
+    }
     if(discounting > 0){
       this.ctx.drawImage(
         this.discountGun, this.x - 40, this.y + 15, this.w + 10, this.h
@@ -203,14 +226,51 @@ class Player {
         this.order = this.ctx.fillText(`x${discounting.toString()/5}`, this.x - 25, this.y + 40);
       }
     }
-
+    if(elementalMineCount > 0){
+      this.ctx.drawImage(
+        this.mineImg, this.x - 30, this.y + 45, this.w + 10, this.h
+      )
+      ctx.fillStyle = "rgb(251, 209, 209)";
+      this.ctx.fillStyle = "white";
+      this.ctx.font = "15px Arial";
+      if(elementalMineCount >=10){
+        this.order = this.ctx.fillText(`x${elementalMineCount.toString()}`, this.x - 20, this.y + 71);
+        this.order = this.ctx.fillText(`x${elementalMineCount.toString()}`, this.x - 18, this.y + 70);
+        this.ctx.fillStyle = "black";
+        this.order = this.ctx.fillText(`x${elementalMineCount.toString()}`, this.x - 19, this.y + 70);
+      } else {
+        this.order = this.ctx.fillText(`x${elementalMineCount.toString()}`, this.x - 16, this.y + 71);
+        this.order = this.ctx.fillText(`x${elementalMineCount.toString()}`, this.x - 14, this.y + 70);
+        this.ctx.fillStyle = "black";
+        this.order = this.ctx.fillText(`x${elementalMineCount.toString()}`, this.x - 15, this.y + 70);
+      }
+    }
     if(N === 78){
       this.ctx.drawImage(
         this.imgSand, this.x + 10, this.y + 38, this.w - 22, this.h - 22
       )
-
+      if(elementBoost ){
+        this.ctx.drawImage(
+          this.elementalImg,
+          (this.elementalImg.frame * this.elementalImg.width) / 12,
+          0,
+          this.elementalImg.width / 12, 
+          this.elementalImg.height, 
+          this.x + 4,  
+          this.y + 34,  
+          this.w -10, 
+          this.h -10
+          );
+          this.elementalImgTick++
+          if (this.elementalImgTick > 1) {
+            this.elementalImgTick = 0;
+            this.elementalImg.frame++;
+          }
+          if (this.elementalImg.frame > 11) {
+            this.elementalImg.frame = 0;
+          }
+      }
     }
-
     this.heats.forEach((heat) => heat.draw());
     this.hooks.forEach((hook) => hook.draw());
     this.sanders.forEach((sand) => sand.draw());
@@ -226,6 +286,14 @@ class Player {
     this.ctx.fillStyle = "lightsalmon";
   }
   move() {
+    if(this.extraBoostState === true){
+      this.extraBoost = 5
+      setTimeout(function () {
+        this.extraBoostState = false
+        this.extraBoost = 0
+        console.log()
+      }, 2000);
+    }
     this.x += this.vx;
     this.y += this.vy;
     this.tick++;
@@ -260,33 +328,32 @@ class Player {
       this.x = 0;
       this.vx = 0;
     }
+    if(this.direction === "right")
+      this.ctx.drawImage(
+        this.bullsEye, this.x + 460, this.y, this.w, this.h 
+        )
+    if(this.direction === "left")
+    this.ctx.drawImage(
+      this.bullsEye, this.x - 460, this.y, this.w, this.h 
+    )
+    if(this.direction === "top")
+    this.ctx.drawImage(
+      this.bullsEye, this.x , this.y - 460, this.w, this.h 
+    )
+    if(this.direction === "down")
+    this.ctx.drawImage(
+      this.bullsEye, this.x , this.y + 460, this.w, this.h 
+    )
+
     // LIMITES DEL CANVAS <=//
-    this.blasters.forEach((blaster) => {
-      blaster.move();
-    });
-    this.heats.forEach((heat) => {
-      heat.move();
-    });
-    this.hooks.forEach((hook) => {
-      hook.move();
-    });
-    this.sanders.forEach((sand) => {
-      sand.move();
-    });
-    this.toxics.forEach((tox) => {
-      tox.move();
-    });
-    this.discountings.forEach((discount) => {
-      discount.move();
-    });
-    this.waters.forEach((water) => {
-      water.move();
-    });
-    this.auras.forEach((aura) => {
-      aura.move();
-      this.healslow()
-      this.hefa() //this.hefa() is not a function
-    });
+    this.blasters.forEach((blaster) => {blaster.move();});
+    this.heats.forEach((heat) => {heat.move();});
+    this.hooks.forEach((hook) => {hook.move();});
+    this.sanders.forEach((sand) => {sand.move();});
+    this.toxics.forEach((tox) => {tox.move();});
+    this.discountings.forEach((discount) => {discount.move();});
+    this.waters.forEach((water) => {water.move();});
+    this.auras.forEach((aura) => {aura.move(); this.healslow();this.hefa()});
   }
 
   loseRespect(){
@@ -439,6 +506,7 @@ class Player {
         this.imgJump.src = "/assets/images/jumps/jumpleft5.png"
       }
     }
+
     if (key === C) {
       this.tick++
       this.tock ++
@@ -469,9 +537,15 @@ class Player {
     if (key === DOWN || key === S) {this.vy = 0;}
     if (key === RIGHT || key === D) {this.vx = 0;}
     if (key === LEFT || key === A) {this.vx = 0;}
+
     if (key === M) {
       this.megablaster();
       M = 0
+    }
+  console.log(rocketCount)
+    if (key === F && rocketCount >= 1) {
+      this.rocketer();
+      rocketCount -= 1
     }
     if (key === R) {
       this.discounting();
@@ -494,11 +568,25 @@ class Player {
       T = 0;
     }
     if (key === N) {
+      if(elementBoost){
+        this.elementShield()
+      }
       this.sander();
         N = 0;
         setTimeout(function () {
         N = 78;
       }, 20000);
+    }
+    if (key === J && !elementBoost && elementalMineCount >= 1) {
+      this.elementBomb()
+      this.sandShootAudio = new Audio("/assets/audios ad/elementalBombSound.wav")
+      this.sandShootAudio.volume = 0.4;
+      this.sandShootAudio.play();
+      elementalMineCount -= 1
+        J = 0;
+        setTimeout(function () {
+        J = 74;
+      }, 200);
     }
     if (key === X) {
       this.waterer();
@@ -509,15 +597,19 @@ class Player {
         X = 88;
       }, this.cooldownBullet);
     }
-    if (key === B) {
-      if(hookCount >= 1){
+    if (key === B && hookCount >=1) {
         this.hooker();
-          B = 0;
+        B = 0;
         hookCount -= 1
         setTimeout(function () {
           B = 66;
-        }, this.cooldownBullet/3);
-      }
+          this.alertingSound = new Audio("/assets/audios ad/reload.mp3");
+          this.alertingSound.volume = 0.05;
+          this.alertingSound.play()
+          }, this.cooldownBullet);
+    }
+    if (key === G) {
+      hookTransporter = true
     }
     if (key === ALT) {
       if(Z == 0, X == 0, N == 0, Q == 0, E == 0 && this.life.total <=3){
@@ -550,6 +642,7 @@ class Player {
         E = 69;
       }, this.cooldownJump + 1000);
     }
+    // cheat cheat
     if( Z == 0 && X == 0){
       Y = 89
       if(key === Y){
@@ -564,7 +657,6 @@ class Player {
         discounting += 50
         M = 77
         P = 80
-        // this.score.addTotalScore()
       }
       if(key === Y){
         if(I = 73){
@@ -572,8 +664,9 @@ class Player {
           this.respect.total -= 0.2
         }
       }
-
+      // cheat cheat
   }
+
   aurar() {
     const aura = new Aura(
       this.ctx,
@@ -608,7 +701,6 @@ class Player {
     );
     discount.vx = 2
     discount.vy = -2
-
     this.discountings.push(discount);
   }
   discounting2() {
@@ -620,7 +712,6 @@ class Player {
     );
     discount.vx = -2
     discount.vy = 2
-
     this.discountings.push(discount);
   }
   discounting3() {
@@ -715,6 +806,75 @@ class Player {
       blaster.blasterImg.src = "/assets/images/munición/stormstorm1.png";
     this.blasters.push(blaster);
     }
+  rocketer() {
+    const blaster = new RocketLauncher(
+      this.ctx,
+      this.x + 8,
+      this.y + 8,
+      this
+    );
+    if (this.direction === "right") {
+      blaster.vx += 1;
+      blaster.vy = 0;
+      blaster.h = 25;
+      setTimeout(function(){
+        blaster.vx += 10
+        this.sandShootAudio = new Audio("/assets/audios ad/rocketExplosionSound.mp3")
+        this.sandShootAudio.volume = 0.06;
+        this.sandShootAudio.play();
+        blaster.blasterImg.src = "/assets/images/munición/roquetRightFast.png";
+      }, 1000)
+      blaster.blasterImg.src = "/assets/images/munición/roquetRight.png";
+      this.img.src = "/assets/images/PJ/imright.png";
+      this.img.frame++;
+    }
+    if (this.direction === "left") {
+      blaster.vx -= 1;
+      blaster.vy = 0;
+      blaster.h = 25;
+      setTimeout(function(){
+        blaster.vx -= 10
+        this.sandShootAudio = new Audio("/assets/audios ad/rocketExplosionSound.mp3")
+        this.sandShootAudio.volume = 0.06;
+        this.sandShootAudio.play();
+        blaster.blasterImg.src = "/assets/images/munición/roquetLeftFast.png";
+      }, 1000)
+      blaster.blasterImg.src = "/assets/images/munición/roquetLeft.png";
+      this.img.src = "/assets/images/PJ/imleft.png";
+      this.img.frame++;
+    }
+    if (this.direction === "top") {
+      blaster.vx = 0;
+      blaster.vy -= 1;
+      blaster.w = 20
+      setTimeout(function(){
+        blaster.vy -= 10
+        this.sandShootAudio = new Audio("/assets/audios ad/rocketExplosionSound.mp3")
+        this.sandShootAudio.volume = 0.06;
+        this.sandShootAudio.play();
+        blaster.blasterImg.src = "/assets/images/munición/roquetUpFast.png";
+      }, 1000)
+      blaster.blasterImg.src = "/assets/images/munición/roquetUp.png";
+      this.img.src = "/assets/images/PJ/imup.png";
+      this.img.frame++;
+    }
+    if (this.direction === "down") {
+      blaster.vx = 0;
+      blaster.vy += 1;
+      blaster.w = 20
+      setTimeout(function(){
+        blaster.vy += 10
+        this.sandShootAudio = new Audio("/assets/audios ad/rocketExplosionSound.mp3")
+        this.sandShootAudio.volume = 0.06;
+        this.sandShootAudio.play();
+        blaster.blasterImg.src = "/assets/images/munición/roquetDownFast.png";
+      }, 1000)
+      blaster.blasterImg.src = "/assets/images/munición/roquetDown.png";
+      this.img.src = "/assets/images/PJ/imdown.png";
+      this.img.frame++;
+    }
+    this.blasters.push(blaster);
+  }
   megablaster() {
     const blaster = new Megablaster(
       this.ctx,
@@ -781,7 +941,7 @@ class Player {
     this.blasters.push(blaster);
   }
   sander() {
-    const sand = new Sandstorm(
+    const sand = new Sandstorm (
       this.ctx,
       this.x + 8,
       this.y + 8,
@@ -789,6 +949,24 @@ class Player {
       this
     );
     this.sanders.push(sand);
+  }
+  elementShield() {
+    const elem = new ElementShield (
+      this.ctx,
+      this.x,
+      this.y,
+      this
+    );
+    this.sanders.push(elem);
+  }
+  elementBomb() {
+    const elem = new ElementBomb (
+      this.ctx,
+      this.x,
+      this.y,
+      this
+    );
+    this.sanders.push(elem);
   }
 
   toxicar(){
@@ -804,8 +982,8 @@ class Player {
   hooker() {
     const hook = new Hook(
       this.ctx,
-      this.x + 10,
-      this.y + 10,
+      this.x + 5,
+      this.y + 5,
       this
     );
     if (this.direction === "right") {

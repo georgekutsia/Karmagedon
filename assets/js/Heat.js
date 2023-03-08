@@ -118,13 +118,18 @@ class Hook {
   move() {
     this.x += this.vx;
     this.y += this.vy;
-
     if (
-      this.x >= this.player.x + bulletDistance * 20|| 
-      this.y >= this.player.y + bulletDistance * 20||
-      this.x <= this.player.x - bulletDistance * 20|| 
-      this.y <= this.player.y - bulletDistance * 20
+      this.x >= this.player.x + bulletDistance * 10|| 
+      this.y >= this.player.y + bulletDistance * 10||
+      this.x <= this.player.x - bulletDistance * 10|| 
+      this.y <= this.player.y - bulletDistance * 10
     ){
+      this.dispose = true
+    }
+    if(hookTransporter === true){
+      this.player.x = this.x
+      this.player.y = this.y
+      hookTransporter = false
       this.dispose = true
     }
     if (this.tick > 2) {
@@ -138,9 +143,9 @@ class Hook {
   isVisible() {
     return !this.dispose;
   }
-  collides(puddle) {
-    const colX = this.x <= puddle.x + puddle.w && this.x + this.w > puddle.x;
-    const colY = this.y + this.h > puddle.y && this.y < puddle.y + puddle.h;
+  collides(something) {
+    const colX = this.x <= something.x + something.w && this.x + this.w > something.x;
+    const colY = this.y + this.h > something.y && this.y < something.y + something.h;
     return colX && colY;
   }
 }

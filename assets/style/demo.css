@@ -21,12 +21,9 @@
     margin-left: 10px;
     margin-top: 920px
 }
-.wornings-css{
-    text-align: left;
-    display: flex;
-    height: 80px;
-    width: 1190px;
-    font-family: 'Times New Roman', Times, serif;
+
+#status{
+    text-align: center;
 }
 #add-karen{
     display: none;
@@ -126,7 +123,7 @@
 	}
     100%{
         width: 6vw;
-
+color: rgb(75, 245, 75);
     }
 }
 @keyframes movingSound {

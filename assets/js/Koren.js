@@ -11,7 +11,7 @@ class Koren {
     this.y = this.xy.y;
     this.w = 0.04 * this.ctx.canvas.width;
     this.h = 0.07 * this.ctx.canvas.height;
-    this.v = 0.3;
+    this.v = 0.3 ;
     this.vNegative = 0.9 
     this.ks1 = new Audio("/assets/audio/korens/koren1.m4a");
     this.ks1.volume = 0.1;
@@ -150,7 +150,7 @@ class Koren {
       this.say = "F THIS, I'm leaving backwords"
       this.cage = false
     }
-    if(this.huckSound === true && this.h>=121 || this.huckSound === true && this.korenEnd >= 1000){
+    if(this.huckSound === true && this.h>=121 || this.huckSound === true && this.korenEnd >= 1400){
       this.huckYou = new Audio("/assets/audio/korens/huckYou.m4a");
       this.huckYou.volume = 0.1;
       this.huckYou.play();

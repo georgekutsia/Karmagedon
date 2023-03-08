@@ -14,7 +14,7 @@ class Aura {
     this.auraImg = new Image();
     this.auraImg.src = "/assets/images/munición/powerUp1.png";
     this.auraShootAudio = new Audio("/assets/audio/watchslow.mp3")
-    this.auraShootAudio.volume = 0.02;
+    this.auraShootAudio.volume = 0.1;
     this.auraShootAudio.play();
   }
 

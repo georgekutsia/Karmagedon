@@ -10,7 +10,7 @@ class Score {
     this.kboss = 0;
     this.kkarens = 0;
     this.kkorens = 0;
-    this.total = 53;
+    this.total = 77;
   }
   
   draw() {
@@ -80,7 +80,16 @@ class Score {
     this.ctx.fillStyle = "white";
     this.order = this.ctx.fillText(`Luck lvl: ${chance.toString()}`, 970, 840);
     this.order = this.ctx.fillText(`Public Image: ${this.pImageCount.toString()}`, 970, 860);
+
+    this.ctx.font = "23px Arial";
+    this.ctx.fillStyle = "aqua";
+    this.ctx.fillText(`money `, 1214, 395);
+    this.ctx.fillStyle = "aqua";
+    this.ctx.fillText(`money `, 1216, 397);
+    this.ctx.fillStyle = "white";
+    this.ctx.fillText(`money ${money}$`, 1215, 396);
   }
+  
   // addTotalScore(){
   //   this.total += 50
   // }
