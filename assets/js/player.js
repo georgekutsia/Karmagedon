@@ -1,13 +1,14 @@
 class Player {
   constructor(ctx, position) {
     this.ctx = ctx;
-    this.x = 999;
-    this.y = 280;
+    this.x = 499;
+    this.y = 400;
     this.w = 35;
     this.h = 35;
     this.position = position
     this.extraBoost = 0
     this.extraBoostState = false
+    this.boostTick = 0
     this.booster = 0
     this.boost = 4
     this.vx = 0;
@@ -64,6 +65,7 @@ class Player {
     this.sanders = [];
     this.toxics = [];
     this.discountings = []
+    this.shotguns = []
     this.direction = "left";
     this.speed = 4;
     this.cooldownBullet = 3000;
@@ -73,6 +75,7 @@ class Player {
     this.toxicity = false
     this.sandstate = false
     this.sandAlterImg = ""
+    this.shots = 0
   }
   draw() {
     formsCheck();
@@ -272,6 +275,7 @@ class Player {
       }
     }
     this.heats.forEach((heat) => heat.draw());
+    this.shotguns.forEach((shotgun) => shotgun.draw());
     this.hooks.forEach((hook) => hook.draw());
     this.sanders.forEach((sand) => sand.draw());
     this.toxics.forEach((tox) => tox.draw());
@@ -287,12 +291,14 @@ class Player {
   }
   move() {
     if(this.extraBoostState === true){
+      this.boostTick++
       this.extraBoost = 5
-      setTimeout(function () {
-        this.extraBoostState = false
+      console.log(this.boostTick)
+      if(this.boostTick >= 1200){
         this.extraBoost = 0
-        console.log()
-      }, 2000);
+        this.extraBoostState = false
+        this.boostTick = 0
+      }
     }
     this.x += this.vx;
     this.y += this.vy;
@@ -348,6 +354,7 @@ class Player {
     // LIMITES DEL CANVAS <=//
     this.blasters.forEach((blaster) => {blaster.move();});
     this.heats.forEach((heat) => {heat.move();});
+    this.shotguns.forEach((shotgun) => {shotgun.move();});
     this.hooks.forEach((hook) => {hook.move();});
     this.sanders.forEach((sand) => {sand.move();});
     this.toxics.forEach((tox) => {tox.move();});
@@ -542,7 +549,6 @@ class Player {
       this.megablaster();
       M = 0
     }
-  console.log(rocketCount)
     if (key === F && rocketCount >= 1) {
       this.rocketer();
       rocketCount -= 1
@@ -577,7 +583,8 @@ class Player {
         N = 78;
       }, 20000);
     }
-    if (key === J && !elementBoost && elementalMineCount >= 1) {
+    if (key === J //&& !elementBoost
+      && elementalMineCount >= 1) {
       this.elementBomb()
       this.sandShootAudio = new Audio("/assets/audios ad/elementalBombSound.wav")
       this.sandShootAudio.volume = 0.4;
@@ -611,6 +618,21 @@ class Player {
     if (key === G) {
       hookTransporter = true
     }
+    if (key === H) {
+      this.shotgunner()
+      console.log("yaaa", this.shots)
+      if(this.shots > 2){
+        H = 0
+        this.shots = 0
+        setTimeout(function () {
+          H = 72;
+          this.alertingSound = new Audio("/assets/audios ad/shotgunReload.mp3");
+          this.alertingSound.volume = 0.05;
+          this.alertingSound.play()
+        }, 2000);
+      }
+    }
+
     if (key === ALT) {
       if(Z == 0, X == 0, N == 0, Q == 0, E == 0 && this.life.total <=3){
         this.discounting()
@@ -1058,6 +1080,55 @@ class Player {
       this.cooldownBullet = 600;
     }
     this.heats.push(heat);
+  }
+  shotgunner() {
+    const shotgun = new Shotgun(
+      this.ctx,
+      this.x + 10,
+      this.y + 10,
+      this
+    );
+    this.shots++
+    if (this.direction === "right") {
+      shotgun.w = 60
+      this.x = this.x - 60
+      shotgun.x = this.x + 80;
+      shotgun.y = this.y -5
+      shotgun.shotImg.src = "/assets/images/shotgun/flashRight.png";
+      this.img.src = "/assets/images/PJ/imright.png";
+      this.img.frame++;
+    }
+    if (this.direction === "left") {
+      shotgun.w = 60
+      this.x = this.x + 60
+      shotgun.x = this.x - 80;
+      shotgun.y = this.y -5
+      shotgun.shotImg.src = "/assets/images/shotgun/flashLeft.png";
+      this.img.src = "/assets/images/PJ/imleft.png";
+      this.img.frame++;
+    }
+    if (this.direction === "top") {
+      shotgun.h = 60
+      this.y = this.y + 60
+      shotgun.y = this.y - 80
+      shotgun.x = this.x - 5
+      shotgun.shotImg.src = "/assets/images/shotgun/flashUp.png";
+      this.img.src = "/assets/images/PJ/imup.png";
+      this.img.frame++;
+    }
+    if (this.direction === "down") {
+      shotgun.h = 60
+      this.y = this.y - 60
+      shotgun.y = this.y + 80
+      shotgun.x = this.x - 5
+      shotgun.shotImg.src = "/assets/images/shotgun/flashDown.png";
+      this.img.src = "/assets/images/PJ/imdown.png";
+      this.img.frame++;
+    }
+    if (this.cooldownBullet <= 600) {
+      this.cooldownBullet = 600;
+    }
+    this.shotguns.push(shotgun);
   }
   heaterExtra() {
     const heat = new Heat(

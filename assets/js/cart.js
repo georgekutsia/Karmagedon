@@ -62,8 +62,7 @@ class Drugs {
   constructor(ctx, cartx, carty, cartImage) {
     this.ctx = ctx;
     this.salidas = [
-      { x: 70, y: 10 },{ x: 736, y: 152 },{ x: 812, y: 384 },{ x: 552, y: 505 },{ x: 412, y: 260 },
-      { x: 96, y: 120 },{ x: 105, y: 250 },{ x: 125, y: 577 },{ x:1052, y: 655 },{ x: 900, y: 60 },{ x:452, y: 705 },{ x: 700, y: 560 },
+      { x:1080, y: 620 }
     ];
     this.xy = this.salidas[Math.floor(Math.random() * this.salidas.length)];
     this.x = cartx || this.xy.x;
@@ -72,18 +71,13 @@ class Drugs {
     this.h = 47;
     this.v = 0;
     this.vNegative = 0
-    this.cartImg = new Image();
-    this.cartImg.src = cartImage || "/assets/images/elements/backpack.png";
-    this.cartImg.frame = 0;
+    this.drugImg = new Image();
+    this.drugImg.src = cartImage || "/assets/images/elements/drugs.png";
     this.tick = 0;
   }
   draw() {
     this.ctx.drawImage(
-      this.cartImg,
-      0,
-      (this.cartImg.frame * this.cartImg.height) / 8,
-      this.cartImg.width,
-      this.cartImg.height / 8,
+      this.drugImg,
       this.x,
       this.y,
       this.w,
@@ -100,13 +94,6 @@ class Drugs {
     followY > 0 ? (this.y += this.v) : (this.y += this.v -this.vNegative);
     if (this.x == player.x && this.y == player.y) {
       this.v = 0;
-    }
-    if (this.tick > 10) {
-      this.tick = 0;
-      this.cartImg.frame++;
-    }
-    if (this.cartImg.frame > 7) {
-      this.cartImg.frame = 0;
     }
   }
   isVisible() {

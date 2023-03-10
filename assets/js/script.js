@@ -68,6 +68,7 @@ const in3 = document.getElementById("info3")
 const in4 = document.getElementById("info4")
 
 
+
 buyRockets.addEventListener("click", function(){
   if(money >= 100){
     money -= 100
@@ -206,9 +207,12 @@ infoData1.addEventListener("click", function(){
 btn.addEventListener("click", function () {
     if (game.interval) {
       game.stop();
+console.log("sss",game.winTime)
       btn.innerText = "START";
     } else {
       game.start();
+console.log("sss",game.winTime)
+
       btn.innerText = `STOP`;
     }
     displ.style.display = "block"
@@ -220,7 +224,6 @@ btn.addEventListener("click", function () {
     buyButtons.style.display = "block"
     infoData.style.display = "block"
     infoData1.style.display = "block"
-    infoData2.style.display = "block"
     this.musicStart = new Audio("/assets/audios ad/clic future.wav");
     this.musicStart.volume = 0.05;
     this.musicStart.play()

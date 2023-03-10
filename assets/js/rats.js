@@ -18,7 +18,6 @@ class Rats {
     this.cageImg = new Image();
     this.cageImg.src = "/assets/images/munición/cage.png"
     this.cage = false
-    console.log(this.vx)
   }
 
   draw() {

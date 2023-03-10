@@ -81,6 +81,61 @@ class Heat {
     return colX && colY;
   }
 }
+class Shotgun {
+  constructor(ctx, x, y, player) {
+    this.ctx = ctx;
+    this.x = x;
+    this.y = y;
+    this.sa = 0;
+    this.w = 40
+    this.h = 40
+    this.player = player;
+    this.bla = 0;
+    this.vx = 0;
+    this.vy = 0;
+    this.dispose = false;
+    this.shotImg = new Image();
+    this.shotImg.src = "/assets/images/shotgun/flashLeft.png";
+    this.shotImg.frame = 0;
+    this.shotShootAudio = new Audio("/assets/audios ad/shotgunShoot.mp3")
+    this.shotShootAudio.volume = 0.1;
+    this.shotShootAudio.play();
+    this.framer = 1
+    this.tick = 0
+    this.afterTick = 0
+    this.shotFar = false
+  }
+  draw() {
+    this.ctx.drawImage(
+      this.shotImg,
+      (this.shotImg.frame * this.shotImg.width) / this.framer,
+      0,
+      this.shotImg.width / this.framer, 
+      this.shotImg.height,
+      this.x, 
+      this.y, 
+      this.w,
+      this.h
+    );
+  }
+  move() {
+      this.x -= 1.2
+      this.y -= 1.2
+      this.h +=5
+      this.w +=5
+      if(this.w >= 90 || this.h >= 90){
+        this.dispose = true
+      }
+  }
+  isVisible() {
+    return !this.dispose;
+  }
+  collides(puddle) {
+    const colX = this.x <= puddle.x + puddle.w && this.x + this.w > puddle.x;
+    const colY = this.y + this.h > puddle.y && this.y < puddle.y + puddle.h;
+    return colX && colY;
+  }
+}
 
 class Hook {
   constructor(ctx, x, y, player) {

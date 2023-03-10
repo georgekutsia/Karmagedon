@@ -184,6 +184,9 @@ u {
   margin-left: -15px;
 }
 
+#buy-blaster-info{
+  display: none
+}
 #buy-shop-info{
   display: none
 }
@@ -214,7 +217,7 @@ u {
   padding: 3px 10px;
   margin-left: 5px;
 }
-#buy-rockets:hover + #buy-rockets-info{
+#buy-blaster:hover + #buy-blaster-info{
   display: block;
   position: absolute;
   color: green;
@@ -223,6 +226,16 @@ u {
   border-radius: 10px;
   padding: 3px 10px;
   margin-left: 65px;
+}
+#buy-rockets:hover + #buy-rockets-info{
+  display: block;
+  position: absolute;
+  color: green;
+  font-size: 14px;
+  background-color: rgb(145, 238, 171);
+  border-radius: 10px;
+  padding: 3px 10px;
+  margin-left: 165px;
 }
 
 #buy-mines:hover + #buy-mines-info{
@@ -233,7 +246,7 @@ u {
   background-color: rgb(145, 238, 171);
   border-radius: 10px;
   padding: 3px 10px;
-  margin-left: 150px;
+  margin-left: 250px;
 }
 #buy-hooks:hover + #buy-hooks-info{
   display: block;
@@ -243,7 +256,7 @@ u {
   background-color: rgb(145, 238, 171);
   border-radius: 10px;
   padding: 3px 10px;
-  margin-left: 280px;
+  margin-left: 380px;
 }
 #buy-discounts:hover + #buy-discounts-info{
   display: block;
@@ -253,7 +266,7 @@ u {
   background-color: rgb(145, 238, 171);
   border-radius: 10px;
   padding: 3px 10px;
-  margin-left: 370px;
+  margin-left: 470px;
 }
 #buy-timeShield:hover + #buy-timeShield-info{
   display: block;
@@ -263,7 +276,7 @@ u {
   background-color: rgb(145, 238, 171);
   border-radius: 10px;
   padding: 3px 10px;
-  margin-left: 470px;
+  margin-left: 570px;
 }
 
 
@@ -294,7 +307,7 @@ u {
   background-color: rgb(226, 168, 168);
   border-radius: 10px;
   padding: 3px 10px;
-  margin-left: 625px;
+  margin-left: 675px;
 }
 #sell-rockets:hover + #buy-rockets-info-sell{
   display: block;
@@ -304,7 +317,7 @@ u {
   background-color: rgb(226, 168, 168);
   border-radius: 10px;
   padding: 3px 10px;
-  margin-left: 700px;
+  margin-left: 750px;
 }
 #sell-mines:hover + #buy-mines-info-sell{
   display: block;
@@ -314,7 +327,7 @@ u {
   background-color: rgb(226, 168, 168);
   border-radius: 10px;
   padding: 3px 10px;
-  margin-left: 760px;
+  margin-left: 810px;
 }
 #sell-hooks:hover + #buy-hooks-info-sell{
   display: block;
@@ -324,7 +337,7 @@ u {
   background-color: rgb(226, 168, 168);
   border-radius: 10px;
   padding: 3px 10px;
-  margin-left: 880px;
+  margin-left: 930px;
 }
 #sell-discounts:hover + #buy-discounts-info-sell{
   display: block;
@@ -334,7 +347,7 @@ u {
   background-color: rgb(226, 168, 168);
   border-radius: 10px;
   padding: 3px 10px;
-  margin-left: 970px;
+  margin-left: 1050px;
 }
 #sell-timeShield:hover + #buy-timeShield-info-sell{
   display: block;
@@ -344,7 +357,7 @@ u {
   background-color: rgb(226, 168, 168);
   border-radius: 10px;
   padding: 3px 10px;
-  margin-left: 1070px;
+  margin-left: 1130px;
 }
 
 #ask-shop-info{
@@ -353,17 +366,10 @@ u {
 #ask-food-info{
   display: none;
 }
-
-#ask-coins:hover + #ask-shop-info{
-  display: block;
-  position: absolute;
-  color: blue;
-  font-size: 14px;
-  background-color: rgb(168, 221, 226);
-  border-radius: 10px;
-  padding: 3px 10px;
-  margin-left: 1170px;
+#ask-drugs-info{
+  display: none;
 }
+
 #ask-coins:hover + #ask-shop-info{
   display: block;
   position: absolute;
@@ -383,4 +389,14 @@ u {
   border-radius: 10px;
   padding: 3px 10px;
   margin-left: 1170px;
+}
+#ask-drugs:hover + #ask-drugs-info{
+  display: block;
+  position: absolute;
+  color: blue;
+  font-size: 14px;
+  background-color: rgb(168, 221, 226);
+  border-radius: 10px;
+  padding: 3px 10px;
+  margin-left: 1210px;
 }

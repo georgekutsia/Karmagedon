@@ -184,7 +184,7 @@ class Game {
           this.karenTime = 2000
         }
       }
-      if (this.ratTime > Math.random() * 100 + 2000) { //rat
+      if (this.ratTime > Math.random() * 100 + 200000) { //rat
         this.ratTime = 0;
         this.ratAlert();
         this.addDrug()
@@ -342,6 +342,7 @@ class Game {
     this.fires = this.fires.filter((e) => e.isVisible());
     this.discounts = this.discounts.filter((e) => e.isVisible());
     this.player.heats = this.player.heats.filter((e) => e.isVisible());
+    this.player.shotguns = this.player.shotguns.filter((e) => e.isVisible());
     this.player.hooks = this.player.hooks.filter((e) => e.isVisible());
     this.player.toxics = this.player.toxics.filter((e) => e.isVisible());
     this.player.blasters = this.player.blasters.filter((e) => e.isVisible());
@@ -377,7 +378,6 @@ class Game {
     this.winTime++;
     this.upgrades.forEach((e) => e.draw());
     this.upBullets.forEach((e) => e.draw());
-    console.log("money",money)
     if(this.upgrades.length <= 0 && this.upBullets.length <=0 && this.carts.length <= 0){
       this.ctx.drawImage(
         this.mainOffice, 1200, 200, 190, 130
@@ -467,8 +467,8 @@ class Game {
         this.helper4, 1220, 215, 40, 60
       )
     }
-      this.chargedDisc = discounting / 5
-      this.curePoisonTimer = 300 - chance * 50
+    this.chargedDisc = discounting / 5
+    this.curePoisonTimer = 300 - chance * 50
     this.bosss.forEach((e) => e.draw());
     this.korens.forEach((e) => e.draw());
     this.babys.forEach((e) => e.draw());
@@ -486,9 +486,11 @@ class Game {
     if(this.winTime >= 57500){
       this.portals2.forEach((e) => e.draw());
     }
-    if(this.winTime >=500 && this.winTime <= 550){
+    if(this.winTime >=1500 && this.winTime <= 1550){
       this.karens = this.rats = this.babys = this.customers = this.fats = this.puddles = this.fires = this.geese = this.bosss = this.korens = this.carts = this.foods = this.upgrades = this.upBullets = this.discounts = [];
       leveler = true
+      this.player.x = 500
+      this.player.y = 400
     }
     if(this.winTime >= 0){
       this.pfront.forEach((e) => e.draw());
@@ -786,15 +788,15 @@ class Game {
         this.levelupHook, 140 - this.tick/4, 250 - this.tick/4, 80 + this.tick/2 , 60 + this.tick/2 
       )
       this.ctx.drawImage(
-        this.levelupImg1, 65, 65, 240, 160 
+        this.levelupImg1, 35, 30, 300, 200 
       )
         this.ctx.font = "25px Arial";
         this.ctx.save();
         this.ctx.fillStyle = "black";
-        this.ctx.fillText(`Upgrated HookGun!`, this.player.x - 105, this.player.y + 60);
-        this.ctx.fillText(`Upgrated HookGun!`, this.player.x - 106, this.player.y + 61);
+        this.ctx.fillText(`Hook-master`, this.player.x - 55 -this, this.player.y - 30);
+        this.ctx.fillText(`Hook-master`, this.player.x - 56, this.player.y - 31);
         this.ctx.font = "25px Arial";
-        this.ctx.fillStyle = "blue";
+        this.ctx.fillStyle = "aqua";
         if(this.tick >= 20 && this.tick <= 39){
           this.ctx.fillStyle = "rgb(100, 245, 100)"
         } else if(this.tick >= 40 &&this.tick <= 59){
@@ -802,7 +804,7 @@ class Game {
         } else if(this.tick >= 60 &&this.tick <= 89){
           this.ctx.fillStyle = "rgb(0, 245, 0)"
         }
-      this.ctx.fillText(`Upgrated HookGun!`, this.player.x - 104, this.player.y + 59);
+      this.ctx.fillText(`Hook-master`, this.player.x - 54, this.player.y - 29);
       this.ctx.restore();
       if(this.tick >= 150){
         this.levelMessage1 = false
@@ -815,15 +817,15 @@ class Game {
         this.levelupMachinegun, 440 - this.tick/4, 250 - this.tick/4, 100 + this.tick/2 , 70 + this.tick/2 
       )
       this.ctx.drawImage(
-        this.levelupImg2, 385, 65, 240, 160 
+        this.levelupImg2, 355, 30, 300, 200 
       )
         this.ctx.font = "25px Arial";
         this.ctx.save();
         this.ctx.fillStyle = "black";
-        this.ctx.fillText(`Machinegun ready!`, this.player.x - 105, this.player.y + 60);
-        this.ctx.fillText(`Machinegun ready!`, this.player.x - 106, this.player.y + 61);
+        this.ctx.fillText(`Destroyer`, this.player.x - 45 -this, this.player.y - 30);
+        this.ctx.fillText(`Destroyer`, this.player.x - 46, this.player.y - 31);
         this.ctx.font = "25px Arial";
-        this.ctx.fillStyle = "blue";
+        this.ctx.fillStyle = "yellow";
         if(this.tick >= 20 && this.tick <= 39){
           this.ctx.fillStyle = "rgb(100, 245, 100)"
         } else if(this.tick >= 40 &&this.tick <= 59){
@@ -831,7 +833,7 @@ class Game {
         } else if(this.tick >= 60 &&this.tick <= 89){
           this.ctx.fillStyle = "rgb(0, 245, 0)"
         }
-      this.ctx.fillText(`Machinegun ready!`, this.player.x - 104, this.player.y + 59);
+      this.ctx.fillText(`Destroyer`, this.player.x - 44, this.player.y - 29);
       this.ctx.restore();
       if(this.tick >= 150){
         this.levelMessage2 = false
@@ -841,7 +843,7 @@ class Game {
     if(this.levelMessage3){
       this.tick++
       this.ctx.drawImage(
-        this.levelupImg3, 705 , 65 , 240 , 160 
+        this.levelupImg3, 675 , 30 , 300 , 200 
       )
       this.ctx.drawImage(
         this.levelupElement, 780 - this.tick/4, 250 - this.tick/4, 80 + this.tick/2 , 80 + this.tick/2 
@@ -849,8 +851,8 @@ class Game {
       this.ctx.font = "25px Arial";
       this.ctx.save();
       this.ctx.fillStyle = "black";
-      this.ctx.fillText(`Elemental Shield On!`, this.player.x - 105 -this, this.player.y + 60);
-      this.ctx.fillText(`Elemental Shield On!`, this.player.x - 106, this.player.y + 61);
+      this.ctx.fillText(`Elementalist`, this.player.x - 55 -this, this.player.y - 30);
+      this.ctx.fillText(`Elementalist`, this.player.x - 56, this.player.y - 31);
       this.ctx.font = "25px Arial";
       this.ctx.fillStyle = "rgb(200, 245, 200)";
       if(this.tick >= 20 && this.tick <= 39){
@@ -860,7 +862,7 @@ class Game {
       } else if(this.tick >= 60 &&this.tick <= 89){
         this.ctx.fillStyle = "rgb(0, 245, 0)"
       }
-      this.ctx.fillText(`Elemental Shield On!`, this.player.x - 104, this.player.y + 59);
+      this.ctx.fillText(`Elementalist`, this.player.x - 54, this.player.y - 29);
       this.ctx.restore();
       if(this.tick >= 150){
         this.levelMessage3 = false
@@ -940,13 +942,13 @@ class Game {
         this.helper2, 1220, 215, 40, 60
       )
       this.ctx.drawImage(
-        this.levelupImg1, 65, 65, 240, 160
+        this.levelupImg1, 35, 30, 300, 200
       )
       this.ctx.drawImage(
-        this.levelupImg2, 385, 65, 240, 160
+        this.levelupImg2, 355, 30, 300, 200
       )
       this.ctx.drawImage(
-        this.levelupImg3, 705, 65, 240, 160
+        this.levelupImg3, 675, 30, 300, 200
       )
     this.levelUps1.draw();
     this.levelUps2.draw();
@@ -3035,6 +3037,7 @@ this.pback.forEach((peop) => { //PBack
 // levelups...levelups...levelups...levelups...levelups...levelups...levelups...levelups...levelups...
 if(leveler === true){
 // levels
+
     if (this.levelUps1.collides(this.player)) {
       G = 71
       hookCount += 5
@@ -3047,6 +3050,7 @@ if(leveler === true){
     };
     if (this.levelUps2.collides(this.player)) {
       machinegunBoost = true
+      rocketCount += 20
       this.levelupSound = new Audio("/assets/audios ad/reloadMachinegun.mp3");
       this.levelupSound.volume = 0.05;
       this.levelupSound.play()
@@ -3055,6 +3059,7 @@ if(leveler === true){
     }
     if (this.levelUps3.collides(this.player)) {
       N = 78
+      elementalMineCount += 5;
       elementBoost = true
       this.levelupSound = new Audio("/assets/audios ad/levelupElementalSound.mp3");
       this.levelupSound.volume = 0.05;
