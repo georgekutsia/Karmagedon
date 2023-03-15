@@ -20,7 +20,7 @@ class Boss {
     this.bossImg = new Image();
     this.bossImg.src = "/assets/images/karens/boss4.png";
     this.bossImg.frame = 0;
-    this.lifeleft = 25 + extraLife * 5
+    this.lifeleft = 25 + extraLife * 5  
     this.dead = 0;
     this.tick = 0;
     this.karenEnd = 0;

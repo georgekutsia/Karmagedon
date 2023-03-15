@@ -190,10 +190,16 @@ u {
 #buy-shop-info{
   display: none
 }
+#shot-items-buy{
+  display: none
+}
 #buy-rockets-info{
   display: none
 }
 #buy-mines-info{
+  display: none
+}
+#buy-mine-info{
   display: none
 }
 #buy-hooks-info{
@@ -203,6 +209,33 @@ u {
   display: none
 }
 #buy-timeShield-info{
+  display: none
+}
+#buy-blaster{
+  display: none
+}
+#buy-shop{
+  display: none
+}
+#shot-items-buy{
+  display: none
+}
+#buy-rockets{
+  display: none
+}
+#buy-mines{
+  display: none
+}
+#buy-mine{
+  display: none
+}
+#buy-hooks{
+  display: none
+}
+#buy-discounts{
+  display: none
+}
+#buy-timeShield{
   display: none
 }
 
@@ -215,7 +248,7 @@ u {
   background-color: rgb(145, 238, 171);
   border-radius: 10px;
   padding: 3px 10px;
-  margin-left: 5px;
+  margin-left: 33vw;
 }
 #buy-blaster:hover + #buy-blaster-info{
   display: block;
@@ -225,7 +258,7 @@ u {
   background-color: rgb(145, 238, 171);
   border-radius: 10px;
   padding: 3px 10px;
-  margin-left: 65px;
+  margin-left: 40vw;
 }
 #buy-rockets:hover + #buy-rockets-info{
   display: block;
@@ -235,7 +268,7 @@ u {
   background-color: rgb(145, 238, 171);
   border-radius: 10px;
   padding: 3px 10px;
-  margin-left: 165px;
+  margin-left: 40vw;
 }
 
 #buy-mines:hover + #buy-mines-info{
@@ -246,7 +279,17 @@ u {
   background-color: rgb(145, 238, 171);
   border-radius: 10px;
   padding: 3px 10px;
-  margin-left: 250px;
+  margin-left: 40vw;
+}
+#buy-mine:hover + #buy-mine-info{
+  display: block;
+  position: absolute;
+  color: green;
+  font-size: 14px;
+  background-color: rgb(145, 238, 171);
+  border-radius: 10px;
+  padding: 3px 10px;
+  margin-left: 40vw;
 }
 #buy-hooks:hover + #buy-hooks-info{
   display: block;
@@ -256,7 +299,7 @@ u {
   background-color: rgb(145, 238, 171);
   border-radius: 10px;
   padding: 3px 10px;
-  margin-left: 380px;
+  margin-left: 40vw;
 }
 #buy-discounts:hover + #buy-discounts-info{
   display: block;
@@ -266,7 +309,7 @@ u {
   background-color: rgb(145, 238, 171);
   border-radius: 10px;
   padding: 3px 10px;
-  margin-left: 470px;
+  margin-left: 40vw;
 }
 #buy-timeShield:hover + #buy-timeShield-info{
   display: block;
@@ -276,7 +319,7 @@ u {
   background-color: rgb(145, 238, 171);
   border-radius: 10px;
   padding: 3px 10px;
-  margin-left: 570px;
+  margin-left: 40vw;
 }
 
 
@@ -289,6 +332,9 @@ u {
 #buy-mines-info-sell{
   display: none
 }
+#buy-mine-info-sell{
+  display: none
+}
 #buy-hooks-info-sell{
   display: none
 }
@@ -296,6 +342,24 @@ u {
   display: none
 }
 #buy-timeShield-info-sell{
+  display: none
+}
+#sell-rockets{
+  display: none
+}
+#sell-mines{
+  display: none
+}
+#sell-mine{
+  display: none
+}
+#sell-hooks{
+  display: none
+}
+#sell-discounts{
+  display: none
+}
+#sell-timeShield{
   display: none
 }
 #sell-coins:hover + #sell-shop-info{
@@ -307,7 +371,7 @@ u {
   background-color: rgb(226, 168, 168);
   border-radius: 10px;
   padding: 3px 10px;
-  margin-left: 675px;
+  margin-left: 33vw;
 }
 #sell-rockets:hover + #buy-rockets-info-sell{
   display: block;
@@ -317,7 +381,7 @@ u {
   background-color: rgb(226, 168, 168);
   border-radius: 10px;
   padding: 3px 10px;
-  margin-left: 750px;
+  margin-left:40vw;
 }
 #sell-mines:hover + #buy-mines-info-sell{
   display: block;
@@ -327,7 +391,17 @@ u {
   background-color: rgb(226, 168, 168);
   border-radius: 10px;
   padding: 3px 10px;
-  margin-left: 810px;
+  margin-left:40vw;
+}
+#sell-mine:hover + #buy-mine-info-sell{
+  display: block;
+  position: absolute;
+  color: red;
+  font-size: 14px;
+  background-color: rgb(226, 168, 168);
+  border-radius: 10px;
+  padding: 3px 10px;
+  margin-left:40vw;
 }
 #sell-hooks:hover + #buy-hooks-info-sell{
   display: block;
@@ -337,7 +411,7 @@ u {
   background-color: rgb(226, 168, 168);
   border-radius: 10px;
   padding: 3px 10px;
-  margin-left: 930px;
+  margin-left:40vw;
 }
 #sell-discounts:hover + #buy-discounts-info-sell{
   display: block;
@@ -347,7 +421,7 @@ u {
   background-color: rgb(226, 168, 168);
   border-radius: 10px;
   padding: 3px 10px;
-  margin-left: 1050px;
+  margin-left:40vw;
 }
 #sell-timeShield:hover + #buy-timeShield-info-sell{
   display: block;
@@ -357,7 +431,7 @@ u {
   background-color: rgb(226, 168, 168);
   border-radius: 10px;
   padding: 3px 10px;
-  margin-left: 1130px;
+  margin-left:40vw;
 }
 
 #ask-shop-info{
@@ -369,16 +443,23 @@ u {
 #ask-drugs-info{
   display: none;
 }
+#ask-food{
+  display: none;
+}
+#ask-drugs{
+  display: none;
+}
 
 #ask-coins:hover + #ask-shop-info{
   display: block;
   position: absolute;
   color: blue;
-  font-size: 14px;
+  font-size: 20px;
+  font-weight: 500;
   background-color: rgb(168, 221, 226);
   border-radius: 10px;
   padding: 3px 10px;
-  margin-left: 1170px;
+  margin-left: 33vw;
 }
 #ask-food:hover + #ask-food-info{
   display: block;
@@ -388,7 +469,7 @@ u {
   background-color: rgb(168, 221, 226);
   border-radius: 10px;
   padding: 3px 10px;
-  margin-left: 1170px;
+  margin-left:40vw;
 }
 #ask-drugs:hover + #ask-drugs-info{
   display: block;
@@ -398,5 +479,38 @@ u {
   background-color: rgb(168, 221, 226);
   border-radius: 10px;
   padding: 3px 10px;
-  margin-left: 1210px;
+  margin-left:40vw;
+}
+
+
+#mega-coins-info{
+display: none;
+}
+#mega-shotgun-info{
+display: none;
+}
+#mega-shotgun{
+  display: none;
+}
+
+#mega-coins:hover + #mega-coins-info{
+  display: block;
+  position: absolute;
+  color: rgb(217, 64, 3);
+  font-weight: 500;
+  font-size: 20px;
+  background-color: rgb(168, 221, 226);
+  border-radius: 10px;
+  padding: 3px 10px;
+  margin-left:35vw;
+}
+#mega-shotgun:hover + #mega-shotgun-info{
+  display: block;
+  position: absolute;
+  color: rgb(217, 64, 3);
+  font-size: 14px;
+  background-color: rgb(168, 221, 226);
+  border-radius: 10px;
+  padding: 3px 10px;
+  margin-left:40vw;
 }

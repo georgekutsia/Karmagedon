@@ -123,7 +123,7 @@ class Shotgun {
       this.y -= 1.2
       this.h +=5
       this.w +=5
-      if(this.w >= 90 || this.h >= 90){
+      if(this.w >= 90 + thirdShotRange || this.h >= 90 +thirdShotRange){
         this.dispose = true
       }
   }

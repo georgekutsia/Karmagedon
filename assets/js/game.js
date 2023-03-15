@@ -167,7 +167,7 @@ class Game {
     this.so = new Audio("/assets/audio/So1.mp3");
     this.so.volume = 0.08;
     this.so.play();
-    this.musicStart.play();
+    // this.musicStart.play();
     myFunction();
     this.interval = setInterval(() => {
     this.endGame = document.getElementById("time");
@@ -308,10 +308,10 @@ class Game {
         this.getsSiri.volume = 0.2;
         this.getsSiri.play();
       }
-      if(this.winTime >= 2500 && this.winTime <=3999){
+      if(this.winTime >= 12500 && this.winTime <=13999){
         extraLife = 2
       } 
-      if(this.winTime >=4000){
+      if(this.winTime >=24000){
         extraLife = 3
       }
 // win time game end -----------------------
@@ -486,7 +486,7 @@ class Game {
     if(this.winTime >= 57500){
       this.portals2.forEach((e) => e.draw());
     }
-    if(this.winTime >=1500 && this.winTime <= 1550){
+    if(this.winTime >=100 && this.winTime <= 150){
       this.karens = this.rats = this.babys = this.customers = this.fats = this.puddles = this.fires = this.geese = this.bosss = this.korens = this.carts = this.foods = this.upgrades = this.upBullets = this.discounts = [];
       leveler = true
       this.player.x = 500
@@ -1987,7 +1987,8 @@ class Game {
     this.geese.forEach((goose) => { // goose con sanders
       this.player.sanders.filter((sand) => {
         if (sand.collides(goose)) {
-          goose.lifeleft -= 0.5;
+          sand.activated = true
+          goose.lifeleft -= sand.damage;
           if(goose.lifeleft === 0){
             this.score.addkgoose()
             this.score.addktotal1()
@@ -2474,7 +2475,8 @@ class Game {
     this.bosss.forEach((boss) => {  //boss con sanders
       this.player.sanders.filter((sand) => {
         if (sand.collides(boss)) {
-            boss.lifeleft -= 0.02;
+          sand.activated = true
+          boss.lifeleft -= sand.damage;
           if(boss.lifeleft <= 0.1){
             boss.v = 20;
             this.player.getBigRespect()
@@ -2788,7 +2790,10 @@ this.pback.forEach((peop) => { //PBack
         // this.atraer = new Audio("/assets/audios ad/bonus.mp3")
         // this.atraer.volume = 0.03;
         // this.atraer.play();
-        this.player.extraBoostState = true
+
+        // this.player.extraBoostState = true
+        this.player.extraSizeState = true
+        // this.player.lesserSizeState = true
         return false;
       }
       return true;
@@ -2872,6 +2877,8 @@ this.pback.forEach((peop) => { //PBack
       }
       return true;
     });
+    const ya = [this.upBullet, this.upgrade]
+    
     this.upBullets.forEach((upbullet) => {//hook con upbullets
       this.player.hooks.filter((hook) => {
         if (hook.collides(upbullet)) {
@@ -3040,6 +3047,7 @@ if(leveler === true){
 
     if (this.levelUps1.collides(this.player)) {
       G = 71
+      B = 66
       hookCount += 5
       hookBoost = true
       this.levelupSound = new Audio("/assets/audios ad/levelupHookSound.mp3");
@@ -3051,6 +3059,8 @@ if(leveler === true){
     if (this.levelUps2.collides(this.player)) {
       machinegunBoost = true
       rocketCount += 20
+
+      H = 72
       this.levelupSound = new Audio("/assets/audios ad/reloadMachinegun.mp3");
       this.levelupSound.volume = 0.05;
       this.levelupSound.play()
@@ -3059,7 +3069,9 @@ if(leveler === true){
     }
     if (this.levelUps3.collides(this.player)) {
       N = 78
+      K = 75
       elementalMineCount += 5;
+      mineCount += 25;
       elementBoost = true
       this.levelupSound = new Audio("/assets/audios ad/levelupElementalSound.mp3");
       this.levelupSound.volume = 0.05;

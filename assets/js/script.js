@@ -46,18 +46,33 @@ const zupbullet = document.getElementById("add-upbullet")
 const wornings = document.querySelector(".wornings-css")
 
 const buyButtons = document.getElementById("buy-buttons")
+const buyHide = document.getElementById("money-coins")
+const buyBlaster = document.getElementById("buy-blaster")
 const buyRockets = document.getElementById("buy-rockets")
 const buyMines = document.getElementById("buy-mines")
+const buyMine = document.getElementById("buy-mine")
 const buyHooks = document.getElementById("buy-hooks")
 const buyDiscounts = document.getElementById("buy-discounts")
 const buyTimeShield = document.getElementById("buy-timeShield")
 
+const sellHide = document.getElementById("sell-coins")
 const sellRockets = document.getElementById("sell-rockets")
 const sellMines = document.getElementById("sell-mines")
+const sellMine = document.getElementById("sell-mine")
 const sellHooks = document.getElementById("sell-hooks")
 const sellDiscounts = document.getElementById("sell-discounts")
-const askFood = document.getElementById("ask-food")
 
+const askHide = document.getElementById("ask-coins")
+const askFood = document.getElementById("ask-food")
+const askDrug = document.getElementById("ask-drugs")
+
+const megaHide = document.getElementById("mega-coins")
+const megaShotgun = document.getElementById("mega-shotgun")
+
+const allBuys = [buyRockets, buyMine, buyMines, buyHooks, buyDiscounts, buyTimeShield, buyBlaster]
+const allSells = [sellRockets, sellMines, sellMine, sellHooks, sellDiscounts]
+const allAsks = [askFood, askDrug]
+const allMegas = [megaShotgun]
 
 const allButtonsGone = [easy, normal, hard, superhard, info, manager, begin]
 
@@ -66,6 +81,44 @@ const in1 = document.getElementById("info1")
 const in2 = document.getElementById("info2")
 const in3 = document.getElementById("info3")
 const in4 = document.getElementById("info4")
+
+
+buyHide.addEventListener("click", function(){
+    if(buyRockets.style.display === "inline")
+    {      
+      allBuys.forEach((dis) => dis.style.display = "none")
+    } else {
+      allBuys.forEach((dis) => dis.style.display = "inline")
+    }
+    
+})
+sellHide.addEventListener("click", function(){
+    if(sellRockets.style.display === "inline")
+    {      
+      allSells.forEach((dis) => dis.style.display = "none")
+    } else {
+      allSells.forEach((dis) => dis.style.display = "inline")
+    }
+})
+
+askHide.addEventListener("click", function(){
+    if(askFood.style.display === "inline")
+    {      
+      allAsks.forEach((dis) => dis.style.display = "none")
+    } else {
+      allAsks.forEach((dis) => dis.style.display = "inline")
+    }
+})
+
+megaHide.addEventListener("click", function(){
+    if(megaShotgun.style.display === "inline")
+    {      
+      allMegas.forEach((dis) => dis.style.display = "none")
+    } else {
+      allMegas.forEach((dis) => dis.style.display = "inline")
+    }
+})
+
 
 
 
@@ -83,6 +136,16 @@ buyMines.addEventListener("click", function(){
   if(money >= 50){
     money -= 50
     elementalMineCount += 1
+    this.sandShootAudio = new Audio("/assets/audios ad/buy.wav")
+    this.sandShootAudio.volume = 0.4;
+    this.sandShootAudio.play();
+  }
+})
+
+buyMine.addEventListener("click", function(){
+  if(money >= 30){
+    money -= 30
+    mineCount += 5
     this.sandShootAudio = new Audio("/assets/audios ad/buy.wav")
     this.sandShootAudio.volume = 0.4;
     this.sandShootAudio.play();
@@ -135,6 +198,15 @@ sellMines.addEventListener("click", function(){
     this.sandShootAudio.play();
   }
 })
+sellMine.addEventListener("click", function(){
+  if(mineCount >=1){
+    money += 15
+    mineCount -= 5
+    this.sandShootAudio = new Audio("/assets/audios ad/sell.wav")
+    this.sandShootAudio.volume = 0.4;
+    this.sandShootAudio.play();
+  }
+})
 sellHooks.addEventListener("click", function(){
   if(hookCount >=1){
     money += 10
@@ -157,6 +229,28 @@ sellDiscounts.addEventListener("click", function(){
 
 askFood.addEventListener("click", function(){
   game.addFood()
+  
+})
+askDrug.addEventListener("click", function(){
+  game.addDrug()
+  
+})
+
+
+megaShotgun.addEventListener("click", function(){
+  if(money >= 2000 && extraShotgun === false){
+    money -= 2000
+    extraShotgun = true
+    extraShot = 1
+    megaShotgun.innerText = "This item is already in your power"
+    megaShotgun.style.backgroundColor = "grey"
+    this.sandShootAudio = new Audio("/assets/audios ad/sell.wav")
+    this.sandShootAudio.volume = 0.4;
+    this.sandShootAudio.play();
+    this.buyBig = new Audio("/assets/audios ad/buyBigStuff.mp3")
+    this.buyBig.volume = 0.2;
+    this.buyBig.play();
+  }
 })
 // infoDataAll.addEventListener("click", function(){
 //   if (infoDataAll.style.opacity === "0.5") {

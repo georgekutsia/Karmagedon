@@ -8,6 +8,8 @@ class Player {
     this.position = position
     this.extraBoost = 0
     this.extraBoostState = false
+    this.extraSizeState = false
+    this.lesserSizeState = false
     this.boostTick = 0
     this.booster = 0
     this.boost = 4
@@ -41,10 +43,22 @@ class Player {
     this.bullsEye.src = "/assets/images/elements/bullsEye.png"
     this.machinegun = new Image();
     this.machinegun.src =  "/assets/images/munición/machinegunSpin.png";
+    this.ammo1 = new Image();
+    this.ammo1.src =  "/assets/images/shotgun/bull2.png";
+    this.ammo2 = new Image();
+    this.ammo2.src =  "/assets/images/shotgun/bull2.png";
+    this.ammo3 = new Image();
+    this.ammo3.src =  "/assets/images/shotgun/bull1.png";
+    this.shotgunCharged = new Image();
+    this.shotgunCharged.src =  "/assets/images/shotgun/shotgunCharged.png";
+    this.shotgunUncharged = new Image();
+    this.shotgunUncharged.src =  "/assets/images/shotgun/shotgunUncharged.png";
     this.machinegun.frame = 0;
     this.machinegunTick = 0
     this.elementalImg = new Image();
     this.elementalImg.src = "/assets/images/munición/stormstorm1.png"
+    this.mineElementalImg = new Image();
+    this.mineElementalImg.src = "/assets/images/munición/mineImg.png"
     this.elementalImg.frame = 0;
     this.elementalImgTick = 0
     this.ctx.font = "20px Arial";
@@ -75,7 +89,7 @@ class Player {
     this.toxicity = false
     this.sandstate = false
     this.sandAlterImg = ""
-    this.shots = 0
+    thirdShot = false
   }
   draw() {
     formsCheck();
@@ -236,7 +250,7 @@ class Player {
       ctx.fillStyle = "rgb(251, 209, 209)";
       this.ctx.fillStyle = "white";
       this.ctx.font = "15px Arial";
-      if(elementalMineCount >=10){
+      if(elementalMineCount >=50){
         this.order = this.ctx.fillText(`x${elementalMineCount.toString()}`, this.x - 20, this.y + 71);
         this.order = this.ctx.fillText(`x${elementalMineCount.toString()}`, this.x - 18, this.y + 70);
         this.ctx.fillStyle = "black";
@@ -247,6 +261,52 @@ class Player {
         this.ctx.fillStyle = "black";
         this.order = this.ctx.fillText(`x${elementalMineCount.toString()}`, this.x - 15, this.y + 70);
       }
+    }
+    if(mineCount > 0 && K === 75){
+      this.ctx.drawImage(
+        this.mineElementalImg, this.x + 25, this.y + 45, this.w, this.h
+      )
+      ctx.fillStyle = "rgb(251, 209, 209)";
+      this.ctx.fillStyle = "white";
+      this.ctx.font = "15px Arial";
+      if(mineCount >=10){
+        this.order = this.ctx.fillText(`x${mineCount.toString()/5}`, this.x + 35, this.y + 71);
+        this.order = this.ctx.fillText(`x${mineCount.toString()/5}`, this.x + 33, this.y + 70);
+        this.ctx.fillStyle = "black";
+        this.order = this.ctx.fillText(`x${mineCount.toString()/5}`, this.x + 34, this.y + 70);
+      } else {
+        this.order = this.ctx.fillText(`x${mineCount.toString()/5}`, this.x + 31, this.y + 71);
+        this.order = this.ctx.fillText(`x${mineCount.toString()/5}`, this.x + 30, this.y + 70);
+        this.ctx.fillStyle = "black";
+        this.order = this.ctx.fillText(`x${mineCount.toString()/5}`, this.x + 30, this.y + 70);
+      }
+    }
+    if(shotgunShots >= 0 && shotgunShots <= 2 && H === 72){
+      this.ctx.drawImage(
+        this.ammo1, this.x - 25, this.y + 65, 15, 10
+      )
+      this.ctx.drawImage(
+        this.shotgunCharged, this.x - 20, this.y + 45, this.w , this.h + 5
+      )
+    }
+    if(shotgunShots === 0 && H === 72){
+      this.ctx.drawImage(
+        this.ammo2, this.x - 25, this.y + 75, 15, 10
+      )
+      
+    }
+    if(extraShotgun === true && H === 72){
+      this.ctx.drawImage(
+        this.ammo3, this.x - 7, this.y + 68, 10, 20
+      )
+      this.ctx.drawImage(
+        this.shotgunCharged, this.x - 20, this.y + 45, this.w , this.h + 5
+      )
+    }
+    if(H === 0){
+      this.ctx.drawImage(
+        this.shotgunUncharged, this.x - 30, this.y + 25, this.w - 15, this.h + 10
+      )
     }
     if(N === 78){
       this.ctx.drawImage(
@@ -274,6 +334,37 @@ class Player {
           }
       }
     }
+    if(this.extraBoostState === true){
+      this.boostTick++
+      this.extraBoost = 5
+      if(this.boostTick >= 1200){
+        this.extraBoost = 0
+        this.extraBoostState = false
+        this.boostTick = 0
+      }
+    }
+    if(this.lesserSizeState === true){
+      this.boostTick++
+      this.w = 15
+      this.h = 15
+      if(this.boostTick >= 1200){
+        this.w = 35
+        this.h = 35
+        this.extraSizeState = false
+        this.boostTick = 0
+      }
+    }
+    if(this.extraSizeState === true){
+      this.boostTick++
+      this.w = 50
+      this.h = 50
+      if(this.boostTick >= 1200){
+        this.w = 35
+        this.h = 35
+        this.extraSizeState = false
+        this.boostTick = 0
+      }
+    }
     this.heats.forEach((heat) => heat.draw());
     this.shotguns.forEach((shotgun) => shotgun.draw());
     this.hooks.forEach((hook) => hook.draw());
@@ -290,16 +381,6 @@ class Player {
     this.ctx.fillStyle = "lightsalmon";
   }
   move() {
-    if(this.extraBoostState === true){
-      this.boostTick++
-      this.extraBoost = 5
-      console.log(this.boostTick)
-      if(this.boostTick >= 1200){
-        this.extraBoost = 0
-        this.extraBoostState = false
-        this.boostTick = 0
-      }
-    }
     this.x += this.vx;
     this.y += this.vy;
     this.tick++;
@@ -560,6 +641,11 @@ class Player {
       this.discounting3();
       discounting -= 1
     }
+    if(key === K && mineCount >=1){
+      mineCount--
+      console.log(mineCount)
+      this.elementMine()
+    }
     if (key === Z) {
       this.heater();
       setTimeout(function () {
@@ -618,18 +704,27 @@ class Player {
     if (key === G) {
       hookTransporter = true
     }
+    console.log(shotgunShots)
+    console.log(thirdShot)
+    if(shotgunShots >= 2.999){
+      thirdShot = true
+    } else {
+      thirdShot = false
+    }
     if (key === H) {
       this.shotgunner()
-      console.log("yaaa", this.shots)
-      if(this.shots > 2){
+      if(shotgunShots >= 2 + extraShot){
         H = 0
-        this.shots = 0
         setTimeout(function () {
+          shotgunShots = 0
+          thirdShotRange = 0
           H = 72;
+        }, 2500);
+        setTimeout(function () {
           this.alertingSound = new Audio("/assets/audios ad/shotgunReload.mp3");
           this.alertingSound.volume = 0.05;
           this.alertingSound.play()
-        }, 2000);
+        }, 2300);
       }
     }
 
@@ -990,6 +1085,15 @@ class Player {
     );
     this.sanders.push(elem);
   }
+  elementMine() {
+    const elem = new ElementMine (
+      this.ctx,
+      this.x,
+      this.y,
+      this
+    );
+    this.sanders.push(elem);
+  }
 
   toxicar(){
     const tox = new Toxic(
@@ -1088,12 +1192,22 @@ class Player {
       this.y + 10,
       this
     );
-    this.shots++
     if (this.direction === "right") {
       shotgun.w = 60
       this.x = this.x - 60
       shotgun.x = this.x + 80;
-      shotgun.y = this.y -5
+      shotgun.y = this.y - 5
+      if(thirdShot){
+        thirdShot = false
+        this.x = this.x - 160
+        thirdShotRange = 140
+        shotgun.w = 200
+        shotgun.h = 100
+        shotgun.y = this.y - 40
+        this.extraShotSound = new Audio("/assets/audios ad/extraShotgun.mp3")
+        this.extraShotSound.volume = 0.3;
+        this.extraShotSound.play();
+      }
       shotgun.shotImg.src = "/assets/images/shotgun/flashRight.png";
       this.img.src = "/assets/images/PJ/imright.png";
       this.img.frame++;
@@ -1103,6 +1217,16 @@ class Player {
       this.x = this.x + 60
       shotgun.x = this.x - 80;
       shotgun.y = this.y -5
+      if(thirdShot){
+        this.x = this.x + 160
+        thirdShotRange = 140
+        shotgun.w = 200
+        shotgun.h = 100
+        shotgun.y = this.y - 40
+        this.extraShotSound = new Audio("/assets/audios ad/extraShotgun.mp3")
+        this.extraShotSound.volume = 0.3;
+        this.extraShotSound.play();
+      }
       shotgun.shotImg.src = "/assets/images/shotgun/flashLeft.png";
       this.img.src = "/assets/images/PJ/imleft.png";
       this.img.frame++;
@@ -1112,6 +1236,17 @@ class Player {
       this.y = this.y + 60
       shotgun.y = this.y - 80
       shotgun.x = this.x - 5
+      if(thirdShot){
+        this.y = this.y + 160
+        thirdShotRange = 140
+        shotgun.w = 100
+        shotgun.h = 200
+        shotgun.y = this.y - 390
+        shotgun.x = this.x - 50
+        this.extraShotSound = new Audio("/assets/audios ad/extraShotgun.mp3")
+        this.extraShotSound.volume = 0.3;
+        this.extraShotSound.play();
+      }
       shotgun.shotImg.src = "/assets/images/shotgun/flashUp.png";
       this.img.src = "/assets/images/PJ/imup.png";
       this.img.frame++;
@@ -1120,7 +1255,18 @@ class Player {
       shotgun.h = 60
       this.y = this.y - 60
       shotgun.y = this.y + 80
-      shotgun.x = this.x - 5
+      shotgun.x = this.x + 2
+      if(thirdShot){
+        this.y = this.y - 160
+        thirdShotRange = 140
+        shotgun.w = 100
+        shotgun.h = 200
+        shotgun.y = this.y + 140
+        shotgun.x = this.x -30
+        this.extraShotSound = new Audio("/assets/audios ad/extraShotgun.mp3")
+        this.extraShotSound.volume = 0.3;
+        this.extraShotSound.play();
+      }
       shotgun.shotImg.src = "/assets/images/shotgun/flashDown.png";
       this.img.src = "/assets/images/PJ/imdown.png";
       this.img.frame++;
@@ -1128,6 +1274,7 @@ class Player {
     if (this.cooldownBullet <= 600) {
       this.cooldownBullet = 600;
     }
+    shotgunShots +=0.3
     this.shotguns.push(shotgun);
   }
   heaterExtra() {

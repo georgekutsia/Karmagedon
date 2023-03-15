@@ -190,6 +190,7 @@ class Sandstorm {
     this.sandShootAudio = new Audio("/assets/audio/sandSound.mp3")
     this.sandShootAudio.volume = 0.01;
     this.sandShootAudio.play();
+    this.damage = 0.03
   }
   draw() {
     this.ctx.drawImage(
@@ -251,6 +252,7 @@ class ElementShield {
     this.eleAudio = new Audio("/assets/audio/sandSound.mp3")
     this.eleAudio.volume = 0.01;
     this.eleAudio.play();
+    this.damage = 0.1
   }
   draw() {
     this.ctx.drawImage(
@@ -310,6 +312,8 @@ class ElementBomb{
     this.eleAudio = new Audio("/assets/audio/sandSound.mp3")
     this.eleAudio.volume = 0.01;
     this.eleAudio.play();
+    this.damage = 0.008
+
   }
   draw() {
     this.ctx.drawImage(
@@ -333,12 +337,14 @@ class ElementBomb{
     this.w -= 0.2
     if (this.tick > 0.01) {
       this.tick = 0;
+      this.damage = 0.008
       this.eleImg.frame++;
     }
     if (this.eleImg.frame > 11) {
       this.eleImg.frame = 0;
     }
     if(this.tock >=220){
+      this.damage = 0.3
       this.x -= 5;
       this.y -= 5;
       this.h += 12
@@ -351,13 +357,99 @@ class ElementBomb{
   isVisible() {
     return !this.dispose;
   }
-  mineBomber() {
-    const elem = new ElementBomb (
-      this.ctx,
-      this.x,
-      this.y,
-      this
-    );
+  collides(puddle) {
+    const colX = this.x <= puddle.x + puddle.w && this.x + this.w > puddle.x;
+    const colY = this.y + this.h > puddle.y && this.y < puddle.y + puddle.h;
+    return colX && colY;
+  }
+}
+class ElementMine{
+  constructor(ctx, x, y, player) {
+    this.ctx = ctx;
+    this.x = x;
+    this.y = y;
+    this.w = 30;
+    this.h = 30;
+    this.player = player;
+    this.vx = 0;
+    this.vy = 0;
+    this.tick = 0
+    this.tock = 0
+    this.tuck = 0
+    this.dispose = false;
+    this.eleImg = new Image();
+    this.eleImg.src = "/assets/images/munición/mineExplo.png";
+    this.blip = new Image();
+    this.blip.src = "/assets/images/munición/blip.png";
+    this.blip.frame = 0;
+    this.eleImg.frame = 0;
+    this.activated = false
+    this.framer = 8
+    this.damage = 0.1
+    this.eleAudio = new Audio("/assets/audios ad/minaInstall.wav")
+    this.eleAudio.volume = 0.01;
+    this.eleAudio.play();
+  }
+  draw() {
+    this.ctx.drawImage(
+        this.eleImg,
+        0,
+        (this.eleImg.frame * this.eleImg.height) / this.framer,
+        this.eleImg.width,
+        this.eleImg.height / this.framer,
+        this.x,
+        this.y,
+        this.w,
+        this.h
+      );
+    this.ctx.drawImage(
+        this.blip,
+        0,
+        (this.blip.frame * this.blip.height) / 3,
+        this.blip.width,
+        this.blip.height / 3,
+        this.x - 15,
+        this.y - 15,
+        this.w + 30,
+        this.h + 30
+      );
+  }
+  move() {
+    this.tick++;
+    this.tock++
+    if (this.tick > 4) {
+      this.tick = 0;
+      this.eleImg.frame++;
+      this.eleImg.frame++;
+    }
+    if (this.eleImg.frame >= this.framer-1) {
+      this.eleImg.frame = 0;
+    }
+    if (this.tock > 93) {
+      this.tock = 92;
+      this.blip.frame++;
+    }
+    if (this.blip.frame >= this.framer-1) {
+      this.blip.frame = 0;
+      this.tock = 0;
+    }
+    if(this.activated === true){
+      this.eleAudio = new Audio("/assets/audios ad/minaExploSound.mp3")
+      this.eleAudio.volume = 0.01;
+      this.eleAudio.play();
+      this.framer = 8
+      this.x -= 5;
+      this.y -= 5;
+      this.h += 19
+      this.w += 19
+      if(this.w >= 300 && this.h >= 300){
+        this.dispose = true
+      }
+    }
+
+  }
+  isVisible() {
+    return !this.dispose;
   }
   collides(puddle) {
     const colX = this.x <= puddle.x + puddle.w && this.x + this.w > puddle.x;
