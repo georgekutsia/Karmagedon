@@ -14,7 +14,7 @@ class Karens {
     this.vx = -0.3;
     this.vy = -0.3;
     this.karens = new Image();
-    this.karens.src = "/assets/images/karens/karen1.png";
+    this.karens.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688379901/karengedon/karens/karen1_cmxgki.png";
     this.ks1 = new Audio("/assets/audio/ks1.mp3");
     this.ks1.volume = 0.1;
     this.ks2 = new Audio("/assets/audio/ks2.mp3");

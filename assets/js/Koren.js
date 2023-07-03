@@ -36,11 +36,11 @@ class Koren {
     this.korenEnd = 0;
     this.truth = false
     this.images = [
-      "/assets/images/elements/koren1.png",
-      "/assets/images/elements/koren3.png",
-      "/assets/images/elements/koren5.png",
-      "/assets/images/elements/koren7.png",
-      "/assets/images/elements/koren9.png",
+      "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381737/karengedon/elements/koren1_rlaew3.png",
+      "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381735/karengedon/elements/koren3_mbm0yz.png",
+      "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381746/karengedon/elements/koren5_c19tuc.png",
+      "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381747/karengedon/elements/koren7_x0n3fz.png",
+      "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381736/karengedon/elements/koren9_udnydz.png",
     ]
     this.says = [
       "Don`t touch my girl",
@@ -55,7 +55,7 @@ class Koren {
     this.koren.src = this.image;
     this.koren.frame = 0;
     this.cageImg = new Image();
-    this.cageImg.src = "/assets/images/munición/cage.png"
+    this.cageImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380194/karengedon/municio%CC%81n/cage_gl5s0a.png"
     this.cage = false
     this.cageTick = 0
   }
@@ -106,28 +106,28 @@ class Koren {
     followX > 0 ? (this.x += this.v) : (this.x += this.v - this.vNegative);
     followY > 0 ? (this.y += this.v) : (this.y += this.v - this.vNegative);
     if(followX > 0){
-      if(this.image === "/assets/images/elements/koren1.png"){
-        this.koren.src = "/assets/images/elements/koren1.png";
-      } else if(this.image === "/assets/images/elements/koren3.png"){
-        this.koren.src = "/assets/images/elements/koren4.png";
-      } else if(this.image === "/assets/images/elements/koren5.png"){
-        this.koren.src = "/assets/images/elements/koren5.png";
-      } else if(this.image === "/assets/images/elements/koren7.png"){
-        this.koren.src = "/assets/images/elements/koren7.png";
-      } else if(this.image === "/assets/images/elements/koren9.png"){
-        this.koren.src = "/assets/images/elements/koren9.png";
+      if(this.image === "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381737/karengedon/elements/koren1_rlaew3.png"){
+        this.koren.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381737/karengedon/elements/koren1_rlaew3.png";
+      } else if(this.image === "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381735/karengedon/elements/koren3_mbm0yz.png"){
+        this.koren.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381736/karengedon/elements/koren4_rcw1bi.png";
+      } else if(this.image === "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381746/karengedon/elements/koren5_c19tuc.png"){
+        this.koren.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381746/karengedon/elements/koren5_c19tuc.png";
+      } else if(this.image === "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381747/karengedon/elements/koren7_x0n3fz.png"){
+        this.koren.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381747/karengedon/elements/koren7_x0n3fz.png";
+      } else if(this.image === "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381736/karengedon/elements/koren9_udnydz.png"){
+        this.koren.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381736/karengedon/elements/koren9_udnydz.png";
       } 
     } else {
-      if(this.image === "/assets/images/elements/koren1.png"){
-        this.koren.src = "/assets/images/elements/koren2.png";
-      } else if(this.image === "/assets/images/elements/koren3.png"){
-        this.koren.src = "/assets/images/elements/koren3.png";
-      } else if(this.image === "/assets/images/elements/koren5.png"){
-        this.koren.src = "/assets/images/elements/koren6.png";
-      } else if(this.image === "/assets/images/elements/koren7.png"){
-        this.koren.src = "/assets/images/elements/koren8.png";
-      } else if(this.image === "/assets/images/elements/koren9.png"){
-        this.koren.src = "/assets/images/elements/koren10.png";
+      if(this.image === "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381737/karengedon/elements/koren1_rlaew3.png"){
+        this.koren.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381737/karengedon/elements/koren2_yisucs.png";
+      } else if(this.image === "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381735/karengedon/elements/koren3_mbm0yz.png"){
+        this.koren.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381735/karengedon/elements/koren3_mbm0yz.png";
+      } else if(this.image === "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381746/karengedon/elements/koren5_c19tuc.png"){
+        this.koren.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381747/karengedon/elements/koren6_pf5r6o.png";
+      } else if(this.image === "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381747/karengedon/elements/koren7_x0n3fz.png"){
+        this.koren.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381748/karengedon/elements/koren8_szjgoh.png";
+      } else if(this.image === "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381736/karengedon/elements/koren9_udnydz.png"){
+        this.koren.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381735/karengedon/elements/koren10_jih2jc.png";
       } 
     }
     if (this.x == player.x && this.y == player.y) {
