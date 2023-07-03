@@ -43,7 +43,7 @@
   margin-bottom: 0px;
 }
 #info-cheatsheet:hover {
-  cursor: url("/assets/images/elements/cursorHower"), pointer;
+  cursor: url("https://res.cloudinary.com/dfrda73uc/raw/upload/v1688381733/karengedon/elements/cursorHower_zdymju"), pointer;
   opacity: 1;
   transition: all ease-in-out 0.5s;
   backdrop-filter: blur(10px);
@@ -58,7 +58,7 @@
   display: none;
   position: relative;
   border: 3px dashed rgb(250, 250, 250);
-  background-image: url(/assets/images/fondos/mall\ 2.jpeg);
+  background-image: url("https://res.cloudinary.com/dfrda73uc/image/upload/v1688378899/karengedon/fondos/mall_2_rinzjg.jpg");
   width: 35vw;
   height: 47vh;
   background-size: 100%;
@@ -73,7 +73,7 @@
   height: 94vh;
   display: block;
   position: relative;
-  background-image: url(/assets/images/fondos/mall\ 4.png);
+  background-image: url("https://res.cloudinary.com/dfrda73uc/image/upload/v1688378903/karengedon/fondos/mall_4_tzqn9c.png");
   background-size: 100%;
   background-repeat: no-repeat;
   transition: all ease-in-out 1s;
@@ -98,7 +98,7 @@ h2 {
 /* info 1 */
 
 #infoSecret3 {
-  cursor: url("/assets/images/elements/cursorHower"), pointer;
+  cursor: url("https://res.cloudinary.com/dfrda73uc/raw/upload/v1688381733/karengedon/elements/cursorHower_zdymju"), pointer;
   position: absolute;
   display: block;
   justify-content: center;
@@ -116,7 +116,7 @@ h2 {
   z-index: 100;
 }
 #infoSecret3:hover {
-  background-image: url(/assets/images/infos/secretarc.png);
+  background-image: url("https://res.cloudinary.com/dfrda73uc/image/upload/v1688379882/karengedon/infos/secretarc_cnhen5.png");
   width: 80px;
   height: 80px;
   font-size: 1.85em;
@@ -130,7 +130,7 @@ h2 {
   font-size: 0;
 }
 #infoSecret3:hover:after {
-  content: url(/assets/images/infos/secret3.png);
+  content: url("https://res.cloudinary.com/dfrda73uc/image/upload/v1688379884/karengedon/infos/secret3_nc4p6f.png");
   position: absolute;
   top: -100%;
   right: 110%;
@@ -138,7 +138,7 @@ h2 {
   transition: opacity 0.5s 0.4s;
 }
 #infoSecret2 {
-  cursor: url("/assets/images/elements/cursorHower"), pointer;
+  cursor: url("https://res.cloudinary.com/dfrda73uc/raw/upload/v1688381733/karengedon/elements/cursorHower_zdymju"), pointer;
   position: absolute;
   display: block;
   justify-content: center;
@@ -155,7 +155,7 @@ h2 {
   opacity: 0;
 }
 #infoSecret2:hover {
-  background-image: url(/assets/images/infos/secretarc.png);
+  background-image: url("https://res.cloudinary.com/dfrda73uc/image/upload/v1688379882/karengedon/infos/secretarc_cnhen5.png");
   width: 80px;
   height: 80px;
   font-size: 1.85em;
@@ -169,7 +169,7 @@ h2 {
   font-size: 0;
 }
 #infoSecret2:hover:after {
-  content: url(/assets/images/infos/secret2.png);
+  content: url("https://res.cloudinary.com/dfrda73uc/image/upload/v1688379883/karengedon/infos/secret2_imj4hl.png");
   position: absolute;
   top: -200%;
   right: 110%;
@@ -177,7 +177,7 @@ h2 {
   transition: opacity 0.5s 0.4s;
 }
 #infoSecret1 {
-  cursor: url("/assets/images/elements/cursorHower"), pointer;
+  cursor: url("https://res.cloudinary.com/dfrda73uc/raw/upload/v1688381733/karengedon/elements/cursorHower_zdymju"), pointer;
   position: absolute;
   display: block;
   justify-content: center;
@@ -194,7 +194,7 @@ h2 {
   opacity: 0;
 }
 #infoSecret1:hover {
-  background-image: url(/assets/images/infos/secretarc.png);
+  background-image: url("https://res.cloudinary.com/dfrda73uc/image/upload/v1688379882/karengedon/infos/secretarc_cnhen5.png");
   width: 80px;
   height: 80px;
   font-size: 1.85em;
@@ -208,7 +208,7 @@ h2 {
   font-size: 0;
 }
 #infoSecret1:hover:after {
-  content: url(/assets/images/infos/secret1.png);
+  content: url("https://res.cloudinary.com/dfrda73uc/image/upload/v1688379883/karengedon/infos/secret1_o4nn6u.png");
   position: absolute;
   top: -100%;
   right: -630%;
@@ -216,7 +216,7 @@ h2 {
   transition: opacity 0.5s 0.4s;
 }
 #info0 {
-  cursor: url("/assets/images/elements/cursorHower"), pointer;
+  cursor: url("https://res.cloudinary.com/dfrda73uc/raw/upload/v1688381733/karengedon/elements/cursorHower_zdymju"), pointer;
   position: absolute;
   display: block;
   justify-content: center;
@@ -234,7 +234,7 @@ h2 {
   opacity: 0.1;
 }
 #info0:hover {
-  background-image: url(/assets/images/infos/secretarc.png);
+  background-image: url("https://res.cloudinary.com/dfrda73uc/image/upload/v1688379882/karengedon/infos/secretarc_cnhen5.png");
   width: 130px;
   height: 130px;
   font-size: 1.85em;
@@ -247,7 +247,7 @@ h2 {
 
 }
 #info0:hover:after {
-  content: url(/assets/images/infos/secretfold.png);
+  content: url("https://res.cloudinary.com/dfrda73uc/image/upload/v1688379882/karengedon/infos/secretfold_ydakp5.png");
   position: absolute;
   top: 90%;
   right: 10%;
@@ -255,7 +255,7 @@ h2 {
   transition: opacity 1s 0.4s;
 }
 #info1 {
-  cursor: url("/assets/images/elements/cursorHower"), pointer;
+  cursor: url("https://res.cloudinary.com/dfrda73uc/raw/upload/v1688381733/karengedon/elements/cursorHower_zdymju"), pointer;
   position: absolute;
   display: block;
   justify-content: center;
@@ -274,7 +274,7 @@ h2 {
   opacity: 1;
 }
 #info1:hover {
-  background-image: url(/assets/images/infos/you.png);
+  background-image: url("https://res.cloudinary.com/dfrda73uc/image/upload/v1688379880/karengedon/infos/you_eo2bqh.png");
   width: 130px;
   height: 130px;
   font-size: 1.85em;
@@ -289,7 +289,7 @@ h2 {
 
 }
 #info1:hover:after {
-  content: url(/assets/images/infos/InfonfoNew.png);
+  content: url("https://res.cloudinary.com/dfrda73uc/image/upload/v1688379886/karengedon/infos/InfonfoNew_vdf8ha.png");
   position: absolute;
   top: -32%;
   right: 110%;
@@ -299,7 +299,7 @@ h2 {
 
 /* info 2 */
 #info2 {
-  cursor: url("/assets/images/elements/cursorHower"), pointer;
+  cursor: url("https://res.cloudinary.com/dfrda73uc/raw/upload/v1688381733/karengedon/elements/cursorHower_zdymju"), pointer;
   position: absolute;
   display: block;
   justify-content: center;
@@ -318,7 +318,7 @@ h2 {
   opacity: 1;
 }
 #info2:hover {
-  background-image: url(/assets/images/infos/karen1.png);
+  background-image: url("https://res.cloudinary.com/dfrda73uc/image/upload/v1688379880/karengedon/infos/karen1_te7z9m.png");
   width: 130px;
   height: 130px;
   font-size: 1.85em;
@@ -333,7 +333,7 @@ h2 {
 
 }
 #info2:hover:after {
-  content: url(/assets/images/infos/KarenInfoNew.png);
+  content: url("https://res.cloudinary.com/dfrda73uc/image/upload/v1688379885/karengedon/infos/KarenInfoNew_qr4gol.png");
   position: absolute;
   font-size: 2px;
   top: -20%;
@@ -344,7 +344,7 @@ h2 {
 
 /* info 3 */
 #info3 {
-  cursor: url("/assets/images/elements/cursorHower"), pointer;
+  cursor: url("https://res.cloudinary.com/dfrda73uc/raw/upload/v1688381733/karengedon/elements/cursorHower_zdymju"), pointer;
   position: absolute;
   display: block;
   justify-content: center;
@@ -363,7 +363,7 @@ h2 {
   opacity: 1;
 }
 #info3:hover {
-  background-image: url(/assets/images/infos/bosskaren1.png);
+  background-image: url("https://res.cloudinary.com/dfrda73uc/image/upload/v1688379884/karengedon/infos/bosskaren1_kxde4e.png");
   width: 130px;
   height: 130px;
   font-size: 1.85em;
@@ -378,7 +378,7 @@ h2 {
 
 }
 #info3:hover:after {
-  content: url(/assets/images/infos/MegakarenInfoNew.xcf.png);
+  content: url("https://res.cloudinary.com/dfrda73uc/image/upload/v1688379885/karengedon/infos/MegakarenInfoNew.xcf_hn44qr.png");
   position: absolute;
   font-size: 2px;
   top: -140%;
@@ -389,7 +389,7 @@ h2 {
 
 /* info 2 */
 #info4 {
-  cursor: url("/assets/images/elements/cursorHower"), pointer;
+  cursor: url("https://res.cloudinary.com/dfrda73uc/raw/upload/v1688381733/karengedon/elements/cursorHower_zdymju"), pointer;
   position: absolute;
   display: block;
   justify-content: center;
@@ -408,7 +408,7 @@ h2 {
   opacity: 1;
 }
 #info4:hover {
-  background-image: url(/assets/images/infos/bodybuilder.png);
+  background-image: url("https://res.cloudinary.com/dfrda73uc/image/upload/v1688379882/karengedon/infos/bodybuilder_lw6wbx.png");
   width: 130px;
   height: 130px;
   font-size: 1.85em;
@@ -422,7 +422,7 @@ h2 {
   opacity: 1;
 }
 #info4:hover:after {
-  content: url(/assets/images/infos/KorenInfoNew.png);
+  content: url("https://res.cloudinary.com/dfrda73uc/image/upload/v1688379884/karengedon/infos/KorenInfoNew_hhskno.png");
   position: absolute;
   font-size: 2px;
   top: -260%;
@@ -433,7 +433,7 @@ h2 {
 /* info 2 */
 
 #info4a {
-  cursor: url("/assets/images/elements/cursorHower"), pointer;
+  cursor: url("https://res.cloudinary.com/dfrda73uc/raw/upload/v1688381733/karengedon/elements/cursorHower_zdymju"), pointer;
   position: absolute;
   display: block;
   justify-content: center;
@@ -452,7 +452,7 @@ h2 {
   opacity: 1;
 }
 #info4a:hover {
-  background-image: url(/assets/images/infos/fatt.png);
+  background-image: url("https://res.cloudinary.com/dfrda73uc/image/upload/v1688379881/karengedon/infos/fatt_paovnp.png");
   width: 130px;
   height: 130px;
   font-size: 1.85em;
@@ -466,7 +466,7 @@ h2 {
   opacity: 1;
 }
 #info4a:hover:after {
-  content: url(/assets/images/infos/FatInfoNew.png);
+  content: url("https://res.cloudinary.com/dfrda73uc/image/upload/v1688379885/karengedon/infos/FatInfoNew_mr7hed.png");
   position: absolute;
   font-size: 2px;
   top: -370%;
@@ -478,7 +478,7 @@ h2 {
 
 
 #info5 {
-  cursor: url("/assets/images/elements/cursorHower"), pointer;
+  cursor: url("https://res.cloudinary.com/dfrda73uc/raw/upload/v1688381733/karengedon/elements/cursorHower_zdymju"), pointer;
   position: absolute;
   display: block;
   justify-content: center;
@@ -497,7 +497,7 @@ h2 {
   opacity: 1;
 }
 #info5:hover {
-  background-image: url(/assets/images/infos/dis3.png);
+  background-image: url("https://res.cloudinary.com/dfrda73uc/image/upload/v1688379888/karengedon/infos/dis3_xx9mrn.png");
   width: 130px;
   height: 130px;
   font-size: 1.85em;
@@ -512,7 +512,7 @@ h2 {
 
 }
 #info5:hover:after {
-  content: url(/assets/images/infos/infoGains.png);
+  content: url("https://res.cloudinary.com/dfrda73uc/image/upload/v1688379885/karengedon/infos/infoGains_un5cgc.png");
   position: absolute;
   top: 90%;
   right: 270%;
@@ -522,7 +522,7 @@ h2 {
 
 /* info 2 */
 #info6 {
-  cursor: url("/assets/images/elements/cursorHower"), pointer;
+  cursor: url("https://res.cloudinary.com/dfrda73uc/raw/upload/v1688381733/karengedon/elements/cursorHower_zdymju"), pointer;
   position: absolute;
   display: block;
   justify-content: center;
@@ -541,7 +541,7 @@ h2 {
   opacity: 1;
 }
 #info6:hover {
-  background-image: url(/assets/images/infos/ratima.png);
+  background-image: url("https://res.cloudinary.com/dfrda73uc/image/upload/v1688379880/karengedon/infos/ratima_bqpitr.png");
   width: 130px;
   height: 130px;
   font-size: 1.85em;
@@ -556,7 +556,7 @@ h2 {
 
 }
 #info6:hover:after {
-  content: url(/assets/images/infos/RatInfoNew.png);
+  content: url("https://res.cloudinary.com/dfrda73uc/image/upload/v1688379886/karengedon/infos/RatInfoNew_eja7lf.png");
   position: absolute;
   font-size: 2px;
   top: -20%;
@@ -567,7 +567,7 @@ h2 {
 
 /* info 3 */
 #info7 {
-  cursor: url("/assets/images/elements/cursorHower"), pointer;
+  cursor: url("https://res.cloudinary.com/dfrda73uc/raw/upload/v1688381733/karengedon/elements/cursorHower_zdymju"), pointer;
   position: absolute;
   display: block;
   justify-content: center;
@@ -587,7 +587,7 @@ h2 {
   opacity: 1;
 }
 #info7:hover {
-  background-image: url(/assets/images/infos/gooses.png);
+  background-image: url("https://res.cloudinary.com/dfrda73uc/image/upload/v1688379885/karengedon/infos/gooses_pedkvp.png");
   width: 130px;
   height: 130px;
   font-size: 1.85em;
@@ -602,7 +602,7 @@ h2 {
 
 }
 #info7:hover:after {
-  content: url(/assets/images/infos/GooseInfoNew.png);
+  content: url("https://res.cloudinary.com/dfrda73uc/image/upload/v1688379885/karengedon/infos/GooseInfoNew_jqcojl.png");
   position: absolute;
   font-size: 2px;
   top: -140%;
@@ -612,7 +612,7 @@ h2 {
 }
 
 #info8 {
-  cursor: url("/assets/images/elements/cursorHower"), pointer;
+  cursor: url("https://res.cloudinary.com/dfrda73uc/raw/upload/v1688381733/karengedon/elements/cursorHower_zdymju"), pointer;
   position: absolute;
   display: block;
   justify-content: center;
@@ -632,7 +632,7 @@ h2 {
   opacity: 1;
 }
 #info8:hover {
-  background-image: url(/assets/images/infos/cactus1.png);
+  background-image: url("https://res.cloudinary.com/dfrda73uc/image/upload/v1688379887/karengedon/infos/cactus1_rmo861.png");
   width: 130px;
   height: 130px;
   font-size: 1.85em;
@@ -646,7 +646,7 @@ h2 {
   opacity: 1;
 }
 #info8:hover:after {
-  content: url(/assets/images/infos/ObstaclesInfoNew.png);
+  content: url("https://res.cloudinary.com/dfrda73uc/image/upload/v1688379886/karengedon/infos/ObstaclesInfoNew_zxv1ui.png");
   position: absolute;
   font-size: 2px;
   top: -260%;
@@ -656,7 +656,7 @@ h2 {
 }
 
 #info9 {
-  cursor: url("/assets/images/elements/cursorHower"), pointer;
+  cursor: url("https://res.cloudinary.com/dfrda73uc/raw/upload/v1688381733/karengedon/elements/cursorHower_zdymju"), pointer;
   position: absolute;
   display: block;
   justify-content: center;
@@ -675,7 +675,7 @@ h2 {
   opacity: 1;
 }
 #info9:hover {
-  background-image: url(/assets/images/infos/cust.png);
+  background-image: url("https://res.cloudinary.com/dfrda73uc/image/upload/v1688379883/karengedon/infos/cust_wzpstz.png");
   width: 130px;
   height: 130px;
   font-size: 1.85em;
@@ -689,7 +689,7 @@ h2 {
   opacity: 1;
 }
 #info9:hover:after {
-  content: url(/assets/images/infos/CustomerInfoNew.png);
+  content: url("https://res.cloudinary.com/dfrda73uc/image/upload/v1688379886/karengedon/infos/CustomerInfoNew_xkrj0e.png");
   position: absolute;
   font-size: 2px;
   top: -370%;

@@ -36,7 +36,7 @@
 .neon-button {
   font-size: 3vw;
   display: flex;
-  cursor: url("/assets/images/elements/cursorInfo"), pointer;
+  cursor: url("https://res.cloudinary.com/dfrda73uc/raw/upload/v1688381736/karengedon/elements/cursorInfo_bjytyq"), pointer;
   justify-content: center;
   text-align: center;
   text-decoration: none;
@@ -96,7 +96,7 @@
   position: absolute;
   font-size: 1.6rem;
   background-color: rgb(38, 22, 6);
-  cursor: url("/assets/images/elements/cursorInfo"), pointer;
+  cursor: url("https://res.cloudinary.com/dfrda73uc/raw/upload/v1688381736/karengedon/elements/cursorInfo_bjytyq"), pointer;
   text-decoration: none;
   color: rgb(8, 218, 255);
   border: rgb(8, 218, 255) 1px solid;
@@ -152,7 +152,7 @@
   position: absolute;
   font-size: 1.8rem;
   background-color: rgb(38, 22, 6);
-  cursor: url("/assets/images/elements/cursorInfo"), pointer;
+  cursor: url("https://res.cloudinary.com/dfrda73uc/raw/upload/v1688381736/karengedon/elements/cursorInfo_bjytyq"), pointer;
   text-decoration: none;
   color: rgb(8, 218, 255);
   border: rgb(8, 218, 255) 1px solid;
@@ -208,7 +208,7 @@
   position: absolute;
   font-size: 1.8rem;
   background-color: rgb(38, 22, 6);
-  cursor: url("/assets/images/elements/cursorInfo"), pointer;
+  cursor: url("https://res.cloudinary.com/dfrda73uc/raw/upload/v1688381736/karengedon/elements/cursorInfo_bjytyq"), pointer;
   text-decoration: none;
   color: rgb(8, 218, 255);
   border: rgb(8, 218, 255) 1px solid;
@@ -266,7 +266,7 @@
   background-color: rgb(38, 22, 6);
   color: rgb(8, 218, 255);
   border: rgb(8, 218, 255) 1px solid;
-  cursor: url("/assets/images/elements/cursorInfo"), pointer;
+  cursor: url("https://res.cloudinary.com/dfrda73uc/raw/upload/v1688381736/karengedon/elements/cursorInfo_bjytyq"), pointer;
   text-decoration: none;
   padding: 5px 10px;
   border-radius: 10px;
@@ -322,7 +322,7 @@
   font-size: 1.9vw;
   display: flex;
   background-color: rgb(27, 4, 46);
-  cursor: url("/assets/images/elements/cursorInfo"), pointer;
+  cursor: url("https://res.cloudinary.com/dfrda73uc/raw/upload/v1688381736/karengedon/elements/cursorInfo_bjytyq"), pointer;
   text-decoration: none;
   color: var(--clr-neondir);
   border: var(--clr-neondir) 0.125em solid;
@@ -394,7 +394,7 @@
   font-size: 2rem;
   display: none;
   background-color: rgb(27, 4, 46);
-  cursor: url("/assets/images/elements/cursorInfo"), pointer;
+  cursor: url("https://res.cloudinary.com/dfrda73uc/raw/upload/v1688381736/karengedon/elements/cursorInfo_bjytyq"), pointer;
   text-decoration: none;
   color: var(--clr-neonbu);
   border: var(--clr-neonbu) 0.125em solid;
@@ -468,7 +468,7 @@
   font-size: calc(10px + 1.5vw);
   display: inline-block;
   background-color: rgb(27, 4, 46);
-  cursor: url("/assets/images/elements/cursorInfo"), pointer;
+  cursor: url("https://res.cloudinary.com/dfrda73uc/raw/upload/v1688381736/karengedon/elements/cursorInfo_bjytyq"), pointer;
   text-decoration: none;
   color: var(--clr-ratinva);
   border: var(--clr-ratinva) 0.125em solid;
@@ -532,7 +532,7 @@
   font-size: calc(10px + 1.5vw);
   display: inline-block;
   background-color: rgb(27, 4, 46);
-  cursor: url("/assets/images/elements/cursorInfo"), pointer;
+  cursor: url("https://res.cloudinary.com/dfrda73uc/raw/upload/v1688381736/karengedon/elements/cursorInfo_bjytyq"), pointer;
   text-decoration: none;
   color: var(--clr-destruto);
   border: var(--clr-destruto) 0.125em solid;
@@ -596,7 +596,7 @@
   font-size: calc(10px + 1.5vw);
   display: inline-block;
   background-color: rgb(27, 4, 46);
-  cursor: url("/assets/images/elements/cursorInfo"), pointer;
+  cursor: url("https://res.cloudinary.com/dfrda73uc/raw/upload/v1688381736/karengedon/elements/cursorInfo_bjytyq"), pointer;
   text-decoration: none;
   color: var(--clr-neonbu2);
   border: var(--clr-neonbu2) 0.125em solid;
@@ -657,7 +657,7 @@
   font-size: calc(10px + 1.5vw);
   display: inline-block;
   background-color: rgb(27, 4, 46);
-  cursor: url("/assets/images/elements/cursorInfo"), pointer;
+  cursor: url("https://res.cloudinary.com/dfrda73uc/raw/upload/v1688381736/karengedon/elements/cursorInfo_bjytyq"), pointer;
   text-decoration: none;
   color: var( --clr-survival);
   border: var( --clr-survival) 0.125em solid;
@@ -724,7 +724,7 @@
   font-size: 2rem;
   display: none;
   background-color: rgb(175, 101, 235);
-  cursor: url("/assets/images/elements/cursorInfo"), pointer;
+  cursor: url("https://res.cloudinary.com/dfrda73uc/raw/upload/v1688381736/karengedon/elements/cursorInfo_bjytyq"), pointer;
   text-decoration: none;
   color: var(--clr-neondir);
   border: var(--clr-neondir) 0.125em solid;
@@ -794,7 +794,7 @@
   font-size: 2rem;
   display: none;
   background-color: rgb(27, 4, 46);
-  cursor: url("/assets/images/elements/cursorInfo"), pointer;
+  cursor: url("https://res.cloudinary.com/dfrda73uc/raw/upload/v1688381736/karengedon/elements/cursorInfo_bjytyq"), pointer;
   text-decoration: none;
   color: var(--clr-neondir);
   border: var(--clr-neondir) 0.125em solid;
@@ -863,7 +863,7 @@
   font-size: 2rem;
   display: none;
   background-color: rgb(27, 4, 46);
-  cursor: url("/assets/images/elements/cursorInfo"), pointer;
+  cursor: url("https://res.cloudinary.com/dfrda73uc/raw/upload/v1688381736/karengedon/elements/cursorInfo_bjytyq"), pointer;
   text-decoration: none;
   color: var(--clr-neondir);
   border: var(--clr-neondir) 0.125em solid;
@@ -933,7 +933,7 @@
   font-size: 2rem;
   display: none;
   background-color: rgb(27, 4, 46);
-  cursor: url("/assets/images/elements/cursorInfo"), pointer;
+  cursor: url("https://res.cloudinary.com/dfrda73uc/raw/upload/v1688381736/karengedon/elements/cursorInfo_bjytyq"), pointer;
   text-decoration: none;
   color: var(--clr-neondir);
   border: var(--clr-neondir) 0.125em solid;
