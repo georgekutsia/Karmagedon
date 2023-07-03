@@ -16,14 +16,14 @@ class Customer {
     this.dead = 0;
     this.tick = 0;
     this.cageImg = new Image();
-    this.cageImg.src = "/assets/images/munición/cage.png"
+    this.cageImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380194/karengedon/municio%CC%81n/cage_gl5s0a.png"
     this.cage = false
     this.cageTick = 0
-    this.images = [ "/assets/images/elements/customer4.png", 
-                    "/assets/images/elements/customer17.png", 
-                    "/assets/images/elements/customer13.png", 
-                    "/assets/images/elements/customer8.png", 
-                    "/assets/images/elements/customer15.png"]
+    this.images = [ "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381738/karengedon/elements/customer4_ndmtsz.png", 
+                    "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381735/karengedon/elements/customer17_ell4cf.png", 
+                    "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381735/karengedon/elements/customer13_oocntw.png", 
+                    "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381734/karengedon/elements/customer8_yx8okj.png", 
+                    "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381735/karengedon/elements/customer15_egjftk.png"]
     this.says = [ "Such a nice place",
                   "I'ts beautiful!",
                   "I love this mall",
@@ -107,16 +107,16 @@ class Customer {
     }
     if(this.y >= 100){
       this.vx = -this.moveX;
-      if(this.image === "/assets/images/elements/customer4.png"){
-        this.customImg.src = "/assets/images/elements/customer3.png";
-      } else if(this.image === "/assets/images/elements/customer17.png"){
-        this.customImg.src = "/assets/images/elements/customer18.png";
-      } else if(this.image === "/assets/images/elements/customer8.png"){
-        this.customImg.src = "/assets/images/elements/customer7.png"
-      } else if(this.image === "/assets/images/elements/customer13.png"){
-        this.customImg.src = "/assets/images/elements/customer14.png"
-      } else if(this.image === "/assets/images/elements/customer15.png"){
-        this.customImg.src = "/assets/images/elements/customer16.png"
+      if(this.image === "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381738/karengedon/elements/customer4_ndmtsz.png"){
+        this.customImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381738/karengedon/elements/customer3_dvpdka.png";
+      } else if(this.image === "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381735/karengedon/elements/customer17_ell4cf.png"){
+        this.customImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381736/karengedon/elements/customer18_kcii56.png";
+      } else if(this.image === "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381734/karengedon/elements/customer8_yx8okj.png"){
+        this.customImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381738/karengedon/elements/customer7_m3pjnr.png"
+      } else if(this.image === "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381735/karengedon/elements/customer13_oocntw.png"){
+        this.customImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381735/karengedon/elements/customer14_smu6q1.png"
+      } else if(this.image === "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381735/karengedon/elements/customer15_egjftk.png"){
+        this.customImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381735/karengedon/elements/customer16_yxokm7.png"
       }
     }
     if(this.y >= 200){
@@ -125,16 +125,16 @@ class Customer {
     }
     if(this.y >= 300){
       this.vx = -this.moveX;;
-      if(this.image === "/assets/images/elements/customer4.png"){
-        this.customImg.src = "/assets/images/elements/customer3.png";
-      } else if(this.image === "/assets/images/elements/customer17.png"){
-        this.customImg.src = "/assets/images/elements/customer18.png";
-      } else if(this.image === "/assets/images/elements/customer8.png"){
-        this.customImg.src = "/assets/images/elements/customer7.png"
-      } else if(this.image === "/assets/images/elements/customer13.png"){
-        this.customImg.src = "/assets/images/elements/customer14.png"
-      } else if(this.image === "/assets/images/elements/customer15.png"){
-        this.customImg.src = "/assets/images/elements/customer16.png"
+      if(this.image === "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381738/karengedon/elements/customer4_ndmtsz.png"){
+        this.customImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381738/karengedon/elements/customer3_dvpdka.png";
+      } else if(this.image === "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381735/karengedon/elements/customer17_ell4cf.png"){
+        this.customImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381736/karengedon/elements/customer18_kcii56.png";
+      } else if(this.image === "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381734/karengedon/elements/customer8_yx8okj.png"){
+        this.customImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381738/karengedon/elements/customer7_m3pjnr.png"
+      } else if(this.image === "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381735/karengedon/elements/customer13_oocntw.png"){
+        this.customImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381735/karengedon/elements/customer14_smu6q1.png"
+      } else if(this.image === "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381735/karengedon/elements/customer15_egjftk.png"){
+        this.customImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381735/karengedon/elements/customer16_yxokm7.png"
       }
     }
     if(this.y >= 400){
@@ -152,7 +152,7 @@ class Customer {
       this.customImg.frame = 0;
     }
     if(this.lifeleft <= 0){
-      this.customImg.src = "/assets/images/elements/bloodStain.png"
+      this.customImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381745/karengedon/elements/bloodStain_hev4jd.png"
       this.color = "red"
       this.say = this.deadSay
       this.vx = 0;

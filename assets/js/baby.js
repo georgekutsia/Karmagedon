@@ -19,7 +19,7 @@ class Baby {
     this.babyLife = 5
     this.babyFrame = 18
     this.cageImg = new Image();
-    this.cageImg.src = "/assets/images/munición/cage.png"
+    this.cageImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380194/karengedon/municio%CC%81n/cage_gl5s0a.png"
     this.cage = false
     this.cageTick = 0
   }
