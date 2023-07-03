@@ -10,7 +10,7 @@ class Megablaster {
     this.vy = 0;
     this.dispose = false;
     this.blasterImg = new Image();
-    this.blasterImg.src = "/assets/images/munición/stormstorm.png";
+    this.blasterImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380376/karengedon/municio%CC%81n/stormstorm_lwzb3o.png";
     this.blasterShootAudio = new Audio("/assets/audios ad/blasterStorm.wav")
     this.blasterShootAudio.volume = 0.2;
     this.blasterShootAudio.play();
@@ -72,7 +72,7 @@ class RocketLauncher {
     this.vy = 0;
     this.dispose = false;
     this.blasterImg = new Image();
-    this.blasterImg.src = "/assets/images/munición/roquetRight.png";
+    this.blasterImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380200/karengedon/municio%CC%81n/roquetRight_qpjpv6.png";
     this.sandShootAudio = new Audio("/assets/audios ad/rocketLaunchSound0.mp3")
     this.sandShootAudio.volume = 0.06;
     this.sandShootAudio.play();
@@ -118,7 +118,7 @@ class RocketLauncher {
         this.y= this.y-1
         this.h = 120;
         this.w = 120;
-        this.blasterImg.src = "/assets/images/munición/roquetExplosion.png";
+        this.blasterImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380196/karengedon/municio%CC%81n/roquetExplosion_lgxtwi.png";
         this.teck++
         if(this.teck >= 22){
           this.dispose = true
@@ -248,7 +248,7 @@ class ElementShield {
     this.dispose = false;
     this.eleImg = new Image();
     this.eleImg.frame = 0;
-    this.eleImg.src = "/assets/images/munición/stormstorm.png";
+    this.eleImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380376/karengedon/municio%CC%81n/stormstorm_lwzb3o.png";
     this.eleAudio = new Audio("/assets/audio/sandSound.mp3")
     this.eleAudio.volume = 0.01;
     this.eleAudio.play();
@@ -309,7 +309,7 @@ class ElementBomb{
     this.dispose = false;
     this.eleImg = new Image();
     this.eleImg.frame = 0;
-    this.eleImg.src = "/assets/images/munición/stormstorm.png";
+    this.eleImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380376/karengedon/municio%CC%81n/stormstorm_lwzb3o.png";
     this.eleAudio = new Audio("/assets/audio/sandSound.mp3")
     this.eleAudio.volume = 0.01;
     this.eleAudio.play();
