@@ -6,10 +6,19 @@
     font-size: 40px;
     color: black;
     z-index: 100;
-    bottom: 10px;
-    left: 110px;
+    bottom: 50px;
+    left: 80px;
+    width: 130px;
     cursor: url("/assets/images/elements/cursorInfo"), pointer;
 }
+#demo-spacing{
+    background-color: blue;
+    margin-bottom: 20px
+}
+#display-adds:hover{
+    background-color: rgb(255, 149, 0);
+}
+
 .demo{
     border: 1px solid rgb(255, 255, 255);
     display: none;
@@ -19,7 +28,7 @@
     cursor: url("/assets/images/elements/cursorInfo"), pointer;
     color: rgb(3, 59, 3);
     margin-left: 10px;
-    margin-top: 920px
+    margin-top: 20px
 }
 
 #status{
@@ -46,7 +55,6 @@
 }
 #add-goose{
     display: none;
-    
 }
 #add-discount{
     display: none;

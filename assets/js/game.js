@@ -145,11 +145,12 @@ class Game {
     this.interval = null;
     this.puddleTime =this.fireTime =this.gooseTime =this.babyTime =this.customerTime =this.bossTime =this.korenTime =this.cartTime =this.foodTime =this.upgradeTime =this.upBulletTime =this.discountTime =this.deadGoose = 0
     this.karens = this.rats = this.babys = this.customers = this.fats = this.puddles = this.fires = this.geese = this.bosss = this.korens = this.carts = this.drugs = this.foods = this.upgrades = this.upBullets = this.discounts = [];
+    this.allOfThem = [this.rats, this.geese, this.bosss]
     this.setListeners();
     this.musicStart = new Audio("/assets/audio/valse.mp3");
     this.musicStart.volume = 0.002;
     this.musicStart.loop = true;
-    // random sound Boss
+
     this.karens.src = "/assets/images/karens/karen1.png";
     this.bossSound1 = new Audio("/assets/audios ad/bossOuch1.m4a");
     this.bossSound1.volume = 0.1;
@@ -349,6 +350,7 @@ class Game {
     this.player.auras = this.player.auras.filter((e) => e.isVisible());
     this.player.waters = this.player.waters.filter((e) => e.isVisible());
     this.player.sanders = this.player.sanders.filter((e) => e.isVisible());
+    mineria=mineria.filter((e) =>e.isVisible())
     this.player.discountings = this.player.discountings.filter((e) => e.isVisible());
     this.lampTick++
     if (this.karens.length <= 0) { const alert = document.getElementById("karens-alert"); alert.style.display = "none";}
@@ -480,10 +482,8 @@ class Game {
 
 
     // se dibuja tras 5 horas
-    if(this.winTime >= 57500){ //14 de la tarde 57500
+    if(this.winTime >= 500){ //14 de la tarde 57500
       this.portals.forEach((e) => e.draw());
-    }
-    if(this.winTime >= 57500){
       this.portals2.forEach((e) => e.draw());
     }
     if(this.winTime >=100 && this.winTime <= 150){
@@ -515,7 +515,7 @@ class Game {
         if(this.lampTick >= 7640 ){
           // se reinicia cada 2 horas
           this.lamps.forEach((lamp) =>lamp.img.src = "/assets/images/elements/lampOfff.png")
-          this.lamps.forEach((lamp) =>lamp.bla= false)
+          this.lamps.forEach((lamp) =>lamp.lights = false)
           this.alertingSound = new Audio("/assets/audios ad/lampOff.wav");
           this.alertingSound.volume = 0.05;
           this.alertingSound.play()
@@ -1224,6 +1224,7 @@ class Game {
       koren.w += (6-extraLife)
     }
   }
+  
   //Colisiones start..Colisiones start..Colisiones start..Colisiones start..Colisiones start..Colisiones start..
   //Colisiones start..Colisiones start..Colisiones start..Colisiones start..Colisiones start..Colisiones start..
   checkCharger(){
@@ -1620,6 +1621,14 @@ class Game {
         } else return true;
       });
     });
+    if(this.player.cageDamage === true ){
+      this.geese.forEach((goose) => (goose.cage = true))
+      this.geese.forEach((goose) => (goose.vx = 0))
+      this.geese.forEach((goose) => (goose.moveY = 0))
+      this.rats.forEach((rat) => (rat.cage = true))
+      this.rats.forEach((rat) => (rat.vx = 0))
+
+    }
     this.rats.forEach((rat) => { //rat con blaster
       this.player.blasters.filter((blast) => {
         if (blast.collides(rat)) {
@@ -1636,7 +1645,10 @@ class Game {
     this.rats.forEach((rat) => {//rat con sanders
       this.player.sanders.filter((sand) => {
         if (sand.collides(rat)) {
-          rat.lifeleft -= 4;
+          sand.activated = true
+          rat.lifeleft -= sand.damage;
+          rat.lifeleft -= sand.damage;
+          rat.vx += 0.02
           if(rat.lifeleft === 0){
             this.score.addkrat()
             this.score.addktotal1()
@@ -1812,7 +1824,12 @@ class Game {
     this.korens.forEach((koren) => { //koren con sanders
       this.player.sanders.filter((sand) => {
         if (sand.collides(koren)) {
-          this.timeDamage(koren)
+          sand.activated = true
+          koren.h += sand.damage + 1;
+          koren.w += sand.damage + 1;
+          if(!sand.activated){
+            this.timeDamage(koren)
+          }
           charging+= 0.1
           if(charging >= 20 && this.score.total >= 20){
               M = 77
@@ -1952,10 +1969,12 @@ class Game {
         this.checkCharger()
         } else return true;
       });
+      
         this.player.hooks.filter((hook) => {// goose con hook
         if (hook.collides(goose)) {
           this.player.hooks.splice(0, 1);
           goose.cage = true
+          hookImpact = true
           const foodRandom = Math.floor(Math.random() * 10 - chance)
           if(goose.lifeleft <= 0){
             this.score.addkgoose()
@@ -1987,7 +2006,7 @@ class Game {
     this.geese.forEach((goose) => { // goose con sanders
       this.player.sanders.filter((sand) => {
         if (sand.collides(goose)) {
-          sand.activated = true
+          sand.activated = true 
           goose.lifeleft -= sand.damage;
           if(goose.lifeleft === 0){
             this.score.addkgoose()
@@ -1997,6 +2016,7 @@ class Game {
         } else return true;
       });
     });
+
     this.geese.forEach((goose) => { // goose con toxic
       this.player.toxics.filter((tox) => {
         if (tox.collides(goose)) {
@@ -2026,6 +2046,64 @@ class Game {
         } else return true;
       });
     });
+//minas...minas...minasminas...minas...minasminas...minas...minasminas...minas...minasminas...minas...minas
+//minas...minas...minasminas...minas...minasminas...minas...minasminas...minas...minasminas...minas...minas
+
+this.geese.forEach((goose) => { // goose con mineReps
+  mineria.filter((mineRep) => {
+    if (mineRep.collides(goose)) {
+      mineRep.activated = true
+      goose.lifeleft -= mineRep.damage;
+      if(goose.lifeleft === 0){
+        this.score.addkgoose()
+        this.score.addktotal1()
+      }
+      return false;
+    } else return true;
+  });
+});
+this.rats.forEach((rat) => { // rat con mineReps
+  mineria.filter((mineRep) => {
+    if (mineRep.collides(rat)) {
+      mineRep.activated = true
+      rat.lifeleft -= mineRep.damage;
+      if(rat.lifeleft === 0){
+        this.score.addkgoose()
+        this.score.addktotal1()
+      }
+      return false;
+    } else return true;
+  });
+});
+this.bosss.forEach((boss) => { // boss con mineReps
+  mineria.filter((mineRep) => {
+    if (mineRep.collides(boss)) {
+      mineRep.activated = true
+      boss.lifeleft -= mineRep.damage;
+      if(rat.lifeleft === 0){
+        this.score.addkgoose()
+        this.score.addktotal1()
+      }
+      return false;
+    } else return true;
+  });
+});
+
+this.korens.forEach((koren) => { // koren con mineReps
+  mineria.filter((mineRep) => {
+    if (mineRep.collides(koren)) {
+      mineRep.activated = true
+      koren.h += mineRep.damage + 1;
+      koren.w += mineRep.damage + 1;
+      if(rat.lifeleft === 0){
+        this.score.addkgoose()
+        this.score.addktotal1()
+      }
+      return false;
+    } else return true;
+  });
+});
+
 
 //babys...babys...babys...babys...babys...babys...babys...babys...babys...babys...babys...babys...babys...
 //babys...babys...babys...babys...babys...babys...babys...babys...babys...babys...babys...babys...babys...
@@ -2500,11 +2578,11 @@ this.pfront.forEach((peop) => {     //PFront con blaster
       this.player.loseRespect()
       this.ctx.font = "20px Arial";
       this.ctx.fillStyle = "red";
-      this.ctx.fillText(`Thanx!:`, peop.x, peop.y);
+      this.ctx.fillText(`Hey!!`, peop.x, peop.y);
       this.ctx.fillStyle = "red";
-      this.ctx.fillText(`Thanx!:`, peop.x-1, peop.y-1);
+      this.ctx.fillText(`Hey!!`, peop.x-1, peop.y-1);
       this.ctx.fillStyle = "black";
-      this.ctx.fillText(`Thanx!:`, peop.x+1, peop.y+1);
+      this.ctx.fillText(`Hey!!`, peop.x+1, peop.y+1);
       return false;
     } else return true;
   });
@@ -2583,7 +2661,7 @@ this.pback.forEach((peop) => { //PBack
         this.player.vx = 0;
       }
     });
-  if(this.winTime >= 57500){ //esto abarca desde los hooks al jugador
+  if(this.winTime >= 500){ //esto abarca desde los hooks al jugador
     this.portals.forEach((port) => {//hook con portal hooktal
       this.player.hooks.filter((hook) => {
               if (hook.collides(port)) {
@@ -2782,7 +2860,7 @@ this.pback.forEach((peop) => { //PBack
       return true;
     });
     
-    this.drugs = this.drugs.filter((drug) => {
+    this.drugs = this.drugs.filter((drug) => {  //drugs con player
       if (drug.collides(this.player)) {
         // this.shielOn = new Audio("/assets/audios ad/shieldActivated.wav");
         // this.shielOn.volume = 0.05;
@@ -2790,9 +2868,10 @@ this.pback.forEach((peop) => { //PBack
         // this.atraer = new Audio("/assets/audios ad/bonus.mp3")
         // this.atraer.volume = 0.03;
         // this.atraer.play();
-
+        fireDrug = true
+        waterDrug = true
         // this.player.extraBoostState = true
-        this.player.extraSizeState = true
+        // this.player.extraSizeState = true
         // this.player.lesserSizeState = true
         return false;
       }
@@ -2820,7 +2899,7 @@ this.pback.forEach((peop) => { //PBack
         this.atraer = new Audio("/assets/audios ad/bonus.mp3")
         this.atraer.volume = 0.03;
         this.atraer.play();
-        this.player.heal()
+        this.player.heal(2)
         return false;
       }
       return true;
@@ -2913,6 +2992,23 @@ this.pback.forEach((peop) => { //PBack
         } else return true;
       });
     });
+    this.drugs.forEach((drug) => {//hook con drugs
+      this.player.hooks.filter((hook) => {
+        if (hook.collides(drug)) {
+          this.atraer = new Audio("/assets/audio/atraer2.mp3")
+          this.atraer.volume = 0.07;
+          this.atraer.play();
+          drug.v = 1
+          drug.vNegative = 7.2
+          hook.dispose = true
+          if(this.drugs.length === 0){
+            const upAlert = document.getElementById("upgrade-alert");
+            upAlert.style.display = "none";
+          }
+          return false;
+        } else return true;
+      });
+    });
     this.lamps.forEach((lamp) => {//hook con lamps
       this.player.hooks.filter((hook) => {
         if (hook.collides(lamp)) {
@@ -2924,7 +3020,7 @@ this.pback.forEach((peop) => { //PBack
             lampOn+=1
             if(lampOn === 14){
               pImage += 1
-              lamp.img.src = "/assets/images/elements/lampOfff.png"
+              lamp.lights = false
             }
             lamp.img.src = "/assets/images/elements/lamp.png"
         }
@@ -2982,7 +3078,7 @@ this.pback.forEach((peop) => { //PBack
     this.player.sanders = this.player.sanders.filter((sand) => { //sandheal con player
       if (sand.collides(this.player)) {
         if(this.player.sandstate === true){
-          this.player.healslower()
+          this.player.healSlow(0.004)
           this.ctx.font = "20px Arial";
           this.ctx.fillStyle = "blue";
           this.ctx.fillText("Healing!", this.player.x - 40, this.player.y - 28);
@@ -3042,9 +3138,8 @@ this.pback.forEach((peop) => { //PBack
 
 // levelups...levelups...levelups...levelups...levelups...levelups...levelups...levelups...levelups...
 // levelups...levelups...levelups...levelups...levelups...levelups...levelups...levelups...levelups...
-if(leveler === true){
+if(leveler){
 // levels
-
     if (this.levelUps1.collides(this.player)) {
       G = 71
       B = 66
@@ -3108,8 +3203,8 @@ if(leveler === true){
       const lose = document.getElementById("loseDied");
       lose.style.display = "flex"
     }
-      if (this.healing.collides(this.player) && this.winTime >= 3550) {
-      this.player.healslow();
+      if (this.healing.collides(this.player) && this.winTime >= 350) {
+      this.player.healslow(0.004);
       this.iceCurePoison++
       if(this.iceCurePoison >= this.curePoisonTimer ){
         this.weird1 = 0
@@ -3166,6 +3261,7 @@ if(leveler === true){
     this.winMus.volume = 0.1;
     this.winMus.play();
   }
+
   setListeners() {
     document.addEventListener("keydown", (e) => {
       this.player.keyDown(e.keyCode);
@@ -3173,7 +3269,6 @@ if(leveler === true){
     });
     document.addEventListener("keyup", (e) => {
       this.player.keyUp(e.keyCode);
-      // this.line.keyUp(e.keyCode);      no necesito
     });
   }
 }

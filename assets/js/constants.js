@@ -49,6 +49,13 @@ let extraShotgun = false  //al comprar la bala especial
 let extraShot = 0 //al adquirir cartucho adicional, puedes disparar 3 veces
 let thirdShotRange = 0
 let thirdShot = false
+let extraMine =  false //minas replicantes
+let mineria = []
+let fireDrug = false
+let waterDrug = false
+let hookImpact = false //al impactar el hook, disparas otro
+let extraHooker = false //que se pueda comprar
+let lifeTotal = 10
 
 let distance = 60;
 let bulletDistance = 150;

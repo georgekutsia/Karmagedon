@@ -35,7 +35,7 @@ class Portal {
       this.vx = 1
       this.vy = 0
       this.img = new Image();
-      this.img.src =  "/assets/images/shield/darkPortal1.png";
+      this.img.src =  "/assets/images/shield/darkPortal.png";
       this.img.frame = 0;
       this.tock = 0
       this.tick = 0

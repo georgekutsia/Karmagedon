@@ -5,7 +5,7 @@ class Life {
     this.y = 15;
     this.w = 173;
     this.h = 46;
-    this.total = 10;
+    this.total = lifeTotal;
     this.v = 2;
     ctx.font = "40px Verdana";
   }
@@ -23,7 +23,7 @@ class Life {
       gradient.addColorStop("1", "green");
     }
     ctx.fillStyle = gradient;
-    this.ctx.fillRect(this.x, this.y, (this.w * this.total) / 10, this.h);
+    this.ctx.fillRect(this.x, this.y, (this.w * this.total) / lifeTotal, this.h);
     this.ctx.fillStyle = prevStyle;
     this.ctx.strokeRect(this.x, this.y, this.w, this.h);
     this.ctx.fillStyle = prevStyle;
@@ -33,7 +33,9 @@ class Life {
     gradient.addColorStop("0.88", "white");
     gradient.addColorStop("0.8", "black");
     ctx.fillStyle = gradient;
-    this.ctx.fillText("Life", 1260, 50);
+    this.ctx.fillText(`Life`, 1300, 50);
+    this.ctx.font = "35px Sans";
+    this.ctx.fillText(`${Math.round(this.total * 100)/100}`, 1225, 50);
     this.ctx.fillStyle = prevStyle;
   }
   move() {
@@ -51,16 +53,10 @@ class Life {
   loseLifeFire() {
     this.total -= 0.005;
   }
-  healSlow() {
-    this.total += 0.01;
-    if (this.total >= 10) {
-      this.total = 10;
-    }
-  }
-  healslower() {
-    this.total += 0.004;
-    if (this.total >= 10) {
-      this.total = 10;
+  healSlow(healing) {
+    this.total += healing;
+    if (this.total >= lifeTotal) {
+      this.total = lifeTotal;
     }
   }
   dieSlower() {
@@ -69,13 +65,13 @@ class Life {
       this.total = 10;
     }
   }
-  gainLife() {
-    this.total += 1;
-    this.healAudio = new Audio("/assets/audios ad/Sanar.mp3");
-    this.healAudio.volume = 0.15;
-    this.healAudio.play();
-    if (this.total >= 10) {
-      this.total = 10;
+  heal(theLife) {
+    this.total += theLife;
+    // this.healAudio = new Audio("/assets/audios ad/Sanar.mp3");
+    // this.healAudio.volume = 0.15;
+    // this.healAudio.play();
+    if (this.total >= lifeTotal) {
+      this.total = lifeTotal;
     }
   }
 }

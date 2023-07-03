@@ -292,6 +292,7 @@ class ElementShield {
     return colX && colY;
   }
 }
+
 class ElementBomb{
   constructor(ctx, x, y, player) {
     this.ctx = ctx;
@@ -364,7 +365,7 @@ class ElementBomb{
   }
 }
 class ElementMine{
-  constructor(ctx, x, y, player) {
+  constructor(ctx, x, y, player, theTruthOfMine) {
     this.ctx = ctx;
     this.x = x;
     this.y = y;
@@ -376,6 +377,8 @@ class ElementMine{
     this.tick = 0
     this.tock = 0
     this.tuck = 0
+    this.mineTick = 0
+    this.minePosTick = 0
     this.dispose = false;
     this.eleImg = new Image();
     this.eleImg.src = "/assets/images/munición/mineExplo.png";
@@ -389,6 +392,7 @@ class ElementMine{
     this.eleAudio = new Audio("/assets/audios ad/minaInstall.wav")
     this.eleAudio.volume = 0.01;
     this.eleAudio.play();
+    this.active = theTruthOfMine
   }
   draw() {
     this.ctx.drawImage(
@@ -446,7 +450,70 @@ class ElementMine{
         this.dispose = true
       }
     }
-
+    if(extraMine === true && this.active){
+      this.mineTick++
+      if(this.mineTick >=650){
+        this.mineTick = 0
+        this.minePosTick++
+        if(this.minePosTick === 1){
+          this.elementMines1()
+        } 
+        if(this.minePosTick === 2){
+          this.elementMines2()
+        } 
+        if(this.minePosTick === 3){
+          this.elementMines3()
+        } 
+        if(this.minePosTick === 4){
+          this.elementMines4()
+        }
+        if(this.minePosTick === 5){
+          this.active = false
+        }
+      }
+      console.log("que",this.minePosTick)
+      console.log(mineria)
+    }
+  }
+  elementMines1() {
+    const elem = new ElementMine (
+      this.ctx,
+      this.x + 17,
+      this.y + 17,
+      this,
+      false
+      );
+    mineria.push(elem);
+  }
+  elementMines2() {
+    const elem = new ElementMine (
+      this.ctx,
+      this.x - 17,
+      this.y + 17,
+      this,
+      false
+      );
+    mineria.push(elem);
+  }
+  elementMines3() {
+    const elem = new ElementMine (
+      this.ctx,
+      this.x + 17,
+      this.y - 17,
+      this,
+      false
+      );
+    mineria.push(elem);
+  }
+  elementMines4() {
+    const elem = new ElementMine (
+      this.ctx,
+      this.x - 17,
+      this.y - 17,
+      this,
+      false
+      );
+    mineria.push(elem);
   }
   isVisible() {
     return !this.dispose;

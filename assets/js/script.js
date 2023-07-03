@@ -2,10 +2,8 @@ const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
 const game = new Game(ctx);
-const game2 = new Game2(ctx)
-const game3 = new Game3(ctx)
-const game4 = new Game4(ctx)
-const game5 = new Game5(ctx)
+
+const life = new Life(ctx)
 
 // const infoDataAll = document.getElementById("display-all");
 const infoData = document.getElementById("display-info");
@@ -68,13 +66,17 @@ const askDrug = document.getElementById("ask-drugs")
 
 const megaHide = document.getElementById("mega-coins")
 const megaShotgun = document.getElementById("mega-shotgun")
+const megaMine = document.getElementById("mega-mine")
+const megaHook = document.getElementById("mega-hook")
+const megaLife = document.getElementById("mega-life")
 
 const allBuys = [buyRockets, buyMine, buyMines, buyHooks, buyDiscounts, buyTimeShield, buyBlaster]
 const allSells = [sellRockets, sellMines, sellMine, sellHooks, sellDiscounts]
 const allAsks = [askFood, askDrug]
-const allMegas = [megaShotgun]
+const allMegas = [megaShotgun, megaMine, megaHook, megaLife]
 
 const allButtonsGone = [easy, normal, hard, superhard, info, manager, begin]
+const allAddButtons = [zkaren, zrat, zfat, zpuddle, zfire, zboss, zgoose, zdiscount, zcart, zbaby, zkoren, zcustomer, zupgrade, zupbullet, zfood, ]
 
 
 const in1 = document.getElementById("info1")
@@ -238,8 +240,8 @@ askDrug.addEventListener("click", function(){
 
 
 megaShotgun.addEventListener("click", function(){
-  if(money >= 2000 && extraShotgun === false){
-    money -= 2000
+  if(money >= 1800 && extraShotgun === false){
+    money -= 1800
     extraShotgun = true
     extraShot = 1
     megaShotgun.innerText = "This item is already in your power"
@@ -249,6 +251,52 @@ megaShotgun.addEventListener("click", function(){
     this.sandShootAudio.play();
     this.buyBig = new Audio("/assets/audios ad/buyBigStuff.mp3")
     this.buyBig.volume = 0.2;
+    this.buyBig.play();
+  }
+})
+megaMine.addEventListener("click", function(){
+  if(money >= 2300 && extraMine === false){
+    money -= 2300
+    extraMine = true
+    extraShot = 1
+    megaMine.innerText = "This item is already in your power"
+    megaMine.style.backgroundColor = "grey"
+    this.sandShootAudio = new Audio("/assets/audios ad/sell.wav")
+    this.sandShootAudio.volume = 0.4;
+    this.sandShootAudio.play();
+    this.buyBig = new Audio("/assets/audios ad/buyBigStuff.mp3")
+    this.buyBig.volume = 0.2;
+    this.buyBig.play();
+  }
+})
+megaHook.addEventListener("click", function(){
+  if(money >= 1500 && extraHooker === false){
+    money -= 1500
+    extraHooker = true
+    megaHook.innerText = "This item is already in your power"
+    megaHook.style.backgroundColor = "grey"
+    this.sandShootAudio = new Audio("/assets/audios ad/sell.wav")
+    this.sandShootAudio.volume = 0.4;
+    this.sandShootAudio.play();
+    this.buyBig = new Audio("/assets/audios ad/buyBigStuff.mp3")
+    this.buyBig.volume = 0.2;
+    this.buyBig.play();
+  }
+})
+megaLife.addEventListener("click", function(){
+  if(money >= 1000){
+    money -= 1000
+    lifeTotal += 5
+    game.player.heal(30)
+    this.sandShootAudio = new Audio("/assets/audios ad/sell.wav")
+    this.sandShootAudio.volume = 0.4;
+    this.sandShootAudio.play();
+    this.buyBig = new Audio("/assets/audios ad/buyBigStuff.mp3")
+    this.buyBig.volume = 0.2;
+    this.buyBig.play();
+  } else {
+    this.buyBig = new Audio("/assets/audios ad/needMoreMoney.m4a")
+    this.buyBig.volume = 0.1;
     this.buyBig.play();
   }
 })
@@ -306,7 +354,6 @@ console.log("sss",game.winTime)
     } else {
       game.start();
 console.log("sss",game.winTime)
-
       btn.innerText = `STOP`;
     }
     displ.style.display = "block"
@@ -322,108 +369,6 @@ console.log("sss",game.winTime)
     this.musicStart.volume = 0.05;
     this.musicStart.play()
   });
-
-
-  //  GAME 2 RAT INVASION START
-easy.addEventListener("click", function () {
-    // game2.start();
-    // displ.style.display = "block"
-    // allButtonsGone.forEach((button) => button.style.display = "none")
-    // cheat.style.display = "inline-block";
-    // restart.style.display = "flex"
-    // btn.style.display = "none";
-    // btneasy.style.display = "flex"
-  });
-  
-  btneasy.addEventListener("click", function () {
-    if (game2.interval) {
-      game2.stop();
-      btneasy.innerText = "Go...";
-    } else {
-      game2.start();
-      btneasy.innerText = "Rest...";
-    }
-    this.clicking = new Audio("/assets/audios ad/clic future.wav");
-    this.clicking.volume = 0.05;
-    this.clicking.play()
-  });
-
-    //  GAME 2 END
-  //  GAME 3 STRUCTURAL DAMAGE START
-normal.addEventListener("click", function () {
-    // game3.start();
-    // displ.style.display = "block"
-
-    // cheat.style.display = "inline-block";
-    // restart.style.display = "flex"
-    // allButtonsGone.forEach((button) => button.style.display = "none")
-    // btn.style.display = "none";
-    // btnnormal.style.display = "flex"
-  });
-  btnnormal.addEventListener("click", function () {
-    if (game3.interval) {
-      game3.stop();
-      btnnormal.innerText = "Hey..play..";
-    } else {
-      game3.start();
-      btnnormal.innerText = "Coffee?";
-    }
-    this.clicking = new Audio("/assets/audios ad/clic future.wav");
-    this.clicking.volume = 0.05;
-    this.clicking.play()
-  });
-
-    //  GAME 3 END
-  //  GAME 4 GEESE INFERNO START
-hard.addEventListener("click", function () {
-    // game4.start();
-    // displ.style.display = "block"
-    // allButtonsGone.forEach((button) => button.style.display = "none")
-    // cheat.style.display = "inline-block";
-    // restart.style.display = "flex"
-    // btn.style.display = "none";
-    // btnhard.style.display = "flex"
-  });
-  btnhard.addEventListener("click", function () {
-    if (game4.interval) {
-      game4.stop();
-      btnhard.innerText = "Don`t be afraid";
-    } else {
-      game4.start();
-      btnhard.innerText = "Go to pee";
-    }
-    this.clicking = new Audio("/assets/audios ad/clic future.wav");
-    this.clicking.volume = 0.05;
-    this.clicking.play()
-  });
-
-    //  GAME 4 END
-  //  GAME 5 SURVIVE THE IMPOSIBLE START
-superhard.addEventListener("click", function () {
-    // game5.start();
-    // displ.style.display = "block"
-
-    // cheat.style.display = "inline-block";
-    // restart.style.display = "flex"
-    // allButtonsGone.forEach((button) => button.style.display = "none")
-    // btn.style.display = "none";
-    // btnsuperhard.style.display = "flex"
-  });
-  btnsuperhard.addEventListener("click", function () {
-    if (game5.interval) {
-      game5.stop();
-      btnsuperhard.innerText = "Too much?";
-    } else {
-      game5.start();
-      btnsuperhard.innerText = "Come on!!";
-    }
-    this.clicking = new Audio("/assets/audios ad/clic future.wav");
-    this.clicking.volume = 0.05;
-    this.clicking.play()
-  });
-
-    //  GAME 34 EASY EASY DE CODE END
-
 
 
 
@@ -451,36 +396,19 @@ restart.addEventListener("click", function () {
   })
 
 
-
 //democosas
   demo.addEventListener("click", function () {
-    if (game.bosss.length > 0 || game.fires.length > 0 || 
-      game.puddles.length > 0 || game.babys.length > 0 || 
-      game.geese.length > 0 || game.fats.length > 0 || 
-      game.rats.length > 0 || game.karens.length > 0 ||
-      game.discounts > 0 || game.carts.length > 0) {
+    if (game.bosss.length > 0) {
       game.fires = []; game.puddles = [];
       game.bosss = []; game.geese = []; game.fats = [];
       game.rats = []; game.karens = []; game.discounts = [];
       game.carts = []; game.babys = []; game.korens = [];
             demo.innerText = "Add it->";
     } 
-    zkaren.style.display = "inline-block"
-    zrat.style.display = "inline-block"
-    zfat.style.display = "inline-block"
-    zpuddle.style.display = "inline-block"
-    zfire.style.display = "inline-block"
-    zboss.style.display = "inline-block"
-    zgoose.style.display = "inline-block"
-    zdiscount.style.display = "inline-block"
-    zcart.style.display = "inline-block"
-    zbaby.style.display = "inline-block"
-    zkoren.style.display = "inline-block"
-    zcustomer.style.display = "inline-block"
-    zupgrade.style.display = "inline-block"
-    zupbullet.style.display = "inline-block"
-    zfood.style.display = "inline-block"
-
+    demo.style.color = "green"
+    demo.style.backgroundColor = "grey"
+    allAddButtons.forEach((button) => button.style.display = "inline-block")
+    allAddButtons.forEach((button) => button.style.zIndex = "90")
 })
 zkaren.addEventListener("click", function(){
   game.addKaren()

@@ -18,6 +18,7 @@ class Rats {
     this.cageImg = new Image();
     this.cageImg.src = "/assets/images/munición/cage.png"
     this.cage = false
+    this.cageTick = 0
   }
 
   draw() {
@@ -32,10 +33,16 @@ class Rats {
       this.w,
       this.h
     );
-    if(this.cage){
+    if(this.cage && this.cageTick<=700){
+      this.cageTick++
       this.ctx.drawImage(
         this.cageImg, this.x-10, this.y -10, 170, 80
       )
+      if(this.cageTick >= 700){
+        this.vx = -1
+        this.cageTick = 0
+        this.cage =  false
+      }
     }
   }
 

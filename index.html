@@ -100,7 +100,6 @@
             <div id="buy-hooks-info-sell">Sell 1 Hook for half price</div>
   <button class="btn btn-danger btn-sm" id="sell-discounts"> -<i class="fa-solid fa-tags"></i> <i class="fa-solid fa-equals"></i>+<i class="fa-solid fa-1"></i><i class="fa-solid fa-0"></i><i class="fa-solid fa-coins"></i> </button>
             <div id="buy-discounts-info-sell">Sell 1 Discount for half price</div>
-
   <button class="btn btn-info"id="ask-coins" ><i class="fa-solid fa-person-circle-question"></i> Ask</button>
             <div id="ask-shop-info">Ask on a radio if someone can help!</div>
   <button class="btn btn-info btn-sm" id="ask-food"> -<i class="fa-solid fa-2"></i><i class="fa-solid fa-0"></i><i class="fa-solid fa-equals"></i>+<i class="fa-solid fa-utensils"></i></button>
@@ -110,8 +109,14 @@
 
   <button class="btn btn-warning"id="mega-coins" ><i class="fa-solid fa-handshake"></i>Improve</button>
             <div id="mega-coins-info">Purchace big improvements!! It's worth it!</div>
-  <button class="btn btn-warning btn-sm" id="mega-shotgun"> -<i class="fa-solid fa-2"></i><i class="fa-solid fa-0"></i><i class="fa-solid fa-0"></i><i class="fa-solid fa-0"></i><i class="fa-solid fa-coins"></i> <i class="fa-solid fa-equals"></i>+ Special Charge for Shotgun <i class="fa-solid fa-gun"></i></button>
+  <button class="btn btn-warning btn-sm" id="mega-shotgun"> -<i class="fa-solid fa-1"></i><i class="fa-solid fa-8"></i><i class="fa-solid fa-0"></i><i class="fa-solid fa-0"></i><i class="fa-solid fa-coins"></i> <i class="fa-solid fa-equals"></i>+ Third Special Shotgun Shot <i class="fa-solid fa-angles-up"></i> <i class="fa-solid fa-gun"></i></button>
             <div id="mega-shotgun-info">Buy an extra special bullet for your Shotgun!</div>
+  <button class="btn btn-warning btn-sm" id="mega-mine"> -<i class="fa-solid fa-2"></i><i class="fa-solid fa-3"></i><i class="fa-solid fa-0"></i><i class="fa-solid fa-0"></i><i class="fa-solid fa-coins"></i> <i class="fa-solid fa-equals"></i>+ Self Replicating Mines <i class="fa-solid fa-angles-up"></i> <i class="fa-solid fa-viruses"></i><i class="fa-solid fa-viruses"></i></button>
+            <div id="mega-mine-info">Your mine will replicate itself every 10 seconds up to 4 times if its not detonated!</div>
+  <button class="btn btn-warning btn-sm" id="mega-hook"> -<i class="fa-solid fa-1"></i><i class="fa-solid fa-5"></i><i class="fa-solid fa-0"></i><i class="fa-solid fa-0"></i><i class="fa-solid fa-coins"></i> <i class="fa-solid fa-equals"></i>+ Hook rapid fire with extra speed <i class="fa-solid fa-angles-up"></i> <i class="fa-solid fa-anchor"></i></button>
+            <div id="mega-hook-info">After caging something, you get 2 rapid fire hooks for cost of one automatically!</div>
+  <button class="btn btn-warning btn-sm" id="mega-life"> -<i class= "fa-solid fa-1"></i><i class="fa-solid fa-0"></i><i class="fa-solid fa-0"></i><i class="fa-solid fa-0"></i><i class="fa-solid fa-coins"></i> <i class="fa-solid fa-equals"></i>+5 Extra life! <i class="fa-solid fa-angles-up"></i> <i class="fa-solid fa-heart-pulse"></i></button>
+            <div id="mega-life-info">Double your life total!</div>
           
 </div>
 <!-- Buy items in game -->
@@ -182,24 +187,7 @@
 
 
 
-    <div id="demo-spacing" class="">
-      <a id="display-adds">-Add-</a>
-      <a id="add-karen" class="demo">Karen </a>
-      <a id="add-puddle" class="demo">Puddle </a>
-      <a id="add-fire" class="demo">Fire </a>
-      <a id="add-rat" class="demo">Rat </a>
-      <a id="add-fat" class="demo">Fat </a>
-      <a id="add-goose" class="demo">Goose </a>
-      <a id="add-boss" class="demo">Boss </a>
-      <a id="add-koren" class="demo">Koren </a>
-      <a id="add-discount" class="demo">Discount </a>
-      <a id="add-cart" class="demo">Cart </a>
-      <a id="add-baby" class="demo">Baby </a>
-      <a id="add-customer" class="demo">Customer </a>
-      <a id="add-food" class="demo">food </a>
-      <a id="add-upgrade" class="demo">upgrade </a>
-      <a id="add-upbullet" class="demo">upbullet </a>
-    </div>
+
 <!-- time function  -->
     <script>
       let q = 0;
@@ -239,7 +227,24 @@
       <img id="loseClaim" src="/assets/images/end/firedClaim.jpeg" alt="not..." width="1190px" height="820px">
       <img id="win" src="/assets/images/end/wincon.png" alt="sadds" >
     </div>
-
+    <div id="demo-spacing">
+      <a id="display-adds">-Add-</a>
+      <a id="add-karen" class="demo">Karen </a>
+      <a id="add-puddle" class="demo">Puddle </a>
+      <a id="add-fire" class="demo">Fire </a>
+      <a id="add-rat" class="demo">Rat </a>
+      <a id="add-fat" class="demo">Fat </a>
+      <a id="add-goose" class="demo">Goose </a>
+      <a id="add-boss" class="demo">Boss </a>
+      <a id="add-koren" class="demo">Koren </a>
+      <a id="add-discount" class="demo">Discount </a>
+      <a id="add-cart" class="demo">Cart </a>
+      <a id="add-baby" class="demo">Baby </a>
+      <a id="add-customer" class="demo">Customer </a>
+      <a id="add-food" class="demo">food </a>
+      <a id="add-upgrade" class="demo">upgrade </a>
+      <a id="add-upbullet" class="demo">upbullet </a>
+    </div>
 
     <!-- info hover easy normal hard     aint nobody got time for that-->
 
@@ -272,10 +277,6 @@
     <script src="/assets/js/bushes.js"></script>    
     <script src="/assets/js/forms.js"></script>
     <script src="/assets/js/game.js"></script>
-    <script src="/assets/js/game2.js"></script>
-    <script src="/assets/js/game3.js"></script>
-    <script src="/assets/js/game4.js"></script>
-    <script src="/assets/js/game5.js"></script>
     <script src="/assets/js/karens.js"></script>
     <script src="/assets/js/line.js"></script>
     <script src="/assets/js/script.js"></script>

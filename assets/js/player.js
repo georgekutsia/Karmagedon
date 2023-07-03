@@ -1,8 +1,8 @@
 class Player {
   constructor(ctx, position) {
     this.ctx = ctx;
-    this.x = 499;
-    this.y = 400;
+    this.x = 599;
+    this.y = 300;
     this.w = 35;
     this.h = 35;
     this.position = position
@@ -66,22 +66,16 @@ class Player {
     this.tick = 0;
     this.tock = 0;
     this.truck = 0;
+    this.hookTIck = 0
     this.life = new Life(ctx);
     this.respect = new Respect(ctx)
     this.formins = new Formins(ctx)
     this.scoreback = new Scoreback(ctx)
     this.score = new Score(ctx)
-    this.heats = [];
-    this.hooks = [];
-    this.auras = [];
-    this.waters = [];
-    this.blasters = [];
-    this.sanders = [];
-    this.toxics = [];
-    this.discountings = []
-    this.shotguns = []
+    this.heats = this.hooks = this.auras = this.waters = this.blasters = this.sanders = this.toxics =  this.discountings = this.shotguns = []
     this.direction = "left";
     this.speed = 4;
+    this.extraHookSpeed = 0
     this.cooldownBullet = 3000;
     this.cooldownJump = 3000;   
     this.cooldownJumpTick = 3000;   
@@ -89,10 +83,11 @@ class Player {
     this.toxicity = false
     this.sandstate = false
     this.sandAlterImg = ""
-    thirdShot = false
+    this.cageDamage = false
   }
   draw() {
     formsCheck();
+
     this.rocketCountDiv =  rocketCount/5 
     this.ctx.drawImage(
       this.img,
@@ -365,6 +360,22 @@ class Player {
         this.boostTick = 0
       }
     }
+    if(hookImpact && extraHooker){
+      this.hookTIck++
+      this.extraHookSpeed = 10
+      if(this.hookTIck === 5){
+        this.hooker();
+      }
+      if(this.hookTIck === 15){
+        this.hooker();
+        hookImpact = false
+        hookCount -= 1
+      this.extraHookSpeed = 0
+      }
+      if(this.hookTIck >= 50){
+        this.hookTIck = 0
+      }
+    }
     this.heats.forEach((heat) => heat.draw());
     this.shotguns.forEach((shotgun) => shotgun.draw());
     this.hooks.forEach((hook) => hook.draw());
@@ -374,6 +385,7 @@ class Player {
     this.waters.forEach((water) => water.draw());
     this.auras.forEach((aura) => aura.draw());
     this.blasters.forEach((blaster) => blaster.draw());
+    mineria.forEach((mi) => mi.draw());
     this.life.draw();
     this.respect.draw();
     this.formins.draw();
@@ -434,6 +446,7 @@ class Player {
 
     // LIMITES DEL CANVAS <=//
     this.blasters.forEach((blaster) => {blaster.move();});
+    mineria.forEach((mine) => {mine.move();});
     this.heats.forEach((heat) => {heat.move();});
     this.shotguns.forEach((shotgun) => {shotgun.move();});
     this.hooks.forEach((hook) => {hook.move();});
@@ -441,7 +454,7 @@ class Player {
     this.toxics.forEach((tox) => {tox.move();});
     this.discountings.forEach((discount) => {discount.move();});
     this.waters.forEach((water) => {water.move();});
-    this.auras.forEach((aura) => {aura.move(); this.healslow();this.hefa()});
+    this.auras.forEach((aura) => {aura.move(); this.heal(3);this.hefa()});
   }
 
   loseRespect(){
@@ -465,14 +478,13 @@ class Player {
   hit() {
     this.life.loseLife();
   }
-  heal() {
-    this.life.gainLife();
+
+  heal(gainedLife) {
+    this.life.heal(gainedLife);
   }
-  healslow() {
-    this.life.healSlow();
-  }
-  healslower() {
-    this.life.healslower();
+
+  healslow(gainLife) {
+    this.life.healSlow(gainLife);
   }
   dieSlower() {
     this.life.dieSlower();
@@ -594,8 +606,15 @@ class Player {
         this.imgJump.src = "/assets/images/jumps/jumpleft5.png"
       }
     }
-
-    if (key === C) {
+    if(fireDrug === true){
+      setTimeout(function () {
+        fireDrug = false
+          setTimeout(function () {
+            waterDrug = false
+          }, 5000);
+      }, 10000);
+    }
+    if (key === C || fireDrug === true) {
       this.tick++
       this.tock ++
       if(this.tick >= 10){
@@ -607,7 +626,7 @@ class Player {
         }
       }
     }
-      if (key === V) {
+      if (key === V || waterDrug === true) {
       this.tick++
       if(this.tick >= 10){
         this.watererExtraPlus();
@@ -618,6 +637,9 @@ class Player {
       }
       if (key === P) {
         this.toxicity = !this.toxicity
+      }
+      if (key === G) {
+        this.cageDamage = true
       }
   }
   keyUp(key) {
@@ -643,7 +665,6 @@ class Player {
     }
     if(key === K && mineCount >=1){
       mineCount--
-      console.log(mineCount)
       this.elementMine()
     }
     if (key === Z) {
@@ -670,7 +691,7 @@ class Player {
       }, 20000);
     }
     if (key === J //&& !elementBoost
-      && elementalMineCount >= 1) {
+&& elementalMineCount >= 1) {
       this.elementBomb()
       this.sandShootAudio = new Audio("/assets/audios ad/elementalBombSound.wav")
       this.sandShootAudio.volume = 0.4;
@@ -701,11 +722,11 @@ class Player {
           this.alertingSound.play()
           }, this.cooldownBullet);
     }
+
     if (key === G) {
       hookTransporter = true
+      this.cageDamage = false
     }
-    console.log(shotgunShots)
-    console.log(thirdShot)
     if(shotgunShots >= 2.999){
       thirdShot = true
     } else {
@@ -1090,7 +1111,8 @@ class Player {
       this.ctx,
       this.x,
       this.y,
-      this
+      this,
+      true
     );
     this.sanders.push(elem);
   }
@@ -1113,14 +1135,14 @@ class Player {
       this
     );
     if (this.direction === "right") {
-      hook.vx = this.speed + 5;
+      hook.vx = this.speed + 5 + this.extraHookSpeed;
       hook.vy = 0;
       hook.hookImg.src = "/assets/images/munición/hookright.png";
       this.img.src = "/assets/images/PJ/imright.png";
       this.img.frame++;
     }
     if (this.direction === "left") {
-      hook.vx = -this.speed - 5;
+      hook.vx = -this.speed - 5 - this.extraHookSpeed;
       hook.vy = 0;
       hook.hookImg.src = "/assets/images/munición/hookleft.png";
       this.img.src = "/assets/images/PJ/imleft.png";
@@ -1128,14 +1150,14 @@ class Player {
     }
     if (this.direction === "top") {
       hook.vx = 0;
-      hook.vy = -this.speed - 5;
+      hook.vy = -this.speed - 5 - this.extraHookSpeed;
       hook.hookImg.src = "/assets/images/munición/hookup.png";
       this.img.src = "/assets/images/PJ/imup.png";
       this.img.frame++;
     }
     if (this.direction === "down") {
       hook.vx = 0;
-      hook.vy = this.speed + 5;
+      hook.vy = this.speed + 5 + this.extraHookSpeed;
       hook.hookImg.src = "/assets/images/munición/hookdown.png";
       this.img.src = "/assets/images/PJ/imdown.png";
       this.img.frame++;

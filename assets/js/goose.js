@@ -20,6 +20,7 @@ class Goose {
     this.cageImg = new Image();
     this.cageImg.src = "/assets/images/munición/cage.png"
     this.cage = false
+    this.cageTick = 0
   }
   draw() {
     this.ctx.drawImage(
@@ -33,10 +34,18 @@ class Goose {
       this.w,
       this.h
     );
-    if(this.cage){
+    if(this.cage && this.cageTick<=600){
+      this.cageTick++
       this.ctx.drawImage(
         this.cageImg, this.x-10, this.y -10, 70, 80
       )
+      if(this.cageTick >= 600){
+        this.vx= 0.5
+        this.vy = 0
+        this.moveY = 1
+        this.cageTick = 0
+        this.cage =  false
+      }
     }
   }
   move() {
@@ -96,8 +105,10 @@ class Goose {
       this.gooseImg.frame = 0;
     }
   }
-  gooseDamage() {
-    this.life.loseLife();
+
+  damagingCage(){
+    if(this.cage)
+    this.lifeleft -= 0.0005
   }
   isVisible() {
     return this.x + this.w > 0;
