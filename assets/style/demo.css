@@ -9,7 +9,7 @@
     bottom: 50px;
     left: 80px;
     width: 130px;
-    cursor: url("/assets/images/elements/cursorInfo"), pointer;
+    cursor: url("https://res.cloudinary.com/dfrda73uc/raw/upload/v1688381736/karengedon/elements/cursorInfo_bjytyq"), pointer;
 }
 #demo-spacing{
     background-color: blue;
@@ -25,7 +25,7 @@
     background-color: rgb(255, 149, 0);
     color: black;
     z-index: 100;
-    cursor: url("/assets/images/elements/cursorInfo"), pointer;
+    cursor: url("https://res.cloudinary.com/dfrda73uc/raw/upload/v1688381736/karengedon/elements/cursorInfo_bjytyq"), pointer;
     color: rgb(3, 59, 3);
     margin-left: 10px;
     margin-top: 20px

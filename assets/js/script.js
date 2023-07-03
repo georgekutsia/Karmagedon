@@ -335,15 +335,7 @@ infoData1.addEventListener("click", function(){
     infoData1.style.opacity = "0.01"
   }
 })
-// infoData2.addEventListener("click", function(){
-//   if (infoData2.style.opacity === "0.01") {
-//     infoData2.innerText = "Show Mall Status";
-//     infoData2.style.opacity = "1"
-//   } else {
-//     infoData2.innerText = `Hide Mall Status`;
-//     infoData2.style.opacity = "0.01"
-//   }
-// })
+
 
 //botón del juego
 btn.addEventListener("click", function () {

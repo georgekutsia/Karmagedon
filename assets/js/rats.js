@@ -11,12 +11,12 @@ class Rats {
     this.dead = 0;
     this.lifeleft = 5 + extraLife/2;
     this.ratImg = new Image();
-    this.ratImg.src = "/assets/images/elements/rats.png";
+    this.ratImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381750/karengedon/elements/rats_r5xb8x.png";
     this.ratImg.frame = 0;
     this.tick = 0;
     this.tock = 0;
     this.cageImg = new Image();
-    this.cageImg.src = "/assets/images/munición/cage.png"
+    this.cageImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380194/karengedon/municio%CC%81n/cage_gl5s0a.png"
     this.cage = false
     this.cageTick = 0
   }
@@ -61,7 +61,7 @@ class Rats {
       this.ratImg.frame = 0;
     }
     if(this.lifeleft <= 0){
-      this.ratImg.src = "/assets/images/elements/ratsDead.png"
+      this.ratImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381752/karengedon/elements/ratsDead_myoyeg.png"
       this.vx = 0;
       this.vy = 0;
       this.dead++

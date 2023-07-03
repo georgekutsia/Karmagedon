@@ -6,7 +6,7 @@ class Upbullet {
     this.w = 40;
     this.h = 40;
     this.cartImg = new Image();
-    this.cartImg.src = "/assets/images/munición/gas.png";
+    this.cartImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380197/karengedon/municio%CC%81n/gas_fs3bhq.png";
     this.tock = 900;
     this.total = 0;
     this.v = 0;

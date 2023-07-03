@@ -16,49 +16,49 @@ class Player {
     this.vx = 0;
     this.vy = 0;
     this.img = new Image();
-    this.img.src = "/assets/images/PJ/MANAGER 1.png";
+    this.img.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380429/karengedon/PJ/MANAGER_1_cqs0dr.png";
     this.imgJump = new Image()
-    this.imgJump.src = "/assets/images/jumps/jumpup1.png"
+    this.imgJump.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688379910/karengedon/jumps/jumpup1_bjghie.png"
     this.imgFire = new Image()
-    this.imgFire.src = "/assets/images/elements/fireball.png"
+    this.imgFire.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381738/karengedon/elements/fireball_eqfrh9.png"
     this.imgWater = new Image()
-    this.imgWater.src = "/assets/images/elements/waterball.png"
+    this.imgWater.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381744/karengedon/elements/waterball_pkzcrq.png"
     this.imgSand = new Image()
-    this.imgSand.src = "/assets/images/elements/sandball.png"
+    this.imgSand.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381740/karengedon/elements/sandball_vllwtg.png"
     this.imgQ = new Image()
-    this.imgQ.src = "/assets/images/elements/dodgeq.png"
+    this.imgQ.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381733/karengedon/elements/dodgeq_zltvtg.png"
     this.imgE = new Image()
-    this.imgE.src = "/assets/images/elements/dodgee.png"
+    this.imgE.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381733/karengedon/elements/dodgee_weqfto.png"
     this.imgHookGun = new Image()
-    this.imgHookGun.src = "/assets/images/munición/hookGun.png"
+    this.imgHookGun.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380197/karengedon/municio%CC%81n/hookGun_nb3tyl.png"
     this.imgRocket = new Image()
-    this.imgRocket.src = "/assets/images/munición/rocketImg.png"
+    this.imgRocket.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380193/karengedon/municio%CC%81n/rocketImg_c0yvks.png"
     this.discountGun = new Image()
-    this.discountGun.src = "/assets/images/munición/discountGun1.png"
+    this.discountGun.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380198/karengedon/municio%CC%81n/discounting1_ux4mih.png"
     this.mineImg = new Image()
-    this.mineImg.src = "/assets/images/munición/elementUpgrade.png"
+    this.mineImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380199/karengedon/municio%CC%81n/elementUpgrade_m74ew9.png"
     this.shieldAura = new Image()
-    this.shieldAura.src = "/assets/images/munición/au.png"
+    this.shieldAura.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380194/karengedon/municio%CC%81n/au_iildyf.png"
     this.bullsEye = new Image()
-    this.bullsEye.src = "/assets/images/elements/bullsEye.png"
+    this.bullsEye.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381736/karengedon/elements/bullsEye_spvxnv.png"
     this.machinegun = new Image();
-    this.machinegun.src =  "/assets/images/munición/machinegunSpin.png";
+    this.machinegun.src =  "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380204/karengedon/municio%CC%81n/machinegunSpin_yrp7ng.png";
     this.ammo1 = new Image();
-    this.ammo1.src =  "/assets/images/shotgun/bull2.png";
+    this.ammo1.src =  "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380435/karengedon/shotgun/bull2_h9yj32.png";
     this.ammo2 = new Image();
-    this.ammo2.src =  "/assets/images/shotgun/bull2.png";
+    this.ammo2.src =  "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380435/karengedon/shotgun/bull2_h9yj32.png";
     this.ammo3 = new Image();
-    this.ammo3.src =  "/assets/images/shotgun/bull1.png";
+    this.ammo3.src =  "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380435/karengedon/shotgun/bull1_t4bvb3.png";
     this.shotgunCharged = new Image();
-    this.shotgunCharged.src =  "/assets/images/shotgun/shotgunCharged.png";
+    this.shotgunCharged.src =  "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380435/karengedon/shotgun/shotgunCharged_aj0zwh.png";
     this.shotgunUncharged = new Image();
-    this.shotgunUncharged.src =  "/assets/images/shotgun/shotgunUncharged.png";
+    this.shotgunUncharged.src =  "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380435/karengedon/shotgun/shotgunUncharged_d6qtu9.png";
     this.machinegun.frame = 0;
     this.machinegunTick = 0
     this.elementalImg = new Image();
-    this.elementalImg.src = "/assets/images/munición/stormstorm1.png"
+    this.elementalImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380202/karengedon/municio%CC%81n/sandstrom1_livt6s.png"
     this.mineElementalImg = new Image();
-    this.mineElementalImg.src = "/assets/images/munición/mineImg.png"
+    this.mineElementalImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380193/karengedon/municio%CC%81n/mineImg_cl2a4n.png"
     this.elementalImg.frame = 0;
     this.elementalImgTick = 0
     this.ctx.font = "20px Arial";
@@ -545,65 +545,65 @@ class Player {
     if (key === UP || key === W) {
       this.direction = "top";
       this.vy = - this.boost;
-      this.img.src = "/assets/images/PJ/MANAGER 1.png";
+      this.img.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380429/karengedon/PJ/MANAGER_1_cqs0dr.png";
       if(distance <= 60){
-        this.imgJump.src = "/assets/images/jumps/jumpup1.png"
+        this.imgJump.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688379910/karengedon/jumps/jumpup1_bjghie.png"
       } else if( distance >= 70 && distance <= 85){
-        this.imgJump.src = "/assets/images/jumps/jumpup2.png"
+        this.imgJump.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688379911/karengedon/jumps/jumpup2_o6wn0j.png"
       } else if(distance >= 90 && distance <= 105){
-        this.imgJump.src = "/assets/images/jumps/jumpup3.png"
+        this.imgJump.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688379910/karengedon/jumps/jumpup3_fbsh5p.png"
       } else if(distance >= 110 && distance <= 125){
-        this.imgJump.src = "/assets/images/jumps/jumpup4.png"
+        this.imgJump.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688379911/karengedon/jumps/jumpup4_lfzphu.png"
       } else if(distance >= 130){
-        this.imgJump.src = "/assets/images/jumps/jumpup5.png"
+        this.imgJump.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688379911/karengedon/jumps/jumpup5_v85fun.png"
       }
     }
     if (key === DOWN || key === S) {
       this.direction = "down";
       this.vy =  this.boost;
-      this.img.src = "/assets/images/PJ/MANAGER 3.png";
+      this.img.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380428/karengedon/PJ/MANAGER_3_z6olby.png";
       if(distance <= 60){
-        this.imgJump.src = "/assets/images/jumps/jumpdown1.png"
+        this.imgJump.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688379910/karengedon/jumps/jumpdown1_vlczg5.png"
       } else if( distance >= 70 && distance <= 85){
-        this.imgJump.src = "/assets/images/jumps/jumpdown2.png"
+        this.imgJump.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688379910/karengedon/jumps/jumpdown2_nsnhnb.png"
       } else if(distance >= 90 && distance <= 105){
-        this.imgJump.src = "/assets/images/jumps/jumpdown3.png"
+        this.imgJump.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688379910/karengedon/jumps/jumpdown3_hutmmj.png"
       } else if(distance >= 110 && distance <= 125){
-        this.imgJump.src = "/assets/images/jumps/jumpdown4.png"
+        this.imgJump.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688379910/karengedon/jumps/jumpdown4_gd1m5s.png"
       } else if(distance >= 130){
-        this.imgJump.src = "/assets/images/jumps/jumpdown5.png"
+        this.imgJump.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688379910/karengedon/jumps/jumpdown5_aacw5t.png"
       }
     }
     if (key === RIGHT || key === D) {
       this.direction = "right";
       this.vx = this.boost;
-      this.img.src = "/assets/images/PJ/MANAGER 2.png";
+      this.img.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380430/karengedon/PJ/MANAGER_2_gcfnfg.png";
       if(distance <= 60){
-        this.imgJump.src = "/assets/images/jumps/jumpright1.png"
+        this.imgJump.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688379909/karengedon/jumps/jumpright1_ae8lkd.png"
       } else if( distance >= 70 && distance <= 85){
-        this.imgJump.src = "/assets/images/jumps/jumpright2.png"
+        this.imgJump.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688379909/karengedon/jumps/jumpright2_idnvls.png"
       } else if(distance >= 90 && distance <= 105){
-        this.imgJump.src = "/assets/images/jumps/jumpright3.png"
+        this.imgJump.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688379909/karengedon/jumps/jumpright3_owge2i.png"
       } else if(distance >= 110 && distance <= 125){
-        this.imgJump.src = "/assets/images/jumps/jumpright4.png"
+        this.imgJump.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688379910/karengedon/jumps/jumpright4_atjzal.png"
       } else if(distance >= 130){
-        this.imgJump.src = "/assets/images/jumps/jumpright5.png"
+        this.imgJump.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688379910/karengedon/jumps/jumpright5_pysmpu.png"
       }
     }
     if (key === LEFT || key === A) {
       this.direction = "left";
       this.vx = - this.boost;
-      this.img.src = "/assets/images/PJ/MANAGER 4.png";
+      this.img.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380430/karengedon/PJ/MANAGER_4_qswowt.png";
       if(distance <= 60){
-        this.imgJump.src = "/assets/images/jumps/jumpleft1.png"
+        this.imgJump.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688379909/karengedon/jumps/jumpleft1_k1e3kf.png"
       } else if( distance >= 70 && distance <= 85){
-        this.imgJump.src = "/assets/images/jumps/jumpleft2.png"
+        this.imgJump.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688379909/karengedon/jumps/jumpleft2_mheyg2.png"
       } else if(distance >= 90 && distance <= 105){
-        this.imgJump.src = "/assets/images/jumps/jumpleft3.png"
+        this.imgJump.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688379909/karengedon/jumps/jumpleft3_ijpkpc.png"
       } else if(distance >= 110 && distance <= 125){
-        this.imgJump.src = "/assets/images/jumps/jumpleft4.png"
+        this.imgJump.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688379910/karengedon/jumps/jumpleft4_jxajmb.png"
       } else if(distance >= 130){
-        this.imgJump.src = "/assets/images/jumps/jumpleft5.png"
+        this.imgJump.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688379910/karengedon/jumps/jumpleft5_eeo5bq.png"
       }
     }
     if(fireDrug === true){
@@ -812,7 +812,7 @@ class Player {
       this.y + this.h - 40,
       this
     );
-    aura.auraImg.src = "/assets/images/munición/aura1.png";
+    aura.auraImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380194/karengedon/municio%CC%81n/aura1_xvft65.png";
     this.auras.push(aura);
   }
   // totalizacion(){
@@ -874,14 +874,14 @@ class Player {
         blaster.vx += 0.5;
         blaster.vy = 0;
         setTimeout(function(){
-          blaster.blasterImg.src = "/assets/images/munición/stormstorm1.png";
+          blaster.blasterImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380379/karengedon/municio%CC%81n/stormstorm1_pv3p9j.png";
           blaster.vx += 3
         }, 3000)
         setTimeout(function(){
           blaster.vx -= 8
-        blaster.blasterImg.src = "/assets/images/munición/stormstorm1.png";
+        blaster.blasterImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380379/karengedon/municio%CC%81n/stormstorm1_pv3p9j.png";
         }, 5200)
-        blaster.blasterImg.src = "/assets/images/munición/stormstorm1.png";
+        blaster.blasterImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380379/karengedon/municio%CC%81n/stormstorm1_pv3p9j.png";
     this.blasters.push(blaster);
     }
     megablast2(){
@@ -899,9 +899,9 @@ class Player {
       }, 3000)
       setTimeout(function(){
         blaster.vx += 8
-      blaster.blasterImg.src = "/assets/images/munición/stormstorm1.png";
+      blaster.blasterImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380379/karengedon/municio%CC%81n/stormstorm1_pv3p9j.png";
       }, 5200)
-      blaster.blasterImg.src = "/assets/images/munición/stormstorm1.png";
+      blaster.blasterImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380379/karengedon/municio%CC%81n/stormstorm1_pv3p9j.png";
     this.blasters.push(blaster);
     }
     megablast3(){
@@ -919,9 +919,9 @@ class Player {
       }, 3000)
       setTimeout(function(){
         blaster.vy += 8
-      blaster.blasterImg.src = "/assets/images/munición/stormstorm1.png";
+      blaster.blasterImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380379/karengedon/municio%CC%81n/stormstorm1_pv3p9j.png";
       }, 5200)
-      blaster.blasterImg.src = "/assets/images/munición/stormstorm1.png";
+      blaster.blasterImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380379/karengedon/municio%CC%81n/stormstorm1_pv3p9j.png";
     this.blasters.push(blaster);
     }
     megablast4(){
@@ -939,9 +939,9 @@ class Player {
       }, 3000)
       setTimeout(function(){
         blaster.vy -= 8
-      blaster.blasterImg.src = "/assets/images/munición/stormstorm1.png";
+      blaster.blasterImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380379/karengedon/municio%CC%81n/stormstorm1_pv3p9j.png";
       }, 5200)
-      blaster.blasterImg.src = "/assets/images/munición/stormstorm1.png";
+      blaster.blasterImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380379/karengedon/municio%CC%81n/stormstorm1_pv3p9j.png";
     this.blasters.push(blaster);
     }
   rocketer() {
@@ -960,10 +960,10 @@ class Player {
         this.sandShootAudio = new Audio("/assets/audios ad/rocketExplosionSound.mp3")
         this.sandShootAudio.volume = 0.06;
         this.sandShootAudio.play();
-        blaster.blasterImg.src = "/assets/images/munición/roquetRightFast.png";
+        blaster.blasterImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380198/karengedon/municio%CC%81n/roquetRightFast_d3wnd0.png";
       }, 1000)
-      blaster.blasterImg.src = "/assets/images/munición/roquetRight.png";
-      this.img.src = "/assets/images/PJ/imright.png";
+      blaster.blasterImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380200/karengedon/municio%CC%81n/roquetRight_qpjpv6.png";
+      this.img.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380428/karengedon/PJ/imright_hnd6kn.png";
       this.img.frame++;
     }
     if (this.direction === "left") {
@@ -975,10 +975,10 @@ class Player {
         this.sandShootAudio = new Audio("/assets/audios ad/rocketExplosionSound.mp3")
         this.sandShootAudio.volume = 0.06;
         this.sandShootAudio.play();
-        blaster.blasterImg.src = "/assets/images/munición/roquetLeftFast.png";
+        blaster.blasterImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380198/karengedon/municio%CC%81n/roquetLeftFast_ekaxgq.png";
       }, 1000)
-      blaster.blasterImg.src = "/assets/images/munición/roquetLeft.png";
-      this.img.src = "/assets/images/PJ/imleft.png";
+      blaster.blasterImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380193/karengedon/municio%CC%81n/roquetLeft_oigl8z.png";
+      this.img.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380430/karengedon/PJ/imleft_ypkgum.png";
       this.img.frame++;
     }
     if (this.direction === "top") {
@@ -990,10 +990,10 @@ class Player {
         this.sandShootAudio = new Audio("/assets/audios ad/rocketExplosionSound.mp3")
         this.sandShootAudio.volume = 0.06;
         this.sandShootAudio.play();
-        blaster.blasterImg.src = "/assets/images/munición/roquetUpFast.png";
+        blaster.blasterImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380193/karengedon/municio%CC%81n/roquetUpFast_deaizx.png";
       }, 1000)
-      blaster.blasterImg.src = "/assets/images/munición/roquetUp.png";
-      this.img.src = "/assets/images/PJ/imup.png";
+      blaster.blasterImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380194/karengedon/municio%CC%81n/roquetUp_bo4e77.png";
+      this.img.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380429/karengedon/PJ/imup_dd2vz1.png";
       this.img.frame++;
     }
     if (this.direction === "down") {
@@ -1005,10 +1005,10 @@ class Player {
         this.sandShootAudio = new Audio("/assets/audios ad/rocketExplosionSound.mp3")
         this.sandShootAudio.volume = 0.06;
         this.sandShootAudio.play();
-        blaster.blasterImg.src = "/assets/images/munición/roquetDownFast.png";
+        blaster.blasterImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380197/karengedon/municio%CC%81n/roquetDownFast_m6ljnz.png";
       }, 1000)
-      blaster.blasterImg.src = "/assets/images/munición/roquetDown.png";
-      this.img.src = "/assets/images/PJ/imdown.png";
+      blaster.blasterImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380199/karengedon/municio%CC%81n/roquetDown_mibf5d.png";
+      this.img.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380427/karengedon/PJ/imdown_i2jqrk.png";
       this.img.frame++;
     }
     this.blasters.push(blaster);
@@ -1028,10 +1028,10 @@ class Player {
       }, 3000)
       setTimeout(function(){
         blaster.vx -= 8
-      blaster.blasterImg.src = "/assets/images/munición/SandLeft.png";
+      blaster.blasterImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380200/karengedon/municio%CC%81n/SandLeft_rcfh9a.png";
       }, 5200)
-      blaster.blasterImg.src = "/assets/images/munición/SandRight.png";
-      this.img.src = "/assets/images/PJ/imright.png";
+      blaster.blasterImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380196/karengedon/municio%CC%81n/SandRight_lsxeud.png";
+      this.img.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380428/karengedon/PJ/imright_hnd6kn.png";
       this.img.frame++;
     }
     if (this.direction === "left") {
@@ -1042,10 +1042,10 @@ class Player {
       }, 3000)
       setTimeout(function(){
         blaster.vx += 8
-      blaster.blasterImg.src = "/assets/images/munición/SandRight.png";
+      blaster.blasterImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380196/karengedon/municio%CC%81n/SandRight_lsxeud.png";
       }, 5200)
-      blaster.blasterImg.src = "/assets/images/munición/SandLeft.png";
-      this.img.src = "/assets/images/PJ/imleft.png";
+      blaster.blasterImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380200/karengedon/municio%CC%81n/SandLeft_rcfh9a.png";
+      this.img.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380430/karengedon/PJ/imleft_ypkgum.png";
       this.img.frame++;
     }
     if (this.direction === "top") {
@@ -1056,10 +1056,10 @@ class Player {
       }, 3000)
       setTimeout(function(){
         blaster.vy += 8
-      blaster.blasterImg.src = "/assets/images/munición/SandDown.png";
+      blaster.blasterImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380194/karengedon/municio%CC%81n/SandDown_wjfgic.png";
       }, 5200)
-      blaster.blasterImg.src = "/assets/images/munición/SandUp.png";
-      this.img.src = "/assets/images/PJ/imup.png";
+      blaster.blasterImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380199/karengedon/municio%CC%81n/SandUp_depz3h.png";
+      this.img.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380429/karengedon/PJ/imup_dd2vz1.png";
       this.img.frame++;
     }
     if (this.direction === "down") {
@@ -1070,10 +1070,10 @@ class Player {
       }, 3000)
       setTimeout(function(){
         blaster.vy -= 8
-      blaster.blasterImg.src = "/assets/images/munición/sandup.png";
+      blaster.blasterImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380199/karengedon/municio%CC%81n/SandUp_depz3h.png";
       }, 5200)
-      blaster.blasterImg.src = "/assets/images/munición/SandDown.png";
-      this.img.src = "/assets/images/PJ/imdown.png";
+      blaster.blasterImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380194/karengedon/municio%CC%81n/SandDown_wjfgic.png";
+      this.img.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380427/karengedon/PJ/imdown_i2jqrk.png";
       this.img.frame++;
     }
     this.blasters.push(blaster);
@@ -1137,29 +1137,29 @@ class Player {
     if (this.direction === "right") {
       hook.vx = this.speed + 5 + this.extraHookSpeed;
       hook.vy = 0;
-      hook.hookImg.src = "/assets/images/munición/hookright.png";
-      this.img.src = "/assets/images/PJ/imright.png";
+      hook.hookImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380196/karengedon/municio%CC%81n/hookright_ecxm78.png";
+      this.img.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380428/karengedon/PJ/imright_hnd6kn.png";
       this.img.frame++;
     }
     if (this.direction === "left") {
       hook.vx = -this.speed - 5 - this.extraHookSpeed;
       hook.vy = 0;
-      hook.hookImg.src = "/assets/images/munición/hookleft.png";
-      this.img.src = "/assets/images/PJ/imleft.png";
+      hook.hookImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380198/karengedon/municio%CC%81n/hookleft_veier0.png";
+      this.img.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380430/karengedon/PJ/imleft_ypkgum.png";
       this.img.frame++;
     }
     if (this.direction === "top") {
       hook.vx = 0;
       hook.vy = -this.speed - 5 - this.extraHookSpeed;
-      hook.hookImg.src = "/assets/images/munición/hookup.png";
-      this.img.src = "/assets/images/PJ/imup.png";
+      hook.hookImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380200/karengedon/municio%CC%81n/hookup_umwlgg.png";
+      this.img.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380429/karengedon/PJ/imup_dd2vz1.png";
       this.img.frame++;
     }
     if (this.direction === "down") {
       hook.vx = 0;
       hook.vy = this.speed + 5 + this.extraHookSpeed;
-      hook.hookImg.src = "/assets/images/munición/hookdown.png";
-      this.img.src = "/assets/images/PJ/imdown.png";
+      hook.hookImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380196/karengedon/municio%CC%81n/hookdown_lddrxz.png";
+      this.img.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380427/karengedon/PJ/imdown_i2jqrk.png";
       this.img.frame++;
     }
     if (this.cooldownBullet <= 600) {
@@ -1177,29 +1177,29 @@ class Player {
     if (this.direction === "right") {
       heat.vx = this.speed;
       heat.vy = 0;
-      heat.heatImg.src = "/assets/images/munición/bola de fuego copia 3.png";
-      this.img.src = "/assets/images/PJ/imright.png";
+      heat.heatImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380199/karengedon/municio%CC%81n/bola_de_fuego_copia_3_ydrlzb.png";
+      this.img.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380428/karengedon/PJ/imright_hnd6kn.png";
       this.img.frame++;
     }
     if (this.direction === "left") {
       heat.vx = -this.speed;
       heat.vy = 0;
-      heat.heatImg.src = "/assets/images/munición/bola de fuego copia.png";
-      this.img.src = "/assets/images/PJ/imleft.png";
+      heat.heatImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380200/karengedon/municio%CC%81n/bola_de_fuego_copia_lpi2c6.png";
+      this.img.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380430/karengedon/PJ/imleft_ypkgum.png";
       this.img.frame++;
     }
     if (this.direction === "top") {
       heat.vx = 0;
       heat.vy = -this.speed;
-      heat.heatImg.src = "/assets/images/munición/bola de fuego copia 2.png";
-      this.img.src = "/assets/images/PJ/imup.png";
+      heat.heatImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380199/karengedon/municio%CC%81n/bola_de_fuego_copia_2_xwh0rl.png";
+      this.img.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380429/karengedon/PJ/imup_dd2vz1.png";
       this.img.frame++;
     }
     if (this.direction === "down") {
       heat.vx = 0;
       heat.vy = this.speed;
-      heat.heatImg.src = "/assets/images/munición/bola de fuego.png";
-      this.img.src = "/assets/images/PJ/imdown.png";
+      heat.heatImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380194/karengedon/municio%CC%81n/bola_de_fuego_v0hdpt.png";
+      this.img.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380427/karengedon/PJ/imdown_i2jqrk.png";
       this.img.frame++;
     }
     if (this.cooldownBullet <= 600) {
@@ -1230,8 +1230,8 @@ class Player {
         this.extraShotSound.volume = 0.3;
         this.extraShotSound.play();
       }
-      shotgun.shotImg.src = "/assets/images/shotgun/flashRight.png";
-      this.img.src = "/assets/images/PJ/imright.png";
+      shotgun.shotImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380435/karengedon/shotgun/flashRight_pn6in5.png";
+      this.img.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380428/karengedon/PJ/imright_hnd6kn.png";
       this.img.frame++;
     }
     if (this.direction === "left") {
@@ -1249,8 +1249,8 @@ class Player {
         this.extraShotSound.volume = 0.3;
         this.extraShotSound.play();
       }
-      shotgun.shotImg.src = "/assets/images/shotgun/flashLeft.png";
-      this.img.src = "/assets/images/PJ/imleft.png";
+      shotgun.shotImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380435/karengedon/shotgun/flashLeft_kir4iz.png";
+      this.img.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380430/karengedon/PJ/imleft_ypkgum.png";
       this.img.frame++;
     }
     if (this.direction === "top") {
@@ -1269,8 +1269,8 @@ class Player {
         this.extraShotSound.volume = 0.3;
         this.extraShotSound.play();
       }
-      shotgun.shotImg.src = "/assets/images/shotgun/flashUp.png";
-      this.img.src = "/assets/images/PJ/imup.png";
+      shotgun.shotImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380435/karengedon/shotgun/flashUp_gpant8.png";
+      this.img.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380429/karengedon/PJ/imup_dd2vz1.png";
       this.img.frame++;
     }
     if (this.direction === "down") {
@@ -1289,8 +1289,8 @@ class Player {
         this.extraShotSound.volume = 0.3;
         this.extraShotSound.play();
       }
-      shotgun.shotImg.src = "/assets/images/shotgun/flashDown.png";
-      this.img.src = "/assets/images/PJ/imdown.png";
+      shotgun.shotImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380435/karengedon/shotgun/flashDown_qc22cw.png";
+      this.img.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380427/karengedon/PJ/imdown_i2jqrk.png";
       this.img.frame++;
     }
     if (this.cooldownBullet <= 600) {
@@ -1311,8 +1311,8 @@ class Player {
       heat.vy = 0;
       heat.bla = bulletDistanceExtra - 60
 
-      heat.heatImg.src = "/assets/images/munición/bola de fuego copia 3.png";
-      this.img.src = "/assets/images/PJ/imright.png";
+      heat.heatImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380199/karengedon/municio%CC%81n/bola_de_fuego_copia_3_ydrlzb.png";
+      this.img.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380428/karengedon/PJ/imright_hnd6kn.png";
       this.img.frame++;
     }
     if (this.direction === "left") {
@@ -1320,8 +1320,8 @@ class Player {
       heat.vy = 0;
       heat.bla = bulletDistanceExtra - 60
 
-      heat.heatImg.src = "/assets/images/munición/bola de fuego copia.png";
-      this.img.src = "/assets/images/PJ/imleft.png";
+      heat.heatImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380200/karengedon/municio%CC%81n/bola_de_fuego_copia_lpi2c6.png";
+      this.img.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380430/karengedon/PJ/imleft_ypkgum.png";
       this.img.frame++;
     }
     if (this.direction === "top") {
@@ -1329,8 +1329,8 @@ class Player {
       heat.vy = -this.speed;
       heat.bla = bulletDistanceExtra - 60
 
-      heat.heatImg.src = "/assets/images/munición/bola de fuego copia 2.png";
-      this.img.src = "/assets/images/PJ/imup.png";
+      heat.heatImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380199/karengedon/municio%CC%81n/bola_de_fuego_copia_2_xwh0rl.png";
+      this.img.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380429/karengedon/PJ/imup_dd2vz1.png";
       this.img.frame++;
     }
     if (this.direction === "down") {
@@ -1338,8 +1338,8 @@ class Player {
       heat.vy = this.speed;
       heat.bla = bulletDistanceExtra - 60
 
-      heat.heatImg.src = "/assets/images/munición/bola de fuego.png";
-      this.img.src = "/assets/images/PJ/imdown.png";
+      heat.heatImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380194/karengedon/municio%CC%81n/bola_de_fuego_v0hdpt.png";
+      this.img.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380427/karengedon/PJ/imdown_i2jqrk.png";
       this.img.frame++;
     }
     if (this.cooldownBullet <= 600) {
@@ -1359,8 +1359,8 @@ class Player {
       heat.vy = 0;
       heat.bla = bulletDistanceExtra - 60
 
-      heat.heatImg.src = "/assets/images/munición/bola de fuego copia.png";
-      this.img.src = "/assets/images/PJ/imright.png";
+      heat.heatImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380200/karengedon/municio%CC%81n/bola_de_fuego_copia_lpi2c6.png";
+      this.img.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380428/karengedon/PJ/imright_hnd6kn.png";
       this.img.frame++;
     }
     if (this.direction === "left") {
@@ -1368,8 +1368,8 @@ class Player {
       heat.vy = 0;
       heat.bla = bulletDistanceExtra - 60
 
-      heat.heatImg.src = "/assets/images/munición/bola de fuego copia 3.png";
-      this.img.src = "/assets/images/PJ/imleft.png";
+      heat.heatImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380199/karengedon/municio%CC%81n/bola_de_fuego_copia_3_ydrlzb.png";
+      this.img.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380430/karengedon/PJ/imleft_ypkgum.png";
       this.img.frame++;
     }
     if (this.direction === "top") {
@@ -1377,16 +1377,16 @@ class Player {
       heat.vy = this.speed;
       heat.bla = bulletDistanceExtra - 60
 
-      heat.heatImg.src = "/assets/images/munición/bola de fuego.png";
-      this.img.src = "/assets/images/PJ/imup.png";
+      heat.heatImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380194/karengedon/municio%CC%81n/bola_de_fuego_v0hdpt.png";
+      this.img.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380429/karengedon/PJ/imup_dd2vz1.png";
       this.img.frame++;
     }
     if (this.direction === "down") {
       heat.vx = 0;
       heat.vy = -this.speed;
       heat.bla = bulletDistanceExtra - 60
-      heat.heatImg.src = "/assets/images/munición/bola de fuego copia 2.png";
-      this.img.src = "/assets/images/PJ/imdown.png";
+      heat.heatImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380199/karengedon/municio%CC%81n/bola_de_fuego_copia_2_xwh0rl.png";
+      this.img.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380427/karengedon/PJ/imdown_i2jqrk.png";
       this.img.frame++;
     }
     this.heats.push(heat);
@@ -1408,29 +1408,29 @@ class Player {
     if (this.direction === "right") {
       water.vx = this.speed;
       water.vy = 0;
-      water.waterImg.src = "/assets/images/munición/waterright.png"
-      this.img.src = "/assets/images/PJ/imright.png";
+      water.waterImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380199/karengedon/municio%CC%81n/waterright_wq2f3m.png"
+      this.img.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380428/karengedon/PJ/imright_hnd6kn.png";
       this.img.frame++;
     }
     if (this.direction === "left") {
       water.vx = -this.speed;
       water.vy = 0;
-      water.waterImg.src = "/assets/images/munición/waterleft.png"
-      this.img.src = "/assets/images/PJ/imleft.png";
+      water.waterImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380195/karengedon/municio%CC%81n/waterleft_mchk4d.png"
+      this.img.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380430/karengedon/PJ/imleft_ypkgum.png";
       this.img.frame++;
     }
     if (this.direction === "top") {
       water.vx = 0;
       water.vy = -this.speed;
-      water.waterImg.src = "/assets/images/munición/waterup.png"
-      this.img.src = "/assets/images/PJ/imup.png";
+      water.waterImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380198/karengedon/municio%CC%81n/waterup_ggipzn.png"
+      this.img.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380429/karengedon/PJ/imup_dd2vz1.png";
       this.img.frame++;
     }
     if (this.direction === "down") {
       water.vx = 0;
       water.vy = this.speed;
-      water.waterImg.src = "/assets/images/munición/waterdown.png"
-      this.img.src = "/assets/images/PJ/imdown.png";
+      water.waterImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380196/karengedon/municio%CC%81n/waterdown_axtgtk.png"
+      this.img.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380427/karengedon/PJ/imdown_i2jqrk.png";
       this.img.frame++;
     }
     if (this.cooldownBullet <= 600) {
@@ -1450,8 +1450,8 @@ class Player {
       water.vy = 4;
       water.bla = bulletDistanceExtra - 90
       water.sa = bulletSizeExtra
-      water.waterImg.src = "/assets/images/munición/waterright.png"
-      this.img.src = "/assets/images/PJ/imright.png";
+      water.waterImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380199/karengedon/municio%CC%81n/waterright_wq2f3m.png"
+      this.img.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380428/karengedon/PJ/imright_hnd6kn.png";
       this.img.frame++;
     }
     if (this.direction === "left") {
@@ -1459,8 +1459,8 @@ class Player {
       water.vy = -4;
       water.bla = bulletDistanceExtra - 90
       water.sa = bulletSizeExtra
-      water.waterImg.src = "/assets/images/munición/waterleft.png"
-      this.img.src = "/assets/images/PJ/imleft.png";
+      water.waterImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380195/karengedon/municio%CC%81n/waterleft_mchk4d.png"
+      this.img.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380430/karengedon/PJ/imleft_ypkgum.png";
       this.img.frame++;
     }
     if (this.direction === "top") {
@@ -1468,8 +1468,8 @@ class Player {
       water.vy = -4;
       water.bla = bulletDistanceExtra - 90
       water.sa = bulletSizeExtra
-      water.waterImg.src = "/assets/images/munición/waterup.png"
-      this.img.src = "/assets/images/PJ/imup.png";
+      water.waterImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380198/karengedon/municio%CC%81n/waterup_ggipzn.png"
+      this.img.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380429/karengedon/PJ/imup_dd2vz1.png";
       this.img.frame++;
     }
     if (this.direction === "down") {
@@ -1477,8 +1477,8 @@ class Player {
       water.vy = 4;
       water.bla = bulletDistanceExtra - 90
       water.sa = bulletSizeExtra
-      water.waterImg.src = "/assets/images/munición/waterdown.png"
-      this.img.src = "/assets/images/PJ/imdown.png";
+      water.waterImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380196/karengedon/municio%CC%81n/waterdown_axtgtk.png"
+      this.img.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380427/karengedon/PJ/imdown_i2jqrk.png";
       this.img.frame++;
     }
     this.waters.push(water);
@@ -1495,8 +1495,8 @@ class Player {
       water.vy = -4;
       water.bla = bulletDistanceExtra - 90
       water.sa = bulletSizeExtra
-      water.waterImg.src = "/assets/images/munición/waterright.png"
-      this.img.src = "/assets/images/PJ/imright.png";
+      water.waterImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380199/karengedon/municio%CC%81n/waterright_wq2f3m.png"
+      this.img.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380428/karengedon/PJ/imright_hnd6kn.png";
       this.img.frame++;
     }
     if (this.direction === "left") {
@@ -1504,8 +1504,8 @@ class Player {
       water.vy = 4;
       water.bla = bulletDistanceExtra - 90
       water.sa = bulletSizeExtra
-      water.waterImg.src = "/assets/images/munición/waterleft.png"
-      this.img.src = "/assets/images/PJ/imleft.png";
+      water.waterImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380195/karengedon/municio%CC%81n/waterleft_mchk4d.png"
+      this.img.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380430/karengedon/PJ/imleft_ypkgum.png";
       this.img.frame++;
     }
     if (this.direction === "top") {
@@ -1513,8 +1513,8 @@ class Player {
       water.vy = -4;
       water.bla = bulletDistanceExtra - 90
       water.sa = bulletSizeExtra
-      water.waterImg.src = "/assets/images/munición/waterup.png"
-      this.img.src = "/assets/images/PJ/imup.png";
+      water.waterImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380198/karengedon/municio%CC%81n/waterup_ggipzn.png"
+      this.img.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380429/karengedon/PJ/imup_dd2vz1.png";
       this.img.frame++;
     }
     if (this.direction === "down") {
@@ -1522,8 +1522,8 @@ class Player {
       water.vy = 4;
       water.bla = bulletDistanceExtra - 90
       water.sa = bulletSizeExtra
-      water.waterImg.src = "/assets/images/munición/waterdown.png"
-      this.img.src = "/assets/images/PJ/imdown.png";
+      water.waterImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380196/karengedon/municio%CC%81n/waterdown_axtgtk.png"
+      this.img.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380427/karengedon/PJ/imdown_i2jqrk.png";
       this.img.frame++;
     }
     this.waters.push(water);
@@ -1540,8 +1540,8 @@ class Player {
     water.vy = 0;
     water.bla = bulletDistanceExtra - 60
     water.sa = bulletSizeExtra
-    water.waterImg.src = "/assets/images/munición/waterright.png"
-    this.img.src = "/assets/images/PJ/imright.png";
+    water.waterImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380199/karengedon/municio%CC%81n/waterright_wq2f3m.png"
+    this.img.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380428/karengedon/PJ/imright_hnd6kn.png";
     this.img.frame++;
   }
   if (this.direction === "left") {
@@ -1550,8 +1550,8 @@ class Player {
     water.bla = bulletDistanceExtra - 60
     water.sa = bulletSizeExtra
 
-    water.waterImg.src = "/assets/images/munición/waterleft.png"
-    this.img.src = "/assets/images/PJ/imleft.png";
+    water.waterImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380195/karengedon/municio%CC%81n/waterleft_mchk4d.png"
+    this.img.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380430/karengedon/PJ/imleft_ypkgum.png";
     this.img.frame++;
   }
   if (this.direction === "top") {
@@ -1559,8 +1559,8 @@ class Player {
     water.vy = -6.5;
     water.bla = bulletDistanceExtra - 60
     water.sa = bulletSizeExtra
-    water.waterImg.src = "/assets/images/munición/waterup.png"
-    this.img.src = "/assets/images/PJ/imup.png";
+    water.waterImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380198/karengedon/municio%CC%81n/waterup_ggipzn.png"
+    this.img.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380429/karengedon/PJ/imup_dd2vz1.png";
     this.img.frame++;
   }
   if (this.direction === "down") {
@@ -1568,8 +1568,8 @@ class Player {
     water.vy = 6.5;
     water.bla = bulletDistanceExtra - 60
     water.sa = bulletSizeExtra
-    water.waterImg.src = "/assets/images/munición/waterdown.png"
-    this.img.src = "/assets/images/PJ/imdown.png";
+    water.waterImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380196/karengedon/municio%CC%81n/waterdown_axtgtk.png"
+    this.img.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380427/karengedon/PJ/imdown_i2jqrk.png";
     this.img.frame++;
   }
   if (this.cooldownBullet <= 600) {

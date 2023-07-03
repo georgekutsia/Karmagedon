@@ -6,7 +6,7 @@ class Upgrade {
       this.w = 50;
       this.h = 50;
       this.cartImg = new Image();
-      this.cartImg.src = "/assets/images/elements/upgra.png";  
+      this.cartImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381744/karengedon/elements/upgra_lpfb3n.png";  
       this.tock = 900;
       this.dispose = true
       this.v = 0;
