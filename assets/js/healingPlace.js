@@ -6,7 +6,7 @@ class HealingPlace {
     this.w = 80;
     this.h = 80;
     this.heal = new Image();
-    this.heal.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381741/karengedon/elements/healme_lzu6jp.png";
+    this.heal.src = "/assets/images/elements/healme.png";
     this.heal.frame = 0;
 
     this.tick = 0;

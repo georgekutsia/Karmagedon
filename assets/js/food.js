@@ -12,7 +12,7 @@ class Food {
       this.w = 45;
       this.h = 40;
       this.cartImg = new Image();
-      this.cartImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381737/karengedon/elements/comidas_jzq9mk.png";
+      this.cartImg.src = "/assets/images/elements/comidas.png"
       this.cartImg.frame = this.imgFrame;
       this.tick = 0;
       this.tock = 900;

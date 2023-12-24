@@ -12,7 +12,7 @@ class Heat {
     this.vy = 0;
     this.dispose = false;
     this.heatImg = new Image();
-    this.heatImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380194/karengedon/municio%CC%81n/bola_de_fuego_v0hdpt.png";
+    this.heatImg.src = "/assets/images/munición/bola de fuego.png";
     this.heatImg.frame = 0;
     this.heatShootAudio = new Audio("/assets/audio/fired.mp3")
     this.heatShootAudio.volume = 0.01;
@@ -51,7 +51,7 @@ class Heat {
     if (afterSpin && this.heatFar) {
       this.tick++
       this.afterTick++
-      this.heatImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380200/karengedon/municio%CC%81n/heatspin_ggr6vu.png";
+      this.heatImg.src = "/assets/images/munición/heatspin.png";
       this.x -= 0.09;
       this.y -= 0.09;
       this.vx = 0;
@@ -95,7 +95,7 @@ class Shotgun {
     this.vy = 0;
     this.dispose = false;
     this.shotImg = new Image();
-    this.shotImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380435/karengedon/shotgun/flashLeft_kir4iz.png";
+    this.shotImg.src = "/assets/images/shotgun/flashLeft.png";
     this.shotImg.frame = 0;
     this.shotShootAudio = new Audio("/assets/audios ad/shotgunShoot.mp3")
     this.shotShootAudio.volume = 0.1;
@@ -149,7 +149,7 @@ class Hook {
     this.vy = 0;
     this.dispose = false;
     this.hookImg = new Image();
-    this.hookImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380196/karengedon/municio%CC%81n/hookdown_lddrxz.png";
+    this.hookImg.src = "/assets/images/munición/hookdown.png.png";
     this.hookImg.frame = 0;
     this.hookShootAudio = new Audio("/assets/audio/hookShort.m4a  ")
     this.hookShootAudio.volume = 0.03;

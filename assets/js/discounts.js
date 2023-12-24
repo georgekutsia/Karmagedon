@@ -12,11 +12,11 @@ class Discount {
       this.w = 0.04 * this.ctx.canvas.width;
       this.h = 0.04 * this.ctx.canvas.height;
       this.a = new Image();
-      this.a.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381743/karengedon/elements/dis0_ng9ijf.png";
+      this.a.src = "/assets/images/elements/dis0.png";
       this.b = new Image();
-      this.b.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381743/karengedon/elements/dis1_kdi8kp.png";
+      this.b.src = "/assets/images/elements/dis1.png";
       this.c = new Image();
-      this.c.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381742/karengedon/elements/dis2_dw4ha2.png";
+      this.c.src = "/assets/images/elements/dis2.png";
       this.total = 0;
       this.randomImage = [this.a, this.b, this.c]
       this.image = image || this.randomImage[Math.floor(Math.random()*this.randomImage.length)]

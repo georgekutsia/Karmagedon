@@ -13,7 +13,7 @@ class Line {
     this.b = 3;
     this.check = 0;
     this.imgMinigame = new Image()
-    this.imgMinigame.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688378902/karengedon/fondos/minigame_iz2itx.png"
+    this.imgMinigame.src = "/assets/images/fondos/minigame.png"
     ctx.font = "20px Verdana";
   }
   draw() {

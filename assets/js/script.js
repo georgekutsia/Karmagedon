@@ -3,7 +3,9 @@ const ctx = canvas.getContext('2d');
 
 const game = new Game(ctx);
 
-const life = new Life(ctx)
+const practiceGame = new GameTrain(ctx)
+
+// const life = new Life(ctx)
 
 // const infoDataAll = document.getElementById("display-all");
 const infoData = document.getElementById("display-info");
@@ -11,6 +13,7 @@ const infoData1 = document.getElementById("display-info1");
 const infoData2 = document.getElementById("display-info2");
 const begin = document.querySelector(".neon-button");
 const btn = document.querySelector(".neon-butt");
+const btnTrain = document.querySelector(".neon-butt-training");
 const btneasy = document.querySelector(".neon-butteasy");
 const btnnormal = document.querySelector(".neon-buttnormal");
 const btnhard = document.querySelector(".neon-butthard");
@@ -69,13 +72,14 @@ const megaShotgun = document.getElementById("mega-shotgun")
 const megaMine = document.getElementById("mega-mine")
 const megaHook = document.getElementById("mega-hook")
 const megaLife = document.getElementById("mega-life")
+const megaAreaDamage = document.getElementById("mega-areaDamage")
 
 const allBuys = [buyRockets, buyMine, buyMines, buyHooks, buyDiscounts, buyTimeShield, buyBlaster]
 const allSells = [sellRockets, sellMines, sellMine, sellHooks, sellDiscounts]
 const allAsks = [askFood, askDrug]
-const allMegas = [megaShotgun, megaMine, megaHook, megaLife]
+const allMegas = [megaShotgun, megaMine, megaHook, megaLife, megaAreaDamage]
 
-const allButtonsGone = [easy, normal, hard, superhard, info, manager, begin]
+const allButtonsGone = [easy, normal, hard, superhard, info, manager, begin, btnTrain]
 const allAddButtons = [zkaren, zrat, zfat, zpuddle, zfire, zboss, zgoose, zdiscount, zcart, zbaby, zkoren, zcustomer, zupgrade, zupbullet, zfood, ]
 
 
@@ -231,11 +235,9 @@ sellDiscounts.addEventListener("click", function(){
 
 askFood.addEventListener("click", function(){
   game.addFood()
-  
 })
 askDrug.addEventListener("click", function(){
   game.addDrug()
-  
 })
 
 
@@ -287,6 +289,23 @@ megaLife.addEventListener("click", function(){
   if(money >= 1000){
     money -= 1000
     lifeTotal += 5
+    game.player.heal(30)
+    this.sandShootAudio = new Audio("/assets/audios ad/sell.wav")
+    this.sandShootAudio.volume = 0.4;
+    this.sandShootAudio.play();
+    this.buyBig = new Audio("/assets/audios ad/buyBigStuff.mp3")
+    this.buyBig.volume = 0.2;
+    this.buyBig.play();
+  } else {
+    this.buyBig = new Audio("/assets/audios ad/needMoreMoney.m4a")
+    this.buyBig.volume = 0.1;
+    this.buyBig.play();
+  }
+})
+megaAreaDamage.addEventListener("click", function(){
+  if(money >= 2000){
+    money -= 2000;
+    areaDamage = false;
     game.player.heal(30)
     this.sandShootAudio = new Audio("/assets/audios ad/sell.wav")
     this.sandShootAudio.volume = 0.4;
@@ -364,6 +383,30 @@ console.log("sss",game.winTime)
 
 
 
+//botón del entrenamiento
+btnTrain.addEventListener("click", function () {
+    if (practiceGame.interval) {
+      practiceGame.stop();
+console.log("sss",practiceGame.winTime)
+      btnTrain.innerText = "START";
+    } else {
+      practiceGame.start();
+console.log("sss",practiceGame.winTime)
+      btnTrain.innerText = `STOP`;
+    }
+    displ.style.display = "block"
+    allButtonsGone.forEach((button) => button.style.display = "none")
+    cheat.style.display = "inline-block"
+    wornings.style.display = "flex"
+    restart.style.display = "flex"
+    demo.style.display = "inline-block";
+    buyButtons.style.display = "block"
+    infoData.style.display = "block"
+    infoData1.style.display = "block"
+    this.musicStart = new Audio("/assets/audios ad/clic future.wav");
+    this.musicStart.volume = 0.05;
+    this.musicStart.play()
+  });
 
     
   //el botón de reinicio

@@ -8,13 +8,14 @@ class Fat {
     this.h = 0.15 * this.ctx.canvas.height;
     this.vy = -0.3;
     this.fatlist = [
-      "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381743/karengedon/elements/gor1_poib9z.png",
-      "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381744/karengedon/elements/gor2_uspzvr.png",
-      "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381743/karengedon/elements/gor3_vdmegp.png",
-      "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381743/karengedon/elements/gor4_uk3fak.png",
-      "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381743/karengedon/elements/gor5_vuglbl.png",
-      "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381742/karengedon/elements/gor6_lfbki5.png",
-      "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381744/karengedon/elements/gor7_f7i2ib.png"
+      "/assets/images/elements/fat.png",
+      "/assets/images/elements/gor1.png",
+      "/assets/images/elements/gor2.png",
+      "/assets/images/elements/gor3.png",
+      "/assets/images/elements/gor4.png",
+      "/assets/images/elements/gor5.png",
+      "/assets/images/elements/gor6.png",
+      "/assets/images/elements/gor7.png"
     ]
     this.fat = new Image();
     this.fat.src = this.fatlist[Math.floor(Math.random() * this.fatlist.length)];

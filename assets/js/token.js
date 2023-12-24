@@ -6,7 +6,7 @@ class Token {
     this.w = 130;
     this.h = 130;
     this.token = new Image();
-    this.token.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380422/karengedon/PJ/token_life_v2f1l9.png";
+    this.token.src = "/assets/images/PJ/token life.png";
     this.token.frame = 0;
     this.tick = 0;
   }

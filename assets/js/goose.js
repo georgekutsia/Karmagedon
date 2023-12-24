@@ -11,14 +11,14 @@ class Goose {
     this.moveY = 1
     this.gooseImg = new Image();
     this.score = new Score()
-    this.gooseImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381735/karengedon/elements/gansos_mgcexa.png";
+    this.gooseImg.src = "/assets/images/elements/gansos.png";
     this.gooseImg.frame = 0;
     this.lifeleft = 5 * extraLife;
     this.tick = 0;
     this.tock = 0;
     this.dead = 0;
     this.cageImg = new Image();
-    this.cageImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380194/karengedon/municio%CC%81n/cage_gl5s0a.png"
+    this.cageImg.src = "/assets/images/munición/cage.png"
     this.cage = false
     this.cageTick = 0
   }
@@ -82,7 +82,7 @@ class Goose {
     }
     if(this.x >= 1180){
       this.vx = -this.moveY * 2
-      this.gooseImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381737/karengedon/elements/gansos_reversa_ebnhgt.png"
+      this.gooseImg.src = "/assets/images/elements/gansos reversa.png"
     }
     if (this.tick > 10) {
       this.tick = 0;
@@ -93,7 +93,7 @@ class Goose {
       ratAlert.style.display = "none";
     }
     if(this.lifeleft <= 0){
-      this.gooseImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688381738/karengedon/elements/deadgoose_j52bwa.png"
+      this.gooseImg.src = "/assets/images/elements/deadgoose.png"
       this.vx = 0;
       this.vy = 0;
       this.dead++

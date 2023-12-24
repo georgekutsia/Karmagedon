@@ -10,7 +10,7 @@ class Megablaster {
     this.vy = 0;
     this.dispose = false;
     this.blasterImg = new Image();
-    this.blasterImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380376/karengedon/municio%CC%81n/stormstorm_lwzb3o.png";
+    this.blasterImg.src = "/assets/images/munición/stormstorm.png";
     this.blasterShootAudio = new Audio("/assets/audios ad/blasterStorm.wav")
     this.blasterShootAudio.volume = 0.2;
     this.blasterShootAudio.play();
@@ -72,7 +72,7 @@ class RocketLauncher {
     this.vy = 0;
     this.dispose = false;
     this.blasterImg = new Image();
-    this.blasterImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380200/karengedon/municio%CC%81n/roquetRight_qpjpv6.png";
+    this.blasterImg.src = "/assets/images/munición/roquetRight.png";
     this.sandShootAudio = new Audio("/assets/audios ad/rocketLaunchSound0.mp3")
     this.sandShootAudio.volume = 0.06;
     this.sandShootAudio.play();
@@ -118,7 +118,7 @@ class RocketLauncher {
         this.y= this.y-1
         this.h = 120;
         this.w = 120;
-        this.blasterImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380196/karengedon/municio%CC%81n/roquetExplosion_lgxtwi.png";
+        this.blasterImg.src = "/assets/images/munición/roquetExplosion.png";
         this.teck++
         if(this.teck >= 22){
           this.dispose = true
@@ -131,9 +131,11 @@ class RocketLauncher {
     return !this.dispose;
   }
   collides(puddle) {
-    const colX = this.x <= puddle.x + puddle.w && this.x + this.w > puddle.x;
-    const colY = this.y + this.h > puddle.y && this.y < puddle.y + puddle.h;
-    return colX && colY;
+    if(areaDamage){
+      const colX = this.x <= puddle.x + puddle.w && this.x + this.w > puddle.x;
+      const colY = this.y + this.h > puddle.y && this.y < puddle.y + puddle.h;
+      return colX && colY;
+    }
   }
 }
 class Discounting {
@@ -148,7 +150,7 @@ class Discounting {
     this.vy = 0;
     this.dispose = false;
     this.discountImg = new Image();
-    this.discountImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380198/karengedon/municio%CC%81n/discounting1_ux4mih.png";
+    this.discountImg.src = "/assets/images/munición/discounting1.png";
     this.atraer = new Audio("/assets/audios ad/discountSound1.wav")
     this.atraer.volume = 0.003;
     this.atraer.play();
@@ -186,7 +188,7 @@ class Sandstorm {
     this.dispose = false;
     this.sandImg = new Image();
     this.sandImg.frame = 0;
-    this.sandImg.src = sandAlterImg || "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380194/karengedon/municio%CC%81n/hurricanestorm1_ixpgm9.png";
+    this.sandImg.src = sandAlterImg || "/assets/images/munición/hurricanestorm1.png";
     this.sandShootAudio = new Audio("/assets/audio/sandSound.mp3")
     this.sandShootAudio.volume = 0.01;
     this.sandShootAudio.play();
@@ -248,7 +250,7 @@ class ElementShield {
     this.dispose = false;
     this.eleImg = new Image();
     this.eleImg.frame = 0;
-    this.eleImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380376/karengedon/municio%CC%81n/stormstorm_lwzb3o.png";
+    this.eleImg.src = "/assets/images/munición/stormstorm.png";
     this.eleAudio = new Audio("/assets/audio/sandSound.mp3")
     this.eleAudio.volume = 0.01;
     this.eleAudio.play();
@@ -309,7 +311,7 @@ class ElementBomb{
     this.dispose = false;
     this.eleImg = new Image();
     this.eleImg.frame = 0;
-    this.eleImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380376/karengedon/municio%CC%81n/stormstorm_lwzb3o.png";
+    this.eleImg.src = "/assets/images/munición/stormstorm.png";
     this.eleAudio = new Audio("/assets/audio/sandSound.mp3")
     this.eleAudio.volume = 0.01;
     this.eleAudio.play();
@@ -381,9 +383,9 @@ class ElementMine{
     this.minePosTick = 0
     this.dispose = false;
     this.eleImg = new Image();
-    this.eleImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380200/karengedon/municio%CC%81n/mineExplo_w0yrtf.png";
+    this.eleImg.src = "/assets/images/munición/mineExplo.png";
     this.blip = new Image();
-    this.blip.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380200/karengedon/municio%CC%81n/blip_bc1cbl.png";
+    this.blip.src = "/assets/images/munición/blip.png";
     this.blip.frame = 0;
     this.eleImg.frame = 0;
     this.activated = false
@@ -541,7 +543,7 @@ class Airshield {
     this.dispose = false;
     this.sandImg = new Image();
     this.sandImg.frame = 0;
-    this.sandImg.src = airAlterImg || "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380194/karengedon/municio%CC%81n/hurricanestorm1_ixpgm9.png";
+    this.sandImg.src = airAlterImg || "/assets/images/munición/hurricanestorm1.png";
     this.sandShootAudio = new Audio("/assets/audio/sandSound.mp3")
     this.sandShootAudio.volume = 0.01;
     this.sandShootAudio.play();
@@ -602,7 +604,7 @@ class Poison {
     this.dispose = false;
     this.sandImg = new Image();
     this.sandImg.frame = 0;
-    this.sandImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380201/karengedon/municio%CC%81n/sandstrom2_il2zkb.png";
+    this.sandImg.src = "/assets/images/munición/sandstrom2.png";
     this.sandShootAudio = new Audio("/assets/audio/sandSound.mp3")
     this.sandShootAudio.volume = 0.01;
     this.sandShootAudio.play();
@@ -664,7 +666,7 @@ class Toxic {
       this.dispose = false;
       this.toxicImg = new Image();
       this.toxicImg.frame = 0;
-      this.toxicImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380203/karengedon/municio%CC%81n/toxic_lj6nzw.png";
+      this.toxicImg.src = "/assets/images/munición/toxic.png";
       this.sandShootAudio = new Audio("/assets/audio/sandSound.mp3")
       this.sandShootAudio.volume = 0.01;
       this.sandShootAudio.play();

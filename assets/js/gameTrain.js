@@ -1,4 +1,4 @@
-class Game {
+class GameTrain {
   constructor(ctx) {
     this.ctx = ctx;
     this.player = new Player(ctx);
@@ -53,7 +53,6 @@ class Game {
     this.perjudiceIs = false
     this.bossPerjTick = 0
     this.bossPerjIs = false
-    this.levelerTick = 0;
     this.lampTick = 0
     this.wider = 1
     this.lampOff = "/assets/images/elements/lampOfff.png"
@@ -62,74 +61,74 @@ class Game {
     this.tick = 0;
     this.chargeTick = 0
     this.cactus = [
-      new Cactus(ctx, 375, 200, 40, 40, "/assets/images/fondos/cact1.png"), new Cactus(ctx, 600, 190, 50, 50, "/assets/images/fondos/cact3.png"),
-      new Cactus(ctx, 820, 320, 30, 40, "/assets/images/fondos/cact5.png"), new Cactus(ctx, 780, 440, 40, 40, "/assets/images/fondos/cact4.png"),
-      new Cactus(ctx, 387, 548, 25, 25), new Cactus(ctx, 287, 548, 25, 25), new Cactus(ctx, 387, 548, 25, 25), new Cactus(ctx, 460, 548, 25, 25),
-      new Cactus(ctx, 450, 548, 25, 25), new Cactus(ctx, 520, 548, 25, 25), new Cactus(ctx, 265, 731, 25, 25),  new Cactus(ctx, 115, 731, 25, 25), 
-      new Cactus(ctx, 710, 542, 70, 18, "/assets/images/fondos/cact5a.png"), new Cactus(ctx, 750, 542, 70, 18, "/assets/images/fondos/cact5a.png"),
-      new Cactus(ctx, 800, 542, 60, 18, "/assets/images/fondos/cact5b.png"), new Cactus(ctx, 938, 630, 23, 23, "/assets/images/fondos/arb4.png"),new Cactus(ctx, 735, 725, 23, 23, "/assets/images/fondos/arb4.png"),
-      new Cactus(ctx, 740, 536, 35, 35, "/assets/images/fondos/arb10.png"), new Cactus(ctx, 790, 536, 30, 30, "/assets/images/fondos/arb9.png"),
-      new Cactus(ctx, 700, 536, 30, 30, "/assets/images/fondos/arb2.png"), new Cactus(ctx, 840, 536, 30, 30, "/assets/images/fondos/arb2.png"),
-      new Cactus(ctx, 945, 630, 10, 80, "/assets/images/fondos/cact5b.png"), new Cactus(ctx, 945, 670, 10, 80, "/assets/images/fondos/cact5b.png"),
-      new Cactus(ctx, 875, 733, 80, 10, "/assets/images/fondos/cact5b.png"), new Cactus(ctx, 815, 733, 80, 10, "/assets/images/fondos/cact5b.png"), new Cactus(ctx, 750, 733, 80, 10, "/assets/images/fondos/cact5b.png"),
+      // new Cactus(ctx, 375, 200, 40, 40, "/assets/images/fondos/cact1.png"), new Cactus(ctx, 600, 190, 50, 50, "/assets/images/fondos/cact3.png"),
+      // new Cactus(ctx, 820, 320, 30, 40, "/assets/images/fondos/cact5.png"), new Cactus(ctx, 780, 440, 40, 40, "/assets/images/fondos/cact4.png"),
+      // new Cactus(ctx, 387, 548, 25, 25), new Cactus(ctx, 287, 548, 25, 25), new Cactus(ctx, 387, 548, 25, 25), new Cactus(ctx, 460, 548, 25, 25),
+      // new Cactus(ctx, 450, 548, 25, 25), new Cactus(ctx, 520, 548, 25, 25), new Cactus(ctx, 265, 731, 25, 25),  new Cactus(ctx, 115, 731, 25, 25), 
+      // new Cactus(ctx, 710, 542, 70, 18, "/assets/images/fondos/cact5a.png"), new Cactus(ctx, 750, 542, 70, 18, "/assets/images/fondos/cact5a.png"),
+      // new Cactus(ctx, 800, 542, 60, 18, "/assets/images/fondos/cact5b.png"), new Cactus(ctx, 938, 630, 23, 23, "/assets/images/fondos/arb4.png"),new Cactus(ctx, 735, 725, 23, 23, "/assets/images/fondos/arb4.png"),
+      // new Cactus(ctx, 740, 536, 35, 35, "/assets/images/fondos/arb10.png"), new Cactus(ctx, 790, 536, 30, 30, "/assets/images/fondos/arb9.png"),
+      // new Cactus(ctx, 700, 536, 30, 30, "/assets/images/fondos/arb2.png"), new Cactus(ctx, 840, 536, 30, 30, "/assets/images/fondos/arb2.png"),
+      // new Cactus(ctx, 945, 630, 10, 80, "/assets/images/fondos/cact5b.png"), new Cactus(ctx, 945, 670, 10, 80, "/assets/images/fondos/cact5b.png"),
+      // new Cactus(ctx, 875, 733, 80, 10, "/assets/images/fondos/cact5b.png"), new Cactus(ctx, 815, 733, 80, 10, "/assets/images/fondos/cact5b.png"), new Cactus(ctx, 750, 733, 80, 10, "/assets/images/fondos/cact5b.png"),
     ]
     this.pfront = [
-      new People(ctx, 90, 360, 80, 80, "/assets/images/people/pep10.png"), new People(ctx, 250, 350, 40, 60, "/assets/images/people/pep3.png"),
-      new People(ctx, 730, 90, 40, 40, "/assets/images/people/pep5.png"), new People(ctx, 850, 80, 80, 80, "/assets/images/people/pep8.png"),
-      new People(ctx, 860, 350, 40, 40, "/assets/images/people/pep11.png"), new People(ctx, 160, 590, 30, 30, "/assets/images/people/pep22.png"),
-      new People(ctx, 200, 590, 30, 30, "/assets/images/people/pep23.png"), new People(ctx, 430, 12, 50, 30, "/assets/images/people/pep25.png"),
-      new People(ctx, 800, 12, 60, 35, "/assets/images/people/pep20.png"), new People(ctx, 600, 280, 60, 35, "/assets/images/people/pep24.png"),
-      new People(ctx, 400, 350, 80, 45, "/assets/images/people/pep30.png"), new People(ctx, 835, 575, 80, 45, "/assets/images/people/pep31.png"),
-      new People(ctx, 235, 275, 50, 30, "/assets/images/people/pep32.png"), new People(ctx, 385, 575, 50, 30, "/assets/images/people/pep33.png"),
+      // new People(ctx, 90, 360, 80, 80, "/assets/images/people/pep10.png"), new People(ctx, 250, 350, 40, 60, "/assets/images/people/pep3.png"),
+      // new People(ctx, 730, 90, 40, 40, "/assets/images/people/pep5.png"), new People(ctx, 850, 80, 80, 80, "/assets/images/people/pep8.png"),
+      // new People(ctx, 860, 350, 40, 40, "/assets/images/people/pep11.png"), new People(ctx, 160, 590, 30, 30, "/assets/images/people/pep22.png"),
+      // new People(ctx, 200, 590, 30, 30, "/assets/images/people/pep23.png"), new People(ctx, 430, 12, 50, 30, "/assets/images/people/pep25.png"),
+      // new People(ctx, 800, 12, 60, 35, "/assets/images/people/pep20.png"), new People(ctx, 600, 280, 60, 35, "/assets/images/people/pep24.png"),
+      // new People(ctx, 400, 350, 80, 45, "/assets/images/people/pep30.png"), new People(ctx, 835, 575, 80, 45, "/assets/images/people/pep31.png"),
+      // new People(ctx, 235, 275, 50, 30, "/assets/images/people/pep32.png"), new People(ctx, 385, 575, 50, 30, "/assets/images/people/pep33.png"),
     ]
     this.pback = [
       new People(ctx, 250, 420, 40, 60, "/assets/images/people/pep2.png"), new People(ctx, 480, 430, 40, 40, "/assets/images/people/pep.png"),
       new People(ctx, 730, 400, 80, 50, "/assets/images/people/pep7.png"), new People(ctx, 95, 160, 70, 40, "/assets/images/people/pep1.png"),
-      new People(ctx, 560, 150, 50, 50, "/assets/images/people/pep6.png"), new People(ctx, 410, 160, 40, 40, "/assets/images/people/pep14.png"),
-      new People(ctx, 520, 570, 50, 50, "/assets/images/people/pep15.png"), new People(ctx, 9, 100, 40, 100, "/assets/images/people/pep27.png"),
-      new People(ctx, 940, 350, 40, 90, "/assets/images/people/peop72.png"), new People(ctx, 1060, 600, 30, 60, "/assets/images/people/peop77.png"),
-      new People(ctx, 1060, 470, 60, 30, "/assets/images/people/peop71.png"), new People(ctx, 490, 640, 30, 50, "/assets/images/people/peop70.png"),
-      new People(ctx, 1075, 80, 40, 40, "/assets/images/people/peop74.png"), new People(ctx, 1075, 120, 40, 40, "/assets/images/people/peop75.png"),
-      new People(ctx, 1115, 380, 20, 50, "/assets/images/people/peop76.png"), new People(ctx, 730, 670, 60, 40, "/assets/images/people/peop78.png"),
-      new People(ctx, 1055, 380, 30, 60, "/assets/images/people/peop77.png"), new People(ctx, 730, 670, 60, 40, "/assets/images/people/peop78.png"),
+      // new People(ctx, 560, 150, 50, 50, "/assets/images/people/pep6.png"), new People(ctx, 410, 160, 40, 40, "/assets/images/people/pep14.png"),
+      // new People(ctx, 520, 570, 50, 50, "/assets/images/people/pep15.png"), new People(ctx, 9, 100, 40, 100, "/assets/images/people/pep27.png"),
+      // new People(ctx, 940, 350, 40, 90, "/assets/images/people/peop72.png"), new People(ctx, 1060, 600, 30, 60, "/assets/images/people/peop77.png"),
+      // new People(ctx, 1060, 470, 60, 30, "/assets/images/people/peop71.png"), new People(ctx, 490, 640, 30, 50, "/assets/images/people/peop70.png"),
+      // new People(ctx, 1075, 80, 40, 40, "/assets/images/people/peop74.png"), new People(ctx, 1075, 120, 40, 40, "/assets/images/people/peop75.png"),
+      // new People(ctx, 1115, 380, 20, 50, "/assets/images/people/peop76.png"), new People(ctx, 730, 670, 60, 40, "/assets/images/people/peop78.png"),
+      // new People(ctx, 1055, 380, 30, 60, "/assets/images/people/peop77.png"), new People(ctx, 730, 670, 60, 40, "/assets/images/people/peop78.png"),
     ]
     this.bushesover = [
       // weaponizer
-      new Fence(ctx, 1050, 440, 100, 30, "/assets/images/elements/fence5.png"), new Fence(ctx, 1050, 435, 100, 30, "/assets/images/elements/fence5.png"), new Fence(ctx, 1053, 450, 100, 20, "/assets/images/elements/fence3.png"),
-      new Fence(ctx, 1050, 340, 100, 30, "/assets/images/elements/fence5.png"), new Fence(ctx, 1050, 335, 100, 30, "/assets/images/elements/fence5.png"), new Fence(ctx, 1053, 350, 100, 20, "/assets/images/elements/fence3.png"),
-      new Fence(ctx, 1130, 340, 20, 130, "/assets/images/elements/fence5.png"), new Fence(ctx, 1130, 335, 20, 130, "/assets/images/elements/fence5.png"), new Fence(ctx, 1140, 350, 10, 120, "/assets/images/elements/fence3.png"),
+      // new Fence(ctx, 1050, 440, 100, 30, "/assets/images/elements/fence5.png"), new Fence(ctx, 1050, 435, 100, 30, "/assets/images/elements/fence5.png"), new Fence(ctx, 1053, 450, 100, 20, "/assets/images/elements/fence3.png"),
+      // new Fence(ctx, 1050, 340, 100, 30, "/assets/images/elements/fence5.png"), new Fence(ctx, 1050, 335, 100, 30, "/assets/images/elements/fence5.png"), new Fence(ctx, 1053, 350, 100, 20, "/assets/images/elements/fence3.png"),
+      // new Fence(ctx, 1130, 340, 20, 130, "/assets/images/elements/fence5.png"), new Fence(ctx, 1130, 335, 20, 130, "/assets/images/elements/fence5.png"), new Fence(ctx, 1140, 350, 10, 120, "/assets/images/elements/fence3.png"),
       // warhouse
-      new Fence(ctx, 1040, 200, 105, 30, "/assets/images/elements/fence5.png"), new Fence(ctx, 1040, 202, 105, 30, "/assets/images/elements/fence5.png"), new Fence(ctx, 1050, 204, 80, 30, "/assets/images/elements/fence7.png"),
-      new Fence(ctx, 1040, 70, 105, 30, "/assets/images/elements/fence5.png"), new Fence(ctx, 1040, 72, 105, 30, "/assets/images/elements/fence5.png"), new Fence(ctx, 1045, 74, 80, 30, "/assets/images/elements/fence7.png"),
-      new Fence(ctx, 1045, 70, 10, 160, "/assets/images/elements/fence5.png"), new Fence(ctx, 1045, 72, 10, 160, "/assets/images/elements/fence5.png"), new Fence(ctx, 1045, 74, 10, 160, "/assets/images/elements/fence5.png"),
+      // new Fence(ctx, 1040, 200, 105, 30, "/assets/images/elements/fence5.png"), new Fence(ctx, 1040, 202, 105, 30, "/assets/images/elements/fence5.png"), new Fence(ctx, 1050, 204, 80, 30, "/assets/images/elements/fence7.png"),
+      // new Fence(ctx, 1040, 70, 105, 30, "/assets/images/elements/fence5.png"), new Fence(ctx, 1040, 72, 105, 30, "/assets/images/elements/fence5.png"), new Fence(ctx, 1045, 74, 80, 30, "/assets/images/elements/fence7.png"),
+      // new Fence(ctx, 1045, 70, 10, 160, "/assets/images/elements/fence5.png"), new Fence(ctx, 1045, 72, 10, 160, "/assets/images/elements/fence5.png"), new Fence(ctx, 1045, 74, 10, 160, "/assets/images/elements/fence5.png"),
       
       // vertical bushes start
-      new Bush1(ctx, 57, 60, 20, 100), new Bush1(ctx, 287, 60, 20, 170), new Bush3(ctx, 385, 60, 20, 170), new Bush3(ctx, 607, 60, 20, 170),
-      new Bush2(ctx, 705, 60, 20, 170), new Bush2(ctx, 921, 60, 20, 170), new Bush1(ctx, 57, 330, 20, 120), new Bush1(ctx, 287, 330, 20, 150),
-      new Bush3(ctx, 385, 330, 20, 150), new Bush3(ctx, 607, 330, 20, 150), new Bush2(ctx, 705, 330, 20, 150), new Bush2(ctx, 921, 330, 20, 150),
-      new Bush1(ctx, 57, 560, 20, 120), new Bush1(ctx, 385, 560, 20, 120),  new Bush1(ctx, 67, 550, 90, 20),  new Bush2(ctx, 97, 550, 90, 20),  new Bush1(ctx, 287, 550, 20, 75),
-      new Bush2(ctx, 450, 550, 90, 20), new Bush3(ctx, 387, 550, 90, 20), new Bush2(ctx, 610, 660, 20, 95), new Bush2(ctx, 540, 737, 90, 15), new Bush1(ctx, 1040, 630, 20, 75),
-      new Bush2(ctx, 700, 550, 20, 75), new Fence(ctx, 60, 420, 60, 40), new Bush2(ctx, 480, 737, 90, 15), new Bush2(ctx, 200, 737, 90, 15),new Bush2(ctx, 130, 737, 90, 15),
+      // new Bush1(ctx, 57, 60, 20, 100), new Bush1(ctx, 287, 60, 20, 170), new Bush3(ctx, 385, 60, 20, 170), new Bush3(ctx, 607, 60, 20, 170),
+      // new Bush2(ctx, 705, 60, 20, 170), new Bush2(ctx, 921, 60, 20, 170), new Bush1(ctx, 57, 330, 20, 120), new Bush1(ctx, 287, 330, 20, 150),
+      // new Bush3(ctx, 385, 330, 20, 150), new Bush3(ctx, 607, 330, 20, 150), new Bush2(ctx, 705, 330, 20, 150), new Bush2(ctx, 921, 330, 20, 150),
+      // new Bush1(ctx, 57, 560, 20, 120), new Bush1(ctx, 385, 560, 20, 120),  new Bush1(ctx, 67, 550, 90, 20),  new Bush2(ctx, 97, 550, 90, 20),  new Bush1(ctx, 287, 550, 20, 75),
+      // new Bush2(ctx, 450, 550, 90, 20), new Bush3(ctx, 387, 550, 90, 20), new Bush2(ctx, 610, 660, 20, 95), new Bush2(ctx, 540, 737, 90, 15), new Bush1(ctx, 1040, 630, 20, 75),
+      // new Bush2(ctx, 700, 550, 20, 75), new Fence(ctx, 60, 420, 60, 40), new Bush2(ctx, 480, 737, 90, 15), new Bush2(ctx, 200, 737, 90, 15),new Bush2(ctx, 130, 737, 90, 15),
     // vertical bushes end
     ]
     this.lamps = [
-      new Bushes(ctx, 160, -2, 40, 40, this.lampOff), new Bushes(ctx, 650, -2, 40, 40, this.lampOff), 
-      new Bushes(ctx, 270, 200, 40, 40, this.lampOff), new Bushes(ctx, 910, 200, 40, 40, this.lampOff), 
-      new Bushes(ctx, 270, 450, 40, 40, this.lampOff), new Bushes(ctx, 1120, 370, 40, 40, this.lampOff), 
-      new Bushes(ctx, -9, 100, 40, 40, this.lampOff), new Bushes(ctx, 595, 310, 40, 40, this.lampOff), 
-      new Bushes(ctx, 40, 540, 40, 40, this.lampOff), new Bushes(ctx, 690, 450, 40, 40, this.lampOff),
-      new Bushes(ctx, 595, 640, 40, 40, this.lampOff), new Bushes(ctx, 1180, 490, 40, 40, this.lampOff),
-      new Bushes(ctx, 820, 780, 40, 40, this.lampOff), new Bushes(ctx, 320, 780, 40, 40, this.lampOff),
+      // new Bushes(ctx, 160, -2, 40, 40, this.lampOff), new Bushes(ctx, 650, -2, 40, 40, this.lampOff), 
+      // new Bushes(ctx, 270, 200, 40, 40, this.lampOff), new Bushes(ctx, 910, 200, 40, 40, this.lampOff), 
+      // new Bushes(ctx, 270, 450, 40, 40, this.lampOff), new Bushes(ctx, 1120, 370, 40, 40, this.lampOff), 
+      // new Bushes(ctx, -9, 100, 40, 40, this.lampOff), new Bushes(ctx, 595, 310, 40, 40, this.lampOff), 
+      // new Bushes(ctx, 40, 540, 40, 40, this.lampOff), new Bushes(ctx, 690, 450, 40, 40, this.lampOff),
+      // new Bushes(ctx, 595, 640, 40, 40, this.lampOff), new Bushes(ctx, 1180, 490, 40, 40, this.lampOff),
+      // new Bushes(ctx, 820, 780, 40, 40, this.lampOff), new Bushes(ctx, 320, 780, 40, 40, this.lampOff),
     ]
     this.walls = [
-      new Fence(ctx, 51, 50, 80, 40), new Fence(ctx, 220, 50, 80, 40), new Fence(ctx, 51, 320, 80, 40), new Fence(ctx, 220, 320, 80, 40),
-      new Fence(ctx, 880, 320, 60, 40), new Fence(ctx, 830, 320, 80, 40), new Fence(ctx, 390, 320, 80, 40), new Fence(ctx, 560, 320, 70, 40),
-      new Fence(ctx, 700, 50, 80, 40), new Fence(ctx, 870, 50, 70, 40), new Fence(ctx, 1050, 690, 100, 30), new Fence(ctx, 1050, 550, 100, 30), 
+      // new Fence(ctx, 51, 50, 80, 40), new Fence(ctx, 220, 50, 80, 40), new Fence(ctx, 51, 320, 80, 40), new Fence(ctx, 220, 320, 80, 40),
+      // new Fence(ctx, 880, 320, 60, 40), new Fence(ctx, 830, 320, 80, 40), new Fence(ctx, 390, 320, 80, 40), new Fence(ctx, 560, 320, 70, 40),
+      // new Fence(ctx, 700, 50, 80, 40), new Fence(ctx, 870, 50, 70, 40), new Fence(ctx, 1050, 690, 100, 30), new Fence(ctx, 1050, 550, 100, 30), 
 // round bushes
-new Bushes(ctx, 160, 410, 40, 40, "/assets/images/fondos/arb11.png"),  new Bushes(ctx, 170, 130, 40, 40, "/assets/images/fondos/arb9.png"),
-new Bushes(ctx, 490, 110, 40, 40, "/assets/images/fondos/arbusto1.png"), new Bushes(ctx, 482, 60, 60, 60, "/assets/images/fondos/arbusto1.png"),
-new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(ctx, 380, 710, 40, 40, "/assets/images/fondos/arb9.png"),
-      new Fence(ctx, 90, 190, 80, 40), new Fence(ctx, 470, 130, 80, 40), new Fence(ctx, 465, 450, 60, 40), new Fence(ctx, 1040, 210, 100, 20),new Fence(ctx, 1040, 70, 100, 20),
+// new Bushes(ctx, 160, 410, 40, 40, "/assets/images/fondos/arb11.png"),  new Bushes(ctx, 170, 130, 40, 40, "/assets/images/fondos/arb9.png"),
+// new Bushes(ctx, 490, 110, 40, 40, "/assets/images/fondos/arbusto1.png"), new Bushes(ctx, 482, 60, 60, 60, "/assets/images/fondos/arbusto1.png"),
+// new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(ctx, 380, 710, 40, 40, "/assets/images/fondos/arb9.png"),
+//  new Fence(ctx, 90, 190, 80, 40), new Fence(ctx, 470, 130, 80, 40), new Fence(ctx, 465, 450, 60, 40), new Fence(ctx, 1040, 210, 100, 20),new Fence(ctx, 1040, 70, 100, 20),
     ];
     this.portals = [new Portal (ctx, 200, 770, 50, 50 )]   
     this.portals2 = [new Portal (ctx, 800, 5, 50, 50)]
@@ -175,7 +174,7 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
     this.clear();
     this.draw();
     this.move();
-    this.karenTime++; this.ratTime++; this.fatTime++; this.puddleTime++;  this.fireTime++; this.gooseTime++; this.babyTime++; this.customerTime++; this.bossTime++; this.korenTime++; this.winTime++; this.levelerTick++; this.cartTime++; this.foodTime++; this.upgradeTime++; this.upBulletTime++; this.discountTime++;
+    this.karenTime++; this.ratTime++; this.fatTime++; this.puddleTime++;  this.fireTime++; this.gooseTime++; this.babyTime++; this.customerTime++; this.bossTime++; this.korenTime++; this.winTime++; this.cartTime++; this.foodTime++; this.upgradeTime++; this.upBulletTime++; this.discountTime++;
     this.checkCollisions();
       if (this.karenTime > 37000) {     // karen
         this.karenTime = 0;
@@ -350,8 +349,8 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
     this.player.auras = this.player.auras.filter((e) => e.isVisible());
     this.player.waters = this.player.waters.filter((e) => e.isVisible());
     this.player.sanders = this.player.sanders.filter((e) => e.isVisible());
-    this.player.discountings = this.player.discountings.filter((e) => e.isVisible());
     mineria=mineria.filter((e) =>e.isVisible())
+    this.player.discountings = this.player.discountings.filter((e) => e.isVisible());
     this.lampTick++
     if (this.karens.length <= 0) { const alert = document.getElementById("karens-alert"); alert.style.display = "none";}
     if (this.rats.length <= 0) { const alert = document.getElementById("rat-alert"); alert.style.display = "none";}
@@ -482,9 +481,9 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
       this.portals.forEach((e) => e.draw());
       this.portals2.forEach((e) => e.draw());
     }
-    if(this.levelerTick >= 100 && this.levelerTick <= 120 ){
+    if(this.winTime >=5300 && this.winTime <= 5350){
       this.karens = this.rats = this.babys = this.customers = this.fats = this.puddles = this.fires = this.geese = this.bosss = this.korens = this.carts = this.foods = this.upgrades = this.upBullets = this.discounts = [];
-      leveler = true;
+      leveler = true
       this.player.x = 500
       this.player.y = 400
     }
@@ -1102,25 +1101,14 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
       koren.w += (6-extraLife)
     }
   }
-
-
-// al tercer nivel de hook checkCharger también aumenta en 2 el charging al impactar
-  hookLevel3(){
-        Q = 81; E = 69; ALT = 16; 
-  }
-
+  
   //Colisiones start..Colisiones start..Colisiones start..Colisiones start..Colisiones start..Colisiones start..
   //Colisiones start..Colisiones start..Colisiones start..Colisiones start..Colisiones start..Colisiones start..
-
-  // para las colisiones que acumulan megablaster hasta 20
-  checkCharger( ){
+  checkCharger(){
     if(M === 0){
-      charging += 1;
-      if(hookLeveling >= 3){
-        charging += 2;
-      }
-      chargingTrue = true;
-      if(charging >= 20 && this.score.total >= 0){
+      charging+=1
+      chargingTrue = true
+      if(charging >= 20 && this.score.total >= 20){
         M = 77
         charging = 0
         this.luzOnAudio = new Audio("/assets/audios ad/reloadBlaster.wav")
@@ -1501,11 +1489,7 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
         if (heat.collides(rat)) {
           this.player.hooks.splice(0, 1);
           rat.vx = 0;
-          rat.cage = true;
-          hookImpact = true;
-          if(hookLeveling >= 1){
-            rat.lifeleft -= 1;
-          }
+          rat.cage = true
           this.checkCharger()
           this.luzOnAudio = new Audio("/assets/audios ad/ratHook.mp3")
           this.luzOnAudio.volume = 0.07;
@@ -1658,12 +1642,6 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
         this.hookShootAudio.play();
         this.player.x = fat.x + 20
         this.player.y = fat.y + 40
-        if(hookLeveling >= 2){
-          fat.vy -= 1
-        }
-        if(hookLeveling >= 3){
-          this.hookLevel3()
-        }
         hook.dispose = true
           return false;
         } else return true;
@@ -1698,9 +1676,6 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
         if (hook.collides(koren)) {
           this.atraer = new Audio("/assets/audios ad/jaula.mp3")
           this.atraer.volume = 0.07;
-          if(hookLeveling >= 2){
-            koren.korenEnd += 400
-          }
           this.atraer.play();
           this.player.hooks.splice(0, 1);
           koren.vNegative = 0
@@ -1877,9 +1852,6 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
           this.player.hooks.splice(0, 1);
           goose.cage = true
           hookImpact = true
-          if(hookLeveling >= 2){
-            goose.lifeleft -= 1;
-          }
           const foodRandom = Math.floor(Math.random() * 10 - chance)
           if(goose.lifeleft <= 0){
             this.score.addkgoose()
@@ -2300,9 +2272,6 @@ this.korens.forEach((koren) => { // koren con mineReps
           this.atraer = new Audio("/assets/audios ad/jaula.mp3")
           this.atraer.volume = 0.07;
           this.atraer.play();
-          if(hookLeveling >= 2){
-            boss.lifeleft -= 1;
-          } 
           boss.cage = true
             if(boss.x < this.player.x){
               boss.x = boss.x - 20
@@ -2482,7 +2451,7 @@ this.korens.forEach((koren) => { // koren con mineReps
 // Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..
 this.pfront.forEach((peop) => {     //PFront con blaster
   this.player.blasters.filter((blast) => {
-    if (blast.collides(peop) && areaDamage) {
+    if (blast.collides(peop)) {
       this.player.loseRespect()
       this.ctx.font = "20px Arial";
       this.ctx.fillStyle = "red";
@@ -2497,7 +2466,7 @@ this.pfront.forEach((peop) => {     //PFront con blaster
 });
 this.pback.forEach((peop) => { //PBack con blaster
   this.player.blasters.filter((blast) => {
-    if (blast.collides(peop) && areaDamage) {
+    if (blast.collides(peop)) {
       this.player.loseRespect()
       this.ctx.font = "20px Arial";
       this.ctx.fillStyle = "red";
@@ -2722,7 +2691,7 @@ this.pback.forEach((peop) => { //PBack
         this.player.drawSorry()
       }
     });
-    if(this.winTime >= 10){
+    if(this.winTime >= 3510){
     this.cactus.forEach((cact) => {
       if (cact.collides(this.player)) {
         this.player.vy = 0;
@@ -2786,95 +2755,20 @@ this.pback.forEach((peop) => { //PBack
       return true;
     });
 
-// Función para procesar colisiones entre ganchos y elementos comunes
-this.lamps.forEach((lamp) => {//hook con lamps
-  this.player.hooks.filter((hook) => {
-    if (hook.collides(lamp)) {
-      if( lamp.lights === false){
-        lamp.lights = true
-        this.luzOnAudio = new Audio("/assets/audios ad/luzOn.mp3")
-        this.luzOnAudio.volume = 0.07;
-        this.luzOnAudio.play();
-        lampOn+=1
-        if(hookLeveling >= 1){
-          money += 100;
-        } 
-        if (lampOn > 11){
-          money += 400;
-        }
-        if(lampOn === 14){
-          pImage += 1
-          lamp.lights = false
-        }
-        lamp.img.src = "/assets/images/elements/lamp.png"
-    }
-    this.hookShootAudio = new Audio("/assets/audios ad/impactoHook.mp3")
-    this.hookShootAudio.volume = 0.07;
-    this.hookShootAudio.play();
-    this.player.x = lamp.x
-    this.player.y = lamp.y
-    hook.dispose = true
-      return false;
-    } else return true;
-  });
-});
 
-function processCollisions(player, hooks, elements) {
-  elements.forEach((element) => {
-    player.hooks.filter((hook) => {
-      if (hook.collides(element)) {
-        const atraer = new Audio("/assets/audio/atraer2.mp3");
-        atraer.volume = 0.07;
-        atraer.play();
-        hook.dispose = true;
-          element.v = 2.4;
-          element.vNegative = 7.2;
-        return false;
-      } else return true;
+    this.carts.forEach((cart) => {//hook con carts
+      this.player.hooks.filter((hook) => {
+        if (hook.collides(cart)) {
+          this.atraer = new Audio("/assets/audio/atraer2.mp3")
+          this.atraer.volume = 0.07;
+          this.atraer.play();
+          cart.v = 2.4
+          cart.vNegative = 7.2
+          hook.dispose = true
+          return false;
+        } else return true;
+      });
     });
-  });
-}
-
-// Llamar a la función para procesar colisiones con foods
-processCollisions(this.player, this.player.hooks, this.foods);
-// Llamar a la función para procesar colisiones con carts
-processCollisions(this.player, this.player.hooks, this.carts);
-// Llamar a la función para procesar colisiones con discounts
-processCollisions(this.player, this.player.hooks, this.discounts);
-
-
-
-// Función para procesar colisiones entre ganchos y elementos de levelup
-function processCollisions(player, hooks, elements, alertId) {
-  elements.forEach((element) => {
-    player.hooks.filter((hook) => {
-      if (hook.collides(element)) {
-        const atraer = new Audio("/assets/audio/atraer2.mp3");
-        atraer.volume = 0.07;
-        atraer.play();
-        hook.dispose = true;
-        element.v = 1;
-        element.vNegative = 7.2;
-        if (elements.length === 0) {
-          const alertElement = document.getElementById(alertId);
-          alertElement.style.display = "none";
-        }
-        return false;
-      } else return true;
-    });
-  });
-}
-
-// Llamar a la función para procesar colisiones con drugs
-processCollisions(this.player, this.player.hooks, this.drugs, "upgrade-alert");
-// Llamar a la función para procesar colisiones con upBullets
-processCollisions(this.player, this.player.hooks, this.upBullets, "upBullet-alert");
-// Llamar a la función para procesar colisiones con upgrades
-processCollisions(this.player, this.player.hooks, this.upgrades, "upgrade-alert");
-
-
-
-
 // foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..
 // foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..
     this.foods = this.foods.filter((food) => {
@@ -2887,9 +2781,19 @@ processCollisions(this.player, this.player.hooks, this.upgrades, "upgrade-alert"
       }
       return true;
     });
-
-
-
+    this.foods.forEach((food) => {//hook con foods
+      this.player.hooks.filter((hook) => {
+        if (hook.collides(food)) {
+          this.atraer = new Audio("/assets/audio/atraer2.mp3")
+          this.atraer.volume = 0.07;
+          this.atraer.play();
+          hook.dispose = true
+          food.v = 2.4
+          food.vNegative = 7.2
+          return false;
+        } else return true;
+      });
+    });
 // upgrades upbulltes...upgrades upbulltes...upgrades upbulltes...upgrades upbulltes...upgrades upbulltes...
 // upgrades upbulltes...upgrades upbulltes...upgrades upbulltes...upgrades upbulltes...upgrades upbulltes...
     this.upgrades = this.upgrades.filter((up) => {
@@ -2929,8 +2833,84 @@ processCollisions(this.player, this.player.hooks, this.upgrades, "upgrade-alert"
       }
       return true;
     });
+    const ya = [this.upBullet, this.upgrade]
     
-
+    this.upBullets.forEach((upbullet) => {//hook con upbullets
+      this.player.hooks.filter((hook) => {
+        if (hook.collides(upbullet)) {
+          this.atraer = new Audio("/assets/audio/atraer2.mp3")
+          this.atraer.volume = 0.07;
+          this.atraer.play();
+          upbullet.v = 1
+          upbullet.vNegative = 7.2
+          hook.dispose = true
+          if(this.upBullets.length === 0){
+            const upgAlert = document.getElementById("upBullet-alert");
+            upgAlert.style.display = "none";
+          }
+          return false;
+        } else return true;
+      });
+    });
+    this.upgrades.forEach((upgrade) => {//hook con upgrades
+      this.player.hooks.filter((hook) => {
+        if (hook.collides(upgrade)) {
+          this.atraer = new Audio("/assets/audio/atraer2.mp3")
+          this.atraer.volume = 0.07;
+          this.atraer.play();
+          upgrade.v = 1
+          upgrade.vNegative = 7.2
+          hook.dispose = true
+          if(this.upgrades.length === 0){
+            const upAlert = document.getElementById("upgrade-alert");
+            upAlert.style.display = "none";
+          }
+          return false;
+        } else return true;
+      });
+    });
+    this.drugs.forEach((drug) => {//hook con drugs
+      this.player.hooks.filter((hook) => {
+        if (hook.collides(drug)) {
+          this.atraer = new Audio("/assets/audio/atraer2.mp3")
+          this.atraer.volume = 0.07;
+          this.atraer.play();
+          drug.v = 1
+          drug.vNegative = 7.2
+          hook.dispose = true
+          if(this.drugs.length === 0){
+            const upAlert = document.getElementById("upgrade-alert");
+            upAlert.style.display = "none";
+          }
+          return false;
+        } else return true;
+      });
+    });
+    this.lamps.forEach((lamp) => {//hook con lamps
+      this.player.hooks.filter((hook) => {
+        if (hook.collides(lamp)) {
+          if( lamp.lights === false){
+            lamp.lights = true
+            this.luzOnAudio = new Audio("/assets/audios ad/luzOn.mp3")
+            this.luzOnAudio.volume = 0.07;
+            this.luzOnAudio.play();
+            lampOn+=1
+            if(lampOn === 14){
+              pImage += 1
+              lamp.lights = false
+            }
+            lamp.img.src = "/assets/images/elements/lamp.png"
+        }
+        this.hookShootAudio = new Audio("/assets/audios ad/impactoHook.mp3")
+        this.hookShootAudio.volume = 0.07;
+        this.hookShootAudio.play();
+        this.player.x = lamp.x
+        this.player.y = lamp.y
+        hook.dispose = true
+          return false;
+        } else return true;
+      });
+    });
 //discount...discount...discount...discount...discount...discount...discount...discount...discount...
 //discount...discount...discount...discount...discount...discount...discount...discount...discount...
     this.discounts = this.discounts.filter((discount) => {
@@ -2945,8 +2925,19 @@ processCollisions(this.player, this.player.hooks, this.upgrades, "upgrade-alert"
       }
       return true;
     });
-
-
+    this.discounts.forEach((discount) => {//hook con discounts
+      this.player.hooks.filter((hook) => {
+        if (hook.collides(discount)) {
+          this.atraer = new Audio("/assets/audio/atraer2.mp3")
+          this.atraer.volume = 0.07;
+          this.atraer.play();
+          discount.v = 2.4
+          discount.vNegative = 7.2
+          hook.dispose = true
+          return false;
+        } else return true;
+      });
+    });
     this.player.toxics = this.player.toxics.filter((tox) => {
       if (tox.collides(this.player)) {
           this.player.dieSlower()
@@ -3025,6 +3016,7 @@ processCollisions(this.player, this.player.hooks, this.upgrades, "upgrade-alert"
 // levelups...levelups...levelups...levelups...levelups...levelups...levelups...levelups...levelups...
 // levelups...levelups...levelups...levelups...levelups...levelups...levelups...levelups...levelups...
 if(leveler){
+// levels
     if (this.levelUps1.collides(this.player)) {
       G = 71
       B = 66
@@ -3034,20 +3026,18 @@ if(leveler){
       this.levelupSound.volume = 0.05;
       this.levelupSound.play()
       this.levelMessage1 = true
-      hookLeveling  += 1
-      leveler = false;
-      this.levelerTick = 0;
+      leveler = false
     };
     if (this.levelUps2.collides(this.player)) {
       machinegunBoost = true
       rocketCount += 20
+
       H = 72
       this.levelupSound = new Audio("/assets/audios ad/reloadMachinegun.mp3");
       this.levelupSound.volume = 0.05;
       this.levelupSound.play()
       this.levelMessage2 = true
-      leveler = false;
-      this.levelerTick = 0;
+      leveler = false
     }
     if (this.levelUps3.collides(this.player)) {
       N = 78
@@ -3059,8 +3049,7 @@ if(leveler){
       this.levelupSound.volume = 0.05;
       this.levelupSound.play()
       this.levelMessage3 = true
-      leveler = false;
-      this.levelerTick = 0;
+      leveler = false
     }
 }
   

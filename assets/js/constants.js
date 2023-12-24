@@ -5,7 +5,7 @@ let RIGHT = 39;
 let SPACE = 32;
 // let SPACE = 32;
 let N = 78; // sandstorm
-let M = 0; //77  megablaster
+let M = 77; //77  megablaster
 let ALT = 16; // jump
 let Z = 90; //fire
 let X = 88; // water
@@ -34,12 +34,14 @@ let charging = 18
 
 let money = 10000
 let elementalMineCount = 0 //por unidad
-let rocketCount = 0 //multiplo de 5
+let rocketCount = 0 //multiplo de 2.5 por alguna razón
 let mineCount = 0 //multiplo de 5
 
 let leveler = false //para subir de nivel
 let hookTransporter = false//para qeu al pulsar la g teleporte a la posicion del hook
 let hookBoost = false// para los beneficios de subir nivel el hook
+let hookLeveling = 0; //para mejorar el hook a medida que sube de nivel
+let areaDamage = true // para el daño de area de los megablasters y sanders y cosas así
 let machinegunBoost = false// para activar las ametralladoras
 let elementBoost = false //para activar la arena que te sigue
 let extraLife = 1

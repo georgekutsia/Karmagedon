@@ -12,7 +12,8 @@ class Water {
     this.player = player;
     this.dispose = false;
     this.waterImg = new Image();
-    this.waterImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688382000/karengedon/elements/puddle_ias3s2.png";
+    
+    this.waterImg.src = "/assets/images/elements/puddle.png";
     this.waterImg.frame = 0;
     this.waterShootAudio = new Audio("/assets/audio/splash0.mp3");
     this.waterShootAudio.volume = 0.01;
@@ -51,7 +52,7 @@ class Water {
     if (afterSpin && this.waterFar) {
         this.tick++;
         this.afterTick++;
-        this.waterImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380195/karengedon/municio%CC%81n/waterspin_fybhko.png";
+        this.waterImg.src = "/assets/images/munición/waterspin.png";
         this.vx = 0;
         this.vy = 0;
         this.x -= 0.09;

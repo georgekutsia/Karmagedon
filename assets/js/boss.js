@@ -25,7 +25,7 @@ class Boss {
     this.tick = 0;
     this.karenEnd = 0;
     this.cageImg = new Image();
-    this.cageImg.src = "https://res.cloudinary.com/dfrda73uc/image/upload/v1688380194/karengedon/municio%CC%81n/cage_gl5s0a.png"
+    this.cageImg.src = "/assets/images/munición/cage.png"
     this.cage = false
     this.cageTick = 0
   }
