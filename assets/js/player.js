@@ -724,7 +724,6 @@ class Player {
       hookTransporter = true
       this.cageDamage = false
     }
-    console.log("shot", shotgunShots)
     // para que el tercer disparo sea más potente
     if(shotgunShots >= 1.999){
       thirdShot = true

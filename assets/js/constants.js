@@ -18,7 +18,7 @@ let R = 0; //82  discount
 let T = 0 //84   time shield
 let P = 0; //80  venom
 let J = 74 //74   time bombs
-let F = 70//70   rockets
+let F = 0 //70   rockets
 let G = 0 //71    teleport to hook
 let H = 1 //72   
 let K = 0 // 75
@@ -30,7 +30,7 @@ const D = 68;
 let chance = 0
 let hookCount = 0
 let discounting = 0;
-let charging = 18
+let charging = 0;
 
 let money = 10000
 let elementalMineCount = 0 //por unidad
@@ -41,6 +41,9 @@ let leveler = false //para subir de nivel
 let hookTransporter = false//para qeu al pulsar la g teleporte a la posicion del hook
 let hookBoost = false// para los beneficios de subir nivel el hook
 let hookLeveling = 0; //para mejorar el hook a medida que sube de nivel
+let destroyerLeveling = 0; //para mejorar la rama de destroyer
+let elementalistLeveling = 0; //para mejorar la rama de destroyer
+
 let areaDamage = true // para el daño de area de los megablasters y sanders y cosas así
 let machinegunBoost = false// para activar las ametralladoras
 let elementBoost = false //para activar la arena que te sigue
@@ -57,6 +60,9 @@ let fireDrug = false
 let waterDrug = false
 let hookImpact = false //al impactar el hook, disparas otro
 let extraHooker = false //que se pueda comprar
+let machingunCountback = 850;
+let machingunRestoreCountback = 500;
+let moneyForKill = false; //destroyerLeveling 3 y consigues dinero al matar bichos
 let lifeTotal = 10
 
 let distance = 60;

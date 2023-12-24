@@ -140,8 +140,8 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
     this.ratTime = 1600;
     this.fatTime = 100; 
     this.winTime = 0;
-    this.machinganTime = 1000
-    this.machinganRestore = 400
+    this.machinegunTime = machingunCountback;
+    this.machinganRestore = machingunRestoreCountback;
     this.levelMessage1 = false
     this.interval = null;
     this.puddleTime =this.fireTime =this.gooseTime =this.babyTime =this.customerTime =this.bossTime =this.korenTime =this.cartTime =this.foodTime =this.upgradeTime =this.upBulletTime =this.discountTime =this.deadGoose = 0
@@ -478,7 +478,7 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
     }
     this.walls.forEach((e) => e.draw());
     // se dibuja tras 5 horas
-    if(this.winTime >= 500){ //14 de la tarde 57500
+    if(this.winTime >= 57500){ //14 de la tarde 57500
       this.portals.forEach((e) => e.draw());
       this.portals2.forEach((e) => e.draw());
     }
@@ -595,18 +595,18 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
         this.bossPerjIs = false
       }
     }
-    if (machinegunBoost === true) {
-      this.machinganTime--
+    if (machinegunBoost && destroyerLeveling >= 1) {
+      this.machinegunTime--
         C = 67;
         V = 86;
-        if(this.machinganTime <= 0){
+        if(this.machinegunTime <= 0){
           C = 0;
           V = 0;
-          this.machinganTime = 0
+          this.machinegunTime = 0
           this.machinganRestore --
           if(this.machinganRestore <= 0){
-            this.machinganTime = 800
-            this.machinganRestore = 600
+            this.machinegunTime = machingunCountback;
+            this.machinganRestore = machingunRestoreCountback;
             C = 67;
             V = 86;
             this.alertingSound = new Audio("/assets/audios ad/reloadMachinegun.mp3");
@@ -1051,7 +1051,6 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
   iceCreamAlert(){
     const iceWorning = document.getElementById("ice");
     iceWorning.style.display = "inline-block";
-      
   }
   // alerts end !!!!!! 
 
@@ -1102,7 +1101,13 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
       koren.w += (6-extraLife)
     }
   }
-
+    moneyForDead(){
+      console.log("sin money")
+      if(moneyForKill){
+        money += 500;
+      console.log("pastuki")
+      }
+    }
 
 // al tercer nivel de hook checkCharger también aumenta en 2 el charging al impactar
   hookLevel3(){
@@ -1447,6 +1452,7 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
         if (water.collides(rat)) {
           this.player.waters.splice(0, 1);
           rat.lifeleft -= 1;
+          console.log(rat.lifeleft);
           rat.vx += 1;
           this.checkCharger()
           const discRandom = Math.floor(Math.random() * 14 - chance)
@@ -1461,9 +1467,10 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
             const discount = new Discount(ctx, rat.x + 80, rat.y - 40, this.disImage);
             this.discounts.push(discount);
           }
-          if(rat.lifeleft === 0){
+          if(rat.lifeleft <= 0){
             this.score.addkrat()
             this.score.addktotal1()
+            this.moneyForDead()
           }
           return false;
         } else return true;
@@ -1475,6 +1482,7 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
           this.player.heats.splice(0, 1);
           rat.lifeleft -= 1;
           rat.vx += 1;
+          console.log(rat.lifeleft);
         this.checkCharger()
           const discRandom = Math.floor(Math.random() * 12 - chance)
           const foodRandom = Math.floor(Math.random() * 9 - chance)
@@ -1488,9 +1496,10 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
             const discount = new Discount(ctx, rat.x + 80, rat.y - 40, this.disImage);
             this.discounts.push(discount);
           }
-          if(rat.lifeleft === 0){
+          if(rat.lifeleft <= 0){
             this.score.addkrat()
             this.score.addktotal1()
+            this.moneyForDead()
           }
           return false;
         } else return true;
@@ -2569,7 +2578,7 @@ this.pback.forEach((peop) => { //PBack
         this.player.vx = 0;
       }
     });
-  if(this.winTime >= 500){ //esto abarca desde los hooks al jugador
+  if(this.winTime >= 57500){ //esto abarca desde los hooks al jugador
     this.portals.forEach((port) => {//hook con portal hooktal
       this.player.hooks.filter((hook) => {
               if (hook.collides(port)) {
@@ -3039,13 +3048,21 @@ if(leveler){
       this.levelerTick = 0;
     };
     if (this.levelUps2.collides(this.player)) {
-      machinegunBoost = true
-      rocketCount += 20
-      H = 72
+      machinegunBoost = true;
       this.levelupSound = new Audio("/assets/audios ad/reloadMachinegun.mp3");
       this.levelupSound.volume = 0.05;
-      this.levelupSound.play()
-      this.levelMessage2 = true
+      this.levelupSound.play();
+      this.levelMessage2 = true;
+      destroyerLeveling += 1;
+      if(destroyerLeveling >= 2) { 
+        machingunCountback = 1300; // aumenta el tiempo de activación de machinegun
+        F = 70; //se activa rocketlouncher
+        rocketCount += 20
+      }
+      if(destroyerLeveling >=3){
+        H = 72;
+        moneyForKill = true;
+      }
       leveler = false;
       this.levelerTick = 0;
     }

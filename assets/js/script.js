@@ -360,11 +360,9 @@ infoData1.addEventListener("click", function(){
 btn.addEventListener("click", function () {
     if (game.interval) {
       game.stop();
-console.log("sss",game.winTime)
       btn.innerText = "START";
     } else {
       game.start();
-console.log("sss",game.winTime)
       btn.innerText = `STOP`;
     }
     displ.style.display = "block"
@@ -387,11 +385,9 @@ console.log("sss",game.winTime)
 btnTrain.addEventListener("click", function () {
     if (practiceGame.interval) {
       practiceGame.stop();
-console.log("sss",practiceGame.winTime)
       btnTrain.innerText = "START";
     } else {
       practiceGame.start();
-console.log("sss",practiceGame.winTime)
       btnTrain.innerText = `STOP`;
     }
     displ.style.display = "block"

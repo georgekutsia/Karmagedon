@@ -473,8 +473,6 @@ class ElementMine{
           this.active = false
         }
       }
-      console.log("que",this.minePosTick)
-      console.log(mineria)
     }
   }
   elementMines1() {
