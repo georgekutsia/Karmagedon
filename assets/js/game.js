@@ -1104,7 +1104,7 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
     moneyForDead(){
       console.log("sin money")
       if(moneyForKill){
-        money += 500;
+      money += 100;
       console.log("pastuki")
       }
     }
@@ -1467,10 +1467,11 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
             const discount = new Discount(ctx, rat.x + 80, rat.y - 40, this.disImage);
             this.discounts.push(discount);
           }
-          if(rat.lifeleft <= 0){
+          if(rat.lifeleft <= 0 && rat.lifeleft >= -5){
             this.score.addkrat()
             this.score.addktotal1()
             this.moneyForDead()
+            rat.lifleft -= 10
           }
           return false;
         } else return true;
@@ -1496,10 +1497,11 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
             const discount = new Discount(ctx, rat.x + 80, rat.y - 40, this.disImage);
             this.discounts.push(discount);
           }
-          if(rat.lifeleft <= 0){
+          if(rat.lifeleft <= 0 && rat.lifeleft >= -5){
             this.score.addkrat()
             this.score.addktotal1()
             this.moneyForDead()
+            rat.lifleft -= 10
           }
           return false;
         } else return true;
@@ -1536,9 +1538,11 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
         if (blast.collides(rat)) {
           blast.rocketDetonation = true
           rat.lifeleft -= 4;
-          if(rat.lifeleft === 0){
+          if(rat.lifeleft <= 0 && rat.lifeleft >= -5){
             this.score.addkrat()
             this.score.addktotal1()
+            this.moneyForDead()
+            rat.lifleft -= 10
           }
           return false;
         } else return true;
@@ -1551,9 +1555,11 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
           rat.lifeleft -= sand.damage;
           rat.lifeleft -= sand.damage;
           rat.vx += 0.02
-          if(rat.lifeleft === 0){
+          if(rat.lifeleft <= 0 && rat.lifeleft >= -5){
             this.score.addkrat()
             this.score.addktotal1()
+            this.moneyForDead()
+            rat.lifleft -= 10
           }
           return false;
         } else return true;
@@ -1574,9 +1580,11 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
           this.ctx.fillText(`Scared rat noises:`, rat.x - 26, rat.y-14);
           this.ctx.fillStyle = "white";
           this.ctx.fillText(`Scared rat noises:`, rat.x - 28, rat.y - 15);
-          if(rat.lifeleft >= 0 && rat.lifeleft <= 0.001 ){
+          if(rat.lifeleft <= 0 && rat.lifeleft >= -5){
             this.score.addkrat()
             this.score.addktotal1()
+            this.moneyForDead()
+            rat.lifleft -= 10
           }
           return false;
         } else return true;
@@ -1981,9 +1989,11 @@ this.rats.forEach((rat) => { // rat con mineReps
     if (mineRep.collides(rat)) {
       mineRep.activated = true
       rat.lifeleft -= mineRep.damage;
-      if(rat.lifeleft === 0){
-        this.score.addkgoose()
+      if(rat.lifeleft <= 0 && rat.lifeleft >= -5){
+        this.score.addkrat()
         this.score.addktotal1()
+        this.moneyForDead()
+        rat.lifleft -= 10
       }
       return false;
     } else return true;
@@ -1994,9 +2004,11 @@ this.bosss.forEach((boss) => { // boss con mineReps
     if (mineRep.collides(boss)) {
       mineRep.activated = true
       boss.lifeleft -= mineRep.damage;
-      if(rat.lifeleft === 0){
-        this.score.addkgoose()
+      if(rat.lifeleft <= 0 && rat.lifeleft >= -5){
+        this.score.addkrat()
         this.score.addktotal1()
+        this.moneyForDead()
+        rat.lifleft -= 10
       }
       return false;
     } else return true;
