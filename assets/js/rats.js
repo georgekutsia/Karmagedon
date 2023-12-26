@@ -1,6 +1,7 @@
 class Rats {
   constructor(ctx) {
     this.ctx = ctx;
+    this.score = new Score(ctx);
     this.x = this.ctx.canvas.width - 300;
     this.salidas = [20, 240, 280, 505, 750]
     this.y = this.salidas[Math.floor(Math.random()*this.salidas.length)]
@@ -70,14 +71,16 @@ class Rats {
       }
     }
   }
-
+  
   isVisible() {
     return this.x + this.w > 0 && this.x + this.w < 1400;
   }
 
   collides(player) {
+    if(this.lifeleft >= 0){
     const colX = this.x <= player.x + player.w && this.x + this.w > player.x;
     const colY = this.y + this.h > player.y && this.y < player.y + player.h;
     return colX && colY;
+    }
   }
 }

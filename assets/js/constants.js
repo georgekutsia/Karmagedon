@@ -40,7 +40,7 @@ let mineCount = 0 //multiplo de 5
 let leveler = false //para subir de nivel
 let hookTransporter = false//para qeu al pulsar la g teleporte a la posicion del hook
 let hookBoost = false// para los beneficios de subir nivel el hook
-let hookLeveling = 0; //para mejorar el hook a medida que sube de nivel
+let hookLeveling = 3; //para mejorar el hook a medida que sube de nivel
 let destroyerLeveling = 0; //para mejorar la rama de destroyer
 let elementalistLeveling = 0; //para mejorar la rama de destroyer
 

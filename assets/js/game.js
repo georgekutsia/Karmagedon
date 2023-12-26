@@ -39,7 +39,7 @@ class Game {
     this.levelupMachinegun.src = "/assets/images/munición/upgradeMachinegun.png"
     this.levelupHook = new Image();
     this.levelupHook.src = "/assets/images/munición/hookUpgrade.png"
-    this.weird1 = 0
+    this.ratPoison = 0
     this.iceCurePoison = 0
     this.ratTick = 0;
     this.ratTickIs = false;
@@ -325,7 +325,7 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
     clearInterval(window.timerInterval);
   }
   clear() {
-    this.ctx.clearRect(this.weird1, 0, this.ctx.canvas.width, this.ctx.canvas.height);
+    this.ctx.clearRect(this.ratPoison, 0, this.ctx.canvas.width, this.ctx.canvas.height);
     this.karens = this.karens.filter((e) => e.isVisible());
     this.rats = this.rats.filter((e) => e.isVisible());
     this.fats = this.fats.filter((e) => e.isVisible());
@@ -482,7 +482,7 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
       this.portals.forEach((e) => e.draw());
       this.portals2.forEach((e) => e.draw());
     }
-    if(this.levelerTick >= 100 && this.levelerTick <= 120 ){
+    if(this.levelerTick >= 10 && this.levelerTick <= 15 ){
       this.karens = this.rats = this.babys = this.customers = this.fats = this.puddles = this.fires = this.geese = this.bosss = this.korens = this.carts = this.foods = this.upgrades = this.upBullets = this.discounts = [];
       leveler = true;
       this.player.x = 500
@@ -621,7 +621,7 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
     if (discounting <= 1 ){
       R = 0
     }
-    if(this.weird1 === 1010){
+    if(this.ratPoison === 1010){
       const poison = document.getElementById("poisoned");
       poison.style.display = "inline-block";
       this.poisonedTime--
@@ -631,7 +631,7 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
       this.ctx.fillStyle = "purple";
       this.ctx.fillText(`Poisoned ${this.poisonedTime.toString()}`, 1235, 52);
       if(this.poisonedTime <= 0){
-        this.weird1 = 0
+        this.ratPoison = 0
       this.poisonedTime = 1000
       }
     }
@@ -1101,13 +1101,7 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
       koren.w += (6-extraLife)
     }
   }
-    moneyForDead(){
-      console.log("sin money")
-      if(moneyForKill){
-      money += 100;
-      console.log("pastuki")
-      }
-    }
+
 
 // al tercer nivel de hook checkCharger también aumenta en 2 el charging al impactar
   hookLevel3(){
@@ -1407,10 +1401,10 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
     //Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..
     this.rats = this.rats.filter((rat) => { //rat con player
       if (rat.collides(this.player)) {
-        this.player.hit();
+        this.player.fireHit();
         this.player.vy = -1;
         this.player.vx = -1;
-        this.weird1 = 1010
+        this.ratPoison = 1010
         venom += 1
         this.ratTickIs = true
         if(venom >= 5){
@@ -1419,7 +1413,6 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
         if(this.poisonedTime <= 0){
           this.weird = 1
         }
-        return  false;
       }
       return true;
     });
@@ -1448,11 +1441,15 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
       });
     });
     this.rats.forEach((rat) => {//rat con water
+      if(rat.dead >= 101 ){
+        this.score.addkrat()
+        this.score.addktotal1()
+        this.moneyForDead()
+      }
       this.player.waters = this.player.waters.filter((water) => {
         if (water.collides(rat)) {
           this.player.waters.splice(0, 1);
           rat.lifeleft -= 1;
-          console.log(rat.lifeleft);
           rat.vx += 1;
           this.checkCharger()
           const discRandom = Math.floor(Math.random() * 14 - chance)
@@ -1467,24 +1464,23 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
             const discount = new Discount(ctx, rat.x + 80, rat.y - 40, this.disImage);
             this.discounts.push(discount);
           }
-          if(rat.lifeleft <= 0 && rat.lifeleft >= -5){
-            this.score.addkrat()
-            this.score.addktotal1()
-            this.moneyForDead()
-            rat.lifleft -= 10
-          }
           return false;
         } else return true;
       });
     });
     this.rats.forEach((rat) => { //rat con fire
+        if(rat.dead >= 101 ){
+          this.score.addkrat()
+          this.score.addktotal1()
+          this.moneyForDead()
+        }
       this.player.heats = this.player.heats.filter((heat) => {
         if (heat.collides(rat)) {
           this.player.heats.splice(0, 1);
-          rat.lifeleft -= 1;
+          if(rat.lifeleft >= 0.1)
+          rat.lifeleft -= 1.5;
           rat.vx += 1;
-          console.log(rat.lifeleft);
-        this.checkCharger()
+          this.checkCharger()
           const discRandom = Math.floor(Math.random() * 12 - chance)
           const foodRandom = Math.floor(Math.random() * 9 - chance)
           if(foodRandom === 1){
@@ -1496,12 +1492,6 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
             this.disImage.src = "/assets/images/elements/disrat.png"
             const discount = new Discount(ctx, rat.x + 80, rat.y - 40, this.disImage);
             this.discounts.push(discount);
-          }
-          if(rat.lifeleft <= 0 && rat.lifeleft >= -5){
-            this.score.addkrat()
-            this.score.addktotal1()
-            this.moneyForDead()
-            rat.lifleft -= 10
           }
           return false;
         } else return true;
@@ -1525,47 +1515,56 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
         } else return true;
       });
     });
-    if(this.player.cageDamage === true ){
+
+    if(this.player.cagedAllAnimals === true && hookLeveling >= 4 ){//todas las ratas y gansos se quedarán atrapados en cajas
       this.geese.forEach((goose) => (goose.cage = true))
       this.geese.forEach((goose) => (goose.vx = 0))
       this.geese.forEach((goose) => (goose.moveY = 0))
       this.rats.forEach((rat) => (rat.cage = true))
       this.rats.forEach((rat) => (rat.vx = 0))
-
+      setTimeout(() => {
+        this.player.cagedAllAnimals = false;
+        this.geese.forEach((goose) => (goose.cage = false))
+        this.geese.forEach((goose) => (goose.vx = 2))
+        this.geese.forEach((goose) => (goose.moveY = 2))
+        this.rats.forEach((rat) => (rat.cage = false))
+        this.rats.forEach((rat) => (rat.vx = -3))
+      }, 5000);
     }
+
     this.rats.forEach((rat) => { //rat con blaster
       this.player.blasters.filter((blast) => {
         if (blast.collides(rat)) {
           blast.rocketDetonation = true
-          rat.lifeleft -= 4;
-          if(rat.lifeleft <= 0 && rat.lifeleft >= -5){
-            this.score.addkrat()
-            this.score.addktotal1()
-            this.moneyForDead()
-            rat.lifleft -= 10
-          }
+          rat.lifeleft -= 5;
+
           return false;
         } else return true;
       });
     });
     this.rats.forEach((rat) => {//rat con sanders
+      if(rat.dead >= 101 ){
+        this.score.addkrat()
+        this.score.addktotal1()
+        this.moneyForDead()
+      }
       this.player.sanders.filter((sand) => {
         if (sand.collides(rat)) {
           sand.activated = true
           rat.lifeleft -= sand.damage;
           rat.lifeleft -= sand.damage;
           rat.vx += 0.02
-          if(rat.lifeleft <= 0 && rat.lifeleft >= -5){
-            this.score.addkrat()
-            this.score.addktotal1()
-            this.moneyForDead()
-            rat.lifleft -= 10
-          }
+
           return false;
         } else return true;
       });
     });
     this.rats.forEach((rat) => {//rat con toxics
+      if(rat.dead >= 101 ){
+        this.score.addkrat()
+        this.score.addktotal1()
+        this.moneyForDead()
+      }
       this.player.toxics.filter((sand) => {
         if (sand.collides(rat)) {
           rat.lifeleft -= 0.005;
@@ -1580,12 +1579,6 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
           this.ctx.fillText(`Scared rat noises:`, rat.x - 26, rat.y-14);
           this.ctx.fillStyle = "white";
           this.ctx.fillText(`Scared rat noises:`, rat.x - 28, rat.y - 15);
-          if(rat.lifeleft <= 0 && rat.lifeleft >= -5){
-            this.score.addkrat()
-            this.score.addktotal1()
-            this.moneyForDead()
-            rat.lifleft -= 10
-          }
           return false;
         } else return true;
       }); 
@@ -1989,7 +1982,7 @@ this.rats.forEach((rat) => { // rat con mineReps
     if (mineRep.collides(rat)) {
       mineRep.activated = true
       rat.lifeleft -= mineRep.damage;
-      if(rat.lifeleft <= 0 && rat.lifeleft >= -5){
+      if(rat.lifeleft <= 0 && rat.lifeleft >= -1){
         this.score.addkrat()
         this.score.addktotal1()
         this.moneyForDead()
@@ -2004,11 +1997,9 @@ this.bosss.forEach((boss) => { // boss con mineReps
     if (mineRep.collides(boss)) {
       mineRep.activated = true
       boss.lifeleft -= mineRep.damage;
-      if(rat.lifeleft <= 0 && rat.lifeleft >= -5){
-        this.score.addkrat()
+      if(boss.lifeleft === 0){
+        this.score.addkgoose()
         this.score.addktotal1()
-        this.moneyForDead()
-        rat.lifleft -= 10
       }
       return false;
     } else return true;
@@ -2021,7 +2012,7 @@ this.korens.forEach((koren) => { // koren con mineReps
       mineRep.activated = true
       koren.h += mineRep.damage + 1;
       koren.w += mineRep.damage + 1;
-      if(rat.lifeleft === 0){
+      if(koren.lifeleft === 0){
         this.score.addkgoose()
         this.score.addktotal1()
       }
@@ -3124,7 +3115,7 @@ if(leveler){
       this.player.healslow(0.004);
       this.iceCurePoison++
       if(this.iceCurePoison >= this.curePoisonTimer ){
-        this.weird1 = 0
+        this.ratPoison = 0
         this.iceCurePoison = 0
         const poison = document.getElementById("poisoned");
         poison.style.display = "none";

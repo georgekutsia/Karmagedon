@@ -81,7 +81,7 @@ class Player {
     this.toxicity = false
     this.sandstate = false
     this.sandAlterImg = ""
-    this.cageDamage = false
+    this.cagedAllAnimals = false
   }
   draw() {
     formsCheck();
@@ -636,7 +636,11 @@ class Player {
         this.toxicity = !this.toxicity
       }
       if (key === G) {
-        this.cageDamage = true
+        if(hookCount === 1){
+          this.cagedAllAnimals = true;
+          hookCount -= 1;
+        }
+        hookTransporter = true;
       }
   }
   keyUp(key) {
@@ -720,10 +724,6 @@ class Player {
           }, this.cooldownBullet);
     }
 
-    if (key === G) {
-      hookTransporter = true
-      this.cageDamage = false
-    }
     // para que el tercer disparo sea más potente
     if(shotgunShots >= 1.999){
       thirdShot = true
