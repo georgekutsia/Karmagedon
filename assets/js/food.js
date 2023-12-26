@@ -1,5 +1,5 @@
 class Food {
-    constructor(ctx, foodx, foody) {
+    constructor(ctx, foodx, foody, image) {
       this.ctx = ctx;
       this.salidas = [
         {x:110, y:120},  {x:540, y:120}, {x:730, y:120},{x:890, y:120},

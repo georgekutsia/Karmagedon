@@ -192,7 +192,7 @@ class Sandstorm {
     this.sandShootAudio = new Audio("/assets/audio/sandSound.mp3")
     this.sandShootAudio.volume = 0.01;
     this.sandShootAudio.play();
-    this.damage = 0.03
+    this.damage =( 0.03 + playerBasicDamage) * playerDoubleDamage; 
   }
   draw() {
     this.ctx.drawImage(

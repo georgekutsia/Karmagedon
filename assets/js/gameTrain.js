@@ -800,7 +800,7 @@ class GameTrain {
     this.saved.draw();
     if(hookBoost === true){
       if(this.winTime % 1333 === 0){ //cada 20 segundos recarga 3 contadores de hook
-        hookCount +=3
+        hookCounter +=3
       }
     }
     if(leveler === true){
@@ -2724,7 +2724,7 @@ this.pback.forEach((peop) => { //PBack
         this.shielOn = new Audio("/assets/audios ad/shieldActivated.wav");
         this.shielOn.volume = 0.05;
         this.shielOn.play()
-        hookCount+=3 + chance*2
+        hookCounter+=3 + chance*2
         this.atraer = new Audio("/assets/audios ad/bonus.mp3")
         this.atraer.volume = 0.03;
         this.atraer.play();
@@ -3005,7 +3005,7 @@ this.pback.forEach((peop) => { //PBack
       this.player.sanders.filter((sand) => {
         if (sand.collides(blast)) {
           this.tick++ 
-          if (this.tick % 45 === 0 && this.player.blasters.length <= 20 && hookCount === 0){
+          if (this.tick % 45 === 0 && this.player.blasters.length <= 20 && hookCounter === 0){
             this.player.megablaster()
           }
           return false;
@@ -3020,7 +3020,7 @@ if(leveler){
     if (this.levelUps1.collides(this.player)) {
       G = 71
       B = 66
-      hookCount += 5
+      hookCounter += 5
       hookBoost = true
       this.levelupSound = new Audio("/assets/audios ad/levelupHookSound.mp3");
       this.levelupSound.volume = 0.05;

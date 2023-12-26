@@ -60,7 +60,9 @@ class Game {
     this.hitOnKarenCounter = 0
     this.poisonedTime = 3000 - chance * 300
     this.tick = 0;
-    this.chargeTick = 0
+    this.chargeTick = 0;
+    this.hookedAllRatsAndGeese = true;
+
     this.cactus = [
       new Cactus(ctx, 375, 200, 40, 40, "/assets/images/fondos/cact1.png"), new Cactus(ctx, 600, 190, 50, 50, "/assets/images/fondos/cact3.png"),
       new Cactus(ctx, 820, 320, 30, 40, "/assets/images/fondos/cact5.png"), new Cactus(ctx, 780, 440, 40, 40, "/assets/images/fondos/cact4.png"),
@@ -482,7 +484,7 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
       this.portals.forEach((e) => e.draw());
       this.portals2.forEach((e) => e.draw());
     }
-    if(this.levelerTick >= 10 && this.levelerTick <= 15 ){
+    if(this.levelerTick >= 3333 && this.levelerTick <= 3333 ){
       this.karens = this.rats = this.babys = this.customers = this.fats = this.puddles = this.fires = this.geese = this.bosss = this.korens = this.carts = this.foods = this.upgrades = this.upBullets = this.discounts = [];
       leveler = true;
       this.player.x = 500
@@ -632,7 +634,7 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
       this.ctx.fillText(`Poisoned ${this.poisonedTime.toString()}`, 1235, 52);
       if(this.poisonedTime <= 0){
         this.ratPoison = 0
-      this.poisonedTime = 1000
+        this.poisonedTime = 1000
       }
     }
     
@@ -800,8 +802,8 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
     this.score.draw();
     this.saved.draw();
     if(hookBoost === true){
-      if(this.winTime % 1333 === 0){ //cada 20 segundos recarga 3 contadores de hook
-        hookCount +=3
+      if(this.winTime % 13333 === 0){ //cada 2 minutos recarga 3 contadores de hook
+        hookCounter +=3
       }
     }
     if(leveler === true){
@@ -1055,7 +1057,9 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
   // alerts end !!!!!! 
 
   
-  
+  // funciones sueltas para varias cosas
+  // funciones sueltas para varias cosas
+  // funciones sueltas para varias cosas
   saving(){
     this.saved.addSave()
     distance += 10
@@ -1101,8 +1105,56 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
       koren.w += (6-extraLife)
     }
   }
+counterWhenKillRat (deadCreature){
+  if(deadCreature.dead >= 101 ){
+    this.score.addkrat()
+    this.score.addktotal1()
+    if(moneyForKill){
+      money += Math.floor(Math.random() * 20);
+    }
+  }
+}
+counterWhenKillGoose (deadCreature){
+  if(deadCreature.dead >= 101 ){
+    this.score.addkgoose()
+    this.score.addktotal1()
+    if(moneyForKill){
+      money += Math.floor(Math.random() * 20);
+    }
+  }
+}
+counterWhenKillBoss (deadCreature){
+  deadCreature.y = 2000;
+  this.player.getBigRespect()
+  this.player.getBigRespect()
+  this.addFire()
+  this.addPuddle()
+    this.score.addkboss()
+    this.score.addktotal1()
+    this.score.addktotal1()
+    this.score.addktotal1()
+    this.score.addktotal1()
+    this.score.addktotal1()
+    if(moneyForKill){
+      money += Math.floor(Math.random() * 300 + 400);
+    }
+}
 
 
+foodAndDiscountDrop(creature){
+  const discRandom = Math.floor(Math.random() * 2)
+  const foodRandom = Math.floor(Math.random() * 2)
+  if(foodRandom == 1){
+    const food = new Food(ctx, creature.x, creature.y + 80);
+    this.foods.push(food);
+  }
+  if(discRandom == 1){
+    this.disImage = new Image()
+    this.disImage.src = "/assets/images/elements/disrat.png"
+    const discount = new Discount(ctx, creature.x, creature.y - 80, this.disImage);
+    this.discounts.push(discount);
+  }
+}
 // al tercer nivel de hook checkCharger también aumenta en 2 el charging al impactar
   hookLevel3(){
         Q = 81; E = 69; ALT = 16; 
@@ -1410,94 +1462,38 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
         if(venom >= 5){
           P = 80
         }
-        if(this.poisonedTime <= 0){
-          this.weird = 1
-        }
       }
       return true;
     });
-    this.rats.forEach((rat) => {//rat con discount
-      this.discounts = this.discounts.filter((disc) => {
-        if (disc.collides(rat)) {
-          this.discounts.splice(0, 1);
-          return false;
-        } else return true;
-      });
-    });
-    this.rats.forEach((rat) => {//rat con food
-      this.foods = this.foods.filter((food) => {
-        if (food.collides(rat)) {
-          this.foods.splice(0, 1);
-          return false;
-        } else return true;
-      });
-    });
-    this.rats.forEach((rat) => {//rat con cart
-      this.carts = this.carts.filter((cart) => {
-        if (cart.collides(rat)) {
-          this.carts.splice(0, 1);
-          return false;
-        } else return true;
-      });
-    });
     this.rats.forEach((rat) => {//rat con water
-      if(rat.dead >= 101 ){
-        this.score.addkrat()
-        this.score.addktotal1()
-        this.moneyForDead()
-      }
+      this.counterWhenKillRat(rat)
       this.player.waters = this.player.waters.filter((water) => {
         if (water.collides(rat)) {
           this.player.waters.splice(0, 1);
           rat.lifeleft -= 1;
           rat.vx += 1;
           this.checkCharger()
-          const discRandom = Math.floor(Math.random() * 14 - chance)
-          const foodRandom = Math.floor(Math.random() * 9 - chance)
-          if(foodRandom === 1){
-            const food = new Food(ctx, rat.x, rat.y + 40);
-            this.foods.push(food);
-          }
-          if(discRandom == 1){
-            this.disImage = new Image()
-            this.disImage.src = "/assets/images/elements/disrat.png"
-            const discount = new Discount(ctx, rat.x + 80, rat.y - 40, this.disImage);
-            this.discounts.push(discount);
-          }
+          this.foodAndDiscountDrop(rat)
           return false;
         } else return true;
       });
     });
     this.rats.forEach((rat) => { //rat con fire
-        if(rat.dead >= 101 ){
-          this.score.addkrat()
-          this.score.addktotal1()
-          this.moneyForDead()
-        }
+      this.counterWhenKillRat(rat)
       this.player.heats = this.player.heats.filter((heat) => {
         if (heat.collides(rat)) {
           this.player.heats.splice(0, 1);
           if(rat.lifeleft >= 0.1)
-          rat.lifeleft -= 1.5;
+          rat.lifeleft -= 1;
           rat.vx += 1;
           this.checkCharger()
-          const discRandom = Math.floor(Math.random() * 12 - chance)
-          const foodRandom = Math.floor(Math.random() * 9 - chance)
-          if(foodRandom === 1){
-            const food = new Food(ctx, rat.x, rat.y + 40);
-            this.foods.push(food);
-          }
-          if(discRandom == 1){
-            this.disImage = new Image()
-            this.disImage.src = "/assets/images/elements/disrat.png"
-            const discount = new Discount(ctx, rat.x + 80, rat.y - 40, this.disImage);
-            this.discounts.push(discount);
-          }
+          this.foodAndDiscountDrop(rat)
           return false;
         } else return true;
       });
     });
     this.rats.forEach((rat) => { //rat con hook
+      this.counterWhenKillRat(rat)
       this.player.hooks = this.player.hooks.filter((heat) => {
         if (heat.collides(rat)) {
           this.player.hooks.splice(0, 1);
@@ -1506,6 +1502,7 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
           hookImpact = true;
           if(hookLeveling >= 1){
             rat.lifeleft -= 1;
+            this.foodAndDiscountDrop(rat);
           }
           this.checkCharger()
           this.luzOnAudio = new Audio("/assets/audios ad/ratHook.mp3")
@@ -1516,59 +1513,38 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
       });
     });
 
-    if(this.player.cagedAllAnimals === true && hookLeveling >= 4 ){//todas las ratas y gansos se quedarán atrapados en cajas
-      this.geese.forEach((goose) => (goose.cage = true))
-      this.geese.forEach((goose) => (goose.vx = 0))
-      this.geese.forEach((goose) => (goose.moveY = 0))
-      this.rats.forEach((rat) => (rat.cage = true))
-      this.rats.forEach((rat) => (rat.vx = 0))
-      setTimeout(() => {
-        this.player.cagedAllAnimals = false;
-        this.geese.forEach((goose) => (goose.cage = false))
-        this.geese.forEach((goose) => (goose.vx = 2))
-        this.geese.forEach((goose) => (goose.moveY = 2))
-        this.rats.forEach((rat) => (rat.cage = false))
-        this.rats.forEach((rat) => (rat.vx = -3))
-      }, 5000);
-    }
 
     this.rats.forEach((rat) => { //rat con blaster
       this.player.blasters.filter((blast) => {
+        this.counterWhenKillRat(rat)
         if (blast.collides(rat)) {
           blast.rocketDetonation = true
           rat.lifeleft -= 5;
-
+          this.foodAndDiscountDrop(rat)
           return false;
         } else return true;
       });
     });
     this.rats.forEach((rat) => {//rat con sanders
-      if(rat.dead >= 101 ){
-        this.score.addkrat()
-        this.score.addktotal1()
-        this.moneyForDead()
-      }
+      this.counterWhenKillRat(rat)
       this.player.sanders.filter((sand) => {
         if (sand.collides(rat)) {
           sand.activated = true
           rat.lifeleft -= sand.damage;
           rat.lifeleft -= sand.damage;
           rat.vx += 0.02
-
+          this.foodAndDiscountDrop(rat)
           return false;
         } else return true;
       });
     });
     this.rats.forEach((rat) => {//rat con toxics
-      if(rat.dead >= 101 ){
-        this.score.addkrat()
-        this.score.addktotal1()
-        this.moneyForDead()
-      }
+      this.counterWhenKillRat(rat)
       this.player.toxics.filter((sand) => {
         if (sand.collides(rat)) {
           rat.lifeleft -= 0.005;
           rat.vx += 0.003
+          this.foodAndDiscountDrop(rat)
           if(rat.vx >= 0){
             rat.vx = 0
           }
@@ -1583,7 +1559,175 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
         } else return true;
       }); 
     });
+    // goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...
+// goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...
+this.geese = this.geese.filter((goose) => { //goose con player
+  if (goose.collides(this.player)) {
+    this.player.hit();
+    if(discounting >= 5){
+      discounting -= 5
+    }
+    return false;
+  }
+  return true;
+});
+
+this.geese.forEach((goose) => { //goose con fire
+  this.counterWhenKillGoose(goose)
+  this.player.heats = this.player.heats.filter((heat) => {
+    if (heat.collides(goose)) {
+      goose.lifeleft -= 1 
+      this.foodAndDiscountDrop(goose)
+      this.player.heats.splice(0, 1);
+      if (goose.x < this.player.x) {
+        goose.x -= 20;
+      }
+      if (goose.x > this.player.x) {
+        goose.x += 20;
+      }
+      if (goose.y < this.player.y) {
+        goose.y -= 20;
+      }
+      if (goose.y > this.player.y) {
+        goose.y += 20;
+      }
+    this.checkCharger()
+    } else return true;
+  });
+  this.player.waters = this.player.waters.filter((water) => {// goose con water
+  this.counterWhenKillGoose(goose)
+    if (water.collides(goose)) {
+      this.player.waters.splice(0, 1);
+      goose.lifeleft -= 1 
+      this.foodAndDiscountDrop(goose)
+      this.player.heats.splice(0, 1);
+      if (goose.x < this.player.x) {
+        goose.x -= 20;
+      }
+      if (goose.x > this.player.x) {
+        goose.x += 20;
+      }
+      if (goose.y < this.player.y) {
+        goose.y -= 20;
+      }
+      if (goose.y > this.player.y) {
+        goose.y += 20;
+      }
+    this.checkCharger()
+    } else return true;
+  });
+  
+    this.player.hooks.filter((hook) => {// goose con hook
+  this.counterWhenKillGoose(goose)
+    if (hook.collides(goose)) {
+      this.player.hooks.splice(0, 1);
+      goose.cage = true;
+      hookImpact = true;
+      this.foodAndDiscountDrop(goose)
+      if(hookLeveling >= 2){
+        goose.lifeleft -= 1;
+      }
+      this.luzOnAudio = new Audio("/assets/audios ad/gooseHook.mp3")
+      this.luzOnAudio.volume = 0.07;
+      this.luzOnAudio.play();
+      goose.moveY = 0
+      goose.vx = 0
+      this.player.heats.splice(0, 1);
+    this.checkCharger()
+    } else return true;
+  });
+});
+this.geese.forEach((goose) => { // goose con blaster
+  this.counterWhenKillGoose(goose)
+  this.player.blasters.filter((blast) => {
+    if (blast.collides(goose)) {
+      blast.rocketDetonation = true
+      goose.lifeleft -= 3;
+      this.foodAndDiscountDrop(goose)
+      return false;
+    } else return true;
+  });
+});
+this.geese.forEach((goose) => { // goose con sanders
+  this.counterWhenKillGoose(goose)
+  this.player.sanders.filter((sand) => {
+    if (sand.collides(goose)) {
+      sand.activated = true 
+      goose.lifeleft -= sand.damage;
+      return false;
+    } else return true;
+  });
+});
+
+this.geese.forEach((goose) => { // goose con toxic
+  this.counterWhenKillGoose(goose)
+  this.player.toxics.filter((tox) => {
+    if (tox.collides(goose)) {
+      goose.lifeleft -= 0.005;
+      if(goose.vx > 0){
+        goose.vx -= 0.0005
+      } else if(goose.vx < 0 ){
+        goose.vx += 0.0005
+      }
+      if(goose.vy > 0){
+        goose.vy = 0.005
+      } else if (goose.vy < 0){
+        goose.vy = 0.005
+      }
+      this.ctx.font = "20px Arial";
+      this.ctx.fillStyle = "red";
+      this.ctx.fillText(`Weird goose noises`, goose.x - 29, goose.y-16);
+      this.ctx.fillStyle = "tomato";
+      this.ctx.fillText(`Weird goose noises`, goose.x - 26, goose.y-14);
+      this.ctx.fillStyle = "peachpuff";
+      this.ctx.fillText(`Weird goose noises`, goose.x - 28, goose.y - 15);
+      return false;
+    } else return true;
+  });
+});
+
+    // enjaula a todas las ratas y gansos caundo tengas suficientes hoooks y hookleveling superior a 4
+    if(this.player.cagedAllAnimals === true && hookLeveling >= 4 && this.hookedAllRatsAndGeese && hookCounter >= this.geese.length && hookCounter >= this.rats.length){//todas las ratas y gansos se quedarán atrapados en cajas
+      this.geese.forEach((goose) => (goose.cage = true))
+      this.geese.forEach((goose) => (goose.vx = 0))
+      this.geese.forEach((goose) => (goose.moveY = 0))
+      this.rats.forEach((rat) => (rat.cage = true))
+      this.rats.forEach((rat) => (rat.vx = 0))
+      hookCounter -= this.geese.length;
+      hookCounter -= this.rats.length;
+      this.hookedAllRatsAndGeese=false;
+      setTimeout(() => {
+        this.geese.forEach((goose) => (goose.cage = false))
+        this.geese.forEach((goose) => (goose.vx = 1.5))
+        this.geese.forEach((goose) => (goose.moveY = 1.5))
+        this.rats.forEach((rat) => (rat.cage = false))
+        this.rats.forEach((rat) => (rat.vx = -3))
+        this.player.cagedAllAnimals = false;
+      this.hookedAllRatsAndGeese=true;
+      }, 5000);
+    }
+
+    function handleCollisions(rats, items) {
+      rats.forEach((rat) => {
+        items = items.filter((item) => {
+          if (item.collides(rat)) {
+            items.splice(0, 1);
+            return false;
+          } else return true;
+        });
+      });
     
+      return items;
+    }
+    
+    
+    this.discounts = handleCollisions(this.rats, this.discounts);
+    this.foods = handleCollisions(this.rats, this.foods);
+    this.carts = handleCollisions(this.rats, this.carts);
+    this.discounts = handleCollisions(this.geese, this.discounts);
+    this.foods = handleCollisions(this.geese, this.foods);
+    this.carts = handleCollisions(this.geese, this.carts);
+
     //fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...
     //fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...fat...
     this.fats = this.fats.filter((fat) => { //fat con jugador
@@ -1602,11 +1746,7 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
           this.player.waters.splice(0, 1);
         this.checkCharger()
           fat.vy -= 0.3
-          const foodRandom = Math.floor(Math.random() * 11 - chance)
-          if(foodRandom === 1){
-            const food = new Food(ctx, fat.x, fat.y);
-            this.foods.push(food);
-          }
+          this.foodAndDiscountDrop(goose)
         } else return true;
       });
     });
@@ -1614,16 +1754,13 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
       this.player.heats = this.player.heats.filter((heat) => {
         if (heat.collides(fat)) {
           this.player.heats.splice(0, 1);
-        this.checkCharger()
+          this.checkCharger()
           fat.vy -= 0.3
-            const foodRandom = Math.floor(Math.random() * 11 - chance)
-            if(foodRandom === 1){
-              const food = new Food(ctx, fat.x, fat.y);
-              this.foods.push(food);
-          }
+          this.foodAndDiscountDrop(goose)
         } else return true;
       });
     });
+
     this.fats.forEach((fat) => { //fat con sanders
       this.player.sanders.filter((sand) => {
         if (sand.collides(fat)) {
@@ -1653,6 +1790,7 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
         if (blast.collides(fat)) {
           blast.rocketDetonation = true
           fat.vy -= 0.05
+          this.foodAndDiscountDrop(goose)
           return false;
         } else return true;
       });
@@ -1773,198 +1911,12 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
         } else return true;
       });
     })
-// goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...
-// goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...
-    this.geese = this.geese.filter((goose) => { //goose con player
-      if (goose.collides(this.player)) {
-        this.player.hit();
-        if(discounting >= 5){
-          discounting -= 5
-        }
-        if(goose.lifeleft <= 4){
-          this.player.hit();
-        }
-        if(goose.lifeleft <= 2){
-          this.player.hit();
-        }
-        return false;
-      }
-      return true;
-    });
-    this.geese.forEach((goose) => {//goose con discount
-      this.discounts = this.discounts.filter((disc) => {
-        if (disc.collides(goose)) {
-          this.discounts.splice(0, 1);
-          return false;
-        } else return true;
-      });
-    });
-    this.geese.forEach((goose) => {//goose con food
-      this.foods = this.foods.filter((food) => {
-        if (food.collides(goose)) {
-          this.foods.splice(0, 1);
-          return false;
-        } else return true;
-      });
-    });
-    this.geese.forEach((goose) => {//goose con cart
-      this.carts = this.carts.filter((cart) => {
-        if (cart.collides(goose)) {
-          this.carts.splice(0, 1);
-          return false;
-        } else return true;
-      });
-    });
-    this.geese.forEach((goose) => { //goose con fire
-      this.player.heats = this.player.heats.filter((heat) => {
-        if (heat.collides(goose)) {
-          goose.lifeleft -= 1 
-          const foodRandom = Math.floor(Math.random() * 14 - chance)
-          if(goose.lifeleft <= 0){
-            this.score.addkgoose()
-            this.score.addktotal1()
-          }
-          this.player.heats.splice(0, 1);
-          if (goose.x < this.player.x) {
-            goose.x -= 20;
-            if(foodRandom === 1){
-              const food = new Food(ctx, goose.x - 80, goose.y);
-              this.foods.push(food);
-            }
-          }
-          if (goose.x > this.player.x) {
-            goose.x += 20;
-          }
-          if (goose.y < this.player.y) {
-            goose.y -= 20;
-          }
-          if (goose.y > this.player.y) {
-            goose.y += 20;
-            if(foodRandom === 1){
-              const food = new Food(ctx, goose.x, goose.y + 80);
-              this.foods.push(food);
-            }
-          }
-        this.checkCharger()
-        } else return true;
-      });
-      this.player.waters = this.player.waters.filter((water) => {// goose con water
-        if (water.collides(goose)) {
-          this.player.waters.splice(0, 1);
-          goose.lifeleft -= 1 
-          const foodRandom = Math.floor(Math.random() * 10 - chance)
-          if(goose.lifeleft <= 0){
-            this.score.addkgoose()
-            this.score.addktotal1()
-          }
-          this.player.heats.splice(0, 1);
-          if (goose.x < this.player.x) {
-            goose.x -= 20;
-            if(foodRandom === 1){
-              const food = new Food(ctx, goose.x - 80, goose.y);
-              this.foods.push(food);
-            }
-          }
-          if (goose.x > this.player.x) {
-            goose.x += 20;
-          }
-          if (goose.y < this.player.y) {
-            goose.y -= 20;
-          }
-          if (goose.y > this.player.y) {
-            goose.y += 20;
-            if(foodRandom === 1){
-              const food = new Food(ctx, goose.x, goose.y + 80);
-              this.foods.push(food);checkcha
-            }
-          }
-        this.checkCharger()
-        } else return true;
-      });
-      
-        this.player.hooks.filter((hook) => {// goose con hook
-        if (hook.collides(goose)) {
-          this.player.hooks.splice(0, 1);
-          goose.cage = true
-          hookImpact = true
-          if(hookLeveling >= 2){
-            goose.lifeleft -= 1;
-          }
-          const foodRandom = Math.floor(Math.random() * 10 - chance)
-          if(goose.lifeleft <= 0){
-            this.score.addkgoose()
-            this.score.addktotal1()
-          }
-          this.luzOnAudio = new Audio("/assets/audios ad/gooseHook.mp3")
-          this.luzOnAudio.volume = 0.07;
-          this.luzOnAudio.play();
-          goose.moveY = 0
-          goose.vx = 0
-          this.player.heats.splice(0, 1);
-        this.checkCharger()
-        } else return true;
-      });
-    });
-    this.geese.forEach((goose) => { // goose con blaster
-      this.player.blasters.filter((blast) => {
-        if (blast.collides(goose)) {
-          blast.rocketDetonation = true
-          goose.lifeleft -= 3;
-          if(goose.lifeleft === 0){
-            this.score.addkgoose()
-            this.score.addktotal1()
-          }
-          return false;
-        } else return true;
-      });
-    });
-    this.geese.forEach((goose) => { // goose con sanders
-      this.player.sanders.filter((sand) => {
-        if (sand.collides(goose)) {
-          sand.activated = true 
-          goose.lifeleft -= sand.damage;
-          if(goose.lifeleft === 0){
-            this.score.addkgoose()
-            this.score.addktotal1()
-          }
-          return false;
-        } else return true;
-      });
-    });
 
-    this.geese.forEach((goose) => { // goose con toxic
-      this.player.toxics.filter((tox) => {
-        if (tox.collides(goose)) {
-          goose.lifeleft -= 0.005;
-          if(goose.vx > 0){
-            goose.vx -= 0.0005
-          } else if(goose.vx < 0 ){
-            goose.vx += 0.0005
-          }
-          if(goose.vy > 0){
-            goose.vy = 0.005
-          } else if (goose.vy < 0){
-            goose.vy = 0.005
-          }
-          this.ctx.font = "20px Arial";
-          this.ctx.fillStyle = "red";
-          this.ctx.fillText(`Weird goose noises`, goose.x - 29, goose.y-16);
-          this.ctx.fillStyle = "tomato";
-          this.ctx.fillText(`Weird goose noises`, goose.x - 26, goose.y-14);
-          this.ctx.fillStyle = "peachpuff";
-          this.ctx.fillText(`Weird goose noises`, goose.x - 28, goose.y - 15);
-          if(goose.lifeleft >= 0 && goose.lifeleft <= 0.001){
-            this.score.addkgoose()
-            this.score.addktotal1()
-          }
-          return false;
-        } else return true;
-      });
-    });
 //minas...minas...minasminas...minas...minasminas...minas...minasminas...minas...minasminas...minas...minas
 //minas...minas...minasminas...minas...minasminas...minas...minasminas...minas...minasminas...minas...minas
 
 this.geese.forEach((goose) => { // goose con mineReps
+  this.counterWhenKillGoose(goose)
   mineria.filter((mineRep) => {
     if (mineRep.collides(goose)) {
       mineRep.activated = true
@@ -1978,16 +1930,11 @@ this.geese.forEach((goose) => { // goose con mineReps
   });
 });
 this.rats.forEach((rat) => { // rat con mineReps
+  this.counterWhenKillRat(rat)
   mineria.filter((mineRep) => {
     if (mineRep.collides(rat)) {
       mineRep.activated = true
       rat.lifeleft -= mineRep.damage;
-      if(rat.lifeleft <= 0 && rat.lifeleft >= -1){
-        this.score.addkrat()
-        this.score.addktotal1()
-        this.moneyForDead()
-        rat.lifleft -= 10
-      }
       return false;
     } else return true;
   });
@@ -1998,7 +1945,9 @@ this.bosss.forEach((boss) => { // boss con mineReps
       mineRep.activated = true
       boss.lifeleft -= mineRep.damage;
       if(boss.lifeleft === 0){
-        this.score.addkgoose()
+        this.score.addkboss()
+        this.score.addktotal1()
+        this.score.addktotal1()
         this.score.addktotal1()
       }
       return false;
@@ -2013,7 +1962,7 @@ this.korens.forEach((koren) => { // koren con mineReps
       koren.h += mineRep.damage + 1;
       koren.w += mineRep.damage + 1;
       if(koren.lifeleft === 0){
-        this.score.addkgoose()
+        this.score.addkkorens()
         this.score.addktotal1()
       }
       return false;
@@ -2367,15 +2316,7 @@ this.korens.forEach((koren) => { // koren con mineReps
             boss.lifeleft -= 1;
             this.checkCharger()
           if(boss.lifeleft <= 0){
-            boss.y = 2000;
-            this.addFire()
-            this.addPuddle()
-            this.player.getBigRespect()
-            this.player.getBigRespect()
-            this.score.addkboss()
-            this.score.addktotal1()
-            this.score.addktotal1()
-            this.score.addktotal1()
+            this.counterWhenKillBoss(boss);
           }
           if (boss.x < this.player.x) {
             boss.x -= 20;
@@ -2411,15 +2352,7 @@ this.korens.forEach((koren) => { // koren con mineReps
           boss.lifeleft -= 1;
           this.checkCharger()
           if(boss.lifeleft <= 0){
-            boss.y = 2000;
-            this.addFire()
-            this.addPuddle()
-            this.player.getBigRespect()
-            this.player.getBigRespect()
-            this.score.addkboss()
-            this.score.addktotal1()
-            this.score.addktotal1()
-            this.score.addktotal1()
+            this.counterWhenKillBoss(boss);
           }
           if (boss.x < this.player.x) {
             boss.x -= 20;
@@ -2454,37 +2387,23 @@ this.korens.forEach((koren) => { // koren con mineReps
       this.player.blasters.filter((blast) => {
         if (blast.collides(boss)) {
             blast.rocketDetonation = true
-            boss.lifeleft -= 0.2;
+            boss.lifeleft -= 1.2;
           if(boss.lifeleft <= 0.1){
-            boss.y = 2000;
-            this.player.getBigRespect()
-            this.player.getBigRespect()
-            this.addFire()
-            this.addPuddle()
-            this.score.addkboss()
-            this.score.addktotal1()
-            this.score.addktotal1()
-            this.score.addktotal1()
+            this.counterWhenKillBoss(boss);
           }
           return false;
         } else return true;
       });
     });
+
+    
     this.bosss.forEach((boss) => {  //boss con sanders
       this.player.sanders.filter((sand) => {
         if (sand.collides(boss)) {
           sand.activated = true
           boss.lifeleft -= sand.damage;
           if(boss.lifeleft <= 0.1){
-            boss.v = 20;
-            this.player.getBigRespect()
-            this.player.getBigRespect()
-            this.addFire()
-            this.addPuddle()
-            this.score.addkboss()
-            this.score.addktotal1()
-            this.score.addktotal1()
-            this.score.addktotal1()
+            this.counterWhenKillBoss(boss);
           }
           return false;
         } else return true;
@@ -2767,7 +2686,7 @@ this.pback.forEach((peop) => { //PBack
         this.shielOn = new Audio("/assets/audios ad/shieldActivated.wav");
         this.shielOn.volume = 0.05;
         this.shielOn.play()
-        hookCount+=3 + chance*2
+        hookCounter+=3 + chance*2
         this.atraer = new Audio("/assets/audios ad/bonus.mp3")
         this.atraer.volume = 0.03;
         this.atraer.play();
@@ -3026,7 +2945,7 @@ processCollisions(this.player, this.player.hooks, this.upgrades, "upgrade-alert"
       this.player.sanders.filter((sand) => {
         if (sand.collides(blast)) {
           this.tick++ 
-          if (this.tick % 45 === 0 && this.player.blasters.length <= 20 && hookCount === 0){
+          if (this.tick % 45 === 0 && this.player.blasters.length <= 20 ){
             this.player.megablaster()
           }
           return false;
@@ -3040,7 +2959,7 @@ if(leveler){
     if (this.levelUps1.collides(this.player)) {
       G = 71
       B = 66
-      hookCount += 5
+      hookCounter += 5
       hookBoost = true
       this.levelupSound = new Audio("/assets/audios ad/levelupHookSound.mp3");
       this.levelupSound.volume = 0.05;

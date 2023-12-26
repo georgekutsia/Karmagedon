@@ -28,7 +28,7 @@ const S = 83;
 const D = 68;
 
 let chance = 0
-let hookCount = 0
+let hookCounter = 0
 let discounting = 0;
 let charging = 0;
 
@@ -38,7 +38,7 @@ let rocketCount = 0 //multiplo de 2.5 por alguna razón
 let mineCount = 0 //multiplo de 5
 
 let leveler = false //para subir de nivel
-let hookTransporter = false//para qeu al pulsar la g teleporte a la posicion del hook
+let hookTransporter = false//para que al pulsar la g teleporte a la posicion del hook
 let hookBoost = false// para los beneficios de subir nivel el hook
 let hookLeveling = 3; //para mejorar el hook a medida que sube de nivel
 let destroyerLeveling = 0; //para mejorar la rama de destroyer
@@ -53,8 +53,9 @@ let shotgunShots = 0 //las balas de la escopeta
 let extraShotgun = false  //al comprar la bala especial
 let extraShot = 0 //al adquirir cartucho adicional, puedes disparar 3 veces
 let thirdShotRange = 0
-let thirdShot = false
+let thirdShot = false //
 let extraMine =  false //minas replicantes
+let extraAreaDamage =  false //minas replicantes
 let mineria = []
 let fireDrug = false
 let waterDrug = false
@@ -64,6 +65,11 @@ let machingunCountback = 850;
 let machingunRestoreCountback = 500;
 let moneyForKill = false; //destroyerLeveling 3 y consigues dinero al matar bichos
 let lifeTotal = 10
+
+
+let playerBasicDamage = 0;
+let playerDoubleDamage = 1;
+
 
 let distance = 60;
 let bulletDistance = 150;

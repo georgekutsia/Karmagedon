@@ -44,6 +44,7 @@ const zcustomer = document.getElementById("add-customer")
 const zfood = document.getElementById("add-food")
 const zupgrade = document.getElementById("add-upgrade")
 const zupbullet = document.getElementById("add-upbullet")
+const zleveling= document.getElementById("add-leveling")
 const wornings = document.querySelector(".wornings-css")
 
 const buyButtons = document.getElementById("buy-buttons")
@@ -80,7 +81,7 @@ const allAsks = [askFood, askDrug]
 const allMegas = [megaShotgun, megaMine, megaHook, megaLife, megaAreaDamage]
 
 const allButtonsGone = [easy, normal, hard, superhard, info, manager, begin, btnTrain]
-const allAddButtons = [zkaren, zrat, zfat, zpuddle, zfire, zboss, zgoose, zdiscount, zcart, zbaby, zkoren, zcustomer, zupgrade, zupbullet, zfood, ]
+const allAddButtons = [zkaren, zrat, zfat, zpuddle, zfire, zboss, zgoose, zdiscount, zcart, zbaby, zkoren, zcustomer, zupgrade, zupbullet, zleveling, zfood, ]
 
 
 const in1 = document.getElementById("info1")
@@ -158,9 +159,9 @@ buyMine.addEventListener("click", function(){
   }
 })
 buyHooks.addEventListener("click", function(){
-  if(money >= 20){
-    money -= 20
-    hookCount += 1
+  if(money >= 40){
+    money -= 40
+    hookCounter += 1
     this.sandShootAudio = new Audio("/assets/audios ad/buy.wav")
     this.sandShootAudio.volume = 0.4;
     this.sandShootAudio.play();
@@ -168,8 +169,8 @@ buyHooks.addEventListener("click", function(){
 })
 
 buyDiscounts.addEventListener("click", function(){
-  if(money >= 20){
-    money -= 20
+  if(money >= 40){
+    money -= 40
     discounting += 5
     this.sandShootAudio = new Audio("/assets/audios ad/buy.wav")
     this.sandShootAudio.volume = 0.4;
@@ -214,9 +215,9 @@ sellMine.addEventListener("click", function(){
   }
 })
 sellHooks.addEventListener("click", function(){
-  if(hookCount >=1){
-    money += 10
-    hookCount -= 1
+  if(hookCounter >=1){
+    money += 20
+    hookCounter -= 1
     this.sandShootAudio = new Audio("/assets/audios ad/sell.wav")
     this.sandShootAudio.volume = 0.4;
     this.sandShootAudio.play();
@@ -224,14 +225,13 @@ sellHooks.addEventListener("click", function(){
 })
 sellDiscounts.addEventListener("click", function(){
   if(discounting >=5){
-    money += 10
+    money += 20
     discounting -= 5
     this.sandShootAudio = new Audio("/assets/audios ad/sell.wav")
     this.sandShootAudio.volume = 0.4;
     this.sandShootAudio.play();
   }
 })
-
 
 askFood.addEventListener("click", function(){
   game.addFood()
@@ -240,9 +240,8 @@ askDrug.addEventListener("click", function(){
   game.addDrug()
 })
 
-
 megaShotgun.addEventListener("click", function(){
-  if(money >= 1800 && extraShotgun === false){
+  if(money >= 1800 && !extraShotgun){
     money -= 1800
     extraShotgun = true
     extraShot = 1
@@ -257,7 +256,7 @@ megaShotgun.addEventListener("click", function(){
   }
 })
 megaMine.addEventListener("click", function(){
-  if(money >= 2300 && extraMine === false){
+  if(money >= 2300 && !extraMine ){
     money -= 2300
     extraMine = true
     extraShot = 1
@@ -272,7 +271,7 @@ megaMine.addEventListener("click", function(){
   }
 })
 megaHook.addEventListener("click", function(){
-  if(money >= 1500 && extraHooker === false){
+  if(money >= 1500 && !extraHooker){
     money -= 1500
     extraHooker = true
     megaHook.innerText = "This item is already in your power"
@@ -303,10 +302,12 @@ megaLife.addEventListener("click", function(){
   }
 })
 megaAreaDamage.addEventListener("click", function(){
-  if(money >= 2000){
+  if(money >= 2000 && !extraAreaDamage){
     money -= 2000;
     areaDamage = false;
-    game.player.heal(30)
+    extraAreaDamage = true;
+    megaAreaDamage.innerText = "This item is already in your power"
+    megaAreaDamage.style.backgroundColor = "grey"
     this.sandShootAudio = new Audio("/assets/audios ad/sell.wav")
     this.sandShootAudio.volume = 0.4;
     this.sandShootAudio.play();
@@ -515,6 +516,10 @@ zupgrade.addEventListener("click", function(){
 zupbullet.addEventListener("click", function(){
   game.addUpBullet()
   game.upBulletAlert()
+  demo.innerText = "Clean"
+})
+zleveling.addEventListener("click", function(){
+  leveler = true;
   demo.innerText = "Clean"
 })
 

@@ -196,18 +196,18 @@ class Player {
         this.imgWater, this.x + 35, this.y + 1, this.w - 19, this.h - 19
       )
     }
-    if(hookCount>0 && B ===66){
+    if(hookCounter>0 && B ===66){
       this.ctx.drawImage(
         this.imgHookGun, this.x + 29, this.y + 21, this.w - 10, this.h - 10
       )
       ctx.fillStyle = "rgb(251, 209, 209)";
       this.ctx.fillStyle = "yellow";
       this.ctx.font = "17px Arial";
-      this.order = this.ctx.fillText(`${hookCount.toString()}`, this.x + 48, this.y + 42);
-      this.order = this.ctx.fillText(`${hookCount.toString()}`, this.x + 50, this.y + 42);
+      this.order = this.ctx.fillText(`${hookCounter.toString()}`, this.x + 48, this.y + 42);
+      this.order = this.ctx.fillText(`${hookCounter.toString()}`, this.x + 50, this.y + 42);
       this.ctx.fillStyle = "black";
       this.ctx.font = "15px Arial";
-      this.order = this.ctx.fillText(`x${hookCount.toString()}`, this.x + 43, this.y + 42);
+      this.order = this.ctx.fillText(`x${hookCounter.toString()}`, this.x + 43, this.y + 42);
     }
     if(rocketCount>0){
       this.ctx.drawImage(
@@ -366,7 +366,7 @@ class Player {
       if(this.hookTIck === 15){
         this.hooker();
         hookImpact = false
-        hookCount -= 1
+        hookCounter -= 1
         this.extraHookSpeed = 0
       }
       if(this.hookTIck >= 50){
@@ -636,10 +636,9 @@ class Player {
         this.toxicity = !this.toxicity
       }
       if (key === G) {
-        if(hookCount === 1){
+        // if(hookCounter === 1){
           this.cagedAllAnimals = true;
-          hookCount -= 1;
-        }
+        // }
         hookTransporter = true;
       }
   }
@@ -689,7 +688,7 @@ class Player {
         N = 0;
         setTimeout(function () {
         N = 78;
-      }, 20000);
+      }, 60000);
     }
     if (key === J //&& !elementBoost
 && elementalMineCount >= 1) {
@@ -712,10 +711,10 @@ class Player {
         X = 88;
       }, this.cooldownBullet);
     }
-    if (key === B && hookCount >=1) {
+    if (key === B && hookCounter >=1) {
         this.hooker();
         B = 0;
-        hookCount -= 1
+        hookCounter -= 1
         setTimeout(function () {
           B = 66;
           this.alertingSound = new Audio("/assets/audios ad/reload.mp3");
@@ -793,7 +792,7 @@ class Player {
         I = 73
       }
       if(key === I){
-        hookCount += 10
+        hookCounter += 10
         discounting += 50
         M = 77
         P = 80
