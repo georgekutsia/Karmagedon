@@ -57,7 +57,6 @@ class Game {
     this.lampTick = 0
     this.wider = 1
     this.lampOff = "/assets/images/elements/lampOfff.png"
-    this.hitOnKarenCounter = 0
     this.poisonedTime = 3000 - chance * 300
     this.tick = 0;
     this.chargeTick = 0;
@@ -1083,6 +1082,14 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
     this.player.cooldownJump += 5
     this.perjudiceIs = true
   }
+  angryKorenPopup(probability){
+    let randomNumber = Math.floor(Math.random() *200);
+    console.log(randomNumber)
+    if(randomNumber % probability === 0){//20% probabilidad de que salga koren al dañar a boss
+      this.addKoren();
+      this.korenAlert();
+    }
+  }
   timeDamage(koren){
     if (koren.x < this.player.x) {
       koren.x -= 30;
@@ -1105,6 +1112,22 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
       koren.w += (6-extraLife)
     }
   }
+
+  creaturePushback(creature, distance){
+    if (creature.x < this.player.x) {
+      creature.x -= distance;
+    }
+    if (creature.x > this.player.x) {
+      creature.x += distance;
+    }
+    if (creature.y < this.player.y) {
+      creature.y -= distance;
+    }
+    if (creature.y > this.player.y) {
+      creature.y += distance;
+    }
+  }
+
 counterWhenKillRat (deadCreature){
   if(deadCreature.dead >= 101 ){
     this.score.addkrat()
@@ -1139,6 +1162,7 @@ counterWhenKillBoss (deadCreature){
       money += Math.floor(Math.random() * 300 + 400);
     }
 }
+
 
 
 foodAndDiscountDrop(creature){
@@ -1579,18 +1603,8 @@ this.geese.forEach((goose) => { //goose con fire
       goose.lifeleft -= 1 
       this.foodAndDiscountDrop(goose)
       this.player.heats.splice(0, 1);
-      if (goose.x < this.player.x) {
-        goose.x -= 20;
-      }
-      if (goose.x > this.player.x) {
-        goose.x += 20;
-      }
-      if (goose.y < this.player.y) {
-        goose.y -= 20;
-      }
-      if (goose.y > this.player.y) {
-        goose.y += 20;
-      }
+      this.creaturePushback(goose, 30)
+
     this.checkCharger()
     } else return true;
   });
@@ -1601,18 +1615,8 @@ this.geese.forEach((goose) => { //goose con fire
       goose.lifeleft -= 1 
       this.foodAndDiscountDrop(goose)
       this.player.heats.splice(0, 1);
-      if (goose.x < this.player.x) {
-        goose.x -= 20;
-      }
-      if (goose.x > this.player.x) {
-        goose.x += 20;
-      }
-      if (goose.y < this.player.y) {
-        goose.y -= 20;
-      }
-      if (goose.y > this.player.y) {
-        goose.y += 20;
-      }
+      this.creaturePushback(goose, 30)
+
     this.checkCharger()
     } else return true;
   });
@@ -1944,12 +1948,8 @@ this.bosss.forEach((boss) => { // boss con mineReps
     if (mineRep.collides(boss)) {
       mineRep.activated = true
       boss.lifeleft -= mineRep.damage;
-      if(boss.lifeleft === 0){
-        this.score.addkboss()
-        this.score.addktotal1()
-        this.score.addktotal1()
-        this.score.addktotal1()
-      }
+      this.counterWhenKillBoss(boss)
+      this.angryKorenPopup(10);
       return false;
     } else return true;
   });
@@ -2262,7 +2262,7 @@ this.korens.forEach((koren) => { // koren con mineReps
           this.atraer.volume = 0.07;
           this.atraer.play();
           if(hookLeveling >= 2){
-            boss.lifeleft -= 1;
+            boss.lifeleft -= 0.4;
           } 
           boss.cage = true
             if(boss.x < this.player.x){
@@ -2318,28 +2318,13 @@ this.korens.forEach((koren) => { // koren con mineReps
           if(boss.lifeleft <= 0){
             this.counterWhenKillBoss(boss);
           }
-          if (boss.x < this.player.x) {
-            boss.x -= 20;
-          }
-          if (boss.x > this.player.x) {
-            boss.x += 20;
-          }
-          if (boss.y < this.player.y) {
-            boss.y -= 20;
-          }
-          if (boss.y > this.player.y) {
-            boss.y += 20;
-          }
+          this.creaturePushback(boss, 20)
           charging+=2
           if(charging >= 20 && this.score.total >= 20){
               M = 77
               charging = 0
           }
-          this.hitOnKarenCounter++
-          if(this.hitOnKarenCounter % 3 === 0){
-            this.addKoren()
-          }
-          this.korenAlert()
+          this.angryKorenPopup(10);
           this.line.b -= 0.2;
           this.line.a += 0.2;
             return false;
@@ -2356,7 +2341,6 @@ this.korens.forEach((koren) => { // koren con mineReps
           }
           if (boss.x < this.player.x) {
             boss.x -= 20;
-            
           }
           if (boss.x > this.player.x) {
             boss.x += 20;
@@ -2372,10 +2356,7 @@ this.korens.forEach((koren) => { // koren con mineReps
               M = 77
               charging = 0
           }
-          if(this.hitOnKarenCounter % 3 === 0){
-            this.addKoren()
-          }
-          this.korenAlert()
+          this.angryKorenPopup(10);
           this.line.b -= 0.2;
           this.line.a += 0.2;
           
@@ -2391,6 +2372,7 @@ this.korens.forEach((koren) => { // koren con mineReps
           if(boss.lifeleft <= 0.1){
             this.counterWhenKillBoss(boss);
           }
+          this.angryKorenPopup(190);
           return false;
         } else return true;
       });
@@ -2405,6 +2387,7 @@ this.korens.forEach((koren) => { // koren con mineReps
           if(boss.lifeleft <= 0.1){
             this.counterWhenKillBoss(boss);
           }
+          this.angryKorenPopup(190);
           return false;
         } else return true;
       });
