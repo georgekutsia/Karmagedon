@@ -155,7 +155,7 @@ h2 {
   opacity: 0;
 }
 #infoSecret2:hover {
-  background-image: url("../images/infos/secret3.png");
+  background-image:  url("../images/infos/secretarc.png");
   width: 80px;
   height: 80px;
   font-size: 1.85em;
@@ -194,7 +194,7 @@ h2 {
   opacity: 0;
 }
 #infoSecret1:hover {
-  background-image: url("../images/infos/secret3.png");
+  background-image:  url("../images/infos/secretarc.png");
   width: 80px;
   height: 80px;
   font-size: 1.85em;
@@ -234,7 +234,7 @@ h2 {
   opacity: 0.1;
 }
 #info0:hover {
-  background-image: url("../images/infos/secret3.png");
+  background-image:  url("../images/infos/secretarc.png");
   width: 130px;
   height: 130px;
   font-size: 1.85em;
@@ -704,4 +704,21 @@ h2 {
 }
 #extra-stages a{
   margin: 0 1vw;
+}
+
+#checkbox-for-levels1{
+  color:white;
+  display: flex;
+  position: absolute;
+  top: 100px;
+  left: 100px;
+  gap: 20px;
+}
+#checkbox-for-levels2{
+  color:white;
+  display: flex;
+  position: absolute;
+  top: 150px;
+  left: 100px;
+  gap: 20px;
 }

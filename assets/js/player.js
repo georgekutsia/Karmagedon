@@ -1,8 +1,8 @@
 class Player {
   constructor(ctx, position) {
     this.ctx = ctx;
-    this.x = 599;
-    this.y = 300;
+    this.x = 399;
+    this.y = 260;
     this.w = 35;
     this.h = 35;
     this.position = position
@@ -688,7 +688,7 @@ class Player {
         N = 0;
         setTimeout(function () {
         N = 78;
-      }, 60000);
+      }, 600);
     }
     if (key === J //&& !elementBoost
 && elementalMineCount >= 1) {

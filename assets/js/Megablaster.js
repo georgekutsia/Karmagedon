@@ -60,6 +60,8 @@ class Megablaster {
     return colX && colY;
   }
 }
+
+
 class RocketLauncher {
   constructor(ctx, x, y, player) {
     this.ctx = ctx;
@@ -366,6 +368,9 @@ class ElementBomb{
     return colX && colY;
   }
 }
+
+
+
 class ElementMine{
   constructor(ctx, x, y, player, theTruthOfMine) {
     this.ctx = ctx;

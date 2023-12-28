@@ -84,10 +84,19 @@ let lampOn = 0
 let pImage = 0
 let afterSpin = false
 
+//  para añadir o quitar cosas del juego
 
-
-
-
+let addPeople = false;
+let addCactus = false;
+let addLamps = false;
+let addGeese = false;
+let addRat = false;
+let addFat = false;
+let addBaby = false;
+let addCustomer = false;
+let addBoss = false;
+let addPortal = false;
+  
 // secret code
 let Y = 0 //89
 let U = 0 //85

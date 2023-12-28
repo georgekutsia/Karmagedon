@@ -42,15 +42,15 @@ class Game {
     this.ratPoison = 0
     this.iceCurePoison = 0
     this.ratTick = 0;
-    this.ratTickIs = false;
+    this.ratMessage = false;
     this.upBulletTick = 0
-    this.upBulletIs = false
+    this.upBulletsMessage = false
     this.upgradeTick = 0
-    this.upgradeIs = false
+    this.upgradeMessage = false
     this.customerTick = 0
-    this.customerIs = false
+    this.customersMessage = false
     this.perjudiceTick = 0
-    this.perjudiceIs = false
+    this.perjudiceMessage = false
     this.bossPerjTick = 0
     this.bossPerjIs = false
     this.levelerTick = 0;
@@ -176,32 +176,14 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
     this.clear();
     this.draw();
     this.move();
-    this.karenTime++; this.ratTime++; this.fatTime++; this.puddleTime++;  this.fireTime++; this.gooseTime++; this.babyTime++; this.customerTime++; this.bossTime++; this.korenTime++; this.winTime++; this.levelerTick++; this.cartTime++; this.foodTime++; this.upgradeTime++; this.upBulletTime++; this.discountTime++;
     this.checkCollisions();
+    this.karenTime++; this.ratTime++; this.fatTime++; this.puddleTime++;  this.fireTime++; this.gooseTime++; this.babyTime++; this.customerTime++; this.bossTime++; this.korenTime++; this.winTime++; this.levelerTick++; this.cartTime++; this.foodTime++; this.upgradeTime++; this.upBulletTime++; this.discountTime++;
       if (this.karenTime > 37000) {     // karen
         this.karenTime = 0;
         this.karensAlert();
         this.addKaren();
         if(this.winTime >= 68500){
           this.karenTime = 2000
-        }
-      }
-      if (this.ratTime > Math.random() * 100 + 200000) { //rat
-        this.ratTime = 0;
-        this.ratAlert();
-        this.addDrug()
-        this.addRat();
-        if(this.winTime >= 48500){
-          this.ratTime = 700
-          this.addRat();
-        }
-      }
-      if (this.fatTime > Math.random() * 400 + 19000) { //fat
-        this.fatTime = 0;
-        this.fatAlert();
-        this.addFat();
-        if(this.winTime >= 68500){
-          this.fatTime = 500
         }
       }
       if (this.puddleTime > Math.random() * 400 + 20000) { //puddle
@@ -220,17 +202,37 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
           this.fireTime = 400
         }
       }
-      if (this.gooseTime > Math.random() * 100 + 11100) { //goose a las 3 horas mas o menos
+      console.log(this.rats)
+      console.log(this.geese)
+      if (this.ratTime > Math.random() * 100 + 20 && addRat) { //rat
+        this.ratTime = 0;
+        this.ratAlert();
+        this.addRat();
+        if(this.winTime >= 48500){
+          this.ratTime = 700
+          this.addRat();
+        }
+      }
+      if (this.fatTime > Math.random() * 400 + 190 && addFat) { //fat
+        this.fatTime = 0;
+        this.fatAlert();
+        this.addFat();
+        if(this.winTime >= 68500){
+          this.fatTime = 500
+        }
+      }
+
+      if (this.gooseTime > Math.random() * 100 + 10 && addGeese) { //goose
         this.gooseTime = 9000;
         this.gooseAlert();
         this.addGoose();
       }
-      if (this.babyTime > Math.random() * 2000 + 14800) {  //baby
+      if (this.babyTime > Math.random() * 2000 + 100 && addBaby) {  //baby
         this.babyTime = 11000;
         this.babyAlert();
         this.addBaby();
       }
-      if (this.customerTime > Math.random() * 100 + 40000) { //customer
+      if (this.customerTime > Math.random() * 100 + 40 && addCustomer) { //customer
         this.customerTime = 0;
         this.addCustomer();
       }
@@ -256,7 +258,7 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
         this.upBulletAlert()
         this.addUpBullet();
       }
-      if (this.bossTime > Math.random() * 100 + 14800) {   //boss
+      if (this.bossTime > Math.random() * 100 + 140 && addBoss) {   //boss
         this.bossTime = 5000;
         this.bossAlert();
         this.addBoss();
@@ -390,7 +392,7 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
       this.ctx.drawImage(
         this.mainOffice, 1200, 200, 190, 130
         ) 
-      ctx.globalAlpha = 1
+      ctx.globalAlpha = 0;
     }
     this.ctx.drawImage(
       this.backPack, 100, 825, 70, 60
@@ -407,7 +409,7 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
     if(this.player.respect.total >= 0.7 || this.player.life.total >=8){
       this.player.sandstate = false
     }
-    if(this.ratTickIs){
+    if(this.ratMessage){
       this.ratTick++
       this.ctx.font = "20px Arial";
       this.ctx.fillStyle = "red";
@@ -418,7 +420,7 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
       this.ctx.fillText(`Poisoned ${venom} times. Icecream can help!`, this.player.x - 28, this.player.y - 15);
       if(this.ratTick >= 400){
         this.ratTick = 0
-        this.ratTickIs = false
+        this.ratMessage = false
       }
     }
     if(this.upBullets.length >= 1){
@@ -468,56 +470,53 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
         this.helper4, 1220, 215, 40, 60
       )
     }
-    this.chargedDisc = discounting / 5
-    this.curePoisonTimer = 300 - chance * 50
-    this.bosss.forEach((e) => e.draw());
+    this.chargedDisc = discounting / 5;
+    this.curePoisonTimer = 300 - chance * 50;
     this.korens.forEach((e) => e.draw());
+    this.walls.forEach((e) => e.draw());
+    this.bosss.forEach((e) => e.draw());
     this.babys.forEach((e) => e.draw());
     this.customers.forEach((e) => e.draw());
-    if(this.winTime >= 0){
-      this.pback.forEach((e) => e.draw());
-    }
-    this.walls.forEach((e) => e.draw());
-    // se dibuja tras 5 horas
-    if(this.winTime >= 57500){ //14 de la tarde 57500
+    this.pback.forEach((e) => e.draw()); this.pfront.forEach((e) => e.draw());
+    this.cactus.forEach((e) => e.draw());
+    this.fats.forEach((e) => e.draw());
+    this.rats.forEach((e) => e.draw());
+    this.geese.forEach((e) => e.draw());
+
+    // se dibujan los portales a partir de las 5 horas
+    if(this.winTime >= 50 && addPortal){ //14 de la tarde 57500
       this.portals.forEach((e) => e.draw());
       this.portals2.forEach((e) => e.draw());
     }
-    if(this.levelerTick >= 3333 && this.levelerTick <= 3333 ){
+    // aparecen los niveles para subir
+    if(this.levelerTick >= 33333 && this.levelerTick <= 33333 ){
       this.karens = this.rats = this.babys = this.customers = this.fats = this.puddles = this.fires = this.geese = this.bosss = this.korens = this.carts = this.foods = this.upgrades = this.upBullets = this.discounts = [];
       leveler = true;
       this.player.x = 500
       this.player.y = 400
-    }
-    if(this.winTime >= 0){
-      this.pfront.forEach((e) => e.draw());
     }
     this.puddles.forEach((e) => e.draw());
     this.fires.forEach((e) => e.draw());
     this.player.draw();
     this.bushesover.forEach((e) => e.draw());
     this.karens.forEach((e) => e.draw());
-    if(this.winTime >= 0){
-      this.cactus.forEach((e) => e.draw());
-    }
-    this.fats.forEach((e) => e.draw());
-    this.rats.forEach((e) => e.draw());
     this.carts.forEach((e) => e.draw());
     this.drugs.forEach((e) => e.draw());
     this.foods.forEach((e) => e.draw());
     this.discounts.forEach((e) => e.draw());
-    this.geese.forEach((e) => e.draw());
     this.token.draw();
-    this.lamps.forEach((e) => e.draw());
-        if(this.lampTick >= 7640 ){
-          // se reinicia cada 2 horas
-          this.lamps.forEach((lamp) =>lamp.img.src = "/assets/images/elements/lampOfff.png")
-          this.lamps.forEach((lamp) =>lamp.lights = false)
-          this.alertingSound = new Audio("/assets/audios ad/lampOff.wav");
-          this.alertingSound.volume = 0.05;
-          this.alertingSound.play()
-          this.lampTick = 0
-          lampOn = 0
+    if(addLamps){
+      this.lamps.forEach((e) => e.draw());
+      if(this.lampTick >= 7640 ){
+        // se reinicia cada 2 horas
+        this.lamps.forEach((lamp) =>lamp.img.src = "/assets/images/elements/lampOfff.png")
+        this.lamps.forEach((lamp) =>lamp.lights = false)
+        this.alertingSound = new Audio("/assets/audios ad/lampOff.wav");
+        this.alertingSound.volume = 0.05;
+        this.alertingSound.play()
+        this.lampTick = 0
+        lampOn = 0
+      }
     }
     // CTX data statistics
     // CTX data statistics
@@ -531,7 +530,7 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
     this.ctx.fillText(`Bullet Speed: ${this.player.speed.toString()}`, 190, 860);
     this.ctx.fillText(`Shooting Range: ${bulletDistance.toString()}`, 190, 884);
     this.ctx.fillText(`Recharge Time: ${this.player.cooldownBullet.toString()}`, 190, 836);
-    if(this.upgradeIs === true) {
+    if(this.upgradeMessage === true) {
       this.upgradeTick++
       this.ctx.fillStyle = "aqua";
       this.ctx.fillText(`Bullet Speed: ${this.player.speed.toString()}`, 190, 860);
@@ -539,27 +538,27 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
       this.ctx.fillText(`Recharge Time: ${this.player.cooldownBullet.toString()}`, 190, 836);
       this.ctx.fillStyle = "white";
       if(this.upgradeTick >=150){
-        this.upgradeIs = false
+        this.upgradeMessage = false
         this.upgradeTick = 0
       }
     }
     this.ctx.fillText(`After Growth: ${afterSize.toString()}`, 410, 875);
     this.ctx.fillText(`Ammo size: ${bulletSize.toString()}`, 410, 845);
-      if(this.upBulletIs === true){
+      if(this.upBulletsMessage === true){
         this.upBulletTick++
         this.ctx.fillStyle = "aqua";
         this.ctx.fillText(`After Growth: ${afterSize.toString()}`, 410, 875);
         this.ctx.fillText(`Ammo size: ${bulletSize.toString()}`, 410, 845);
         this.ctx.fillStyle = "white";
         if(this.upBulletTick >=150){
-          this.upBulletIs = false
+          this.upBulletsMessage = false
           this.upBulletTick = 0
         }
       }
     this.ctx.fillText(`Jump distance: ${distance.toFixed(1).toString()}ft`, 640, 860);
     this.ctx.fillText(`Jump cooldown: ${this.player.cooldownJump.toFixed(1)}`, 640, 836);
     this.ctx.fillText(`Walk Speed: ${this.player.boost.toFixed(1)}`, 640, 884);
-    if(this.customerIs === true){
+    if(this.customersMessage === true){
       this.customerTick++
       this.ctx.fillStyle = "aqua"; 
       this.ctx.fillText(`Jump distance: ${distance.toFixed(1).toString()}ft`, 640, 860);
@@ -568,10 +567,10 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
       this.ctx.fillStyle = "white";
       if(this.customerTick >= 150){
         this.customerTick = 0
-        this.customerIs = false
+        this.customersMessage = false
       }
     } 
-    if(this.perjudiceIs === true){
+    if(this.perjudiceMessage === true){
       this.perjudiceTick++
       this.ctx.fillStyle = "tomato"; 
       this.ctx.fillText(`Jump distance: ${distance.toFixed(1).toString()}ft`, 640, 860);
@@ -580,7 +579,7 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
       this.ctx.fillStyle = "white";
       if(this.perjudiceTick >= 150){
         this.perjudiceTick = 0
-        this.perjudiceIs = false
+        this.perjudiceMessage = false
       }
     }
     if(this.bossPerjIs === true){
@@ -1065,26 +1064,25 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
     this.player.booster += 0.5
     this.player.cooldownJump += 100
     this.player.getBigRespect()
-    this.customerIs = true
+    this.customersMessage = true
   }
   dying(){
-    this.player.loseBigRespect()
-    this.score.addScore()
-    distance -= 10
+    this.player.loseBigRespect();
+    this.score.addScore();
+    distance -= 10;
     this.player.booster -= 0.5
     this.player.cooldownJump -= 100
-    this.perjudiceIs = true
+    this.perjudiceMessage = true
   }
   dyingCus(){
     this.player.loseCustomerRespect()
-    distance -= 0.05
-    this.player.booster -= 0.010
-    this.player.cooldownJump += 5
-    this.perjudiceIs = true
+    distance -= 0.05;
+    this.player.booster -= 0.010;
+    this.player.cooldownJump += 5;
+    this.perjudiceMessage = true;
   }
   angryKorenPopup(probability){
     let randomNumber = Math.floor(Math.random() *200);
-    console.log(randomNumber)
     if(randomNumber % probability === 0){//20% probabilidad de que salga koren al dañar a boss
       this.addKoren();
       this.korenAlert();
@@ -1166,8 +1164,8 @@ counterWhenKillBoss (deadCreature){
 
 
 foodAndDiscountDrop(creature){
-  const discRandom = Math.floor(Math.random() * 2)
-  const foodRandom = Math.floor(Math.random() * 2)
+  const discRandom = Math.floor(Math.random() * 10)
+  const foodRandom = Math.floor(Math.random() * 10)
   if(foodRandom == 1){
     const food = new Food(ctx, creature.x, creature.y + 80);
     this.foods.push(food);
@@ -1482,8 +1480,8 @@ foodAndDiscountDrop(creature){
         this.player.vx = -1;
         this.ratPoison = 1010
         venom += 1
-        this.ratTickIs = true
-        if(venom >= 5){
+        this.ratMessage = true
+        if(venom >= 5){//cuando el veneno llega hasta 5 acumulaciones, obtiene nueva habilidad en la P
           P = 80
         }
       }
@@ -1536,8 +1534,6 @@ foodAndDiscountDrop(creature){
         } else return true;
       });
     });
-
-
     this.rats.forEach((rat) => { //rat con blaster
       this.player.blasters.filter((blast) => {
         this.counterWhenKillRat(rat)
@@ -1558,6 +1554,16 @@ foodAndDiscountDrop(creature){
           rat.lifeleft -= sand.damage;
           rat.vx += 0.02
           this.foodAndDiscountDrop(rat)
+          return false;
+        } else return true;
+      });
+    });
+    this.rats.forEach((rat) => { // rat con mineReps
+      this.counterWhenKillRat(rat)
+      mineria.filter((mineRep) => {
+        if (mineRep.collides(rat)) {
+          mineRep.activated = true
+          rat.lifeleft -= mineRep.damage;
           return false;
         } else return true;
       });
@@ -1583,113 +1589,126 @@ foodAndDiscountDrop(creature){
         } else return true;
       }); 
     });
+  
     // goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...
 // goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...goose...
-this.geese = this.geese.filter((goose) => { //goose con player
-  if (goose.collides(this.player)) {
-    this.player.hit();
-    if(discounting >= 5){
-      discounting -= 5
-    }
-    return false;
-  }
-  return true;
-});
+      this.geese = this.geese.filter((goose) => { //goose con player
+        if (goose.collides(this.player)) {
+          this.player.hit();
+          if(discounting >= 5){
+            discounting -= 5
+          }
+          return false;
+        }
+        return true;
+      });
 
-this.geese.forEach((goose) => { //goose con fire
-  this.counterWhenKillGoose(goose)
-  this.player.heats = this.player.heats.filter((heat) => {
-    if (heat.collides(goose)) {
-      goose.lifeleft -= 1 
-      this.foodAndDiscountDrop(goose)
-      this.player.heats.splice(0, 1);
-      this.creaturePushback(goose, 30)
+      this.geese.forEach((goose) => { //goose con fire
+        this.counterWhenKillGoose(goose)
+        this.player.heats = this.player.heats.filter((heat) => {
+          if (heat.collides(goose)) {
+            goose.lifeleft -= 1 
+            this.foodAndDiscountDrop(goose)
+            this.player.heats.splice(0, 1);
+            this.creaturePushback(goose, 30)
 
-    this.checkCharger()
-    } else return true;
-  });
-  this.player.waters = this.player.waters.filter((water) => {// goose con water
-  this.counterWhenKillGoose(goose)
-    if (water.collides(goose)) {
-      this.player.waters.splice(0, 1);
-      goose.lifeleft -= 1 
-      this.foodAndDiscountDrop(goose)
-      this.player.heats.splice(0, 1);
-      this.creaturePushback(goose, 30)
+          this.checkCharger()
+          } else return true;
+        });
+        this.player.waters = this.player.waters.filter((water) => {// goose con water
+        this.counterWhenKillGoose(goose)
+          if (water.collides(goose)) {
+            this.player.waters.splice(0, 1);
+            goose.lifeleft -= 1 
+            this.foodAndDiscountDrop(goose)
+            this.player.heats.splice(0, 1);
+            this.creaturePushback(goose, 30)
 
-    this.checkCharger()
-    } else return true;
-  });
-  
-    this.player.hooks.filter((hook) => {// goose con hook
-  this.counterWhenKillGoose(goose)
-    if (hook.collides(goose)) {
-      this.player.hooks.splice(0, 1);
-      goose.cage = true;
-      hookImpact = true;
-      this.foodAndDiscountDrop(goose)
-      if(hookLeveling >= 2){
-        goose.lifeleft -= 1;
-      }
-      this.luzOnAudio = new Audio("/assets/audios ad/gooseHook.mp3")
-      this.luzOnAudio.volume = 0.07;
-      this.luzOnAudio.play();
-      goose.moveY = 0
-      goose.vx = 0
-      this.player.heats.splice(0, 1);
-    this.checkCharger()
-    } else return true;
-  });
-});
-this.geese.forEach((goose) => { // goose con blaster
-  this.counterWhenKillGoose(goose)
-  this.player.blasters.filter((blast) => {
-    if (blast.collides(goose)) {
-      blast.rocketDetonation = true
-      goose.lifeleft -= 3;
-      this.foodAndDiscountDrop(goose)
-      return false;
-    } else return true;
-  });
-});
-this.geese.forEach((goose) => { // goose con sanders
-  this.counterWhenKillGoose(goose)
-  this.player.sanders.filter((sand) => {
-    if (sand.collides(goose)) {
-      sand.activated = true 
-      goose.lifeleft -= sand.damage;
-      return false;
-    } else return true;
-  });
-});
-
-this.geese.forEach((goose) => { // goose con toxic
-  this.counterWhenKillGoose(goose)
-  this.player.toxics.filter((tox) => {
-    if (tox.collides(goose)) {
-      goose.lifeleft -= 0.005;
-      if(goose.vx > 0){
-        goose.vx -= 0.0005
-      } else if(goose.vx < 0 ){
-        goose.vx += 0.0005
-      }
-      if(goose.vy > 0){
-        goose.vy = 0.005
-      } else if (goose.vy < 0){
-        goose.vy = 0.005
-      }
-      this.ctx.font = "20px Arial";
-      this.ctx.fillStyle = "red";
-      this.ctx.fillText(`Weird goose noises`, goose.x - 29, goose.y-16);
-      this.ctx.fillStyle = "tomato";
-      this.ctx.fillText(`Weird goose noises`, goose.x - 26, goose.y-14);
-      this.ctx.fillStyle = "peachpuff";
-      this.ctx.fillText(`Weird goose noises`, goose.x - 28, goose.y - 15);
-      return false;
-    } else return true;
-  });
-});
-
+          this.checkCharger()
+          } else return true;
+        });
+        
+          this.player.hooks.filter((hook) => {// goose con hook
+        this.counterWhenKillGoose(goose)
+          if (hook.collides(goose)) {
+            this.player.hooks.splice(0, 1);
+            goose.cage = true;
+            hookImpact = true;
+            this.foodAndDiscountDrop(goose)
+            if(hookLeveling >= 2){
+              goose.lifeleft -= 1;
+            }
+            this.luzOnAudio = new Audio("/assets/audios ad/gooseHook.mp3")
+            this.luzOnAudio.volume = 0.07;
+            this.luzOnAudio.play();
+            goose.moveY = 0
+            goose.vx = 0
+            this.player.heats.splice(0, 1);
+          this.checkCharger()
+          } else return true;
+        });
+      });
+      this.geese.forEach((goose) => { // goose con blaster
+        this.counterWhenKillGoose(goose)
+        this.player.blasters.filter((blast) => {
+          if (blast.collides(goose)) {
+            blast.rocketDetonation = true
+            goose.lifeleft -= 3;
+            this.foodAndDiscountDrop(goose)
+            return false;
+          } else return true;
+        });
+      });
+      this.geese.forEach((goose) => { // goose con sanders
+        this.counterWhenKillGoose(goose)
+        this.player.sanders.filter((sand) => {
+          if (sand.collides(goose)) {
+            sand.activated = true 
+            goose.lifeleft -= sand.damage;
+            return false;
+          } else return true;
+        });
+      });
+      this.geese.forEach((goose) => { // goose con mineReps
+        this.counterWhenKillGoose(goose)
+        mineria.filter((mineRep) => {
+          if (mineRep.collides(goose)) {
+            mineRep.activated = true
+            goose.lifeleft -= mineRep.damage;
+            if(goose.lifeleft === 0){
+              this.score.addkgoose()
+              this.score.addktotal1()
+            }
+            return false;
+          } else return true;
+        });
+      });
+      this.geese.forEach((goose) => { // goose con toxic
+        this.counterWhenKillGoose(goose)
+        this.player.toxics.filter((tox) => {
+          if (tox.collides(goose)) {
+            goose.lifeleft -= 0.005;
+            if(goose.vx > 0){
+              goose.vx -= 0.0005
+            } else if(goose.vx < 0 ){
+              goose.vx += 0.0005
+            }
+            if(goose.vy > 0){
+              goose.vy = 0.005
+            } else if (goose.vy < 0){
+              goose.vy = 0.005
+            }
+            this.ctx.font = "20px Arial";
+            this.ctx.fillStyle = "red";
+            this.ctx.fillText(`Weird goose noises`, goose.x - 29, goose.y-16);
+            this.ctx.fillStyle = "tomato";
+            this.ctx.fillText(`Weird goose noises`, goose.x - 26, goose.y-14);
+            this.ctx.fillStyle = "peachpuff";
+            this.ctx.fillText(`Weird goose noises`, goose.x - 28, goose.y - 15);
+            return false;
+          } else return true;
+        });
+      });
     // enjaula a todas las ratas y gansos caundo tengas suficientes hoooks y hookleveling superior a 4
     if(this.player.cagedAllAnimals === true && hookLeveling >= 4 && this.hookedAllRatsAndGeese && hookCounter >= this.geese.length && hookCounter >= this.rats.length){//todas las ratas y gansos se quedarán atrapados en cajas
       this.geese.forEach((goose) => (goose.cage = true))
@@ -1823,14 +1842,14 @@ this.geese.forEach((goose) => { // goose con toxic
     });
 // koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...
 // koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...
-      this.korens = this.korens.filter((koren) => {
-        if (koren.collides(this.player)) {
-          this.player.fireHit();
-          this.player.fireHit();
-          this.player.extraBoost -= 0.005;
-        }
-        return true;
-      });
+    this.korens = this.korens.filter((koren) => {
+      if (koren.collides(this.player)) {
+        this.player.fireHit();
+        this.player.fireHit();
+        this.player.extraBoost -= 0.005;
+      }
+      return true;
+    });
     this.korens.forEach((koren) => {   //koren con heat
       this.player.heats = this.player.heats.filter((heat) => {
         if (heat.collides(koren)) {
@@ -1915,62 +1934,20 @@ this.geese.forEach((goose) => { // goose con toxic
         } else return true;
       });
     })
-
-//minas...minas...minasminas...minas...minasminas...minas...minasminas...minas...minasminas...minas...minas
-//minas...minas...minasminas...minas...minasminas...minas...minasminas...minas...minasminas...minas...minas
-
-this.geese.forEach((goose) => { // goose con mineReps
-  this.counterWhenKillGoose(goose)
-  mineria.filter((mineRep) => {
-    if (mineRep.collides(goose)) {
-      mineRep.activated = true
-      goose.lifeleft -= mineRep.damage;
-      if(goose.lifeleft === 0){
-        this.score.addkgoose()
-        this.score.addktotal1()
-      }
-      return false;
-    } else return true;
-  });
-});
-this.rats.forEach((rat) => { // rat con mineReps
-  this.counterWhenKillRat(rat)
-  mineria.filter((mineRep) => {
-    if (mineRep.collides(rat)) {
-      mineRep.activated = true
-      rat.lifeleft -= mineRep.damage;
-      return false;
-    } else return true;
-  });
-});
-this.bosss.forEach((boss) => { // boss con mineReps
-  mineria.filter((mineRep) => {
-    if (mineRep.collides(boss)) {
-      mineRep.activated = true
-      boss.lifeleft -= mineRep.damage;
-      this.counterWhenKillBoss(boss)
-      this.angryKorenPopup(10);
-      return false;
-    } else return true;
-  });
-});
-
-this.korens.forEach((koren) => { // koren con mineReps
-  mineria.filter((mineRep) => {
-    if (mineRep.collides(koren)) {
-      mineRep.activated = true
-      koren.h += mineRep.damage + 1;
-      koren.w += mineRep.damage + 1;
-      if(koren.lifeleft === 0){
-        this.score.addkkorens()
-        this.score.addktotal1()
-      }
-      return false;
-    } else return true;
-  });
-});
-
-
+    this.korens.forEach((koren) => { // koren con mineReps
+      mineria.filter((mineRep) => {
+        if (mineRep.collides(koren)) {
+          mineRep.activated = true
+          koren.h += mineRep.damage + 1;
+          koren.w += mineRep.damage + 1;
+          if(koren.lifeleft === 0){
+            this.score.addkkorens()
+            this.score.addktotal1()
+          }
+          return false;
+        } else return true;
+      });
+    });
 //babys...babys...babys...babys...babys...babys...babys...babys...babys...babys...babys...babys...babys...
 //babys...babys...babys...babys...babys...babys...babys...babys...babys...babys...babys...babys...babys...
     this.babys = this.babys.filter((baby) => { //baby con player
@@ -1984,40 +1961,38 @@ this.korens.forEach((koren) => { // koren con mineReps
     this.babys.forEach((baby) => { //baby con blaster
       this.player.blasters.filter((blast) => {
         if (blast.collides(baby)) {
-          this.babys.splice(0,1)
-          this.player.loseRespect()
-          this.dying()
+          this.babys.splice(0,1);
+          this.player.loseRespect();
+          this.dying();
           return false;
         } else return true;
       });
     });
-    this.babys.forEach((baby) => { //baby con sanders
-      this.player.sanders.filter((sand) => {
-        if (sand.collides(baby)) {
-          this.babys.splice(0,1)
-          this.dying()
-          return false;
-        } else return true;
+
+//colisión con sanders, waters, heats, cactus
+    function handleCollisions(sourceArray, targetArray, callback) {
+      sourceArray.forEach((item) => {
+        targetArray = targetArray.filter((targetItem) => {
+          if (targetItem.collides(item)) {
+            sourceArray.splice(0, 1);
+            callback();
+            return false;
+          } else {
+            return true;
+          }
+        });
       });
-    });
-    this.babys.forEach((baby) => { //baby con waters
-      this.player.waters.filter((wat) => {
-        if (wat.collides(baby)) {
-          this.babys.splice(0,1)
-          this.dying()
-          return false;
-        } else return true;
-      });
-    });
-    this.babys.forEach((baby) => { //baby con heats
-      this.player.heats.filter((heat) => {
-        if (heat.collides(baby)) {
-          this.babys.splice(0,1)
-          this.dying()
-          return false;
-        } else return true;
-      });
-    });
+    
+      return targetArray;
+    }
+    
+    this.player.sanders = handleCollisions(this.babys, this.player.sanders, this.dying.bind(this));
+    this.player.waters = handleCollisions(this.babys, this.player.waters, this.dying.bind(this));
+    this.player.heats = handleCollisions(this.babys, this.player.heats, this.dying.bind(this));
+    this.babys = handleCollisions(this.cactus, this.babys, this.dying.bind(this));
+    
+
+
     this.babys.forEach((baby) => { //baby con hooks
       this.player.hooks.filter((hook) => {
         if (hook.collides(baby)) {
@@ -2050,16 +2025,6 @@ this.korens.forEach((koren) => { // koren con mineReps
         if (heat.collides(fire)) {
           this.babys.splice(0, 1);
           fire.vx = 500;
-          this.dying()
-          return false;
-        } else return true;
-      });
-    });
-    this.cactus.forEach((cactu) => { //baby con cactus
-      this.babys = this.babys.filter((la) => {
-        if (la.collides(cactu)) {
-          this.babys.splice(0, 1);
-          cactu.vx = 500;
           this.dying()
           return false;
         } else return true;
@@ -2377,8 +2342,17 @@ this.korens.forEach((koren) => { // koren con mineReps
         } else return true;
       });
     });
-
-    
+    this.bosss.forEach((boss) => { // boss con mineReps
+      mineria.filter((mineRep) => {
+        if (mineRep.collides(boss)) {
+          mineRep.activated = true
+          boss.lifeleft -= mineRep.damage;
+          this.counterWhenKillBoss(boss)
+          this.angryKorenPopup(10);
+          return false;
+        } else return true;
+      });
+    });
     this.bosss.forEach((boss) => {  //boss con sanders
       this.player.sanders.filter((sand) => {
         if (sand.collides(boss)) {
@@ -2394,6 +2368,29 @@ this.korens.forEach((koren) => { // koren con mineReps
     });
 // Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..
 // Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..
+if( addPeople){
+  this.pback.forEach((wall) => {//pback con player
+    if (wall.collides(this.player)) {
+      this.excla = new Image();
+      this.excla.src = "/assets/images/elements/exclapep.png"
+      this.ctx.drawImage(
+        this.excla, wall.x + 10, wall.y - 10, 30,  30
+      )
+      this.player.loseRespect()
+      this.player.drawSorry()
+    }
+  });
+  this.pfront.forEach((wall) => {//pfront con player
+    if (wall.collides(this.player)) {
+      this.excla = new Image();
+      this.excla.src = "/assets/images/elements/exclapep.png"
+      this.ctx.drawImage(
+        this.excla, wall.x + 10, wall.y - 10, 30,  30
+      )
+      this.player.loseRespect()
+      this.player.drawSorry()
+    }
+  });
 this.pfront.forEach((peop) => {     //PFront con blaster
   this.player.blasters.filter((blast) => {
     if (blast.collides(peop) && areaDamage) {
@@ -2454,6 +2451,41 @@ this.pback.forEach((peop) => { //PBack
     } else return true;
   });
 });
+this.pfront.forEach((pfro) => {//pfro con sanders
+  this.player.sanders.filter((sand) => {
+    if (sand.collides(pfro)) {
+      if(this.player.sandstate === true){
+        this.player.getSmallestRespect()
+        this.ctx.font = "20px Arial";
+        this.ctx.fillStyle = "blue";
+        this.ctx.fillText(pfro.complainOne, pfro.x - 40, pfro.y - 28);
+        this.ctx.fillStyle = "ble";
+        this.ctx.fillText(pfro.complainOne, pfro.x - 36, pfro.y-24);
+        this.ctx.fillStyle = "aqua";
+        this.ctx.fillText(pfro.complainOne, pfro.x - 38, pfro.y-26);
+      }
+      return false;
+    } else return true;
+  });
+});
+this.pback.forEach((pfro) => {//pfro con sanders
+  this.player.sanders.filter((sand) => {
+    if (sand.collides(pfro)) {
+      if(this.player.sandstate === true){
+        this.player.getSmallestRespect()
+        this.ctx.font = "20px Arial";
+        this.ctx.fillStyle = "blue";
+        this.ctx.fillText(pfro.complainOne, pfro.x - 40, pfro.y - 28);
+        this.ctx.fillStyle = "ble";
+        this.ctx.fillText(pfro.complainOne, pfro.x - 36, pfro.y-24);
+        this.ctx.fillStyle = "aqua";
+        this.ctx.fillText(pfro.complainOne, pfro.x - 38, pfro.y-26);
+      }
+      return false;
+    } else return true;
+  });
+});
+}
     this.bushesover.forEach((wall) => { //bushes
       if (wall.collides(this.player)) {
         this.player.vy = 0;
@@ -2483,7 +2515,7 @@ this.pback.forEach((peop) => { //PBack
         this.player.vx = 0;
       }
     });
-  if(this.winTime >= 57500){ //esto abarca desde los hooks al jugador
+  if(this.winTime >= 57500 && addPortal){ //esto abarca desde los hooks al jugador
     this.portals.forEach((port) => {//hook con portal hooktal
       this.player.hooks.filter((hook) => {
               if (hook.collides(port)) {
@@ -2614,29 +2646,7 @@ this.pback.forEach((peop) => { //PBack
     }
   });
 }
-  this.pback.forEach((wall) => {
-      if (wall.collides(this.player)) {
-        this.excla = new Image();
-        this.excla.src = "/assets/images/elements/exclapep.png"
-        this.ctx.drawImage(
-          this.excla, wall.x + 10, wall.y - 10, 30,  30
-        )
-        this.player.loseRespect()
-        this.player.drawSorry()
-      }
-    });
-    this.pfront.forEach((wall) => {
-      if (wall.collides(this.player)) {
-        this.excla = new Image();
-        this.excla.src = "/assets/images/elements/exclapep.png"
-        this.ctx.drawImage(
-          this.excla, wall.x + 10, wall.y - 10, 30,  30
-        )
-        this.player.loseRespect()
-        this.player.drawSorry()
-      }
-    });
-    if(this.winTime >= 10){
+    if(addCactus){
     this.cactus.forEach((cact) => {
       if (cact.collides(this.player)) {
         this.player.vy = 0;
@@ -2701,6 +2711,7 @@ this.pback.forEach((peop) => { //PBack
     });
 
 // Función para procesar colisiones entre ganchos y elementos comunes
+if(addLamps){
 this.lamps.forEach((lamp) => {//hook con lamps
   this.player.hooks.filter((hook) => {
     if (hook.collides(lamp)) {
@@ -2732,6 +2743,7 @@ this.lamps.forEach((lamp) => {//hook con lamps
     } else return true;
   });
 });
+}
 
 function processCollisions(player, hooks, elements) {
   elements.forEach((element) => {
@@ -2748,15 +2760,9 @@ function processCollisions(player, hooks, elements) {
     });
   });
 }
-
-// Llamar a la función para procesar colisiones con foods
 processCollisions(this.player, this.player.hooks, this.foods);
-// Llamar a la función para procesar colisiones con carts
 processCollisions(this.player, this.player.hooks, this.carts);
-// Llamar a la función para procesar colisiones con discounts
 processCollisions(this.player, this.player.hooks, this.discounts);
-
-
 
 // Función para procesar colisiones entre ganchos y elementos de levelup
 function processCollisions(player, hooks, elements, alertId) {
@@ -2778,12 +2784,8 @@ function processCollisions(player, hooks, elements, alertId) {
     });
   });
 }
-
-// Llamar a la función para procesar colisiones con drugs
 processCollisions(this.player, this.player.hooks, this.drugs, "upgrade-alert");
-// Llamar a la función para procesar colisiones con upBullets
 processCollisions(this.player, this.player.hooks, this.upBullets, "upBullet-alert");
-// Llamar a la función para procesar colisiones con upgrades
 processCollisions(this.player, this.player.hooks, this.upgrades, "upgrade-alert");
 
 
@@ -2801,9 +2803,6 @@ processCollisions(this.player, this.player.hooks, this.upgrades, "upgrade-alert"
       }
       return true;
     });
-
-
-
 // upgrades upbulltes...upgrades upbulltes...upgrades upbulltes...upgrades upbulltes...upgrades upbulltes...
 // upgrades upbulltes...upgrades upbulltes...upgrades upbulltes...upgrades upbulltes...upgrades upbulltes...
     this.upgrades = this.upgrades.filter((up) => {
@@ -2816,7 +2815,7 @@ processCollisions(this.player, this.player.hooks, this.upgrades, "upgrade-alert"
         this.atraer = new Audio("/assets/audios ad/bonus.mp3")
         this.atraer.volume = 0.03;
         this.atraer.play();
-        this.upgradeIs = true
+        this.upgradeMessage = true
         if(this.upgrades.length === 0){
           const upAlert = document.getElementById("upgrade-alert");
           upAlert.style.display = "none";
@@ -2834,7 +2833,7 @@ processCollisions(this.player, this.player.hooks, this.upgrades, "upgrade-alert"
         this.atraer = new Audio("/assets/audios ad/bonus.mp3")
         this.atraer.volume = 0.03;
         this.atraer.play();
-        this.upBulletIs = true
+        this.upBulletsMessage = true
         if(this.upBullets.length === 0){
           const upgAlert = document.getElementById("upBullet-alert");
           upgAlert.style.display = "none";
@@ -2859,8 +2858,6 @@ processCollisions(this.player, this.player.hooks, this.upgrades, "upgrade-alert"
       }
       return true;
     });
-
-
     this.player.toxics = this.player.toxics.filter((tox) => {
       if (tox.collides(this.player)) {
           this.player.dieSlower()
@@ -2874,7 +2871,6 @@ processCollisions(this.player, this.player.hooks, this.upgrades, "upgrade-alert"
         }
       return true;
     });
-
     this.player.sanders = this.player.sanders.filter((sand) => { //sandheal con player
       if (sand.collides(this.player)) {
         if(this.player.sandstate === true){
@@ -2889,40 +2885,6 @@ processCollisions(this.player, this.player.hooks, this.upgrades, "upgrade-alert"
         }
       }
       return true;
-    });
-    this.pfront.forEach((pfro) => {//pfro con sanders
-      this.player.sanders.filter((sand) => {
-        if (sand.collides(pfro)) {
-          if(this.player.sandstate === true){
-            this.player.getSmallestRespect()
-            this.ctx.font = "20px Arial";
-            this.ctx.fillStyle = "blue";
-            this.ctx.fillText(pfro.complainOne, pfro.x - 40, pfro.y - 28);
-            this.ctx.fillStyle = "ble";
-            this.ctx.fillText(pfro.complainOne, pfro.x - 36, pfro.y-24);
-            this.ctx.fillStyle = "aqua";
-            this.ctx.fillText(pfro.complainOne, pfro.x - 38, pfro.y-26);
-          }
-          return false;
-        } else return true;
-      });
-    });
-    this.pback.forEach((pfro) => {//pfro con sanders
-      this.player.sanders.filter((sand) => {
-        if (sand.collides(pfro)) {
-          if(this.player.sandstate === true){
-            this.player.getSmallestRespect()
-            this.ctx.font = "20px Arial";
-            this.ctx.fillStyle = "blue";
-            this.ctx.fillText(pfro.complainOne, pfro.x - 40, pfro.y - 28);
-            this.ctx.fillStyle = "ble";
-            this.ctx.fillText(pfro.complainOne, pfro.x - 36, pfro.y-24);
-            this.ctx.fillStyle = "aqua";
-            this.ctx.fillText(pfro.complainOne, pfro.x - 38, pfro.y-26);
-          }
-          return false;
-        } else return true;
-      });
     });
     this.player.blasters.forEach((blast) => {// con sanders
       this.player.sanders.filter((sand) => {
@@ -2989,8 +2951,6 @@ if(leveler){
 // collision end... collision end... collision end... collision end... collision end... collision end... collision end...
 // collision end... collision end... collision end... collision end... collision end... collision end... collision end...
 // collision end... collision end... collision end... collision end... collision end... collision end... collision end...
-
-
 
     // evento que se dispara al perder toda la vida, morir clientes, perder el respeto y perder hjas de reclamaciones
     if (!this.player.isRespected()) {
