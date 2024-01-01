@@ -706,7 +706,7 @@ h2 {
   margin: 0 1vw;
 }
 
-#checkbox-for-levels1{
+#checkbox-for-levels0{
   color:white;
   display: flex;
   position: absolute;
@@ -714,11 +714,19 @@ h2 {
   left: 100px;
   gap: 20px;
 }
-#checkbox-for-levels2{
+#checkbox-for-levels1{
   color:white;
   display: flex;
   position: absolute;
   top: 150px;
+  left: 100px;
+  gap: 20px;
+}
+#checkbox-for-levels2{
+  color:white;
+  display: flex;
+  position: absolute;
+  top: 200px;
   left: 100px;
   gap: 20px;
 }

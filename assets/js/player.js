@@ -690,8 +690,7 @@ class Player {
         N = 78;
       }, 600);
     }
-    if (key === J //&& !elementBoost
-&& elementalMineCount >= 1) {
+    if (key === J && elementalistLeveling >= 2 && elementalMineCount >= 1) {
       this.elementBomb()
       this.sandShootAudio = new Audio("/assets/audios ad/elementalBombSound.wav")
       this.sandShootAudio.volume = 0.4;

@@ -98,6 +98,11 @@ class Goose {
       this.vy = 0;
       this.dead++
       if(this.dead >= 100){
+        solvedGoose += 0.5;
+        solvedTotal += 0.5;
+        if(!moneyForKill){
+          money += Math.floor(Math.random() * 20);
+        }
         this.vx = -2000
       }
   }

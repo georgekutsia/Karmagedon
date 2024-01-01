@@ -394,12 +394,12 @@ class ElementMine{
     this.blip.frame = 0;
     this.eleImg.frame = 0;
     this.activated = false
-    this.framer = 8
-    this.damage = 0.1
+    this.framer = 8;
+    this.damage = 0.1;
     this.eleAudio = new Audio("/assets/audios ad/minaInstall.wav")
     this.eleAudio.volume = 0.01;
     this.eleAudio.play();
-    this.active = theTruthOfMine
+    this.active = theTruthOfMine;
   }
   draw() {
     this.ctx.drawImage(
@@ -427,7 +427,11 @@ class ElementMine{
   }
   move() {
     this.tick++;
-    this.tock++
+    this.tock++;
+    this.damage += 0.00002;
+    this.w += 0.005;
+    this.h += 0.005;
+    console.log(this.damage);
     if (this.tick > 4) {
       this.tick = 0;
       this.eleImg.frame++;

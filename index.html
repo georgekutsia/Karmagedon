@@ -121,6 +121,12 @@
       <a class="neon-bu">Exit&nbsp;<i class="pt-2 fa-solid fa-right-to-bracket"></i></a>
     </div>
         <div>
+          <div id="checkbox-for-levels0">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" role="switch" id="addWalls" onchange="updateState('addWalls')">
+              <label class="form-check-label" for="addWalls">Add Walls</label>
+            </div>
+          </div>
           <div id="checkbox-for-levels1">
             <div class="form-check form-switch">
               <input class="form-check-input" type="checkbox" role="switch" id="addCactus" onchange="updateState('addCactus')">
@@ -172,11 +178,14 @@
           case 'addFat':
           addFat = checkbox.checked;
           break;
+          case 'addWalls':
+          addWalls = checkbox.checked;
+          break;
         // Agrega más casos según sea necesario
         default:
           console.error('Checkbox element not found for ' + constantName);
       }
-      console.log(constantName + ' is now ' + (checkbox.checked ? 'true' : 'false'));
+      // console.log(constantName + ' is now ' + (checkbox.checked ? 'true' : 'false'));
     }
         </script>
 

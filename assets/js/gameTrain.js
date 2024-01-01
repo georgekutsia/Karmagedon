@@ -1449,10 +1449,10 @@ class GameTrain {
             const discount = new Discount(ctx, rat.x + 80, rat.y - 40, this.disImage);
             this.discounts.push(discount);
           }
-          if(rat.lifeleft === 0){
-            this.score.addkrat()
-            this.score.addktotal1()
-          }
+          // if(rat.lifeleft === 0){
+          //   this.score.addkrat()
+          //   this.score.addktotal1()
+          // }
           return false;
         } else return true;
       });
@@ -1476,10 +1476,10 @@ class GameTrain {
             const discount = new Discount(ctx, rat.x + 80, rat.y - 40, this.disImage);
             this.discounts.push(discount);
           }
-          if(rat.lifeleft === 0){
-            this.score.addkrat()
-            this.score.addktotal1()
-          }
+          // if(rat.lifeleft === 0){
+          //   this.score.addkrat()
+          //   this.score.addktotal1()
+          // }
           return false;
         } else return true;
       });

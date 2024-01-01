@@ -198,9 +198,10 @@ class Hook {
   isVisible() {
     return !this.dispose;
   }
-  collides(something) {
-    const colX = this.x <= something.x + something.w && this.x + this.w > something.x;
-    const colY = this.y + this.h > something.y && this.y < something.y + something.h;
+  
+  collides(object) {
+    const colX = this.x <= object.x + object.w && this.x + this.w > object.x;
+    const colY = this.y + this.h > object.y && this.y < object.y + object.h;
     return colX && colY;
   }
 }

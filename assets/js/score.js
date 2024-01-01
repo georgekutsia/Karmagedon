@@ -4,13 +4,6 @@ class Score {
     this.x = 1015;
     this.y = 570;
     this.score = 0;
-    this.kgoose = 0;
-    this.krat = 0;
-    this.kobstacle = 0;
-    this.kboss = 0;
-    this.kkarens = 0;
-    this.kkorens = 0;
-    this.total = 0;
   }
   
   draw() {
@@ -22,31 +15,31 @@ class Score {
     this.ctx.fillText(`Solved problems: `, 1218, 495);
     this.ctx.fillStyle = "darkseagreen";
     this.ctx.font = "22px Arco";
-    this.ctx.fillText(`Boss:${this.kboss.toString()}`, 1312, 610);
+    this.ctx.fillText(`Boss:${solvedBoss.toString()}`, 1312, 610);
     this.ctx.font = "20px Arco";
-    this.ctx.fillText(`Korens: ${this.kkorens.toString()}`, 1220, 580);
-    this.ctx.fillText(`Karens: ${this.kkarens.toString()}`, 1305, 580);
+    this.ctx.fillText(`Korens: ${solvedKorens.toString()}`, 1220, 580);
+    this.ctx.fillText(`Karens: ${solvedKarens.toString()}`, 1305, 580);
     this.ctx.fillStyle = "white";
     ctx.fillRect(1220, 615, 150, 25);
     this.ctx.fillStyle = "black";
     this.ctx.font = "21px Arco";
-    this.ctx.fillText(`Total solved: ${this.total.toString()}`, 1223, 635);
+    this.ctx.fillText(`Total solved: ${solvedTotal.toString()}`, 1223, 635);
     this.ctx.fillStyle = "red";
     this.ctx.font = "22px Arco";
     this.ctx.fillText(`Dead: ${this.score.toString()}`, 1220, 465);
     this.ctx.fillStyle = "lightsalmon";
-    this.ctx.fillText(`Geese: ${this.kgoose.toString()}`, 1220, 520);
-    this.ctx.fillText(`Rats: ${this.krat.toString()}`, 1310, 520);
-    this.ctx.fillText(`Fires/floods: ${this.kobstacle.toString()}`, 1240, 550);
+    this.ctx.fillText(`Geese: ${solvedGoose.toString()}`, 1220, 520);
+    this.ctx.fillText(`Rats: ${solvedRats.toString()}`, 1310, 520);
+    this.ctx.fillText(`Fires/floods: ${solvedWaterFire.toString()}`, 1240, 550);
     ctx.fillStyle = "rgb(251, 209, 209)";
     this.ctx.restore();
     this.ctx.font = "26px Arial";
-    if(this.total <= 19){
+    if(solvedTotal <= 19){
       this.ctx.fillStyle = "orange";
       this.ctx.fillText(`Supervisor`, 1240, 365);
       this.ctx.fillStyle = "white";
       this.ctx.fillText(`Supervisor`, 1242, 366);
-    } else if(this.total >= 20 && this.total <= 34){
+    } else if(solvedTotal >= 20 && solvedTotal <= 34){
       chance = 1
       afterSpin = true
       this.ctx.fillStyle = "tomato";
@@ -55,7 +48,7 @@ class Score {
       this.ctx.fillText(`Manager`, 1246, 367);
       this.ctx.fillStyle = "white";
       this.ctx.fillText(`Manager`, 1245, 366);
-    } else if(this.total >= 35 && this.total <= 49){
+    } else if(solvedTotal >= 35 && solvedTotal <= 49){
       chance = 2
       afterSpin = true
       this.ctx.font = "22px Arial";
@@ -65,7 +58,7 @@ class Score {
       this.ctx.fillText(`General Manager`, 1213, 367);
       this.ctx.fillStyle = "white";
       this.ctx.fillText(`General Manager`, 1212, 366);
-    } else if(this.total >= 50){
+    } else if(solvedTotal >= 50){
       chance = 3
       afterSpin = true
       this.ctx.font = "32px Arial";
@@ -91,32 +84,9 @@ class Score {
   }
   
   // addTotalScore(){
-  //   this.total += 50
+  //   solvedTotal += 50
   // }
-  addkobstacle(){
-    this.kobstacle++
-  }
-  addkgoose(){
-    this.kgoose++
-  }
-  addkrat(){
-    this.krat++
-  }
-  addkkarens(){
-    this.kkarens++
-  }
-  addkkorens(){
-    this.kkorens++
-  }
-  addScore() {
-    this.score++;
-  }
-  addkboss() {
-    this.kboss++;
-  }
-  addktotal1(){
-    this.total++
-  }
+
 }
 class Saved {
   constructor(ctx) {
@@ -136,3 +106,11 @@ class Saved {
     this.save++;
   }
 }
+
+let solvedRats = 0;
+let solvedGoose = 0;
+let solvedWaterFire= 0;
+let solvedBoss = 0;
+let solvedKarens = 0;
+let solvedKorens = 0;
+let solvedTotal = 0;
