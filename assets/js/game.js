@@ -1055,6 +1055,15 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
   // funciones sueltas para varias cosas
   // funciones sueltas para varias cosas
   // funciones sueltas para varias cosas
+
+  puddlePuff(elem){
+    if (elem.h <= 20) {
+      elem.puddleIsOn = false;
+      elem.puffIsOn = true;
+      elem.h = 30;
+      elem.w = 30;
+    }
+  }
   saving(){
     this.saved.addSave()
     distance += 10
@@ -1122,13 +1131,7 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
     }
   }
 
-counterWhenKillGoose (deadCreature){
-  if(deadCreature.dead >= 101 ){
-    if(moneyForKill){
-      money += Math.floor(Math.random() * 20);
-    }
-  }
-}
+
 counterWhenKillBoss (deadCreature){
   deadCreature.y = 2000;
   this.player.getBigRespect()
@@ -1190,32 +1193,17 @@ foodAndDiscountDrop(creature){
       this.player.blasters.filter((blast) => {
         if (blast.collides(puddle)) {
           puddle.dicreaseSmall();
-          if (puddle.h <= 20) {
-            puddle.puddleIsOn = false
-            puddle.puffIsOn = true
-            puddle.h = 30
-            puddle.w = 30
-            if (this.winTime > 40000) {
-              this.addPuddle();
-            }
-          }
+          this.puddlePuff(puddle);
           return false;
         } else return true;
       });
     });
+    console.log(bulletSize)
     this.puddles.forEach((puddle) => {//agua con sanders
       this.player.sanders.filter((sand) => {
         if (sand.collides(puddle)) {
           puddle.dicreaseSmall();
-          if (puddle.h <= 20) {
-            puddle.puddleIsOn = false
-            puddle.puffIsOn = true
-            puddle.h = 30
-            puddle.w = 30
-            if (this.winTime > 120000) {
-              this.addPuddle();
-            }
-          }
+          this.puddlePuff(puddle);
           return false;
         } else return true;
       });
@@ -1226,20 +1214,7 @@ foodAndDiscountDrop(creature){
           this.player.heats.splice(0, 1);
           this.checkCharger()
             puddle.dicrease();
-          if(bulletSize >= 40){
-            puddle.dicrease();
-          } else if( bulletSize >= 60){
-            puddle.dicrease();
-          }
-          if (puddle.h <= 20) {
-            puddle.puddleIsOn = false
-            puddle.puffIsOn = true
-            puddle.h = 30
-            puddle.w = 30
-            if (this.winTime > 40000) {
-              this.addPuddle();
-            }
-          }
+            this.puddlePuff(puddle); //hace que desaparezca el agua al bajar de cierto tamaño
           return false;
         } else return true;
       });
@@ -1559,7 +1534,6 @@ foodAndDiscountDrop(creature){
       });
 
       this.geese.forEach((goose) => { //goose con fire
-        this.counterWhenKillGoose(goose)
         this.player.heats = this.player.heats.filter((heat) => {
           if (heat.collides(goose)) {
             goose.lifeleft -= 1 
@@ -1571,7 +1545,6 @@ foodAndDiscountDrop(creature){
           } else return true;
         });
         this.player.waters = this.player.waters.filter((water) => {// goose con water
-        this.counterWhenKillGoose(goose)
           if (water.collides(goose)) {
             this.player.waters.splice(0, 1);
             goose.lifeleft -= 1 
@@ -1584,7 +1557,6 @@ foodAndDiscountDrop(creature){
         });
         
           this.player.hooks.filter((hook) => {// goose con hook
-        this.counterWhenKillGoose(goose)
           if (hook.collides(goose)) {
             this.player.hooks.splice(0, 1);
             goose.cage = true;
@@ -1614,7 +1586,6 @@ foodAndDiscountDrop(creature){
         });
       });
       this.geese.forEach((goose) => { // goose con sanders
-        this.counterWhenKillGoose(goose)
         this.player.sanders.filter((sand) => {
           if (sand.collides(goose)) {
             sand.activated = true 
@@ -1624,7 +1595,6 @@ foodAndDiscountDrop(creature){
         });
       });
       this.geese.forEach((goose) => { // goose con mineReps
-        this.counterWhenKillGoose(goose)
         mineria.filter((mineRep) => {
           if (mineRep.collides(goose)) {
             mineRep.activated = true
@@ -1636,7 +1606,6 @@ foodAndDiscountDrop(creature){
         });
       });
       this.geese.forEach((goose) => { // goose con toxic
-        this.counterWhenKillGoose(goose)
         this.player.toxics.filter((tox) => {
           if (tox.collides(goose)) {
             goose.lifeleft -= 0.005;
