@@ -5,7 +5,7 @@ class Respect {
     this.y = 70;
     this.w = 173;
     this.h = 43;
-    this.total = 1;
+    this.total = 1 + publicImage;
     this.v = 5;
     ctx.font = "40px Verdana";
   }
@@ -39,31 +39,14 @@ class Respect {
     } else if(this.y > 75)
     this.v = 0.01
   }
-  loseRespect() {
-    this.total -= 0.0005;
+
+  losingRespect(amount){
+    this.total -= amount;
   }
-  loseCustomerRespect() {
-    this.total -= 0.004;
-  }
-  loseBigRespect() {
-    this.total -= 0.3;
-  }
-  getBigRespect(){
-    this.total += 0.2 + pImage
-    if (this.total >= 1) {
-      this.total = 1;
-    }
-  }
-  getSmallRespect(){
-    this.total += 0.1 + pImage/2
-    if (this.total >= 1) {
-      this.total = 1;
-    }
-  }
-  getSmallestRespect() {
-    this.total += 0.0005 + pImage/1000
-    if (this.total >= 1) {
-      this.total = 1;
+  getRespect(amount){
+    this.total += amount + publicImage/1000
+    if (this.total >= 1 + publicImage) {
+      this.total = 1 + publicImage;
     }
   }
 }

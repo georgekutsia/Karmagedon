@@ -240,7 +240,7 @@ class People {
       this.h = h;
       this.img = new Image();
       this.img.src = other;
-      this.complaintList  = [
+      this.niceWords  = [
         "Nice spectacle!",
         "Cool entertainment",
         "Good job with that!",
@@ -248,7 +248,7 @@ class People {
         "Can`t believe my eyes",
         "Such a nice ambience"
       ]
-      this.complainOne = this.complaintList[Math.floor(Math.random() * this.complaintList.length)]
+      this.niceMessage = this.niceWords[Math.floor(Math.random() * this.niceWords.length)]
 
     }
     draw() {

@@ -7,7 +7,7 @@ class Score {
   }
   
   draw() {
-    this.pImageCount = pImage 
+    this.pImageCount = publicImage;
     this.ctx.font = "27px Arco";
     this.ctx.fillStyle = "white";
     this.ctx.fillText(`Customers: `, 1240, 435);
@@ -41,7 +41,6 @@ class Score {
       this.ctx.fillText(`Supervisor`, 1242, 366);
     } else if(solvedTotal >= 20 && solvedTotal <= 34){
       chance = 1
-      afterSpin = true
       this.ctx.fillStyle = "tomato";
       this.ctx.fillText(`Manager`, 1244, 365);
       this.ctx.fillStyle = "tomato";
@@ -50,7 +49,6 @@ class Score {
       this.ctx.fillText(`Manager`, 1245, 366);
     } else if(solvedTotal >= 35 && solvedTotal <= 49){
       chance = 2
-      afterSpin = true
       this.ctx.font = "22px Arial";
       this.ctx.fillStyle = "red";
       this.ctx.fillText(`General Manager`, 1211, 365);
@@ -60,7 +58,6 @@ class Score {
       this.ctx.fillText(`General Manager`, 1212, 366);
     } else if(solvedTotal >= 50){
       chance = 3
-      afterSpin = true
       this.ctx.font = "32px Arial";
       this.ctx.fillStyle = "aqua";
       this.ctx.fillText(`Director`, 1244, 365);
@@ -83,10 +80,6 @@ class Score {
     this.ctx.fillText(`money ${money}$`, 1215, 396);
   }
   
-  // addTotalScore(){
-  //   solvedTotal += 50
-  // }
-
 }
 class Saved {
   constructor(ctx) {
@@ -109,7 +102,7 @@ class Saved {
 
 let solvedRats = 0;
 let solvedGoose = 0;
-let solvedWaterFire= 0;
+let solvedWaterFire = 0;
 let solvedBoss = 0;
 let solvedKarens = 0;
 let solvedKorens = 0;

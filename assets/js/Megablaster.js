@@ -16,7 +16,9 @@ class Megablaster {
     this.blasterShootAudio.play();
     this.blasterImg.frame = 0;
     this.tick = 0;
-    this.framer = 1
+    this.framer = 
+    this.damage =( 1 + playerBasicDamage) * playerDoubleDamage; 
+    1
   }
   draw() {
     this.ctx.drawImage(
@@ -84,6 +86,8 @@ class RocketLauncher {
     this.teck = 0;
     this.framer = 6
     this.rocketDetonation = false
+    this.damage =( 1 + playerBasicDamage) * playerDoubleDamage; 
+
   }
   draw() {
     this.ctx.drawImage(
@@ -256,7 +260,8 @@ class ElementShield {
     this.eleAudio = new Audio("/assets/audio/sandSound.mp3")
     this.eleAudio.volume = 0.01;
     this.eleAudio.play();
-    this.damage = 0.1
+    this.damage =( 0.01 + playerBasicDamage) * playerDoubleDamage; 
+
   }
   draw() {
     this.ctx.drawImage(
@@ -317,8 +322,7 @@ class ElementBomb{
     this.eleAudio = new Audio("/assets/audio/sandSound.mp3")
     this.eleAudio.volume = 0.01;
     this.eleAudio.play();
-    this.damage = 0.008
-
+    this.damage =( 0.008 + playerBasicDamage) * playerDoubleDamage; 
   }
   draw() {
     this.ctx.drawImage(
@@ -400,6 +404,8 @@ class ElementMine{
     this.eleAudio.volume = 0.01;
     this.eleAudio.play();
     this.active = theTruthOfMine;
+    this.damage =( 1 + playerBasicDamage) * playerDoubleDamage; 
+
   }
   draw() {
     this.ctx.drawImage(
@@ -615,6 +621,8 @@ class Poison {
     this.sandShootAudio = new Audio("/assets/audio/sandSound.mp3")
     this.sandShootAudio.volume = 0.01;
     this.sandShootAudio.play();
+    this.damage =( 0.003 + playerBasicDamage) * playerDoubleDamage; 
+
   }
   draw() {
     this.ctx.drawImage(
@@ -677,6 +685,8 @@ class Toxic {
       this.sandShootAudio = new Audio("/assets/audio/sandSound.mp3")
       this.sandShootAudio.volume = 0.01;
       this.sandShootAudio.play();
+    this.damage =( 0.02 + playerBasicDamage) * playerDoubleDamage; 
+
     }
     draw() {
       this.ctx.drawImage(

@@ -386,11 +386,9 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
         this.mainOffice, 1200, 200, 190, 130
       ) 
     } else {
-      ctx.globalAlpha = 0.2
       this.ctx.drawImage(
         this.mainOffice, 1200, 200, 190, 130
         ) 
-      ctx.globalAlpha = 0;
     }
     this.ctx.drawImage(
       this.backPack, 100, 825, 70, 60
@@ -402,11 +400,20 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
       this.brain, 900, 825, 50, 60
     )
     if(this.player.respect.total <= 0.3 && this.player.life.total <=3){
-      this.player.sandstate = true
+      this.player.sandstate = true;
     }
-    if(this.player.respect.total >= 0.7 || this.player.life.total >=8){
-      this.player.sandstate = false
+    if(this.player.respect.total >= 0.5 || this.player.life.total >=5){
+      setTimeout(() => {
+        this.player.sandstate = false;
+      }, 3000);
     }
+    if(this.player.sandstate === true){
+      this.player.sandAlterImg = "/assets/images/munición/hurricanestorm2.png"
+      this.player.imgSand.src = "/assets/images/elements/sandballHeal.png"
+      } else {
+        this.player.sandAlterImg = ""
+        this.player.imgSand.src = "/assets/images/elements/sandball.png"
+      }
     if(this.ratMessage){
       this.ratTick++
       this.ctx.font = "20px Arial";
@@ -748,7 +755,7 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
     // levelup messages..levelup messages..levelup messages..levelup messages..levelup messages..
     if (chargingTrue){
       this.chargeTick++
-      if(this.chargeTick >= 50){
+      if(this.chargeTick >= 150){
         chargingTrue = false
         this.chargeTick = 0
       }
@@ -774,7 +781,7 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
       }
     }
     if(this.puddles.length + this.fires.length >= 9){
-      this.player.loseRespect()
+      this.player.loseRespect(0.0003)
     }
     // CTX data statistics
     // CTX data statistics
@@ -787,13 +794,7 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
       this.alertingSound.volume = 0.05;
       this.alertingSound.play()
     }
-    if(this.player.sandstate === true){
-      this.player.sandAlterImg = "/assets/images/munición/hurricanestorm2.png"
-      this.player.imgSand.src = "/assets/images/elements/sandballHeal.png"
-      } else {
-        this.player.sandAlterImg = ""
-        this.player.imgSand.src = "/assets/images/elements/sandball.png"
-      }
+
     this.score.draw();
     this.saved.draw();
     if(hookBoost === true){
@@ -1064,23 +1065,57 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
       elem.w = 30;
     }
   }
+  firePuff(elem){
+    if (elem.h <= 20) {
+      elem.fireIsOn = false;
+      elem.puffIsOn = true;
+      elem.h = 40;
+      elem.w = 40;
+    }
+  }
+  hookCollideWaterFire(elem, hook){
+      this.luzOnAudio = new Audio("/assets/audio/evap.mp3")
+      this.luzOnAudio.volume = 0.07;
+      this.luzOnAudio.play();
+        if(elem.x < this.player.x){
+          elem.x = elem.x + 40
+        } else if (elem.x > this.player.x){
+          elem.x = elem.x - 40
+        } 
+        if(elem.y < this.player.y){
+          elem.y = elem.y +40
+        } else if(elem.y > this.player.y){
+          elem.y = elem.y - 40
+        }
+        if(elem.x < this.player.x){
+          elem.x = elem.x + 40
+        } else if (elem.x > this.player.x){
+          elem.x = elem.x - 40
+        } 
+        if(elem.y < this.player.y){
+          elem.y = elem.y +40
+        } else if(elem.y > this.player.y){
+          elem.y = elem.y - 40
+        }
+        hook.dispose = true
+  }
   saving(){
     this.saved.addSave()
     distance += 10
     this.player.booster += 0.5
     this.player.cooldownJump += 100
-    this.player.getBigRespect()
+    this.player.getRespect(0.02)
     this.customersMessage = true
   }
-  dying(){
-    this.player.loseBigRespect();
+  dyingBaby(){
+    this.player.loseRespect(0.02);
     distance -= 10;
     this.player.booster -= 0.5
     this.player.cooldownJump -= 100
     this.perjudiceMessage = true
   }
-  dyingCus(){
-    this.player.loseCustomerRespect()
+  dyingCustomer(){
+    this.player.loseRespect(0.02)
     distance -= 0.05;
     this.player.booster -= 0.010;
     this.player.cooldownJump += 5;
@@ -1131,22 +1166,7 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
     }
   }
 
-
-counterWhenKillBoss (deadCreature){
-  deadCreature.y = 2000;
-  this.player.getBigRespect()
-  this.player.getBigRespect()
-  this.addFire()
-  this.addPuddle()
-
-    if(moneyForKill){
-      money += Math.floor(Math.random() * 300 + 400);
-    }
-}
-
-
-
-foodAndDiscountDrop(creature){
+  foodAndDiscountDrop(creature){
   const discRandom = Math.floor(Math.random() * 10)
   const foodRandom = Math.floor(Math.random() * 10)
   if(foodRandom == 1){
@@ -1160,6 +1180,45 @@ foodAndDiscountDrop(creature){
     this.discounts.push(discount);
   }
 }
+  collidingWithClients(client){
+    this.excla = new Image();
+    this.excla.src = "/assets/images/elements/exclapep.png"
+    this.ctx.drawImage(
+      this.excla, client.x + 10, client.y - 10, 30,  30
+    )
+    this.player.loseRespect(0.0003)
+    this.player.drawSorry()
+  }
+  directDamagingClients(client, message, lostRespect) {
+    this.player.loseRespect(`${lostRespect}`)
+    this.ctx.font = "20px Arial";
+    this.ctx.fillStyle = "red";
+    this.ctx.fillText(`${message}`, client.x, client.y);
+    this.ctx.fillStyle = "red";
+    this.ctx.fillText(`${message}`, client.x-1, client.y-1);
+    this.ctx.fillStyle = "black";
+    this.ctx.fillText(`${message}`, client.x+1, client.y+1);
+  }
+  directHelpingClients(client, message, ){
+    this.player.getRespect(`${wonRespect}`)
+    this.ctx.font = "20px Arial";
+    this.ctx.fillStyle = "blue";
+    this.ctx.fillText(`${message}`, client.x, client.y);
+    this.ctx.fillStyle = "blue";
+    this.ctx.fillText(`${message}`, client.x-1, client.y-1);
+    this.ctx.fillStyle = "aqua";
+    this.ctx.fillText(`${message}`, client.x+1, client.y+1);
+  }
+  stormHealingClients(client, message){
+    this.player.getRespect(0.0005)
+    this.ctx.font = "20px Arial";
+    this.ctx.fillStyle = "blue";
+    this.ctx.fillText(`${message}`, client.x - 40, client.y - 28);
+    this.ctx.fillStyle = "ble";
+    this.ctx.fillText(`${message}`, client.x - 36, client.y-24);
+    this.ctx.fillStyle = "aqua";
+    this.ctx.fillText(`${message}`, client.x - 38, client.y-26);
+  }
 // al tercer nivel de hook checkCharger también aumenta en 2 el charging al impactar
   hookLevel3(){
         Q = 81; E = 69; ALT = 16; 
@@ -1172,9 +1231,6 @@ foodAndDiscountDrop(creature){
   checkCharger( ){
     if(M === 0){
       charging += 1;
-      if(hookLeveling >= 3){
-        charging += 2;
-      }
       chargingTrue = true;
       if(charging >= 20 && this.score.total >= 0){
         M = 77
@@ -1198,7 +1254,6 @@ foodAndDiscountDrop(creature){
         } else return true;
       });
     });
-    console.log(bulletSize)
     this.puddles.forEach((puddle) => {//agua con sanders
       this.player.sanders.filter((sand) => {
         if (sand.collides(puddle)) {
@@ -1214,7 +1269,7 @@ foodAndDiscountDrop(creature){
           this.player.heats.splice(0, 1);
           this.checkCharger()
             puddle.dicrease();
-            this.puddlePuff(puddle); //hace que desaparezca el agua al bajar de cierto tamaño
+            this.puddlePuff(puddle); 
           return false;
         } else return true;
       });
@@ -1235,30 +1290,7 @@ foodAndDiscountDrop(creature){
       this.puddles.forEach((puddle) => {
         hook.collides(puddle);
         if (hook.collides(puddle)) {
-          this.luzOnAudio = new Audio("/assets/audio/evap.mp3")
-          this.luzOnAudio.volume = 0.07;
-          this.luzOnAudio.play();
-            if(puddle.x < this.player.x){
-              puddle.x = puddle.x + 40
-            } else if (puddle.x > this.player.x){
-              puddle.x = puddle.x - 40
-            } 
-            if(puddle.y < this.player.y){
-              puddle.y = puddle.y +40
-            } else if(puddle.y > this.player.y){
-              puddle.y = puddle.y - 40
-            }
-            if(puddle.x < this.player.x){
-              puddle.x = puddle.x + 40
-            } else if (puddle.x > this.player.x){
-              puddle.x = puddle.x - 40
-            } 
-            if(puddle.y < this.player.y){
-              puddle.y = puddle.y +40
-            } else if(puddle.y > this.player.y){
-              puddle.y = puddle.y - 40
-            }
-            hook.dispose = true
+          this.hookCollideWaterFire(puddle, hook)
         }
       });
     });
@@ -1268,19 +1300,7 @@ foodAndDiscountDrop(creature){
       this.player.blasters.filter((blast) => {
         if (blast.collides(fire)) {
           fire.dicreaseSmall();
-          if (fire.h <= 20) {
-            fire.fireIsOn = false
-            fire.puffIsOn = true
-            fire.h = 40
-            fire.w = 40
-            if(this.fires.length <= 0){
-              const fireAlert = document.getElementById("fire-alert");
-              fireAlert.style.display = "none";
-            }
-            if (this.winTime > 40000) {
-              this.addPuddle();
-            }
-          }
+          this.firePuff(fire);
           return false;
         } else return true;
       });
@@ -1289,16 +1309,7 @@ foodAndDiscountDrop(creature){
       this.player.sanders.filter((sand) => {
         if (sand.collides(fire)) {
           fire.dicreaseSmall();
-          if (fire.h <= 20) {
-            fire.fireIsOn = false
-            fire.puffIsOn = true
-            fire.h = 40
-            fire.w = 40
-            if(this.fires.length <= 0){
-              const fireAlert = document.getElementById("fire-alert");
-              fireAlert.style.display = "none";
-            }
-          }
+          this.firePuff(fire);
           return false;
         } else return true;
       });
@@ -1309,21 +1320,7 @@ foodAndDiscountDrop(creature){
           this.player.waters.splice(0, 1);
           this.checkCharger()
           fire.dicrease();
-          if(bulletSize >= 40){
-            fire.dicrease();
-          } else if( bulletSize >= 60){
-            fire.dicrease();
-          }
-          if (fire.h <= 20) {
-            fire.fireIsOn = false
-            fire.puffIsOn = true
-            fire.h = 40
-            fire.w = 40
-            if(this.fires.length <= 0){
-              const fireAlert = document.getElementById("fire-alert");
-              fireAlert.style.display = "none";
-            }
-          }
+          this.firePuff(fire);
           return false;
         } else return true;
       });
@@ -1341,30 +1338,7 @@ foodAndDiscountDrop(creature){
       this.fires.forEach((fire) => {
         hook.collides(fire);
         if (hook.collides(fire)) {
-          this.luzOnAudio = new Audio("/assets/audio/evap.mp3")
-          this.luzOnAudio.volume = 0.07;
-          this.luzOnAudio.play();
-            if(fire.x < this.player.x){
-              fire.x = fire.x + 40
-            } else if (fire.x > this.player.x){
-              fire.x = fire.x - 40
-            } 
-            if(fire.y < this.player.y){
-              fire.y = fire.y +40
-            } else if(fire.y > this.player.y){
-              fire.y = fire.y - 40
-            }
-            if(fire.x < this.player.x){
-              fire.x = fire.x + 40
-            } else if (fire.x > this.player.x){
-              fire.x = fire.x - 40
-            } 
-            if(fire.y < this.player.y){
-              fire.y = fire.y +40
-            } else if(fire.y > this.player.y){
-              fire.y = fire.y - 40
-            }
-            hook.dispose = true
+          this.hookCollideWaterFire(fire, hook)
         }
       });
     });
@@ -1680,7 +1654,7 @@ foodAndDiscountDrop(creature){
         this.player.vx = 0;
         this.player.fireHit()
         this.player.drawSmash()
-        this.player.loseRespect()
+        this.player.loseRespect(0.0002)
       }
       return true;
     });
@@ -1873,19 +1847,17 @@ foodAndDiscountDrop(creature){
       this.player.blasters.filter((blast) => {
         if (blast.collides(baby)) {
           this.babys.splice(0,1);
-          this.player.loseRespect();
-          this.dying();
+          this.dyingBaby();
           return false;
         } else return true;
       });
     });
 
-//colisión con sanders, waters, heats, cactus
 this.babys.forEach((baby) => { //baby con sanders
   this.player.sanders.filter((sand) => {
     if (sand.collides(baby)) {
       this.babys.splice(0,1);
-      this.dying();
+      this.dyingBaby();
       return false;
     } else return true;
   });
@@ -1894,7 +1866,7 @@ this.babys.forEach((baby) => { //baby con waters
   this.player.waters.filter((wat) => {
     if (wat.collides(baby)) {
       this.babys.splice(0,1)
-      this.dying()
+      this.dyingBaby()
       return false;
     } else return true;
   });
@@ -1902,8 +1874,8 @@ this.babys.forEach((baby) => { //baby con waters
 this.babys.forEach((baby) => { //baby con heats
   this.player.heats.filter((heat) => {
     if (heat.collides(baby)) {
-      this.babys.splice(0,1)
-      this.dying()
+      this.babys.splice(0,1);
+      this.dyingBaby()
       return false;
     } else return true;
   });
@@ -1914,15 +1886,11 @@ this.cactus.forEach((cactu) => { //baby con cactus
   this.babys = this.babys.filter((la) => {
     if (la.collides(cactu)) {
       this.babys.splice(0, 1);
-      this.dying()
+      this.dyingBaby()
       return false;
     } else return true;
   });
 });
-
-
-    
-
 
     this.babys.forEach((baby) => { //baby con hooks
       this.player.hooks.filter((hook) => {
@@ -1943,7 +1911,7 @@ this.cactus.forEach((cactu) => { //baby con cactus
         if (baby.collides(puddle)) {
           this.babys.splice(0, 1);
           puddle.vx = 500;
-          this.dying()
+          this.dyingBaby()
           if(this.score.score % 1 === 0){
             distance -= 30
           }
@@ -1956,7 +1924,7 @@ this.cactus.forEach((cactu) => { //baby con cactus
         if (heat.collides(fire)) {
           this.babys.splice(0, 1);
           fire.vx = 500;
-          this.dying()
+          this.dyingBaby()
           return false;
         } else return true;
       });
@@ -1978,6 +1946,7 @@ this.cactus.forEach((cactu) => { //baby con cactus
             baby.vx = 0
             baby.vy = 0
             if(baby.babyLife <= -1){
+              this.dyingBaby()
               baby.x = 1800
             }
           }
@@ -2010,7 +1979,7 @@ this.cactus.forEach((cactu) => { //baby con cactus
     this.customers.forEach((cus) => { //customer con heat del player
       this.player.heats.filter((heat) => {
         if (heat.collides(cus)) {
-          this.dyingCus()
+          this.dyingCustomer()
           cus.lifeleft -=1
           if(cus.dead >= 50){
             this.atraer = new Audio("/assets/audios ad/dustBite.m4a")
@@ -2025,7 +1994,7 @@ this.cactus.forEach((cactu) => { //baby con cactus
     this.customers.forEach((cus) => { //customer con water
       this.player.waters.filter((water) => {
         if (water.collides(cus)) {
-          this.dyingCus()
+          this.dyingCustomer()
           cus.lifeleft -=1
           if(cus.dead >= 50){
             this.atraer = new Audio("/assets/audios ad/dustBite.m4a")
@@ -2040,8 +2009,7 @@ this.cactus.forEach((cactu) => { //baby con cactus
     this.customers.forEach((cus) => {//customer con blaster
       this.player.blasters.filter((blast) => {
         if (blast.collides(cus)) {
-          this.player.loseRespect()
-          this.dyingCus()
+          this.dyingCustomer()
           cus.lifeleft -=1
           if(cus.dead >= 50){
             this.score.score += 1
@@ -2053,7 +2021,7 @@ this.cactus.forEach((cactu) => { //baby con cactus
     this.customers.forEach((cus) => { //customer con sanders
       this.player.sanders.filter((sand) => {
         if (sand.collides(cus)) {
-          this.dyingCus()
+          this.dyingCustomer()
           cus.lifeleft -=1
           if(cus.dead >= 50){
             this.score.score += 1
@@ -2066,7 +2034,7 @@ this.cactus.forEach((cactu) => { //baby con cactus
       this.customers = this.customers.filter((cus) => {
         if (cus.collides(puddle)) {
           cus.lifeleft -=1
-          this.dyingCus()
+          this.dyingCustomer()
           if(cus.dead >= 50){
             this.atraer = new Audio("/assets/audios ad/dustBite.m4a")
             this.atraer.volume = 0.07;
@@ -2081,7 +2049,7 @@ this.cactus.forEach((cactu) => { //baby con cactus
       this.customers = this.customers.filter((cus) => {
         if (cus.collides(fire)) {
           cus.lifeleft -=1
-          this.dyingCus()
+          this.dyingCustomer()
           if(cus.dead >= 50){
             this.atraer = new Audio("/assets/audios ad/dustBite.m4a")
             this.atraer.volume = 0.07;
@@ -2095,7 +2063,7 @@ this.cactus.forEach((cactu) => { //baby con cactus
       this.cactus.forEach((cactu) => { //customer con cactus
         this.customers = this.customers.filter((cus) => {
           if (cus.collides(cactu)) {
-            this.dyingCus()
+            this.dyingCustomer()
             cus.lifeleft -=1
             if(cus.dead >= 50){
               this.atraer = new Audio("/assets/audios ad/dustBite.m4a")
@@ -2126,7 +2094,7 @@ this.cactus.forEach((cactu) => { //baby con cactus
               customer.vy = 0;
             }
             if(customer.lifeleft <= 0.1 && customer.lifeleft >= 0.09  ){
-              this.dyingCus()
+              this.dyingCustomer()
               this.score.score += 0.5
             }
             return false;
@@ -2149,7 +2117,7 @@ this.cactus.forEach((cactu) => { //baby con cactus
       });
 // boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..
 // boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..
-    this.bosss = this.bosss.filter((boss) => {     //boss con player
+    this.bosss = this.bosss.filter((boss) => { 
       this.player.hooks = this.player.hooks.filter((hook) => {
         if (hook.collides(boss)) {        //boss con hook
           this.karenSounds[Math.floor(Math.random() * this.karenSounds.length)].play();
@@ -2160,38 +2128,15 @@ this.cactus.forEach((cactu) => { //baby con cactus
           if(hookLeveling >= 2){
             boss.lifeleft -= 0.4;
           } 
+          this.checkCharger();
           boss.cage = true
-            if(boss.x < this.player.x){
-              boss.x = boss.x - 20
-            } else if (boss.x > this.player.x){
-              boss.x = boss.x + 20
-            } 
-            if(boss.y < this.player.y){
-              boss.y = boss.y -20
-            } else if(boss.y > this.player.y){
-              boss.y = boss.y + 20
-            }
-            if(boss.x < this.player.x){
-              boss.x = boss.x - 20
-            } else if (boss.x > this.player.x){
-              boss.x = boss.x + 20
-            } 
-            if(boss.y < this.player.y){
-              boss.y = boss.y - 20
-            } else if(boss.y > this.player.y){
-              boss.y = boss.y + 20
-            }
           boss.v = 0
           boss.vNegative = 0
-          charging+=3
-          if(charging >= 20 && this.score.total >= 20){
-              M = 77
-              charging = 0
-          }
           return false;
         } else return true;
       });
-      if (boss.collides(this.player)) {
+      
+      if (boss.collides(this.player)) {   //boss con player
         this.player.speed -= 1;
         this.player.cooldownBullet += 600;
         afterSize -=5
@@ -2203,26 +2148,17 @@ this.cactus.forEach((cactu) => { //baby con cactus
         return false;
       }
       return true;
-    });
+    }
+    );
     this.bosss.forEach((boss) => {      //boss con agua
       this.player.waters = this.player.waters.filter((water) => {
         if (water.collides(boss)) {
           this.karenSounds[Math.floor(Math.random() * this.karenSounds.length)].play();
           this.player.waters.splice(0, 1);
             boss.lifeleft -= 1;
-            this.checkCharger()
-          if(boss.lifeleft <= 0){
-            this.counterWhenKillBoss(boss);
-          }
           this.creaturePushback(boss, 20)
-          charging+=2
-          if(charging >= 20 && this.score.total >= 20){
-              M = 77
-              charging = 0
-          }
+          this.checkCharger();
           this.angryKorenPopup(10);
-          this.line.b -= 0.2;
-          this.line.a += 0.2;
             return false;
         } else return true;
       });
@@ -2230,32 +2166,10 @@ this.cactus.forEach((cactu) => { //baby con cactus
         if (heat.collides(boss)) {        //boss con fuego
           this.player.heats.splice(0, 1);
           this.karenSounds[Math.floor(Math.random() * this.karenSounds.length)].play();
-          boss.lifeleft -= 1;
+          boss.lifeleft -= heat.damage;
+          console.log("damage", heat.damage);
           this.checkCharger()
-          if(boss.lifeleft <= 0){
-            this.counterWhenKillBoss(boss);
-          }
-          if (boss.x < this.player.x) {
-            boss.x -= 20;
-          }
-          if (boss.x > this.player.x) {
-            boss.x += 20;
-          }
-          if (boss.y < this.player.y) {
-            boss.y -= 20;
-          }
-          if (boss.y > this.player.y) {
-            boss.y += 20;
-          }
-          charging+=2
-          if(charging >= 20 && this.score.total >= 20){
-              M = 77
-              charging = 0
-          }
           this.angryKorenPopup(10);
-          this.line.b -= 0.2;
-          this.line.a += 0.2;
-          
           return false;
         } else return true;
       });
@@ -2265,9 +2179,7 @@ this.cactus.forEach((cactu) => { //baby con cactus
         if (blast.collides(boss)) {
             blast.rocketDetonation = true
             boss.lifeleft -= 1.2;
-          if(boss.lifeleft <= 0.1){
-            this.counterWhenKillBoss(boss);
-          }
+          this.checkCharger()
           this.angryKorenPopup(190);
           return false;
         } else return true;
@@ -2276,9 +2188,8 @@ this.cactus.forEach((cactu) => { //baby con cactus
     this.bosss.forEach((boss) => { // boss con mineReps
       mineria.filter((mineRep) => {
         if (mineRep.collides(boss)) {
-          mineRep.activated = true
+          mineRep.activated = true;
           boss.lifeleft -= mineRep.damage;
-          this.counterWhenKillBoss(boss)
           this.angryKorenPopup(10);
           return false;
         } else return true;
@@ -2289,9 +2200,6 @@ this.cactus.forEach((cactu) => { //baby con cactus
         if (sand.collides(boss)) {
           sand.activated = true
           boss.lifeleft -= sand.damage;
-          if(boss.lifeleft <= 0.1){
-            this.counterWhenKillBoss(boss);
-          }
           this.angryKorenPopup(190);
           return false;
         } else return true;
@@ -2302,37 +2210,19 @@ this.cactus.forEach((cactu) => { //baby con cactus
 if( addPeople){
   this.pback.forEach((wall) => {//pback con player
     if (wall.collides(this.player)) {
-      this.excla = new Image();
-      this.excla.src = "/assets/images/elements/exclapep.png"
-      this.ctx.drawImage(
-        this.excla, wall.x + 10, wall.y - 10, 30,  30
-      )
-      this.player.loseRespect()
-      this.player.drawSorry()
+      this.collidingWithClients(wall)
     }
   });
   this.pfront.forEach((wall) => {//pfront con player
     if (wall.collides(this.player)) {
-      this.excla = new Image();
-      this.excla.src = "/assets/images/elements/exclapep.png"
-      this.ctx.drawImage(
-        this.excla, wall.x + 10, wall.y - 10, 30,  30
-      )
-      this.player.loseRespect()
-      this.player.drawSorry()
+this.collidingWithClients(wall)
     }
   });
+
 this.pfront.forEach((peop) => {     //PFront con blaster
   this.player.blasters.filter((blast) => {
     if (blast.collides(peop) && areaDamage) {
-      this.player.loseRespect()
-      this.ctx.font = "20px Arial";
-      this.ctx.fillStyle = "red";
-      this.ctx.fillText(`Hey!!`, peop.x, peop.y);
-      this.ctx.fillStyle = "red";
-      this.ctx.fillText(`Hey!!`, peop.x-1, peop.y-1);
-      this.ctx.fillStyle = "black";
-      this.ctx.fillText(`Hey!!`, peop.x+1, peop.y+1);
+      this.directDamagingClients(peop, "Hey!", 0.0004) //
       return false;
     } else return true;
   });
@@ -2340,77 +2230,46 @@ this.pfront.forEach((peop) => {     //PFront con blaster
 this.pback.forEach((peop) => { //PBack con blaster
   this.player.blasters.filter((blast) => {
     if (blast.collides(peop) && areaDamage) {
-      this.player.loseRespect()
-      this.ctx.font = "20px Arial";
-      this.ctx.fillStyle = "red";
-      this.ctx.fillText(`Ouch!!:`, peop.x, peop.y);
-      this.ctx.fillStyle = "red";
-      this.ctx.fillText(`Ouch!!:`, peop.x-1, peop.y-1);
-      this.ctx.fillStyle = "black";
-      this.ctx.fillText(`Ouch!!:`, peop.x+1, peop.y+1);
+      this.directDamagingClients(peop, "Ouch!", 0.0004) //
       return false;
     } else return true;
   });
 });
-this.pfront.forEach((peop) => {     //PFront
+this.pfront.forEach((peop) => {     //PFront con discount
   this.player.discountings.filter((disc) => {
     if (disc.collides(peop)) {
-      this.player.getSmallestRespect()
-      this.ctx.font = "20px Arial";
-      this.ctx.fillStyle = "blue";
-      this.ctx.fillText(`Ouch!!:`, peop.x, peop.y);
-      this.ctx.fillStyle = "blue";
-      this.ctx.fillText(`Ouch!!:`, peop.x-1, peop.y-1);
-      this.ctx.fillStyle = "aqua";
-      this.ctx.fillText(`Ouch!!:`, peop.x+1, peop.y+1);
+        this.directHelpingClients(peop, "Great!")
       return false;
     } else return true;
   });
 });
-this.pback.forEach((peop) => { //PBack
+this.pback.forEach((peop) => { //PBack con discount
   this.player.discountings.filter((disc) => {
     if (disc.collides(peop)) {
-      this.player.getSmallestRespect()
-      this.ctx.font = "20px Arial";
-      this.ctx.fillStyle = "blue";
-      this.ctx.fillText(`Thanx!:`, peop.x, peop.y);
-      this.ctx.fillStyle = "blue";
-      this.ctx.fillText(`Thanx!:`, peop.x-1, peop.y-1);
-      this.ctx.fillStyle = "aqua";
-      this.ctx.fillText(`Thanx!:`, peop.x+1, peop.y+1);
+      this.directHelpingClients(peop, "Great!")
       return false;
     } else return true;
   });
 });
-this.pfront.forEach((pfro) => {//pfro con sanders
+this.pfront.forEach((peop) => {//pfro con sanders
   this.player.sanders.filter((sand) => {
-    if (sand.collides(pfro)) {
+    if (sand.collides(peop)) {
       if(this.player.sandstate === true){
-        this.player.getSmallestRespect()
-        this.ctx.font = "20px Arial";
-        this.ctx.fillStyle = "blue";
-        this.ctx.fillText(pfro.complainOne, pfro.x - 40, pfro.y - 28);
-        this.ctx.fillStyle = "ble";
-        this.ctx.fillText(pfro.complainOne, pfro.x - 36, pfro.y-24);
-        this.ctx.fillStyle = "aqua";
-        this.ctx.fillText(pfro.complainOne, pfro.x - 38, pfro.y-26);
+        this.stormHealingClients(peop, peop.niceMessage)
+      } else{
+      this.directDamagingClients(peop, "Whats this?!", 0.0002) //
       }
       return false;
     } else return true;
   });
 });
-this.pback.forEach((pfro) => {//pfro con sanders
+this.pback.forEach((peop) => {//pBack con sanders
   this.player.sanders.filter((sand) => {
-    if (sand.collides(pfro)) {
+    if (sand.collides(peop)) {
       if(this.player.sandstate === true){
-        this.player.getSmallestRespect()
-        this.ctx.font = "20px Arial";
-        this.ctx.fillStyle = "blue";
-        this.ctx.fillText(pfro.complainOne, pfro.x - 40, pfro.y - 28);
-        this.ctx.fillStyle = "ble";
-        this.ctx.fillText(pfro.complainOne, pfro.x - 36, pfro.y-24);
-        this.ctx.fillStyle = "aqua";
-        this.ctx.fillText(pfro.complainOne, pfro.x - 38, pfro.y-26);
+        this.stormHealingClients(peop, peop.niceMessage)
+      } else {
+      this.directDamagingClients(peop, "Help!", 0.0002) //
       }
       return false;
     } else return true;
@@ -2418,7 +2277,6 @@ this.pback.forEach((pfro) => {//pfro con sanders
 });
 }
 if(addWalls){
-
   this.bushesover.forEach((wall) => { //bushes
     if (wall.collides(this.player)) {
       this.player.vy = 0;
@@ -2592,7 +2450,7 @@ if(addWalls){
   }
     this.puddles.forEach((puddle) => {
       if (puddle.collides(this.player)) {
-        this.player.drawWater()
+        this.player.drawWater();
         this.player.fireHit();
         this.player.vy = 0;
         this.player.vx = 0;
@@ -2601,7 +2459,7 @@ if(addWalls){
     this.fires.forEach((fire) => {
       if (fire.collides(this.player)) {
         this.player.fireHit();
-        this.player.drawFire()
+        this.player.drawFire();
         this.player.vy = 0;
         this.player.vx = 0;
       }
@@ -2620,7 +2478,7 @@ if(addWalls){
         if(this.score.total >= 35){
           T = 84
         }
-        this.player.getSmallRespect()
+        this.player.getRespect(0.03)
         return false;
       }
       return true;
@@ -2662,7 +2520,7 @@ this.lamps.forEach((lamp) => {//hook con lamps
           money += 400;
         }
         if(lampOn === 14){
-          pImage += 1
+          publicImage += 1
           lamp.lights = false
         }
         lamp.img.src = "/assets/images/elements/lamp.png"
@@ -2858,6 +2716,7 @@ if(leveler){
       this.levelMessage2 = true;
       destroyerLeveling += 1;
       if(destroyerLeveling >= 2) { 
+        afterSpin = true;
         machingunCountback = 1300; // aumenta el tiempo de activación de machinegun
         F = 70; //se activa rocketlouncher
         rocketCount += 20

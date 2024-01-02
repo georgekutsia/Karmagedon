@@ -2896,7 +2896,7 @@ this.pback.forEach((peop) => { //PBack
             this.luzOnAudio.play();
             lampOn+=1
             if(lampOn === 14){
-              pImage += 1
+              publicImage += 1
               lamp.lights = false
             }
             lamp.img.src = "/assets/images/elements/lamp.png"

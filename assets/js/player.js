@@ -78,8 +78,8 @@ class Player {
     this.extraHookSpeed = 0
     this.cooldownBullet = 3000;
     this.cooldownJump = 3000;   
-    this.toxicity = false
-    this.sandstate = false
+    this.toxicity = false;
+    this.sandstate = false;
     this.sandAlterImg = ""
     this.cagedAllAnimals = false
   }
@@ -424,6 +424,8 @@ class Player {
       this.x = 0;
       this.vx = 0;
     }
+console.log(respectLeveling)
+
     if(this.direction === "right")
       this.ctx.drawImage(
         this.bullsEye, this.x + 460, this.y, this.w, this.h 
@@ -454,28 +456,17 @@ class Player {
     this.auras.forEach((aura) => {aura.move(); this.heal(3);this.hefa()});
   }
 
-  loseRespect(){
-    this.respect.loseRespect();
+  loseRespect(amount){
+    this.respect.losingRespect(amount);
   }
-  loseBigRespect(){
-    this.respect.loseBigRespect();
+  getRespect(amount){
+    this.respect.getRespect(amount);
+    respectLeveling += amount;
   }
-  loseCustomerRespect(){
-    this.respect.loseCustomerRespect()
-  }
-  getBigRespect(){
-    this.respect.getBigRespect();
-  }
-  getSmallRespect(){
-    this.respect.getSmallRespect();
-  }
-  getSmallestRespect(){
-    this.respect.getSmallestRespect();
-  }
+
   hit() {
     this.life.loseLife();
   }
-
   heal(gainedLife) {
     this.life.heal(gainedLife);
   }
@@ -791,8 +782,8 @@ class Player {
         I = 73
       }
       if(key === I){
-        hookCounter += 10
-        discounting += 50
+        hookCounter += 10;
+        discounting += 50;
         M = 77
         P = 80
       }
@@ -815,9 +806,6 @@ class Player {
     aura.auraImg.src = "/assets/images/munición/aura1.png";
     this.auras.push(aura);
   }
-  // totalizacion(){
-  //   this.score.addTotalScore()
-  // }
   discounting() {
     const discount = new Discounting(
       this.ctx,

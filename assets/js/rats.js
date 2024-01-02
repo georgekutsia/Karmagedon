@@ -66,7 +66,6 @@ class Rats {
       this.vx = 0;
       this.vy = 0;
       this.dead++
-      console.log(this.dead)
       if(this.dead >= 100){
         solvedRats += 0.5;
         solvedTotal += 0.5;

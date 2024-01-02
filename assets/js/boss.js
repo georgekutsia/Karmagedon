@@ -98,8 +98,13 @@ class Boss {
       crazyKaren.style.display = "none";
     }
     if(this.lifeleft <= 0){
-      this.vx = 400;
-      this.vy = 400;
+      solvedTotal+= 1;
+      solvedBoss+= 1;
+      if(moneyForKill){
+        money += Math.floor(Math.random() * 300 + 400);
+      }
+      console.log("bla")
+      this.x = -500;
   }
   }
   isVisible() {

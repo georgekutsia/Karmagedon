@@ -12,7 +12,6 @@ class Water {
     this.player = player;
     this.dispose = false;
     this.waterImg = new Image();
-    
     this.waterImg.src = "/assets/images/elements/puddle.png";
     this.waterImg.frame = 0;
     this.waterShootAudio = new Audio("/assets/audio/splash0.mp3");
@@ -22,6 +21,8 @@ class Water {
     this.tick = 0;
     this.afterTick = 0;
     this.waterFar = false;
+    this.damage = playerBasicDamage + playerDoubleDamage;
+
   }
   draw() {
     this.ctx.drawImage(

@@ -21,6 +21,7 @@ class Heat {
     this.tick = 0
     this.afterTick = 0
     this.heatFar = false
+    this.damage = playerBasicDamage + playerDoubleDamage;
   }
   draw() {
     this.ctx.drawImage(
@@ -100,10 +101,12 @@ class Shotgun {
     this.shotShootAudio = new Audio("/assets/audios ad/shotgunShoot.mp3")
     this.shotShootAudio.volume = 0.1;
     this.shotShootAudio.play();
-    this.framer = 1
-    this.tick = 0
-    this.afterTick = 0
-    this.shotFar = false
+    this.framer = 1;
+    this.tick = 0;
+    this.afterTick = 0;
+    this.shotFar = false;
+    this.damage = playerBasicDamage + playerDoubleDamage;
+
   }
   draw() {
     this.ctx.drawImage(
@@ -156,6 +159,7 @@ class Hook {
     this.hookShootAudio.play();
     this.framer = 1
     this.tick = 0
+    this.damage = playerBasicDamage + playerDoubleDamage;
   }
   draw() {
     this.ctx.drawImage(

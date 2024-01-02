@@ -40,9 +40,10 @@ let mineCount = 0 //multiplo de 5
 let leveler = false //para subir de nivel
 let hookTransporter = false//para que al pulsar la g teleporte a la posicion del hook
 let hookBoost = false// para los beneficios de subir nivel el hook
-let hookLeveling = 3; //para mejorar el hook a medida que sube de nivel
+let hookLeveling = 1; //para mejorar el hook a medida que sube de nivel
 let destroyerLeveling = 0; //para mejorar la rama de destroyer
 let elementalistLeveling = 0; //para mejorar la rama de destroyer
+let respectLeveling = 0; //para mejorar el respeto
 
 let areaDamage = true // para el daño de area de los megablasters y sanders y cosas así
 let machinegunBoost = false// para activar las ametralladoras
@@ -64,7 +65,7 @@ let extraHooker = false //que se pueda comprar
 let machingunCountback = 850;
 let machingunRestoreCountback = 500;
 let moneyForKill = false; //destroyerLeveling 3 y consigues dinero al matar bichos
-let lifeTotal = 10
+let lifeTotal = 2;
 
 
 let playerBasicDamage = 0;
@@ -81,12 +82,12 @@ let bulletSize = 20
 let chargingTrue = false
 let venom = 5
 let lampOn = 0
-let pImage = 0
-let afterSpin = false
+let publicImage = 1;
+let afterSpin = false;
 
 //  para añadir o quitar cosas del juego
 
-let addPeople = false;
+let addPeople = true;
 let addCactus = false;
 let addLamps = false;
 let addGeese = false;
