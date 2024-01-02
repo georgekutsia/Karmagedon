@@ -2802,7 +2802,6 @@ this.pback.forEach((peop) => { //PBack
         bulletDistance += 50;
         bulletDistanceExtra -= 50
         this.player.cooldownBullet -= 600;
-        B = 66
         this.atraer = new Audio("/assets/audios ad/bonus.mp3")
         this.atraer.volume = 0.03;
         this.atraer.play();
@@ -2820,7 +2819,6 @@ this.pback.forEach((peop) => { //PBack
         afterSize +=20
         bulletSize +=10
         bulletSizeExtra -=10
-        B = 66
         this.atraer = new Audio("/assets/audios ad/bonus.mp3")
         this.atraer.volume = 0.03;
         this.atraer.play();
@@ -3019,7 +3017,6 @@ if(leveler){
 // levels
     if (this.levelUps1.collides(this.player)) {
       G = 71
-      B = 66
       hookCounter += 5
       hookBoost = true
       this.levelupSound = new Audio("/assets/audios ad/levelupHookSound.mp3");

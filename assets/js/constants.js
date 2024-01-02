@@ -11,7 +11,7 @@ let Z = 90; //fire
 let X = 88; // water
 let C = 0; // fire machinegun
 let V = 0; // water machinegun
-let B = 0;//66  // hook 
+let B = 0;//66  // shotgun 
 let Q = 81;  // dodge left
 let E = 69; // dodge right
 let R = 0; //82  discount
@@ -20,7 +20,7 @@ let P = 0; //80  venom
 let J = 0 //74   time bombs
 let F = 0 //70   rockets
 let G = 0 //71    teleport to hook
-let H = 1 //72   
+let H = 1  //72   
 let K = 0 // 75
 const A = 65;
 const W = 87;
@@ -43,7 +43,6 @@ let hookBoost = false// para los beneficios de subir nivel el hook
 let hookLeveling = 1; //para mejorar el hook a medida que sube de nivel
 let destroyerLeveling = 0; //para mejorar la rama de destroyer
 let elementalistLeveling = 0; //para mejorar la rama de destroyer
-let respectLeveling = 0; //para mejorar el respeto
 
 let areaDamage = true // para el daño de area de los megablasters y sanders y cosas así
 let machinegunBoost = false// para activar las ametralladoras
@@ -65,7 +64,7 @@ let extraHooker = false //que se pueda comprar
 let machingunCountback = 850;
 let machingunRestoreCountback = 500;
 let moneyForKill = false; //destroyerLeveling 3 y consigues dinero al matar bichos
-let lifeTotal = 2;
+let lifeTotal = 10;
 
 
 let playerBasicDamage = 0;
@@ -82,7 +81,9 @@ let bulletSize = 20
 let chargingTrue = false
 let venom = 5
 let lampOn = 0
-let publicImage = 1;
+let publicImageLeveling = 0;
+let publicImageLevelup = false;
+let publicImage = 0;
 let afterSpin = false;
 
 //  para añadir o quitar cosas del juego
@@ -99,6 +100,11 @@ let addCustomer = false;
 let addBoss = false;
 let addPortal = false;
   
+
+
+let showPlayerWeaponStats = false;
+let showPlayerJoBStats = false;
+let showPlayerPhysicalStats = false;
 // secret code
 let Y = 0 //89
 let U = 0 //85

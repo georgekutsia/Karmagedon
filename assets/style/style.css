@@ -26,7 +26,6 @@ h5{
 }
 #canvas {
   border: 1px solid rgb(227, 147, 147);
-  position:absolute;
   background-image: url(/assets/images/fondos/can4mod.png);
   background-size: 100%;
   left: 240px
@@ -120,7 +119,7 @@ u {
   position: absolute;
   display: flex;
   margin-left: 1210px;
-  margin-top: 85px;
+  margin-top: 135px;
   z-index: 1;
 }
 .forms-item {

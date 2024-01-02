@@ -70,7 +70,6 @@ class Player {
     this.life = new Life(ctx);
     this.respect = new Respect(ctx)
     this.formins = new Formins(ctx)
-    this.scoreback = new Scoreback(ctx)
     this.score = new Score(ctx)
     this.heats = this.hooks = this.auras = this.waters = this.blasters = this.sanders = this.toxics =  this.discountings = this.shotguns = []
     this.direction = "left";
@@ -99,7 +98,7 @@ class Player {
       );
       // console.log("x",this.x)
       // console.log("y",this.y)
-      if(C === 67){
+      if(C === 67 && showPlayerWeaponStats){
         this.ctx.drawImage(
           this.machinegun,
           (this.machinegun.frame * this.machinegun.width) / 5,
@@ -131,7 +130,7 @@ class Player {
             this.machinegun.frame = 0;
           }
         }
-        if(M === 77){
+        if(M === 77 && showPlayerWeaponStats){
           this.ctx.drawImage(
             this.machinegun,
             (this.machinegun.frame * this.machinegun.width) / 5,
@@ -171,31 +170,33 @@ class Player {
       this.ctx.fillStyle = "black";
       this.order = this.ctx.fillText("Closed", this.x - 10, this.y - 23);
     }
-    if(ALT === 16){
-      this.ctx.drawImage(
-        this.imgJump, this.x + 5, this.y - 20, this.w -10, this.h-10
-      )
-    }
-    if(Q === 81){
-      this.ctx.drawImage(
-        this.imgQ, this.x - 5, this.y - 15, this.w -25, this.h - 18 
-      )
-    }
-    if(E === 69){
-      this.ctx.drawImage(
-        this.imgE, this.x + 31, this.y - 15, this.w -25, this.h - 18 
-      )
-    }
-    if(Z === 90){
-      this.ctx.drawImage(
-        this.imgFire, this.x - 15, this.y + 1, this.w - 20, this.h - 20
-      )
-    }
-    if(X === 88){
-      this.ctx.drawImage(
-        this.imgWater, this.x + 35, this.y + 1, this.w - 19, this.h - 19
-      )
-    }
+    if(showPlayerWeaponStats){
+
+      if(ALT === 16){
+        this.ctx.drawImage(
+          this.imgJump, this.x + 5, this.y - 20, this.w -10, this.h-10
+          )
+        }
+        if(Q === 81){
+          this.ctx.drawImage(
+            this.imgQ, this.x - 5, this.y - 15, this.w -25, this.h - 18 
+            )
+          }
+          if(E === 69){
+            this.ctx.drawImage(
+              this.imgE, this.x + 31, this.y - 15, this.w -25, this.h - 18 
+              )
+            }
+            if(Z === 90){
+              this.ctx.drawImage(
+                this.imgFire, this.x - 15, this.y + 1, this.w - 20, this.h - 20
+                )
+              }
+              if(X === 88){
+                this.ctx.drawImage(
+                  this.imgWater, this.x + 35, this.y + 1, this.w - 19, this.h - 19
+                  )
+                }
     if(hookCounter>0 && B ===66){
       this.ctx.drawImage(
         this.imgHookGun, this.x + 29, this.y + 21, this.w - 10, this.h - 10
@@ -373,6 +374,8 @@ class Player {
         this.hookTIck = 0
       }
     }
+  }
+
     this.heats.forEach((heat) => heat.draw());
     this.shotguns.forEach((shotgun) => shotgun.draw());
     this.hooks.forEach((hook) => hook.draw());
@@ -386,7 +389,6 @@ class Player {
     this.life.draw();
     this.respect.draw();
     this.formins.draw();
-    this.scoreback.draw();
     this.ctx.fillStyle = "lightsalmon";
   }
   move() {
@@ -406,7 +408,6 @@ class Player {
     this.life.move();
     this.respect.move()
     this.formins.move()
-    this.scoreback.move()
     // LIMITES DEL CANVAS =>//
     if (this.y < 0) {
       this.y = 0;
@@ -424,8 +425,6 @@ class Player {
       this.x = 0;
       this.vx = 0;
     }
-console.log(respectLeveling)
-
     if(this.direction === "right")
       this.ctx.drawImage(
         this.bullsEye, this.x + 460, this.y, this.w, this.h 
@@ -461,7 +460,6 @@ console.log(respectLeveling)
   }
   getRespect(amount){
     this.respect.getRespect(amount);
-    respectLeveling += amount;
   }
 
   hit() {
@@ -652,7 +650,7 @@ console.log(respectLeveling)
       this.discounting1();
       this.discounting2();
       this.discounting3();
-      discounting -= 1
+      discounting -= 5
     }
     if(key === K && mineCount >=1){
       mineCount -= 2.5

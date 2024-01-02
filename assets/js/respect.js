@@ -12,26 +12,30 @@ class Respect {
 
   draw() {
     const prevStyle = this.ctx.fillStyle;
+    const ratio = this.total / (1 + publicImage);
     let gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
     this.ctx.strokeStyle = "yellow";
     gradient.addColorStop("0.6", "orange");
     gradient.addColorStop("0.66", "green");
     gradient.addColorStop("1", "orange");
     ctx.fillStyle = gradient;
-    this.ctx.fillRect(this.x, this.y, this.w * this.total, this.h);
+    const width = this.w * ratio;
+    this.ctx.fillRect(this.x, this.y, width, this.h);
     this.ctx.fillStyle = prevStyle;
     this.ctx.strokeRect(this.x, this.y, this.w, this.h);
     this.ctx.fillStyle= prevStyle;
-    this.ctx.font = "35px Sans" ;
+    this.ctx.font = "26px Sans" ;
     this.ctx.strokeStyle = "black";
     gradient.addColorStop("0.88", "black");
     gradient.addColorStop("0.98", "black");
     gradient.addColorStop("1", "black");
     ctx.fillStyle = gradient;
-    this.ctx.fillText("Reputation", 1220, 100)
+    this.ctx.fillText("Reputation", 1264, 100)
+    this.ctx.font = "32px Sans" ;
+    this.ctx.fillText(`${Math.round(this.total * 10)}`, 1226, 100);
     this.ctx.fillStyle = prevStyle;
-
-  }
+} 
+  
   move() {
     this.y -= this.v
     if(this.y < 70){
@@ -44,9 +48,17 @@ class Respect {
     this.total -= amount;
   }
   getRespect(amount){
-    this.total += amount + publicImage/1000
+    this.total += amount + publicImage/1000;
+    publicImageLeveling += amount;
+    console.log(publicImageLeveling)
+    if(publicImageLeveling >= 2){
+      publicImageLevelup = true;
+      publicImage += 1;
+      publicImageLeveling = 0;
+    }
     if (this.total >= 1 + publicImage) {
       this.total = 1 + publicImage;
     }
   }
+
 }

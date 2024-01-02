@@ -3,14 +3,59 @@ const ctx = canvas.getContext('2d');
 
 const game = new Game(ctx);
 
-const practiceGame = new GameTrain(ctx)
+// const practiceGame = new GameTrain(ctx)
+canvas.addEventListener('click', playerClick);
 
-// const life = new Life(ctx)
+function playerClick(event) {
+  const rect = canvas.getBoundingClientRect();
+  const clickX = event.clientX - rect.left;
+  const clickY = event.clientY - rect.top;
+
+  // Verifica si el clic está dentro de los límites del personaje
+  if (
+    clickX >= game.player.x &&
+    clickX <= game.player.x + game.player.w &&
+    clickY >= game.player.y &&
+    clickY <= game.player.y + game.player.h
+  ) {
+    showPlayerWeaponStats = !showPlayerWeaponStats;
+  }
+}
+canvas.addEventListener('click', officeClick);
+
+function officeClick(event) {
+  const rect = canvas.getBoundingClientRect();
+  const clickX = event.clientX - rect.left;
+  const clickY = event.clientY - rect.top;
+  if (
+    clickX >= 1200 &&
+    clickX <= 1200 + 190 &&
+    clickY >= 200 &&
+    clickY <= 200 + 130
+  ) {
+    console.log("bulala")
+        showPlayerJoBStats = !showPlayerJoBStats;
+  }}
+
+canvas.addEventListener('click', bodyTockenClick);
+function bodyTockenClick(event) {
+  const rect = canvas.getBoundingClientRect();
+  const clickX = event.clientX - rect.left;
+  const clickY = event.clientY - rect.top;
+  if (
+    clickX >= -30 &&
+    clickX <= -30 + 130 &&
+    clickY >= 800 &&
+    clickY <= 800 + 130
+  ) {
+    showPlayerPhysicalStats = !showPlayerPhysicalStats;
+  }}
+
 
 // const infoDataAll = document.getElementById("display-all");
-const infoData = document.getElementById("display-info");
-const infoData1 = document.getElementById("display-info1");
-const infoData2 = document.getElementById("display-info2");
+// const infoData = document.getElementById("display-info");
+// const infoData1 = document.getElementById("display-info1");
+// const infoData2 = document.getElementById("display-info2");
 const begin = document.querySelector(".neon-button");
 const btn = document.querySelector(".neon-butt");
 const btnTrain = document.querySelector(".neon-butt-training");
@@ -169,8 +214,8 @@ buyHooks.addEventListener("click", function(){
 })
 
 buyDiscounts.addEventListener("click", function(){
-  if(money >= 40){
-    money -= 40
+  if(money >= 80){
+    money -= 80
     discounting += 5
     this.sandShootAudio = new Audio("/assets/audios ad/buy.wav")
     this.sandShootAudio.volume = 0.4;
@@ -336,25 +381,25 @@ megaAreaDamage.addEventListener("click", function(){
 //   }
 // })
 
-infoData.addEventListener("click", function(){
-  if (infoData.style.opacity === "0.01") {
-    infoData.innerText = "Show Stats and Activations";
-    infoData.style.opacity = "1"
-  } else {
-    infoData.innerText = `Hide Information`;
-    infoData.style.opacity = "0.01"
-  }
-})
+// infoData.addEventListener("click", function(){
+//   if (infoData.style.opacity === "0.01") {
+//     infoData.innerText = "Show Stats and Activations";
+//     infoData.style.opacity = "1"
+//   } else {
+//     infoData.innerText = `Hide Information`;
+//     infoData.style.opacity = "0.01"
+//   }
+// })
 
-infoData1.addEventListener("click", function(){
-  if (infoData1.style.opacity === "0.01") {
-    infoData1.innerText = "Show Progress";
-    infoData1.style.opacity = "1"
-  } else {
-    infoData1.innerText = `Hide Progress`;
-    infoData1.style.opacity = "0.01"
-  }
-})
+// infoData1.addEventListener("click", function(){
+//   if (infoData1.style.opacity === "0.01") {
+//     infoData1.innerText = "Show Progress";
+//     infoData1.style.opacity = "1"
+//   } else {
+//     infoData1.innerText = `Hide Progress`;
+//     infoData1.style.opacity = "0.01"
+//   }
+// })
 
 
 //botón del juego
@@ -373,8 +418,8 @@ btn.addEventListener("click", function () {
     restart.style.display = "flex"
     demo.style.display = "inline-block";
     buyButtons.style.display = "block"
-    infoData.style.display = "block"
-    infoData1.style.display = "block"
+    // infoData.style.display = "block"
+    // infoData1.style.display = "block"
     this.musicStart = new Audio("/assets/audios ad/clic future.wav");
     this.musicStart.volume = 0.05;
     this.musicStart.play()
@@ -398,8 +443,8 @@ btnTrain.addEventListener("click", function () {
     restart.style.display = "flex"
     demo.style.display = "inline-block";
     buyButtons.style.display = "block"
-    infoData.style.display = "block"
-    infoData1.style.display = "block"
+    // infoData.style.display = "block"
+    // infoData1.style.display = "block"
     this.musicStart = new Audio("/assets/audios ad/clic future.wav");
     this.musicStart.volume = 0.05;
     this.musicStart.play()

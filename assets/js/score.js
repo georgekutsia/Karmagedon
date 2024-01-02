@@ -7,7 +7,17 @@ class Score {
   }
   
   draw() {
-    this.pImageCount = publicImage;
+    if(!showPlayerJoBStats){
+      this.ctx.font = "36px Arco";
+    this.ctx.fillStyle = "lightblue";
+      this.ctx.fillText(`^ ^ ^ ^`, 1250, 365);
+      this.ctx.font = "26px Arco";
+    this.ctx.fillStyle = "white";
+      this.ctx.fillText(`Click on Office`, 1220, 380);
+      this.ctx.fillText(`to see stats `, 1230, 405);
+    this.ctx.restore();
+    }
+    if(showPlayerJoBStats){
     this.ctx.font = "27px Arco";
     this.ctx.fillStyle = "white";
     this.ctx.fillText(`Customers: `, 1240, 435);
@@ -66,11 +76,7 @@ class Score {
       this.ctx.fillStyle = "white";
       this.ctx.fillText(`Director`, 1245, 366);
     }
-    this.ctx.font = "22px Arial";
-    this.ctx.fillStyle = "white";
-    this.order = this.ctx.fillText(`Luck lvl: ${chance.toString()}`, 970, 840);
-    this.order = this.ctx.fillText(`Public Image: ${this.pImageCount.toString()}`, 970, 860);
-
+    
     this.ctx.font = "23px Arial";
     this.ctx.fillStyle = "aqua";
     this.ctx.fillText(`money `, 1214, 395);
@@ -79,6 +85,20 @@ class Score {
     this.ctx.fillStyle = "white";
     this.ctx.fillText(`money ${money}$`, 1215, 396);
   }
+  if(showPlayerPhysicalStats){
+    this.ctx.font = "22px Arial";
+    this.ctx.fillStyle = "white";
+    this.order = this.ctx.fillText(`Luck lvl: ${chance.toString()}`, 970, 840);
+    this.order = this.ctx.fillText(`Public Image: ${publicImage.toString()}`, 970, 860);
+    if(publicImageLevelup){
+    this.ctx.fillStyle = "aqua";
+    this.order = this.ctx.fillText(`Public Image: ${publicImage.toString()}`, 970, 860);
+    setTimeout(() => {
+      publicImageLevelup = false;
+    }, 3000);
+    }
+  }
+}
   
 }
 class Saved {
@@ -89,11 +109,13 @@ class Saved {
     this.save = 0;
   }
   draw() {
+    if(showPlayerJoBStats) { 
     this.ctx.font = "22px Arco";
     this.ctx.fillStyle = "lightblue";
     this.ctx.fillText( `Saved: ${this.save.toString()}`, 1300, 465); 
     ctx.fillStyle = "rgb(251, 209, 209)"; 
     this.ctx.restore();
+    }
   }
   addSave() {
     this.save++;

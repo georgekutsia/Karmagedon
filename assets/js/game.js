@@ -390,15 +390,7 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
         this.mainOffice, 1200, 200, 190, 130
         ) 
     }
-    this.ctx.drawImage(
-      this.backPack, 100, 825, 70, 60
-    )
-    this.ctx.drawImage(
-      this.bodyImg, 580, 820, 70, 70
-    )
-    this.ctx.drawImage(
-      this.brain, 900, 825, 50, 60
-    )
+
     if(this.player.respect.total <= 0.3 && this.player.life.total <=3){
       this.player.sandstate = true;
     }
@@ -524,6 +516,25 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
     }
     // CTX data statistics
     // CTX data statistics
+    if(!showPlayerPhysicalStats){
+      this.ctx.fontSize = "80px";
+      this.ctx.fillText(`<`, 75, 870);
+      this.ctx.fontSize = "40px";
+      this.ctx.font = "30px Arial";
+      this.ctx.fillText(`Click on me to see`, 100, 850);
+      this.ctx.fillText(`physical stats!`, 120, 880);
+
+    }
+    if(showPlayerPhysicalStats){
+      this.ctx.drawImage(
+        this.backPack, 100, 825, 70, 60
+      )
+      this.ctx.drawImage(
+        this.bodyImg, 580, 820, 70, 70
+      )
+      this.ctx.drawImage(
+        this.brain, 900, 825, 50, 60
+      )
     this.ctx.font = "20px Arial";
     this.ctx.fillStyle = "white";
     this.ctx.save();
@@ -599,6 +610,8 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
         this.bossPerjIs = false
       }
     }
+  }
+
     if (machinegunBoost && destroyerLeveling >= 1) {
       this.machinegunTime--
         C = 67;
@@ -1190,7 +1203,7 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
     this.player.drawSorry()
   }
   directDamagingClients(client, message, lostRespect) {
-    this.player.loseRespect(`${lostRespect}`)
+    this.player.loseRespect(lostRespect)
     this.ctx.font = "20px Arial";
     this.ctx.fillStyle = "red";
     this.ctx.fillText(`${message}`, client.x, client.y);
@@ -1199,8 +1212,8 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
     this.ctx.fillStyle = "black";
     this.ctx.fillText(`${message}`, client.x+1, client.y+1);
   }
-  directHelpingClients(client, message, ){
-    this.player.getRespect(`${wonRespect}`)
+  directHelpingClients(client, message, wonRespect){
+    this.player.getRespect(wonRespect)
     this.ctx.font = "20px Arial";
     this.ctx.fillStyle = "blue";
     this.ctx.fillText(`${message}`, client.x, client.y);
@@ -2238,7 +2251,7 @@ this.pback.forEach((peop) => { //PBack con blaster
 this.pfront.forEach((peop) => {     //PFront con discount
   this.player.discountings.filter((disc) => {
     if (disc.collides(peop)) {
-        this.directHelpingClients(peop, "Great!")
+        this.directHelpingClients(peop, "Great!", 0.0003)
       return false;
     } else return true;
   });
@@ -2246,7 +2259,7 @@ this.pfront.forEach((peop) => {     //PFront con discount
 this.pback.forEach((peop) => { //PBack con discount
   this.player.discountings.filter((disc) => {
     if (disc.collides(peop)) {
-      this.directHelpingClients(peop, "Great!")
+      this.directHelpingClients(peop, "Great!", 0.0003)
       return false;
     } else return true;
   });
