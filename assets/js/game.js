@@ -39,6 +39,10 @@ class Game {
     this.levelupMachinegun.src = "/assets/images/munición/upgradeMachinegun.png"
     this.levelupHook = new Image();
     this.levelupHook.src = "/assets/images/munición/hookUpgrade.png"
+    this.imgRocket = new Image()
+    this.imgRocket.src = "/assets/images/munición/rocketImg.png"
+    this.shotgunCharged = new Image();
+    this.shotgunCharged.src =  "/assets/images/shotgun/shotgunCharged.png";
     this.ratPoison = 0
     this.iceCurePoison = 0
     this.ratTick = 0;
@@ -166,9 +170,9 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
     this.karenSounds = [this.bossSound1,this.bossSound2,this.bossSound3,this.bossSound4,this.bossSound5];
   }
   start() {
-    this.so = new Audio("/assets/audio/So1.mp3");
-    this.so.volume = 0.08;
-    this.so.play();
+    // this.so = new Audio("/assets/audio/So1.mp3");
+    // this.so.volume = 0.08;
+    // this.so.play();
     // this.musicStart.play();
     myFunction();
     this.interval = setInterval(() => {
@@ -573,25 +577,37 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
     this.ctx.fillText(`Jump distance: ${distance.toFixed(1).toString()}ft`, 640, 860);
     this.ctx.fillText(`Jump cooldown: ${this.player.cooldownJump.toFixed(1)}`, 640, 836);
     this.ctx.fillText(`Walk Speed: ${this.player.boost.toFixed(1)}`, 640, 884);
-    if(this.customersMessage === true){
+    if(this.customersMessage){
       this.customerTick++
       this.ctx.fillStyle = "aqua"; 
-      this.ctx.fillText(`Jump distance: ${distance.toFixed(1).toString()}ft`, 640, 860);
       this.ctx.fillText(`Jump cooldown: ${this.player.cooldownJump.toFixed(1)}`, 640, 836);
-      this.ctx.fillText(`Walk Speed: ${this.player.boost.toFixed(1)}`, 640, 884);
-      this.ctx.fillStyle = "white";
+        this.ctx.fillText(`Jump distance: ${distance.toFixed(1).toString()}ft`, 640, 860);
+        this.ctx.fillText(`Walk Speed: ${this.player.boost.toFixed(1)}`, 640, 884);
       if(this.customerTick >= 150){
         this.customerTick = 0
         this.customersMessage = false
       }
     } 
+    if(training){
+      this.ctx.fillStyle = "aqua"; 
+      this.ctx.fillText(`Jump distance: ${distance.toFixed(1).toString()}ft`, 640, 860);
+      this.ctx.fillText(`Walk Speed: ${this.player.boost.toFixed(1)}`, 640, 884);
+    } else if(!training && this.player.boost >= 5){
+        distance -= 0.0002;
+        this.player.boost -= 0.0001;
+        if(this.player.boost >= 7){
+          this.player.boost -= 0.0005;
+        }
+      this.ctx.fillStyle = "tomato"; 
+      this.ctx.fillText(`Jump distance: ${distance.toFixed(1).toString()}ft`, 640, 860);
+      this.ctx.fillText(`Walk Speed: ${this.player.boost.toFixed(1)}`, 640, 884);
+    }
     if(this.perjudiceMessage === true){
       this.perjudiceTick++
       this.ctx.fillStyle = "tomato"; 
-      this.ctx.fillText(`Jump distance: ${distance.toFixed(1).toString()}ft`, 640, 860);
       this.ctx.fillText(`Jump cooldown: ${this.player.cooldownJump.toFixed(1)}`, 640, 836);
+      this.ctx.fillText(`Jump distance: ${distance.toFixed(1).toString()}ft`, 640, 860);
       this.ctx.fillText(`Walk Speed: ${this.player.boost.toFixed(1)}`, 640, 884);
-      this.ctx.fillStyle = "white";
       if(this.perjudiceTick >= 150){
         this.perjudiceTick = 0
         this.perjudiceMessage = false
@@ -604,7 +620,6 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
       this.ctx.fillText(`Ammo size: ${bulletSize.toString()}`, 410, 845);
       this.ctx.fillText(`Recharge Time: ${this.player.cooldownBullet.toString()}`, 190, 836);
       this.ctx.fillText(`Bullet Speed: ${this.player.speed.toString()}`, 190, 860);
-      this.ctx.fillStyle = "white";
       if(this.bossPerjTick >= 150){
         this.bossPerjTick = 0
         this.bossPerjIs = false
@@ -655,21 +670,41 @@ new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(
     
     // levelup messages..levelup messages..levelup messages..levelup messages..levelup messages..
     // levelup messages..levelup messages..levelup messages..levelup messages..levelup messages..
-      if(hookBoost || machinegunBoost || elementBoost){
+
+    this.ctx.save();
+    this.ctx.fillStyle = "white";
+    this.ctx.font = "20px Arial";
+    this.ctx.fillText(`Special Weapons`, 1220, 680);
+    this.ctx.font = "15px Arial";
+
+    if(destroyerLeveling >= 1) {
+      this.ctx.fillText(`C=>fire-machine`, 1266, 715);
+      this.ctx.fillText(`V=>water-machine`, 1258, 735);
+          if(destroyerLeveling >= 2) {
+          this.ctx.fillText(`F => Rocket`, 1280, 765);
+          this.ctx.drawImage( this.imgRocket, 1220, 745, 50 , 25 );
+              if(destroyerLeveling >= 3) {
+              this.ctx.fillText(`H => Shotgun`, 1280 , 795);
+              this.ctx.drawImage( this.shotgunCharged, 1220, 775, 50 , 25 );
+              }
+            }
+          }
+
+    if(hookLeveling >=1){
+      this.ctx.drawImage( this.levelupHook, 1212, 695, 60 , 45 ) 
+      this.ctx.fillText(`B=> Use hook.`, 1277, 715);
+      this.ctx.fillText(`G=> Teleport to `, 1277, 735);
+      this.ctx.fillText(`hooks position.`, 1277, 755);
+      this.ctx.fillText(`You get 3 free hooks`, 1235, 775);
+      this.ctx.fillText(`every 2 minutes`, 1245, 795);
+    }
+      if(hookBoost || !machinegunBoost || elementBoost){
         this.ctx.save();
         this.ctx.fillStyle = "white";
-        this.ctx.fillText(`Special Weapons`, 1218, 680);
+        this.ctx.font = "20px Arial";
+        this.ctx.fillText(`Special Weapons`, 1220, 680);
         this.ctx.font = "15px Arial";
-        if(hookBoost){this.ctx.drawImage( this.levelupHook, 1212, 695, 60 , 45 ) 
-          this.ctx.fillText(`G=>teleport to `, 1277, 715);
-          this.ctx.fillText(`hook position`, 1277, 735);
-          this.ctx.fillText(`3 hooks every 15 seconds`, 1212, 755);
-          ;}
-        if(machinegunBoost){this.ctx.drawImage( 
-          this.levelupMachinegun, 1210, 695, 60 , 45 );
-          this.ctx.fillText(`C=>fire-machine`, 1266, 715);
-          this.ctx.fillText(`V=>water-machine`, 1258, 735);
-        }
+
         if(elementBoost){this.ctx.drawImage( 
           this.levelupElement, 1218, 695, 45 , 45); 
           this.ctx.fillText(`N=> Sandstorm +`, 1263, 715);

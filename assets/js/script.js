@@ -33,7 +33,6 @@ function officeClick(event) {
     clickY >= 200 &&
     clickY <= 200 + 130
   ) {
-    console.log("bulala")
         showPlayerJoBStats = !showPlayerJoBStats;
   }}
 
@@ -365,41 +364,7 @@ megaAreaDamage.addEventListener("click", function(){
     this.buyBig.play();
   }
 })
-// infoDataAll.addEventListener("click", function(){
-//   if (infoDataAll.style.opacity === "0.5") {
-//     infoDataAll.innerText = "Show All";
-//     infoDataAll.style.opacity = "1"
-//     infoData.style.opacity = "1"
-//     infoData1.style.opacity = "1"
-//     infoData2.style.opacity = "1"
-//   } else {
-//     infoDataAll.innerText = `Hide all`;
-//     infoDataAll.style.opacity = "0.5"
-//     infoData.style.opacity = "0.01"
-//     infoData1.style.opacity = "0.01"
-//     infoData2.style.opacity = "0.01"
-//   }
-// })
 
-// infoData.addEventListener("click", function(){
-//   if (infoData.style.opacity === "0.01") {
-//     infoData.innerText = "Show Stats and Activations";
-//     infoData.style.opacity = "1"
-//   } else {
-//     infoData.innerText = `Hide Information`;
-//     infoData.style.opacity = "0.01"
-//   }
-// })
-
-// infoData1.addEventListener("click", function(){
-//   if (infoData1.style.opacity === "0.01") {
-//     infoData1.innerText = "Show Progress";
-//     infoData1.style.opacity = "1"
-//   } else {
-//     infoData1.innerText = `Hide Progress`;
-//     infoData1.style.opacity = "0.01"
-//   }
-// })
 
 
 //botón del juego

@@ -27,7 +27,6 @@ const W = 87;
 const S = 83;
 const D = 68;
 
-let chance = 0
 let hookCounter = 0
 let discounting = 0;
 let charging = 0;
@@ -40,7 +39,7 @@ let mineCount = 0 //multiplo de 5
 let leveler = false //para subir de nivel
 let hookTransporter = false//para que al pulsar la g teleporte a la posicion del hook
 let hookBoost = false// para los beneficios de subir nivel el hook
-let hookLeveling = 1; //para mejorar el hook a medida que sube de nivel
+let hookLeveling = 0; //para mejorar el hook a medida que sube de nivel
 let destroyerLeveling = 0; //para mejorar la rama de destroyer
 let elementalistLeveling = 0; //para mejorar la rama de destroyer
 
@@ -52,7 +51,7 @@ let leveling = true
 let shotgunShots = 0 //las balas de la escopeta
 let extraShotgun = false  //al comprar la bala especial
 let extraShot = 0 //al adquirir cartucho adicional, puedes disparar 3 veces
-let thirdShotRange = 0
+let thirdShotRange = 0;
 let thirdShot = false //
 let extraMine =  false //minas replicantes
 let extraAreaDamage =  false //minas replicantes
@@ -65,7 +64,12 @@ let machingunCountback = 850;
 let machingunRestoreCountback = 500;
 let moneyForKill = false; //destroyerLeveling 3 y consigues dinero al matar bichos
 let lifeTotal = 10;
-
+let recharging = 10;
+let recharginState = false;
+let shotgunUpgrading = 0; //mejorar el shotgun para que haga mas daño o lo que sea
+let shotgunUpgradingState = false; //mejorar el shotgun para que haga mas daño o lo que sea
+let shotgunDamage = 0;
+let shotgunRange = 0;
 
 let playerBasicDamage = 0;
 let playerDoubleDamage = 1;
@@ -84,6 +88,8 @@ let lampOn = 0
 let publicImageLeveling = 0;
 let publicImageLevelup = false;
 let publicImage = 0;
+let chance = 0 //afecta a luck
+let instinct = 0;
 let afterSpin = false;
 
 //  para añadir o quitar cosas del juego
@@ -102,9 +108,10 @@ let addPortal = false;
   
 
 
-let showPlayerWeaponStats = false;
+let showPlayerWeaponStats = true;
 let showPlayerJoBStats = false;
 let showPlayerPhysicalStats = false;
+let training = false;
 // secret code
 let Y = 0 //89
 let U = 0 //85

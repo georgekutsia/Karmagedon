@@ -53,6 +53,7 @@ class Respect {
     console.log(publicImageLeveling)
     if(publicImageLeveling >= 2){
       publicImageLevelup = true;
+      this.total += 1
       publicImage += 1;
       publicImageLeveling = 0;
     }

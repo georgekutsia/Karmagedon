@@ -89,14 +89,15 @@ class Score {
     this.ctx.font = "22px Arial";
     this.ctx.fillStyle = "white";
     this.order = this.ctx.fillText(`Luck lvl: ${chance.toString()}`, 970, 840);
-    this.order = this.ctx.fillText(`Public Image: ${publicImage.toString()}`, 970, 860);
+    this.order = this.ctx.fillText(`Public Image: ${publicImage.toString()}`, 970, 863);
     if(publicImageLevelup){
     this.ctx.fillStyle = "aqua";
-    this.order = this.ctx.fillText(`Public Image: ${publicImage.toString()}`, 970, 860);
+    this.order = this.ctx.fillText(`Public Image: ${publicImage.toString()}`, 970, 863);
     setTimeout(() => {
       publicImageLevelup = false;
     }, 3000);
-    }
+  }
+  this.order = this.ctx.fillText(`Instinct: ${instinct.toString()}`, 970, 886);
   }
 }
   

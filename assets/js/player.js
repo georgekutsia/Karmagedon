@@ -1,7 +1,7 @@
 class Player {
   constructor(ctx, position) {
     this.ctx = ctx;
-    this.x = 399;
+    this.x = 299;
     this.y = 260;
     this.w = 35;
     this.h = 35;
@@ -10,9 +10,9 @@ class Player {
     this.extraBoostState = false
     this.extraSizeState = false
     this.lesserSizeState = false
-    this.boostTick = 0
-    this.booster = 0
-    this.boost = 4
+    this.boostTick = 0;
+    this.booster = 0;
+    this.boost = 4;
     this.vx = 0;
     this.vy = 0;
     this.img = new Image();
@@ -68,6 +68,8 @@ class Player {
     this.truck = 0;
     this.hookTIck = 0
     this.life = new Life(ctx);
+    this.recharger = new Recharger(ctx);
+    this.shotgunUpgrade = new ShotgunUpgrade(ctx);
     this.respect = new Respect(ctx)
     this.formins = new Formins(ctx)
     this.score = new Score(ctx)
@@ -387,6 +389,8 @@ class Player {
     this.blasters.forEach((blaster) => blaster.draw());
     mineria.forEach((mi) => mi.draw());
     this.life.draw();
+    this.recharger.draw(this.x + 15, this.y + 15);
+    this.shotgunUpgrade.draw(this.x + 19, this.y + 19);
     this.respect.draw();
     this.formins.draw();
     this.ctx.fillStyle = "lightsalmon";
@@ -406,6 +410,8 @@ class Player {
       this.img.frame = 0;
     }
     this.life.move();
+    this.recharger.move();
+    this.shotgunUpgrade.move();
     this.respect.move()
     this.formins.move()
     // LIMITES DEL CANVAS =>//
@@ -453,6 +459,41 @@ class Player {
     this.discountings.forEach((discount) => {discount.move();});
     this.waters.forEach((water) => {water.move();});
     this.auras.forEach((aura) => {aura.move(); this.heal(3);this.hefa()});
+
+
+  //  entrenando en el gym
+    if(this.x >= 395 && this.x <=583 && this.y >= 568 && this.y <= 704){
+      training = true;
+      distance += 0.002;
+      this.boost += 0.0005;
+      this.ctx.save();
+      ctx.fillStyle = "rgb(251, 209, 209)";
+      this.ctx.fillStyle = "white";
+      this.ctx.font = "18px Arial";
+      this.order = this.ctx.fillText("Leg day every day!", this.x - 49, this.y - 29);
+      this.order = this.ctx.fillText("Leg day every day!", this.x - 51, this.y -31 );
+      this.ctx.fillStyle = "blue";
+      this.order = this.ctx.fillText("Leg day every day!", this.x - 50, this.y - 30);
+      this.ctx.restore();
+    } else{
+      training = false;
+    }
+    if(this.x >=1025 && this.x <=1115 && this.y >= 360 && this.y <= 420 || destroyerLeveling >= 0){
+      recharginState = true;
+      this.recharger.rechargingWeapons()
+      this.shotgunUpgrade.rechargingWeapons()
+      this.ctx.save();
+      ctx.fillStyle = "rgb(251, 209, 209)";
+      this.ctx.fillStyle = "white";
+      this.ctx.font = "18px Arial";
+      this.order = this.ctx.fillText(`Recharging Ammo}`, this.x - 49, this.y - 29);
+      this.order = this.ctx.fillText(`Recharging Ammo!`, this.x - 51, this.y -31 );
+      this.ctx.fillStyle = "green";
+      this.order = this.ctx.fillText(`Recharging Ammo!`, this.x - 50, this.y - 30);
+      this.ctx.restore();
+    } else{
+        recharginState = false;
+    }
   }
 
   loseRespect(amount){
@@ -527,7 +568,7 @@ class Player {
     }
   }
     keyDown(key) {
-    this.boost = 4 + this.booster + this.extraBoost;
+    this.boost = this.boost + this.booster + this.extraBoost;
     if (key === UP || key === W) {
       this.direction = "top";
       this.vy = - this.boost;
@@ -612,7 +653,7 @@ class Player {
         }
       }
     }
-      if (key === V || waterDrug === true) {
+      if (key === V || waterDrug) {
       this.tick++
       if(this.tick >= 10){
         this.watererExtraPlus();
@@ -643,7 +684,7 @@ class Player {
     }
     if (key === F && rocketCount >= 1) {
       this.rocketer();
-      rocketCount -= 2.5
+      rocketCount -= 5
     }
     if (key === R) {
       this.discounting();
@@ -1205,13 +1246,13 @@ class Player {
       this
     );
     if (this.direction === "right") {
-      shotgun.w = 60
-      this.x = this.x - 60
+      shotgun.w = 60 + shotgunDamage;
+      this.x = this.x - 60 - shotgunRange;
       shotgun.x = this.x + 80;
-      shotgun.y = this.y - 5
+      shotgun.y = this.y - 5 - shotgunDamage/2
       if(thirdShot){
         thirdShot = false
-        this.x = this.x - 160
+        this.x = this.x - 160 + shotgunRange
         thirdShotRange = 140
         shotgun.w = 200
         shotgun.h = 100
@@ -1225,12 +1266,12 @@ class Player {
       this.img.frame++;
     }
     if (this.direction === "left") {
-      shotgun.w = 60
-      this.x = this.x + 60
+      shotgun.w = 60 + shotgunDamage
+      this.x = this.x + 60 + shotgunRange
       shotgun.x = this.x - 80;
       shotgun.y = this.y -5
       if(thirdShot){
-        this.x = this.x + 160
+        this.x = this.x + 160 + shotgunRange
         thirdShotRange = 140
         shotgun.w = 200
         shotgun.h = 100
@@ -1244,12 +1285,12 @@ class Player {
       this.img.frame++;
     }
     if (this.direction === "top") {
-      shotgun.h = 60
-      this.y = this.y + 60
+      shotgun.h = 60 + shotgunDamage;
+      this.y = this.y + 60 +shotgunRange;
       shotgun.y = this.y - 80
       shotgun.x = this.x - 5
       if(thirdShot){
-        this.y = this.y + 160
+        this.y = this.y + 160 + shotgunRange
         thirdShotRange = 140
         shotgun.w = 100
         shotgun.h = 200
@@ -1264,15 +1305,15 @@ class Player {
       this.img.frame++;
     }
     if (this.direction === "down") {
-      shotgun.h = 60
-      this.y = this.y - 60
-      shotgun.y = this.y + 80
-      shotgun.x = this.x + 2
+      shotgun.h = 60 + shotgunDamage;
+      this.y = this.y - 60 -shotgunRange;
+      shotgun.y = this.y + 80;
+      shotgun.x = this.x + 2;
       if(thirdShot){
-        this.y = this.y - 160
-        thirdShotRange = 140
-        shotgun.w = 100
-        shotgun.h = 200
+        this.y = this.y - 160 - shotgunRange
+        thirdShotRange = 140;
+        shotgun.w = 100;
+        shotgun.h = 200;
         shotgun.y = this.y + 140
         shotgun.x = this.x -30
         this.extraShotSound = new Audio("/assets/audios ad/extraShotgun.mp3")
@@ -1286,7 +1327,7 @@ class Player {
     if (this.cooldownBullet <= 600) {
       this.cooldownBullet = 600;
     }
-    shotgunShots +=0.5
+    shotgunShots += 1;
     this.shotguns.push(shotgun);
   }
   heaterExtra() {

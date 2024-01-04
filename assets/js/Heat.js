@@ -88,8 +88,8 @@ class Shotgun {
     this.x = x;
     this.y = y;
     this.sa = 0;
-    this.w = 40
-    this.h = 40
+    this.w = 40 + shotgunDamage;
+    this.h = 40 + shotgunDamage;
     this.player = player;
     this.bla = 0;
     this.vx = 0;
@@ -105,7 +105,7 @@ class Shotgun {
     this.tick = 0;
     this.afterTick = 0;
     this.shotFar = false;
-    this.damage = playerBasicDamage + playerDoubleDamage;
+    this.damage = shotgunDamage + playerBasicDamage + playerDoubleDamage;
 
   }
   draw() {
@@ -126,7 +126,7 @@ class Shotgun {
       this.y -= 1.2
       this.h +=5
       this.w +=5
-      if(this.w >= 90 + thirdShotRange || this.h >= 90 +thirdShotRange){
+      if(this.w >= 90 + shotgunDamage + thirdShotRange || this.h >= 90 + shotgunDamage + thirdShotRange){
         this.dispose = true
       }
   }
