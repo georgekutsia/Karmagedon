@@ -98,8 +98,8 @@ class Player {
       this.w,
       this.h 
       );
-      // console.log("x",this.x)
-      // console.log("y",this.y)
+      console.log("x",this.x)
+      console.log("y",this.y)
       if(C === 67 && showPlayerWeaponStats){
         this.ctx.drawImage(
           this.machinegun,
@@ -201,16 +201,16 @@ class Player {
                 }
     if(hookCounter>0 && B ===66){
       this.ctx.drawImage(
-        this.imgHookGun, this.x + 29, this.y + 21, this.w - 10, this.h - 10
+        this.imgHookGun, this.x + 38, this.y + 21, this.w - 10, this.h - 10
       )
       ctx.fillStyle = "rgb(251, 209, 209)";
       this.ctx.fillStyle = "yellow";
       this.ctx.font = "17px Arial";
-      this.order = this.ctx.fillText(`${hookCounter.toString()}`, this.x + 48, this.y + 42);
-      this.order = this.ctx.fillText(`${hookCounter.toString()}`, this.x + 50, this.y + 42);
+      this.order = this.ctx.fillText(`${hookCounter.toString()}`, this.x + 57, this.y + 42);
+      this.order = this.ctx.fillText(`${hookCounter.toString()}`, this.x + 59, this.y + 42);
       this.ctx.fillStyle = "black";
       this.ctx.font = "15px Arial";
-      this.order = this.ctx.fillText(`x${hookCounter.toString()}`, this.x + 43, this.y + 42);
+      this.order = this.ctx.fillText(`x${hookCounter.toString()}`, this.x + 52, this.y + 42);
     }
     if(rocketCount>0){
       this.ctx.drawImage(
@@ -240,7 +240,7 @@ class Player {
     }
     if(elementalMineCount > 0){
       this.ctx.drawImage(
-        this.mineImg, this.x - 30, this.y + 45, this.w + 10, this.h
+        this.mineImg, this.x - 25, this.y + 45, this.w + 10, this.h
       )
       ctx.fillStyle = "rgb(251, 209, 209)";
       this.ctx.fillStyle = "white";
@@ -478,21 +478,34 @@ class Player {
     } else{
       training = false;
     }
-    if(this.x >=1025 && this.x <=1115 && this.y >= 360 && this.y <= 420 || destroyerLeveling >= 0){
+    if(this.x >=1025 && this.x <=1115 && this.y >= 360 && this.y <= 420 && destroyerLeveling >= 2){
       recharginState = true;
       this.recharger.rechargingWeapons()
-      this.shotgunUpgrade.rechargingWeapons()
       this.ctx.save();
       ctx.fillStyle = "rgb(251, 209, 209)";
       this.ctx.fillStyle = "white";
       this.ctx.font = "18px Arial";
-      this.order = this.ctx.fillText(`Recharging Ammo}`, this.x - 49, this.y - 29);
-      this.order = this.ctx.fillText(`Recharging Ammo!`, this.x - 51, this.y -31 );
-      this.ctx.fillStyle = "green";
-      this.order = this.ctx.fillText(`Recharging Ammo!`, this.x - 50, this.y - 30);
+      this.order = this.ctx.fillText(`Recharging Ammo`, this.x - 49, this.y - 59);
+      this.order = this.ctx.fillText(`Recharging Ammo`, this.x - 51, this.y -61 );
+      this.ctx.fillStyle = "orange";
+      this.order = this.ctx.fillText(`Recharging Ammo`, this.x - 50, this.y - 60);
       this.ctx.restore();
+
+      if(destroyerLeveling >=3) { 
+        shotgunUpgradingState = true;
+      this.shotgunUpgrade.rechargingWeapons()
+        this.ctx.save();
+        ctx.fillStyle = "rgb(251, 209, 209)";
+        this.ctx.fillStyle = "white";
+        this.ctx.font = "18px Arial";
+        this.order = this.ctx.fillText(`Upgrading Shotgun`, this.x - 49, this.y - 29);
+        this.order = this.ctx.fillText(`Upgrading Shotgun`, this.x - 51, this.y -31 );
+        this.ctx.fillStyle = "green";
+        this.order = this.ctx.fillText(`Upgrading Shotgun`, this.x - 50, this.y - 30);
+        this.ctx.restore();
+      }
     } else{
-        recharginState = false;
+      shotgunUpgradingState = false;
     }
   }
 
@@ -1248,11 +1261,11 @@ class Player {
     if (this.direction === "right") {
       shotgun.w = 60 + shotgunDamage;
       this.x = this.x - 60 - shotgunRange;
-      shotgun.x = this.x + 80;
-      shotgun.y = this.y - 5 - shotgunDamage/2
+      shotgun.x = this.x + 80 + shotgunRange/2;
+      shotgun.y = this.y - 5 ;
       if(thirdShot){
         thirdShot = false
-        this.x = this.x - 160 + shotgunRange
+        this.x = this.x - 160 - shotgunRange/2;
         thirdShotRange = 140
         shotgun.w = 200
         shotgun.h = 100
@@ -1268,10 +1281,10 @@ class Player {
     if (this.direction === "left") {
       shotgun.w = 60 + shotgunDamage
       this.x = this.x + 60 + shotgunRange
-      shotgun.x = this.x - 80;
+      shotgun.x = this.x - 80 - shotgunRange/2;
       shotgun.y = this.y -5
       if(thirdShot){
-        this.x = this.x + 160 + shotgunRange
+        this.x = this.x + 160 + shotgunRange/2
         thirdShotRange = 140
         shotgun.w = 200
         shotgun.h = 100
@@ -1287,10 +1300,10 @@ class Player {
     if (this.direction === "top") {
       shotgun.h = 60 + shotgunDamage;
       this.y = this.y + 60 +shotgunRange;
-      shotgun.y = this.y - 80
-      shotgun.x = this.x - 5
+      shotgun.y = this.y - 80 - shotgunRange/2;
+      shotgun.x = this.x - 5;
       if(thirdShot){
-        this.y = this.y + 160 + shotgunRange
+        this.y = this.y + 160 + shotgunRange/2;
         thirdShotRange = 140
         shotgun.w = 100
         shotgun.h = 200
@@ -1307,10 +1320,10 @@ class Player {
     if (this.direction === "down") {
       shotgun.h = 60 + shotgunDamage;
       this.y = this.y - 60 -shotgunRange;
-      shotgun.y = this.y + 80;
-      shotgun.x = this.x + 2;
+      shotgun.y = this.y + 80 + shotgunRange/2;
+      shotgun.x = this.x + 2 ;
       if(thirdShot){
-        this.y = this.y - 160 - shotgunRange
+        this.y = this.y - 160 - shotgunRange/2;
         thirdShotRange = 140;
         shotgun.w = 100;
         shotgun.h = 200;

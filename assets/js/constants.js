@@ -69,7 +69,7 @@ let recharginState = false;
 let shotgunUpgrading = 0; //mejorar el shotgun para que haga mas daño o lo que sea
 let shotgunUpgradingState = false; //mejorar el shotgun para que haga mas daño o lo que sea
 let shotgunDamage = 0;
-let shotgunRange = 0;
+let shotgunRange = 150;
 
 let playerBasicDamage = 0;
 let playerDoubleDamage = 1;
@@ -117,3 +117,5 @@ let Y = 0 //89
 let U = 0 //85
 let I = 0 //73
 let O = 0 //79
+
+

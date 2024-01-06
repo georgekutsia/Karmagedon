@@ -14,6 +14,7 @@ class Bushes {
         this.img,this.x, this.y, this.w, this.h
       )
     } 
+
     drawWarn(){
       this.ctx.drawImage(
         this.excla, this.x, this.y, this.w - 20, this.h - 20
@@ -231,15 +232,20 @@ class Fence {
       return colX && colY;
     }
   }
+
 class People {
-    constructor(ctx, x, y, w, h , other) {
+    constructor(ctx, x, y, w, h , image, wolking, vx, vy) {
       this.ctx = ctx;
       this.x = x;
       this.y = y;
       this.w = w;
       this.h = h;
       this.img = new Image();
-      this.img.src = other;
+      this.vy = 0 || vy;
+      this.vx = 0 || vx;
+      this.img.src = image;
+      this.wolking = false || wolking;
+      this.wolkingTick = 0;
       this.niceWords  = [
         "Nice spectacle!",
         "Cool entertainment",
@@ -255,8 +261,15 @@ class People {
       this.ctx.drawImage(
         this.img,this.x, this.y, this.w, this.h
       )
+
     } 
-    
+    move(){
+      this.x += this.vx;
+      this.wolkingTick++
+      if(this.wolkingTick >= 100) {
+        invertImage(this.ctx, this.x, this.y, this.w, this.h, this.img);
+      }
+    }
     collides(player) {
       const colX = this.x + 10 <= player.x + player.w && this.x + this.w - 10 > player.x;
       const colY = this.y + this.h > player.y && this.y + 10 < player.y + player.h;

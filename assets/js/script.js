@@ -3,53 +3,6 @@ const ctx = canvas.getContext('2d');
 
 const game = new Game(ctx);
 
-// const practiceGame = new GameTrain(ctx)
-canvas.addEventListener('click', playerClick);
-
-function playerClick(event) {
-  const rect = canvas.getBoundingClientRect();
-  const clickX = event.clientX - rect.left;
-  const clickY = event.clientY - rect.top;
-
-  // Verifica si el clic está dentro de los límites del personaje
-  if (
-    clickX >= game.player.x &&
-    clickX <= game.player.x + game.player.w &&
-    clickY >= game.player.y &&
-    clickY <= game.player.y + game.player.h
-  ) {
-    showPlayerWeaponStats = !showPlayerWeaponStats;
-  }
-}
-canvas.addEventListener('click', officeClick);
-
-function officeClick(event) {
-  const rect = canvas.getBoundingClientRect();
-  const clickX = event.clientX - rect.left;
-  const clickY = event.clientY - rect.top;
-  if (
-    clickX >= 1200 &&
-    clickX <= 1200 + 190 &&
-    clickY >= 200 &&
-    clickY <= 200 + 130
-  ) {
-        showPlayerJoBStats = !showPlayerJoBStats;
-  }}
-
-canvas.addEventListener('click', bodyTockenClick);
-function bodyTockenClick(event) {
-  const rect = canvas.getBoundingClientRect();
-  const clickX = event.clientX - rect.left;
-  const clickY = event.clientY - rect.top;
-  if (
-    clickX >= -30 &&
-    clickX <= -30 + 130 &&
-    clickY >= 800 &&
-    clickY <= 800 + 130
-  ) {
-    showPlayerPhysicalStats = !showPlayerPhysicalStats;
-  }}
-
 
 // const infoDataAll = document.getElementById("display-all");
 // const infoData = document.getElementById("display-info");
