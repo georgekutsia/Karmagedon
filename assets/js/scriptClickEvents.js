@@ -60,7 +60,6 @@ function shotgunInfoClick(event) {
     clickY >= game.player.y + 45 &&
     clickY <= game.player.y + 45 + game.player.h + 5 && destroyerLeveling >=3
   ) {
-    console.log("bulala")
   }}
 // rocket info  click
 canvas.addEventListener('click', rocketInfoClick);
@@ -74,7 +73,6 @@ function rocketInfoClick(event) {
     clickY >= game.player.y + 51 &&
     clickY <= game.player.y + 31 + game.player.h  && destroyerLeveling >=3
   ) {
-    console.log("bulala")
   }}
 
 
@@ -90,7 +88,7 @@ function hookInfoClick(event) {
     clickY >= game.player.y + 10 &&
     clickY <= game.player.y + 10 + game.player.h  && hookLeveling >= 1
   ) {
-    console.log("bulala")
+    
   }}
 
 
@@ -106,7 +104,6 @@ function explosiveInfoClick(event) {
     clickY >= game.player.y + 45 &&
     clickY <= game.player.y + 45 + game.player.h  && elementalistLeveling >= 2
   ) {
-    console.log("explosive info")
   }}
 
   
@@ -122,5 +119,4 @@ function mineInfoClick(event) {
     clickY >= game.player.y + 45 &&
     clickY <= game.player.y + 45 + game.player.h  && elementalistLeveling >= 3
   ) {
-    console.log("mine info")
   }}

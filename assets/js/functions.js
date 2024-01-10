@@ -175,3 +175,5 @@ function stormHealingClients(client, message, ctx){
   ctx.fillStyle = "aqua";
   ctx.fillText(`${message}`, client.x - 38, client.y-26);
 }
+
+// lo que ocurre al llegar a nivel 3

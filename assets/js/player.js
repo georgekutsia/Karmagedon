@@ -98,8 +98,8 @@ class Player {
       this.w,
       this.h 
       );
-      console.log("x",this.x)
-      console.log("y",this.y)
+      // console.log("x",this.x)
+      // console.log("y",this.y)
       if(C === 67 && showPlayerWeaponStats){
         this.ctx.drawImage(
           this.machinegun,
@@ -221,7 +221,7 @@ class Player {
       this.ctx.font = "17px Arial";
       this.order = this.ctx.fillText(`${this.rocketCountDiv.toString()}`, this.x + 48, this.y + 70);
       this.order = this.ctx.fillText(`${this.rocketCountDiv.toString()}`, this.x + 50, this.y + 70);
-      this.ctx.fillStyle = "black";
+      this.ctx.fillStyle = "black"; 
       this.ctx.font = "15px Arial";
       this.order = this.ctx.fillText(`x${this.rocketCountDiv.toString()}`, this.x + 43, this.y + 70);
     }
@@ -490,7 +490,6 @@ class Player {
       this.ctx.fillStyle = "orange";
       this.order = this.ctx.fillText(`Recharging Ammo`, this.x - 50, this.y - 60);
       this.ctx.restore();
-
       if(destroyerLeveling >=3) { 
         shotgunUpgradingState = true;
       this.shotgunUpgrade.rechargingWeapons()
@@ -503,9 +502,9 @@ class Player {
         this.ctx.fillStyle = "green";
         this.order = this.ctx.fillText(`Upgrading Shotgun`, this.x - 50, this.y - 30);
         this.ctx.restore();
-      }
+      }else { shotgunUpgradingState = false;}
     } else{
-      shotgunUpgradingState = false;
+      recharginState = false;
     }
   }
 
@@ -762,7 +761,7 @@ class Player {
           this.alertingSound = new Audio("/assets/audios ad/reload.mp3");
           this.alertingSound.volume = 0.05;
           this.alertingSound.play()
-          }, this.cooldownBullet);
+          }, 200);
     }
 
     // para que el tercer disparo sea más potente

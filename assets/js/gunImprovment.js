@@ -36,7 +36,7 @@ class ShotgunUpgrade {
   }
 
   rechargingWeapons() {
-    shotgunUpgrading += 0.01;
+    shotgunUpgrading += 0.1;
     if(shotgunUpgrading >= 360) {
       shotgunDamage += 20;
       shotgunRange += 30;

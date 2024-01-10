@@ -50,7 +50,6 @@ class Respect {
   getRespect(amount){
     this.total += amount + publicImage/1000;
     publicImageLeveling += amount;
-    console.log(publicImageLeveling)
     if(publicImageLeveling >= 2){
       publicImageLevelup = true;
       this.total += 1

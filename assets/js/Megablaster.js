@@ -437,7 +437,6 @@ class ElementMine{
     this.damage += 0.00002;
     this.w += 0.005;
     this.h += 0.005;
-    console.log(this.damage);
     if (this.tick > 4) {
       this.tick = 0;
       this.eleImg.frame++;

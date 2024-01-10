@@ -43,11 +43,15 @@ class Game {
     this.imgRocket.src = "/assets/images/munición/rocketImg.png"
     this.shotgunCharged = new Image();
     this.shotgunCharged.src =  "/assets/images/shotgun/shotgunCharged.png";
+    this.hookDamage = new Image();
+    this.hookDamage.src = "/assets/images/infos/hookDamage.png"
+    this.hookMoney = new Image();
+    this.hookMoney.src = "/assets/images/infos/hookMoney.png"
     this.upBulletsMessage = this.upgradeMessage = this.customersMessage = this.perjudiceMessage= this.bossPerjIs= this.ratMessage = false;
     this.upgradeTick = this.customerTick = this.perjudiceTick = this.bossPerjTick =this.levelerTick = this.lampTick = this.ratPoison =this.iceCurePoison = this.ratTick = this.upBulletTick = 0;
-    this.puddleTime =this.fireTime =this.gooseTime =this.babyTime =this.customerTime =this.bossTime =this.korenTime =this.cartTime =this.foodTime =this.upgradeTime =this.upBulletTime =this.discountTime =this.deadGoose = 0
+    this.puddleTime =this.fireTime  =this.babyTime =this.customerTime =this.bossTime =this.korenTime =this.cartTime =this.foodTime =this.upgradeTime =this.upBulletTime =this.discountTime =this.deadGoose = 0
     this.karens = this.rats = this.babys = this.customers = this.fats = this.puddles = this.fires = this.geese = this.bosss = this.korens = this.carts = this.drugs = this.foods = this.upgrades = this.upBullets = this.discounts = [];
-
+    this.gooseTime = 1900;
     this.lampOff = "/assets/images/elements/lampOfff.png"
     this.poisonedTime = 3000 - chance * 300
     this.tick = 0;
@@ -71,9 +75,9 @@ class Game {
       new People(ctx, 730, 90, 40, 40, "/assets/images/people/pep5.png"), new People(ctx, 850, 80, 80, 80, "/assets/images/people/pep8.png"),
       new People(ctx, 860, 350, 40, 40, "/assets/images/people/pep11.png"), new People(ctx, 160, 590, 30, 30, "/assets/images/people/pep22.png"),
       new People(ctx, 200, 590, 30, 30, "/assets/images/people/pep23.png"), new People(ctx, 430, 12, 50, 30, "/assets/images/people/pep25.png"),
-      new People(ctx, 800, 12, 60, 35, "/assets/images/people/pep20.png"), new People(ctx, 1000, 280, 60, 35, "/assets/images/people/pep24.png", true, -0.09),
+      new People(ctx, 800, 12, 60, 35, "/assets/images/people/pep20.png"), new People(ctx, 1000, 280, 60, 35, "/assets/images/people/pep24.png", true, -0.09, 0, 0.09),
       new People(ctx, 400, 350, 80, 45, "/assets/images/people/pep30.png"), new People(ctx, 835, 575, 80, 45, "/assets/images/people/pep31.png"),
-      new People(ctx, 65, 250, 50, 30, "/assets/images/people/pep32.png", true, 0.09), new People(ctx, 385, 575, 50, 30, "/assets/images/people/pep33.png"),
+      new People(ctx, 65, 250, 50, 30, "/assets/images/people/pep32.png", true, 0.09, 0, -0.09), new People(ctx, 385, 575, 50, 30, "/assets/images/people/pep33.png"),
     ]
     this.pback = [
       new People(ctx, 250, 420, 40, 60, "/assets/images/people/pep2.png"), new People(ctx, 480, 430, 40, 40, "/assets/images/people/pep.png"),
@@ -209,8 +213,8 @@ class Game {
         }
       }
 
-      if (this.gooseTime > Math.random() * 100 + 10 && addGeese) { //goose
-        this.gooseTime = 9000;
+      if (this.gooseTime >= Math.random() * 100 + 2000 && addGeese) { //goose
+        this.gooseTime = 0;
         this.gooseAlert();
         this.addGoose();
       }
@@ -354,7 +358,6 @@ class Game {
     if (this.upBullets.length <= 0) { const alert = document.getElementById("upBullet-alert"); alert.style.display = "none";}
     if (this.bosss.length <= 0) { const alert = document.getElementById("boss-alert"); alert.style.display = "none";}
     if (this.korens.length <= 0) { const alert = document.getElementById("koren-alert"); alert.style.display = "none";}
-    
     if (this.bosss.length <= 0 &&this.korens.length <= 0 &&this.fires.length <= 0 &&this.puddles.length <= 0 &&this.babys.length <= 0 && this.geese.length <= 0 &&this.fats.length <= 0 &&this.rats.length <= 0 &&this.karens.length <= 0
     ) {
       const nothingToWorrie = document.getElementById("ok");
@@ -380,7 +383,6 @@ class Game {
         this.mainOffice, 1200, 200, 190, 130
         ) 
     }
-
     if(this.player.respect.total <= 0.3 && this.player.life.total <=3){
       this.player.sandstate = true;
     }
@@ -676,13 +678,23 @@ class Game {
             }
           }
 
-    if(hookLeveling >=1){
+    if(hookLeveling >= 1){
       this.ctx.drawImage( this.levelupHook, 1212, 695, 60 , 45 ) 
       this.ctx.fillText(`B=> Use hook.`, 1277, 715);
       this.ctx.fillText(`G=> Teleport to `, 1277, 735);
       this.ctx.fillText(`hooks position.`, 1277, 755);
-      this.ctx.fillText(`You get 3 free hooks`, 1235, 775);
-      this.ctx.fillText(`every 2 minutes`, 1245, 795);
+      this.ctx.fillText(`Get 3 hooks every  2min`, 1217, 775);
+      if(hookLeveling >= 2){
+      this.ctx.drawImage( this.hookDamage, 1215, 791, 40 , 35 ) 
+        this.ctx.fillText(`Hooks damage`, 1260, 801);
+        this.ctx.fillText(`on impact now`, 1260, 821  );
+            if(hookLeveling >= 3){
+              this.ctx.drawImage( this.hookMoney, 1215, 835, 35 , 45 ) 
+              this.ctx.fillText(`Turning on lamps`, 1260, 850 );
+              this.ctx.fillText(`gets you money`, 1260, 870 );
+              this.ctx.fillText(`and reputation`, 1260, 890 );
+            }
+      }
     }
       if(hookBoost || !machinegunBoost || elementBoost){
         this.ctx.save();
@@ -1100,9 +1112,7 @@ class Game {
 
 
 // al tercer nivel de hook checkCharger también aumenta en 2 el charging al impactar
-  hookLevel3(){
-        Q = 81; E = 69; ALT = 16; 
-  }
+
 
   //Colisiones start..Colisiones start..Colisiones start..Colisiones start..Colisiones start..Colisiones start..
   //Colisiones start..Colisiones start..Colisiones start..Colisiones start..Colisiones start..Colisiones start..
@@ -1607,9 +1617,6 @@ class Game {
         if(hookLeveling >= 2){
           fat.vy -= 1
         }
-        if(hookLeveling >= 3){
-          this.hookLevel3()
-        }
         hook.dispose = true
           return false;
         } else return true;
@@ -2049,7 +2056,6 @@ this.cactus.forEach((cactu) => { //baby con cactus
           this.player.heats.splice(0, 1);
           this.karenSounds[Math.floor(Math.random() * this.karenSounds.length)].play();
           boss.lifeleft -= heat.damage;
-          console.log("damage", heat.damage);
           this.checkCharger()
           this.angryKorenPopup(10);
           this.addKoren();
@@ -2403,13 +2409,13 @@ this.lamps.forEach((lamp) => {//hook con lamps
         this.luzOnAudio.volume = 0.07;
         this.luzOnAudio.play();
         lampOn+=1
-        if(hookLeveling >= 1){
+        if(hookLeveling >= 2){
           money += 100;
         } 
         if (lampOn > 11){
-          money += 400;
+          money += 200;
         }
-        if(lampOn === 14){
+        if(lampOn === amountOfLamps) {
           publicImage += 1
           lamp.lights = false
         }

@@ -234,7 +234,7 @@ class Fence {
   }
 
 class People {
-    constructor(ctx, x, y, w, h , image, wolking, vx, vy) {
+    constructor(ctx, x, y, w, h , image, wolking, vx, vy, newVx, newVy) {
       this.ctx = ctx;
       this.x = x;
       this.y = y;
@@ -243,6 +243,8 @@ class People {
       this.img = new Image();
       this.vy = 0 || vy;
       this.vx = 0 || vx;
+      this.newVx = 0 || newVx;
+      this.newVy = 0 || newVy;
       this.img.src = image;
       this.wolking = false || wolking;
       this.wolkingTick = 0;
@@ -268,6 +270,7 @@ class People {
       this.wolkingTick++
       if(this.wolkingTick >= 100) {
         invertImage(this.ctx, this.x, this.y, this.w, this.h, this.img);
+      this.vx = this.newVx
       }
     }
     collides(player) {

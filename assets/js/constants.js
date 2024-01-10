@@ -84,7 +84,8 @@ let afterSize = 60
 let bulletSize = 20
 let chargingTrue = false
 let venom = 5
-let lampOn = 0
+let lampOn = 0;
+let amountOfLamps = 13;
 let publicImageLeveling = 0;
 let publicImageLevelup = false;
 let publicImage = 0;
@@ -109,7 +110,7 @@ let addPortal = false;
 
 
 let showPlayerWeaponStats = true;
-let showPlayerJoBStats = false;
+let showPlayerJoBStats = true;
 let showPlayerPhysicalStats = false;
 let training = false;
 // secret code
