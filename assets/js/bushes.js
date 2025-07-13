@@ -145,15 +145,14 @@ class Cactus {
     }
   }
 class Bush1 {
-    constructor(ctx, x, y, w, h , stn) {
+    constructor(ctx, x, y, w, h, img ) {
       this.ctx = ctx;
       this.x = x;
       this.y = y;
       this.w = w;
       this.h = h;
-      this.stn =stn
       this.img = new Image();
-      this.img.src = "/assets/images/elements/bush10.png";
+      this.img.src = img || "/assets/images/elements/bush10.png";
     }
     draw() {
       this.ctx.drawImage(

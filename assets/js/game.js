@@ -101,12 +101,12 @@ class Game {
       new Fence(ctx, 1045, 70, 10, 160, "/assets/images/elements/fence5.png"), new Fence(ctx, 1045, 72, 10, 160, "/assets/images/elements/fence5.png"), new Fence(ctx, 1045, 74, 10, 160, "/assets/images/elements/fence5.png"),
       
       // vertical bushes start
-      new Bush1(ctx, 57, 60, 20, 100), new Bush1(ctx, 287, 60, 20, 170), new Bush3(ctx, 385, 60, 20, 170), new Bush3(ctx, 607, 60, 20, 170),
-      new Bush2(ctx, 705, 60, 20, 170), new Bush2(ctx, 921, 60, 20, 170), new Bush1(ctx, 57, 330, 20, 120), new Bush1(ctx, 287, 330, 20, 150),
-      new Bush3(ctx, 385, 330, 20, 150), new Bush3(ctx, 607, 330, 20, 150), new Bush2(ctx, 705, 330, 20, 150), new Bush2(ctx, 921, 330, 20, 150),
-      new Bush1(ctx, 57, 560, 20, 120), new Bush1(ctx, 385, 560, 20, 120),  new Bush1(ctx, 67, 550, 90, 20),  new Bush2(ctx, 97, 550, 90, 20),  new Bush1(ctx, 287, 550, 20, 75),
-      new Bush2(ctx, 450, 550, 90, 20), new Bush3(ctx, 387, 550, 90, 20), new Bush2(ctx, 610, 660, 20, 95), new Bush2(ctx, 540, 737, 90, 15), new Bush1(ctx, 1040, 630, 20, 75),
-      new Bush2(ctx, 700, 550, 20, 75), new Fence(ctx, 60, 420, 60, 40), new Bush2(ctx, 480, 737, 90, 15), new Bush2(ctx, 200, 737, 90, 15),new Bush2(ctx, 130, 737, 90, 15),
+      new Bush1(ctx, 57, 60, 20, 100, "/assets/images/elements/bush20.png"), new Bush1(ctx, 287, 60, 20, 170, "/assets/images/elements/bush30.png"), new Bush1(ctx, 385, 60, 20, 170), new Bush1(ctx, 607, 60, 20, 170),
+      new Bush1(ctx, 705, 60, 20, 170), new Bush1(ctx, 921, 60, 20, 170), new Bush1(ctx, 57, 330, 20, 120), new Bush1(ctx, 287, 330, 20, 150),
+      new Bush1(ctx, 385, 330, 20, 150), new Bush1(ctx, 607, 330, 20, 150), new Bush1(ctx, 705, 330, 20, 150), new Bush1(ctx, 921, 330, 20, 150),
+      new Bush1(ctx, 57, 560, 20, 120), new Bush1(ctx, 385, 560, 20, 120),  new Bush1(ctx, 67, 550, 90, 20),  new Bush1(ctx, 97, 550, 90, 20),  new Bush1(ctx, 287, 550, 20, 75),
+      new Bush1(ctx, 450, 550, 90, 20), new Bush1(ctx, 387, 550, 90, 20), new Bush1(ctx, 610, 660, 20, 95), new Bush1(ctx, 540, 737, 90, 15), new Bush1(ctx, 1040, 630, 20, 75),
+      new Bush1(ctx, 700, 550, 20, 75), new Fence(ctx, 60, 420, 60, 40), new Bush1(ctx, 480, 737, 90, 15), new Bush1(ctx, 200, 737, 90, 15),new Bush1(ctx, 130, 737, 90, 15),
     // vertical bushes end
     ]
     this.lamps = [
@@ -195,7 +195,7 @@ class Game {
           this.fireTime = 400
         }
       }
-      if (this.ratTime > Math.random() * 100 + 20 && addRat) { //rat
+      if (this.ratTime > Math.random() * 100 + 2000 && addRat) { //rat
         this.ratTime = 0;
         this.ratAlert();
         this.addRat();
@@ -2730,7 +2730,6 @@ if(leveler){
     this.winMus.volume = 0.1;
     this.winMus.play();
   }
-
   setListeners() {
     document.addEventListener("keydown", (e) => {
       this.player.keyDown(e.keyCode);

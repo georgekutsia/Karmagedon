@@ -16,6 +16,8 @@ function playerClick(event) {
     showPlayerWeaponStats = !showPlayerWeaponStats;
   }
 }
+
+
 canvas.addEventListener('click', officeClick);
 
 // office click

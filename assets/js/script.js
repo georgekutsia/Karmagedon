@@ -72,6 +72,10 @@ const megaHook = document.getElementById("mega-hook")
 const megaLife = document.getElementById("mega-life")
 const megaAreaDamage = document.getElementById("mega-areaDamage")
 
+  const openBtn = document.getElementById('choose-options-open');
+  const modal = document.getElementById('optionsModal');
+  const overlay = document.getElementById('modal-overlay');
+
 const allBuys = [buyRockets, buyMine, buyMines, buyHooks, buyDiscounts, buyTimeShield, buyBlaster]
 const allSells = [sellRockets, sellMines, sellMine, sellHooks, sellDiscounts]
 const allAsks = [askFood, askDrug]
@@ -505,3 +509,15 @@ hoverSoundButtons2.forEach((button) => button.addEventListener("mouseover", func
   this.musicStart.play()
 }))
 
+
+  openBtn.addEventListener('click', () => {
+    modal.classList.add('active');
+    overlay.classList.add('active');
+  });
+
+
+  // Opcional: cerrar al hacer clic fuera del modal
+  overlay.addEventListener('click', () => {
+    modal.classList.remove('active');
+    overlay.classList.remove('active');
+  });

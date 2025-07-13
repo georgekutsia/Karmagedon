@@ -66,7 +66,6 @@ class Karens {
     if (this.tick >= 150) {
       this.ctx.font = "18px Arial";
       this.ctx.save();
-
       ctx.fillStyle = "rgb(251, 209, 209)";
       this.order = this.ctx.fillText(this.problem, this.x - 89, this.y - 2);
       this.order = this.ctx.fillText(this.problem, this.x - 91, this.y - 4);

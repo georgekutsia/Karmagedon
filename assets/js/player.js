@@ -398,10 +398,10 @@ class Player {
   move() {
     this.x += this.vx;
     this.y += this.vy;
-    this.tick++;
     if(this.toxicity ===true && this.tick % 5 === 0){
       this.toxicar()
     }
+    this.tick++;
     if ((this.tick > 10 && this.vx) || (this.tick > 10 && this.vy)) {
       this.img.frame++;
       this.tick = 0;
@@ -690,7 +690,7 @@ class Player {
     if (key === RIGHT || key === D) {this.vx = 0;}
     if (key === LEFT || key === A) {this.vx = 0;}
 
-    if (key === M) {
+    if (key === M && solvedTotal >= 20) {
       this.megablaster();
       M = 0
     }
@@ -730,7 +730,7 @@ class Player {
         N = 0;
         setTimeout(function () {
         N = 78;
-      }, 600);
+      }, 6000);
     }
     if (key === J && elementalistLeveling >= 2 && elementalMineCount >= 1) {
       this.elementBomb()

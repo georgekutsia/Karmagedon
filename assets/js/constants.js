@@ -95,11 +95,11 @@ let afterSpin = false;
 
 //  para añadir o quitar cosas del juego
 
-let addPeople = true;
+let addPeople = false;
 let addCactus = false;
 let addLamps = false;
 let addGeese = false;
-let addWalls = false;
+let addWalls = true;
 let addRat = false;
 let addFat = false;
 let addBaby = false;
@@ -119,4 +119,10 @@ let U = 0 //85
 let I = 0 //73
 let O = 0 //79
 
-
+let solvedRats = 0;
+let solvedGoose = 0;
+let solvedWaterFire = 0;
+let solvedBoss = 0;
+let solvedKarens = 0;
+let solvedKorens = 0;
+let solvedTotal = 40;
