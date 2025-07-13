@@ -96,7 +96,7 @@ let afterSpin = false;
 //  para añadir o quitar cosas del juego
 
 let addPeople = false;
-let addCactus = false;
+let addCactus = true;
 let addLamps = false;
 let addGeese = false;
 let addWalls = true;

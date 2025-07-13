@@ -59,16 +59,11 @@ class Game {
     this.hookedAllRatsAndGeese = true;
 
     this.cactus = [
-      new Cactus(ctx, 375, 200, 40, 40, "/assets/images/fondos/cact1.png"), new Cactus(ctx, 600, 190, 50, 50, "/assets/images/fondos/cact3.png"),
-      new Cactus(ctx, 820, 320, 30, 40, "/assets/images/fondos/cact5.png"), new Cactus(ctx, 780, 440, 40, 40, "/assets/images/fondos/cact4.png"),
-      new Cactus(ctx, 387, 548, 25, 25), new Cactus(ctx, 287, 548, 25, 25), new Cactus(ctx, 387, 548, 25, 25), new Cactus(ctx, 460, 548, 25, 25),
-      new Cactus(ctx, 450, 548, 25, 25), new Cactus(ctx, 520, 548, 25, 25), new Cactus(ctx, 265, 731, 25, 25),  new Cactus(ctx, 115, 731, 25, 25), 
-      new Cactus(ctx, 710, 542, 70, 18, "/assets/images/fondos/cact5a.png"), new Cactus(ctx, 750, 542, 70, 18, "/assets/images/fondos/cact5a.png"),
-      new Cactus(ctx, 800, 542, 60, 18, "/assets/images/fondos/cact5b.png"), new Cactus(ctx, 938, 630, 23, 23, "/assets/images/fondos/arb4.png"),new Cactus(ctx, 735, 725, 23, 23, "/assets/images/fondos/arb4.png"),
-      new Cactus(ctx, 740, 536, 35, 35, "/assets/images/fondos/arb10.png"), new Cactus(ctx, 790, 536, 30, 30, "/assets/images/fondos/arb9.png"),
-      new Cactus(ctx, 700, 536, 30, 30, "/assets/images/fondos/arb2.png"), new Cactus(ctx, 840, 536, 30, 30, "/assets/images/fondos/arb2.png"),
-      new Cactus(ctx, 945, 630, 10, 80, "/assets/images/fondos/cact5b.png"), new Cactus(ctx, 945, 670, 10, 80, "/assets/images/fondos/cact5b.png"),
-      new Cactus(ctx, 875, 733, 80, 10, "/assets/images/fondos/cact5b.png"), new Cactus(ctx, 815, 733, 80, 10, "/assets/images/fondos/cact5b.png"), new Cactus(ctx, 750, 733, 80, 10, "/assets/images/fondos/cact5b.png"),
+      new Cactus(ctx, 185, 240, 40, 40, "/assets/images/fondos/cact1.png"), 
+      new Cactus(ctx, 490, 220, 50, 50, "/assets/images/fondos/cact2.png"),
+      new Cactus(ctx, 820, 320, 30, 40, "/assets/images/fondos/cact3.png"), new Cactus(ctx, 780, 440, 40, 40, "/assets/images/fondos/cact4.png"),
+      new Cactus(ctx, 387, 548, 25, 25), new Cactus(ctx, 287, 548, 25, 25),
+
     ]
     this.pfront = [
       new People(ctx, 90, 360, 80, 80, "/assets/images/people/pep10.png"), new People(ctx, 250, 350, 40, 60, "/assets/images/people/pep3.png"),
@@ -91,23 +86,19 @@ class Game {
       new People(ctx, 1055, 380, 30, 60, "/assets/images/people/peop77.png"), new People(ctx, 730, 670, 60, 40, "/assets/images/people/peop78.png"),
     ]
     this.bushesover = [
-      // weaponizer
-      new Fence(ctx, 1050, 440, 100, 30, "/assets/images/elements/fence5.png"), new Fence(ctx, 1050, 435, 100, 30, "/assets/images/elements/fence5.png"), new Fence(ctx, 1053, 450, 100, 20, "/assets/images/elements/fence3.png"),
-      new Fence(ctx, 1050, 340, 100, 30, "/assets/images/elements/fence5.png"), new Fence(ctx, 1050, 335, 100, 30, "/assets/images/elements/fence5.png"), new Fence(ctx, 1053, 350, 100, 20, "/assets/images/elements/fence3.png"),
-      new Fence(ctx, 1130, 340, 20, 130, "/assets/images/elements/fence5.png"), new Fence(ctx, 1130, 335, 20, 130, "/assets/images/elements/fence5.png"), new Fence(ctx, 1140, 350, 10, 120, "/assets/images/elements/fence3.png"),
+
+      //  bushes start
+      new Bush1(ctx, 75, 82, 10, 200), new Bush1(ctx, 315, 80, 10, 200),  new Bush1(ctx, 390, 80, 10, 200), new Bush1(ctx, 620, 80, 10, 200),new Bush1(ctx, 695, 80, 10, 200), new Bush1(ctx, 947, 80, 10, 200), 
+      new Bush1(ctx, 75, 345, 10, 175), new Bush1(ctx, 315, 345, 10, 175), new Bush1(ctx, 390, 345, 10, 175), new Bush1(ctx, 620, 345, 10, 175), new Bush1(ctx, 695, 345, 10, 175), new Bush1(ctx, 947, 345, 10, 175),
+      new Bush1(ctx, 75, 582, 10, 175), new Bush1(ctx, 75, 745, 90, 10),  new Bush1(ctx, 315, 582, 10, 100),   new Bush1(ctx, 390, 582, 10, 100), new Bush1(ctx, 390, 582, 90, 10),   new Bush1(ctx, 620, 660, 10, 90), new Bush1(ctx, 540, 745, 90, 10), 
+      new Bush1(ctx, 790, 582, 75, 10), new Bush1(ctx, 790, 745, 75, 10), new Bush1(ctx, 695, 635, 10, 75), new Bush1(ctx, 947, 635, 10, 75),
       // warhouse
-      new Fence(ctx, 1040, 200, 105, 30, "/assets/images/elements/fence5.png"), new Fence(ctx, 1040, 202, 105, 30, "/assets/images/elements/fence5.png"), new Fence(ctx, 1050, 204, 80, 30, "/assets/images/elements/fence7.png"),
-      new Fence(ctx, 1040, 70, 105, 30, "/assets/images/elements/fence5.png"), new Fence(ctx, 1040, 72, 105, 30, "/assets/images/elements/fence5.png"), new Fence(ctx, 1045, 74, 80, 30, "/assets/images/elements/fence7.png"),
-      new Fence(ctx, 1045, 70, 10, 160, "/assets/images/elements/fence5.png"), new Fence(ctx, 1045, 72, 10, 160, "/assets/images/elements/fence5.png"), new Fence(ctx, 1045, 74, 10, 160, "/assets/images/elements/fence5.png"),
-      
-      // vertical bushes start
-      new Bush1(ctx, 57, 60, 20, 100, "/assets/images/elements/bush20.png"), new Bush1(ctx, 287, 60, 20, 170, "/assets/images/elements/bush30.png"), new Bush1(ctx, 385, 60, 20, 170), new Bush1(ctx, 607, 60, 20, 170),
-      new Bush1(ctx, 705, 60, 20, 170), new Bush1(ctx, 921, 60, 20, 170), new Bush1(ctx, 57, 330, 20, 120), new Bush1(ctx, 287, 330, 20, 150),
-      new Bush1(ctx, 385, 330, 20, 150), new Bush1(ctx, 607, 330, 20, 150), new Bush1(ctx, 705, 330, 20, 150), new Bush1(ctx, 921, 330, 20, 150),
-      new Bush1(ctx, 57, 560, 20, 120), new Bush1(ctx, 385, 560, 20, 120),  new Bush1(ctx, 67, 550, 90, 20),  new Bush1(ctx, 97, 550, 90, 20),  new Bush1(ctx, 287, 550, 20, 75),
-      new Bush1(ctx, 450, 550, 90, 20), new Bush1(ctx, 387, 550, 90, 20), new Bush1(ctx, 610, 660, 20, 95), new Bush1(ctx, 540, 737, 90, 15), new Bush1(ctx, 1040, 630, 20, 75),
-      new Bush1(ctx, 700, 550, 20, 75), new Fence(ctx, 60, 420, 60, 40), new Bush1(ctx, 480, 737, 90, 15), new Bush1(ctx, 200, 737, 90, 15),new Bush1(ctx, 130, 737, 90, 15),
-    // vertical bushes end
+      new Bush1(ctx, 1020, 82, 10, 50), new Bush1(ctx, 1020, 230, 10, 50),
+      // poisoner
+      new Bush1(ctx, 1140, 345, 10, 50), new Bush1(ctx, 1020, 470, 10, 50),
+      //soup opera
+      new Bush1(ctx, 1140, 586, 10, 50), new Bush1(ctx, 1140, 708, 10, 50),
+    //  bushes end
     ]
     this.lamps = [
       new Bushes(ctx, 160, -2, 40, 40, this.lampOff), new Bushes(ctx, 650, -2, 40, 40, this.lampOff), 
@@ -119,14 +110,10 @@ class Game {
       new Bushes(ctx, 820, 780, 40, 40, this.lampOff), new Bushes(ctx, 320, 780, 40, 40, this.lampOff),
     ]
     this.walls = [
-      new Fence(ctx, 51, 50, 80, 40), new Fence(ctx, 220, 50, 80, 40), new Fence(ctx, 51, 320, 80, 40), new Fence(ctx, 220, 320, 80, 40),
-      new Fence(ctx, 880, 320, 60, 40), new Fence(ctx, 830, 320, 80, 40), new Fence(ctx, 390, 320, 80, 40), new Fence(ctx, 560, 320, 70, 40),
-      new Fence(ctx, 700, 50, 80, 40), new Fence(ctx, 870, 50, 70, 40), new Fence(ctx, 1050, 690, 100, 30), new Fence(ctx, 1050, 550, 100, 30), 
 // round bushes
       new Bushes(ctx, 160, 410, 40, 40, "/assets/images/fondos/arb11.png"),  new Bushes(ctx, 170, 130, 40, 40, "/assets/images/fondos/arb9.png"),
       new Bushes(ctx, 490, 110, 40, 40, "/assets/images/fondos/arbusto1.png"), new Bushes(ctx, 482, 60, 60, 60, "/assets/images/fondos/arbusto1.png"),
       new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(ctx, 380, 710, 40, 40, "/assets/images/fondos/arb9.png"),
-      new Fence(ctx, 90, 190, 80, 40), new Fence(ctx, 470, 130, 80, 40), new Fence(ctx, 465, 450, 60, 40), new Fence(ctx, 1040, 210, 100, 20),new Fence(ctx, 1040, 70, 100, 20),
     ];
     this.portals = [new Portal (ctx, 200, 770, 50, 50 )]   
     this.portals2 = [new Portal (ctx, 800, 5, 50, 50)]

@@ -13,6 +13,8 @@
   --clr-neon: rgb(226, 174, 4);
   --clr-bg: rgb(0, 0, 0);
   --clr-neondir: rgb(0, 223, 231);
+  --clr-neonopt: rgb(119, 102, 248);
+  --clr-neonwhite: rgb(248, 247, 255);
   --clr-neonbu: rgb(248, 109, 109);
   --clr-neonbu1: rgb(245, 55, 55);
   --clr-neonbu2: rgb(255, 0, 0);
@@ -227,7 +229,76 @@
   opacity: 1;
 }
 
+/* neon button opctions */
+.neon-butt-options {
+  position: absolute;
+  z-index: 100;
+  font-size: 1vw;
+  display: flex;
+  background-color: rgb(27, 4, 46);
+  cursor: url("https://res.cloudinary.com/dfrda73uc/raw/upload/v1688381736/karengedon/elements/cursorInfo_bjytyq"), pointer;
+  text-decoration: none;
+  color: var(--clr-neonopt);
+  border: var(--clr-neonopt) 0.125em solid;
+  padding: 5px 10px;
+  border-radius: 30px;
+  opacity: 0.5;
+  text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;
+  box-shadow: inset 0 0 0.5em 0 var(--clr-neonopt), 0 0 0.5em 0 var(--clr-neonopt);
+  left: 0.1vw;
+  top: 1vw;
+  transition: all ease-in-out 1s;
+}
 
+.neon-butt-options::before {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  background: var(--clr-neonopt);
+  top: 70%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: perspective(1em) rotateX(40deg) scale(1, 0.35);
+  filter: blur(1em);
+  opacity: 1;
+}
+.neon-butt-options:hover{
+  opacity:1;
+  transition: 1s;
+  
+}
+.neon-butt-options::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0 0 2em 0.5em var(--clr-neonopt);
+  opacity: 0;
+  border-radius: 30px;
+  background-color: var(--clr-neonopt);
+  z-index: -1;
+  transition: opacity 0.8s linear;
+}
+
+.neon-butt-options:hover,
+.neon-butt-options:focus {
+  color: var(--clr-bgdir);
+  text-shadow: none;
+}
+
+.neon-butt-options:hover::before,
+.neon-butt-options:focus::before {
+  opacity: 1;
+}
+.neon-butt-options:hover::after,
+.neon-butt-options:focus::after {
+  opacity: 1;
+}
+
+/* neon button opctions */
 
 .neon-bu {
   position: absolute;
