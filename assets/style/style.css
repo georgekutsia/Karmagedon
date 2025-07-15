@@ -129,33 +129,8 @@ u {
   margin-right: -30px;
 }
 
-#loseDead {
+#loseDead, #loseDied , #loseRespect, #loseClaim {
   display: none;
-  position: absolute;
-  margin-left: 250px;
-  margin-top: 585px;
-  z-index: 100;
-}
-#loseDied {
-  display: none;
-  position: absolute;
-  margin-left: 250px;
-  margin-top: 85px;
-  z-index: 100;
-}
-#loseRespect {
-  display: none;
-  position: absolute;
-  margin-left: 250px;
-  margin-top: 85px;
-  z-index: 100;
-}
-#loseClaim {
-  display: none;
-  position: absolute;
-  margin-left: 250px;
-  margin-top: 85px;
-  z-index: 100;
 }
 #win {
   display: none;
@@ -164,9 +139,12 @@ u {
   z-index: 100;
 }
 
-#losePos{
+.losePos{
   position: absolute;
-  display: flex;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
 }
 
 

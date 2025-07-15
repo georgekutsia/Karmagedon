@@ -160,18 +160,19 @@ class Player {
         )
         ctx.globalAlpha = 1
       }
-    if(this.y + this.h > this.ctx.canvas.height -100 && this.x + this.w > this.ctx.canvas.width - 520 &&this.x + this.w < this.ctx.canvas.width - 470){
-      ctx.fillRect(this.x - 11, this.y - 41, 70, 22);
-      ctx.fillStyle = "rgb(251, 209, 209)";
-      this.ctx.fillStyle = "black";
-      this.order = this.ctx.fillText("Closed", this.x - 10, this.y - 23);
-    }
-    if(this.y + this.h > this.ctx.canvas.height -100 && this.x + this.w > this.ctx.canvas.width - 860 &&this.x + this.w < this.ctx.canvas.width - 800){
-      ctx.fillRect(this.x - 11, this.y - 41, 70, 22);
-      ctx.fillStyle = "rgb(251, 209, 209)";
-      this.ctx.fillStyle = "black";
-      this.order = this.ctx.fillText("Closed", this.x - 10, this.y - 23);
-    }
+      // Para que al acercarse a ciertas zonas salga que está cerrado. en desuso
+    // if(this.y + this.h > this.ctx.canvas.height -100 && this.x + this.w > this.ctx.canvas.width - 520 &&this.x + this.w < this.ctx.canvas.width - 470){
+    //   ctx.fillRect(this.x - 11, this.y - 41, 70, 22);
+    //   ctx.fillStyle = "rgb(251, 209, 209)";
+    //   this.ctx.fillStyle = "black";
+    //   this.order = this.ctx.fillText("Closed", this.x - 10, this.y - 23);
+    // }
+    // if(this.y + this.h > this.ctx.canvas.height -100 && this.x + this.w > this.ctx.canvas.width - 860 &&this.x + this.w < this.ctx.canvas.width - 800){
+    //   ctx.fillRect(this.x - 11, this.y - 41, 70, 22);
+    //   ctx.fillStyle = "rgb(251, 209, 209)";
+    //   this.ctx.fillStyle = "black";
+    //   this.order = this.ctx.fillText("Closed", this.x - 10, this.y - 23);
+    // }
     if(showPlayerWeaponStats){
 
       if(ALT === 16){

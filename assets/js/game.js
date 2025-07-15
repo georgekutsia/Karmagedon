@@ -25,8 +25,8 @@ class Game {
     this.backPack.src = "/assets/images/elements/backpack.png"
     this.brain = new Image();
     this.brain.src = "/assets/images/elements/brain.png"
-    this.mainOffice = new Image();
-    this.mainOffice.src = "/assets/images/fondos/mainOffice.png"
+    // this.mainOffice = new Image();
+    // this.mainOffice.src = "/assets/images/fondos/mainOffice.png"
     this.levelupImg1 = new Image();
     this.levelupImg1.src = "/assets/images/infos/hookUpgrade1.png"
     this.levelupImg2 = new Image();
@@ -59,10 +59,21 @@ class Game {
     this.hookedAllRatsAndGeese = true;
 
     this.cactus = [
-      new Cactus(ctx, 185, 240, 40, 40, "/assets/images/fondos/cact1.png"), 
+      new Cactus(ctx, 80, 240, 40, 40, "/assets/images/fondos/cact1.png"), 
+      new Cactus(ctx, 280, 240, 40, 40, "/assets/images/fondos/cact1.png"), 
+      new Cactus(ctx, 397, 340, 40, 40, "/assets/images/fondos/cact1.png"), 
+      new Cactus(ctx, 582, 340, 40, 40, "/assets/images/fondos/cact1.png"), 
+      new Cactus(ctx, 65, 725, 40, 40, "/assets/images/fondos/cact1.png"), 
+      new Cactus(ctx, 1010, 725, 40, 40, "/assets/images/fondos/cact1.png"), 
       new Cactus(ctx, 490, 220, 50, 50, "/assets/images/fondos/cact2.png"),
-      new Cactus(ctx, 820, 320, 30, 40, "/assets/images/fondos/cact3.png"), new Cactus(ctx, 780, 440, 40, 40, "/assets/images/fondos/cact4.png"),
-      new Cactus(ctx, 387, 548, 25, 25), new Cactus(ctx, 287, 548, 25, 25),
+      new Cactus(ctx, 1060, 340, 50, 50, "/assets/images/fondos/cact2.png"),
+      new Cactus(ctx, 610, 800, 30, 40, "/assets/images/fondos/cact3.png"),
+      new Cactus(ctx, 385, 800, 30, 40, "/assets/images/fondos/cact3.png"),
+      new Cactus(ctx, 1135, 800, 30, 40, "/assets/images/fondos/cact3.png"),
+      new Cactus(ctx, 388, 575, 30, 30, "/assets/images/fondos/cact4.png"), 
+      new Cactus(ctx, 300, 575, 30, 30, "/assets/images/fondos/cact4.png"),
+      new Cactus(ctx, 818, 575, 30, 30, "/assets/images/fondos/cact4.png"),
+      new Cactus(ctx, 818, 735, 30, 30, "/assets/images/fondos/cact4.png"),
 
     ]
     this.pfront = [
@@ -111,9 +122,17 @@ class Game {
     ]
     this.walls = [
 // round bushes
-      new Bushes(ctx, 160, 410, 40, 40, "/assets/images/fondos/arb11.png"),  new Bushes(ctx, 170, 130, 40, 40, "/assets/images/fondos/arb9.png"),
-      new Bushes(ctx, 490, 110, 40, 40, "/assets/images/fondos/arbusto1.png"), new Bushes(ctx, 482, 60, 60, 60, "/assets/images/fondos/arbusto1.png"),
-      new Bushes(ctx, 800, 170, 40, 40, "/assets/images/fondos/arb1.png"), new Bushes(ctx, 380, 710, 40, 40, "/assets/images/fondos/arb9.png"),
+      new Bushes(ctx, 82, 80, 40, 40, "/assets/images/fondos/arb9.png"),
+      new Bushes(ctx, 278, 80, 40, 40, "/assets/images/fondos/arb9.png"),
+      new Bushes(ctx, 82, 410, 40, 40, "/assets/images/fondos/arb11.png"), 
+      new Bushes(ctx, 278, 410, 40, 40, "/assets/images/fondos/arb11.png"), 
+      new Bushes(ctx, 910, 380, 40, 40, "/assets/images/fondos/arbusto1.png"),
+      new Bushes(ctx, 700, 440, 40, 40, "/assets/images/fondos/arbusto1.png"),
+      new Bushes(ctx, 800, 165, 50, 50, "/assets/images/fondos/arb1.png"), 
+      new Bushes(ctx, 705, 80, 75, 25, "/assets/images/fondos/arbtriple.png"), 
+      new Bushes(ctx, 1065, 580, 75, 25, "/assets/images/fondos/arbtriple.png"), 
+      new Bushes(ctx, 875, 80, 75, 25, "/assets/images/fondos/arbtriple.png"), 
+      new Bushes(ctx, 460, 700, 25, 25, "/assets/images/fondos/arb9.png"),
     ];
     this.portals = [new Portal (ctx, 200, 770, 50, 50 )]   
     this.portals2 = [new Portal (ctx, 800, 5, 50, 50)]
@@ -361,15 +380,15 @@ class Game {
     this.winTime++;
     this.upgrades.forEach((e) => e.draw());
     this.upBullets.forEach((e) => e.draw());
-    if(this.upgrades.length <= 0 && this.upBullets.length <=0 && this.carts.length <= 0){
-      this.ctx.drawImage(
-        this.mainOffice, 1200, 200, 190, 130
-      ) 
-    } else {
-      this.ctx.drawImage(
-        this.mainOffice, 1200, 200, 190, 130
-        ) 
-    }
+    // if(this.upgrades.length <= 0 && this.upBullets.length <=0 && this.carts.length <= 0){
+    //   this.ctx.drawImage(
+    //     this.mainOffice, 1200, 200, 190, 130
+    //   ) 
+    // } else {
+    //   this.ctx.drawImage(
+    //     this.mainOffice, 1200, 200, 190, 130
+    //     ) 
+    // }
     if(this.player.respect.total <= 0.3 && this.player.life.total <=3){
       this.player.sandstate = true;
     }
@@ -454,14 +473,14 @@ class Game {
     this.customers.forEach((e) => e.draw());
     if(addWalls){this.walls.forEach((e) => e.draw());}
     if(addPeople){ this.pback.forEach((e) => e.draw()); this.pfront.forEach((e) => e.draw());}
-    if(addCactus){this.cactus.forEach((e) => e.draw());}
-    this.fats.forEach((e) => e.draw());
-    this.rats.forEach((e) => e.draw());
     this.geese.forEach((e) => e.draw());
     this.puddles.forEach((e) => e.draw());
     this.fires.forEach((e) => e.draw());
     this.player.draw();
+    this.fats.forEach((e) => e.draw());
+    this.rats.forEach((e) => e.draw());
     if(addWalls){this.bushesover.forEach((e) => e.draw());}  
+    if(addCactus){this.cactus.forEach((e) => e.draw());}
     this.karens.forEach((e) => e.draw());
     this.carts.forEach((e) => e.draw());
     this.drugs.forEach((e) => e.draw());
@@ -2641,7 +2660,7 @@ if(leveler){
     if (!this.player.isRespected()) {
       this.gameOver();
       const lose = document.getElementById("loseRespect");
-      lose.style.display = "flex"
+      lose.style.display = "flex";
     } 
     if (forms.length < 1) {
       this.gameOver();
@@ -2691,6 +2710,8 @@ if(leveler){
     this.winMus = new Audio("/assets/audios ad/losemusic.mp3");
     this.winMus.volume = 0.1;
     this.winMus.play();
+    const modal = document.getElementById("modal-overlay");
+    modal.style.display = "flex";
   }
   gameWin() {
     this.stop();

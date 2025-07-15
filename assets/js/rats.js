@@ -3,10 +3,10 @@ class Rats {
     this.ctx = ctx;
     this.score = new Score(ctx);
     this.x = this.ctx.canvas.width - 300;
-    this.salidas = [20, 240, 280, 505, 750]
+    this.salidas = [40, 290, 530, 770]
     this.y = this.salidas[Math.floor(Math.random()*this.salidas.length)]
     this.w = 0.1 * this.ctx.canvas.width;
-    this.h = 0.05 * this.ctx.canvas.height;
+    this.h = 0.04 * this.ctx.canvas.height;
     this.vx = -2 - extraLife/2;
     this.vy = 0;
     this.dead = 0;
