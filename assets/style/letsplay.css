@@ -300,6 +300,80 @@
 
 /* neon button opctions */
 
+
+/* reload btn */
+
+.neon-butt-reload {
+  display: none;
+  position: absolute;
+  z-index: 1030;
+  font-size: 2vw;
+  background-color: rgb(27, 4, 46);
+  cursor: url("https://res.cloudinary.com/dfrda73uc/raw/upload/v1688381736/karengedon/elements/cursorInfo_bjytyq"), pointer;
+  text-decoration: none;
+  color: var(--clr-neonopt);
+  border: var(--clr-neonopt) 0.125em solid;
+  padding: 5px 10px;
+  border-radius: 30px;
+  opacity: 0.5;
+  text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;
+  box-shadow: inset 0 0 0.5em 0 var(--clr-neonopt), 0 0 0.5em 0 var(--clr-neonopt);
+  left: 0.1vw;
+  top: 1vw;
+  transition: all ease-in-out 1s;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.neon-butt-reload::before {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  background: var(--clr-neonopt);
+  top: 70%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: perspective(1em) rotateX(40deg) scale(1, 0.35);
+  filter: blur(1em);
+  opacity: 1;
+}
+.neon-butt-reload:hover{
+  opacity:1;
+  transition: 1s;
+  
+}
+.neon-butt-reload::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0 0 2em 0.5em var(--clr-neonopt);
+  opacity: 0;
+  border-radius: 30px;
+  background-color: var(--clr-neonopt);
+  z-index: -1;
+  transition: opacity 0.8s linear;
+}
+
+.neon-butt-reload:hover,
+.neon-butt-reload:focus {
+  color: var(--clr-bgdir);
+  text-shadow: none;
+}
+
+.neon-butt-reload:hover::before,
+.neon-butt-reload:focus::before {
+  opacity: 1;
+}
+.neon-butt-reload:hover::after,
+.neon-butt-reload:focus::after {
+  opacity: 1;
+}
+
+/* reload btn */
 .neon-bu {
   position: absolute;
   z-index: 100;

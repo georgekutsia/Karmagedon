@@ -2712,6 +2712,8 @@ if(leveler){
     this.winMus.play();
     const modal = document.getElementById("modal-overlay");
     modal.style.display = "flex";
+    const reloadBtn = document.querySelector(".neon-butt-reload");
+    reloadBtn.style.display = "flex";
   }
   gameWin() {
     this.stop();
