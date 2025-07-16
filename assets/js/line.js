@@ -67,6 +67,7 @@ class Line {
   }
   keyDown(key) {
     if (key === SPACE) {
+      event.preventDefault(); 
       this.checkPoint();
     }
   }

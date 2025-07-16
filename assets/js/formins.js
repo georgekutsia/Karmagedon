@@ -2,10 +2,10 @@ class Formins
  {
   constructor(ctx) {
     this.ctx = ctx;
-    this.x = 1212;
+    this.x = 1230;
     this.y = 120;
-    this.w = 173;
-    this.h = 60;
+    this.w = 155;
+    this.h = 25;
     this.total = 1;
     this.v = 5;
     ctx.font = "40px Verdana";
@@ -29,11 +29,5 @@ class Formins
     gradient.addColorStop("0.8", "black");
     this.ctx.fillStyle = prevStyle;
   }
-  move() {
-    this.y -= this.v
-    if(this.y < 120){
-      this.v = -0.01
-    } else if(this.y > 125)
-    this.v = 0.01
-  }
+
 }

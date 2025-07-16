@@ -118,15 +118,17 @@ u {
 #forms-position {
   position: absolute;
   display: flex;
-  margin-left: 1210px;
-  margin-top: 135px;
+  margin-left: 1235px;
+  margin-top: 123px;
+  width: 150px;
+  justify-content:space-between;
   z-index: 1;
 }
 .forms-item {
-  width: 60px;
-  height: 50px;
+  width: 25px;
+  height: 25px;
   display: inline-block;
-  margin-right: -30px;
+
 }
 
 #loseDead, #loseDied , #loseRespect, #loseClaim {
@@ -219,7 +221,7 @@ u {
 #money-coins:hover + #buy-shop-info{
   display: block;
   position: absolute;
-  color: green;
+  color: rgb(5, 66, 5);
   font-size: 20px;
   font-weight: 500;
   background-color: rgb(145, 238, 171);
@@ -554,4 +556,9 @@ display: none;
   border-radius: 10px;
   padding: 3px 10px;
   margin-left:30vw;
+}
+
+.fa-coins{
+  color: var(--clr-b);
+  font-size: 13px;
 }

@@ -666,10 +666,6 @@ class Game {
     // levelup messages..levelup messages..levelup messages..levelup messages..levelup messages..
 
     this.ctx.save();
-    this.ctx.fillStyle = "white";
-    this.ctx.font = "20px Arial";
-    this.ctx.fillText(`Special Weapons`, 1220, 680);
-    this.ctx.font = "15px Arial";
 
     if(destroyerLeveling >= 1) {
       this.ctx.fillText(`C=>fire-machine`, 1266, 715);
@@ -702,19 +698,13 @@ class Game {
             }
       }
     }
-      if(hookBoost || !machinegunBoost || elementBoost){
-        this.ctx.save();
-        this.ctx.fillStyle = "white";
-        this.ctx.font = "20px Arial";
-        this.ctx.fillText(`Special Weapons`, 1220, 680);
-        this.ctx.font = "15px Arial";
+      if(hookBoost || machinegunBoost || elementBoost){
 
         if(elementBoost){this.ctx.drawImage( 
           this.levelupElement, 1218, 695, 45 , 45); 
           this.ctx.fillText(`N=> Sandstorm +`, 1263, 715);
           this.ctx.fillText(`elemental shield`, 1263, 735);
         }
-        this.ctx.restore();
       }
     if(this.levelMessage1){
       this.tick++

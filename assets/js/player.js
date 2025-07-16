@@ -410,11 +410,8 @@ class Player {
     if (this.img.frame > 3) {
       this.img.frame = 0;
     }
-    this.life.move();
     this.recharger.move();
     this.shotgunUpgrade.move();
-    this.respect.move()
-    this.formins.move()
     // LIMITES DEL CANVAS =>//
     if (this.y < 0) {
       this.y = 0;

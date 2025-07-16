@@ -1,10 +1,10 @@
 class Life {
   constructor(ctx) {
     this.ctx = ctx;
-    this.x = 1212;
-    this.y = 15;
-    this.w = 173;
-    this.h = 46;
+    this.x = 1230;
+    this.y = 50;
+    this.w = 155;
+    this.h = 25;
     this.total = lifeTotal;
     this.v = 2;
     ctx.font = "40px Verdana";
@@ -28,22 +28,15 @@ class Life {
     this.ctx.strokeRect(this.x, this.y, this.w, this.h);
     this.ctx.fillStyle = prevStyle;
     this.ctx.strokeStyle = "black";
-    this.ctx.font = "40px Sans";
+    this.ctx.font = "20px Sans";
     this.ctx.strokeStyle = "yellow";
-    gradient.addColorStop("0.88", "white");
-    gradient.addColorStop("0.8", "black");
+    gradient.addColorStop("0.88", "black");
     ctx.fillStyle = gradient;
-    this.ctx.fillText(`Life`, 1300, 50);
-    this.ctx.font = "35px Sans";
-    this.ctx.fillText(`${Math.round(this.total * 100)/100}`, 1225, 50);
+    this.ctx.fillText(`Life`, 1300, 70);
+    this.ctx.font = "20px Sans";
+    this.ctx.fillText(`${Math.round(this.total * 100)/100}`, 1235, 70);
     this.ctx.fillStyle = prevStyle;
-  }
-  move() {
-    this.y -= this.v;
-    if (this.y < 15) {
-      this.v = -0.01;
-    } else if (this.y > 20) this.v = 0.01;
-  }
+  } 
   loseLife() {
     this.total -= 2;
     this.damageAudio = new Audio("/assets/audio/ouch.mp3");

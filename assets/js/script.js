@@ -91,40 +91,47 @@ const in3 = document.getElementById("info3")
 const in4 = document.getElementById("info4")
 
 
-buyHide.addEventListener("click", function(){
-    if(buyRockets.style.display === "inline")
-    {      
-      allBuys.forEach((dis) => dis.style.display = "none")
-    } else {
-      allBuys.forEach((dis) => dis.style.display = "inline")
-    }
-    
+buyHide.addEventListener('click', function () {
+  if (buyRockets.style.display === 'inline') {
+    allBuys.forEach((dis) => (dis.style.display = 'none'))
+  } else {
+    allBuys.forEach((dis) => (dis.style.display = 'inline'))
+    allMegas.forEach((dis) => (dis.style.display = 'none'))
+    allSells.forEach((dis) => (dis.style.display = 'none'))
+    allAsks.forEach((dis) => (dis.style.display = 'none'))
+  }
 })
-sellHide.addEventListener("click", function(){
-    if(sellRockets.style.display === "inline")
-    {      
-      allSells.forEach((dis) => dis.style.display = "none")
-    } else {
-      allSells.forEach((dis) => dis.style.display = "inline")
-    }
-})
-
-askHide.addEventListener("click", function(){
-    if(askFood.style.display === "inline")
-    {      
-      allAsks.forEach((dis) => dis.style.display = "none")
-    } else {
-      allAsks.forEach((dis) => dis.style.display = "inline")
-    }
+sellHide.addEventListener('click', function () {
+  if (sellRockets.style.display === 'inline') {
+    allSells.forEach((dis) => (dis.style.display = 'none'))
+  } else {
+    allSells.forEach((dis) => (dis.style.display = 'inline'))
+    allBuys.forEach((dis) => (dis.style.display = 'none'))
+    allMegas.forEach((dis) => (dis.style.display = 'none'))
+    allAsks.forEach((dis) => (dis.style.display = 'none'))
+  }
 })
 
-megaHide.addEventListener("click", function(){
-    if(megaShotgun.style.display === "inline")
-    {      
-      allMegas.forEach((dis) => dis.style.display = "none")
-    } else {
-      allMegas.forEach((dis) => dis.style.display = "inline")
-    }
+askHide.addEventListener('click', function () {
+  if (askFood.style.display === 'inline') {
+    allAsks.forEach((dis) => (dis.style.display = 'none'))
+  } else {
+    allAsks.forEach((dis) => (dis.style.display = 'inline'))
+    allBuys.forEach((dis) => (dis.style.display = 'none'))
+    allMegas.forEach((dis) => (dis.style.display = 'none'))
+    allSells.forEach((dis) => (dis.style.display = 'none'))
+  }
+})
+
+megaHide.addEventListener('click', function () {
+  if (megaShotgun.style.display === 'inline') {
+    allMegas.forEach((dis) => (dis.style.display = 'none'))
+  } else {
+    allMegas.forEach((dis) => (dis.style.display = 'inline'))
+    allBuys.forEach((dis) => (dis.style.display = 'none'))
+    allSells.forEach((dis) => (dis.style.display = 'none'))
+    allAsks.forEach((dis) => (dis.style.display = 'none'))
+  }
 })
 
 
@@ -336,10 +343,11 @@ btn.addEventListener("click", function () {
     displ.style.display = "block"
     allButtonsGone.forEach((button) => button.style.display = "none")
     cheat.style.display = "inline-block"
-    wornings.style.display = "flex"
+    wornings.style.display = "block"
     restart.style.display = "flex"
     demo.style.display = "inline-block";
     buyButtons.style.display = "block"
+    openBtn.style.display = "none"
     // infoData.style.display = "block"
     // infoData1.style.display = "block"
     this.musicStart = new Audio("/assets/audios ad/clic future.wav");

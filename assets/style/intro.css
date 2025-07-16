@@ -17,7 +17,7 @@
   transition: all ease-in-out 4s;
 }
 #info-cheatsheet div{
-  margin-bottom: 10px;
+  margin-bottom: 0px;
   justify-content: space-evenly;
   display: flex;
 }
@@ -25,17 +25,16 @@
   color: white;
   position: absolute;
   display: none;
-  margin-top: 2.8vw;
+  margin-top: 100px;
   font-size: calc(14px + 0.5vw);
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   opacity: 0.01;
   left: 1vw;
   width: 220px;
-  height: 650px;
   border-radius: 10px;
   z-index: 90;
-  padding: 10px;
-  font-weight: 900;
+  padding: 5px;
+  font-weight: 300;
   text-shadow: 1px 1px rgb(117, 117, 117);
   animation: gradient 40s ease infinite;
   transition: all ease-in-out 0.5s;
@@ -48,6 +47,12 @@
   transition: all ease-in-out 0.5s;
   backdrop-filter: blur(10px);
   background-color: rgba(6, 157, 170, 0.541);
+}
+.cheatsheet-span{
+  font-size: 1.2em;
+  color: var(--clr-neondir);
+  text-shadow: 1px 1px black;
+  margin-left: 3px;
 }
 #intro-canvas {
   padding-left: 0;
@@ -576,7 +581,6 @@ h2 {
   width: 120px;
   font-size: 25px;
   text-shadow: 1px 1px black ;
-
   height: 120px;
   top: 39%;
   right: 2%;
@@ -699,7 +703,7 @@ h2 {
 }
 #extra-stages{
   display: inline-flexbox;
-  position:absolute;
+  position: absolute;
   bottom: 1vh;
 }
 #extra-stages a{
