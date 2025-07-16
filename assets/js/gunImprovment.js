@@ -20,7 +20,7 @@ class ShotgunUpgrade {
       gradient.addColorStop(1, 'green');
       this.ctx.fillStyle = gradient;
       this.ctx.strokeStyle = gradient;
-      this.ctx.lineWidth = 10;
+      this.ctx.lineWidth = 5;
       this.ctx.beginPath();
       this.ctx.arc(x, y, this.outerRadius, (Math.PI / 180) * shotgunUpgrading, this.aFinal, false);
       this.ctx.arc(x, y, this.innerRadius, this.aFinal, (Math.PI / 180) * shotgunUpgrading, true);
@@ -38,6 +38,7 @@ class ShotgunUpgrade {
   rechargingWeapons() {
     shotgunUpgrading += 0.1;
     if(shotgunUpgrading >= 360) {
+      alert("Shotgun upgraded!");
       shotgunDamage += 20;
       shotgunRange += 30;
       shotgunUpgrading = 0;

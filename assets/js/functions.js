@@ -75,9 +75,11 @@ function dyingBaby(player, perjudiceMessage){
 function dyingCustomer(player, perjudiceMessage){
   player.loseRespect(0.02)
   distance -= 0.05;
-  player.booster -= 0.010;
-  player.cooldownJump += 5;
-  perjudiceMessage = true;
+  if(player.booster >= -1){
+    player.booster -= 0.010;
+    player.cooldownJump += 5;
+    perjudiceMessage = true;
+  }
 }
 function angryKorenPopup(probability){
   let randomNumber = Math.floor(Math.random() *200);

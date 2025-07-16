@@ -42,7 +42,6 @@ let hookBoost = false// para los beneficios de subir nivel el hook
 let hookLeveling = 0; //para mejorar el hook a medida que sube de nivel
 let destroyerLeveling = 0; //para mejorar la rama de destroyer
 let elementalistLeveling = 0; //para mejorar la rama de destroyer
-
 let areaDamage = true // para el daño de area de los megablasters y sanders y cosas así
 let machinegunBoost = false// para activar las ametralladoras
 let elementBoost = false //para activar la arena que te sigue
@@ -69,7 +68,7 @@ let recharginState = false;
 let shotgunUpgrading = 0; //mejorar el shotgun para que haga mas daño o lo que sea
 let shotgunUpgradingState = false; //mejorar el shotgun para que haga mas daño o lo que sea
 let shotgunDamage = 0;
-let shotgunRange = 150;
+let shotgunRange = 0;
 
 let playerBasicDamage = 0;
 let playerDoubleDamage = 1;
@@ -111,7 +110,7 @@ let addPortal = false;
 
 let showPlayerWeaponStats = true;
 let showPlayerJoBStats = true;
-let showPlayerPhysicalStats = false;
+let showPlayerPhysicalStats = true;
 let training = false;
 // secret code
 let Y = 0 //89
@@ -125,4 +124,4 @@ let solvedWaterFire = 0;
 let solvedBoss = 0;
 let solvedKarens = 0;
 let solvedKorens = 0;
-let solvedTotal = 85;
+let solvedTotal = 50;

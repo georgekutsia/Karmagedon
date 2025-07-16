@@ -42,9 +42,9 @@ function bodyTockenClick(event) {
   const clickY = event.clientY - rect.top;
   if (
     clickX >= -30 &&
-    clickX <= -30 + 130 &&
+    clickX <= -30 + 110 &&
     clickY >= 800 &&
-    clickY <= 800 + 130
+    clickY <= 800 + 110
   ) {
     showPlayerPhysicalStats = !showPlayerPhysicalStats;
   }}

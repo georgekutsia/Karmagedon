@@ -1,8 +1,8 @@
 class HealingPlace {
   constructor(ctx) {
     this.ctx = ctx;
-    this.x = -5;
-    this.y = -5;
+    this.x = 470;
+    this.y = 125;
     this.w = 80;
     this.h = 80;
     this.heal = new Image();

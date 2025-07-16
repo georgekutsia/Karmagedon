@@ -32,7 +32,7 @@ class Game {
     this.levelupImg2 = new Image();
     this.levelupImg2.src = "/assets/images/infos/machinegunUpgrade1.png"
     this.levelupImg3 = new Image();
-    this.levelupImg3.src = "/assets/images/infos/elementUpgrade.png"
+    this.levelupImg3.src = "/assets/images/infos/elementalUpgrade.png"
     this.levelupElement = new Image();
     this.levelupElement.src = "/assets/images/munición/elementUpgrade.png"
     this.levelupMachinegun = new Image();
@@ -78,7 +78,7 @@ class Game {
     ]
     this.pfront = [
       new People(ctx, 90, 360, 80, 80, "/assets/images/people/pep10.png"), new People(ctx, 250, 350, 40, 60, "/assets/images/people/pep3.png"),
-      new People(ctx, 730, 90, 40, 40, "/assets/images/people/pep5.png"), new People(ctx, 850, 80, 80, 80, "/assets/images/people/pep8.png"),
+      new People(ctx, 730, 90, 40, 40, "/assets/images/people/pep5.png"), new People(ctx, 852, 80, 80, 80, "/assets/images/people/pep8.png"),
       new People(ctx, 860, 350, 40, 40, "/assets/images/people/pep11.png"), new People(ctx, 160, 590, 30, 30, "/assets/images/people/pep22.png"),
       new People(ctx, 200, 590, 30, 30, "/assets/images/people/pep23.png"), new People(ctx, 430, 12, 50, 30, "/assets/images/people/pep25.png"),
       new People(ctx, 800, 12, 60, 35, "/assets/images/people/pep20.png"), new People(ctx, 1000, 280, 60, 35, "/assets/images/people/pep24.png", true, -0.09, 0, 0.09),
@@ -181,7 +181,7 @@ class Game {
         this.karenTime = 0;
         this.karensAlert();
         this.addKaren();
-        if(this.winTime >= 68500){
+        if(this.winTime >= 68520){
           this.karenTime = 2000
         }
       }
@@ -205,7 +205,7 @@ class Game {
         this.ratTime = 0;
         this.ratAlert();
         this.addRat();
-        if(this.winTime >= 48500){
+        if(this.winTime >= 48520){
           this.ratTime = 700
           this.addRat();
         }
@@ -214,7 +214,7 @@ class Game {
         this.fatTime = 0;
         this.fatAlert();
         this.addFat();
-        if(this.winTime >= 68500){
+        if(this.winTime >= 68520){
           this.fatTime = 500
         }
       }
@@ -515,68 +515,75 @@ class Game {
     // CTX data statistics
     // CTX data statistics
     if(!showPlayerPhysicalStats){
-      this.ctx.fontSize = "80px";
-      this.ctx.fillText(`<`, 75, 870);
+      this.ctx.fontSize = "60px";
+      this.ctx.fillText(`<`, 60, 875);
       this.ctx.fontSize = "40px";
-      this.ctx.font = "30px Arial";
-      this.ctx.fillText(`Click on me to see`, 100, 850);
-      this.ctx.fillText(`physical stats!`, 120, 880);
+      this.ctx.font = "24px Arial";
+      this.ctx.fillText(`Click to see`, 90, 858);
+      this.ctx.fillText(`physical stats!`, 90, 885);
 
     }
     if(showPlayerPhysicalStats){
       this.ctx.drawImage(
-        this.backPack, 100, 825, 70, 60
+        this.backPack, 80, 840, 50, 50
       )
       this.ctx.drawImage(
-        this.bodyImg, 580, 820, 70, 70
+        this.bodyImg, 480, 833, 65, 65
       )
       this.ctx.drawImage(
-        this.brain, 900, 825, 50, 60
+        this.brain, 760, 840, 50, 50
       )
-    this.ctx.font = "20px Arial";
+    this.ctx.font = "16px Arial";
     this.ctx.fillStyle = "white";
-    this.ctx.save();
-    ctx.fillStyle = "rgb(1, 2, 2)";
-    this.ctx.font = "30px Arial";
-    this.ctx.fillStyle = "white";
-    this.ctx.restore();
-    this.ctx.fillText(`Bullet Speed: ${this.player.speed.toString()}`, 190, 860);
-    this.ctx.fillText(`Shooting Range: ${bulletDistance.toString()}`, 190, 884);
-    this.ctx.fillText(`Recharge Time: ${this.player.cooldownBullet.toString()}`, 190, 836);
+    this.ctx.fillText(`Recharge Time: ${this.player.cooldownBullet.toString()}`, 150, 852);
+    this.ctx.fillText(`Bullet Speed: ${this.player.speedBullet.toFixed(1).toString()}`, 150, 870);
+    this.ctx.fillText(`Shooting Range: ${bulletDistance.toString()}`, 150, 888);
     if(this.upgradeMessage === true) {
       this.upgradeTick++
       this.ctx.fillStyle = "aqua";
-      this.ctx.fillText(`Bullet Speed: ${this.player.speed.toString()}`, 190, 860);
-      this.ctx.fillText(`Shooting Range: ${bulletDistance.toString()}`, 190, 884);
-      this.ctx.fillText(`Recharge Time: ${this.player.cooldownBullet.toString()}`, 190, 836);
+      this.ctx.fillText(`Recharge Time: ${this.player.cooldownBullet.toString()}`, 150, 852);
+      this.ctx.fillText(`Bullet Speed: ${this.player.speedBullet.toFixed(1).toString()}`, 150, 870);
+      this.ctx.fillText(`Shooting Range: ${bulletDistance.toString()}`, 150, 888);
       this.ctx.fillStyle = "white";
       if(this.upgradeTick >=150){
         this.upgradeMessage = false
         this.upgradeTick = 0
       }
     }
-    this.ctx.fillText(`After Growth: ${afterSize.toString()}`, 410, 875);
-    this.ctx.fillText(`Ammo size: ${bulletSize.toString()}`, 410, 845);
+    this.ctx.fillText(`After Growth: ${afterSize.toString()}`, 320, 860);
+    this.ctx.fillText(`Ammo size: ${bulletSize.toString()}`, 320, 880);
       if(this.upBulletsMessage === true){
         this.upBulletTick++
         this.ctx.fillStyle = "aqua";
-        this.ctx.fillText(`After Growth: ${afterSize.toString()}`, 410, 875);
-        this.ctx.fillText(`Ammo size: ${bulletSize.toString()}`, 410, 845);
+        this.ctx.fillText(`After Growth: ${afterSize.toString()}`, 320, 860);
+        this.ctx.fillText(`Ammo size: ${bulletSize.toString()}`, 320, 880);
         this.ctx.fillStyle = "white";
         if(this.upBulletTick >=150){
           this.upBulletsMessage = false
           this.upBulletTick = 0
         }
       }
-    this.ctx.fillText(`Jump distance: ${distance.toFixed(1).toString()}ft`, 640, 860);
-    this.ctx.fillText(`Jump cooldown: ${this.player.cooldownJump.toFixed(1)}`, 640, 836);
-    this.ctx.fillText(`Walk Speed: ${this.player.boost.toFixed(1)}`, 640, 884);
+      this.ctx.fillText(`Jump cooldown: ${this.player.cooldownJump.toFixed(1)}`, 540, 852);
+      this.ctx.fillText(`Jump distance: ${distance.toFixed(1).toString()}ft`, 540, 870);
+      this.ctx.fillText(`Walk Speed: ${this.player.speed.toFixed(1)}`, 540, 888);
+      this.ctx.fillText(`Luck lvl: ${chance.toString()}`, 818, 852);
+      this.ctx.fillText(`Public Image: ${publicImage.toString()}`, 818, 870);
+      this.ctx.fillText(`Instinct: ${instinct.toString()}`, 818, 888);
+      if(publicImageLevelup){
+      this.ctx.fillStyle = "aqua";
+      this.ctx.fillText(`Public Image: ${publicImage.toString()}`, 818, 863);
+      setTimeout(() => {
+        publicImageLevelup = false;
+      }, 3000);
+    }
+
+
     if(this.customersMessage){
       this.customerTick++
       this.ctx.fillStyle = "aqua"; 
-      this.ctx.fillText(`Jump cooldown: ${this.player.cooldownJump.toFixed(1)}`, 640, 836);
-        this.ctx.fillText(`Jump distance: ${distance.toFixed(1).toString()}ft`, 640, 860);
-        this.ctx.fillText(`Walk Speed: ${this.player.boost.toFixed(1)}`, 640, 884);
+      this.ctx.fillText(`Jump cooldown: ${this.player.cooldownJump.toFixed(1)}`, 540, 852);
+    this.ctx.fillText(`Jump distance: ${distance.toFixed(1).toString()}ft`, 540, 870);
+    this.ctx.fillText(`Walk Speed: ${this.player.speed.toFixed(1)}`, 540, 888);
       if(this.customerTick >= 150){
         this.customerTick = 0
         this.customersMessage = false
@@ -584,24 +591,28 @@ class Game {
     } 
     if(training){
       this.ctx.fillStyle = "aqua"; 
-      this.ctx.fillText(`Jump distance: ${distance.toFixed(1).toString()}ft`, 640, 860);
-      this.ctx.fillText(`Walk Speed: ${this.player.boost.toFixed(1)}`, 640, 884);
-    } else if(!training && this.player.boost >= 5){
-        distance -= 0.0002;
-        this.player.boost -= 0.0001;
-        if(this.player.boost >= 7){
-          this.player.boost -= 0.0005;
+      this.ctx.fillText(`Jump distance: ${distance.toFixed(1).toString()}ft`, 540, 870);
+      this.ctx.fillText(`Walk Speed: ${this.player.speed.toFixed(1)}`, 540, 888);
+      // cuando deja de entrenar, pierde velodidad y distancia de salto
+    } else if(!training && this.player.speed >= 5){
+        distance -= 0.002;
+        this.player.speed -= 0.0002;
+        if(distance >= 90){
+          distance -= 0.005;
+        }
+        if(this.player.speed >= 7){
+          this.player.speed -= 0.0005;
         }
       this.ctx.fillStyle = "tomato"; 
-      this.ctx.fillText(`Jump distance: ${distance.toFixed(1).toString()}ft`, 640, 860);
-      this.ctx.fillText(`Walk Speed: ${this.player.boost.toFixed(1)}`, 640, 884);
+      this.ctx.fillText(`Jump distance: ${distance.toFixed(1).toString()}ft`, 540, 870);
+      this.ctx.fillText(`Walk Speed: ${this.player.speed.toFixed(1)}`, 540, 888);
     }
     if(this.perjudiceMessage === true){
       this.perjudiceTick++
       this.ctx.fillStyle = "tomato"; 
-      this.ctx.fillText(`Jump cooldown: ${this.player.cooldownJump.toFixed(1)}`, 640, 836);
-      this.ctx.fillText(`Jump distance: ${distance.toFixed(1).toString()}ft`, 640, 860);
-      this.ctx.fillText(`Walk Speed: ${this.player.boost.toFixed(1)}`, 640, 884);
+      this.ctx.fillText(`Jump cooldown: ${this.player.cooldownJump.toFixed(1)}`, 540, 852);
+    this.ctx.fillText(`Jump distance: ${distance.toFixed(1).toString()}ft`, 540, 870);
+    this.ctx.fillText(`Walk Speed: ${this.player.speed.toFixed(1)}`, 540, 888);
       if(this.perjudiceTick >= 150){
         this.perjudiceTick = 0
         this.perjudiceMessage = false
@@ -610,10 +621,10 @@ class Game {
     if(this.bossPerjIs === true){
       this.bossPerjTick++
       this.ctx.fillStyle = "tomato"; 
-      this.ctx.fillText(`After Growth: ${afterSize.toString()}`, 410, 875);
-      this.ctx.fillText(`Ammo size: ${bulletSize.toString()}`, 410, 845);
-      this.ctx.fillText(`Recharge Time: ${this.player.cooldownBullet.toString()}`, 190, 836);
-      this.ctx.fillText(`Bullet Speed: ${this.player.speed.toString()}`, 190, 860);
+      this.ctx.fillText(`Recharge Time: ${this.player.cooldownBullet.toString()}`, 150, 852);
+      this.ctx.fillText(`After Growth: ${afterSize.toString()}`, 320, 860);
+      this.ctx.fillText(`Ammo size: ${bulletSize.toString()}`, 320, 880);
+      this.ctx.fillText(`Bullet Speed: ${this.player.speedBullet.toFixed(1).toString()}`, 150, 870);
       if(this.bossPerjTick >= 150){
         this.bossPerjTick = 0
         this.bossPerjIs = false
@@ -662,11 +673,15 @@ class Game {
       }
     }
     
+    if(this.player.foodReady){
+      this.player.foodReady = false;
+      const food = new Food(ctx, 260, 350);
+      this.foods.push(food);
+    }
     // levelup messages..levelup messages..levelup messages..levelup messages..levelup messages..
     // levelup messages..levelup messages..levelup messages..levelup messages..levelup messages..
 
     this.ctx.save();
-
     if(destroyerLeveling >= 1) {
       this.ctx.fillText(`C=>fire-machine`, 1266, 715);
       this.ctx.fillText(`V=>water-machine`, 1258, 735);
@@ -692,14 +707,13 @@ class Game {
         this.ctx.fillText(`on impact now`, 1260, 821  );
             if(hookLeveling >= 3){
               this.ctx.drawImage( this.hookMoney, 1215, 835, 35 , 45 ) 
-              this.ctx.fillText(`Turning on lamps`, 1260, 850 );
+              this.ctx.fillText(`Turning on lamps`, 1260, 852 );
               this.ctx.fillText(`gets you money`, 1260, 870 );
               this.ctx.fillText(`and reputation`, 1260, 890 );
             }
       }
     }
       if(hookBoost || machinegunBoost || elementBoost){
-
         if(elementBoost){this.ctx.drawImage( 
           this.levelupElement, 1218, 695, 45 , 45); 
           this.ctx.fillText(`N=> Sandstorm +`, 1263, 715);
@@ -1618,13 +1632,12 @@ class Game {
         } else return true;
       });
     });
-// koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...
-// koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...koren...
+// koren...
+// koren...
     this.korens = this.korens.filter((koren) => {
       if (koren.collides(this.player)) {
         this.player.fireHit();
         this.player.fireHit();
-        this.player.extraBoost -= 0.005;
       }
       return true;
     });
@@ -2491,7 +2504,7 @@ processCollisions(this.player, this.player.hooks, this.upgrades, "upgrade-alert"
 // upgrades upbulltes...upgrades upbulltes...upgrades upbulltes...upgrades upbulltes...upgrades upbulltes...
     this.upgrades = this.upgrades.filter((up) => {
       if (up.collides(this.player)) {
-        this.player.speed += 2;
+        this.player.speedBullet += 2;
         bulletDistance += 50;
         bulletDistanceExtra -= 50
         this.player.cooldownBullet -= 600;

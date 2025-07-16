@@ -2,9 +2,9 @@ class Token {
   constructor(ctx) {
     this.ctx = ctx;
     this.x = -30;
-    this.y = 800;
-    this.w = 130;
-    this.h = 130;
+    this.y = 820;
+    this.w = 110;
+    this.h = 110;
     this.token = new Image();
     this.token.src = "/assets/images/PJ/token life.png";
     this.token.frame = 0;

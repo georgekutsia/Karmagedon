@@ -7,8 +7,8 @@ class Recharger {
     this.radius = 23; // Radio del semicírculo
     this.total = lifeTotal;
     ctx.font = "40px Verdana";
-    this.outerRadius = 90;
-    this.innerRadius = 89;
+    this.outerRadius = 70;
+    this.innerRadius = 69;
     this.aFinal = (Math.PI / 180) * 360;   // Ángulo final (360 grados)
   }
   
@@ -20,7 +20,7 @@ class Recharger {
       gradient.addColorStop(1, 'red');
       this.ctx.fillStyle = gradient;
       this.ctx.strokeStyle = gradient;
-      this.ctx.lineWidth = 10;
+      this.ctx.lineWidth = 5;
       this.ctx.beginPath();
       this.ctx.arc(x, y, this.outerRadius, (Math.PI / 180) * recharging, this.aFinal, false);
       this.ctx.arc(x, y, this.innerRadius, this.aFinal, (Math.PI / 180) * recharging, true);

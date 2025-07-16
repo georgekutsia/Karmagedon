@@ -12,8 +12,12 @@
     cursor: url("/assets/images/elements/cursorInfo"), pointer;
 }
 #demo-spacing{
-    background-color: blue;
-    margin-bottom: 20px
+    background-color: black;
+    margin-bottom: 20px;
+    margin-bottom: 130px;
+    width: 250px;
+    display: flex;
+    flex-wrap: wrap;
 }
 #display-adds:hover{
     background-color: rgb(255, 149, 0);

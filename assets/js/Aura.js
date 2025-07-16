@@ -1,4 +1,5 @@
 class Aura {
+  // el aura crea un escudo que detiene el tiempo, hace invulnerable y permite moverse entre paredes. también acelera la velocidad con this.player.booster
   constructor(ctx, x, y, player) {
     this.ctx = ctx;
     this.x = x;
@@ -25,15 +26,13 @@ class Aura {
     this.tick ++
     this.x = this.player.x-10;
     this.y = this.player.y-10;
-    this.player.booster = 1
+    this.player.booster = 3;
       if(this.tick >= 200){
-        this.player.booster  = 0
+        this.player.booster = 0
+        this.tick = 0
         this.dispose = true;
       }
       this.auraImg.src = "/assets/images/munición/aura1.png";
-      // if (this.h >= 10) {
-        // this.dispose = false;
-      // }
   }
   isVisible() {
     return !this.dispose;
