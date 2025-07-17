@@ -453,7 +453,7 @@ class Game {
     if(this.upgrades.length <= 0 && this.upBullets.length <=0 && this.carts.length >= 1){
       this.ctx.font = "19px Sans";
       ctx.fillStyle = "black";
-      ctx.globalAlpha = 0.5
+      ctx.globalAlpha = 0.8
       ctx.fillRect(1210, 215, 177, 88);
       ctx.globalAlpha = 1
       this.ctx.fillStyle = "white";
@@ -675,7 +675,7 @@ class Game {
     
     if(this.player.foodReady){
       this.player.foodReady = false;
-      const food = new Food(ctx, 260, 350);
+      const food = new Food(ctx, 130, 350);
       this.foods.push(food);
     }
     // levelup messages..levelup messages..levelup messages..levelup messages..levelup messages..

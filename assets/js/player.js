@@ -495,14 +495,16 @@ class Player {
     } else{
       recharginState = false;
     }
-    if(this.x >=85 && this.x <=280 && this.y >= 325 && this.y <= 496 ){
+    if(this.x >=85 && this.x <=280 && this.y >= 325 && this.y <= 496 && this.foodPreparingTime >= 0){
       this.foodPreparingTime -= 0.1;
         this.ctx.font = "14px Arial";
         this.ctx.fillStyle = "rgb(5, 101, 74)";
         this.ctx.fillText(`Food coming up in ${this.foodPreparingTime.toFixed(1)}`, 90, 360);
         if(this.foodPreparingTime <= 0){
-          this.foodPreparingTime = 100 - publicImage;
           this.foodReady = true;
+          setTimeout(() => {
+            this.foodPreparingTime = 100 - publicImage;
+          }, 9000);
         }
     }
 
