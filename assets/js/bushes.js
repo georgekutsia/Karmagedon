@@ -139,8 +139,8 @@ class Cactus {
     } 
     
     collides(player) {
-      const colX = this.x <= player.x + player.w && this.x + this.w > player.x;
-      const colY = this.y + this.h > player.y && this.y < player.y + player.h;
+      const colX = this.x + 5 <= player.x + player.w && this.x + this.w - 5 > player.x;
+      const colY = this.y + this.h -5 > player.y && this.y + 5 < player.y + player.h;
       return colX && colY;
     }
   }

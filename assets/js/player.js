@@ -3,8 +3,8 @@ class Player {
     this.ctx = ctx;
     this.x = 299;
     this.y = 260;
-    this.w = 35;
-    this.h = 35;
+    this.w = 30;
+    this.h = 30;
     this.position = position
     // extrabooststate creo que es para incrementar la velocidad porun período de tiempo
     this.extraBoostState = false
@@ -406,20 +406,20 @@ class Player {
     this.recharger.move();
     this.shotgunUpgrade.move();
     // LIMITES DEL CANVAS =>//
-    if (this.y < 0) {
-      this.y = 0;
+    if (this.y < 10) {
+      this.y = 10;
       this.vy = 0;
     }
-    if (this.y + this.h > this.ctx.canvas.height - 80) {
-      this.y = this.ctx.canvas.height - this.h - 80;
+    if (this.y + this.h > this.ctx.canvas.height - 70) {
+      this.y = this.ctx.canvas.height - this.h - 70;
       this.vy = 0;
     }
     if (this.x + this.w * 6 > this.ctx.canvas.width) {
       this.x = this.ctx.canvas.width - this.w * 6;
       this.vx = 0;
     }
-    if (this.x < 0) {
-      this.x = 0;
+    if (this.x < 8) {
+      this.x = 8;
       this.vx = 0;
     }
     if(this.direction === "right")

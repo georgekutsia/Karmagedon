@@ -67,9 +67,9 @@ class Game {
       new Cactus(ctx, 1010, 725, 40, 40, "/assets/images/fondos/cact1.png"), 
       new Cactus(ctx, 490, 220, 50, 50, "/assets/images/fondos/cact2.png"),
       new Cactus(ctx, 1060, 340, 50, 50, "/assets/images/fondos/cact2.png"),
-      new Cactus(ctx, 610, 800, 30, 40, "/assets/images/fondos/cact3.png"),
-      new Cactus(ctx, 385, 800, 30, 40, "/assets/images/fondos/cact3.png"),
-      new Cactus(ctx, 1135, 800, 30, 40, "/assets/images/fondos/cact3.png"),
+      new Cactus(ctx, 610, 805, 30, 30, "/assets/images/fondos/cact3.png"),
+      new Cactus(ctx, 385, 805, 30, 30, "/assets/images/fondos/cact3.png"),
+      new Cactus(ctx, 1135, 805, 30, 30, "/assets/images/fondos/cact3.png"),
       new Cactus(ctx, 388, 575, 30, 30, "/assets/images/fondos/cact4.png"), 
       new Cactus(ctx, 300, 575, 30, 30, "/assets/images/fondos/cact4.png"),
       new Cactus(ctx, 818, 575, 30, 30, "/assets/images/fondos/cact4.png"),
@@ -112,13 +112,14 @@ class Game {
     //  bushes end
     ]
     this.lamps = [
-      new Bushes(ctx, 160, -2, 40, 40, this.lampOff), new Bushes(ctx, 650, -2, 40, 40, this.lampOff), 
-      new Bushes(ctx, 270, 200, 40, 40, this.lampOff), new Bushes(ctx, 910, 200, 40, 40, this.lampOff), 
-      new Bushes(ctx, 270, 450, 40, 40, this.lampOff), new Bushes(ctx, 1120, 370, 40, 40, this.lampOff), 
-      new Bushes(ctx, -9, 100, 40, 40, this.lampOff), new Bushes(ctx, 595, 310, 40, 40, this.lampOff), 
-      new Bushes(ctx, 40, 540, 40, 40, this.lampOff), new Bushes(ctx, 690, 450, 40, 40, this.lampOff),
-      new Bushes(ctx, 595, 640, 40, 40, this.lampOff), new Bushes(ctx, 1180, 490, 40, 40, this.lampOff),
-      new Bushes(ctx, 820, 780, 40, 40, this.lampOff), new Bushes(ctx, 320, 780, 40, 40, this.lampOff),
+      new Bushes(ctx, 160, -13, 40, 40, this.lampOff), new Bushes(ctx, 680, -13, 40, 40, this.lampOff), 
+      new Bushes(ctx, -13, 100, 40, 40, this.lampOff),  new Bushes(ctx, 298, 250, 40, 40, this.lampOff), 
+      new Bushes(ctx, 1000, 110, 40, 40, this.lampOff), new Bushes(ctx, 605, 335, 40, 40, this.lampOff), 
+      new Bushes(ctx, 370, 490, 40, 40, this.lampOff), new Bushes(ctx, 1120, 370, 40, 40, this.lampOff), 
+      new Bushes(ctx, 58, 560, 40, 40, this.lampOff), new Bushes(ctx, 933, 567, 40, 40, this.lampOff),
+
+      new Bushes(ctx, 230, 800, 40, 40, this.lampOff), new Bushes(ctx, 560, 640, 40, 40, this.lampOff), 
+      new Bushes(ctx, 1190, 730, 40, 40, this.lampOff),new Bushes(ctx, 810, 800, 40, 40, this.lampOff), 
     ]
     this.walls = [
 // round bushes

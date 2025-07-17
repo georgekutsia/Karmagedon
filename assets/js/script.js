@@ -42,7 +42,7 @@ const zfood = document.getElementById("add-food")
 const zupgrade = document.getElementById("add-upgrade")
 const zupbullet = document.getElementById("add-upbullet")
 const zleveling= document.getElementById("add-leveling")
-const wornings = document.querySelector(".wornings-css")
+const warnings = document.querySelector(".warnings-css")
 
 const buyButtons = document.getElementById("buy-buttons")
 const buyHide = document.getElementById("money-coins")
@@ -343,7 +343,7 @@ btn.addEventListener("click", function () {
     displ.style.display = "block"
     allButtonsGone.forEach((button) => button.style.display = "none")
     cheat.style.display = "inline-block"
-    wornings.style.display = "block"
+    warnings.style.display = "flex"
     restart.style.display = "flex"
     demo.style.display = "inline-block";
     buyButtons.style.display = "block"
@@ -369,7 +369,7 @@ btnTrain.addEventListener("click", function () {
     displ.style.display = "block"
     allButtonsGone.forEach((button) => button.style.display = "none")
     cheat.style.display = "inline-block"
-    wornings.style.display = "flex"
+    // warnings.style.display = "flex"
     restart.style.display = "flex"
     demo.style.display = "inline-block";
     buyButtons.style.display = "block"

@@ -34,18 +34,18 @@ h5{
   font-size: 50px;
   text-align: center;
 }
-.wornings-css{
+.warnings-css{
   display: none;
   text-align: left;
   position: absolute;
-  z-index: 80;
-  margin: 10vw 0 0 1.2vw;
+  z-index: 110;
+  margin: 10vh 0 0 10px;
   height: 80px;
   width: 220px;
   font-family: 'Times New Roman', Times, serif;
   font-size: calc(0.5vw + 10px);
 }
-.wornings-css div div{
+.warnings-css div div{
   width: 220px;
   background-color:  black;
 }
@@ -74,7 +74,6 @@ u {
 
 #cursor {
   cursor: url("/assets/images/elements/cursor.cur"), pointer;
-  place-items: center;
   background-color: black;
   width: 100vw;
   height: 100vh;
