@@ -86,7 +86,7 @@ let venom = 5
 let lampOn = 0;
 let amountOfLamps = 13;
 let publicImageLeveling = 0;
-let publicImageLevelup = false;
+let publicImageLevelup = false; // para que aparezca en azul cuando sube la imagen pública
 let publicImage = 0;
 let chance = 0 //afecta a luck
 let instinct = 0;
@@ -94,7 +94,7 @@ let afterSpin = false;
 
 //  para añadir o quitar cosas del juego
 
-let addPeople = false;
+let addPeople = true;
 let addCactus = true;
 let addLamps = true;
 let addGeese = false;

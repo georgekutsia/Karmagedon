@@ -105,6 +105,48 @@ class Score {
     this.ctx.fillText(` ${money}$`, 1300, 397);
   }
 
+
+  // dibujar mensajes al hacer hover
+  // dibujar mensajes al hacer hover
+// distancia de 18 en eje Y para separar bien el texto
+  // life
+      if (hoveredLife) {
+      ctx.fillStyle = "rgba(37, 49, 50, 0.91)";
+      ctx.fillRect( 960, 30, 265, 160,); // fondo semitransparente para visibilidad
+      ctx.fillStyle = "white";
+      ctx.font = "16px Arial";
+      ctx.fillText("If your life reaches 0, you lose.", 965, 50);
+      ctx.fillText("Food heals you. You can wait at", 965, 68);
+      ctx.fillText("Slurp & Glurp to eat. If the Ice", 965, 86);
+      ctx.fillText("Machine is fixed, you can heal by", 965, 104);
+      ctx.fillText("eating ice cream at the Candy Shop.", 965, 122);
+      ctx.fillText("Shooting fat customers, geese, and ", 965, 140);
+      ctx.fillText("rats may make them drop food", 965, 158);
+      ctx.fillText("they have stolen.", 965, 176);
+
+    } 
+
+      if (hoveredReputation) {
+      ctx.fillStyle = "rgba(37, 49, 50, 0.91)";
+      ctx.fillRect( 915, 30, 310, 215,); 
+      ctx.fillStyle = "red";
+      ctx.font = "16px Arial";
+      ctx.fillText("If you lose all your reputation, you lose.", 920, 50);
+      ctx.fillStyle = "white";
+      ctx.fillText("You lose reputation by hitting customers,", 920, 68);
+      ctx.fillText("hurting them, or letting them die.", 920, 86);
+      ctx.fillText(" You can regain it using special discounts", 920, 104);
+      ctx.fillText("offered randomly by some stores, or by", 920, 122);
+      ctx.fillText("turning on all mall lamps, returning carts,", 920, 140);
+      ctx.fillText("and saving kids or customers before", 920, 158);
+      ctx.fillText("they burn, drown, or get hurt by cacti.", 920, 176);
+      ctx.fillStyle = "green";
+
+      ctx.fillText(" Improving your public image and keeping", 920, 194);
+      ctx.fillText("your reputation high will increase how fast", 920, 212);
+      ctx.fillText("you earn profits and find upgrade items.", 920, 230);
+    } 
+
 }
   
 }

@@ -169,7 +169,7 @@ class Bush1 {
 
 
 class People {
-    constructor(ctx, x, y, w, h , image, wolking, vx, vy, newVx, newVy) {
+    constructor(ctx, x, y, w, h , image, walking, vx, vy, newVx, newVy) {
       this.ctx = ctx;
       this.x = x;
       this.y = y;
@@ -181,8 +181,8 @@ class People {
       this.newVx = 0 || newVx;
       this.newVy = 0 || newVy;
       this.img.src = image;
-      this.wolking = false || wolking;
-      this.wolkingTick = 0;
+      this.walking = false || walking;
+      this.walkingDirection = true;
       this.niceWords  = [
         "Nice spectacle!",
         "Cool entertainment",
@@ -195,17 +195,24 @@ class People {
 
     }
     draw() {
-      this.ctx.drawImage(
-        this.img,this.x, this.y, this.w, this.h
-      )
+      if(!this.walkingDirection) {
+        invertImage(this.ctx, this.x, this.y, this.w, this.h, this.img);
+      } else{
+        this.ctx.drawImage(
+          this.img,this.x, this.y, this.w, this.h
+        )
+      }
 
     } 
     move(){
       this.x += this.vx;
-      this.wolkingTick++
-      if(this.wolkingTick >= 100) {
-        invertImage(this.ctx, this.x, this.y, this.w, this.h, this.img);
-      this.vx = this.newVx
+      if(this.x <= 20 ) {
+      this.vx = this.newVx;
+      this.walkingDirection = false;
+      }
+      if(this.x >= 1150) {
+        this.vx = -this.newVx
+        this.walkingDirection = true;
       }
     }
     collides(player) {

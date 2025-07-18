@@ -529,3 +529,26 @@ hoverSoundButtons2.forEach((button) => button.addEventListener("mouseover", func
     modal.classList.remove('active');
     overlay.classList.remove('active');
   });
+
+  let hoveredLife = false;
+
+can.addEventListener("mousemove", function (e) {
+  const rect = can.getBoundingClientRect();
+  const mouseX = e.clientX - rect.left;
+  const mouseY = e.clientY - rect.top;
+
+hoveredLife = (
+  mouseX >= 1220 &&
+  mouseX <= ctx.canvas.width &&
+  mouseY >= 47 &&
+  mouseY <= 73
+);
+hoveredReputation= (
+  mouseX >= 1220 &&
+  mouseX <= ctx.canvas.width &&
+  mouseY >= 80 &&
+  mouseY <= 106
+);
+
+
+});

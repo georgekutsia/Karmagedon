@@ -65,8 +65,8 @@ class Game {
       new Cactus(ctx, 582, 340, 40, 40, "/assets/images/fondos/cact1.png"), 
       new Cactus(ctx, 65, 725, 40, 40, "/assets/images/fondos/cact1.png"), 
       new Cactus(ctx, 1010, 725, 40, 40, "/assets/images/fondos/cact1.png"), 
-      new Cactus(ctx, 490, 220, 50, 50, "/assets/images/fondos/cact2.png"),
-      new Cactus(ctx, 1060, 340, 50, 50, "/assets/images/fondos/cact2.png"),
+      new Cactus(ctx, 490, 220, 35, 35, "/assets/images/fondos/cact2.png"),
+      new Cactus(ctx, 1070, 350, 35, 35, "/assets/images/fondos/cact2.png"),
       new Cactus(ctx, 610, 805, 30, 30, "/assets/images/fondos/cact3.png"),
       new Cactus(ctx, 385, 805, 30, 30, "/assets/images/fondos/cact3.png"),
       new Cactus(ctx, 1135, 805, 30, 30, "/assets/images/fondos/cact3.png"),
@@ -77,24 +77,25 @@ class Game {
 
     ]
     this.pfront = [
-      new People(ctx, 90, 360, 80, 80, "/assets/images/people/pep10.png"), new People(ctx, 250, 350, 40, 60, "/assets/images/people/pep3.png"),
-      new People(ctx, 730, 90, 40, 40, "/assets/images/people/pep5.png"), new People(ctx, 852, 80, 80, 80, "/assets/images/people/pep8.png"),
-      new People(ctx, 860, 350, 40, 40, "/assets/images/people/pep11.png"), new People(ctx, 160, 590, 30, 30, "/assets/images/people/pep22.png"),
-      new People(ctx, 200, 590, 30, 30, "/assets/images/people/pep23.png"), new People(ctx, 430, 12, 50, 30, "/assets/images/people/pep25.png"),
-      new People(ctx, 800, 12, 60, 35, "/assets/images/people/pep20.png"), new People(ctx, 1000, 280, 60, 35, "/assets/images/people/pep24.png", true, -0.09, 0, 0.09),
-      new People(ctx, 400, 350, 80, 45, "/assets/images/people/pep30.png"), new People(ctx, 835, 575, 80, 45, "/assets/images/people/pep31.png"),
-      new People(ctx, 65, 250, 50, 30, "/assets/images/people/pep32.png", true, 0.09, 0, -0.09), new People(ctx, 385, 575, 50, 30, "/assets/images/people/pep33.png"),
+      new People(ctx, 90, 350, 70, 70, "/assets/images/people/pep10.png"), new People(ctx, 275, 347, 40, 70, "/assets/images/people/pep3.png"),
+      new People(ctx, 710, 110, 40, 40, "/assets/images/people/pep5.png"), new People(ctx, 870, 200, 80, 80, "/assets/images/people/pep8.png"),
+      new People(ctx, 1180, 660, 35, 35, "/assets/images/people/pep11.png"), new People(ctx, 90, 590, 80, 80, "/assets/images/people/Peoppps.png"),
+      new People(ctx, 280, 620, 35, 35, "/assets/images/people/pep23.png"), new People(ctx, 430, 20, 50, 30, "/assets/images/people/pep25.png"),
+      new People(ctx, 800, 17 , 60, 35, "/assets/images/people/pep20.png"), new People(ctx, 1000, 285, 75, 28, "/assets/images/people/pep24.png", true, -0.2, 0, 0.2),
+      new People(ctx, 420, 390, 80, 45, "/assets/images/people/pep30.png"), new People(ctx, 835, 625, 80, 45, "/assets/images/people/pep31.png"),
+      new People(ctx, 155, 312, 50, 28, "/assets/images/people/pep32.png", true, -0.4, 0, 0.4), new People(ctx, 400, 595, 65, 50, "/assets/images/people/pep33.png"),
     ]
     this.pback = [
-      new People(ctx, 250, 420, 40, 60, "/assets/images/people/pep2.png"), new People(ctx, 480, 430, 40, 40, "/assets/images/people/pep.png"),
-      new People(ctx, 730, 400, 80, 50, "/assets/images/people/pep7.png"), new People(ctx, 95, 160, 70, 40, "/assets/images/people/pep1.png"),
-      new People(ctx, 560, 150, 50, 50, "/assets/images/people/pep6.png"), new People(ctx, 410, 160, 40, 40, "/assets/images/people/pep14.png"),
-      new People(ctx, 520, 570, 50, 50, "/assets/images/people/pep15.png"), new People(ctx, 9, 100, 40, 100, "/assets/images/people/pep27.png"),
-      new People(ctx, 940, 350, 40, 90, "/assets/images/people/peop72.png"), new People(ctx, 1060, 600, 30, 60, "/assets/images/people/peop77.png"),
-      new People(ctx, 1060, 470, 60, 30, "/assets/images/people/peop71.png"), new People(ctx, 490, 640, 30, 50, "/assets/images/people/peop70.png"),
-      new People(ctx, 1075, 80, 40, 40, "/assets/images/people/peop74.png"), new People(ctx, 1075, 120, 40, 40, "/assets/images/people/peop75.png"),
-      new People(ctx, 1115, 380, 20, 50, "/assets/images/people/peop76.png"), new People(ctx, 730, 670, 60, 40, "/assets/images/people/peop78.png"),
-      new People(ctx, 1055, 380, 30, 60, "/assets/images/people/peop77.png"), new People(ctx, 730, 670, 60, 40, "/assets/images/people/peop78.png"),
+      new People(ctx, 275, 460, 40, 50, "/assets/images/people/pep2.png"), new People(ctx, 700, 783, 40, 40, "/assets/images/people/pep.png"),
+      new People(ctx, 240, 180, 80, 50, "/assets/images/people/pep7.png"), new People(ctx, 130, 80, 70, 35, "/assets/images/people/pep1.png"),
+      new People(ctx, 570, 230, 50, 50, "/assets/images/people/pep6.png"), new People(ctx, 410, 250, 40, 40, "/assets/images/people/pep14.png"),
+      new People(ctx, 520, 630, 50, 50, "/assets/images/people/pep15.png"), new People(ctx, 15, 100, 40, 100, "/assets/images/people/pep27.png"),
+      new People(ctx, 655, 380, 40, 90, "/assets/images/people/peop72.png"), new People(ctx, 830, 430, 30, 60, "/assets/images/people/Peop000.png"),
+      new People(ctx, 560, 515, 60, 30, "/assets/images/people/peop71.png"), new People(ctx, 420, 670, 40, 50, "/assets/images/people/Peopp0.png"),
+      new People(ctx, 1075, 110, 40, 40, "/assets/images/people/peop74.png"), new People(ctx, 1075, 150, 40, 40, "/assets/images/people/peop75.png"),
+      new People(ctx, 1035, 230, 40, 40, "/assets/images/people/Peop002.png"), new People(ctx, 1075, 705, 40, 35, "/assets/images/people/Peop00 copia 3.png"),
+      new People(ctx, 1100, 380, 28, 60, "/assets/images/people/peop76.png"), new People(ctx, 650, 150, 45, 40, "/assets/images/people/Peop010.png"),
+      new People(ctx, 1055, 380, 33, 60, "/assets/images/people/peop77.png"), new People(ctx, 410, 470, 40, 40, "/assets/images/people/Peop100.png"),
     ]
     this.bushesover = [
 
@@ -904,7 +905,7 @@ class Game {
     this.puddles.forEach((e) => e.move());
     this.fires.forEach((e) => e.move());
     this.pfront.forEach((e) => {
-      if (e.wolking === true) {
+      if (e.walking === true) {
         e.move(); 
       }
     });
@@ -2114,14 +2115,14 @@ this.cactus.forEach((cactu) => { //baby con cactus
 // Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..
 // Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..
 if( addPeople){
-  this.pback.forEach((wall) => {//pback con player
-    if (wall.collides(this.player)) {
-         collidingWithClients(wall, this.ctx, this.player)
+  this.pback.forEach((peop) => {//pback con player
+    if (peop.collides(this.player)) {
+         collidingWithClients(peop, this.ctx, this.player)
     }
   });
-  this.pfront.forEach((wall) => {//pfront con player
-    if (wall.collides(this.player)) {
-   collidingWithClients(wall, this.ctx, this.player)
+  this.pfront.forEach((peop) => {//pfront con player
+    if (peop.collides(this.player)) {
+   collidingWithClients(peop, this.ctx, this.player)
     }
   });
 
@@ -2384,7 +2385,7 @@ if(addWalls){
         if(this.score.total >= 35){
           T = 84
         }
-        this.player.getRespect(0.03)
+        this.player.getRespect(0.1)
         return false;
       }
       return true;
