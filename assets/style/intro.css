@@ -29,10 +29,10 @@
   font-size: calc(14px + 0.5vw);
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   opacity: 0.01;
-  left: 1vw;
-  width: 220px;
+  left: 5px;
+  width: 230px;
   border-radius: 10px;
-  z-index: 90;
+  z-index: 190;
   padding: 5px;
   font-weight: 300;
   text-shadow: 1px 1px rgb(117, 117, 117);

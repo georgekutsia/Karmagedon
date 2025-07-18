@@ -1,18 +1,19 @@
-
-h5{
+/* quitar */
+/* h5{
   margin: 10px;
-}
+} */
+
 #time {
-  position: relative;
+  position: absolute;
   padding: 10px;
-  top: 2vw;
-  left: -205px;
-  right: 0;
+  top: 40px;
+  left: 10px;
   font-size: 30px;
   color: rgb(8, 218, 255);
   text-shadow: 1px 1px white;
-  border: 4px solid rgb(0, 0, 0);
-  border-radius: 30px;
+  border: 3px solid rgb(0, 0, 0);
+  border-radius: 20px;
+  width: 220px;
 }
 #main-canvas {
   display: none;
@@ -29,16 +30,13 @@ h5{
   background-size: 100%;
   left: 240px
 }
-#queesesto {
-  font-size: 50px;
-  text-align: center;
-}
+
 .warnings-css{
   display: none;
   text-align: left;
   position: absolute;
   z-index: 110;
-  margin: 10vh 0 0 10px;
+  margin: 200px 0 0 10px;
   height: 80px;
   width: 220px;
   font-family: 'Times New Roman', Times, serif;
@@ -71,11 +69,13 @@ u {
 }
 /* Instrucciones de movimiento End */
 
-#cursor {
+#backgroundGradient {
   cursor: url("/assets/images/elements/cursor.cur"), pointer;
-  background-color: black;
+  background: linear-gradient(301.28deg, #00C2FF 54.38%, rgba(0, 255, 224, 0) 100%), linear-gradient(129.96deg, #9b0b0b 10.43%, #000460 92.78%), radial-gradient(100% 246.94% at 100% 0%, #8000FF 0%, #BA75FF 54.17%, #FF0000 100%), linear-gradient(58.72deg, #2200F2 0%, #530000 100%), linear-gradient(154.03deg, #FF0000 0%, #00FF94 74.04%), linear-gradient(301.27deg, #FF0000 0%, #0038FF 84.63%), linear-gradient(136.23deg, #00C2FF 11.12%, #FF0000 86.47%), radial-gradient(57.37% 100% at 50% 0%, #B50000 0%, #0034BB 100%);
+background-blend-mode: multiply, overlay, color-burn, screen, difference, difference, difference, normal;
   width: 100vw;
   height: 100vh;
+  position: fixed;
 }
 
 #ok {

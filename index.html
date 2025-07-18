@@ -17,6 +17,7 @@
   </head>
 
   <body id="cursor">
+    <div id="backgroundGradient"></div>
 <!-- images intro -->
 
 <!-- <img id="intro-animation-karen1" src="https://res.cloudinary.com/dfrda73uc/image/upload/v1688380427/karengedon/PJ/karn101_pphv1u.png" alt="ya">
@@ -159,39 +160,6 @@
             </div>
           </div>
       </div>
-      <script>
-    function updateState(constantName) {
-      let checkbox = document.getElementById(constantName);
-      switch (constantName) {
-        case 'addPeople':
-          addPeople = checkbox.checked;
-          break;
-        case 'addLamps':
-          addLamps = checkbox.checked;
-          break;
-        case 'addCactus':
-          addCactus = checkbox.checked;
-          break;
-          case 'addGeese':
-          addGeese = checkbox.checked;
-          break;
-          case 'addRat':
-          addRat = checkbox.checked;
-          break;
-          case 'addFat':
-          addFat = checkbox.checked;
-          break;
-          case 'addWalls':
-          addWalls = checkbox.checked;
-          break;
-        // Agrega más casos según sea necesario
-        default:
-          console.error('Checkbox element not found for ' +  constantName);
-      }
-      // console.log(constantName + ' is now ' + (checkbox.checked ? 'true' : 'false'));
-    }
-        </script>
-
 
     <!-- first page -->
     
@@ -238,13 +206,7 @@
         </div>
         
     <canvas id="canvas" width="1390" height="897"></canvas>
-
-
-    
     <!-- main canvas end -->
-
-
-
 
 <!-- time function  -->
     <script>
@@ -256,17 +218,44 @@
           const hours = 9+(Math.floor((q % (60 * 60 * 24)) / (60 * 60)));
           const minutes = Math.floor((q % (60 * 60)) / 60);
           const seconds = Math.floor(q % 60);
-//3621 es "q" cada hora. 12 horas que durará el juego(12 minutos reales) 43452
+          //3621 es "q" cada hora. 12 horas que durará el juego(12 minutos reales) 43452
           document.getElementById("time").innerText =
             hours + "h:" + minutes + "m:" + seconds + "s ";
             // 17 es casi segundo a segundo
         }, 17);
       }
-        function reloadPage() {
-       
-      }
-    </script>
 <!-- time function -->
+        function reloadPage() {
+      }
+      function updateState(constantName) {
+      let checkbox = document.getElementById(constantName);
+      switch (constantName) {
+        case 'addPeople':
+          addPeople = checkbox.checked;
+          break;
+        case 'addLamps':
+          addLamps = checkbox.checked;
+          break;
+        case 'addCactus':
+          addCactus = checkbox.checked;
+          break;
+          case 'addGeese':
+          addGeese = checkbox.checked;
+          break;
+          case 'addRat':
+          addRat = checkbox.checked;
+          break;
+          case 'addFat':
+          addFat = checkbox.checked;
+          break;
+          case 'addWalls':
+          addWalls = checkbox.checked;
+          break;
+        default:
+          console.error('Checkbox element not found for ' +  constantName);
+      }
+    }
+    </script>
     </div>
     
     <div class="neon-button-box">
@@ -281,7 +270,7 @@
           <a id="neon-superhard">Survive the imposible</a>
     </div>
     <div id="demo-spacing">
-      <a id="display-adds">-Add Items-</a>
+      <a id="display-adds">-Add tems-</a>
       <a id="add-karen" class="demo">Karen </a>
       <a id="add-puddle" class="demo">Puddle </a>
       <a id="add-fire" class="demo">Fire </a>
