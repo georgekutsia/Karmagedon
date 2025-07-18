@@ -3,12 +3,11 @@
     display: none;
     position: absolute;
     background-color: rgb(255, 149, 0);
-    font-size: 40px;
+    font-size: 25px;
     color: black;
     z-index: 100;
     bottom: 50px;
     left: 80px;
-    width: 130px;
     cursor: url("/assets/images/elements/cursorInfo"), pointer;
 }
 #demo-spacing{

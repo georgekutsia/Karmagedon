@@ -17,7 +17,6 @@ h5{
 #main-canvas {
   display: none;
   position: absolute;
-  background-image: url(/assets/images/fondos/dados.jpeg);
   background-size: 100%;
   height: 100vh;
   width: 100vw;
