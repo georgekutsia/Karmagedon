@@ -3,7 +3,7 @@ class Score {
     this.ctx = ctx;
     this.x = 1015;
     this.y = 570;
-    this.score = 0;
+    this.dead = 4;
     this.gooseImg = new Image();
     this.gooseImg.src = "/assets/images/infos/gooses.png"
     this.ratImg = new Image();
@@ -20,7 +20,7 @@ class Score {
     this.ctx.fillText(`Customers: `, 1242, 175);
     this.ctx.fillStyle = "tomato";
     this.ctx.font = "21px Arco";
-    this.ctx.fillText(`Dead:${this.score.toString()}`, 1230, 200);
+    this.ctx.fillText(`Dead:${this.dead.toString()}`, 1230, 200);
     if(!showPlayerJoBStats){
       this.ctx.font = "36px Arco";
     this.ctx.fillStyle = "lightblue";
@@ -33,9 +33,9 @@ class Score {
     if(showPlayerJoBStats){
     this.ctx.font = "22px Arco";
     this.ctx.fillStyle = "green";
-    this.ctx.fillText(`Solved problems: `, 1228, 430);
+    this.ctx.fillText(`Solved problems: `, 1229, 430);
     this.ctx.fillStyle = "white";
-    this.ctx.fillText(`Solved problems: `, 1227, 429);
+    this.ctx.fillText(`Solved problems: `, 1230, 429);
     this.ctx.drawImage( this.gooseImg, 1223, 440, 50 , 35 ) 
     this.ctx.drawImage( this.ratImg, 1310, 440, 50 , 35 ) 
     this.ctx.drawImage( this.fireFloodImg, 1230, 485, 30 , 35 ) 
@@ -111,25 +111,27 @@ class Score {
 // distancia de 18 en eje Y para separar bien el texto
   // life
       if (hoveredLife) {
-      ctx.fillStyle = "rgba(37, 49, 50, 0.91)";
-      ctx.fillRect( 960, 30, 265, 160,); // fondo semitransparente para visibilidad
-      ctx.fillStyle = "white";
+      ctx.fillStyle = "rgba(37, 49, 50, 1)";
+      ctx.fillRect( 950, 30, 275, 160,); // fondo semitransparente para visibilidad
       ctx.font = "16px Arial";
-      ctx.fillText("If your life reaches 0, you lose.", 965, 50);
-      ctx.fillText("Food heals you. You can wait at", 965, 68);
-      ctx.fillText("Slurp & Glurp to eat. If the Ice", 965, 86);
-      ctx.fillText("Machine is fixed, you can heal by", 965, 104);
-      ctx.fillText("eating ice cream at the Candy Shop.", 965, 122);
-      ctx.fillText("Shooting fat customers, geese, and ", 965, 140);
-      ctx.fillText("rats may make them drop food", 965, 158);
-      ctx.fillText("they have stolen.", 965, 176);
+      ctx.fillStyle = "tomato";
+      ctx.fillText("If your life reaches 0, you lose.", 962, 50);
+      ctx.fillStyle = "white";
+      ctx.fillText("Food heals you. You can wait at", 962, 68);
+      ctx.fillText("Slurp & Glurp to eat. If the Ice", 962, 86);
+      ctx.fillText("Machine is fixed, you can heal by", 962, 104);
+      ctx.fillText("eating ice cream at the Candy Shop.", 962, 122);
+      ctx.fillStyle = "lime";
+      ctx.fillText("Shooting fat customers, geese, and ", 962, 140);
+      ctx.fillText("rats may make them drop food", 962, 158);
+      ctx.fillText("they have stolen.", 962, 176);
 
     } 
 
       if (hoveredReputation) {
-      ctx.fillStyle = "rgba(37, 49, 50, 0.91)";
-      ctx.fillRect( 915, 30, 310, 215,); 
-      ctx.fillStyle = "red";
+      ctx.fillStyle = "rgba(37, 49, 50, 1)";
+      ctx.fillRect( 905, 30, 320, 215,); 
+      ctx.fillStyle = "tomato";
       ctx.font = "16px Arial";
       ctx.fillText("If you lose all your reputation, you lose.", 920, 50);
       ctx.fillStyle = "white";
@@ -140,14 +142,29 @@ class Score {
       ctx.fillText("turning on all mall lamps, returning carts,", 920, 140);
       ctx.fillText("and saving kids or customers before", 920, 158);
       ctx.fillText("they burn, drown, or get hurt by cacti.", 920, 176);
-      ctx.fillStyle = "green";
-
+      ctx.fillStyle = "lime";
       ctx.fillText(" Improving your public image and keeping", 920, 194);
       ctx.fillText("your reputation high will increase how fast", 920, 212);
       ctx.fillText("you earn profits and find upgrade items.", 920, 230);
     } 
-
+  if (hoveredComplaints) {
+    ctx.fillStyle = "rgba(37, 49, 50, 1)";
+    ctx.fillRect(900, 30, 330, 140); 
+    ctx.fillStyle = "tomato";
+    ctx.font = "16px Arial";
+    ctx.fillText("If you run out of complaint forms, you lose.", 905, 50);
+    ctx.fillStyle = "white";
+    ctx.fillText("You can't get new ones, so don't waste them.", 905, 68);
+    ctx.fillText("When a Karen appears, run to negotiate fast", 905, 86);
+    ctx.fillText("before she asks for a complaint form.", 905, 104);
+    ctx.fillText("Press the spacebar in the green zone to", 905, 122);
+    ctx.fillText("send her off happy to cause trouble again,", 905, 140);
+    ctx.fillText("hopefully somewhere far away next time.", 905, 158);
+  }
 }
+    addDead(){
+      this.dead++;
+    }
   
 }
 class Saved {

@@ -1,20 +1,20 @@
 #info-manager {
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   position: absolute;
   display: inline-block;
   font-size: 120%;
   font-family: "Courier New", Courier, monospace;
-  background: linear-gradient(-45deg, #ee7752, #d9ff01, #0d0aca, #23d5ab, #99ea17, #b106b1, #daa410);
-  background-size: 900% 900%;
+  background: linear-gradient(-45deg, #ee76524c, #d9ff0156, #0d0aca45, #23d5ab44, #99ea1746, #b106b144, #daa41044);
   opacity: 1;
   top: 1%;
   right: 1%;
   border-radius: 30px;
   z-index: 100;
   font-style: oblique;
-  padding: 10px;
-  animation: gradient 15s ease infinite;
+  padding: 10px 25px;
   transition: all ease-in-out 4s;
+  cursor: url("/assets/images/elements/cursor.cur"), pointer;
+
 }
 #info-cheatsheet div{
   margin-bottom: 0px;

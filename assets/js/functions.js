@@ -61,25 +61,20 @@ function invertImage(ctx, x, y, w, h, img) {
 //salvar a los niños y los clientes
 function saving(saved, player, customersMessage){
   saved.addSave()
-  player.cooldownJump -= 100
+  player.cooldownJump -= 200
   if(player.cooldownJump <=1000){
     player.cooldownJump = 1000;
   }
-  player.getRespect(0.02)
+  player.getRespect(0.05)
   customersMessage = true
 }
-function dyingBaby(player, perjudiceMessage){
-  player.loseRespect(0.02);
-  perjudiceMessage = true
-}
-function dyingCustomer(player, perjudiceMessage){
-  player.loseRespect(0.02)
+function dyingCustomer(player, score, perjudiceMessage){
+  player.loseRespect(0.1);
+  score.addDead();
   distance -= 0.05;
-  if(player.booster >= -1){
-    player.booster -= 0.010;
-    player.cooldownJump += 5;
-    perjudiceMessage = true;
-  }
+  player.booster -= 0.010;
+  player.cooldownJump += 200;
+  perjudiceMessage = true;
 }
 function angryKorenPopup(probability){
   let randomNumber = Math.floor(Math.random() *200);

@@ -6,14 +6,13 @@
     font-size: 25px;
     color: black;
     z-index: 100;
-    bottom: 50px;
+    bottom: 10px;
     left: 80px;
     cursor: url("/assets/images/elements/cursorInfo"), pointer;
 }
 #demo-spacing{
     background-color: black;
-    margin-bottom: 20px;
-    margin-bottom: 130px;
+    margin-bottom: 50px;
     width: 250px;
     display: flex;
     flex-wrap: wrap;

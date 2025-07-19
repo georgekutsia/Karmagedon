@@ -12,6 +12,7 @@
 :root {
   --clr-neon: rgb(226, 174, 4);
   --clr-bg: rgb(0, 0, 0);
+  --clr-neonpink: rgb(231, 0, 181);
   --clr-neondir: rgb(0, 223, 231);
   --clr-neonopt: rgb(119, 102, 248);
   --clr-neonwhite: rgb(248, 247, 255);
@@ -92,7 +93,7 @@
 .neon-button:focus::after {
   opacity: 1;
 }
-.neon-butt {
+.neon-butt-play {
   position: absolute;
   z-index: 100;
   font-size: 1.9vw;
@@ -112,7 +113,7 @@
   transition: all ease-in-out 3s;
 }
 
-.neon-butt::before {
+.neon-butt-play::before {
   pointer-events: none;
   content: "";
   position: absolute;
@@ -125,19 +126,19 @@
   filter: blur(1em);
   opacity: 1;
 }
-.neon-butt:hover{
+.neon-butt-play:hover{
   opacity:1;
   transition: 1s;
   
 }
-.neon-butt::after {
+.neon-butt-play::after {
   content: "";
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  box-shadow: 0 0 2em 0.5em var(--clr-neondirdir);
+  box-shadow: 0 0 2em 0.5em var(--clr-neondir);
   opacity: 0;
   border-radius: 30px;
   background-color: var(--clr-neondir);
@@ -145,18 +146,18 @@
   transition: opacity 0.8s linear;
 }
 
-.neon-butt:hover,
-.neon-butt:focus {
+.neon-butt-play:hover,
+.neon-butt-play:focus {
   color: var(--clr-bgdir);
   text-shadow: none;
 }
 
-.neon-butt:hover::before,
-.neon-butt:focus::before {
+.neon-butt-play:hover::before,
+.neon-butt-play:focus::before {
   opacity: 1;
 }
-.neon-butt:hover::after,
-.neon-butt:focus::after {
+.neon-butt-play:hover::after,
+.neon-butt-play:focus::after {
   opacity: 1;
 }
 
@@ -229,7 +230,7 @@
   opacity: 1;
 }
 
-/* neon button opctions */
+/* neon button options */
 .neon-butt-options {
   position: absolute;
   z-index: 100;

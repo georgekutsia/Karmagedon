@@ -19,6 +19,7 @@ class Customer {
     this.cageImg.src = "/assets/images/munición/cage.png"
     this.cage = false
     this.cageTick = 0
+    this.canCollide = true;
     this.images = [ "/assets/images/elements/customer4.png", 
                     "/assets/images/elements/customer17.png", 
                     "/assets/images/elements/customer13.png", 
@@ -168,8 +169,10 @@ class Customer {
     return this.x + this.w > 0 && this.x <= 1180;
   }
   collides(player) {
-    let colX = this.x + 10 <= player.x + player.w && this.x + this.w - 20 > player.x;
-    let colY = this.y + this.h-5 > player.y && this.y + 10 < player.y + player.h;
-    return colX && colY;
+    if(this.canCollide){
+      let colX = this.x + 10 <= player.x + player.w && this.x + this.w - 20 > player.x;
+      let colY = this.y + this.h-5 > player.y && this.y + 10 < player.y + player.h;
+      return colX && colY;
+    }
   }
 }

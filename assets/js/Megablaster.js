@@ -16,6 +16,7 @@ class Megablaster {
     this.blasterShootAudio.play();
     this.blasterImg.frame = 0;
     this.tick = 0;
+    this.canCollide = true;
     this.framer = 
     this.damage =( 1 + playerBasicDamage) * playerDoubleDamage; 
     1
@@ -57,9 +58,11 @@ class Megablaster {
     return !this.dispose;
   }
   collides(puddle) {
-    const colX = this.x <= puddle.x + puddle.w && this.x + this.w > puddle.x;
-    const colY = this.y + this.h > puddle.y && this.y < puddle.y + puddle.h;
-    return colX && colY;
+    if(this.canCollide){
+      const colX = this.x <= puddle.x + puddle.w && this.x + this.w > puddle.x;
+      const colY = this.y + this.h > puddle.y && this.y < puddle.y + puddle.h;
+      return colX && colY;
+    }
   }
 }
 
@@ -85,7 +88,8 @@ class RocketLauncher {
     this.tock = 0;
     this.teck = 0;
     this.framer = 6
-    this.rocketDetonation = false
+    this.rocketDetonation = false;
+    this.canCollide = true;
     this.damage =( 1 + playerBasicDamage) * playerDoubleDamage; 
 
   }
@@ -137,7 +141,7 @@ class RocketLauncher {
     return !this.dispose;
   }
   collides(puddle) {
-    if(areaDamage){
+    if(this.canCollide && areaDamage){
       const colX = this.x <= puddle.x + puddle.w && this.x + this.w > puddle.x;
       const colY = this.y + this.h > puddle.y && this.y < puddle.y + puddle.h;
       return colX && colY;
@@ -198,6 +202,7 @@ class Sandstorm {
     this.sandShootAudio = new Audio("/assets/audio/sandSound.mp3")
     this.sandShootAudio.volume = 0.01;
     this.sandShootAudio.play();
+    this.canCollide = true;
     this.damage =( 0.03 + playerBasicDamage) * playerDoubleDamage; 
   }
   draw() {
@@ -235,9 +240,11 @@ class Sandstorm {
     return !this.dispose;
   }
   collides(puddle) {
-    const colX = this.x <= puddle.x + puddle.w && this.x + this.w > puddle.x;
-    const colY = this.y + this.h > puddle.y && this.y < puddle.y + puddle.h;
-    return colX && colY;
+    if(this.canCollide){
+      const colX = this.x <= puddle.x + puddle.w && this.x + this.w > puddle.x;
+      const colY = this.y + this.h > puddle.y && this.y < puddle.y + puddle.h;
+      return colX && colY;
+    }
   }
 }
 class ElementShield {

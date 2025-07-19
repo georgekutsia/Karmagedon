@@ -9,7 +9,7 @@ const game = new Game(ctx);
 // const infoData1 = document.getElementById("display-info1");
 // const infoData2 = document.getElementById("display-info2");
 const begin = document.querySelector(".neon-button");
-const btn = document.querySelector(".neon-butt");
+const btn = document.querySelector(".neon-butt-play");
 const btnTrain = document.querySelector(".neon-butt-training");
 const btneasy = document.querySelector(".neon-butteasy");
 const btnnormal = document.querySelector(".neon-buttnormal");
@@ -540,15 +540,25 @@ can.addEventListener("mousemove", function (e) {
 hoveredLife = (
   mouseX >= 1220 &&
   mouseX <= ctx.canvas.width &&
-  mouseY >= 47 &&
-  mouseY <= 73
+  mouseY >= 50 &&
+  mouseY <= 78
 );
 hoveredReputation= (
   mouseX >= 1220 &&
   mouseX <= ctx.canvas.width &&
-  mouseY >= 80 &&
-  mouseY <= 106
+  mouseY >= 85 &&
+  mouseY <= 113
 );
-
-
+hoveredComplaints= (
+  mouseX >= 1220 &&
+  mouseX <= ctx.canvas.width &&
+  mouseY >= 118 &&
+  mouseY <= 150
+);
+hoveredCustomers= (
+  mouseX >= 1220 &&
+  mouseX <= ctx.canvas.width &&
+  mouseY >= 160 &&
+  mouseY <= 220
+);
 });

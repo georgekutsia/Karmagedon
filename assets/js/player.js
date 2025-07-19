@@ -693,7 +693,7 @@ class Player {
 
     if (key === M && solvedTotal >= 20) {
       this.megablaster();
-      M = 0
+      // M = 0;
     }
     if (key === F && rocketCount >= 1) {
       this.rocketer();

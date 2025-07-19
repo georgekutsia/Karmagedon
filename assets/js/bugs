@@ -17,3 +17,8 @@ comida aparece en sitios raros
 g teleporta con hook solo en nivel 2
 
 animacion de cuando recibe daño el personaje
+
+la funcion canCollide tienen los customers para activar y desactivar que se choquen con cosas. sobre todo cuando algun efecto tipo
+megablaster hace daño continuado que no se desea
+
+averigua lo de toxic dañando customers
