@@ -139,14 +139,12 @@ function collidingWithClients(client, ctx, player){
   ctx.drawImage(
   this.excla, client.x + 10, client.y - 10, 30,  30
   )
-  player.loseRespect(0.0003)
+  player.loseRespect(0.002 - publicImage/2000);
   player.drawSorry()
 }
 function directDamagingClients(client, message, lostRespect, ctx, player){
   player.loseRespect(lostRespect)
   ctx.font = "20px Arial";
-  ctx.fillStyle = "red";
-  ctx.fillText(`${message}`, client.x, client.y);
   ctx.fillStyle = "red";
   ctx.fillText(`${message}`, client.x-1, client.y-1);
   ctx.fillStyle = "black";
@@ -155,8 +153,6 @@ function directDamagingClients(client, message, lostRespect, ctx, player){
 function directHelpingClients(client, message, wonRespect, ctx, player){
   player.getRespect(wonRespect)
   ctx.font = "20px Arial";
-  ctx.fillStyle = "blue";
-  ctx.fillText(`${message}`, client.x, client.y);
   ctx.fillStyle = "blue";
   ctx.fillText(`${message}`, client.x-1, client.y-1);
   ctx.fillStyle = "aqua";

@@ -28,7 +28,7 @@ const S = 83;
 const D = 68;
 
 let hookCounter = 0
-let discounting = 0;
+let discounting = 1124;
 let charging = 0;
 
 let money = 10000
@@ -85,9 +85,9 @@ let chargingTrue = false
 let venom = 5
 let lampOn = 0;
 let amountOfLamps = 13;
-let publicImageLeveling = 0;
 let publicImageLevelup = false; // para que aparezca en azul cuando sube la imagen pública
-let publicImage = 0;
+let publicImage = 0 //para que se vea en el juego;
+let publicImageLevel = 0; //para que se vea en el juego;
 let chance = 0 //afecta a luck
 let instinct = 0;
 let afterSpin = false;

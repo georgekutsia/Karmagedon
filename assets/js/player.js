@@ -1,8 +1,8 @@
 class Player {
   constructor(ctx, position) {
     this.ctx = ctx;
-    this.x = 299;
-    this.y = 260;
+    this.x = 329;
+    this.y = 290;
     this.w = 30;
     this.h = 30;
     this.position = position
@@ -78,7 +78,7 @@ class Player {
     this.speedBullet = 4;
     this.extraHookSpeed = 0
     this.cooldownBullet = 3000;
-    this.cooldownJump = 3000;   
+    this.cooldownJump = 500;   
     this.toxicity = false;
     this.sandstate = false;
     this.sandAlterImg = ""
@@ -380,7 +380,7 @@ class Player {
     this.discountings.forEach((disc) => disc.draw());
     this.waters.forEach((water) => water.draw());
     this.auras.forEach((aura) => aura.draw());
-    this.blasters.forEach((blaster) => blaster.draw());
+    this.blasters.forEach((blaster) => blaster.draw()); //tanto los rocket como los sanders están en blasters
     mineria.forEach((mi) => mi.draw());
     this.life.draw();
     this.recharger.draw(this.x + 15, this.y + 15);
@@ -503,7 +503,7 @@ class Player {
         if(this.foodPreparingTime <= 0){
           this.foodReady = true;
           setTimeout(() => {
-            this.foodPreparingTime = 100 - publicImage;
+            this.foodPreparingTime = 100 - publicImage * 10;
           }, 9000);
         }
     }
@@ -539,6 +539,7 @@ class Player {
     return this.respect.total > 0;
   }
   jump() {
+    publicImage ++
     if (this.direction === "top") {
       this.y -= distance;
     }
@@ -693,7 +694,7 @@ class Player {
 
     if (key === M && solvedTotal >= 20) {
       this.megablaster();
-      // M = 0;
+      M = 0;
     }
     if (key === F && rocketCount >= 1) {
       this.rocketer();

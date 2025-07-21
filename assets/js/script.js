@@ -531,6 +531,9 @@ hoverSoundButtons2.forEach((button) => button.addEventListener("mouseover", func
   });
 
   let hoveredLife = false;
+  let hoveredReputation = false;
+  let hoveredComplaints = false;
+  let hoveredCustomers = false;
 
 can.addEventListener("mousemove", function (e) {
   const rect = can.getBoundingClientRect();

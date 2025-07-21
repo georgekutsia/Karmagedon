@@ -161,6 +161,24 @@ class Score {
     ctx.fillText("send her off happy to cause trouble again,", 905, 140);
     ctx.fillText("hopefully somewhere far away next time.", 905, 158);
   }
+
+  if (hoveredCustomers) {
+  ctx.fillStyle = "rgba(37, 49, 50, 1)";
+  ctx.fillRect(905, 30, 320, 160); 
+  ctx.fillStyle = "tomato";
+  ctx.font = "16px Arial";
+  ctx.fillText("If 10 customers die, you lose the game.", 920, 50);
+  ctx.fillStyle = "white";
+  ctx.fillText("Lost kids or distracted clients may appear,", 920, 68);
+  ctx.fillText("wandering toward deadly obstacles.", 920, 86);
+  ctx.fillText("Stop them from walking into cacti, fire,", 920, 104);
+  ctx.fillText("puddles, or other dangerous things.", 920, 122);
+  ctx.fillText("They can also die from your own damage,", 920, 158);
+  ctx.fillText("so aim carefully and avoid accidents.", 920, 176);
+  ctx.fillStyle = "lime";
+  ctx.fillText("Get close to save them—and regain rep.", 920, 140);
+}
+
 }
     addDead(){
       this.dead++;

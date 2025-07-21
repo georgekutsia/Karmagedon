@@ -762,8 +762,7 @@ class Game {
     }
     if (addLamps) {
       this.lamps.forEach((e) => e.draw())
-      if (this.lampTick >= 7640) {
-        // se reinicia cada 2 horas
+      if (this.lampTick >= 7640) {// se reinicia cada 2 horas con 7640
         this.lamps.forEach(
           (lamp) => (lamp.img.src = '/assets/images/elements/lampOfff.png')
         )
@@ -855,14 +854,18 @@ class Game {
       )
       this.ctx.fillText(`Walk Speed: ${this.player.speed.toFixed(1)}`, 540, 888)
       this.ctx.fillText(`Luck lvl: ${chance.toString()}`, 818, 852)
-      this.ctx.fillText(`Public Image: ${publicImage.toString()}`, 818, 870)
+      this.ctx.fillText(`Public Image: ${publicImageLevel}`, 818, 870);
       this.ctx.fillText(`Instinct: ${instinct.toString()}`, 818, 888)
-      if (publicImageLevelup) {
-        this.ctx.fillStyle = 'aqua'
-        this.ctx.fillText(`Public Image: ${publicImage.toString()}`, 818, 863)
-        setTimeout(() => {
-          publicImageLevelup = false
-        }, 3000)
+      if(publicImage % 3 === 0 && publicImage > 0 && publicImageLevelup === false) {
+        publicImageLevel ++;
+        publicImageLevelup = true;
+        if (publicImageLevelup) {
+          this.ctx.fillStyle = 'aqua'
+          this.ctx.fillText(`Public Image: ${publicImageLevel}`, 818, 870);
+          setTimeout(() => {
+            publicImageLevelup = false
+          }, 3000)
+        }
       }
 
       if (this.customersMessage) {
@@ -1497,8 +1500,7 @@ class Game {
     this.winTime++
     // puddle..puddle..puddle..puddle..puddle..puddle..puddle..puddle..puddle..puddle..puddle..puddle..puddle..
     // puddle..puddle..puddle..puddle..puddle..puddle..puddle..puddle..puddle..puddle..puddle..puddle..puddle..
-    this.puddles.forEach((puddle) => {
-      //agua con blasters
+    this.puddles.forEach((puddle) => { //agua con blasters
       this.player.blasters.filter((blast) => {
         if (blast.collides(puddle)) {
           puddle.dicreaseSmall()
@@ -1542,8 +1544,7 @@ class Game {
         }
       })
     })
-    this.player.hooks.forEach((hook) => {
-      //hook con agua
+    this.player.hooks.forEach((hook) => {//hook con agua
       this.puddles.forEach((puddle) => {
         hook.collides(puddle)
         if (hook.collides(puddle)) {
@@ -1552,9 +1553,7 @@ class Game {
       })
     })
     // fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..
-    // fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..
-    this.fires.forEach((fire) => {
-      //fuego con blaster
+    this.fires.forEach((fire) => {//fuego con blaster
       this.player.blasters.filter((blast) => {
         if (blast.collides(fire)) {
           fire.dicreaseSmall()
@@ -1713,8 +1712,7 @@ class Game {
         } else return true
       })
     })
-    this.rats.forEach((rat) => {
-      //rat con blaster
+    this.rats.forEach((rat) => {//rat con blaster
       this.player.blasters.filter((blast) => {
         if (blast.collides(rat)) {
           blast.rocketDetonation = true
@@ -1724,8 +1722,8 @@ class Game {
         } else return true
       })
     })
-    this.rats.forEach((rat) => {
-      //rat con sanders
+
+    this.rats.forEach((rat) => { //rat con sanders
       this.player.sanders.filter((sand) => {
         if (sand.collides(rat)) {
           sand.activated = true
@@ -2132,9 +2130,7 @@ class Game {
       })
     })
     //babys...babys...babys...babys...babys...babys...babys...babys...babys...babys...babys...babys...babys...
-    //babys...babys...babys...babys...babys...babys...babys...babys...babys...babys...babys...babys...babys...
-    this.babys = this.babys.filter((baby) => {
-      //baby con player
+    this.babys = this.babys.filter((baby) => {//baby con player
       if (baby.collides(this.player)) {
         saving(this.saved, this.player, this.customersMessage)
         return false
@@ -2142,54 +2138,54 @@ class Game {
       return true
     })
 
-    this.babys.forEach((baby) => {
-      //baby con blaster
+    this.babys.forEach((baby) => {//baby con blaster
       this.player.blasters.filter((blast) => {
         if (blast.collides(baby)) {
-          this.babys.splice(0, 1)
+          console.log("queeeee")
+          baby.x = -100
+          blast.rocketDetonation = true;
           dyingCustomer(this.player, this.score, this.perjudiceMessage)
           return false
         } else return true
       })
     })
 
-    this.babys.forEach((baby) => {
-      //baby con sanders
+    this.babys.forEach((baby) => {//baby con sanders
       this.player.sanders.filter((sand) => {
         if (sand.collides(baby)) {
-          this.babys.splice(0, 1)
+          baby.x = -100;
           dyingCustomer(this.player, this.score, this.perjudiceMessage)
           return false
         } else return true
       })
     })
-    this.babys.forEach((baby) => {
-      //baby con waters
+    this.babys.forEach((baby) => {//baby con waters
       this.player.waters.filter((wat) => {
         if (wat.collides(baby)) {
-          this.player.waters.splice(0, 1)
-          this.babys.splice(0, 1)
+          baby.x = -100
+          wat.x = -100
           dyingCustomer(this.player, this.score, this.perjudiceMessage)
           return false
         } else return true
       })
     })
-    this.babys.forEach((baby) => {
-      //baby con heats
+    this.babys.forEach((baby) => {//baby con heats
       this.player.heats.filter((heat) => {
         if (heat.collides(baby)) {
-          this.babys.splice(0, 1)
+          baby.x = -100
+          heat.x = -100
+          console.log(this.babys)
           dyingCustomer(this.player, this.score, this.perjudiceMessage)
           return false
         } else return true
       })
     })
 
-    this.cactus.forEach((cactu) => {
-      //baby con cactus
-      this.babys = this.babys.filter((la) => {
-        if (la.collides(cactu)) {
+    this.cactus.forEach((cactu) => {//baby con cactus
+      this.babys = this.babys.filter((baby) => {
+        if (baby.collides(cactu)) {
           this.babys.splice(0, 1)
+          cactu.bloodOnCactus++;
           dyingCustomer(this.player, this.score, this.perjudiceMessage)
           return false
         } else return true
@@ -2262,18 +2258,15 @@ class Game {
         } else return true
       })
     })
-    //customer...customer...customer...customer...customer...customer...customer...customer...customer...customer...
-    //customer...customer...customer...customer...customer...customer...customer...customer...customer...customer...
-    this.customers = this.customers.filter((cus) => {
-      //customer con player
+    //customer...................................................................................................................................................
+    this.customers = this.customers.filter((cus) => {//customer con player
       if (cus.collides(this.player)) {
         saving(this.saved, this.player, this.customersMessage)
         return false
       }
       return true
     })
-    this.customers.forEach((cust) => {
-      //cust con discounting
+    this.customers.forEach((cust) => {//cust con discounting
       this.player.discountings = this.player.discountings.filter((disc) => {
         if (disc.collides(cust)) {
           this.player.discountings.splice(0, 1)
@@ -2286,11 +2279,10 @@ class Game {
         } else return true
       })
     })
-    this.customers.forEach((cus) => {
-      //customer con heat del player
+    this.customers.forEach((cus) => { //customer con heat del player
       this.player.heats.filter((heat) => {
         if (heat.collides(cus)) {
-          this.player.heats.splice(0, 1)
+          heat.x = -100;
           dyingCustomer(this.player, this.score, this.perjudiceMessage)          
           cus.lifeleft -= 1
           if (cus.dead >= 50) {
@@ -2303,11 +2295,10 @@ class Game {
         } else return true
       })
     })
-    this.customers.forEach((cus) => {
-      //customer con water
+    this.customers.forEach((cus) => {//customer con water
       this.player.waters.filter((water) => {
         if (water.collides(cus)) {
-          this.player.waters.splice(0, 1)
+          water.x = -100;
           dyingCustomer(this.player, this.score, this.perjudiceMessage)          
           cus.lifeleft -= 1
           if (cus.dead >= 50) {
@@ -2322,7 +2313,8 @@ class Game {
     this.player.blasters.forEach((blast) => {
     this.customers.filter((cus) => { //customer con blaster
         if (cus.collides(blast)) {
-          dyingCustomer(this.player, this.score, this.perjudiceMessage)       
+          dyingCustomer(this.player, this.score, this.perjudiceMessage)    
+          blast.rocketDetonation = true;
           cus.lifeleft -= 1;
           cus.canCollide = false;
           return true
@@ -2339,6 +2331,9 @@ class Game {
         } else return true
       })
     })
+
+
+
     this.puddles.forEach((puddle) => {//customer con puddle
       this.customers = this.customers.filter((cus) => {
         if (cus.collides(puddle)) {
@@ -2555,16 +2550,13 @@ class Game {
       })
     })
     // Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..
-    // Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..Obstáculos..
     if (addPeople) {
-      this.pback.forEach((peop) => {
-        //pback con player
+      this.pback.forEach((peop) => {//pback con player
         if (peop.collides(this.player)) {
           collidingWithClients(peop, this.ctx, this.player)
         }
       })
-      this.pfront.forEach((peop) => {
-        //pfront con player
+      this.pfront.forEach((peop) => {//pfront con player
         if (peop.collides(this.player)) {
           collidingWithClients(peop, this.ctx, this.player)
         }
@@ -2592,7 +2584,7 @@ class Game {
         //PFront con discount
         this.player.discountings.filter((disc) => {
           if (disc.collides(peop)) {
-            directHelpingClients(peop, 'Great!', 0.0003, this.ctx, this.player)
+            directHelpingClients(peop, 'Great!', 0.003, this.ctx, this.player)
             return false
           } else return true
         })
@@ -2601,7 +2593,7 @@ class Game {
         //PBack con discount
         this.player.discountings.filter((disc) => {
           if (disc.collides(peop)) {
-            directHelpingClients(peop, 'Great!', 0.0003, this.ctx, this.player)
+            directHelpingClients(peop, 'Great!', 0.003, this.ctx, this.player)
             return false
           } else return true
         })
@@ -2838,8 +2830,7 @@ class Game {
         this.player.vx = 0
       }
     })
-    //carts...carts...carts...carts...carts...carts...carts...carts...carts...carts...carts...carts...
-    //carts...carts...carts...carts...carts...carts...carts...carts...carts...carts...carts...carts...
+    //carts..............................................................................................................................................
     this.carts = this.carts.filter((cart) => {
       if (cart.collides(this.player)) {
         this.shielOn = new Audio('/assets/audios ad/shieldActivated.wav')
@@ -3023,8 +3014,7 @@ class Game {
       return true
     })
 
-    //discount...discount...discount...discount...discount...discount...discount...discount...discount...
-    //discount...discount...discount...discount...discount...discount...discount...discount...discount...
+    //discount......................................................
     this.discounts = this.discounts.filter((discount) => {
       if (discount.collides(this.player)) {
         this.line.b -= 0.5

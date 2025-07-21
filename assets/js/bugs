@@ -22,3 +22,6 @@ la funcion canCollide tienen los customers para activar y desactivar que se choq
 megablaster hace daño continuado que no se desea
 
 averigua lo de toxic dañando customers
+
+directHelpingClients es lo que genera mensajes de pfron y pback cuando reciben descuentos. se pueden meter variedades.  
+directDamagingClients lo contrario
