@@ -124,4 +124,4 @@ let solvedWaterFire = 0;
 let solvedBoss = 0;
 let solvedKarens = 0;
 let solvedKorens = 0;
-let solvedTotal = 50;
+let solvedTotal = 15;

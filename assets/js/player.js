@@ -78,7 +78,7 @@ class Player {
     this.speedBullet = 4;
     this.extraHookSpeed = 0
     this.cooldownBullet = 3000;
-    this.cooldownJump = 500;   
+    this.cooldownJump = 3000;   
     this.toxicity = false;
     this.sandstate = false;
     this.sandAlterImg = ""
@@ -539,7 +539,6 @@ class Player {
     return this.respect.total > 0;
   }
   jump() {
-    publicImage ++
     if (this.direction === "top") {
       this.y -= distance;
     }
@@ -584,6 +583,7 @@ class Player {
     keyDown(key) {
     // this.speed = this.speed + this.booster;
     if (key === UP || key === W) {
+      solvedTotal += 1;
       this.direction = "top";
       this.vy = - this.speed - this.booster;
       this.img.src = "/assets/images/PJ/MANAGER 1.png";

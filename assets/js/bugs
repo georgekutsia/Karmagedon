@@ -25,3 +25,5 @@ averigua lo de toxic dañando customers
 
 directHelpingClients es lo que genera mensajes de pfron y pback cuando reciben descuentos. se pueden meter variedades.  
 directDamagingClients lo contrario
+
+cada 3 carritos recogidos, helper saca un upgrade

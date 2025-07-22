@@ -564,4 +564,10 @@ hoveredCustomers= (
   mouseY >= 160 &&
   mouseY <= 220
 );
+hoveredOffice= (
+  mouseX >= 1220 &&
+  mouseX <= ctx.canvas.width &&
+  mouseY >= 220 &&
+  mouseY <= 340
+);
 });

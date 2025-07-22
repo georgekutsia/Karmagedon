@@ -129,31 +129,10 @@ class Game {
       new People(ctx, 280, 620, 35, 35, '/assets/images/people/pep23.png'),
       new People(ctx, 430, 20, 50, 30, '/assets/images/people/pep25.png'),
       new People(ctx, 800, 17, 60, 35, '/assets/images/people/pep20.png'),
-      new People(
-        ctx,
-        1000,
-        285,
-        75,
-        28,
-        '/assets/images/people/pep24.png',
-        true,
-        -0.2,
-        0,
-        0.2
-      ),
+      new People(ctx,1000,285,75,28,'/assets/images/people/pep24.png',true,-0.2,0,0.2),
       new People(ctx, 420, 390, 80, 45, '/assets/images/people/pep30.png'),
       new People(ctx, 835, 625, 80, 45, '/assets/images/people/pep31.png'),
-      new People(
-        ctx,
-        155,
-        312,
-        50,
-        28,
-        '/assets/images/people/pep32.png',
-        true,
-        -0.4,
-        0,
-        0.4
+      new People( ctx, 155, 312, 50, 28, '/assets/images/people/pep32.png', true, -0.4, 0, 0.4
       ),
       new People(ctx, 400, 595, 65, 50, '/assets/images/people/pep33.png')
     ]
@@ -172,15 +151,8 @@ class Game {
       new People(ctx, 420, 670, 40, 50, '/assets/images/people/Peopp0.png'),
       new People(ctx, 1075, 110, 40, 40, '/assets/images/people/peop74.png'),
       new People(ctx, 1075, 150, 40, 40, '/assets/images/people/peop75.png'),
-      new People(ctx, 1035, 230, 40, 40, '/assets/images/people/Peop002.png'),
-      new People(
-        ctx,
-        1075,
-        705,
-        40,
-        35,
-        '/assets/images/people/Peop00 copia 3.png'
-      ),
+      new People(ctx, 715, 380, 40, 40, '/assets/images/people/Peop101.png'),
+      new People( ctx, 1075, 705, 40, 35, '/assets/images/people/Peop00 copia 3.png'),
       new People(ctx, 1100, 380, 28, 60, '/assets/images/people/peop76.png'),
       new People(ctx, 650, 150, 45, 40, '/assets/images/people/Peop010.png'),
       new People(ctx, 1055, 380, 33, 60, '/assets/images/people/peop77.png'),
@@ -606,15 +578,6 @@ class Game {
     this.winTime++
     this.upgrades.forEach((e) => e.draw())
     this.upBullets.forEach((e) => e.draw())
-    // if(this.upgrades.length <= 0 && this.upBullets.length <=0 && this.carts.length <= 0){
-    //   this.ctx.drawImage(
-    //     this.mainOffice, 1200, 200, 190, 130
-    //   )
-    // } else {
-    //   this.ctx.drawImage(
-    //     this.mainOffice, 1200, 200, 190, 130
-    //     )
-    // }
     if (this.player.respect.total <= 0.3 && this.player.life.total <= 3) {
       this.player.sandstate = true
     }
@@ -657,32 +620,40 @@ class Game {
       }
     }
     if (this.upBullets.length >= 1) {
-      this.ctx.font = '23px Sans'
-      ctx.fillStyle = 'black'
-      ctx.globalAlpha = 0.5
-      ctx.fillRect(1210, 215, 177, 88)
+      this.ctx.save()
+      this.ctx.font = '20px Sans'
+      ctx.fillStyle = 'lime'
+      ctx.globalAlpha = 0.8
+      ctx.fillRect(1229, 220, 159, 120)
       ctx.globalAlpha = 1
-      this.ctx.fillStyle = 'white'
-      this.ctx.fillText(`Hey boss! `, 1272, 235)
+      this.ctx.fillStyle = 'black'
+      this.ctx.fillText(`New Upgrades!`, 1258, 238)
       this.ctx.font = '18px Sans'
-      this.ctx.fillText(`Get upgrated`, 1280, 260)
-      this.ctx.fillText(`powerful ammo`, 1270, 278)
-      this.ctx.fillText(`at Weaponizzer! `, 1260, 296)
-      this.ctx.drawImage(this.helper1, 1220, 215, 40, 60)
+      this.ctx.fillText(`There are`, 1293, 266)
+      this.ctx.fillText(`some upgrades`, 1278, 286)
+      this.ctx.fillText(`for bullets at`, 1287, 306)
+      this.ctx.fillStyle = 'red'
+      this.ctx.font = '22px Sans'
+      this.ctx.fillText(`-Fixit Forge-`, 1263, 332)
+      this.ctx.drawImage(this.helper1, 1234, 245, 45, 70)
     }
     if (this.upgrades.length >= 1) {
       this.ctx.font = '20px Sans'
-      ctx.fillStyle = 'black'
-      ctx.globalAlpha = 0.5
-      ctx.fillRect(1210, 210, 177, 130)
+      ctx.fillStyle = 'lime'
+      ctx.globalAlpha = 0.8
+      ctx.fillRect(1229, 220, 159, 120)
       ctx.globalAlpha = 1
-      this.ctx.fillStyle = 'white'
-      this.ctx.fillText(`New Upgrades!`, 1258, 235)
+      this.ctx.fillStyle = 'black'
+      this.ctx.fillText(`New Upgrades!`, 1258, 238)
       this.ctx.font = '18px Sans'
-      this.ctx.fillText(`There are some`, 1270, 260)
-      this.ctx.fillText(`upgrades at the`, 1270, 278)
-      this.ctx.fillText(`Army Surpluss Store`, 1220, 296)
-      this.ctx.drawImage(this.helper3, 1220, 215, 40, 60)
+      this.ctx.fillText(`There are`, 1290, 266)
+      this.ctx.fillText(`some upgrades`, 1277, 286)
+      this.ctx.fillText(`for weapons at`, 1274, 306)
+      this.ctx.fillStyle = 'red'
+      this.ctx.font = '22px Sans'
+      this.ctx.fillText(`-Warhouse-`, 1270, 332)
+      this.ctx.drawImage(this.helper4, 1232, 245, 45, 70)
+      this.ctx.restore()
     }
     if (
       this.upgrades.length <= 0 &&
@@ -740,22 +711,7 @@ class Game {
     }
     // aparecen los niveles para subir
     if (this.levelerTick >= 33333 && this.levelerTick <= 33333) {
-      this.karens =
-        this.rats =
-        this.babys =
-        this.customers =
-        this.fats =
-        this.puddles =
-        this.fires =
-        this.geese =
-        this.bosss =
-        this.korens =
-        this.carts =
-        this.foods =
-        this.upgrades =
-        this.upBullets =
-        this.discounts =
-          []
+      this.karens = this.rats = this.babys = this.customers = this.fats = this.puddles = this.fires = this.geese = this.bosss = this.korens = this.carts = this.foods = this.upgrades = this.upBullets = this.discounts =[]
       leveler = true
       this.player.x = 500
       this.player.y = 400
@@ -2975,7 +2931,6 @@ class Game {
       return true
     })
     // upgrades upbulltes...upgrades upbulltes...upgrades upbulltes...upgrades upbulltes...upgrades upbulltes...
-    // upgrades upbulltes...upgrades upbulltes...upgrades upbulltes...upgrades upbulltes...upgrades upbulltes...
     this.upgrades = this.upgrades.filter((up) => {
       if (up.collides(this.player)) {
         this.player.speedBullet += 2
@@ -3105,12 +3060,11 @@ class Game {
         this.levelupSound.volume = 0.05
         this.levelupSound.play()
         this.levelMessage2 = true
-        destroyerLeveling += 1
+        destroyerLeveling += 1;
         if (destroyerLeveling >= 2) {
-          afterSpin = true
           machingunCountback = 1300 // aumenta el tiempo de activación de machinegun
           F = 70 //se activa rocketlouncher
-          rocketCount += 20
+          rocketCount += 20;
         }
         if (destroyerLeveling >= 3) {
           H = 72
@@ -3143,8 +3097,6 @@ class Game {
       }
     }
 
-    // collision end... collision end... collision end... collision end... collision end... collision end... collision end...
-    // collision end... collision end... collision end... collision end... collision end... collision end... collision end...
     // collision end... collision end... collision end... collision end... collision end... collision end... collision end...
 
     // evento que se dispara al perder toda la vida, morir clientes, perder el respeto y perder hjas de reclamaciones

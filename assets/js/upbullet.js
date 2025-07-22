@@ -1,8 +1,8 @@
 class Upbullet {
   constructor(ctx) {
     this.ctx = ctx;
-    this.x = 1060;
-    this.y = 400;
+    this.x = 480;
+    this.y = 420;
     this.w = 40;
     this.h = 40;
     this.cartImg = new Image();
@@ -26,11 +26,11 @@ class Upbullet {
     if (this.x == player.x && this.y == player.y) {
       this.v = 0;
     }
-    this.ctx.font = "18px Arial";
+    this.ctx.font = "20px Arial";
     this.ctx.save();
-    this.ctx.fillStyle = "white";
+    this.ctx.fillStyle = "lime";
     this.ctx.fillText(`${this.tock.toString()}`, this.x  + 2, this.y - 5);
-    this.ctx.fillStyle = "white";
+    this.ctx.fillStyle = "lime";
     this.ctx.fillText(`${this.tock.toString()}`, this.x  + 7, this.y - 5);
     this.ctx.fillStyle = "red";
     this.ctx.fillText(`${this.tock.toString()}`, this.x  + 5, this.y - 3);

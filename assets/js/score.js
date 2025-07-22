@@ -11,7 +11,9 @@ class Score {
     this.lamp = new Image();
     this.lamp.src = "/assets/images/elements/lamp.png"
     this.fireFloodImg = new Image();
-    this.fireFloodImg.src = "/assets/images/infos/fireFloodImg.png"
+    this.fireFloodImg.src = "/assets/images/infos/fireFloodImg.png";
+    this.helperImg = new Image();
+    this.helperImg.src = "/assets/images/PJ/helper6.png";
   }
   
   draw() {
@@ -62,40 +64,41 @@ class Score {
     this.ctx.restore();
     this.ctx.font = "26px Arco";
     if(hookBoost || !machinegunBoost || elementBoost){
-        this.ctx.save();
-        this.ctx.font = "22px Arco";
-        this.ctx.fillStyle = "green";
-        this.ctx.fillText(`Special Weapons`, 1234, 620);
-        this.ctx.fillStyle = "white";
-        this.ctx.fillText(`Special Weapons`, 1233, 619);
-      }
-      if(solvedTotal <= 19){
-      this.ctx.font = "27px Arco";
-      this.ctx.fillStyle = "orange";
-      this.ctx.fillText(`Supervisor`, 1243, 370);
+      this.ctx.save();
+      this.ctx.font = "22px Arco";
+      this.ctx.fillStyle = "green";
+      this.ctx.fillText(`Special Weapons`, 1234, 620);
       this.ctx.fillStyle = "white";
-      this.ctx.fillText(`Supervisor`, 1241, 369);
-    } else if(solvedTotal >= 20 && solvedTotal <= 34){
-      chance = 1
-      this.ctx.fillStyle = "tomato";
+      this.ctx.fillText(`Special Weapons`, 1233, 619);
+      }
+    if (solvedTotal >= 50) {
+      chance = 3;
       this.ctx.font = "27px Arco";
+      this.ctx.fillStyle = "aqua";
+      this.ctx.fillText(`Director`, 1260, 370);
+      this.ctx.fillStyle = "white";
+      this.ctx.fillText(`Director`, 1259, 369);
+    } else if (solvedTotal >= 35 ) {
+      chance = 2;
+      this.ctx.font = "27px Arco";
+      this.ctx.fillStyle = "red";
       this.ctx.fillText(`Manager`, 1259, 370);
       this.ctx.fillStyle = "white";
       this.ctx.fillText(`Manager`, 1258, 369);
-    } else if(solvedTotal >= 35 && solvedTotal <= 49){
-      chance = 2
-      this.ctx.font = "18px Arco";
-      this.ctx.fillStyle = "red";
-      this.ctx.fillText(`General Manager`, 1233, 370);
+    } else if (solvedTotal >= 20 ) {
+      chance = 1;
+      this.ctx.font = "27px Arco";
+      this.ctx.fillStyle = "tomato";
+      this.ctx.fillText(`Supervisor`, 1254, 370);
       this.ctx.fillStyle = "white";
-      this.ctx.fillText(`General Manager`, 1232, 369);
-    } else if(solvedTotal >= 50){
-      chance = 3
-      this.ctx.font = "32px Arco";
-      this.ctx.fillStyle = "aqua";
-      this.ctx.fillText(`Director`, 1252, 370);
+      this.ctx.fillText(`Supervisor`, 1253, 369);
+      afterSpin = true; //activa los giros posteriores a los disparos básicos
+    } else if (solvedTotal >= 0) {
+      this.ctx.font = "27px Arco";
+      this.ctx.fillStyle = "orange";
+      this.ctx.fillText(`Associate`, 1255, 370);
       this.ctx.fillStyle = "white";
-      this.ctx.fillText(`Director`, 1251, 369);
+      this.ctx.fillText(`Associate`, 1254, 369);
     }
     
     this.ctx.font = "23px Arco";
@@ -148,35 +151,53 @@ class Score {
       ctx.fillText("you earn profits and find upgrade items.", 920, 230);
     } 
   if (hoveredComplaints) {
-    ctx.fillStyle = "rgba(37, 49, 50, 1)";
-    ctx.fillRect(900, 30, 330, 140); 
+  ctx.fillStyle = "rgba(37, 49, 50, 1)";
+    ctx.fillRect(900, 60, 330, 140); 
     ctx.fillStyle = "tomato";
-    ctx.font = "16px Arial";
-    ctx.fillText("If you run out of complaint forms, you lose.", 905, 50);
+    ctx.fillText("If you run out of complaint forms, you lose.", 905, 80);
     ctx.fillStyle = "white";
-    ctx.fillText("You can't get new ones, so don't waste them.", 905, 68);
-    ctx.fillText("When a Karen appears, run to negotiate fast", 905, 86);
-    ctx.fillText("before she asks for a complaint form.", 905, 104);
-    ctx.fillText("Press the spacebar in the green zone to", 905, 122);
-    ctx.fillText("send her off happy to cause trouble again,", 905, 140);
-    ctx.fillText("hopefully somewhere far away next time.", 905, 158);
+    ctx.fillText("You can't get new ones, so don't waste them.", 905, 98);
+    ctx.fillText("When a Karen appears, run to negotiate fast", 905, 116);
+    ctx.fillText("before she asks for a complaint form.", 905, 134);
+    ctx.fillText("Press the spacebar in the green zone to", 905, 152);
+    ctx.fillText("send her off happy to cause trouble again,", 905, 170);
+    ctx.fillText("hopefully somewhere far away next time.", 905, 188);
   }
 
-  if (hoveredCustomers) {
+if (hoveredCustomers) {
   ctx.fillStyle = "rgba(37, 49, 50, 1)";
-  ctx.fillRect(905, 30, 320, 160); 
+  ctx.fillRect(905, 100, 320, 160); 
   ctx.fillStyle = "tomato";
-  ctx.font = "16px Arial";
-  ctx.fillText("If 10 customers die, you lose the game.", 920, 50);
+  ctx.fillText("If 10 customers die, you lose the game.", 920, 120);
   ctx.fillStyle = "white";
-  ctx.fillText("Lost kids or distracted clients may appear,", 920, 68);
-  ctx.fillText("wandering toward deadly obstacles.", 920, 86);
-  ctx.fillText("Stop them from walking into cacti, fire,", 920, 104);
-  ctx.fillText("puddles, or other dangerous things.", 920, 122);
-  ctx.fillText("They can also die from your own damage,", 920, 158);
-  ctx.fillText("so aim carefully and avoid accidents.", 920, 176);
+  ctx.fillText("Lost kids or distracted clients may appear,", 920, 138);
+  ctx.fillText("wandering toward deadly obstacles.", 920, 156);
+  ctx.fillText("Stop them from walking into cacti, fire,", 920, 174);
+  ctx.fillText("puddles, or other dangerous things.", 920, 192);
+  ctx.fillText("They can also die from your own damage,", 920, 228);
+  ctx.fillText("so aim carefully and avoid accidents.", 920, 246);
   ctx.fillStyle = "lime";
-  ctx.fillText("Get close to save them—and regain rep.", 920, 140);
+  ctx.fillText("Get close to save them—and regain rep.", 920, 210);
+}
+if (hoveredOffice) {
+  ctx.fillStyle = "rgba(37, 49, 50, 1)";
+  ctx.fillRect(925, 180, 300, 200); 
+  ctx.fillStyle = "white";
+  ctx.font = "16px Arial";
+  ctx.fillText("At the Main Office, your helper is", 950, 200);
+  ctx.fillText("preparing upgrades and improvements ,", 930, 218);
+  ctx.fillText("for your gear which you can collect in", 930, 236);
+  ctx.fillText(" various shops.", 1020, 254);
+  ctx.fillStyle = "lime";
+  ctx.fillText("Your helper also handle alerts", 1005, 274);
+  ctx.fillText("for dangers and events.", 1005, 292);
+  ctx.fillStyle = "white";
+  ctx.fillText("When you return shopping", 1005, 312);
+  ctx.fillText("carts, your helper receives ", 1005, 330);
+  ctx.fillText("tools needed to upgrade", 1005, 348);
+  ctx.fillText("your weapons.", 1005, 366);
+  this.ctx.drawImage(this.helperImg, 926, 245, 75, 120)
+
 }
 
 }

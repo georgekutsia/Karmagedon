@@ -2,7 +2,7 @@ class Upgrade {
     constructor(ctx) {
       this.ctx = ctx;
       this.x = 1080;
-      this.y = 130;
+      this.y = 210;
       this.w = 50;
       this.h = 50;
       this.cartImg = new Image();
@@ -28,11 +28,11 @@ class Upgrade {
       if (this.x == player.x && this.y == player.y) {
         this.v = 0;
       }
-      this.ctx.font = "18px Arial";
+      this.ctx.font = "20px Arial";
       this.ctx.save();
-      this.ctx.fillStyle = "white";
+      this.ctx.fillStyle = "lime";
       this.ctx.fillText(`${this.tock.toString()}`, this.x  + 2, this.y - 5);
-      this.ctx.fillStyle = "white";
+      this.ctx.fillStyle = "lime";
       this.ctx.fillText(`${this.tock.toString()}`, this.x  + 7, this.y - 5);
       this.ctx.fillStyle = "red";
       this.ctx.fillText(`${this.tock.toString()}`, this.x  + 5, this.y - 3);
