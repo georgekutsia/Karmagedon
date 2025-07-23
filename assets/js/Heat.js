@@ -3,9 +3,8 @@ class Heat {
     this.ctx = ctx;
     this.x = x;
     this.y = y;
-    this.sa = 0;
-    this.w = bulletSize + this.sa
-    this.h = bulletSize + this.sa
+    this.w = bulletSize 
+    this.h = bulletSize 
     this.player = player;
     this.bla = 0;
     this.vx = 0;
@@ -45,7 +44,9 @@ class Heat {
       this.x >= this.player.x + bulletDistance + this.bla || 
       this.y >= this.player.y + bulletDistance + this.bla ||
       this.x <= this.player.x - bulletDistance - this.bla || 
-      this.y <= this.player.y - bulletDistance - this.bla 
+      this.y <= this.player.y - bulletDistance - this.bla ||
+      this.x + this.w >= this.ctx.canvas.width - 150
+
     ) {
       this.heatFar = true
     }
@@ -58,7 +59,7 @@ class Heat {
       this.vx = 0;
       this.vy = 0;
       this.framer = 5
-      if (this.afterTick >= afterSize + this.sa + 20) {
+      if (this.afterTick >= afterSize) {
         this.dispose = true;
       }
     }
@@ -181,7 +182,8 @@ class Hook {
       this.x >= this.player.x + bulletDistance * 10|| 
       this.y >= this.player.y + bulletDistance * 10||
       this.x <= this.player.x - bulletDistance * 10|| 
-      this.y <= this.player.y - bulletDistance * 10
+      this.y <= this.player.y - bulletDistance * 10||
+      this.x + this.w >= this.ctx.canvas.width - 150
     ){
       this.dispose = true
     }

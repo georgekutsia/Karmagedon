@@ -26,4 +26,15 @@ averigua lo de toxic dañando customers
 directHelpingClients es lo que genera mensajes de pfron y pback cuando reciben descuentos. se pueden meter variedades.  
 directDamagingClients lo contrario
 
+//////////
+
 cada 3 carritos recogidos, helper saca un upgrade
+solved total >= 35 se empiezan a activar los escudos
+solved total >= 20 se activa el After spin
+
+bulletSizeExtra----no se que es esto
+  ctx.shadowColor = "yellow";
+  ctx.shadowBlur = 5;
+  ctx.lineWidth = 3;
+
+

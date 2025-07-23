@@ -72,21 +72,18 @@ class Score {
       this.ctx.fillText(`Special Weapons`, 1233, 619);
       }
     if (solvedTotal >= 50) {
-      chance = 3;
       this.ctx.font = "27px Arco";
       this.ctx.fillStyle = "aqua";
       this.ctx.fillText(`Director`, 1260, 370);
       this.ctx.fillStyle = "white";
       this.ctx.fillText(`Director`, 1259, 369);
     } else if (solvedTotal >= 35 ) {
-      chance = 2;
       this.ctx.font = "27px Arco";
       this.ctx.fillStyle = "red";
       this.ctx.fillText(`Manager`, 1259, 370);
       this.ctx.fillStyle = "white";
       this.ctx.fillText(`Manager`, 1258, 369);
     } else if (solvedTotal >= 20 ) {
-      chance = 1;
       this.ctx.font = "27px Arco";
       this.ctx.fillStyle = "tomato";
       this.ctx.fillText(`Supervisor`, 1254, 370);
@@ -100,7 +97,7 @@ class Score {
       this.ctx.fillStyle = "white";
       this.ctx.fillText(`Associate`, 1254, 369);
     }
-    
+    chance = Math.floor(solvedTotal / 5) //para actualizar
     this.ctx.font = "23px Arco";
     this.ctx.fillText(`Budget`, 1233, 395);
     this.ctx.font = "21px Arco";
@@ -153,6 +150,7 @@ class Score {
   if (hoveredComplaints) {
   ctx.fillStyle = "rgba(37, 49, 50, 1)";
     ctx.fillRect(900, 60, 330, 140); 
+      ctx.font = "16px Arial";
     ctx.fillStyle = "tomato";
     ctx.fillText("If you run out of complaint forms, you lose.", 905, 80);
     ctx.fillStyle = "white";
@@ -167,6 +165,7 @@ class Score {
 if (hoveredCustomers) {
   ctx.fillStyle = "rgba(37, 49, 50, 1)";
   ctx.fillRect(905, 100, 320, 160); 
+  ctx.font = "16px Arial";
   ctx.fillStyle = "tomato";
   ctx.fillText("If 10 customers die, you lose the game.", 920, 120);
   ctx.fillStyle = "white";
@@ -185,13 +184,13 @@ if (hoveredOffice) {
   ctx.fillStyle = "white";
   ctx.font = "16px Arial";
   ctx.fillText("At the Main Office, your helper is", 950, 200);
-  ctx.fillText("preparing upgrades and improvements ,", 930, 218);
-  ctx.fillText("for your gear which you can collect in", 930, 236);
-  ctx.fillText(" various shops.", 1020, 254);
-  ctx.fillStyle = "lime";
+  ctx.fillText("preparing upgrades and improvements,", 933, 218);
+  ctx.fillText("for your gear which you can collect in", 933, 236);
+  ctx.fillText(" various shops.", 1005, 254);
+  ctx.fillStyle = "tomato";
   ctx.fillText("Your helper also handle alerts", 1005, 274);
   ctx.fillText("for dangers and events.", 1005, 292);
-  ctx.fillStyle = "white";
+  ctx.fillStyle = "lime";
   ctx.fillText("When you return shopping", 1005, 312);
   ctx.fillText("carts, your helper receives ", 1005, 330);
   ctx.fillText("tools needed to upgrade", 1005, 348);
@@ -219,6 +218,47 @@ class Saved {
     this.ctx.fillText( `Saved:${this.save.toString()}`, 1307, 200); 
     ctx.fillStyle = "rgb(251, 209, 209)"; 
     this.ctx.restore();
+
+if (showingPowerupBullet) {
+  countdown1++;
+  ctx.font = "20px Arial";
+  ctx.shadowColor = "white";
+  ctx.shadowBlur = 5;
+  ctx.lineWidth = 4;
+  ctx.fillStyle = "green";
+  ctx.globalAlpha = 1 - countdown1/130
+  ctx.fillText(`After Growth + 20`, game.player.x - 91, game.player.y - countdown1);
+
+  ctx.fillStyle = "red";
+  ctx.fillText(`Ammo size + 10`, game.player.x - 1, game.player.y - 21 - countdown1 / 1.1);
+
+  ctx.shadowColor = "transparent";
+  ctx.shadowBlur = 0;
+  this.ctx.globalAlpha = 1
+}
+
+if (showingPowerupWeapon) {
+  countdown2++;
+  ctx.font = "20px Arial";
+  ctx.shadowColor = "white";
+  ctx.shadowBlur = 5;
+  ctx.lineWidth = 4;
+  ctx.globalAlpha = 1 - countdown2/130
+
+  ctx.fillStyle = "blue";
+  ctx.fillText(`Bullet recharge time - 0.4s`, game.player.x - 102, game.player.y - 1 - countdown2);
+
+  ctx.fillStyle = "darkgreen";
+  ctx.fillText(`Bullet size + 50`, game.player.x - 40, game.player.y - 40 - countdown2 / 1.1);
+
+  ctx.fillStyle = "red";
+  ctx.fillText(`Bullet speed + 2`, game.player.x - 5, game.player.y - 20 - countdown2 / 1.1);
+
+  ctx.shadowColor = "transparent";
+  ctx.shadowBlur = 0;
+  this.ctx.globalAlpha = 1;
+}
+
   }
   addSave() {
     this.save++;

@@ -16,32 +16,34 @@ let E = 69; // dodge right
 let R = 0; //82  discount
 let T = 0 //84   time shield
 let P = 0; //80  venom
-let J = 0 //74   time bombs
+let J = 74 //74   time bombs
 let F = 0 //70   rockets
 let G = 0 //71    teleport to hook
 let B = 0;//66  // hook 
 let H = 1  //72   shotgun
-let K = 0 // 75
+let K = 75 // 75
 const A = 65;
 const W = 87;
 const S = 83;
 const D = 68;
 
 let hookCounter = 0
-let discounting = 1124;
+let discounting = 10;
 let charging = 0;
 
 let money = 10000
-let elementalMineCount = 0 //por unidad
+let elementalMineCount = 22 //por unidad
 let rocketCount = 0 //multiplo de 2.5 por alguna razón
-let mineCount = 0 //multiplo de 5
+let mineCount = 10 //multiplo de 5
+let cartCount = 0; //contador de carts para que cada 3 salga un upgrade
+
 
 let leveler = false //para subir de nivel
 let hookTransporter = false//para que al pulsar la g teleporte a la posicion del hook
 let hookBoost = false// para los beneficios de subir nivel el hook
 let hookLeveling = 0; //para mejorar el hook a medida que sube de nivel
 let destroyerLeveling = 0; //para mejorar la rama de destroyer
-let elementalistLeveling = 0; //para mejorar la rama de destroyer
+let elementalistLeveling = 10; //para mejorar la rama de destroyer
 let areaDamage = true // para el daño de area de los megablasters y sanders y cosas así
 let machinegunBoost = false// para activar las ametralladoras
 let elementBoost = false //para activar la arena que te sigue
@@ -69,15 +71,12 @@ let shotgunUpgrading = 0; //mejorar el shotgun para que haga mas daño o lo que 
 let shotgunUpgradingState = false; //mejorar el shotgun para que haga mas daño o lo que sea
 let shotgunDamage = 0;
 let shotgunRange = 0;
-
 let playerBasicDamage = 0;
 let playerDoubleDamage = 1;
-
+let cactusCanCollide = true;
 
 let distance = 60;
 let bulletDistance = 150;
-let bulletDistanceExtra = 0;
-let bulletSizeExtra = 50;
 let auraDistance = 150;
 let afterSize = 60
 let bulletSize = 20
@@ -88,10 +87,17 @@ let amountOfLamps = 13;
 let publicImageLevelup = false; // para que aparezca en azul cuando sube la imagen pública
 let publicImage = 0 //para que se vea en el juego;
 let publicImageLevel = 0; //para que se vea en el juego;
-let chance = 0 //afecta a luck
+let chance = 0 //afecta a la suerte y uso randomLuck() como función para hacerlo aleatorio. 
+// afecta a la probabilidad de encontrar hooks, rockets y minas en los carritos
 let instinct = 0;
 let afterSpin = false;
-
+let cartInMall = false;
+let preparingUpgradeImage = false;
+let showingPowerupBullet = false;
+let showingPowerupWeapon = false;
+let countdown1 = 0;
+let countdown2 = 0;
+let countdown3 = 0;
 //  para añadir o quitar cosas del juego
 
 let addPeople = true;
@@ -124,4 +130,4 @@ let solvedWaterFire = 0;
 let solvedBoss = 0;
 let solvedKarens = 0;
 let solvedKorens = 0;
-let solvedTotal = 15;
+let solvedTotal = 0;

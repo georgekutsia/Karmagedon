@@ -121,6 +121,14 @@ class RocketLauncher {
       if(this.tock >= 100){
         this.rocketDetonation = true
       }
+      if (
+      this.x + this.w >= this.ctx.canvas.width - 150||
+      this.x <= -5||
+      this.y <= -5||
+      this.y + this.h >= this.ctx.canvas.height - 70
+    ) {
+      this.rocketDetonation = true;
+    }
       if(this.rocketDetonation === true){
         this.vx = 0;
         this.vy = 0;
@@ -171,6 +179,14 @@ class Discounting {
   move() {
     this.x += this.vx;
     this.y += this.vy;
+    if (
+      this.x + this.w >= this.ctx.canvas.width - 150||
+      this.x <= -5||
+      this.y <= -5||
+      this.y + this.h >= this.ctx.canvas.height - 70
+    ) {
+      this.dispose = true;
+    }
   }
   isVisible() {
     return !this.dispose;
@@ -464,20 +480,20 @@ class ElementMine{
       this.eleAudio = new Audio("/assets/audios ad/minaExploSound.mp3")
       this.eleAudio.volume = 0.01;
       this.eleAudio.play();
-      this.framer = 8
+      this.framer = 8;
       this.x -= 5;
       this.y -= 5;
-      this.h += 19
-      this.w += 19
+      this.h += 19;
+      this.w += 19;
       if(this.w >= 300 && this.h >= 300){
-        this.dispose = true
+        this.dispose = true;
       }
     }
     if(extraMine === true && this.active){
       this.mineTick++
       if(this.mineTick >=650){
-        this.mineTick = 0
-        this.minePosTick++
+        this.mineTick = 0;
+        this.minePosTick++;
         if(this.minePosTick === 1){
           this.elementMines1()
         } 
@@ -546,67 +562,6 @@ class ElementMine{
   }
 }
 
-class Airshield {
-  constructor(ctx, x, y, airAlterImg, player) {
-    this.ctx = ctx;
-    this.x = x;
-    this.y = y;
-    this.w = 40;
-    this.h = 40;
-    this.player = player;
-    this.vx = 0;
-    this.vy = 0;
-    this.tick = 0
-    this.tock = 0
-    this.tuck = 0
-    this.dispose = false;
-    this.sandImg = new Image();
-    this.sandImg.frame = 0;
-    this.sandImg.src = airAlterImg || "/assets/images/munición/hurricanestorm1.png";
-    this.sandShootAudio = new Audio("/assets/audio/sandSound.mp3")
-    this.sandShootAudio.volume = 0.01;
-    this.sandShootAudio.play();
-  }
-  draw() {
-    this.ctx.drawImage(
-        this.sandImg,
-        0,
-        (this.sandImg.frame * this.sandImg.height) / 8,
-        this.sandImg.width,
-        this.sandImg.height / 8,
-        this.x,
-        this.y,
-        this.w,
-        this.h
-      );
-  }
-  move() {
-    this.tick++;
-    this.tock++
-    this.x -= 0.05;
-    this.y -= 0.05;
-    this.h += 0.14
-    this.w += 0.14
-    if (this.tick > 4) {
-      this.tick = 0;
-      this.sandImg.frame++;
-    }
-    if (this.sandImg.frame > 6) {
-      this.sandImg.frame = 0;
-    }
-    if (this.tock >= 500 + afterSize * 4){
-      this.dispose = true
-    }
-  }
-  isVisible() {
-    return !this.dispose;
-  }
-  collides(puddle) {
-    const colX = this.x <= puddle.x + puddle.w && this.x + this.w > puddle.x;
-    const colY = this.y + this.h > puddle.y && this.y < puddle.y + puddle.h;
-    return colX && colY;
-  }
-}
 class Poison {
   constructor(ctx, x, y, player) {
     this.ctx = ctx;

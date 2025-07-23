@@ -64,6 +64,7 @@ const sellDiscounts = document.getElementById("sell-discounts")
 const askHide = document.getElementById("ask-coins")
 const askFood = document.getElementById("ask-food")
 const askDrug = document.getElementById("ask-drugs")
+const askTrim = document.getElementById("ask-trim")
 
 const megaHide = document.getElementById("mega-coins")
 const megaShotgun = document.getElementById("mega-shotgun")
@@ -78,7 +79,7 @@ const megaAreaDamage = document.getElementById("mega-areaDamage")
 
 const allBuys = [buyRockets, buyMine, buyMines, buyHooks, buyDiscounts, buyTimeShield, buyBlaster]
 const allSells = [sellRockets, sellMines, sellMine, sellHooks, sellDiscounts]
-const allAsks = [askFood, askDrug]
+const allAsks = [askFood, askDrug, askTrim]
 const allMegas = [megaShotgun, megaMine, megaHook, megaLife, megaAreaDamage]
 
 const allButtonsGone = [easy, normal, hard, superhard, info, manager, begin, btnTrain]
@@ -139,8 +140,8 @@ megaHide.addEventListener('click', function () {
 
 buyRockets.addEventListener("click", function(){
   if(money >= 100){
-    money -= 100
-    rocketCount += 5
+    money -= 100;
+    rocketCount += 1;
     this.sandShootAudio = new Audio("/assets/audios ad/buy.wav")
     this.sandShootAudio.volume = 0.4;
     this.sandShootAudio.play();
@@ -160,7 +161,7 @@ buyMines.addEventListener("click", function(){
 buyMine.addEventListener("click", function(){
   if(money >= 30){
     money -= 30
-    mineCount += 5
+    mineCount += 1
     this.sandShootAudio = new Audio("/assets/audios ad/buy.wav")
     this.sandShootAudio.volume = 0.4;
     this.sandShootAudio.play();
@@ -196,9 +197,9 @@ buyTimeShield.addEventListener("click", function(){
 })
 
 sellRockets.addEventListener("click", function(){
-  if(rocketCount >=5){
-    money += 50
-    rocketCount -= 5
+  if(rocketCount >=1){
+    money += 50;
+    rocketCount -= 1;
     this.sandShootAudio = new Audio("/assets/audios ad/sell.wav")
     this.sandShootAudio.volume = 0.4;
     this.sandShootAudio.play();
@@ -216,7 +217,7 @@ sellMines.addEventListener("click", function(){
 sellMine.addEventListener("click", function(){
   if(mineCount >=1){
     money += 15
-    mineCount -= 5
+    mineCount -= 1
     this.sandShootAudio = new Audio("/assets/audios ad/sell.wav")
     this.sandShootAudio.volume = 0.4;
     this.sandShootAudio.play();
@@ -246,6 +247,20 @@ askFood.addEventListener("click", function(){
 })
 askDrug.addEventListener("click", function(){
   game.addDrug()
+})
+askTrim.addEventListener("click", function(){
+  if(money >= 1500 && cactusCanCollide){
+    money -= 1500
+    this.sandShootAudio = new Audio("/assets/audios ad/sell.wav")
+    this.sandShootAudio.volume = 0.4;
+    this.sandShootAudio.play();
+    this.buyBig = new Audio("/assets/audios ad/buyBigStuff.mp3")
+    this.buyBig.volume = 0.2;
+    this.buyBig.play();
+      setTimeout(() => {
+    cactusCanCollide = false;
+  }, 3000);
+  }
 })
 
 megaShotgun.addEventListener("click", function(){
@@ -340,6 +355,8 @@ btn.addEventListener("click", function () {
       game.start();
       btn.innerText = `STOP`;
     }
+      allAddButtons.forEach((button) => button.style.display = "inline-block")
+  allAddButtons.forEach((button) => button.style.zIndex = "90")
     displ.style.display = "block"
     allButtonsGone.forEach((button) => button.style.display = "none")
     cheat.style.display = "inline-block"
@@ -404,20 +421,20 @@ restart.addEventListener("click", function () {
 
 
 //democosas
-  demo.addEventListener("click", function () {
-    if (game.bosss.length > 0) {
-      game.fires = []; game.puddles = [];
-      game.bosss = []; game.geese = []; game.fats = [];
-      game.rats = []; game.karens = []; game.discounts = [];
-      game.carts = []; game.babys = []; game.korens = [];
-            demo.innerText = "Add it->";
-    } 
-    demo.style.color = "green"
-    demo.style.backgroundColor = "grey"
-    allAddButtons.forEach((button) => button.style.display = "inline-block")
-    allAddButtons.forEach((button) => button.style.zIndex = "90")
+demo.addEventListener("click", function () {
+  if (game.bosss.length > 0) {
+    game.fires = []; game.puddles = [];
+    game.bosss = []; game.geese = []; game.fats = [];
+    game.rats = []; game.karens = []; game.discounts = [];
+    game.carts = []; game.babys = []; game.korens = [];
+    demo.innerText = "Add it->";
+  } 
+  demo.style.color = "green"
+  demo.style.backgroundColor = "grey"
+  allAddButtons.forEach((button) => button.style.display = "inline-block")
+  allAddButtons.forEach((button) => button.style.zIndex = "90")
 })
-zkaren.addEventListener("click", function(){
+  zkaren.addEventListener("click", function(){
   game.addKaren()
   game.karensAlert()
   demo.innerText = "Clean"
@@ -534,7 +551,7 @@ hoverSoundButtons2.forEach((button) => button.addEventListener("mouseover", func
   let hoveredReputation = false;
   let hoveredComplaints = false;
   let hoveredCustomers = false;
-
+ let hoveredOffice = false;
 can.addEventListener("mousemove", function (e) {
   const rect = can.getBoundingClientRect();
   const mouseX = e.clientX - rect.left;

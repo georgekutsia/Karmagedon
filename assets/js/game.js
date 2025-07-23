@@ -19,6 +19,8 @@ class Game {
     this.helper3.src = '/assets/images/pj/helper3.png'
     this.helper4 = new Image()
     this.helper4.src = '/assets/images/pj/helper4.png'
+    this.helper7 = new Image()
+    this.helper7.src =  '/assets/images/pj/helper7.png'
     this.bodyImg = new Image()
     this.bodyImg.src = '/assets/images/elements/body.png'
     this.backPack = new Image()
@@ -47,57 +49,13 @@ class Game {
     this.hookDamage.src = '/assets/images/infos/hookDamage.png'
     this.hookMoney = new Image()
     this.hookMoney.src = '/assets/images/infos/hookMoney.png'
-    this.upBulletsMessage =
-      this.upgradeMessage =
-      this.customersMessage =
-      this.perjudiceMessage =
-      this.bossPerjIs =
-      this.ratMessage =
-        false
-    this.upgradeTick =
-      this.customerTick =
-      this.perjudiceTick =
-      this.bossPerjTick =
-      this.levelerTick =
-      this.lampTick =
-      this.ratPoison =
-      this.iceCurePoison =
-      this.ratTick =
-      this.upBulletTick =
-        0
-    this.puddleTime =
-      this.fireTime =
-      this.babyTime =
-      this.customerTime =
-      this.bossTime =
-      this.korenTime =
-      this.cartTime =
-      this.foodTime =
-      this.upgradeTime =
-      this.upBulletTime =
-      this.discountTime =
-      this.deadGoose =
-        0
-    this.karens =
-      this.rats =
-      this.babys =
-      this.customers =
-      this.fats =
-      this.puddles =
-      this.fires =
-      this.geese =
-      this.bosss =
-      this.korens =
-      this.carts =
-      this.drugs =
-      this.foods =
-      this.upgrades =
-      this.upBullets =
-      this.discounts =
-        []
+    this.upBulletsMessage = this.upgradeMessage = this.customersMessage = this.perjudiceMessage = this.bossPerjIs = this.ratMessage =   false
+    this.upgradeTick =this.customerTick =this.perjudiceTick =this.bossPerjTick =this.levelerTick =this.lampTick =this.ratPoison =this.iceCurePoison =this.ratTick =this.upBulletTick =  0
+    this.puddleTime = this.fireTime = this.babyTime = this.customerTime = this.bossTime = this.korenTime = this.cartTime = this.foodTime = this.upgradeTime = this.upBulletTime = this.discountTime = this.deadGoose =   0
+    this.karens =this.rats =this.babys =this.customers =this.fats =this.puddles =this.fires =this.geese =this.bosss =this.korens =this.carts =this.drugs =this.foods =this.upgrades =this.upBullets =this.discounts =  []
     this.gooseTime = 1900
     this.lampOff = '/assets/images/elements/lampOfff.png'
-    this.poisonedTime = 3000 - chance * 300
+    this.poisonedTime = 3000 
     this.tick = 0
     this.chargeTick = 0
     this.hookedAllRatsAndGeese = true
@@ -390,13 +348,13 @@ class Game {
         this.discountTime = 3000
         this.addDiscount()
       }
-      if (this.upgradeTime > Math.random() * 100 + 7400 - chance * 300) {
+      if (this.upgradeTime > Math.random() * 100 + 7400) {
         //upgrade
         this.upgradeTime = 0
         this.upgradeAlert()
         this.addUpgrade()
       }
-      if (this.upBulletTime > Math.random() * 100 + 6000 - chance * 200) {
+      if (this.upBulletTime > Math.random() * 100 + 6000 ) {
         //upbullet
         this.upBulletTime = 0
         this.upBulletAlert()
@@ -638,6 +596,7 @@ class Game {
       this.ctx.drawImage(this.helper1, 1234, 245, 45, 70)
     }
     if (this.upgrades.length >= 1) {
+      this.ctx.save()
       this.ctx.font = '20px Sans'
       ctx.fillStyle = 'lime'
       ctx.globalAlpha = 0.8
@@ -655,25 +614,43 @@ class Game {
       this.ctx.drawImage(this.helper4, 1232, 245, 45, 70)
       this.ctx.restore()
     }
-    if (
-      this.upgrades.length <= 0 &&
-      this.upBullets.length <= 0 &&
-      this.carts.length >= 1
-    ) {
-      this.ctx.font = '19px Sans'
-      ctx.fillStyle = 'black'
+    if ( cartInMall) {
+      this.ctx.save()
+      this.ctx.font = '20px Sans'
+      ctx.fillStyle = 'lime'
       ctx.globalAlpha = 0.8
-      ctx.fillRect(1210, 215, 177, 88)
+      ctx.fillRect(1229, 220, 159, 120)
       ctx.globalAlpha = 1
-      this.ctx.fillStyle = 'white'
-      this.ctx.fillText(`Get the cart!`, 1282, 235)
-      this.ctx.fillText(`Need more items`, 1260, 260)
-      this.ctx.fillText(`to improve your`, 1260, 278)
-      this.ctx.fillText(`equippment boss! `, 1260, 296)
-      this.ctx.drawImage(this.helper4, 1220, 215, 40, 60)
+      this.ctx.fillStyle = 'black'
+      this.ctx.fillText(`Get that cart!`, 1258, 238)
+      this.ctx.font = '18px Sans'
+      this.ctx.fillText(`Need parts to`, 1280, 266)
+      this.ctx.fillText(`to upgrade`, 1285, 286)
+      this.ctx.fillText(`your weapons`, 1274, 306)
+      this.ctx.fillStyle = 'red'
+      this.ctx.font = '20px Sans'
+      this.ctx.drawImage(this.helper2, 1232, 245, 45, 70)
+      this.ctx.fillText(`Parts needed 5 / ${cartCount}`, 1235, 330)
+      this.ctx.restore()
     }
-    this.chargedDisc = discounting / 5
-    this.curePoisonTimer = 300 - chance * 50
+    if( preparingUpgradeImage){
+      this.ctx.save()
+      this.ctx.font = '20px Sans'
+      ctx.fillStyle = 'yellow'
+      ctx.globalAlpha = 0.8
+      ctx.fillRect(1229, 220, 159, 120)
+      ctx.globalAlpha = 1
+      this.ctx.fillStyle = 'black'
+      this.ctx.fillText(`Almost done!`, 1258, 238)
+      this.ctx.font = '18px Sans'
+      this.ctx.fillText(`Sending it your way`, 1235, 335)
+      this.ctx.fillStyle = 'red'
+      this.ctx.font = '20px Sans'
+      this.ctx.drawImage(this.helper7, 1280, 240, 65, 80)
+      this.ctx.restore()
+    }
+
+    this.curePoisonTimer = 300;
     this.korens.forEach((e) => e.draw())
     this.bosss.forEach((e) => e.draw())
     this.babys.forEach((e) => e.draw())
@@ -951,7 +928,7 @@ class Game {
     if (discounting >= 1) {
       R = 82
     }
-    if (discounting <= 1) {
+    if (discounting < 1) {
       R = 0
     }
     if (this.ratPoison === 1010) {
@@ -1312,6 +1289,7 @@ class Game {
     this.luzOnAudio = new Audio('/assets/audios ad/cartLeft2.wav')
     this.luzOnAudio.volume = 0.07
     this.luzOnAudio.play()
+    cartInMall = true; // para que aparezca el mensaje de helper
   }
   addDrug() {
     const drug = new Drugs(ctx)
@@ -1355,6 +1333,18 @@ class Game {
     this.disco.volume = 0.01
     this.disco.play()
   }
+  triggerRandomUpgrade() {
+  const random = Math.floor(Math.random() * 2); // 0 o 1
+  switch (random) {
+    case 0:
+      this.addUpBullet();
+      break;
+    case 1:
+      this.addUpgrade();
+      break;
+  }
+}
+
   // alerts start !!!!!!
   // alerts start !!!!!!
   alerting() {
@@ -1604,8 +1594,7 @@ class Game {
         } else return true
       })
     })
-    //Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..
-    //Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..Rats..
+    //Rats..................
     this.rats = this.rats.filter((rat) => {
       //rat con player
       if (rat.collides(this.player)) {
@@ -2136,18 +2125,19 @@ class Game {
         } else return true
       })
     })
-
-    this.cactus.forEach((cactu) => {//baby con cactus
-      this.babys = this.babys.filter((baby) => {
-        if (baby.collides(cactu)) {
-          this.babys.splice(0, 1)
-          cactu.bloodOnCactus++;
-          dyingCustomer(this.player, this.score, this.perjudiceMessage)
-          return false
-        } else return true
+    if(cactusCanCollide){
+      this.cactus.forEach((cactu) => {//baby con cactus
+        this.babys = this.babys.filter((baby) => {
+          if (baby.collides(cactu)) {
+            this.babys.splice(0, 1)
+            cactu.bloodOnCactus++;
+            dyingCustomer(this.player, this.score, this.perjudiceMessage)
+            return false
+          } else return true
+        })
       })
-    })
-
+    }
+      
     this.babys.forEach((baby) => {
       //baby con hooks
       this.player.hooks.filter((hook) => {
@@ -2324,6 +2314,7 @@ class Game {
         } else return true
       })
     })
+    if(cactusCanCollide){
     this.cactus.forEach((cactu) => {//customer con cactus
       this.customers = this.customers.filter((cus) => {
         if (cus.collides(cactu)) {
@@ -2340,6 +2331,8 @@ class Game {
         } else return true
       })
     })
+    }
+
     this.customers.forEach((customer) => {
       //customer con toxic
       this.player.toxics.filter((tox) => {
@@ -2394,8 +2387,7 @@ class Game {
         } else return true
       })
     })
-    // boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..
-    // boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..boss..
+    // boss.........................
     this.bosss = this.bosss.filter((boss) => {
       this.player.hooks = this.player.hooks.filter((hook) => {
         if (hook.collides(boss)) {
@@ -2424,7 +2416,6 @@ class Game {
         this.player.cooldownBullet += 600
         afterSize -= 5
         bulletSize -= 5
-        bulletSizeExtra += 5
         this.bossPerjIs = true
         this.player.hit()
         this.player.hit()
@@ -2620,9 +2611,8 @@ class Game {
       this.walls.forEach((wall) => {
         // walls
         if (wall.collides(this.player)) {
-          this.ad
-          this.player.vy = 0
-          this.player.vx = 0
+          this.player.vx *= 0.7;
+          this.player.vy *= 0.7;
         }
       })
     }
@@ -2760,11 +2750,11 @@ class Game {
         }
       })
     }
-    if (addCactus) {
+    if (addCactus && cactusCanCollide) {
       this.cactus.forEach((cact) => {
         if (cact.collides(this.player)) {
-          this.player.vy = 0
-          this.player.vx = 0
+          this.player.vx *= 0.8;
+          this.player.vy *= 0.8;
           this.player.fireHit()
           this.player.drawOuch()
         }
@@ -2789,15 +2779,38 @@ class Game {
     //carts..............................................................................................................................................
     this.carts = this.carts.filter((cart) => {
       if (cart.collides(this.player)) {
-        this.shielOn = new Audio('/assets/audios ad/shieldActivated.wav')
-        this.shielOn.volume = 0.05
-        this.shielOn.play()
-        hookCounter += 3 + chance * 2
-        this.atraer = new Audio('/assets/audios ad/bonus.mp3')
-        this.atraer.volume = 0.03
-        this.atraer.play()
-        if (this.score.total >= 35) {
-          T = 84
+        cartCount += 1;
+        setTimeout(() => {
+          cartInMall = false; //para que la imagen del helper se quede un rato mas
+        }, 1000);
+        if(cartCount >= 5){
+          setTimeout(() => {
+            preparingUpgradeImage = true;
+          }, 1000);
+          setTimeout(() => {
+            cartCount = 0;
+            preparingUpgradeImage = false;
+            this.triggerRandomUpgrade()
+          }, 5000);
+        }
+        this.getCart = new Audio('/assets/audios ad/bonus.mp3')
+        this.getCart.volume = 0.03;
+        this.getCart.play()
+        let luckyStrike = randomLuck()//para que salga un número aleatorio de la cantidad de munición ganada
+        if(destroyerLeveling >= 2){
+          rocketCount += 2 + luckyStrike;
+        }
+        if(hookLeveling >= 1){
+          hookCounter += 2 + luckyStrike;
+        }
+        if(elementalistLeveling >= 2){
+          elementalMineCount += 2 + luckyStrike;
+        }
+        if (solvedTotal >= 35) {
+          T = 84;
+          this.shielOn = new Audio('/assets/audios ad/shieldActivated.wav')
+          this.shielOn.volume = 0.05
+          this.shielOn.play()
         }
         this.player.getRespect(0.1)
         return false
@@ -2936,7 +2949,11 @@ class Game {
         this.player.speedBullet += 2
         bulletDistance += 50
         bulletDistanceExtra -= 50
-        this.player.cooldownBullet -= 600
+        this.player.cooldownBullet -= 400
+        if (this.player.cooldownBullet <= 600) {
+          this.player.cooldownBullet = 600;
+        }
+        showPowerupWeapons();
         B = 66
         this.atraer = new Audio('/assets/audios ad/bonus.mp3')
         this.atraer.volume = 0.03
@@ -2954,7 +2971,7 @@ class Game {
       if (up.collides(this.player)) {
         afterSize += 20
         bulletSize += 10
-        bulletSizeExtra -= 10
+        showPowerupBullets();
         B = 66
         this.atraer = new Audio('/assets/audios ad/bonus.mp3')
         this.atraer.volume = 0.03
@@ -2974,7 +2991,7 @@ class Game {
       if (discount.collides(this.player)) {
         this.line.b -= 0.5
         this.line.a += 0.5
-        discounting += 5
+        discounting += 1
         this.atraer = new Audio('/assets/audios ad/bonus.mp3')
         this.atraer.volume = 0.03
         this.atraer.play()
@@ -3064,7 +3081,7 @@ class Game {
         if (destroyerLeveling >= 2) {
           machingunCountback = 1300 // aumenta el tiempo de activación de machinegun
           F = 70 //se activa rocketlouncher
-          rocketCount += 20;
+          rocketCount += 10;
         }
         if (destroyerLeveling >= 3) {
           H = 72
