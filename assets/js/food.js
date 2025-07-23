@@ -2,8 +2,10 @@ class Food {
     constructor(ctx, foodx, foody, image) {
       this.ctx = ctx;
       this.salidas = [
-        {x:110, y:120},  {x:540, y:120}, {x:730, y:120},{x:890, y:120},
-        {x:110, y:370},  {x:540, y:370}, {x:730, y:370}, {x:890, y:370},
+        {x:135, y:175},  {x:270, y:130}, {x:440, y:150},{x:574, y:88},
+        {x:236, y:380},  {x:125, y:470}, {x:760, y:480}, {x:865, y:365},
+        {x:817, y:80},  {x:730, y:240}, {x:730, y:340}, {x:530, y:250},
+        {x:200, y:240},
       ]
       this.xy = this.salidas[Math.floor(Math.random()*this.salidas.length)]
       this.imgFrame = Math.floor(Math.random() * 15) + 1

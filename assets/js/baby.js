@@ -4,7 +4,7 @@ class Baby {
     this.salidas = [
       // {x:0, y:50}, {x:0, y:150},{x:0, y:200}, {x:0, y:300}, {x:0, y:400}, {x:0, y:500}, 
       // {x:0, y:100},{x:0, y:250}, {x:0, y:350}, {x:0, y:450}, {x:0, y:450},
-      {x:0, y: 400}
+      {x:0, y: 200}
     ]
     this.xy = this.salidas[Math.floor(Math.random()*this.salidas.length)]
     this.x = this.xy.x;

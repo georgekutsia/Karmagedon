@@ -2321,6 +2321,7 @@ class Game {
           dyingCustomer(this.player, this.score, this.perjudiceMessage)          
           cus.lifeleft -= 1;
           cus.canCollide = false;
+          cactu.bloodOnCactus++;
           if (cus.dead >= 50) {
             this.atraer = new Audio('/assets/audios ad/dustBite.m4a')
             this.atraer.volume = 0.07
@@ -2948,7 +2949,6 @@ class Game {
       if (up.collides(this.player)) {
         this.player.speedBullet += 2
         bulletDistance += 50
-        bulletDistanceExtra -= 50
         this.player.cooldownBullet -= 400
         if (this.player.cooldownBullet <= 600) {
           this.player.cooldownBullet = 600;

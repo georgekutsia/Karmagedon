@@ -2,14 +2,18 @@ class Cart {
   constructor(ctx, cartx, carty, cartImage) {
     this.ctx = ctx;
     this.salidas = [
-      { x: 70, y: 10 },{ x: 736, y: 152 },{ x: 812, y: 384 },{ x: 552, y: 505 },{ x: 412, y: 260 },
-      { x: 96, y: 120 },{ x: 105, y: 250 },{ x: 125, y: 577 },{ x:1052, y: 655 },{ x: 900, y: 60 },{ x:452, y: 705 },{ x: 700, y: 560 },
+      { x: 650, y: 50 },{ x: 650, y: 482 },{ x: 650, y: 780 },
+      { x: 340, y: 60 },{ x: 340, y: 340 },{ x: 340, y: 700 },
+      { x: 20, y: 60 },{ x: 20, y: 440 },{ x: 20, y: 640 },
+      { x: 90, y: 290 },{ x: 460, y: 290 },  { x: 690, y: 290 },{ x: 900, y: 290 },{ x: 1150, y: 290 },
+      { x: 290, y: 540 },{ x: 390, y: 540 },  { x: 590, y: 540 },{ x: 760, y: 540 },{ x: 1100, y: 540 },
+      { x: 30, y: 760 },{ x: 190, y: 760 },  { x: 490, y: 760 },{ x: 860, y: 760 },{ x: 1050, y: 760 },
     ];
     this.xy = this.salidas[Math.floor(Math.random() * this.salidas.length)];
     this.x = cartx || this.xy.x;
     this.y = carty || this.xy.y;
-    this.w = 43;
-    this.h = 47;
+    this.w = 35;
+    this.h = 39;
     this.v = 0;
     this.vNegative = 0
     this.cartImg = new Image();

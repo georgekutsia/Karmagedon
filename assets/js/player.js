@@ -370,8 +370,8 @@ class Player {
      this.ctx.fillStyle = "black";
     this.ctx.font = "16px Arial";
       //posicion del jugador aqui
-    // this.ctx.fillText(this.x.toFixed(1), this.x - 84, this.y - 12);
-    // this.ctx.fillText(this.y.toFixed(1), this.x + 64, this.y - 12);
+    this.ctx.fillText(this.x.toFixed(1), this.x - 84, this.y - 42);
+    this.ctx.fillText(this.y.toFixed(1), this.x + 64, this.y - 42);
   // terminan los draws de textos
 
     this.heats.forEach((heat) => heat.draw());
