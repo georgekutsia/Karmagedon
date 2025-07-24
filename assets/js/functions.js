@@ -101,19 +101,25 @@ function timeDamage(koren, player) {
 }
 
 function creaturePushback(creature, distance, player) {
-  if (creature.x < player.x) {
-    creature.x -= distance
-  }
-  if (creature.x > player.x) {
-    creature.x += distance
-  }
-  if (creature.y < player.y) {
-    creature.y -= distance
-  }
-  if (creature.y > player.y) {
-    creature.y += distance
+  const dx = player.x - creature.x; // diferencia en X
+  const dy = player.y - creature.y; // diferencia en Y
+
+  const absDx = Math.abs(dx);
+  const absDy = Math.abs(dy);
+
+  const diagonalThreshold = 10; 
+
+  if (Math.abs(absDx - absDy) <= diagonalThreshold) {
+    creature.x += dx > 0 ? -distance : distance;
+    creature.y += dy > 0 ? -distance : distance;
+  } else if (absDx > absDy) {
+    creature.x += dx > 0 ? -distance : distance;
+  } else {
+    creature.y += dy > 0 ? -distance : distance;
   }
 }
+
+
 
 function foodAndDiscountDrop(creature, foods, discounts) {
   const discRandom = Math.floor(Math.random() * 10)
@@ -193,3 +199,4 @@ function showPowerupWeapons() {
 }
 
 //hay que hacer que cada mensaje salga de un lugar distinto según el array o contador de cuantos mensajes están saliendo
+

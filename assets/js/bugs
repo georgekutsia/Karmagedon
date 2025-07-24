@@ -6,27 +6,27 @@
 
 // la gente que camnia de un lado a otro hay que mejorar
 
-// hay muchos wintimes++  por alguna razón
-
-// sonido para la recarga de raqueta en la armería;
+// sonido para la recarga de raqueta en la armería; también de los beneficios obtenidos.
 
 // que los blasters no afecten a la gente y no quiten reputación
-
-
+//tiempo de recarga de shotgun hay que hacer algo para mejorarlo
 // g teleporta con hook solo en nivel 2
 
+// hay que arreglar lo de shotgunRange para que haga algo
 // animacion de cuando recibe daño el personaje
 
 // averigua lo de toxic dañando customers
 
 // directHelpingClients es lo que genera mensajes de pfron y pback cuando reciben descuentos. se pueden meter variedades.  
 // directDamagingClients lo contrario
-
+//los shotguns si disparas a bocajarro hacen mas daño a los customers, cuanto mas lejos mejor, 
+// simplemente por el salto hacia atras del customer. si no salta lo suficiente, se sigue comiendo daño
 //////////
 
 // cada 3 carritos recogidos, helper saca un upgrade
 // solved total >= 35 se empiezan a activar los escudos
-// solved total >= 20 se activa el After spin
+// solved total >= 20 se activa el After spin 
+//solved total >= 10 se carga el charger para M de blaster
 
 // bulletSizeExtra----no se que es esto
 //   ctx.shadowColor = "yellow";

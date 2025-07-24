@@ -5,7 +5,7 @@ let RIGHT = 39;
 let SPACE = 32;
 // let SPACE = 32;
 let N = 78; // sandstorm
-let M = 77; //77  megablaster
+let M = 0; //77  megablaster
 let ALT = 16; // jump
 let Z = 90; //fire
 let X = 88; // water
@@ -28,13 +28,13 @@ const S = 83;
 const D = 68;
 
 let hookCounter = 0
-let discounting = 10;
+let discounting = 0;
 let charging = 0;
 
 let money = 10000
-let elementalMineCount = 22 //por unidad
+let elementalMineCount = 0 //por unidad
 let rocketCount = 0 //multiplo de 2.5 por alguna razón
-let mineCount = 10 //multiplo de 5
+let mineCount = 0 //minas explosivas de contacto
 let cartCount = 0; //contador de carts para que cada 3 salga un upgrade
 
 
@@ -43,7 +43,7 @@ let hookTransporter = false//para que al pulsar la g teleporte a la posicion del
 let hookBoost = false// para los beneficios de subir nivel el hook
 let hookLeveling = 0; //para mejorar el hook a medida que sube de nivel
 let destroyerLeveling = 0; //para mejorar la rama de destroyer
-let elementalistLeveling = 10; //para mejorar la rama de destroyer
+let elementalistLeveling = 0; //para mejorar la rama de destroyer
 let areaDamage = true // para el daño de area de los megablasters y sanders y cosas así
 let machinegunBoost = false// para activar las ametralladoras
 let elementBoost = false //para activar la arena que te sigue
@@ -69,12 +69,11 @@ let recharging = 10;
 let recharginState = false;
 let shotgunUpgrading = 0; //mejorar el shotgun para que haga mas daño o lo que sea
 let shotgunUpgradingState = false; //mejorar el shotgun para que haga mas daño o lo que sea
-let shotgunDamage = 0;
-let shotgunRange = 0;
+let shotgunRange = 40;
 let playerBasicDamage = 0;
 let playerDoubleDamage = 1;
 let cactusCanCollide = true;
-
+let shotgunCooldown = 2500; //tiempo de recarga de shotgun. 
 let distance = 60;
 let bulletDistance = 150;
 let auraDistance = 150;
@@ -130,4 +129,14 @@ let solvedWaterFire = 0;
 let solvedBoss = 0;
 let solvedKarens = 0;
 let solvedKorens = 0;
-let solvedTotal = 0;
+let solvedTotal =0;
+
+
+
+
+//imagenes
+const damageImg = new Image();
+damageImg.src = '/assets/images/munición/damageImg.png';
+let isDrawingDamage = false;
+let damageTimer = null;
+

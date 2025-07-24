@@ -39,7 +39,6 @@ class ShotgunUpgrade {
     shotgunUpgrading += 0.1;
     if(shotgunUpgrading >= 360) {
       alert("Shotgun upgraded!");
-      shotgunDamage += 20;
       shotgunRange += 30;
       shotgunUpgrading = 0;
   }

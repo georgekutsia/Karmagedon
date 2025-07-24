@@ -89,8 +89,8 @@ class Shotgun {
     this.x = x;
     this.y = y;
     this.sa = 0;
-    this.w = 40 + shotgunDamage;
-    this.h = 40 + shotgunDamage;
+    this.w = 40;
+    this.h = 40;
     this.player = player;
     this.bla = 0;
     this.vx = 0;
@@ -106,7 +106,7 @@ class Shotgun {
     this.tick = 0;
     this.afterTick = 0;
     this.shotFar = false;
-    this.damage = shotgunDamage + playerBasicDamage + playerDoubleDamage;
+    this.damage =  playerBasicDamage + playerDoubleDamage;
 
   }
   draw() {
@@ -127,7 +127,7 @@ class Shotgun {
       this.y -= 1.2
       this.h +=5
       this.w +=5
-      if(this.w >= 90 + shotgunDamage + thirdShotRange || this.h >= 90 + shotgunDamage + thirdShotRange){
+      if(this.w >= 90 + thirdShotRange || this.h >= 90 + thirdShotRange){
         this.dispose = true
       }
   }
@@ -183,7 +183,8 @@ class Hook {
       this.y >= this.player.y + bulletDistance * 10||
       this.x <= this.player.x - bulletDistance * 10|| 
       this.y <= this.player.y - bulletDistance * 10||
-      this.x + this.w >= this.ctx.canvas.width - 150
+      this.x + this.w >= this.ctx.canvas.width - 150||
+      this.y + this.h >=this.ctx.canvas.height - 50
     ){
       this.dispose = true
     }

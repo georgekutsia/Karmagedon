@@ -367,11 +367,12 @@ class Player {
       }
     }
   }
-     this.ctx.fillStyle = "black";
+    this.ctx.fillStyle = "black";
     this.ctx.font = "16px Arial";
       //posicion del jugador aqui
-    this.ctx.fillText(this.x.toFixed(1), this.x - 84, this.y - 42);
-    this.ctx.fillText(this.y.toFixed(1), this.x + 64, this.y - 42);
+    // this.ctx.fillText(this.x.toFixed(1), this.x - 84, this.y - 42);
+    // this.ctx.fillText(this.y.toFixed(1), this.x + 64, this.y - 42);
+    this.ctx.fillText(game, this.x + 64, this.y - 42);
   // terminan los draws de textos
 
     this.heats.forEach((heat) => heat.draw());
@@ -697,7 +698,7 @@ class Player {
     if (key === RIGHT || key === D) {this.vx = 0;}
     if (key === LEFT || key === A) {this.vx = 0;}
 
-    if (key === M && solvedTotal >= 20) {
+    if (key === M && solvedTotal >= 10) {
       this.megablaster();
       M = 0;
     }
@@ -785,7 +786,7 @@ class Player {
           shotgunShots = 0
           thirdShotRange = 0
           H = 72;
-        }, 2500);
+        }, shotgunCooldown);
         setTimeout(function () {
           this.alertingSound = new Audio("/assets/audios ad/shotgunReload.mp3");
           this.alertingSound.volume = 0.05;
@@ -1254,95 +1255,97 @@ class Player {
     this.heats.push(heat);
   }
   shotgunner() {
-    const shotgun = new Shotgun(
-      this.ctx,
-      this.x + 10,
-      this.y + 10,
-      this
-    );
-    if (this.direction === "right") {
-      shotgun.w = 60 + shotgunDamage;
-      this.x = this.x - 60 - shotgunRange;
-      shotgun.x = this.x + 80 + shotgunRange/2;
-      shotgun.y = this.y - 5 ;
-      if(thirdShot){
-        thirdShot = false
-        this.x = this.x - 160 - shotgunRange/2;
-        thirdShotRange = 140
-        shotgun.w = 200
-        shotgun.h = 100
-        shotgun.y = this.y - 40
-        this.extraShotSound = new Audio("/assets/audios ad/extraShotgun.mp3")
-        this.extraShotSound.volume = 0.3;
-        this.extraShotSound.play();
+  const shotgun = new Shotgun(this.ctx, this.x + 10, this.y + 10, this);
+  const extraShotHandler = () => {
+    thirdShot = false;
+    thirdShotRange = 140;
+    this.extraShotSound = new Audio("/assets/audios ad/extraShotgun.mp3");
+    this.extraShotSound.volume = 0.3;
+    this.extraShotSound.play();
+  };
+
+  switch (this.direction) {
+    case "right":
+      shotgun.w = 60 ;
+      this.x -= 40 ;
+      shotgun.x = this.x + 100 ;
+      shotgun.y = this.y - 5;
+
+      if (thirdShot) {
+        extraShotHandler();
+        this.x -= 140 ;
+        shotgun.w = 200;
+        shotgun.h = 100;
+        shotgun.y = this.y - 40;
       }
+
       shotgun.shotImg.src = "/assets/images/shotgun/flashRight.png";
       this.img.src = "/assets/images/PJ/imright.png";
       this.img.frame++;
-    }
-    if (this.direction === "left") {
-      shotgun.w = 60 + shotgunDamage
-      this.x = this.x + 60 + shotgunRange
-      shotgun.x = this.x - 80 - shotgunRange/2;
-      shotgun.y = this.y -5
-      if(thirdShot){
-        this.x = this.x + 160 + shotgunRange/2
-        thirdShotRange = 140
-        shotgun.w = 200
-        shotgun.h = 100
-        shotgun.y = this.y - 40
-        this.extraShotSound = new Audio("/assets/audios ad/extraShotgun.mp3")
-        this.extraShotSound.volume = 0.3;
-        this.extraShotSound.play();
+      break;
+
+    case "left":
+      shotgun.w = 60 ;
+      this.x += 40 ;
+      shotgun.x = this.x - 130 ;
+      shotgun.y = this.y - 5;
+
+      if (thirdShot) {
+        extraShotHandler();
+        this.x += 160 ;
+        shotgun.w = 200;
+        shotgun.h = 100;
+        shotgun.y = this.y - 40;
       }
+
       shotgun.shotImg.src = "/assets/images/shotgun/flashLeft.png";
       this.img.src = "/assets/images/PJ/imleft.png";
       this.img.frame++;
-    }
-    if (this.direction === "top") {
-      shotgun.h = 60 + shotgunDamage;
-      this.y = this.y + 60 +shotgunRange;
-      shotgun.y = this.y - 80 - shotgunRange/2;
+      break;
+
+    case "top":
+      shotgun.h = 60 ;
+      this.y += 40 ;
+      shotgun.y = this.y - 120 ;
       shotgun.x = this.x - 5;
-      if(thirdShot){
-        this.y = this.y + 160 + shotgunRange/2;
-        thirdShotRange = 140
-        shotgun.w = 100
-        shotgun.h = 200
-        shotgun.y = this.y - 390
-        shotgun.x = this.x - 50
-        this.extraShotSound = new Audio("/assets/audios ad/extraShotgun.mp3")
-        this.extraShotSound.volume = 0.3;
-        this.extraShotSound.play();
+      if (thirdShot) {
+        extraShotHandler();
+        this.y += 160 ;
+        shotgun.w = 100;
+        shotgun.h = 200;
+        shotgun.y = this.y - 390;
+        shotgun.x = this.x - 50;
       }
       shotgun.shotImg.src = "/assets/images/shotgun/flashUp.png";
       this.img.src = "/assets/images/PJ/imup.png";
       this.img.frame++;
-    }
-    if (this.direction === "down") {
-      shotgun.h = 60 + shotgunDamage;
-      this.y = this.y - 60 -shotgunRange;
-      shotgun.y = this.y + 80 + shotgunRange/2;
-      shotgun.x = this.x + 2 ;
-      if(thirdShot){
-        this.y = this.y - 160 - shotgunRange/2;
-        thirdShotRange = 140;
+      break;
+
+    case "down":
+      shotgun.h = 60 ;
+      this.y -= 20 ;
+      shotgun.y = this.y + 80 ;
+      shotgun.x = this.x + 2;
+
+      if (thirdShot) {
+        extraShotHandler();
+        this.y -= 160 ;
         shotgun.w = 100;
         shotgun.h = 200;
-        shotgun.y = this.y + 140
-        shotgun.x = this.x -30
-        this.extraShotSound = new Audio("/assets/audios ad/extraShotgun.mp3")
-        this.extraShotSound.volume = 0.3;
-        this.extraShotSound.play();
+        shotgun.y = this.y + 140;
+        shotgun.x = this.x - 30;
       }
+
       shotgun.shotImg.src = "/assets/images/shotgun/flashDown.png";
       this.img.src = "/assets/images/PJ/imdown.png";
       this.img.frame++;
-    }
-
-    shotgunShots += 1;
-    this.shotguns.push(shotgun);
+      break;
   }
+
+  shotgunShots += 1;
+  this.shotguns.push(shotgun);
+}
+
   heaterExtra() {
     const heat = new Heat(
       this.ctx,

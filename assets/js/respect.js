@@ -5,7 +5,7 @@ class Respect {
     this.y = 85;
     this.w = 155;
     this.h = 25;
-    this.total =  5 + publicImage;
+    this.total =  10 + publicImage;
     this.v = 5;
     ctx.font = "40px Verdana";
   }

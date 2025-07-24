@@ -3,7 +3,7 @@ class Score {
     this.ctx = ctx;
     this.x = 1015;
     this.y = 570;
-    this.dead = 4;
+    this.dead = 0;
     this.gooseImg = new Image();
     this.gooseImg.src = "/assets/images/infos/gooses.png"
     this.ratImg = new Image();
