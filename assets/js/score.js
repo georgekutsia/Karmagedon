@@ -14,6 +14,16 @@ class Score {
     this.fireFloodImg.src = "/assets/images/infos/fireFloodImg.png";
     this.helperImg = new Image();
     this.helperImg.src = "/assets/images/PJ/helper6.png";
+    this.imgRocket = new Image()
+    this.imgRocket.src = '/assets/images/munición/rocketImg.png'
+    this.shotgunCharged = new Image()
+    this.shotgunCharged.src = '/assets/images/shotgun/shotgunCharged.png';
+    this.levelupHook = new Image()
+    this.levelupHook.src = '/assets/images/munición/hookUpgrade.png';
+    this.hookDamage = new Image()
+    this.hookDamage.src = '/assets/images/infos/hookDamage.png'
+    this.hookMoney = new Image()
+    this.hookMoney.src = '/assets/images/infos/hookMoney.png'
   }
   
   draw() {
@@ -63,14 +73,7 @@ class Score {
     ctx.fillStyle = "rgb(251, 209, 209)";
     this.ctx.restore();
     this.ctx.font = "26px Arco";
-    if(hookBoost || !machinegunBoost || elementBoost){
-      this.ctx.save();
-      this.ctx.font = "22px Arco";
-      this.ctx.fillStyle = "green";
-      this.ctx.fillText(`Special Weapons`, 1234, 620);
-      this.ctx.fillStyle = "white";
-      this.ctx.fillText(`Special Weapons`, 1233, 619);
-      }
+
     if (solvedTotal >= 50) {
       this.ctx.font = "27px Arco";
       this.ctx.fillStyle = "aqua";
@@ -104,6 +107,47 @@ class Score {
     this.ctx.fillStyle = "lightsalmon";
     this.ctx.fillText(` ${money}$`, 1300, 397);
   }
+    this.ctx.save()
+    this.ctx.font = "22px Arco";
+    this.ctx.fillStyle = "green";
+    this.ctx.strokeText(`Special Weapons`, 1234, 620);
+    this.ctx.fillStyle = "white";
+    this.ctx.fillText(`Special Weapons`, 1234, 620);
+    if (destroyerLeveling >= 1) {
+      this.ctx.font = "19px Arco";
+      this.ctx.fillStyle = "lightsalmon";
+      this.ctx.fillText(`C -> fire-machine`, 1235, 650)
+      this.ctx.fillText(`V -> water-machine`, 1235, 670)
+      if (destroyerLeveling >= 2) {
+      this.ctx.font = "19px Arco";
+        this.ctx.fillText(`F => Rocket`, 1235, 700)
+        this.ctx.drawImage(this.imgRocket, 1340, 685, 35, 20)
+        if (destroyerLeveling >= 3) {
+      this.ctx.font = "19px Arco";
+          this.ctx.fillText(`H => Shotgun`, 1235, 720)
+          this.ctx.drawImage(this.shotgunCharged, 1350, 710, 35, 20)
+        }
+      }
+    }
+    if (hookLeveling >= 1) {
+      this.ctx.font = "19px Arco";
+      this.ctx.drawImage(this.levelupHook, 1345, 695, 40, 28)
+      this.ctx.fillText(`B -> Use hook`, 1235, 715)
+      this.ctx.font = "18px Arco";
+      this.ctx.fillText(`3 hooks every 2min`, 1235, 735)
+      if (hookLeveling >= 2) {
+        // this.ctx.drawImage(this.hookDamage, 1255, 785, 30, 25)
+        this.ctx.fillText(`G -> Teleport to hook`, 1235, 765)
+        this.ctx.fillText(`Now hooks damage`, 1235, 785)
+        if (hookLeveling >= 3) {
+          // this.ctx.drawImage(this.hookMoney, 1215, 835, 35, 45)
+          this.ctx.font = "17px Arco";
+          this.ctx.fillText(`Turning on lamps gets`, 1235, 805)
+          this.ctx.fillText(`you money and rep`, 1235, 825)
+        }
+      }
+    }
+
 
 
   // dibujar mensajes al hacer hover

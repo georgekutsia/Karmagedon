@@ -38,19 +38,11 @@ class Game {
     this.levelupElement = new Image()
     this.levelupElement.src = '/assets/images/munición/elementUpgrade.png'
     this.levelupMachinegun = new Image()
-    this.levelupMachinegun.src = '/assets/images/munición/upgradeMachinegun.png'
+    this.levelupMachinegun.src = '/assets/images/munición/upgradeMachinegun.png';
     this.levelupHook = new Image()
-    this.levelupHook.src = '/assets/images/munición/hookUpgrade.png'
-    this.imgRocket = new Image()
-    this.imgRocket.src = '/assets/images/munición/rocketImg.png'
-    this.shotgunCharged = new Image()
-    this.shotgunCharged.src = '/assets/images/shotgun/shotgunCharged.png'
-    this.hookDamage = new Image()
-    this.hookDamage.src = '/assets/images/infos/hookDamage.png'
-    this.hookMoney = new Image()
-    this.hookMoney.src = '/assets/images/infos/hookMoney.png'
+    this.levelupHook.src = '/assets/images/munición/hookUpgrade.png';
     this.upBulletsMessage = this.upgradeMessage = this.customersMessage = this.perjudiceMessage = this.bossPerjIs = this.ratMessage =   false
-    this.upgradeTick =this.customerTick =this.perjudiceTick =this.bossPerjTick =this.levelerTick =this.lampTick =this.ratPoison =this.iceCurePoison =this.ratTick =this.upBulletTick =  0
+    this.upgradeTick =this.customerTick =this.perjudiceTick =this.bossPerjTick =this.levelerTick =this.lampTick =this.ratPoison =this.iceCurePoison =this.ratTick = this.upBulletTick =  0;
     this.puddleTime = this.fireTime = this.babyTime = this.customerTime = this.bossTime = this.korenTime = this.cartTime = this.foodTime = this.upgradeTime = this.upBulletTime = this.discountTime = this.deadGoose =   0
     this.karens =this.rats =this.babys =this.customers =this.fats =this.puddles =this.fires =this.geese =this.bosss =this.korens =this.carts =this.drugs =this.foods =this.upgrades =this.upBullets =this.discounts =  []
     this.gooseTime = 1900
@@ -954,38 +946,10 @@ class Game {
     // levelup messages..levelup messages..levelup messages..levelup messages..levelup messages..
 
     this.ctx.save()
-    if (destroyerLeveling >= 1) {
-      this.ctx.fillText(`C=>fire-machine`, 1266, 715)
-      this.ctx.fillText(`V=>water-machine`, 1258, 735)
-      if (destroyerLeveling >= 2) {
-        this.ctx.fillText(`F => Rocket`, 1280, 765)
-        this.ctx.drawImage(this.imgRocket, 1220, 745, 50, 25)
-        if (destroyerLeveling >= 3) {
-          this.ctx.fillText(`H => Shotgun`, 1280, 795)
-          this.ctx.drawImage(this.shotgunCharged, 1220, 775, 50, 25)
-        }
-      }
-    }
 
-    if (hookLeveling >= 1) {
-      this.ctx.drawImage(this.levelupHook, 1212, 695, 60, 45)
-      this.ctx.fillText(`B=> Use hook.`, 1277, 715)
-      this.ctx.fillText(`Get 3 hooks every  2min`, 1217, 775)
-      if (hookLeveling >= 2) {
-        this.ctx.drawImage(this.hookDamage, 1215, 791, 40, 35)
-        this.ctx.fillText(`G=> Teleport to `, 1277, 735)
-        this.ctx.fillText(`hooks position.`, 1277, 755)
-        this.ctx.fillText(`Hooks damage`, 1260, 801)
-        this.ctx.fillText(`on impact now`, 1260, 821)
-        if (hookLeveling >= 3) {
-          this.ctx.drawImage(this.hookMoney, 1215, 835, 35, 45)
-          this.ctx.fillText(`Turning on lamps`, 1260, 852)
-          this.ctx.fillText(`gets you money`, 1260, 870)
-          this.ctx.fillText(`and reputation`, 1260, 890)
-        }
-      }
-    }
-    if (hookBoost || machinegunBoost || elementBoost) {
+
+
+    if ( machinegunBoost || elementBoost) {
       if (elementBoost) {
         this.ctx.drawImage(this.levelupElement, 1218, 695, 45, 45)
         this.ctx.fillText(`N=> Sandstorm +`, 1263, 715)
@@ -1143,12 +1107,7 @@ class Game {
 
     this.score.draw()
     this.saved.draw()
-    if (hookBoost === true) {
-      if (this.winTime % 13333 === 0) {
-        //cada 2 minutos recarga 3 contadores de hook
-        hookCounter += 3
-      }
-    }
+
     if (leveler === true) {
       this.ctx.font = '20px Sans'
       ctx.fillStyle = 'black'
@@ -3057,14 +3016,12 @@ class Game {
       })
     })
 
-    // levelups...levelups...levelups...levelups...levelups...levelups...levelups...levelups...levelups...
-    // levelups...levelups...levelups...levelups...levelups...levelups...levelups...levelups...levelups...
+    // levelups..................
     // hooker
     if (leveler) {
       if (this.levelUps1.collides(this.player)) {
         B = 66
         hookCounter += 5
-        hookBoost = true
         this.levelupSound = new Audio('/assets/audios ad/levelupHookSound.mp3')
         this.levelupSound.volume = 0.05
         this.levelupSound.play()

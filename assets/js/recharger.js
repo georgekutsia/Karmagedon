@@ -44,4 +44,5 @@ class Recharger {
       this.levelupSound.volume = 0.05;
       this.levelupSound.play();
   }
-}}
+}
+}

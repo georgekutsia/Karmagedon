@@ -40,8 +40,7 @@ let cartCount = 0; //contador de carts para que cada 3 salga un upgrade
 
 let leveler = false //para subir de nivel
 let hookTransporter = false//para que al pulsar la g teleporte a la posicion del hook
-let hookBoost = false// para los beneficios de subir nivel el hook
-let hookLeveling = 0; //para mejorar el hook a medida que sube de nivel
+let hookLeveling = 4; //para mejorar el hook a medida que sube de nivel
 let destroyerLeveling = 0; //para mejorar la rama de destroyer
 let elementalistLeveling = 0; //para mejorar la rama de destroyer
 let areaDamage = true // para el daño de area de los megablasters y sanders y cosas así
@@ -86,8 +85,9 @@ let amountOfLamps = 13;
 let publicImageLevelup = false; // para que aparezca en azul cuando sube la imagen pública
 let publicImage = 0 //para que se vea en el juego;
 let publicImageLevel = 0; //para que se vea en el juego;
-let chance = 0 //afecta a la suerte y uso randomLuck() como función para hacerlo aleatorio. 
+let chance = 0; //afecta a la suerte y uso randomLuck() como función para hacerlo aleatorio. 
 // afecta a la probabilidad de encontrar hooks, rockets y minas en los carritos
+let hookRechargeExtraRadius = 0;
 let instinct = 0;
 let afterSpin = false;
 let cartInMall = false;
@@ -130,9 +130,6 @@ let solvedBoss = 0;
 let solvedKarens = 0;
 let solvedKorens = 0;
 let solvedTotal =0;
-
-
-
 
 //imagenes
 const damageImg = new Image();

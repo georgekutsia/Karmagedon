@@ -69,6 +69,7 @@ class Player {
     this.hookTIck = 0
     this.life = new Life(ctx);
     this.recharger = new Recharger(ctx);
+    this.hookRecharger = new HookRecharger(ctx);
     this.shotgunUpgrade = new ShotgunUpgrade(ctx);
     this.respect = new Respect(ctx)
     this.formins = new Formins(ctx)
@@ -372,7 +373,7 @@ class Player {
       //posicion del jugador aqui
     // this.ctx.fillText(this.x.toFixed(1), this.x - 84, this.y - 42);
     // this.ctx.fillText(this.y.toFixed(1), this.x + 64, this.y - 42);
-    this.ctx.fillText(game, this.x + 64, this.y - 42);
+    this.ctx.fillText(this.hookRecharger.counter, this.x + 64, this.y - 42);
   // terminan los draws de textos
 
     this.heats.forEach((heat) => heat.draw());
@@ -387,6 +388,13 @@ class Player {
     mineria.forEach((mi) => mi.draw());
     this.life.draw();
     this.recharger.draw(this.x + 15, this.y + 15);
+    if(hookCounter<=9){
+      this.hookRecharger.draw(this.x + 63, this.y + 35);
+      hookRechargeExtraRadius = 0;
+    } else {
+      this.hookRecharger.draw(this.x + 68, this.y + 35);
+      hookRechargeExtraRadius = 3;
+    }
     this.shotgunUpgrade.draw(this.x + 19, this.y + 19);
     this.respect.draw();
     this.formins.draw();
@@ -406,8 +414,9 @@ class Player {
     if (this.img.frame > 3) {
       this.img.frame = 0;
     }
-    this.recharger.move();
-    this.shotgunUpgrade.move();
+    // this.recharger.move();
+    // this.hookRecharger.move();
+    // this.shotgunUpgrade.move();
     // LIMITES DEL CANVAS =>//
     if (this.y < 10) {
       this.y = 10;
@@ -454,7 +463,9 @@ class Player {
     this.waters.forEach((water) => {water.move();});
     this.auras.forEach((aura) => {aura.move(); this.heal(3);this.hefa()});
 
-
+    if(hookLeveling>=1){
+      this.hookRecharger.rechargingWeapons()
+    }
   //  entrenando en el gym
     if(this.x >= 395 && this.x <=610 && this.y >= 580 && this.y <= 727){
       training = true;
@@ -487,7 +498,7 @@ class Player {
       this.ctx.restore();
       if(destroyerLeveling >=3) { 
         shotgunUpgradingState = true;
-      this.shotgunUpgrade.rechargingWeapons()
+        this.shotgunUpgrade.rechargingWeapons()
         this.ctx.save();
         this.ctx.font = "18px Arial";
         this.ctx.fillStyle = "rgb(5, 101, 74)";
