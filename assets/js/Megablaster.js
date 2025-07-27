@@ -304,6 +304,7 @@ class ElementShield {
     this.tock++
     this.x = this.player.x - 25;
     this.y = this.player.y - 25;
+    game.player.heal(0.0002)
     if (this.tick > 4) {
       this.tick = 0;
       this.eleImg.frame++;
@@ -311,7 +312,7 @@ class ElementShield {
     if (this.eleImg.frame > 11) {
       this.eleImg.frame = 0;
     }
-    if (this.tock >= 500 + afterSize * 4){
+    if (this.tock >= 100 + afterSize * 4){
       this.dispose = true
     }
   }

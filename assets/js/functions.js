@@ -64,7 +64,7 @@ function saving(saved, player, customersMessage) {
   customersMessage = true
 }
 function dyingCustomer(player, score, perjudiceMessage) {
-  player.loseRespect(0.1)
+  player.getRespect(-0.1)
   score.addDead()
   distance -= 0.05
   player.booster -= 0.01
@@ -144,11 +144,11 @@ function collidingWithClients(client, ctx, player) {
   this.excla = new Image()
   this.excla.src = '/assets/images/elements/exclapep.png'
   ctx.drawImage(this.excla, client.x + 10, client.y - 10, 30, 30)
-  player.loseRespect(0.002 - publicImage / 2000)
+  player.getRespect(-0.002 - publicImage / 2000)
   player.drawSorry()
 }
 function directDamagingClients(client, message, lostRespect, ctx, player) {
-  player.loseRespect(lostRespect)
+  player.getRespect(-lostRespect)
   ctx.font = '20px Arial'
   ctx.fillStyle = 'red'
   ctx.fillText(`${message}`, client.x - 1, client.y - 1)

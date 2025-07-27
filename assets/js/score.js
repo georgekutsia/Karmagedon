@@ -12,6 +12,9 @@ class Score {
     this.lamp.src = "/assets/images/elements/lamp.png"
     this.fireFloodImg = new Image();
     this.fireFloodImg.src = "/assets/images/infos/fireFloodImg.png";
+    this.fireMachine = new Image();
+    this.fireMachine.src = "/assets/images/munición/upgradeMachinegun1.png";
+
     this.helperImg = new Image();
     this.helperImg.src = "/assets/images/PJ/helper6.png";
     this.imgRocket = new Image()
@@ -23,7 +26,9 @@ class Score {
     this.hookDamage = new Image()
     this.hookDamage.src = '/assets/images/infos/hookDamage.png'
     this.hookMoney = new Image()
-    this.hookMoney.src = '/assets/images/infos/hookMoney.png'
+    this.hookMoney.src = '/assets/images/infos/hookMoney.png';
+    this.levelupElement = new Image();
+    this.levelupElement.src = '/assets/images/infos/elementalUpgrade1.png';
   }
   
   draw() {
@@ -113,42 +118,86 @@ class Score {
     this.ctx.strokeText(`Special Weapons`, 1234, 620);
     this.ctx.fillStyle = "white";
     this.ctx.fillText(`Special Weapons`, 1234, 620);
+    // destroyer info
     if (destroyerLeveling >= 1) {
-      this.ctx.font = "19px Arco";
+      if(hookLeveling>= 1 && elementalistLeveling >= 1){
+        desInfoMoveX = -260;
+        desInfoMove = 207;
+        desInfoMoveX2 = 37;
+      }
       this.ctx.fillStyle = "lightsalmon";
-      this.ctx.fillText(`C -> fire-machine`, 1235, 650)
-      this.ctx.fillText(`V -> water-machine`, 1235, 670)
+      this.ctx.fillText(`Destroyer lvl ${destroyerLeveling}`, 1233 + desInfoMoveX /1.3, 647+desInfoMove)
+      this.ctx.drawImage(this.fireMachine, 1350+ desInfoMoveX, 653 + desInfoMove, 58, 30)
+      this.ctx.font = "17px Arco";
+      this.ctx.fillStyle = "khaki";
+      this.ctx.fillText(`C - fire-machine`, 1235  + desInfoMoveX, 668+desInfoMove)
+      this.ctx.fillText(`V - water-machine`, 1235  + desInfoMoveX, 684+desInfoMove)
       if (destroyerLeveling >= 2) {
-      this.ctx.font = "19px Arco";
-        this.ctx.fillText(`F => Rocket`, 1235, 700)
-        this.ctx.drawImage(this.imgRocket, 1340, 685, 35, 20)
+        this.ctx.font = "17px Arco";
+        this.ctx.fillText(`F - Rocket`, 1235  + desInfoMoveX + desInfoMoveX2*4, 706+desInfoMove - desInfoMoveX2)
+        // this.ctx.drawImage(this.imgRocket, 1320, 695 +desInfoMove, 35, 17)
         if (destroyerLeveling >= 3) {
-      this.ctx.font = "19px Arco";
-          this.ctx.fillText(`H => Shotgun`, 1235, 720)
-          this.ctx.drawImage(this.shotgunCharged, 1350, 710, 35, 20)
+          this.ctx.font = "17px Arco";
+          this.ctx.fillText(`H - Shotgun`, 1235  + desInfoMoveX + desInfoMoveX2*4, 722+desInfoMove - desInfoMoveX2)
+          // this.ctx.drawImage(this.shotgunCharged, 1320, 712 + desInfoMove, 35, 20)
         }
       }
     }
+    // hook info
+
     if (hookLeveling >= 1) {
-      this.ctx.font = "19px Arco";
-      this.ctx.drawImage(this.levelupHook, 1345, 695, 40, 28)
-      this.ctx.fillText(`B -> Use hook`, 1235, 715)
+      desInfoMove = 145;
+      this.ctx.fillStyle = "cornflowerblue";
+    this.ctx.font = "20px Arco";
+      this.ctx.fillText(`Hook Master lvl ${hookLeveling}`, 1233, 647)
+      this.ctx.font = "17px Arco";
+      this.ctx.drawImage(this.levelupHook, 1340, 650, 40, 25)
+      this.ctx.fillStyle = "lightblue";
+      this.ctx.font = "17px Arco";
+      this.ctx.fillText(`B - Use hook`, 1233, 670)
       this.ctx.font = "18px Arco";
-      this.ctx.fillText(`3 hooks every 2min`, 1235, 735)
+      this.ctx.fillText(`3 hooks every 30 secs`, 1233, 686)
       if (hookLeveling >= 2) {
         // this.ctx.drawImage(this.hookDamage, 1255, 785, 30, 25)
-        this.ctx.fillText(`G -> Teleport to hook`, 1235, 765)
-        this.ctx.fillText(`Now hooks damage`, 1235, 785)
+        this.ctx.fillStyle = "lightblue";
+          this.ctx.font = "17px Arco";
+        this.ctx.fillText(`G - Teleport to hook`, 1233, 708)
+        this.ctx.fillText(`Now hooks damage`, 1233, 724)
         if (hookLeveling >= 3) {
+          this.ctx.fillStyle = "lightblue";
           // this.ctx.drawImage(this.hookMoney, 1215, 835, 35, 45)
           this.ctx.font = "17px Arco";
-          this.ctx.fillText(`Turning on lamps gets`, 1235, 805)
-          this.ctx.fillText(`you money and rep`, 1235, 825)
+          this.ctx.fillText(`Turning on lamps gets`, 1233, 746)
+          this.ctx.fillText(`you money and rep`, 1233, 762)
         }
       }
     }
+    // hook info
 
-
+    if (elementalistLeveling >= 1) {
+      if(hookLeveling >= 1){
+      elementalInfoMove = 140;
+      }
+      desInfoMove = 145;
+      this.ctx.fillStyle = "lightcoral";
+      this.ctx.font = "20px Arco";
+      this.ctx.fillText(`Elementalist lvl ${elementalistLeveling}`, 1233, 647 + elementalInfoMove)
+      this.ctx.font = "17px Arco";
+      // this.ctx.drawImage(this.levelupElement, 1343, 640, 45, 45)
+      this.ctx.fillStyle = "pink";
+      this.ctx.fillText(`N - Sandstorm`, 1230, 670 + elementalInfoMove)
+      this.ctx.fillText(`L - Elemental shield`, 1230, 686 + elementalInfoMove)
+    }
+      if (elementalistLeveling >= 2) {
+        // this.ctx.drawImage(this.hookDamage, 1255, 785, 30, 25)
+        this.ctx.fillText(`J - Elemental bomb`, 1230, 708 + elementalInfoMove)
+      }
+        if (elementalistLeveling >= 3) {
+          // this.ctx.drawImage(this.hookMoney, 1215, 835, 35, 45)
+          this.ctx.font = "17px Arco";
+          this.ctx.fillText(`K - Contact mines`, 1230, 726 + elementalInfoMove)
+          this.ctx.fillText(`Elemental shield heals`, 1230, 742 + elementalInfoMove)
+        }
 
   // dibujar mensajes al hacer hover
   // dibujar mensajes al hacer hover
@@ -240,7 +289,105 @@ if (hoveredOffice) {
   ctx.fillText("tools needed to upgrade", 1005, 348);
   ctx.fillText("your weapons.", 1005, 366);
   this.ctx.drawImage(this.helperImg, 926, 245, 75, 120)
+}
+if (!hoveredSpecialWeapons) {
+  ctx.fillStyle = "rgba(37, 49, 50, 1)";
+  ctx.fillRect(600, 90, 615, 740); 
+  ctx.fillStyle = "yellow";
+  ctx.font = "22px Arial";
 
+  let y = 120;
+  ctx.fillText("Special Weapons!", 840, y); 
+  y += 24; // -salto-
+  ctx.fillStyle = "white";
+  ctx.font = "16px Arial";
+  ctx.fillText("You can level up your abilities as an ELEMENTALIST, creating sandstorms,", 650, y); y += 18;
+  ctx.fillText("mines, healing auras and time explosives.", 650, y); y += 18;
+  ctx.fillStyle = "lime";
+  ctx.fillText("Great for the more strategic fighters.", 650, y); 
+  y += 24; // -salto-
+  ctx.fillStyle = "white";
+  ctx.fillText("You can also become a HOOKMASTER , allowing you to move quickly around", 650, y); y += 18;
+  ctx.fillText("the mall, earn money and reputation, catch creatures and more!", 650, y); y += 18;
+  ctx.fillStyle = "lime";
+  ctx.fillText("Ideal for those with sharp reflexes.", 650, y); 
+  y += 24; // -salto-
+  ctx.fillStyle = "white";
+
+  ctx.fillText("If raw violence is your thing, DESTROYER is for you. Launch fire ", 650, y); y += 18;
+  ctx.fillText("and water bursts faster, get a rocket launcher and also a shotgun. ", 650, y); y += 18;
+  ctx.fillStyle = "lime";
+  ctx.fillText("Use violence as strategy.", 650, y); y += 40; 
+
+  // DESTROYER  
+  ctx.fillStyle = "lightsalmon";
+  ctx.font = "22px Arial";
+  ctx.fillText("Destroyer", 840, y);
+  y += 24; 
+  ctx.fillStyle = "khaki";
+  ctx.font = "16px Arial";
+  ctx.fillText("C - Fire Machine // V - Water Machine", 650, y); 
+  ctx.fillStyle = "white";
+  ctx.fillText("Update the basic shoots to automatic.", 930, y); y += 18;
+  ctx.fillText("Hold down the button to fire continuously. It has a reload time", 650, y); y += 22;
+  ctx.fillStyle = "khaki";
+  ctx.fillText("F - Rocket", 650, y); 
+  ctx.fillStyle = "white";
+  ctx.fillText("Fires powerful long-range rockets that explode on contact.", 740, y); y += 22;
+  ctx.fillStyle = "khaki";
+  ctx.fillText("H - Shotgun", 650, y);
+  ctx.fillStyle = "white";
+  ctx.fillText("Two short-range, high-damage shots that push you backward.", 740, y); y += 22;
+  ctx.fillStyle = "linen";
+  ctx.fillText("You can upgrade the Shotgun and Rocket Launcher at the Warehouse", 650, y); y += 22;
+  ctx.fillText("to increase range, speed, and damage. Also, check improvements at the shop.", 650, y); y += 40;
+  // HOOK MASTER
+
+  ctx.fillStyle = "cornflowerblue";
+  ctx.font = "22px Arial";
+  ctx.fillText("Hook Master", 840, y);
+  y += 24;
+  ctx.fillStyle = "lightblue";
+  ctx.font = "16px Arial";
+  ctx.fillText("B - Use Hook. Also you get 3 Hooks every 30 secs", 650, y);
+  ctx.fillStyle = "white";
+  ctx.fillText("Hit lamps to move fast ", 1020, y); y += 18;
+  ctx.fillText("around the mall. Turn all the lamps on to improve your public image + 1", 650, y); y += 18;
+  ctx.fillText("If you hit living things with a hook, you can trap them for a while", 650, y); y += 18;
+  ctx.fillStyle = "lightblue";
+  ctx.fillText("G - Teleport to Hook", 650, y); 
+  ctx.fillStyle = "white";
+  ctx.fillText("You can teleport now to hooks position in midflight", 810, y); y += 18;
+  ctx.fillText("If Hookmaster level is 4 + and you trap an animal, hit G to trap each animal.", 650, y); y += 18;
+  ctx.fillStyle = "lightblue";
+  ctx.fillText("Now Hooks deal damage and turning on lamps gives money and reputation", 650, y); y += 24;
+  
+  // ELEMENTALIST
+  ctx.fillStyle = "lightcoral";
+  ctx.font = "22px Arial";
+  ctx.fillText("Elementalist", 840, y);
+  y += 24;
+  ctx.fillStyle = "pink";
+  ctx.font = "16px Arial";
+  ctx.fillText("N - Sandstorm", 650, y); 
+  ctx.fillStyle = "white";
+  ctx.fillText("Create a storm in your position that damages everything, ", 770, y); y += 18;
+  ctx.fillText("also puting out fires and puddles. It has recharge time and grows while turning", 650, y); y += 24;
+  ctx.fillStyle = "pink";
+  ctx.fillText("L - Elemental Shield", 650, y);
+  ctx.fillStyle = "white";
+  ctx.fillText("Protects you from damage and damages on contact", 800, y); y += 24;
+  ctx.fillStyle = "pink";
+  ctx.fillText("J - Elemental Bomb", 650, y); 
+  ctx.fillStyle = "white";
+  ctx.fillText("Absorbs fire, puddles and damages on explosion", 800, y); y += 24;
+  ctx.fillStyle = "pink";
+  ctx.fillText("K - Contact Mines", 650, y); 
+  ctx.fillStyle = "white";
+  ctx.fillText("This mines explode on contact and never expire, so you", 800, y); y += 18;
+  ctx.fillText("can put them strategically around the mall", 650, y); y += 24;
+  ctx.fillStyle = "pink";
+  ctx.fillText("Elemental Shield heals while active", 650, y);
 }
 
 }

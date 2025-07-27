@@ -12,6 +12,8 @@
 //tiempo de recarga de shotgun hay que hacer algo para mejorarlo
 // g teleporta con hook solo en nivel 2
 
+// hay que revisar elemental shield y los beneficios que aporta
+//ajustar como absorbe chargos y fuego elemental bomb
 // hay que arreglar lo de shotgunRange para que haga algo
 // animacion de cuando recibe daño el personaje
 
@@ -33,4 +35,4 @@
 //   ctx.shadowBlur = 5;
 //   ctx.lineWidth = 3;  solo funciona si hay strokeText
 
-
+//encender más de 11 lamparas te da el doble de dinero por cada

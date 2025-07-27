@@ -12,7 +12,7 @@ class Player {
     this.lesserSizeState = false
     this.boostTick = 0;
     this.booster = 0;
-    this.speed = 4;
+    this.speed = 3;
     this.vx = 0;
     this.vy = 0;
     this.img = new Image();
@@ -243,12 +243,15 @@ class Player {
         ctx.shadowBlur = 5;
         ctx.lineWidth = 3;
         this.ctx.fillText(`${elementalMineCount.toString()}`, this.x - 44, this.y + 5);
+        ctx.shadowBlur = 0;
       } else {
       this.ctx.fillStyle = "white";
         ctx.shadowColor = "black";
         ctx.shadowBlur = 5;
         ctx.lineWidth = 3;
         this.ctx.fillText(`${elementalMineCount.toString()}`, this.x - 41, this.y + 5);
+        ctx.shadowBlur = 0;
+
       }
     }
     if(mineCount > 0 && K === 75){
@@ -300,7 +303,8 @@ class Player {
       this.ctx.drawImage(
         this.imgSand, this.x + 10, this.y + 38, this.w - 22, this.h - 22
       )
-      if(elementBoost ){
+    }
+    if(L === 76 && elementalistLeveling >= 1 ){
         this.ctx.drawImage(
           this.elementalImg,
           (this.elementalImg.frame * this.elementalImg.width) / 12,
@@ -319,7 +323,6 @@ class Player {
           }
           if (this.elementalImg.frame > 11) {
             this.elementalImg.frame = 0;
-          }
       }
     }
     if(this.extraBoostState === true){
@@ -371,9 +374,9 @@ class Player {
     this.ctx.fillStyle = "black";
     this.ctx.font = "16px Arial";
       //posicion del jugador aqui
-    // this.ctx.fillText(this.x.toFixed(1), this.x - 84, this.y - 42);
-    // this.ctx.fillText(this.y.toFixed(1), this.x + 64, this.y - 42);
-    this.ctx.fillText(this.hookRecharger.counter, this.x + 64, this.y - 42);
+    this.ctx.fillText(this.x.toFixed(1), this.x - 84, this.y - 42);
+    this.ctx.fillText(this.y.toFixed(1), this.x + 64, this.y - 42);
+    // this.ctx.fillText(this.respect.total, this.x + 64, this.y - 42);
   // terminan los draws de textos
 
     this.heats.forEach((heat) => heat.draw());
@@ -407,7 +410,7 @@ class Player {
       this.toxicar()
     }
     this.tick++;
-    if ((this.tick > 10 && this.vx) || (this.tick > 10 && this.vy)) {
+    if ((this.tick > 3 && this.vx) || (this.tick > 3 && this.vy)) {
       this.img.frame++;
       this.tick = 0;
     }
@@ -508,9 +511,10 @@ class Player {
         this.ctx.fillText(`Upgrading Shotgun`, this.x - 50, this.y - 30);
         ctx.shadowBlur = 0;
         this.ctx.restore();
-      }else { shotgunUpgradingState = false;}
+      }
     } else{
       recharginState = false;
+      shotgunUpgradingState = false;
     }
     if(this.x >=85 && this.x <=280 && this.y >= 325 && this.y <= 496 && this.foodPreparingTime >= 0){
       this.foodPreparingTime -= 0.1;
@@ -526,29 +530,18 @@ class Player {
     }
 
   }
-  loseRespect(amount){
-    this.respect.losingRespect(amount);
-  }
+
   getRespect(amount){
     this.respect.getRespect(amount);
   }
 
-  hit() {
-    this.life.loseLife();
+  hit(damage) {
+    this.life.loseLife(damage);
   }
   heal(gainedLife) {
     this.life.heal(gainedLife);
   }
 
-  healslow(gainLife) {
-    this.life.healSlow(gainLife);
-  }
-  dieSlower() {
-    this.life.dieSlower();
-  }
-  fireHit() {
-    this.life.loseLifeFire();
-  }
   isAlive() {
     return this.life.total > 0;
   }
@@ -741,15 +734,20 @@ class Player {
       this.aurar();
       T = 0;
     }
-    if (key === N) {
-      if(elementBoost){
+    if (key === L && elementalistLeveling >=1){
         this.elementShield()
+        L = 0;
+        setTimeout(function () {
+          L = 76;
+        }, 20000);
       }
+        
+    if (key === N) {
       this.sander();
         N = 0;
         setTimeout(function () {
         N = 78;
-      }, 6000);
+      }, 30000);
     }
     if (key === J && elementalistLeveling >= 2 && elementalMineCount >= 1) {
       this.elementBomb()

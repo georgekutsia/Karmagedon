@@ -33,13 +33,12 @@ draw() {
   this.ctx.fillStyle = prevStyle;
 }
 
-
-  losingRespect(amount){
-    this.total -= amount;
-  }
   getRespect(amount){
     if (this.total <= 10 + publicImage) {
       this.total += amount;
+    }
+    if(amount <= 0){
+      this.total += amount; //para restar reputación corerctamente
     }
   }
 

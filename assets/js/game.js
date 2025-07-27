@@ -894,7 +894,7 @@ class Game {
       }
     }
 
-    if (machinegunBoost && destroyerLeveling >= 1) {
+    if ( destroyerLeveling >= 1) {
       this.machinegunTime--
       C = 67
       V = 86
@@ -947,15 +947,6 @@ class Game {
 
     this.ctx.save()
 
-
-
-    if ( machinegunBoost || elementBoost) {
-      if (elementBoost) {
-        this.ctx.drawImage(this.levelupElement, 1218, 695, 45, 45)
-        this.ctx.fillText(`N=> Sandstorm +`, 1263, 715)
-        this.ctx.fillText(`elemental shield`, 1263, 735)
-      }
-    }
     if (this.levelMessage1) {
       this.tick++
       this.ctx.drawImage(
@@ -1061,8 +1052,7 @@ class Game {
         this.tick = 0
       }
     }
-    // levelup messages..levelup messages..levelup messages..levelup messages..levelup messages..
-    // levelup messages..levelup messages..levelup messages..levelup messages..levelup messages..
+    // levelup messages.....................
     if (chargingTrue) {
       this.chargeTick++
       if (this.chargeTick >= 150) {
@@ -1091,7 +1081,7 @@ class Game {
       }
     }
     if (this.puddles.length + this.fires.length >= 9) {
-      this.player.loseRespect(0.0003)
+      this.player.getRespect(-0.0003)
     }
     // CTX data statistics
     // CTX data statistics
@@ -1385,8 +1375,7 @@ class Game {
     }
   }
   checkCollisions() {
-    // puddle..puddle..puddle..puddle..puddle..puddle..puddle..puddle..puddle..puddle..puddle..puddle..puddle..
-    // puddle..puddle..puddle..puddle..puddle..puddle..puddle..puddle..puddle..puddle..puddle..puddle..puddle..
+    // puddle....
     this.puddles.forEach((puddle) => { //agua con blasters
       this.player.blasters.filter((blast) => {
         if (blast.collides(puddle)) {
@@ -1439,7 +1428,7 @@ class Game {
         }
       })
     })
-    // fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..fire..
+    // fire......
     this.fires.forEach((fire) => {//fuego con blaster
       this.player.blasters.filter((blast) => {
         if (blast.collides(fire)) {
@@ -1449,8 +1438,7 @@ class Game {
         } else return true
       })
     })
-    this.fires.forEach((fire) => {
-      //fuego con sanders
+    this.fires.forEach((fire) => {//fuego con sanders
       this.player.sanders.filter((sand) => {
         if (sand.collides(fire)) {
           fire.dicreaseSmall()
@@ -1491,8 +1479,7 @@ class Game {
       })
     })
 
-    // karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen..
-    // karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen.. karen..
+    // karen....
     this.karens = this.karens.filter((karen) => {
       //karen con player
       if (karen.collides(this.player)) {
@@ -1539,7 +1526,7 @@ class Game {
     this.rats = this.rats.filter((rat) => {
       //rat con player
       if (rat.collides(this.player)) {
-        this.player.fireHit()
+        this.player.hit(0.005)
         this.player.vy = -1
         this.player.vx = -1
         this.ratPoison = 1010
@@ -1657,7 +1644,7 @@ class Game {
     this.geese = this.geese.filter((goose) => {
       //goose con player
       if (goose.collides(this.player)) {
-        this.player.hit()
+        this.player.hit(0.02)
         if (discounting >= 5) {
           discounting -= 5
         }
@@ -1678,7 +1665,7 @@ class Game {
           this.checkCharger()
         } else return true
       })
-      this.player.waters = this.player.waters.filter((water) => {// goose con water
+      this.player.waters.filter((water) => {// goose con water
         if (water.collides(goose)) {
           this.player.waters.splice(0, 1)
           goose.lifeleft -= 1;
@@ -1826,9 +1813,9 @@ class Game {
       if (fat.collides(this.player)) {
         this.player.vy = 0
         this.player.vx = 0
-        this.player.fireHit()
+        this.player.hit(0.005)
         this.player.drawSmash()
-        this.player.loseRespect(0.0002)
+        this.player.getRespect(-0.0002)
       }
       return true
     })
@@ -1921,8 +1908,8 @@ class Game {
     // koren...
     this.korens = this.korens.filter((koren) => {
       if (koren.collides(this.player)) {
-        this.player.fireHit()
-        this.player.fireHit()
+        this.player.hit(0.005)
+        this.player.hit(0.005)
       }
       return true
     })
@@ -2306,23 +2293,11 @@ class Game {
           customer.vy -= 0.0001
           this.ctx.font = '20px Arial'
           this.ctx.fillStyle = 'red'
-          this.ctx.fillText(
-            `Gugu gaga! blah!:`,
-            customer.x - 39,
-            customer.y - 16
-          )
+          this.ctx.fillText( `Gugu gaga! blah!:`, customer.x - 39, customer.y - 16)
           this.ctx.fillStyle = 'tomato'
-          this.ctx.fillText(
-            `Gugu gaga! blah!:`,
-            customer.x - 36,
-            customer.y - 14
-          )
+          this.ctx.fillText(   `Gugu gaga! blah!:`,   customer.x - 36,   customer.y - 14)
           this.ctx.fillStyle = 'white'
-          this.ctx.fillText(
-            `Gugu gaga! blah!:`,
-            customer.x - 38,
-            customer.y - 15
-          )
+          this.ctx.fillText(   `Gugu gaga! blah!:`,   customer.x - 38,   customer.y - 15 )
           if (customer.lifeleft <= 0.3) {
             baby.babyImg.src = '/assets/images/elements/blood.png'
             customer.customFrame = 1
@@ -2353,7 +2328,7 @@ class Game {
       })
     })
     // boss.........................
-    this.bosss = this.bosss.filter((boss) => {
+     this.bosss.filter((boss) => {
       this.player.hooks = this.player.hooks.filter((hook) => {
         if (hook.collides(boss)) {
           //boss con hook
@@ -2373,21 +2348,23 @@ class Game {
           boss.vNegative = 0
           return false
         } else return true
-      })
-
-      if (boss.collides(this.player)) {
-        //boss con player
-        this.player.speed -= 1
+      })})
+    
+   this.bosss.forEach((bos) => {
+      if (bos.collides(this.player)) {
+        this.player.speed -= 0.008;
+        if(this.player.speed <= 0){
+          this.player.speed = 0.2
+        }
         this.player.cooldownBullet += 600
         afterSize -= 5
         bulletSize -= 5
         this.bossPerjIs = true
-        this.player.hit()
-        this.player.hit()
-        return false
+        this.player.hit(0.02)
       }
       return true
     })
+    
     this.bosss.forEach((boss) => {
       //boss con agua
       this.player.waters = this.player.waters.filter((water) => {
@@ -2492,24 +2469,22 @@ class Game {
           } else return true
         })
       })
-      this.pfront.forEach((peop) => {
-        //PFront con discount
-        this.player.discountings.filter((disc) => {
-          if (disc.collides(peop)) {
-            directHelpingClients(peop, 'Great!', 0.003, this.ctx, this.player)
-            return false
-          } else return true
-        })
-      })
-      this.pback.forEach((peop) => {
-        //PBack con discount
-        this.player.discountings.filter((disc) => {
-          if (disc.collides(peop)) {
-            directHelpingClients(peop, 'Great!', 0.003, this.ctx, this.player)
-            return false
-          } else return true
-        })
-      })
+const peopleGroups = [
+  { group: this.pfront, message: 'Great!' },
+  { group: this.pback,  message: 'Thanx!' }
+];
+
+peopleGroups.forEach(({ group, message }) => {
+  group.forEach((peop) => {
+    this.player.discountings.filter((disc) => {
+      if (disc.collides(peop)) {
+        directHelpingClients(peop, message, 0.002, this.ctx, this.player);
+        return false;
+      } else return true;
+    });
+  });
+});
+
       this.pfront.forEach((peop) => {
         //pfro con sanders
         this.player.sanders.filter((sand) => {
@@ -2719,7 +2694,7 @@ class Game {
         if (cact.collides(this.player)) {
           this.player.vx *= 0.8;
           this.player.vy *= 0.8;
-          this.player.fireHit()
+          this.player.hit(0.005)
           this.player.drawOuch()
         }
       })
@@ -2727,14 +2702,14 @@ class Game {
     this.puddles.forEach((puddle) => {
       if (puddle.collides(this.player)) {
         this.player.drawWater()
-        this.player.fireHit()
+        this.player.hit(0.005)
         this.player.vy = 0
         this.player.vx = 0
       }
     })
     this.fires.forEach((fire) => {
       if (fire.collides(this.player)) {
-        this.player.fireHit()
+        this.player.hit(0.005)
         this.player.drawFire()
         this.player.vy = 0
         this.player.vx = 0
@@ -2813,12 +2788,13 @@ class Game {
               this.luzOnAudio.volume = 0.07
               this.luzOnAudio.play()
               lampOn += 1
-              if (hookLeveling >= 2) {
-                money += 100
+              if(hookLeveling>= 3){
+                money += 100;
+                this.player.getRespect(0.4);
+              if( lampOn > 11) {
+                money += 100; //mas dinero si enciendes muchas lamparas
               }
-              if (lampOn > 11) {
-                money += 200
-              }
+            }
               if (lampOn === amountOfLamps) {
                 publicImage += 1
                 lamp.lights = false
@@ -2876,27 +2852,11 @@ class Game {
         })
       })
     }
-    processCollisions(
-      this.player,
-      this.player.hooks,
-      this.drugs,
-      'upgrade-alert'
-    )
-    processCollisions(
-      this.player,
-      this.player.hooks,
-      this.upBullets,
-      'upBullet-alert'
-    )
-    processCollisions(
-      this.player,
-      this.player.hooks,
-      this.upgrades,
-      'upgrade-alert'
-    )
+    processCollisions( this.player, this.player.hooks, this.drugs, 'upgrade-alert')
+    processCollisions( this.player, this.player.hooks, this.upBullets, 'upBullet-alert')
+    processCollisions( this.player, this.player.hooks, this.upgrades, 'upgrade-alert')
 
-    // foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..
-    // foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..foods..
+    // foods.............................
     this.foods = this.foods.filter((food) => {
       if (food.collides(this.player)) {
         this.atraer = new Audio('/assets/audios ad/bonus.mp3')
@@ -2964,7 +2924,7 @@ class Game {
     })
     this.player.toxics = this.player.toxics.filter((tox) => {
       if (tox.collides(this.player)) {
-        this.player.dieSlower()
+        this.player.loseLife(0.001)
         this.ctx.font = '20px Arial'
         this.ctx.fillStyle = 'red'
         this.ctx.fillText(
@@ -2991,7 +2951,7 @@ class Game {
       //sandheal con player
       if (sand.collides(this.player)) {
         if (this.player.sandstate === true) {
-          this.player.healSlow(0.004)
+          this.player.heal(0.004)
           this.ctx.font = '20px Arial'
           this.ctx.fillStyle = 'blue'
           this.ctx.fillText('Healing!', this.player.x - 40, this.player.y - 28)
@@ -3035,7 +2995,6 @@ class Game {
       }
       // destroyer
       if (this.levelUps2.collides(this.player)) {
-        machinegunBoost = true;
         this.levelupSound = new Audio('/assets/audios ad/reloadMachinegun.mp3')
         this.levelupSound.volume = 0.05;
         this.levelupSound.play();
@@ -3055,9 +3014,9 @@ class Game {
       }
       // elementalist
       if (this.levelUps3.collides(this.player)) {
-        elementBoost = true
-        elementalistLeveling += 1
-        N = 78
+        elementalistLeveling += 1;
+        N = 78;
+        L = 76;
         if (elementalistLeveling >= 2) {
           J = 74
           elementalMineCount += 5
@@ -3101,7 +3060,7 @@ class Game {
       lose.style.display = 'flex'
     }
     if (this.healing.collides(this.player) && this.winTime >= 350) {
-      this.player.healslow(0.004)
+      this.player.heal(0.004)
       this.iceCurePoison++
       if (this.iceCurePoison >= this.curePoisonTimer) {
         this.ratPoison = 0
