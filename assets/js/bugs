@@ -36,3 +36,9 @@
 //   ctx.lineWidth = 3;  solo funciona si hay strokeText
 
 //encender más de 11 lamparas te da el doble de dinero por cada
+
+
+        this.player.speedBullet += 2
+        bulletDistance += 40
+        this.player.cooldownBullet -= 300
+        mejora de Upgrade

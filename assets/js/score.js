@@ -290,9 +290,87 @@ if (hoveredOffice) {
   ctx.fillText("your weapons.", 1005, 366);
   this.ctx.drawImage(this.helperImg, 926, 245, 75, 120)
 }
-if (!hoveredSpecialWeapons) {
+
+
+if (!hoveredEquipment) {
+  let j = 520;
   ctx.fillStyle = "rgba(37, 49, 50, 1)";
-  ctx.fillRect(600, 90, 615, 740); 
+  ctx.fillRect(80, 500, 400, 335); 
+  ctx.font = "16px Arial";
+
+  ctx.fillStyle = "yellow";
+  ctx.fillText("-Recharge Time", 90, j); 
+  ctx.fillStyle = "white";
+  ctx.fillText("is for fire, water and hooks", 205, j); j += 18;
+
+  ctx.fillStyle = "yellow";
+  ctx.fillText("-Bullet Speed", 90, j); 
+  ctx.fillStyle = "white";
+  ctx.fillText("is for fire, water and hooks.", 190, j); j += 18;
+
+  ctx.fillStyle = "yellow";
+  ctx.fillText("-Shooting Range", 90, j); 
+  ctx.fillStyle = "white";
+  ctx.fillText(" is for fire and water", 210, j); j += 18;
+
+  ctx.fillStyle = "yellow";
+  ctx.fillText("-After Growth", 90, j); 
+  ctx.fillStyle = "white";
+  ctx.fillText("affects spinning effects of water and fire", 190, j); j += 18;
+
+  ctx.fillText("activated with destroyer. Also Sandstorm, Toxic", 90, j); j += 18;
+  ctx.fillText("and Elemental Shield.", 90, j); j += 18;
+
+  ctx.fillStyle = "yellow";
+  ctx.fillText("-Ammo Size", 90, j); 
+  ctx.fillStyle = "white";
+  ctx.fillText(" is for Fire and Water bullets", 180, j); j += 30;
+
+  ctx.fillText("Speed, Recharge and Range can be improved with", 90, j); j += 18;
+
+  ctx.fillStyle = "lime";
+  ctx.fillText("Upgrades", 90, j); 
+  ctx.fillStyle = "white";
+  ctx.fillText(" you get from helper at ", 160, j); 
+  ctx.fillStyle = "tomato";
+  ctx.fillText("Warhouse", 325, j); j += 30;
+
+  ctx.fillStyle = "yellow";
+  ctx.fillText("Bullet Growth", 90, j); 
+  ctx.fillStyle = "white";
+  ctx.fillText(" and ", 185, j);
+  ctx.fillStyle = "yellow";
+  ctx.fillText("Size", 220, j); 
+  ctx.fillStyle = "white";
+  ctx.fillText("can be improved with", 255, j); j += 18;
+
+  ctx.fillStyle = "lime";
+  ctx.fillText("Upgrades", 90, j); 
+  ctx.fillStyle = "white";
+  ctx.fillText(" you get from helper at ", 160, j); 
+  ctx.fillStyle = "tomato";
+  ctx.fillText("Fixit Forge", 325, j); j += 18;
+}
+
+
+if (hoveredBody) {
+  ctx.fillStyle = "rgba(37, 49, 50, 1)";
+  ctx.fillRect(400, 730, 400, 100); 
+  ctx.fillStyle = "white";
+  ctx.font = "16px Arial";
+  ctx.fillText("At the Main Office, your helper is", 950, 200);
+}
+if (hoveredMind) {
+  ctx.fillStyle = "rgba(37, 49, 50, 1)";
+  ctx.fillRect(650, 730, 400, 100); 
+  ctx.fillStyle = "white";
+  ctx.font = "16px Arial";
+  ctx.fillText("At the Main Office, your helper is", 950, 200);
+}
+
+if (hoveredSpecialWeapons) {
+  ctx.fillStyle = "rgba(37, 49, 50, 1)";
+  ctx.fillRect(630, 90, 585, 740); 
   ctx.fillStyle = "yellow";
   ctx.font = "22px Arial";
 

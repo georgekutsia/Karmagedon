@@ -553,6 +553,9 @@ hoverSoundButtons2.forEach((button) => button.addEventListener("mouseover", func
   let hoveredCustomers = false;
  let hoveredOffice = false;
  let hoveredSpecialWeapons = false;
+ let hoveredEquipment = false;
+ let hoveredBody = false;
+ let hoveredMind = false;
  can.addEventListener("mousemove", function (e) {
   const rect = can.getBoundingClientRect();
   const mouseX = e.clientX - rect.left;
@@ -589,9 +592,31 @@ hoveredOffice= (
   mouseY <= 340
 );
 hoveredSpecialWeapons= (
+  showPlayerJoBStats &&
   mouseX >= 1220 &&
   mouseX <= ctx.canvas.width &&
   mouseY >= 600 &&
+  mouseY <= ctx.canvas.height
+);
+hoveredEquipment= (
+  showPlayerPhysicalStats &&
+  mouseX >= 100 &&
+  mouseX <= 480 &&
+  mouseY >= 840 &&
+  mouseY <= ctx.canvas.height
+);
+hoveredBody= (
+  showPlayerPhysicalStats &&
+  mouseX >= 500 &&
+  mouseX <= 730 &&
+  mouseY >= 840 &&
+  mouseY <= ctx.canvas.height
+);
+hoveredMind= (
+  showPlayerPhysicalStats &&
+  mouseX >= 760 &&
+  mouseX <= 940 &&
+  mouseY >= 840 &&
   mouseY <= ctx.canvas.height
 );
 });

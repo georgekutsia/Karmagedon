@@ -374,9 +374,9 @@ class Player {
     this.ctx.fillStyle = "black";
     this.ctx.font = "16px Arial";
       //posicion del jugador aqui
-    this.ctx.fillText(this.x.toFixed(1), this.x - 84, this.y - 42);
-    this.ctx.fillText(this.y.toFixed(1), this.x + 64, this.y - 42);
-    // this.ctx.fillText(this.respect.total, this.x + 64, this.y - 42);
+    // this.ctx.fillText(this.x.toFixed(1), this.x - 84, this.y - 42);
+    // this.ctx.fillText(this.y.toFixed(1), this.x + 64, this.y - 42);
+    this.ctx.fillText(charging, this.x + 64, this.y - 42);
   // terminan los draws de textos
 
     this.heats.forEach((heat) => heat.draw());
@@ -778,7 +778,7 @@ class Player {
           this.alertingSound = new Audio("/assets/audios ad/reload.mp3");
           this.alertingSound.volume = 0.05;
           this.alertingSound.play()
-          }, 200);
+          },  this.cooldownBullet);
     }
 
     // para que el tercer disparo sea más potente

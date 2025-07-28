@@ -5,7 +5,6 @@ class Water {
     this.y = y;
     this.w = bulletSize ;
     this.h = bulletSize ;
-    this.bla = 0;
     this.vx = 0;
     this.vy = 0;
     this.player = player;
@@ -42,10 +41,10 @@ class Water {
     this.h += 0.2;
     this.w += 0.2;
     if (
-      this.x >= this.player.x + bulletDistance + this.bla ||
-      this.y >= this.player.y + bulletDistance + this.bla ||
-      this.x <= this.player.x - bulletDistance - this.bla ||
-      this.y <= this.player.y - bulletDistance - this.bla||
+      this.x >= this.player.x + bulletDistance ||
+      this.y >= this.player.y + bulletDistance ||
+      this.x <= this.player.x - bulletDistance ||
+      this.y <= this.player.y - bulletDistance||
       this.x + this.w >= this.ctx.canvas.width - 150
     ) {
       this.waterFar = true;
@@ -60,7 +59,7 @@ class Water {
         this.y -= 0.09;
         this.framer = 8;
         if (this.afterTick >= afterSize ) {
-          this.dispose = true;
+        this.dispose = true;
       }
     }
     if (!afterSpin && this.waterFar) {

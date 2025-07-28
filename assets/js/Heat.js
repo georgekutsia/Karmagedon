@@ -6,7 +6,6 @@ class Heat {
     this.w = bulletSize 
     this.h = bulletSize 
     this.player = player;
-    this.bla = 0;
     this.vx = 0;
     this.vy = 0;
     this.dispose = false;
@@ -41,10 +40,10 @@ class Heat {
     this.h += 0.2;
     this.w += 0.2;
     if (
-      this.x >= this.player.x + bulletDistance + this.bla || 
-      this.y >= this.player.y + bulletDistance + this.bla ||
-      this.x <= this.player.x - bulletDistance - this.bla || 
-      this.y <= this.player.y - bulletDistance - this.bla ||
+      this.x >= this.player.x + bulletDistance || 
+      this.y >= this.player.y + bulletDistance ||
+      this.x <= this.player.x - bulletDistance || 
+      this.y <= this.player.y - bulletDistance ||
       this.x + this.w >= this.ctx.canvas.width - 150
 
     ) {
@@ -92,7 +91,6 @@ class Shotgun {
     this.w = 40;
     this.h = 40;
     this.player = player;
-    this.bla = 0;
     this.vx = 0;
     this.vy = 0;
     this.dispose = false;
@@ -179,10 +177,10 @@ class Hook {
     this.x += this.vx;
     this.y += this.vy;
     if (
-      this.x >= this.player.x + bulletDistance * 10|| 
-      this.y >= this.player.y + bulletDistance * 10||
-      this.x <= this.player.x - bulletDistance * 10|| 
-      this.y <= this.player.y - bulletDistance * 10||
+      this.x >= this.player.x + bulletDistance/0.3|| 
+      this.y >= this.player.y + bulletDistance/0.3||
+      this.x <= this.player.x - bulletDistance/0.3|| 
+      this.y <= this.player.y - bulletDistance/0.3||
       this.x + this.w >= this.ctx.canvas.width - 150||
       this.y + this.h >=this.ctx.canvas.height - 50
     ){

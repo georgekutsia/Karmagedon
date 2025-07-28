@@ -688,8 +688,7 @@ class Game {
       this.lamps.forEach((e) => e.draw())
       if (this.lampTick >= 7640) {// se reinicia cada 2 horas con 7640
         this.lamps.forEach(
-          (lamp) => (lamp.img.src = '/assets/images/elements/lampOfff.png')
-        )
+        (lamp) => (lamp.img.src = '/assets/images/elements/lampOfff.png'))
         this.lamps.forEach((lamp) => (lamp.lights = false))
         this.alertingSound = new Audio('/assets/audios ad/lampOff.wav')
         this.alertingSound.volume = 0.05
@@ -714,44 +713,17 @@ class Game {
       this.ctx.drawImage(this.brain, 760, 840, 50, 50)
       this.ctx.font = '16px Arial'
       this.ctx.fillStyle = 'white'
-      this.ctx.fillText(
-        `Recharge Time: ${this.player.cooldownBullet.toString()}`,
-        150,
-        852
-      )
-      this.ctx.fillText(
-        `Bullet Speed: ${this.player.speedBullet.toFixed(1).toString()}`,
-        150,
-        870
-      )
-      this.ctx.fillText(
-        `Shooting Range: ${bulletDistance.toString()}`,
-        150,
-        888
-      )
+      this.ctx.fillText( `Recharge Time: ${this.player.cooldownBullet.toString()}`, 150, 852)
+      this.ctx.fillText( `Bullet Speed: ${this.player.speedBullet.toFixed(1).toString()}`, 150, 870)
+      this.ctx.fillText( `Shooting Range: ${bulletDistance.toString()}`, 150, 888)
       if (this.upgradeMessage === true) {
-        this.upgradeTick++
-        this.ctx.fillStyle = 'aqua'
-        this.ctx.fillText(
-          `Recharge Time: ${this.player.cooldownBullet.toString()}`,
-          150,
-          852
-        )
-        this.ctx.fillText(
-          `Bullet Speed: ${this.player.speedBullet.toFixed(1).toString()}`,
-          150,
-          870
-        )
-        this.ctx.fillText(
-          `Shooting Range: ${bulletDistance.toString()}`,
-          150,
-          888
-        )
+      this.upgradeTick++
+      this.ctx.fillStyle = 'aqua'
+      this.ctx.fillText(`Recharge Time: ${this.player.cooldownBullet.toString()}`,150,852)
+        this.ctx.fillText( `Bullet Speed: ${this.player.speedBullet.toFixed(1).toString()}`, 150, 870)
+        this.ctx.fillText( `Shooting Range: ${bulletDistance.toString()}`, 150, 888)
         this.ctx.fillStyle = 'white'
-        if (this.upgradeTick >= 150) {
-          this.upgradeMessage = false
-          this.upgradeTick = 0
-        }
+        if (this.upgradeTick >= 150) {this.upgradeMessage = falsethis.upgradeTick = 0}
       }
       this.ctx.fillText(`After Growth: ${afterSize.toString()}`, 320, 860)
       this.ctx.fillText(`Ammo size: ${bulletSize.toString()}`, 320, 880)
@@ -761,9 +733,7 @@ class Game {
         this.ctx.fillText(`After Growth: ${afterSize.toString()}`, 320, 860)
         this.ctx.fillText(`Ammo size: ${bulletSize.toString()}`, 320, 880)
         this.ctx.fillStyle = 'white'
-        if (this.upBulletTick >= 150) {
-          this.upBulletsMessage = false
-          this.upBulletTick = 0
+        if (this.upBulletTick >= 150) {this.upBulletsMessage = falsethis.upBulletTick = 0
         }
       }
       this.ctx.fillText(
@@ -875,18 +845,10 @@ class Game {
       if (this.bossPerjIs === true) {
         this.bossPerjTick++
         this.ctx.fillStyle = 'tomato'
-        this.ctx.fillText(
-          `Recharge Time: ${this.player.cooldownBullet.toString()}`,
-          150,
-          852
-        )
+        this.ctx.fillText(`Recharge Time: ${this.player.cooldownBullet.toString()}`,150,852)
         this.ctx.fillText(`After Growth: ${afterSize.toString()}`, 320, 860)
         this.ctx.fillText(`Ammo size: ${bulletSize.toString()}`, 320, 880)
-        this.ctx.fillText(
-          `Bullet Speed: ${this.player.speedBullet.toFixed(1).toString()}`,
-          150,
-          870
-        )
+        this.ctx.fillText(`Bullet Speed: ${this.player.speedBullet.toFixed(1).toString()}`,150,870)
         if (this.bossPerjTick >= 150) {
           this.bossPerjTick = 0
           this.bossPerjIs = false
@@ -2356,9 +2318,16 @@ class Game {
         if(this.player.speed <= 0){
           this.player.speed = 0.2
         }
-        this.player.cooldownBullet += 600
-        afterSize -= 5
-        bulletSize -= 5
+        this.player.cooldownBullet += 300
+        if(this.player.cooldownBullet >= 6000){
+          this.player.cooldownBullet = 6000;
+        }
+        afterSize -= 0.5;
+        bulletSize -= 0.5;
+        if(afterSize <= 10 || bulletSize <= 10 ){
+        afterSize = 10;
+        bulletSize = 10;
+        }
         this.bossPerjIs = true
         this.player.hit(0.02)
       }
@@ -2403,7 +2372,7 @@ class Game {
       this.player.blasters.filter((blast) => {
         if (blast.collides(boss)) {
           blast.rocketDetonation = true
-          boss.lifeleft -= 1.2
+          boss.lifeleft -= 0.1
           this.checkCharger()
           this.angryKorenPopup(190)
           this.addKoren()
@@ -2871,8 +2840,8 @@ peopleGroups.forEach(({ group, message }) => {
     this.upgrades = this.upgrades.filter((up) => {
       if (up.collides(this.player)) {
         this.player.speedBullet += 2
-        bulletDistance += 50
-        this.player.cooldownBullet -= 400
+        bulletDistance += 40
+        this.player.cooldownBullet -= 300
         if (this.player.cooldownBullet <= 600) {
           this.player.cooldownBullet = 600;
         }
@@ -3003,7 +2972,7 @@ peopleGroups.forEach(({ group, message }) => {
         if (destroyerLeveling >= 2) {
           machingunCountback = 1300 // aumenta el tiempo de activación de machinegun
           F = 70 //se activa rocketlouncher
-          rocketCount += 10;
+          rocketCount += 5;
         }
         if (destroyerLeveling >= 3) {
           H = 72

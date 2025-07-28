@@ -30,11 +30,11 @@ const D = 68;
 
 let hookCounter = 0
 let discounting = 0;
-let charging = 0;
+let charging = 10; //para blaster de arena
 
 let money = 10000
 let elementalMineCount = 0 //por unidad
-let rocketCount = 0 //multiplo de 2.5 por alguna razón
+let rocketCount = 0 //cantidad de rokets en rocketlauncher
 let mineCount = 0 //minas explosivas de contacto
 let cartCount = 0; //contador de carts para que cada 3 salga un upgrade
 
@@ -109,8 +109,6 @@ let addBaby = false;
 let addCustomer = false;
 let addBoss = false;
 let addPortal = false;
-  
-
 
 let showPlayerWeaponStats = true;
 let showPlayerJoBStats = true;

@@ -38,7 +38,7 @@ class Recharger {
   rechargingWeapons() {
     recharging += 1;
     if(recharging >= 360) {
-      rocketCount += 5;
+      rocketCount += 3;
       recharging = 0;
       this.levelupSound = new Audio("/assets/audios ad/reloadMachinegun.mp3");
       this.levelupSound.volume = 0.05;
